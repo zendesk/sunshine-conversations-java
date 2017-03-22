@@ -22,10 +22,10 @@ Create a webhook for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.WebhookApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -78,10 +78,10 @@ Delete the specified webhook.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.WebhookApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -133,10 +133,10 @@ Get the specified webhook.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.WebhookApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -189,10 +189,10 @@ List webhooks for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.WebhookApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -243,10 +243,10 @@ Update the specified webhook.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.WebhookApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();

@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client;
+package io.smooch.client;
 
 import java.util.Map;
 import java.util.List;

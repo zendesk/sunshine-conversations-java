@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client;
+package io.smooch.client;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

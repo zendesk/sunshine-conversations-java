@@ -27,10 +27,10 @@ Update specified device information.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -85,10 +85,10 @@ Delete specified app user&#39;s profile.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -139,10 +139,10 @@ Get the specified app user.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -193,10 +193,10 @@ Get specified app user&#39;s channel entity IDs.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -247,10 +247,10 @@ Link specified app user to given channel.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -303,10 +303,10 @@ Send an image message to the conversation.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -361,10 +361,10 @@ Pre-create an app user.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -415,10 +415,10 @@ Track an event for the given app user.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -471,10 +471,10 @@ Unlink specified app user from given channel.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
@@ -526,10 +526,10 @@ Update the specified app user.
 ### Example
 ```java
 // Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
+//import io.smooch.client.ApiClient;
+//import io.smooch.client.ApiException;
+//import io.smooch.client.Configuration;
+//import io.smooch.client.auth.*;
 //import io.swagger.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();

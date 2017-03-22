@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client;
+package io.smooch.client;
 
 
 public class Pair {

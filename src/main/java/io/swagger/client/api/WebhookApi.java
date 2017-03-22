@@ -13,14 +13,14 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.ApiCallback;
-import io.swagger.client.ApiClient;
-import io.swagger.client.ApiException;
-import io.swagger.client.ApiResponse;
-import io.swagger.client.Configuration;
-import io.swagger.client.Pair;
-import io.swagger.client.ProgressRequestBody;
-import io.swagger.client.ProgressResponseBody;
+import io.smooch.client.ApiCallback;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.ApiResponse;
+import io.smooch.client.Configuration;
+import io.smooch.client.Pair;
+import io.smooch.client.ProgressRequestBody;
+import io.smooch.client.ProgressResponseBody;
 
 import com.google.gson.reflect.TypeToken;
 

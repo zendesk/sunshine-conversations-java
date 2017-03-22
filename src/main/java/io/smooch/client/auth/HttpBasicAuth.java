@@ -11,9 +11,9 @@
  */
 
 
-package io.swagger.client.auth;
+package io.smooch.client.auth;
 
-import io.swagger.client.Pair;
+import io.smooch.client.Pair;
 
 import com.squareup.okhttp.Credentials;
 

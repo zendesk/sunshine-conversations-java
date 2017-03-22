@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client;
+package io.smooch.client;
 
 import com.squareup.okhttp.*;
 import okio.Buffer;

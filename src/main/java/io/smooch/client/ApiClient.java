@@ -11,7 +11,7 @@
  */
 
 
-package io.swagger.client;
+package io.smooch.client;
 
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -74,10 +74,10 @@ import javax.net.ssl.X509TrustManager;
 import okio.BufferedSink;
 import okio.Okio;
 
-import io.swagger.client.auth.Authentication;
-import io.swagger.client.auth.HttpBasicAuth;
-import io.swagger.client.auth.ApiKeyAuth;
-import io.swagger.client.auth.OAuth;
+import io.smooch.client.auth.Authentication;
+import io.smooch.client.auth.HttpBasicAuth;
+import io.smooch.client.auth.ApiKeyAuth;
+import io.smooch.client.auth.OAuth;
 
 public class ApiClient {
     public static final double JAVA_VERSION;
@@ -158,7 +158,7 @@ public class ApiClient {
         this.lenientDatetimeFormat = true;
 
         // Set default User-Agent.
-        setUserAgent("Swagger-Codegen/1.0.0/java");
+        setUserAgent("Swagger-Codegen/1.0.1/java");
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications = new HashMap<String, Authentication>();

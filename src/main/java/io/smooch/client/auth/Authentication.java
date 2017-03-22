@@ -11,29 +11,19 @@
  */
 
 
-package io.swagger.client.auth;
+package io.smooch.client.auth;
 
-import io.swagger.client.Pair;
+import io.smooch.client.Pair;
 
 import java.util.Map;
 import java.util.List;
 
-
-public class OAuth implements Authentication {
-  private String accessToken;
-
-  public String getAccessToken() {
-    return accessToken;
-  }
-
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-    if (accessToken != null) {
-      headerParams.put("Authorization", "Bearer " + accessToken);
-    }
-  }
+public interface Authentication {
+    /**
+     * Apply authentication settings to header and query params.
+     *
+     * @param queryParams List of query parameters
+     * @param headerParams Map of header parameters
+     */
+    void applyToParams(List<Pair> queryParams, Map<String, String> headerParams);
 }
