@@ -26,7 +26,7 @@ Clears the message history for a user, permanently deleting all messages, but le
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.ConversationApi;
+//import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -79,7 +79,7 @@ Get the specified app user&#39;s messages.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.ConversationApi;
+//import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -137,7 +137,7 @@ Post a message to or from the app user.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.ConversationApi;
+//import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -193,7 +193,7 @@ Reset the unread count of the conversation to 0.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.ConversationApi;
+//import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -246,7 +246,7 @@ Notify Smooch when an app maker starts or stops typing a response.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.ConversationApi;
+//import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

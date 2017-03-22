@@ -31,7 +31,7 @@ Update specified device information.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -89,7 +89,7 @@ Delete specified app user&#39;s profile.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -143,7 +143,7 @@ Get the specified app user.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -197,7 +197,7 @@ Get specified app user&#39;s channel entity IDs.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -251,7 +251,7 @@ Link specified app user to given channel.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -307,7 +307,7 @@ Send an image message to the conversation.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -365,7 +365,7 @@ Pre-create an app user.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -419,7 +419,7 @@ Track an event for the given app user.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -475,7 +475,7 @@ Unlink specified app user from given channel.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -530,7 +530,7 @@ Update the specified app user.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppUserApi;
+//import io.smooch.client.api.AppUserApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

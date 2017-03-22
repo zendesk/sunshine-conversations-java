@@ -32,7 +32,7 @@ Create a new app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -86,7 +86,7 @@ Create a secret key for the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -142,7 +142,7 @@ Delete the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -195,7 +195,7 @@ Delete the specified integration.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -250,7 +250,7 @@ Delete the specified secret key.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -305,7 +305,7 @@ Get the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -359,7 +359,7 @@ Get an app-scoped JWT for the specified secret key.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -415,7 +415,7 @@ Get the specified integration.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -471,7 +471,7 @@ Get the specified secret key.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -527,7 +527,7 @@ List all apps configured.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -583,7 +583,7 @@ List the secret keys for the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.AppApi;
+//import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

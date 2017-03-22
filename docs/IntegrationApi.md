@@ -23,7 +23,7 @@ Create an integration for the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.IntegrationApi;
+//import io.smooch.client.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -79,7 +79,7 @@ List integrations for the specified app.
 //import io.smooch.client.ApiException;
 //import io.smooch.client.Configuration;
 //import io.smooch.client.auth.*;
-//import io.swagger.client.api.IntegrationApi;
+//import io.smooch.client.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
