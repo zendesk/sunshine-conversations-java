@@ -20,11 +20,11 @@ Remove the specified app’s menu.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.MenuApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.MenuApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -70,11 +70,11 @@ Get the specified app’s menu.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.MenuApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.MenuApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -120,11 +120,11 @@ Configure the specified app’s menu.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.MenuApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.MenuApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

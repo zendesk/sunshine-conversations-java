@@ -22,11 +22,11 @@ Clears the message history for a user, permanently deleting all messages, but le
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.ConversationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -75,11 +75,11 @@ Get the specified app user&#39;s messages.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.ConversationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -133,11 +133,11 @@ Post a message to or from the app user.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.ConversationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -189,11 +189,11 @@ Reset the unread count of the conversation to 0.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.ConversationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -242,11 +242,11 @@ Notify Smooch when an app maker starts or stops typing a response.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.ConversationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

@@ -18,11 +18,11 @@ This API is called by an iOS, Android, or browser client when the app is first l
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.InitApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.InitApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

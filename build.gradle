@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'io.smooch'
-version = '1.0.2'
+version = '1.0.3'
 
 buildscript {
     repositories {
@@ -23,7 +23,7 @@ repositories {
 
 bintray {
     user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
+    key = System.getenv('BINTRAY_API_KEY')
 
     configurations = ['archives'] //When uploading configuration files
     publish = true

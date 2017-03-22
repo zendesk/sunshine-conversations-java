@@ -28,11 +28,11 @@ Create a new app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -82,11 +82,11 @@ Create a secret key for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -138,11 +138,11 @@ Delete the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -191,11 +191,11 @@ Delete the specified integration.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -246,11 +246,11 @@ Delete the specified secret key.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -301,11 +301,11 @@ Get the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -355,11 +355,11 @@ Get an app-scoped JWT for the specified secret key.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -411,11 +411,11 @@ Get the specified integration.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -467,11 +467,11 @@ Get the specified secret key.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -523,11 +523,11 @@ List all apps configured.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -579,11 +579,11 @@ List the secret keys for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.AppApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 

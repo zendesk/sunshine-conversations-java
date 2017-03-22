@@ -19,11 +19,11 @@ Create an integration for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.IntegrationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
@@ -75,11 +75,11 @@ List integrations for the specified app.
 ### Example
 ```java
 // Import classes:
-//import io.smooch.client.ApiClient;
-//import io.smooch.client.ApiException;
-//import io.smooch.client.Configuration;
-//import io.smooch.client.auth.*;
-//import io.smooch.client.api.IntegrationApi;
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.IntegrationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
