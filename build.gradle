@@ -27,6 +27,7 @@ bintray {
 
     configurations = ['archives'] //When uploading configuration files
     publish = true
+    override = true
     pkg {
         repo = 'maven'
         name = 'smooch-api'
