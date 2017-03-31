@@ -7,11 +7,9 @@ Method | HTTP request | Description
 [**createApp**](AppApi.md#createApp) | **POST** /apps | 
 [**createSecretKey**](AppApi.md#createSecretKey) | **POST** /apps/{appId}/keys | 
 [**deleteApp**](AppApi.md#deleteApp) | **DELETE** /apps/{appId} | 
-[**deleteIntegration**](AppApi.md#deleteIntegration) | **DELETE** /apps/{appId}/integrations/{integrationId} | 
 [**deleteSecretKey**](AppApi.md#deleteSecretKey) | **DELETE** /apps/{appId}/keys/{keyId} | 
 [**getApp**](AppApi.md#getApp) | **GET** /apps/{appId} | 
 [**getAppJwt**](AppApi.md#getAppJwt) | **GET** /apps/{appId}/keys/{keyId}/jwt | 
-[**getIntegration**](AppApi.md#getIntegration) | **GET** /apps/{appId}/integrations/{integrationId} | 
 [**getSecretKey**](AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
 [**listApps**](AppApi.md#listApps) | **GET** /apps | 
 [**listSecretKeys**](AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
@@ -166,61 +164,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="deleteIntegration"></a>
-# **deleteIntegration**
-> deleteIntegration(appId, integrationId)
-
-
-
-Delete the specified integration.
-
-### Example
-```java
-// Import classes:
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.AppApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: jwt
-ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
-jwt.setApiKey("YOUR JWT");
-jwt.setApiKeyPrefix("Bearer");
-
-AppApi apiInstance = new AppApi();
-String appId = "appId_example"; // String | Identifies the app.
-String integrationId = "integrationId_example"; // String | Identifies the integration.
-try {
-    apiInstance.deleteIntegration(appId, integrationId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AppApi#deleteIntegration");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| Identifies the integration. |
 
 ### Return type
 
@@ -390,62 +333,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JwtResponse**](JwtResponse.md)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="getIntegration"></a>
-# **getIntegration**
-> IntegrationResponse getIntegration(appId, integrationId)
-
-
-
-Get the specified integration.
-
-### Example
-```java
-// Import classes:
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.AppApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: jwt
-ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
-jwt.setApiKey("YOUR JWT");
-jwt.setApiKeyPrefix("Bearer");
-
-AppApi apiInstance = new AppApi();
-String appId = "appId_example"; // String | Identifies the app.
-String integrationId = "integrationId_example"; // String | Identifies the integration.
-try {
-    IntegrationResponse result = apiInstance.getIntegration(appId, integrationId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AppApi#getIntegration");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| Identifies the integration. |
-
-### Return type
-
-[**IntegrationResponse**](IntegrationResponse.md)
 
 ### Authorization
 

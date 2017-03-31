@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.0.0"
+compile "io.smooch:api:1.1.0"
 ```
 
 ## Getting Started
@@ -113,11 +113,9 @@ Class | Method | HTTP request | Description
 *AppApi* | [**createApp**](docs/AppApi.md#createApp) | **POST** /apps | 
 *AppApi* | [**createSecretKey**](docs/AppApi.md#createSecretKey) | **POST** /apps/{appId}/keys | 
 *AppApi* | [**deleteApp**](docs/AppApi.md#deleteApp) | **DELETE** /apps/{appId} | 
-*AppApi* | [**deleteIntegration**](docs/AppApi.md#deleteIntegration) | **DELETE** /apps/{appId}/integrations/{integrationId} | 
 *AppApi* | [**deleteSecretKey**](docs/AppApi.md#deleteSecretKey) | **DELETE** /apps/{appId}/keys/{keyId} | 
 *AppApi* | [**getApp**](docs/AppApi.md#getApp) | **GET** /apps/{appId} | 
 *AppApi* | [**getAppJwt**](docs/AppApi.md#getAppJwt) | **GET** /apps/{appId}/keys/{keyId}/jwt | 
-*AppApi* | [**getIntegration**](docs/AppApi.md#getIntegration) | **GET** /apps/{appId}/integrations/{integrationId} | 
 *AppApi* | [**getSecretKey**](docs/AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
@@ -138,7 +136,13 @@ Class | Method | HTTP request | Description
 *ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /appusers/{userId}/conversation/activity | 
 *InitApi* | [**init**](docs/InitApi.md#init) | **POST** /init | 
 *IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /apps/{appId}/integrations | 
+*IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /apps/{appId}/integrations/{integrationId} | 
+*IntegrationApi* | [**deleteIntegrationMenu**](docs/IntegrationApi.md#deleteIntegrationMenu) | **DELETE** /apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**getIntegration**](docs/IntegrationApi.md#getIntegration) | **GET** /apps/{appId}/integrations/{integrationId} | 
+*IntegrationApi* | [**getIntegrationMenu**](docs/IntegrationApi.md#getIntegrationMenu) | **GET** /apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /apps/{appId}/integrations | 
+*IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /apps/{appId}/integrations/{integrationId}/menu | 
 *MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /menu | 
 *MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /menu | 
 *MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /menu | 
