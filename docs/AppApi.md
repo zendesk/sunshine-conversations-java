@@ -424,8 +424,8 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppApi apiInstance = new AppApi();
-Integer limit = 56; // Integer | The number of records to return.
-Integer offset = 56; // Integer | The number of initial records to skip before picking records to return.
+Integer limit = 0; // Integer | The number of records to return.
+Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
 try {
     ListAppsResponse result = apiInstance.listApps(limit, offset);
     System.out.println(result);
@@ -439,8 +439,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **Integer**| The number of records to return. | [optional]
- **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional]
+ **limit** | **Integer**| The number of records to return. | [optional] [default to 0]
+ **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
 
 ### Return type
 

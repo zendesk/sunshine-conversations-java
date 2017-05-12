@@ -3,14 +3,15 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'io.smooch'
-version = '1.1.0'
+version = '1.2.0'
 
 buildscript {
     repositories {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.+'
+        classpath 'com.android.tools.build:gradle:2.3.+'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
@@ -52,11 +53,11 @@ if(hasProperty('target') && target == 'android') {
     apply plugin: 'com.github.dcendents.android-maven'
 
     android {
-        compileSdkVersion 23
-        buildToolsVersion '23.0.2'
+        compileSdkVersion 25
+        buildToolsVersion '25.0.2'
         defaultConfig {
             minSdkVersion 14
-            targetSdkVersion 23
+            targetSdkVersion 25
         }
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_7
