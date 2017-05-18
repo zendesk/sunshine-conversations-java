@@ -15,34 +15,34 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Webhook;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * WebhookResponse
+ * Customizable app settings.
  */
+@ApiModel(description = "Customizable app settings.")
 
-public class WebhookResponse {
-  @SerializedName("webhook")
-  private Webhook webhook = null;
+public class AppSettings {
+  @SerializedName("maskCreditCardNumbers")
+  private Boolean maskCreditCardNumbers = null;
 
-  public WebhookResponse webhook(Webhook webhook) {
-    this.webhook = webhook;
+  public AppSettings maskCreditCardNumbers(Boolean maskCreditCardNumbers) {
+    this.maskCreditCardNumbers = maskCreditCardNumbers;
     return this;
   }
 
    /**
-   * The webhook.
-   * @return webhook
+   * Flag specifying whether credit card numbers will be automatically masked if sent through Smooch.
+   * @return maskCreditCardNumbers
   **/
-  @ApiModelProperty(required = true, value = "The webhook.")
-  public Webhook getWebhook() {
-    return webhook;
+  @ApiModelProperty(value = "Flag specifying whether credit card numbers will be automatically masked if sent through Smooch.")
+  public Boolean getMaskCreditCardNumbers() {
+    return maskCreditCardNumbers;
   }
 
-  public void setWebhook(Webhook webhook) {
-    this.webhook = webhook;
+  public void setMaskCreditCardNumbers(Boolean maskCreditCardNumbers) {
+    this.maskCreditCardNumbers = maskCreditCardNumbers;
   }
 
 
@@ -54,22 +54,22 @@ public class WebhookResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookResponse webhookResponse = (WebhookResponse) o;
-    return Objects.equals(this.webhook, webhookResponse.webhook);
+    AppSettings appSettings = (AppSettings) o;
+    return Objects.equals(this.maskCreditCardNumbers, appSettings.maskCreditCardNumbers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhook);
+    return Objects.hash(maskCreditCardNumbers);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookResponse {\n");
+    sb.append("class AppSettings {\n");
     
-    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
+    sb.append("    maskCreditCardNumbers: ").append(toIndentedString(maskCreditCardNumbers)).append("\n");
     sb.append("}");
     return sb.toString();
   }

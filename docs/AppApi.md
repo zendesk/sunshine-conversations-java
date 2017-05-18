@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**getSecretKey**](AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
 [**listApps**](AppApi.md#listApps) | **GET** /apps | 
 [**listSecretKeys**](AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
+[**updateApp**](AppApi.md#updateApp) | **PUT** /apps/{appId} | 
 
 
 <a name="createApp"></a>
@@ -499,6 +500,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListSecretKeysResponse**](ListSecretKeysResponse.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="updateApp"></a>
+# **updateApp**
+> AppResponse updateApp(appId, appUpdateBody)
+
+
+
+Update the specified app.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+AppApi apiInstance = new AppApi();
+String appId = "appId_example"; // String | Identifies the app.
+AppUpdate appUpdateBody = new AppUpdate(); // AppUpdate | Body for an updateApp request.
+try {
+    AppResponse result = apiInstance.updateApp(appId, appUpdateBody);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppApi#updateApp");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **appUpdateBody** | [**AppUpdate**](AppUpdate.md)| Body for an updateApp request. |
+
+### Return type
+
+[**AppResponse**](AppResponse.md)
 
 ### Authorization
 

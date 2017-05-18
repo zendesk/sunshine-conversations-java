@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.2.0</version>
+    <version>1.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.2.0"
+compile "io.smooch:api:1.3.0"
 ```
 
 ## Getting Started
@@ -119,6 +119,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**getSecretKey**](docs/AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
+*AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /apps/{appId} | 
 *AppUserApi* | [**appUserDeviceUpdate**](docs/AppUserApi.md#appUserDeviceUpdate) | **PUT** /appusers/{userId}/devices/{deviceId} | 
 *AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /appusers/{userId}/profile | 
 *AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /appusers/{userId} | 
@@ -159,6 +160,8 @@ Class | Method | HTTP request | Description
  - [App](docs/App.md)
  - [AppCreate](docs/AppCreate.md)
  - [AppResponse](docs/AppResponse.md)
+ - [AppSettings](docs/AppSettings.md)
+ - [AppUpdate](docs/AppUpdate.md)
  - [AppUser](docs/AppUser.md)
  - [AppUserLink](docs/AppUserLink.md)
  - [AppUserPreCreate](docs/AppUserPreCreate.md)

@@ -15,34 +15,55 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Webhook;
+import io.smooch.client.model.AppSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * WebhookResponse
+ * AppUpdate
  */
 
-public class WebhookResponse {
-  @SerializedName("webhook")
-  private Webhook webhook = null;
+public class AppUpdate {
+  @SerializedName("name")
+  private String name = null;
 
-  public WebhookResponse webhook(Webhook webhook) {
-    this.webhook = webhook;
+  @SerializedName("settings")
+  private AppSettings settings = null;
+
+  public AppUpdate name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * The webhook.
-   * @return webhook
+   * The app's name.
+   * @return name
   **/
-  @ApiModelProperty(required = true, value = "The webhook.")
-  public Webhook getWebhook() {
-    return webhook;
+  @ApiModelProperty(required = true, value = "The app's name.")
+  public String getName() {
+    return name;
   }
 
-  public void setWebhook(Webhook webhook) {
-    this.webhook = webhook;
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public AppUpdate settings(AppSettings settings) {
+    this.settings = settings;
+    return this;
+  }
+
+   /**
+   * Get settings
+   * @return settings
+  **/
+  @ApiModelProperty(value = "")
+  public AppSettings getSettings() {
+    return settings;
+  }
+
+  public void setSettings(AppSettings settings) {
+    this.settings = settings;
   }
 
 
@@ -54,22 +75,24 @@ public class WebhookResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    WebhookResponse webhookResponse = (WebhookResponse) o;
-    return Objects.equals(this.webhook, webhookResponse.webhook);
+    AppUpdate appUpdate = (AppUpdate) o;
+    return Objects.equals(this.name, appUpdate.name) &&
+        Objects.equals(this.settings, appUpdate.settings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(webhook);
+    return Objects.hash(name, settings);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class WebhookResponse {\n");
+    sb.append("class AppUpdate {\n");
     
-    sb.append("    webhook: ").append(toIndentedString(webhook)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
