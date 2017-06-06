@@ -18,6 +18,15 @@ Name | Value
 IOS | &quot;ios&quot;
 ANDROID | &quot;android&quot;
 WEB | &quot;web&quot;
+TWILIO | &quot;twilio&quot;
+TELEGRAM | &quot;telegram&quot;
+MESSENGER | &quot;messenger&quot;
+FRONTENDEMAIL | &quot;frontendEmail&quot;
+LINE | &quot;line&quot;
+WECHAT | &quot;wechat&quot;
+VIBER | &quot;viber&quot;
+TWITTER | &quot;twitter&quot;
+MAILGUN | &quot;mailgun&quot;
 OTHER | &quot;other&quot;
 
 
