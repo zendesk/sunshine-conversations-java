@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**message** | **Object** | The message. | 
+**message** | [**Message**](Message.md) | The message. | 
 **conversation** | [**Conversation**](Conversation.md) | The conversation. | 
 
 

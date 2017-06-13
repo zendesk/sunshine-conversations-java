@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.6.0</version>
+    <version>1.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.6.0"
+compile "io.smooch:api:1.7.0"
 ```
 
 ## Getting Started
