@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.5.0"
+compile "io.smooch:api:1.6.0"
 ```
 
 ## Getting Started
@@ -194,7 +194,6 @@ Class | Method | HTTP request | Description
  - [MessageItem](docs/MessageItem.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessageResponse](docs/MessageResponse.md)
- - [PostMessagesResponse](docs/PostMessagesResponse.md)
  - [SecretKey](docs/SecretKey.md)
  - [SecretKeyCreate](docs/SecretKeyCreate.md)
  - [SecretKeyResponse](docs/SecretKeyResponse.md)

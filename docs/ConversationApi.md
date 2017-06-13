@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="postMessage"></a>
 # **postMessage**
-> PostMessagesResponse postMessage(userId, messagePostBody)
+> MessageResponse postMessage(userId, messagePostBody)
 
 
 
@@ -150,7 +150,7 @@ ConversationApi apiInstance = new ConversationApi();
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 MessagePost messagePostBody = new MessagePost(); // MessagePost | Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message)) 
 try {
-    PostMessagesResponse result = apiInstance.postMessage(userId, messagePostBody);
+    MessageResponse result = apiInstance.postMessage(userId, messagePostBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#postMessage");
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**PostMessagesResponse**](PostMessagesResponse.md)
+[**MessageResponse**](MessageResponse.md)
 
 ### Authorization
 
