@@ -15,55 +15,54 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.DeviceInit;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * Init
+ * AttachmentResponse
  */
 
-public class Init {
-  @SerializedName("device")
-  private DeviceInit device = null;
+public class AttachmentResponse {
+  @SerializedName("mediaUrl")
+  private String mediaUrl = null;
 
-  @SerializedName("userId")
-  private String userId = null;
+  @SerializedName("mediaType")
+  private String mediaType = null;
 
-  public Init device(DeviceInit device) {
-    this.device = device;
+  public AttachmentResponse mediaUrl(String mediaUrl) {
+    this.mediaUrl = mediaUrl;
     return this;
   }
 
    /**
-   * Get device
-   * @return device
+   * The mediaUrl for the message. Required for image/file messages. 
+   * @return mediaUrl
   **/
-  @ApiModelProperty(required = true, value = "")
-  public DeviceInit getDevice() {
-    return device;
+  @ApiModelProperty(required = true, value = "The mediaUrl for the message. Required for image/file messages. ")
+  public String getMediaUrl() {
+    return mediaUrl;
   }
 
-  public void setDevice(DeviceInit device) {
-    this.device = device;
+  public void setMediaUrl(String mediaUrl) {
+    this.mediaUrl = mediaUrl;
   }
 
-  public Init userId(String userId) {
-    this.userId = userId;
+  public AttachmentResponse mediaType(String mediaType) {
+    this.mediaType = mediaType;
     return this;
   }
 
    /**
-   * The app user's userId. If specified, this ID can be used to invoke APIs. If left blank, an ID will automatically be generated. 
-   * @return userId
+   * The mediaType for the message. Required for image/file messages. 
+   * @return mediaType
   **/
-  @ApiModelProperty(value = "The app user's userId. If specified, this ID can be used to invoke APIs. If left blank, an ID will automatically be generated. ")
-  public String getUserId() {
-    return userId;
+  @ApiModelProperty(required = true, value = "The mediaType for the message. Required for image/file messages. ")
+  public String getMediaType() {
+    return mediaType;
   }
 
-  public void setUserId(String userId) {
-    this.userId = userId;
+  public void setMediaType(String mediaType) {
+    this.mediaType = mediaType;
   }
 
 
@@ -75,24 +74,24 @@ public class Init {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Init init = (Init) o;
-    return Objects.equals(this.device, init.device) &&
-        Objects.equals(this.userId, init.userId);
+    AttachmentResponse attachmentResponse = (AttachmentResponse) o;
+    return Objects.equals(this.mediaUrl, attachmentResponse.mediaUrl) &&
+        Objects.equals(this.mediaType, attachmentResponse.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(device, userId);
+    return Objects.hash(mediaUrl, mediaType);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Init {\n");
+    sb.append("class AttachmentResponse {\n");
     
-    sb.append("    device: ").append(toIndentedString(device)).append("\n");
-    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
+    sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

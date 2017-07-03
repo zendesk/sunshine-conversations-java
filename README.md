@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.8.0</version>
+    <version>1.9.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.8.0"
+compile "io.smooch:api:1.9.0"
 ```
 
 ## Getting Started
@@ -130,6 +130,7 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**trackEvent**](docs/AppUserApi.md#trackEvent) | **POST** /appusers/{userId}/events | 
 *AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /appusers/{userId}/channels/{channel} | 
 *AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /appusers/{userId} | 
+*AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /apps/{appId}/attachments | 
 *ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /appusers/{userId}/messages | 
 *ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /appusers/{userId}/messages | 
 *ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /appusers/{userId}/messages | 
@@ -167,6 +168,7 @@ Class | Method | HTTP request | Description
  - [AppUserPreCreate](docs/AppUserPreCreate.md)
  - [AppUserResponse](docs/AppUserResponse.md)
  - [AppUserUpdate](docs/AppUserUpdate.md)
+ - [AttachmentResponse](docs/AttachmentResponse.md)
  - [Client](docs/Client.md)
  - [ClientInfo](docs/ClientInfo.md)
  - [Conversation](docs/Conversation.md)

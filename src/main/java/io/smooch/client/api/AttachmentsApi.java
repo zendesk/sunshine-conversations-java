@@ -27,8 +27,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.smooch.client.model.Init;
-import io.smooch.client.model.InitResponse;
+import io.smooch.client.model.AttachmentResponse;
+import java.io.File;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -36,14 +36,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InitApi {
+public class AttachmentsApi {
     private ApiClient apiClient;
 
-    public InitApi() {
+    public AttachmentsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public InitApi(ApiClient apiClient) {
+    public AttachmentsApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -56,24 +56,31 @@ public class InitApi {
     }
 
     /**
-     * Build call for init
-     * @param initBody Body for an init request. (required)
+     * Build call for uploadAttachment
+     * @param appId Identifies the app. (required)
+     * @param source File to be uploaded (required)
+     * @param access Access level for the resulting file (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call initCall(Init initBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = initBody;
+    public com.squareup.okhttp.Call uploadAttachmentCall(String appId, File source, String access, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/init";
+        String localVarPath = "/apps/{appId}/attachments"
+            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (access != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "access", access));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (source != null)
+        localVarFormParams.put("source", source);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -82,7 +89,7 @@ public class InitApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            "application/json"
+            "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -104,15 +111,25 @@ public class InitApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call initValidateBeforeCall(Init initBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call uploadAttachmentValidateBeforeCall(String appId, File source, String access, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'initBody' is set
-        if (initBody == null) {
-            throw new ApiException("Missing the required parameter 'initBody' when calling init(Async)");
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling uploadAttachment(Async)");
+        }
+        
+        // verify the required parameter 'source' is set
+        if (source == null) {
+            throw new ApiException("Missing the required parameter 'source' when calling uploadAttachment(Async)");
+        }
+        
+        // verify the required parameter 'access' is set
+        if (access == null) {
+            throw new ApiException("Missing the required parameter 'access' when calling uploadAttachment(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = initCall(initBody, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = uploadAttachmentCall(appId, source, access, progressListener, progressRequestListener);
         return call;
 
         
@@ -123,38 +140,44 @@ public class InitApi {
 
     /**
      * 
-     * This API is called by an iOS, Android, or browser client when the app is first loaded. It serves a number of purposes. 1. Initializes a new *appUser* and *client* if they don’t yet exist. 2. Updates an existing app user’s profile and client information. 3. Authenticates the *appUser* if *jwt* credentials are provided. 
-     * @param initBody Body for an init request. (required)
-     * @return InitResponse
+     * Upload an attachment to Smooch to use in future messages.
+     * @param appId Identifies the app. (required)
+     * @param source File to be uploaded (required)
+     * @param access Access level for the resulting file (required)
+     * @return AttachmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public InitResponse init(Init initBody) throws ApiException {
-        ApiResponse<InitResponse> resp = initWithHttpInfo(initBody);
+    public AttachmentResponse uploadAttachment(String appId, File source, String access) throws ApiException {
+        ApiResponse<AttachmentResponse> resp = uploadAttachmentWithHttpInfo(appId, source, access);
         return resp.getData();
     }
 
     /**
      * 
-     * This API is called by an iOS, Android, or browser client when the app is first loaded. It serves a number of purposes. 1. Initializes a new *appUser* and *client* if they don’t yet exist. 2. Updates an existing app user’s profile and client information. 3. Authenticates the *appUser* if *jwt* credentials are provided. 
-     * @param initBody Body for an init request. (required)
-     * @return ApiResponse&lt;InitResponse&gt;
+     * Upload an attachment to Smooch to use in future messages.
+     * @param appId Identifies the app. (required)
+     * @param source File to be uploaded (required)
+     * @param access Access level for the resulting file (required)
+     * @return ApiResponse&lt;AttachmentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<InitResponse> initWithHttpInfo(Init initBody) throws ApiException {
-        com.squareup.okhttp.Call call = initValidateBeforeCall(initBody, null, null);
-        Type localVarReturnType = new TypeToken<InitResponse>(){}.getType();
+    public ApiResponse<AttachmentResponse> uploadAttachmentWithHttpInfo(String appId, File source, String access) throws ApiException {
+        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, null, null);
+        Type localVarReturnType = new TypeToken<AttachmentResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * This API is called by an iOS, Android, or browser client when the app is first loaded. It serves a number of purposes. 1. Initializes a new *appUser* and *client* if they don’t yet exist. 2. Updates an existing app user’s profile and client information. 3. Authenticates the *appUser* if *jwt* credentials are provided. 
-     * @param initBody Body for an init request. (required)
+     * Upload an attachment to Smooch to use in future messages.
+     * @param appId Identifies the app. (required)
+     * @param source File to be uploaded (required)
+     * @param access Access level for the resulting file (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call initAsync(Init initBody, final ApiCallback<InitResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call uploadAttachmentAsync(String appId, File source, String access, final ApiCallback<AttachmentResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -175,8 +198,8 @@ public class InitApi {
             };
         }
 
-        com.squareup.okhttp.Call call = initValidateBeforeCall(initBody, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<InitResponse>(){}.getType();
+        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<AttachmentResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
