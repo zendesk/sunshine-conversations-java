@@ -15,34 +15,55 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Menu;
+import io.smooch.client.model.Message;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * MenuResponse
+ * Confirmation
  */
 
-public class MenuResponse {
-  @SerializedName("menu")
-  private Menu menu = null;
+public class Confirmation {
+  @SerializedName("type")
+  private String type = null;
 
-  public MenuResponse menu(Menu menu) {
-    this.menu = menu;
+  @SerializedName("message")
+  private Message message = null;
+
+  public Confirmation type(String type) {
+    this.type = type;
     return this;
   }
 
    /**
-   * The menu.
-   * @return menu
+   * The confirmation type.
+   * @return type
   **/
-  @ApiModelProperty(required = true, value = "The menu.")
-  public Menu getMenu() {
-    return menu;
+  @ApiModelProperty(required = true, value = "The confirmation type.")
+  public String getType() {
+    return type;
   }
 
-  public void setMenu(Menu menu) {
-    this.menu = menu;
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public Confirmation message(Message message) {
+    this.message = message;
+    return this;
+  }
+
+   /**
+   * The message used to reach out to the user. Must be a valid message object as per the post message API.
+   * @return message
+  **/
+  @ApiModelProperty(value = "The message used to reach out to the user. Must be a valid message object as per the post message API.")
+  public Message getMessage() {
+    return message;
+  }
+
+  public void setMessage(Message message) {
+    this.message = message;
   }
 
 
@@ -54,22 +75,24 @@ public class MenuResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MenuResponse menuResponse = (MenuResponse) o;
-    return Objects.equals(this.menu, menuResponse.menu);
+    Confirmation confirmation = (Confirmation) o;
+    return Objects.equals(this.type, confirmation.type) &&
+        Objects.equals(this.message, confirmation.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(menu);
+    return Objects.hash(type, message);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MenuResponse {\n");
+    sb.append("class Confirmation {\n");
     
-    sb.append("    menu: ").append(toIndentedString(menu)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("}");
     return sb.toString();
   }
