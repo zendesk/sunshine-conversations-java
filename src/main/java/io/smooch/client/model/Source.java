@@ -19,29 +19,50 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * DisplaySettings
+ * Source
  */
 
-public class DisplaySettings {
-  @SerializedName("imageAspectRatio")
-  private String imageAspectRatio = null;
+public class Source {
+  @SerializedName("id")
+  private String id = null;
 
-  public DisplaySettings imageAspectRatio(String imageAspectRatio) {
-    this.imageAspectRatio = imageAspectRatio;
+  @SerializedName("type")
+  private String type = null;
+
+  public Source id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * Specifies how to display all carousel images. Valid values are *horizontal* (default) and *square*.
-   * @return imageAspectRatio
+   * An identifier used by Smooch for internal purposes.
+   * @return id
   **/
-  @ApiModelProperty(value = "Specifies how to display all carousel images. Valid values are *horizontal* (default) and *square*.")
-  public String getImageAspectRatio() {
-    return imageAspectRatio;
+  @ApiModelProperty(value = "An identifier used by Smooch for internal purposes.")
+  public String getId() {
+    return id;
   }
 
-  public void setImageAspectRatio(String imageAspectRatio) {
-    this.imageAspectRatio = imageAspectRatio;
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public Source type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * An identifier for the channel from which a message originated.
+   * @return type
+  **/
+  @ApiModelProperty(value = "An identifier for the channel from which a message originated.")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -53,22 +74,24 @@ public class DisplaySettings {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DisplaySettings displaySettings = (DisplaySettings) o;
-    return Objects.equals(this.imageAspectRatio, displaySettings.imageAspectRatio);
+    Source source = (Source) o;
+    return Objects.equals(this.id, source.id) &&
+        Objects.equals(this.type, source.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(imageAspectRatio);
+    return Objects.hash(id, type);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DisplaySettings {\n");
+    sb.append("class Source {\n");
     
-    sb.append("    imageAspectRatio: ").append(toIndentedString(imageAspectRatio)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }
