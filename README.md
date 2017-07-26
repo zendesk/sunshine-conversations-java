@@ -76,6 +76,7 @@ import io.smooch.client.ApiException;
 import io.smooch.client.Configuration;
 import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
+import io.smooch.client.model.AppCreate;
 
 import java.io.File;
 import java.util.*;
