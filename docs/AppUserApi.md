@@ -4,21 +4,20 @@ All URIs are relative to *https://api.smooch.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**appUserDeviceUpdate**](AppUserApi.md#appUserDeviceUpdate) | **PUT** /appusers/{userId}/devices/{deviceId} | 
-[**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /appusers/{userId}/profile | 
-[**getAppUser**](AppUserApi.md#getAppUser) | **GET** /appusers/{userId} | 
-[**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /appusers/{userId}/channels | 
-[**linkAppUser**](AppUserApi.md#linkAppUser) | **POST** /appusers/{userId}/channels | 
-[**postImageMessage**](AppUserApi.md#postImageMessage) | **POST** /appusers/{userId}/images | 
-[**preCreateAppUser**](AppUserApi.md#preCreateAppUser) | **POST** /appusers | 
-[**trackEvent**](AppUserApi.md#trackEvent) | **POST** /appusers/{userId}/events | 
-[**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /appusers/{userId}/channels/{channel} | 
-[**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /appusers/{userId} | 
+[**appUserDeviceUpdate**](AppUserApi.md#appUserDeviceUpdate) | **PUT** /apps/{appId}/appusers/{userId}/devices/{deviceId} | 
+[**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
+[**getAppUser**](AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
+[**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
+[**linkAppUser**](AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
+[**postImageMessage**](AppUserApi.md#postImageMessage) | **POST** /apps/{appId}/appusers/{userId}/images | 
+[**preCreateAppUser**](AppUserApi.md#preCreateAppUser) | **POST** /apps/{appId}/appusers | 
+[**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /apps/{appId}/appusers/{userId}/channels/{channel} | 
+[**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /apps/{appId}/appusers/{userId} | 
 
 
 <a name="appUserDeviceUpdate"></a>
 # **appUserDeviceUpdate**
-> DeviceResponse appUserDeviceUpdate(userId, deviceId, appUserDeviceUpdateBody)
+> DeviceResponse appUserDeviceUpdate(appId, userId, deviceId, appUserDeviceUpdateBody)
 
 
 
@@ -41,11 +40,12 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 String deviceId = "deviceId_example"; // String | Identifies the device.
 DeviceUpdate appUserDeviceUpdateBody = new DeviceUpdate(); // DeviceUpdate | Body for an updateAppUserDevice request.
 try {
-    DeviceResponse result = apiInstance.appUserDeviceUpdate(userId, deviceId, appUserDeviceUpdateBody);
+    DeviceResponse result = apiInstance.appUserDeviceUpdate(appId, userId, deviceId, appUserDeviceUpdateBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#appUserDeviceUpdate");
@@ -57,6 +57,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **deviceId** | **String**| Identifies the device. |
  **appUserDeviceUpdateBody** | [**DeviceUpdate**](DeviceUpdate.md)| Body for an updateAppUserDevice request. |
@@ -76,7 +77,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteAppUserProfile"></a>
 # **deleteAppUserProfile**
-> AppUserResponse deleteAppUserProfile(userId)
+> AppUserResponse deleteAppUserProfile(appId, userId)
 
 
 
@@ -99,9 +100,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    AppUserResponse result = apiInstance.deleteAppUserProfile(userId);
+    AppUserResponse result = apiInstance.deleteAppUserProfile(appId, userId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#deleteAppUserProfile");
@@ -113,6 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
@@ -130,7 +133,7 @@ Name | Type | Description  | Notes
 
 <a name="getAppUser"></a>
 # **getAppUser**
-> AppUserResponse getAppUser(userId)
+> AppUserResponse getAppUser(appId, userId)
 
 
 
@@ -153,9 +156,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    AppUserResponse result = apiInstance.getAppUser(userId);
+    AppUserResponse result = apiInstance.getAppUser(appId, userId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#getAppUser");
@@ -167,6 +171,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
@@ -184,7 +189,7 @@ Name | Type | Description  | Notes
 
 <a name="getAppUserEntityIds"></a>
 # **getAppUserEntityIds**
-> AppUserResponse getAppUserEntityIds(userId)
+> AppUserResponse getAppUserEntityIds(appId, userId)
 
 
 
@@ -207,9 +212,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    AppUserResponse result = apiInstance.getAppUserEntityIds(userId);
+    AppUserResponse result = apiInstance.getAppUserEntityIds(appId, userId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#getAppUserEntityIds");
@@ -221,6 +227,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
@@ -238,7 +245,7 @@ Name | Type | Description  | Notes
 
 <a name="linkAppUser"></a>
 # **linkAppUser**
-> AppUserResponse linkAppUser(userId, appUserLinkBody)
+> AppUserResponse linkAppUser(appId, userId, appUserLinkBody)
 
 
 
@@ -261,10 +268,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 AppUserLink appUserLinkBody = new AppUserLink(); // AppUserLink | Body for a linkAppUser request.
 try {
-    AppUserResponse result = apiInstance.linkAppUser(userId, appUserLinkBody);
+    AppUserResponse result = apiInstance.linkAppUser(appId, userId, appUserLinkBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#linkAppUser");
@@ -276,6 +284,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **appUserLinkBody** | [**AppUserLink**](AppUserLink.md)| Body for a linkAppUser request. |
 
@@ -294,7 +303,7 @@ Name | Type | Description  | Notes
 
 <a name="postImageMessage"></a>
 # **postImageMessage**
-> MessageResponse postImageMessage(userId, source, role)
+> MessageResponse postImageMessage(appId, userId, source, role)
 
 
 
@@ -317,11 +326,12 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 File source = new File("/path/to/file.txt"); // File | Image to be uploaded
 String role = "role_example"; // String | Role of the sender
 try {
-    MessageResponse result = apiInstance.postImageMessage(userId, source, role);
+    MessageResponse result = apiInstance.postImageMessage(appId, userId, source, role);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#postImageMessage");
@@ -333,6 +343,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **source** | **File**| Image to be uploaded |
  **role** | **String**| Role of the sender |
@@ -352,7 +363,7 @@ Name | Type | Description  | Notes
 
 <a name="preCreateAppUser"></a>
 # **preCreateAppUser**
-> AppUserResponse preCreateAppUser(appUserPreCreateBody)
+> AppUserResponse preCreateAppUser(appId, appUserPreCreateBody)
 
 
 
@@ -375,9 +386,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 AppUserPreCreate appUserPreCreateBody = new AppUserPreCreate(); // AppUserPreCreate | Body for a preCreateAppUser request.
 try {
-    AppUserResponse result = apiInstance.preCreateAppUser(appUserPreCreateBody);
+    AppUserResponse result = apiInstance.preCreateAppUser(appId, appUserPreCreateBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#preCreateAppUser");
@@ -389,6 +401,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **appUserPreCreateBody** | [**AppUserPreCreate**](AppUserPreCreate.md)| Body for a preCreateAppUser request. |
 
 ### Return type
@@ -404,65 +417,9 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="trackEvent"></a>
-# **trackEvent**
-> TrackEventResponse trackEvent(userId, trackEventBody)
-
-
-
-Track an event for the given app user.
-
-### Example
-```java
-// Import classes:
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.AppUserApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: jwt
-ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
-jwt.setApiKey("YOUR JWT");
-jwt.setApiKeyPrefix("Bearer");
-
-AppUserApi apiInstance = new AppUserApi();
-String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
-Event trackEventBody = new Event(); // Event | Body for a trackEvent request.
-try {
-    TrackEventResponse result = apiInstance.trackEvent(userId, trackEventBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AppUserApi#trackEvent");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
- **trackEventBody** | [**Event**](Event.md)| Body for a trackEvent request. |
-
-### Return type
-
-[**TrackEventResponse**](TrackEventResponse.md)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
 <a name="unlinkAppUser"></a>
 # **unlinkAppUser**
-> unlinkAppUser(userId, channel)
+> unlinkAppUser(appId, userId, channel)
 
 
 
@@ -485,10 +442,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 String channel = "channel_example"; // String | Name of the channel.
 try {
-    apiInstance.unlinkAppUser(userId, channel);
+    apiInstance.unlinkAppUser(appId, userId, channel);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#unlinkAppUser");
     e.printStackTrace();
@@ -499,6 +457,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **channel** | **String**| Name of the channel. |
 
@@ -517,7 +476,7 @@ null (empty response body)
 
 <a name="updateAppUser"></a>
 # **updateAppUser**
-> AppUserResponse updateAppUser(userId, appUserUpdateBody)
+> AppUserResponse updateAppUser(appId, userId, appUserUpdateBody)
 
 
 
@@ -540,10 +499,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 AppUserUpdate appUserUpdateBody = new AppUserUpdate(); // AppUserUpdate | Body for an updateAppUser request.
 try {
-    AppUserResponse result = apiInstance.updateAppUser(userId, appUserUpdateBody);
+    AppUserResponse result = apiInstance.updateAppUser(appId, userId, appUserUpdateBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#updateAppUser");
@@ -555,6 +515,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **appUserUpdateBody** | [**AppUserUpdate**](AppUserUpdate.md)| Body for an updateAppUser request. |
 

@@ -4,16 +4,16 @@ All URIs are relative to *https://api.smooch.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /appusers/{userId}/messages | 
-[**getMessages**](ConversationApi.md#getMessages) | **GET** /appusers/{userId}/messages | 
-[**postMessage**](ConversationApi.md#postMessage) | **POST** /appusers/{userId}/messages | 
-[**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /appusers/{userId}/conversation/read | 
-[**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /appusers/{userId}/conversation/activity | 
+[**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /apps/{appId}/appusers/{userId}/messages | 
+[**getMessages**](ConversationApi.md#getMessages) | **GET** /apps/{appId}/appusers/{userId}/messages | 
+[**postMessage**](ConversationApi.md#postMessage) | **POST** /apps/{appId}/appusers/{userId}/messages | 
+[**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /apps/{appId}/appusers/{userId}/conversation/read | 
+[**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /apps/{appId}/appusers/{userId}/conversation/activity | 
 
 
 <a name="deleteMessages"></a>
 # **deleteMessages**
-> deleteMessages(userId)
+> deleteMessages(appId, userId)
 
 
 
@@ -36,9 +36,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    apiInstance.deleteMessages(userId);
+    apiInstance.deleteMessages(appId, userId);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#deleteMessages");
     e.printStackTrace();
@@ -49,6 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
@@ -66,7 +68,7 @@ null (empty response body)
 
 <a name="getMessages"></a>
 # **getMessages**
-> GetMessagesResponse getMessages(userId, before, after)
+> GetMessagesResponse getMessages(appId, userId, before, after)
 
 
 
@@ -89,11 +91,12 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 String before = "before_example"; // String | Timestamp of message. The API will return 100 messages before the specified timestamp (excluding any messages with the provided timestamp).
 String after = "after_example"; // String | Timestamp of message. The API will return 100 messages after the specified timestamp (excluding any messages with the provided timestamp).
 try {
-    GetMessagesResponse result = apiInstance.getMessages(userId, before, after);
+    GetMessagesResponse result = apiInstance.getMessages(appId, userId, before, after);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#getMessages");
@@ -105,6 +108,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **before** | **String**| Timestamp of message. The API will return 100 messages before the specified timestamp (excluding any messages with the provided timestamp). | [optional]
  **after** | **String**| Timestamp of message. The API will return 100 messages after the specified timestamp (excluding any messages with the provided timestamp). | [optional]
@@ -124,7 +128,7 @@ Name | Type | Description  | Notes
 
 <a name="postMessage"></a>
 # **postMessage**
-> MessageResponse postMessage(userId, messagePostBody)
+> MessageResponse postMessage(appId, userId, messagePostBody)
 
 
 
@@ -147,10 +151,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 MessagePost messagePostBody = new MessagePost(); // MessagePost | Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message)) 
 try {
-    MessageResponse result = apiInstance.postMessage(userId, messagePostBody);
+    MessageResponse result = apiInstance.postMessage(appId, userId, messagePostBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#postMessage");
@@ -162,6 +167,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **messagePostBody** | [**MessagePost**](MessagePost.md)| Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message))  |
 
@@ -180,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="resetUnreadCount"></a>
 # **resetUnreadCount**
-> resetUnreadCount(userId)
+> resetUnreadCount(appId, userId)
 
 
 
@@ -203,9 +209,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    apiInstance.resetUnreadCount(userId);
+    apiInstance.resetUnreadCount(appId, userId);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#resetUnreadCount");
     e.printStackTrace();
@@ -216,6 +223,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
@@ -233,7 +241,7 @@ null (empty response body)
 
 <a name="triggerTypingActivity"></a>
 # **triggerTypingActivity**
-> triggerTypingActivity(userId, typingActivityTriggerBody)
+> triggerTypingActivity(appId, userId, typingActivityTriggerBody)
 
 
 
@@ -256,10 +264,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 TypingActivityTrigger typingActivityTriggerBody = new TypingActivityTrigger(); // TypingActivityTrigger | Body for a triggerTypingActivity request.
 try {
-    apiInstance.triggerTypingActivity(userId, typingActivityTriggerBody);
+    apiInstance.triggerTypingActivity(appId, userId, typingActivityTriggerBody);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#triggerTypingActivity");
     e.printStackTrace();
@@ -270,6 +279,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
  **typingActivityTriggerBody** | [**TypingActivityTrigger**](TypingActivityTrigger.md)| Body for a triggerTypingActivity request. |
 

@@ -4,14 +4,14 @@ All URIs are relative to *https://api.smooch.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMenu**](MenuApi.md#deleteMenu) | **DELETE** /menu | 
-[**getMenu**](MenuApi.md#getMenu) | **GET** /menu | 
-[**updateMenu**](MenuApi.md#updateMenu) | **PUT** /menu | 
+[**deleteMenu**](MenuApi.md#deleteMenu) | **DELETE** /apps/{appId}/menu | 
+[**getMenu**](MenuApi.md#getMenu) | **GET** /apps/{appId}/menu | 
+[**updateMenu**](MenuApi.md#updateMenu) | **PUT** /apps/{appId}/menu | 
 
 
 <a name="deleteMenu"></a>
 # **deleteMenu**
-> MenuResponse deleteMenu()
+> MenuResponse deleteMenu(appId)
 
 
 
@@ -34,8 +34,9 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 MenuApi apiInstance = new MenuApi();
+String appId = "appId_example"; // String | Identifies the app.
 try {
-    MenuResponse result = apiInstance.deleteMenu();
+    MenuResponse result = apiInstance.deleteMenu(appId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MenuApi#deleteMenu");
@@ -44,7 +45,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
 
 ### Return type
 
@@ -61,7 +65,7 @@ This endpoint does not need any parameter.
 
 <a name="getMenu"></a>
 # **getMenu**
-> MenuResponse getMenu()
+> MenuResponse getMenu(appId)
 
 
 
@@ -84,8 +88,9 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 MenuApi apiInstance = new MenuApi();
+String appId = "appId_example"; // String | Identifies the app.
 try {
-    MenuResponse result = apiInstance.getMenu();
+    MenuResponse result = apiInstance.getMenu(appId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MenuApi#getMenu");
@@ -94,7 +99,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
 
 ### Return type
 
@@ -111,7 +119,7 @@ This endpoint does not need any parameter.
 
 <a name="updateMenu"></a>
 # **updateMenu**
-> MenuResponse updateMenu(menuUpdateBody)
+> MenuResponse updateMenu(appId, menuUpdateBody)
 
 
 
@@ -134,9 +142,10 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 MenuApi apiInstance = new MenuApi();
+String appId = "appId_example"; // String | Identifies the app.
 Menu menuUpdateBody = new Menu(); // Menu | Body for a updateMenu request.
 try {
-    MenuResponse result = apiInstance.updateMenu(menuUpdateBody);
+    MenuResponse result = apiInstance.updateMenu(appId, menuUpdateBody);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MenuApi#updateMenu");
@@ -148,6 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
  **menuUpdateBody** | [**Menu**](Menu.md)| Body for a updateMenu request. |
 
 ### Return type

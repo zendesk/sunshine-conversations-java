@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>1.12.0</version>
+    <version>2.0.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:1.12.0"
+compile "io.smooch:api:2.0.0"
 ```
 
 ## Getting Started
@@ -120,23 +120,21 @@ Class | Method | HTTP request | Description
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
 *AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /apps/{appId} | 
-*AppUserApi* | [**appUserDeviceUpdate**](docs/AppUserApi.md#appUserDeviceUpdate) | **PUT** /appusers/{userId}/devices/{deviceId} | 
-*AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /appusers/{userId}/profile | 
-*AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /appusers/{userId} | 
-*AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /appusers/{userId}/channels | 
-*AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /appusers/{userId}/channels | 
-*AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /appusers/{userId}/images | 
-*AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /appusers | 
-*AppUserApi* | [**trackEvent**](docs/AppUserApi.md#trackEvent) | **POST** /appusers/{userId}/events | 
-*AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /appusers/{userId}/channels/{channel} | 
-*AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /appusers/{userId} | 
+*AppUserApi* | [**appUserDeviceUpdate**](docs/AppUserApi.md#appUserDeviceUpdate) | **PUT** /apps/{appId}/appusers/{userId}/devices/{deviceId} | 
+*AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
+*AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
+*AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /apps/{appId}/appusers/{userId}/images | 
+*AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /apps/{appId}/appusers | 
+*AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /apps/{appId}/appusers/{userId}/channels/{channel} | 
+*AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /apps/{appId}/appusers/{userId} | 
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /apps/{appId}/attachments | 
-*ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /appusers/{userId}/messages | 
-*ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /appusers/{userId}/messages | 
-*ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /appusers/{userId}/messages | 
-*ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /appusers/{userId}/conversation/read | 
-*ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /appusers/{userId}/conversation/activity | 
-*InitApi* | [**init**](docs/InitApi.md#init) | **POST** /init | 
+*ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /apps/{appId}/appusers/{userId}/conversation/read | 
+*ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /apps/{appId}/appusers/{userId}/conversation/activity | 
 *IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /apps/{appId}/integrations | 
 *IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /apps/{appId}/integrations/{integrationId} | 
@@ -145,9 +143,9 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**getIntegrationMenu**](docs/IntegrationApi.md#getIntegrationMenu) | **GET** /apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /apps/{appId}/integrations | 
 *IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /apps/{appId}/integrations/{integrationId}/menu | 
-*MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /menu | 
-*MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /menu | 
-*MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /menu | 
+*MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /apps/{appId}/menu | 
+*MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /apps/{appId}/menu | 
+*MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /apps/{appId}/menu | 
 *WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /apps/{appId}/webhooks | 
 *WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /apps/{appId}/webhooks/{webhookId} | 
 *WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /apps/{appId}/webhooks/{webhookId} | 
@@ -174,14 +172,10 @@ Class | Method | HTTP request | Description
  - [Confirmation](docs/Confirmation.md)
  - [Conversation](docs/Conversation.md)
  - [Destination](docs/Destination.md)
- - [DeviceInit](docs/DeviceInit.md)
  - [DeviceResponse](docs/DeviceResponse.md)
  - [DeviceUpdate](docs/DeviceUpdate.md)
  - [DisplaySettings](docs/DisplaySettings.md)
- - [Event](docs/Event.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
- - [Init](docs/Init.md)
- - [InitResponse](docs/InitResponse.md)
  - [Integration](docs/Integration.md)
  - [IntegrationCreate](docs/IntegrationCreate.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
@@ -201,7 +195,6 @@ Class | Method | HTTP request | Description
  - [SecretKeyCreate](docs/SecretKeyCreate.md)
  - [SecretKeyResponse](docs/SecretKeyResponse.md)
  - [Source](docs/Source.md)
- - [TrackEventResponse](docs/TrackEventResponse.md)
  - [TypingActivityTrigger](docs/TypingActivityTrigger.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookCreate](docs/WebhookCreate.md)
