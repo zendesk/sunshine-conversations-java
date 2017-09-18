@@ -4,7 +4,6 @@ All URIs are relative to *https://api.smooch.io/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**appUserDeviceUpdate**](AppUserApi.md#appUserDeviceUpdate) | **PUT** /apps/{appId}/appusers/{userId}/devices/{deviceId} | 
 [**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
 [**getAppUser**](AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
 [**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
@@ -14,66 +13,6 @@ Method | HTTP request | Description
 [**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /apps/{appId}/appusers/{userId}/channels/{channel} | 
 [**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /apps/{appId}/appusers/{userId} | 
 
-
-<a name="appUserDeviceUpdate"></a>
-# **appUserDeviceUpdate**
-> DeviceResponse appUserDeviceUpdate(appId, userId, deviceId, appUserDeviceUpdateBody)
-
-
-
-Update specified device information.
-
-### Example
-```java
-// Import classes:
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.AppUserApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: jwt
-ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
-jwt.setApiKey("YOUR JWT");
-jwt.setApiKeyPrefix("Bearer");
-
-AppUserApi apiInstance = new AppUserApi();
-String appId = "appId_example"; // String | Identifies the app.
-String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
-String deviceId = "deviceId_example"; // String | Identifies the device.
-DeviceUpdate appUserDeviceUpdateBody = new DeviceUpdate(); // DeviceUpdate | Body for an updateAppUserDevice request.
-try {
-    DeviceResponse result = apiInstance.appUserDeviceUpdate(appId, userId, deviceId, appUserDeviceUpdateBody);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling AppUserApi#appUserDeviceUpdate");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
- **deviceId** | **String**| Identifies the device. |
- **appUserDeviceUpdateBody** | [**DeviceUpdate**](DeviceUpdate.md)| Body for an updateAppUserDevice request. |
-
-### Return type
-
-[**DeviceResponse**](DeviceResponse.md)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
 
 <a name="deleteAppUserProfile"></a>
 # **deleteAppUserProfile**

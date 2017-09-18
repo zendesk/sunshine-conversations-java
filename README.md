@@ -16,7 +16,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>2.0.0</version>
+    <version>2.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:2.0.0"
+compile "io.smooch:api:2.1.0"
 ```
 
 ## Getting Started
@@ -120,7 +120,6 @@ Class | Method | HTTP request | Description
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
 *AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /apps/{appId} | 
-*AppUserApi* | [**appUserDeviceUpdate**](docs/AppUserApi.md#appUserDeviceUpdate) | **PUT** /apps/{appId}/appusers/{userId}/devices/{deviceId} | 
 *AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
 *AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
 *AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
@@ -172,8 +171,6 @@ Class | Method | HTTP request | Description
  - [Confirmation](docs/Confirmation.md)
  - [Conversation](docs/Conversation.md)
  - [Destination](docs/Destination.md)
- - [DeviceResponse](docs/DeviceResponse.md)
- - [DeviceUpdate](docs/DeviceUpdate.md)
  - [DisplaySettings](docs/DisplaySettings.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
  - [Integration](docs/Integration.md)
