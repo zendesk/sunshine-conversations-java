@@ -15,44 +15,41 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Integration;
+import io.smooch.client.model.BusinessSystemItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ListIntegrationsResponse
+ * AppUserBusinessSystemsResponse
  */
 
-public class ListIntegrationsResponse {
-  @SerializedName("integrations")
-  private List<Integration> integrations = null;
+public class AppUserBusinessSystemsResponse {
+  @SerializedName("businessSystems")
+  private List<BusinessSystemItem> businessSystems = new ArrayList<BusinessSystemItem>();
 
-  public ListIntegrationsResponse integrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public AppUserBusinessSystemsResponse businessSystems(List<BusinessSystemItem> businessSystems) {
+    this.businessSystems = businessSystems;
     return this;
   }
 
-  public ListIntegrationsResponse addIntegrationsItem(Integration integrationsItem) {
-    if (this.integrations == null) {
-      this.integrations = new ArrayList<Integration>();
-    }
-    this.integrations.add(integrationsItem);
+  public AppUserBusinessSystemsResponse addBusinessSystemsItem(BusinessSystemItem businessSystemsItem) {
+    this.businessSystems.add(businessSystemsItem);
     return this;
   }
 
    /**
-   * The list of integrations.
-   * @return integrations
+   * An array of objects containing the business system type and the id.
+   * @return businessSystems
   **/
-  @ApiModelProperty(value = "The list of integrations.")
-  public List<Integration> getIntegrations() {
-    return integrations;
+  @ApiModelProperty(required = true, value = "An array of objects containing the business system type and the id.")
+  public List<BusinessSystemItem> getBusinessSystems() {
+    return businessSystems;
   }
 
-  public void setIntegrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public void setBusinessSystems(List<BusinessSystemItem> businessSystems) {
+    this.businessSystems = businessSystems;
   }
 
 
@@ -64,22 +61,22 @@ public class ListIntegrationsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListIntegrationsResponse listIntegrationsResponse = (ListIntegrationsResponse) o;
-    return Objects.equals(this.integrations, listIntegrationsResponse.integrations);
+    AppUserBusinessSystemsResponse appUserBusinessSystemsResponse = (AppUserBusinessSystemsResponse) o;
+    return Objects.equals(this.businessSystems, appUserBusinessSystemsResponse.businessSystems);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrations);
+    return Objects.hash(businessSystems);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListIntegrationsResponse {\n");
+    sb.append("class AppUserBusinessSystemsResponse {\n");
     
-    sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
+    sb.append("    businessSystems: ").append(toIndentedString(businessSystems)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -15,44 +15,41 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Integration;
+import io.smooch.client.model.ChannelEntityItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ListIntegrationsResponse
+ * AppUserChannelsResponse
  */
 
-public class ListIntegrationsResponse {
-  @SerializedName("integrations")
-  private List<Integration> integrations = null;
+public class AppUserChannelsResponse {
+  @SerializedName("channels")
+  private List<ChannelEntityItem> channels = new ArrayList<ChannelEntityItem>();
 
-  public ListIntegrationsResponse integrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public AppUserChannelsResponse channels(List<ChannelEntityItem> channels) {
+    this.channels = channels;
     return this;
   }
 
-  public ListIntegrationsResponse addIntegrationsItem(Integration integrationsItem) {
-    if (this.integrations == null) {
-      this.integrations = new ArrayList<Integration>();
-    }
-    this.integrations.add(integrationsItem);
+  public AppUserChannelsResponse addChannelsItem(ChannelEntityItem channelsItem) {
+    this.channels.add(channelsItem);
     return this;
   }
 
    /**
-   * The list of integrations.
-   * @return integrations
+   * An array of objects containing the channel type and the entity id.
+   * @return channels
   **/
-  @ApiModelProperty(value = "The list of integrations.")
-  public List<Integration> getIntegrations() {
-    return integrations;
+  @ApiModelProperty(required = true, value = "An array of objects containing the channel type and the entity id.")
+  public List<ChannelEntityItem> getChannels() {
+    return channels;
   }
 
-  public void setIntegrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public void setChannels(List<ChannelEntityItem> channels) {
+    this.channels = channels;
   }
 
 
@@ -64,22 +61,22 @@ public class ListIntegrationsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListIntegrationsResponse listIntegrationsResponse = (ListIntegrationsResponse) o;
-    return Objects.equals(this.integrations, listIntegrationsResponse.integrations);
+    AppUserChannelsResponse appUserChannelsResponse = (AppUserChannelsResponse) o;
+    return Objects.equals(this.channels, appUserChannelsResponse.channels);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrations);
+    return Objects.hash(channels);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListIntegrationsResponse {\n");
+    sb.append("class AppUserChannelsResponse {\n");
     
-    sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
+    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
     sb.append("}");
     return sb.toString();
   }
