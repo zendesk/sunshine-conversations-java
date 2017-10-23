@@ -15,41 +15,33 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.MenuItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Menu
+ * AuthCodeResponse
  */
 
-public class Menu {
-  @SerializedName("items")
-  private List<MenuItem> items = new ArrayList<MenuItem>();
+public class AuthCodeResponse {
+  @SerializedName("authCode")
+  private String authCode = null;
 
-  public Menu items(List<MenuItem> items) {
-    this.items = items;
-    return this;
-  }
-
-  public Menu addItemsItem(MenuItem itemsItem) {
-    this.items.add(itemsItem);
+  public AuthCodeResponse authCode(String authCode) {
+    this.authCode = authCode;
     return this;
   }
 
    /**
-   * A list of menu items.
-   * @return items
+   * The auth code
+   * @return authCode
   **/
-  @ApiModelProperty(required = true, value = "A list of menu items.")
-  public List<MenuItem> getItems() {
-    return items;
+  @ApiModelProperty(required = true, value = "The auth code")
+  public String getAuthCode() {
+    return authCode;
   }
 
-  public void setItems(List<MenuItem> items) {
-    this.items = items;
+  public void setAuthCode(String authCode) {
+    this.authCode = authCode;
   }
 
 
@@ -61,22 +53,22 @@ public class Menu {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Menu menu = (Menu) o;
-    return Objects.equals(this.items, menu.items);
+    AuthCodeResponse authCodeResponse = (AuthCodeResponse) o;
+    return Objects.equals(this.authCode, authCodeResponse.authCode);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(authCode);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Menu {\n");
+    sb.append("class AuthCodeResponse {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    authCode: ").append(toIndentedString(authCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

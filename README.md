@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>2.2.0</version>
+    <version>2.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:2.2.0"
+compile "io.smooch:api:2.3.0"
 ```
 
 ## Getting Started
@@ -135,6 +135,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /apps/{appId} | 
 *AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
 *AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
+*AppUserApi* | [**getAppUserAuthCode**](docs/AppUserApi.md#getAppUserAuthCode) | **GET** /apps/{appId}/appusers/{userId}/authcode | 
 *AppUserApi* | [**getAppUserBusinessSystemIds**](docs/AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /apps/{appId}/appusers/{userId}/businesssystems | 
 *AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
 *AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
@@ -182,6 +183,7 @@ Class | Method | HTTP request | Description
  - [AppUserResponse](docs/AppUserResponse.md)
  - [AppUserUpdate](docs/AppUserUpdate.md)
  - [AttachmentResponse](docs/AttachmentResponse.md)
+ - [AuthCodeResponse](docs/AuthCodeResponse.md)
  - [BusinessSystemItem](docs/BusinessSystemItem.md)
  - [ChannelEntityItem](docs/ChannelEntityItem.md)
  - [Client](docs/Client.md)

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
 [**getAppUser**](AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
+[**getAppUserAuthCode**](AppUserApi.md#getAppUserAuthCode) | **GET** /apps/{appId}/appusers/{userId}/authcode | 
 [**getAppUserBusinessSystemIds**](AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /apps/{appId}/appusers/{userId}/businesssystems | 
 [**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
 [**linkAppUser**](AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
@@ -117,6 +118,62 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AppUserResponse**](AppUserResponse.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getAppUserAuthCode"></a>
+# **getAppUserAuthCode**
+> AuthCodeResponse getAppUserAuthCode(appId, userId)
+
+
+
+Get an auth code for facilitating a channel transfer
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppUserApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
+String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
+try {
+    AuthCodeResponse result = apiInstance.getAppUserAuthCode(appId, userId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppUserApi#getAppUserAuthCode");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
+
+### Return type
+
+[**AuthCodeResponse**](AuthCodeResponse.md)
 
 ### Authorization
 
