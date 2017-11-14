@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>2.4.0</version>
+    <version>2.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:2.4.0"
+compile "io.smooch:api:2.5.0"
 ```
 
 ## Getting Started
@@ -138,6 +138,7 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**getAppUserAuthCode**](docs/AppUserApi.md#getAppUserAuthCode) | **GET** /apps/{appId}/appusers/{userId}/authcode | 
 *AppUserApi* | [**getAppUserBusinessSystemIds**](docs/AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /apps/{appId}/appusers/{userId}/businesssystems | 
 *AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**getLinkRequests**](docs/AppUserApi.md#getLinkRequests) | **GET** /apps/{appId}/appusers/{userId}/linkrequest | 
 *AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
 *AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /apps/{appId}/appusers/{userId}/images | 
 *AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /apps/{appId}/appusers | 
@@ -197,6 +198,8 @@ Class | Method | HTTP request | Description
  - [IntegrationCreate](docs/IntegrationCreate.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
  - [JwtResponse](docs/JwtResponse.md)
+ - [LinkRequestResponse](docs/LinkRequestResponse.md)
+ - [LinkRequestResponseLinkRequests](docs/LinkRequestResponseLinkRequests.md)
  - [ListAppsResponse](docs/ListAppsResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListSecretKeysResponse](docs/ListSecretKeysResponse.md)

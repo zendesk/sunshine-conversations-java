@@ -15,44 +15,44 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Integration;
+import io.smooch.client.model.LinkRequestResponseLinkRequests;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ListIntegrationsResponse
+ * LinkRequestResponse
  */
 
-public class ListIntegrationsResponse {
-  @SerializedName("integrations")
-  private List<Integration> integrations = null;
+public class LinkRequestResponse {
+  @SerializedName("linkRequests")
+  private List<LinkRequestResponseLinkRequests> linkRequests = null;
 
-  public ListIntegrationsResponse integrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public LinkRequestResponse linkRequests(List<LinkRequestResponseLinkRequests> linkRequests) {
+    this.linkRequests = linkRequests;
     return this;
   }
 
-  public ListIntegrationsResponse addIntegrationsItem(Integration integrationsItem) {
-    if (this.integrations == null) {
-      this.integrations = new ArrayList<Integration>();
+  public LinkRequestResponse addLinkRequestsItem(LinkRequestResponseLinkRequests linkRequestsItem) {
+    if (this.linkRequests == null) {
+      this.linkRequests = new ArrayList<LinkRequestResponseLinkRequests>();
     }
-    this.integrations.add(integrationsItem);
+    this.linkRequests.add(linkRequestsItem);
     return this;
   }
 
    /**
-   * The list of integrations.
-   * @return integrations
+   * The list of link requests.
+   * @return linkRequests
   **/
-  @ApiModelProperty(value = "The list of integrations.")
-  public List<Integration> getIntegrations() {
-    return integrations;
+  @ApiModelProperty(value = "The list of link requests.")
+  public List<LinkRequestResponseLinkRequests> getLinkRequests() {
+    return linkRequests;
   }
 
-  public void setIntegrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public void setLinkRequests(List<LinkRequestResponseLinkRequests> linkRequests) {
+    this.linkRequests = linkRequests;
   }
 
 
@@ -64,22 +64,22 @@ public class ListIntegrationsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListIntegrationsResponse listIntegrationsResponse = (ListIntegrationsResponse) o;
-    return Objects.equals(this.integrations, listIntegrationsResponse.integrations);
+    LinkRequestResponse linkRequestResponse = (LinkRequestResponse) o;
+    return Objects.equals(this.linkRequests, linkRequestResponse.linkRequests);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrations);
+    return Objects.hash(linkRequests);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListIntegrationsResponse {\n");
+    sb.append("class LinkRequestResponse {\n");
     
-    sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
+    sb.append("    linkRequests: ").append(toIndentedString(linkRequests)).append("\n");
     sb.append("}");
     return sb.toString();
   }
