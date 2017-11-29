@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>2.5.0</version>
+    <version>2.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:2.5.0"
+compile "io.smooch:api:2.6.0"
 ```
 
 ## Getting Started

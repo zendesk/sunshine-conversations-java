@@ -24,6 +24,8 @@ Name | Type | Description | Notes
 **consumerSecret** | **String** | The consumer secret for your Twitter app. Required for *twitter* integrations.  |  [optional]
 **accessTokenKey** | **String** | The access token key obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]
 **accessTokenSecret** | **String** | The access token secret obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]
+**accessKey** | **String** | The public API key of your MessageBird account. Required for *messagebird* integrations.  |  [optional]
+**originator** | **String** | Smooch will receive all messages sent to this phone number. Required for *messagebird* integrations.  |  [optional]
 
 
 
