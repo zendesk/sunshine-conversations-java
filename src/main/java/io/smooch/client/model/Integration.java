@@ -17,6 +17,8 @@ import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Integration
@@ -127,6 +129,30 @@ public class Integration {
 
   @SerializedName("originator")
   private String originator = null;
+
+  @SerializedName("brandColor")
+  private String brandColor = null;
+
+  @SerializedName("conversationColor")
+  private String conversationColor = null;
+
+  @SerializedName("actionColor")
+  private String actionColor = null;
+
+  @SerializedName("displayStyle")
+  private String displayStyle = null;
+
+  @SerializedName("buttonIconUrl")
+  private String buttonIconUrl = null;
+
+  @SerializedName("integrationOrder")
+  private List<String> integrationOrder = null;
+
+  @SerializedName("businessName")
+  private String businessName = null;
+
+  @SerializedName("businessIconUrl")
+  private String businessIconUrl = null;
 
   public Integration id(String id) {
     this.id = id;
@@ -758,6 +784,158 @@ public class Integration {
     this.originator = originator;
   }
 
+  public Integration brandColor(String brandColor) {
+    this.brandColor = brandColor;
+    return this;
+  }
+
+   /**
+   * This color will be used in the messenger header and the button or tab in idle state. (Optional) Used for *Web Messenger* integrations. 
+   * @return brandColor
+  **/
+  @ApiModelProperty(value = "This color will be used in the messenger header and the button or tab in idle state. (Optional) Used for *Web Messenger* integrations. ")
+  public String getBrandColor() {
+    return brandColor;
+  }
+
+  public void setBrandColor(String brandColor) {
+    this.brandColor = brandColor;
+  }
+
+  public Integration conversationColor(String conversationColor) {
+    this.conversationColor = conversationColor;
+    return this;
+  }
+
+   /**
+   * This color will be used for customer messages, quick replies and actions in the footer. (Optional) Used for *Web Messenger* integrations. 
+   * @return conversationColor
+  **/
+  @ApiModelProperty(value = "This color will be used for customer messages, quick replies and actions in the footer. (Optional) Used for *Web Messenger* integrations. ")
+  public String getConversationColor() {
+    return conversationColor;
+  }
+
+  public void setConversationColor(String conversationColor) {
+    this.conversationColor = conversationColor;
+  }
+
+  public Integration actionColor(String actionColor) {
+    this.actionColor = actionColor;
+    return this;
+  }
+
+   /**
+   * This color will be used for call-to-actions inside your messages. (Optional) Used for *Web Messenger* integrations. 
+   * @return actionColor
+  **/
+  @ApiModelProperty(value = "This color will be used for call-to-actions inside your messages. (Optional) Used for *Web Messenger* integrations. ")
+  public String getActionColor() {
+    return actionColor;
+  }
+
+  public void setActionColor(String actionColor) {
+    this.actionColor = actionColor;
+  }
+
+  public Integration displayStyle(String displayStyle) {
+    this.displayStyle = displayStyle;
+    return this;
+  }
+
+   /**
+   * Choose how the messenger will appear on your website. Must be either button or tab. (Optional) Used for *Web Messenger* integrations. 
+   * @return displayStyle
+  **/
+  @ApiModelProperty(value = "Choose how the messenger will appear on your website. Must be either button or tab. (Optional) Used for *Web Messenger* integrations. ")
+  public String getDisplayStyle() {
+    return displayStyle;
+  }
+
+  public void setDisplayStyle(String displayStyle) {
+    this.displayStyle = displayStyle;
+  }
+
+  public Integration buttonIconUrl(String buttonIconUrl) {
+    this.buttonIconUrl = buttonIconUrl;
+    return this;
+  }
+
+   /**
+   * With the button style Web Messenger, you have the option of selecting your own button icon. (Optional) Used for *Web Messenger* integrations. 
+   * @return buttonIconUrl
+  **/
+  @ApiModelProperty(value = "With the button style Web Messenger, you have the option of selecting your own button icon. (Optional) Used for *Web Messenger* integrations. ")
+  public String getButtonIconUrl() {
+    return buttonIconUrl;
+  }
+
+  public void setButtonIconUrl(String buttonIconUrl) {
+    this.buttonIconUrl = buttonIconUrl;
+  }
+
+  public Integration integrationOrder(List<String> integrationOrder) {
+    this.integrationOrder = integrationOrder;
+    return this;
+  }
+
+  public Integration addIntegrationOrderItem(String integrationOrderItem) {
+    if (this.integrationOrder == null) {
+      this.integrationOrder = new ArrayList<String>();
+    }
+    this.integrationOrder.add(integrationOrderItem);
+    return this;
+  }
+
+   /**
+   * A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations. 
+   * @return integrationOrder
+  **/
+  @ApiModelProperty(value = "A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations. ")
+  public List<String> getIntegrationOrder() {
+    return integrationOrder;
+  }
+
+  public void setIntegrationOrder(List<String> integrationOrder) {
+    this.integrationOrder = integrationOrder;
+  }
+
+  public Integration businessName(String businessName) {
+    this.businessName = businessName;
+    return this;
+  }
+
+   /**
+   * A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations. 
+   * @return businessName
+  **/
+  @ApiModelProperty(value = "A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations. ")
+  public String getBusinessName() {
+    return businessName;
+  }
+
+  public void setBusinessName(String businessName) {
+    this.businessName = businessName;
+  }
+
+  public Integration businessIconUrl(String businessIconUrl) {
+    this.businessIconUrl = businessIconUrl;
+    return this;
+  }
+
+   /**
+   * A custom business icon url for the Web Messenger. (Optional) Used for *Web Messenger* integrations. 
+   * @return businessIconUrl
+  **/
+  @ApiModelProperty(value = "A custom business icon url for the Web Messenger. (Optional) Used for *Web Messenger* integrations. ")
+  public String getBusinessIconUrl() {
+    return businessIconUrl;
+  }
+
+  public void setBusinessIconUrl(String businessIconUrl) {
+    this.businessIconUrl = businessIconUrl;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -802,12 +980,20 @@ public class Integration {
         Objects.equals(this.domain, integration.domain) &&
         Objects.equals(this.incomingAddress, integration.incomingAddress) &&
         Objects.equals(this.accessKey, integration.accessKey) &&
-        Objects.equals(this.originator, integration.originator);
+        Objects.equals(this.originator, integration.originator) &&
+        Objects.equals(this.brandColor, integration.brandColor) &&
+        Objects.equals(this.conversationColor, integration.conversationColor) &&
+        Objects.equals(this.actionColor, integration.actionColor) &&
+        Objects.equals(this.displayStyle, integration.displayStyle) &&
+        Objects.equals(this.buttonIconUrl, integration.buttonIconUrl) &&
+        Objects.equals(this.integrationOrder, integration.integrationOrder) &&
+        Objects.equals(this.businessName, integration.businessName) &&
+        Objects.equals(this.businessIconUrl, integration.businessIconUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, pageAccessToken, appId, appSecret, webhookSecret, pageId, accountSid, authToken, phoneNumberSid, phoneNumber, name, token, uri, channelAccessToken, botName, encodingAesKey, fromAddress, certificate, password, autoUpdateBadge, production, serverKey, senderId, consumerKey, consumerSecret, accessTokenKey, accessTokenSecret, userId, username, apiKey, domain, incomingAddress, accessKey, originator);
+    return Objects.hash(id, type, pageAccessToken, appId, appSecret, webhookSecret, pageId, accountSid, authToken, phoneNumberSid, phoneNumber, name, token, uri, channelAccessToken, botName, encodingAesKey, fromAddress, certificate, password, autoUpdateBadge, production, serverKey, senderId, consumerKey, consumerSecret, accessTokenKey, accessTokenSecret, userId, username, apiKey, domain, incomingAddress, accessKey, originator, brandColor, conversationColor, actionColor, displayStyle, buttonIconUrl, integrationOrder, businessName, businessIconUrl);
   }
 
 
@@ -851,6 +1037,14 @@ public class Integration {
     sb.append("    incomingAddress: ").append(toIndentedString(incomingAddress)).append("\n");
     sb.append("    accessKey: ").append(toIndentedString(accessKey)).append("\n");
     sb.append("    originator: ").append(toIndentedString(originator)).append("\n");
+    sb.append("    brandColor: ").append(toIndentedString(brandColor)).append("\n");
+    sb.append("    conversationColor: ").append(toIndentedString(conversationColor)).append("\n");
+    sb.append("    actionColor: ").append(toIndentedString(actionColor)).append("\n");
+    sb.append("    displayStyle: ").append(toIndentedString(displayStyle)).append("\n");
+    sb.append("    buttonIconUrl: ").append(toIndentedString(buttonIconUrl)).append("\n");
+    sb.append("    integrationOrder: ").append(toIndentedString(integrationOrder)).append("\n");
+    sb.append("    businessName: ").append(toIndentedString(businessName)).append("\n");
+    sb.append("    businessIconUrl: ").append(toIndentedString(businessIconUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }
