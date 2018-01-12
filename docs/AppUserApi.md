@@ -324,7 +324,7 @@ jwt.setApiKeyPrefix("Bearer");
 AppUserApi apiInstance = new AppUserApi();
 String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
-String integrationIds = "integrationIds_example"; // String | Comma separated list of integration IDs
+List<String> integrationIds = Arrays.asList("integrationIds_example"); // List<String> | List of integration IDs
 try {
     LinkRequestResponse result = apiInstance.getLinkRequests(appId, userId, integrationIds);
     System.out.println(result);
@@ -340,7 +340,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
- **integrationIds** | **String**| Comma separated list of integration IDs |
+ **integrationIds** | [**List&lt;String&gt;**](String.md)| List of integration IDs |
 
 ### Return type
 
