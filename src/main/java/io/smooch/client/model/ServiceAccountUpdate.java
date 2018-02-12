@@ -15,41 +15,33 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.ChannelEntityItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * AppUserChannelsResponse
+ * ServiceAccountUpdate
  */
 
-public class AppUserChannelsResponse {
-  @SerializedName("channels")
-  private List<ChannelEntityItem> channels = new ArrayList<ChannelEntityItem>();
+public class ServiceAccountUpdate {
+  @SerializedName("name")
+  private String name = null;
 
-  public AppUserChannelsResponse channels(List<ChannelEntityItem> channels) {
-    this.channels = channels;
-    return this;
-  }
-
-  public AppUserChannelsResponse addChannelsItem(ChannelEntityItem channelsItem) {
-    this.channels.add(channelsItem);
+  public ServiceAccountUpdate name(String name) {
+    this.name = name;
     return this;
   }
 
    /**
-   * An array of objects containing the channel type and the entity id.
-   * @return channels
+   * The service account's name.
+   * @return name
   **/
-  @ApiModelProperty(required = true, value = "An array of objects containing the channel type and the entity id.")
-  public List<ChannelEntityItem> getChannels() {
-    return channels;
+  @ApiModelProperty(required = true, value = "The service account's name.")
+  public String getName() {
+    return name;
   }
 
-  public void setChannels(List<ChannelEntityItem> channels) {
-    this.channels = channels;
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -61,22 +53,22 @@ public class AppUserChannelsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AppUserChannelsResponse appUserChannelsResponse = (AppUserChannelsResponse) o;
-    return Objects.equals(this.channels, appUserChannelsResponse.channels);
+    ServiceAccountUpdate serviceAccountUpdate = (ServiceAccountUpdate) o;
+    return Objects.equals(this.name, serviceAccountUpdate.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(channels);
+    return Objects.hash(name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AppUserChannelsResponse {\n");
+    sb.append("class ServiceAccountUpdate {\n");
     
-    sb.append("    channels: ").append(toIndentedString(channels)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }

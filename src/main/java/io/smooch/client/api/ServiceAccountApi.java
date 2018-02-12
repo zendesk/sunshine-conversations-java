@@ -27,12 +27,14 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.smooch.client.model.IntegrationCreate;
-import io.smooch.client.model.IntegrationResponse;
-import io.smooch.client.model.IntegrationUpdate;
-import io.smooch.client.model.ListIntegrationsResponse;
-import io.smooch.client.model.Menu;
-import io.smooch.client.model.MenuResponse;
+import io.smooch.client.model.JwtResponse;
+import io.smooch.client.model.ListSecretKeysResponse;
+import io.smooch.client.model.ListServiceAccountsResponse;
+import io.smooch.client.model.SecretKeyCreate;
+import io.smooch.client.model.SecretKeyResponse;
+import io.smooch.client.model.ServiceAccountCreate;
+import io.smooch.client.model.ServiceAccountResponse;
+import io.smooch.client.model.ServiceAccountUpdate;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -40,14 +42,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class IntegrationApi {
+public class ServiceAccountApi {
     private ApiClient apiClient;
 
-    public IntegrationApi() {
+    public ServiceAccountApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public IntegrationApi(ApiClient apiClient) {
+    public ServiceAccountApi(ApiClient apiClient) {
         this.apiClient = apiClient;
     }
 
@@ -60,20 +62,20 @@ public class IntegrationApi {
     }
 
     /**
-     * Build call for createIntegration
-     * @param appId Identifies the app. (required)
-     * @param integrationCreateBody Body for a createIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
+     * Build call for createSecretKey
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param secretKeyCreateBody Body for a createSecretKey request. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createIntegrationCall(String appId, IntegrationCreate integrationCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = integrationCreateBody;
+    public com.squareup.okhttp.Call createSecretKeyCall(String serviceAccountId, SecretKeyCreate secretKeyCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = secretKeyCreateBody;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}/keys"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -110,20 +112,20 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createIntegrationValidateBeforeCall(String appId, IntegrationCreate integrationCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createSecretKeyValidateBeforeCall(String serviceAccountId, SecretKeyCreate secretKeyCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createIntegration(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling createSecretKey(Async)");
         }
         
-        // verify the required parameter 'integrationCreateBody' is set
-        if (integrationCreateBody == null) {
-            throw new ApiException("Missing the required parameter 'integrationCreateBody' when calling createIntegration(Async)");
+        // verify the required parameter 'secretKeyCreateBody' is set
+        if (secretKeyCreateBody == null) {
+            throw new ApiException("Missing the required parameter 'secretKeyCreateBody' when calling createSecretKey(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = createIntegrationCall(appId, integrationCreateBody, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createSecretKeyCall(serviceAccountId, secretKeyCreateBody, progressListener, progressRequestListener);
         return call;
 
         
@@ -134,41 +136,41 @@ public class IntegrationApi {
 
     /**
      * 
-     * Create an integration for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param integrationCreateBody Body for a createIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
-     * @return IntegrationResponse
+     * Create a secret key for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param secretKeyCreateBody Body for a createSecretKey request. (required)
+     * @return SecretKeyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IntegrationResponse createIntegration(String appId, IntegrationCreate integrationCreateBody) throws ApiException {
-        ApiResponse<IntegrationResponse> resp = createIntegrationWithHttpInfo(appId, integrationCreateBody);
+    public SecretKeyResponse createSecretKey(String serviceAccountId, SecretKeyCreate secretKeyCreateBody) throws ApiException {
+        ApiResponse<SecretKeyResponse> resp = createSecretKeyWithHttpInfo(serviceAccountId, secretKeyCreateBody);
         return resp.getData();
     }
 
     /**
      * 
-     * Create an integration for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param integrationCreateBody Body for a createIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
-     * @return ApiResponse&lt;IntegrationResponse&gt;
+     * Create a secret key for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param secretKeyCreateBody Body for a createSecretKey request. (required)
+     * @return ApiResponse&lt;SecretKeyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IntegrationResponse> createIntegrationWithHttpInfo(String appId, IntegrationCreate integrationCreateBody) throws ApiException {
-        com.squareup.okhttp.Call call = createIntegrationValidateBeforeCall(appId, integrationCreateBody, null, null);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
+    public ApiResponse<SecretKeyResponse> createSecretKeyWithHttpInfo(String serviceAccountId, SecretKeyCreate secretKeyCreateBody) throws ApiException {
+        com.squareup.okhttp.Call call = createSecretKeyValidateBeforeCall(serviceAccountId, secretKeyCreateBody, null, null);
+        Type localVarReturnType = new TypeToken<SecretKeyResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Create an integration for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param integrationCreateBody Body for a createIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
+     * Create a secret key for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param secretKeyCreateBody Body for a createSecretKey request. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createIntegrationAsync(String appId, IntegrationCreate integrationCreateBody, final ApiCallback<IntegrationResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call createSecretKeyAsync(String serviceAccountId, SecretKeyCreate secretKeyCreateBody, final ApiCallback<SecretKeyResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -189,28 +191,24 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createIntegrationValidateBeforeCall(appId, integrationCreateBody, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
+        com.squareup.okhttp.Call call = createSecretKeyValidateBeforeCall(serviceAccountId, secretKeyCreateBody, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecretKeyResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for createIntegrationMenu
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuCreateBody Body for a createMenu request. (required)
+     * Build call for createServiceAccount
+     * @param serviceAccountCreateBody Body for a createServiceAccount request. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call createIntegrationMenuCall(String appId, String integrationId, Menu menuCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = menuCreateBody;
+    public com.squareup.okhttp.Call createServiceAccountCall(ServiceAccountCreate serviceAccountCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = serviceAccountCreateBody;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}/menu"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -247,25 +245,15 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call createIntegrationMenuValidateBeforeCall(String appId, String integrationId, Menu menuCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call createServiceAccountValidateBeforeCall(ServiceAccountCreate serviceAccountCreateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling createIntegrationMenu(Async)");
-        }
-        
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling createIntegrationMenu(Async)");
-        }
-        
-        // verify the required parameter 'menuCreateBody' is set
-        if (menuCreateBody == null) {
-            throw new ApiException("Missing the required parameter 'menuCreateBody' when calling createIntegrationMenu(Async)");
+        // verify the required parameter 'serviceAccountCreateBody' is set
+        if (serviceAccountCreateBody == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountCreateBody' when calling createServiceAccount(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = createIntegrationMenuCall(appId, integrationId, menuCreateBody, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = createServiceAccountCall(serviceAccountCreateBody, progressListener, progressRequestListener);
         return call;
 
         
@@ -276,44 +264,38 @@ public class IntegrationApi {
 
     /**
      * 
-     * Create the specified integration’s menu, overriding the app menu if configured.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuCreateBody Body for a createMenu request. (required)
-     * @return MenuResponse
+     * Create a new service account.
+     * @param serviceAccountCreateBody Body for a createServiceAccount request. (required)
+     * @return ServiceAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MenuResponse createIntegrationMenu(String appId, String integrationId, Menu menuCreateBody) throws ApiException {
-        ApiResponse<MenuResponse> resp = createIntegrationMenuWithHttpInfo(appId, integrationId, menuCreateBody);
+    public ServiceAccountResponse createServiceAccount(ServiceAccountCreate serviceAccountCreateBody) throws ApiException {
+        ApiResponse<ServiceAccountResponse> resp = createServiceAccountWithHttpInfo(serviceAccountCreateBody);
         return resp.getData();
     }
 
     /**
      * 
-     * Create the specified integration’s menu, overriding the app menu if configured.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuCreateBody Body for a createMenu request. (required)
-     * @return ApiResponse&lt;MenuResponse&gt;
+     * Create a new service account.
+     * @param serviceAccountCreateBody Body for a createServiceAccount request. (required)
+     * @return ApiResponse&lt;ServiceAccountResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MenuResponse> createIntegrationMenuWithHttpInfo(String appId, String integrationId, Menu menuCreateBody) throws ApiException {
-        com.squareup.okhttp.Call call = createIntegrationMenuValidateBeforeCall(appId, integrationId, menuCreateBody, null, null);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
+    public ApiResponse<ServiceAccountResponse> createServiceAccountWithHttpInfo(ServiceAccountCreate serviceAccountCreateBody) throws ApiException {
+        com.squareup.okhttp.Call call = createServiceAccountValidateBeforeCall(serviceAccountCreateBody, null, null);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Create the specified integration’s menu, overriding the app menu if configured.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuCreateBody Body for a createMenu request. (required)
+     * Create a new service account.
+     * @param serviceAccountCreateBody Body for a createServiceAccount request. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call createIntegrationMenuAsync(String appId, String integrationId, Menu menuCreateBody, final ApiCallback<MenuResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call createServiceAccountAsync(ServiceAccountCreate serviceAccountCreateBody, final ApiCallback<ServiceAccountResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -334,27 +316,27 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = createIntegrationMenuValidateBeforeCall(appId, integrationId, menuCreateBody, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
+        com.squareup.okhttp.Call call = createServiceAccountValidateBeforeCall(serviceAccountCreateBody, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for deleteIntegration
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Build call for deleteSecretKey
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteIntegrationCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteSecretKeyCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}/keys/{keyId}"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()))
+            .replaceAll("\\{" + "keyId" + "\\}", apiClient.escapeString(keyId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -391,20 +373,20 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteIntegrationValidateBeforeCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteSecretKeyValidateBeforeCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling deleteIntegration(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling deleteSecretKey(Async)");
         }
         
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling deleteIntegration(Async)");
+        // verify the required parameter 'keyId' is set
+        if (keyId == null) {
+            throw new ApiException("Missing the required parameter 'keyId' when calling deleteSecretKey(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = deleteIntegrationCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteSecretKeyCall(serviceAccountId, keyId, progressListener, progressRequestListener);
         return call;
 
         
@@ -415,38 +397,38 @@ public class IntegrationApi {
 
     /**
      * 
-     * Delete the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteIntegration(String appId, String integrationId) throws ApiException {
-        deleteIntegrationWithHttpInfo(appId, integrationId);
+    public void deleteSecretKey(String serviceAccountId, String keyId) throws ApiException {
+        deleteSecretKeyWithHttpInfo(serviceAccountId, keyId);
     }
 
     /**
      * 
-     * Delete the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteIntegrationWithHttpInfo(String appId, String integrationId) throws ApiException {
-        com.squareup.okhttp.Call call = deleteIntegrationValidateBeforeCall(appId, integrationId, null, null);
+    public ApiResponse<Void> deleteSecretKeyWithHttpInfo(String serviceAccountId, String keyId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteSecretKeyValidateBeforeCall(serviceAccountId, keyId, null, null);
         return apiClient.execute(call);
     }
 
     /**
      *  (asynchronously)
-     * Delete the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteIntegrationAsync(String appId, String integrationId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteSecretKeyAsync(String serviceAccountId, String keyId, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -467,26 +449,24 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteIntegrationValidateBeforeCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteSecretKeyValidateBeforeCall(serviceAccountId, keyId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
-     * Build call for deleteIntegrationMenu
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Build call for deleteServiceAccount
+     * @param serviceAccountId Identifies the service account. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call deleteIntegrationMenuCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call deleteServiceAccountCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}/menu"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -523,20 +503,15 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call deleteIntegrationMenuValidateBeforeCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call deleteServiceAccountValidateBeforeCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling deleteIntegrationMenu(Async)");
-        }
-        
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling deleteIntegrationMenu(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling deleteServiceAccount(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = deleteIntegrationMenuCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteServiceAccountCall(serviceAccountId, progressListener, progressRequestListener);
         return call;
 
         
@@ -547,38 +522,35 @@ public class IntegrationApi {
 
     /**
      * 
-     * Delete the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public void deleteIntegrationMenu(String appId, String integrationId) throws ApiException {
-        deleteIntegrationMenuWithHttpInfo(appId, integrationId);
+    public void deleteServiceAccount(String serviceAccountId) throws ApiException {
+        deleteServiceAccountWithHttpInfo(serviceAccountId);
     }
 
     /**
      * 
-     * Delete the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Void> deleteIntegrationMenuWithHttpInfo(String appId, String integrationId) throws ApiException {
-        com.squareup.okhttp.Call call = deleteIntegrationMenuValidateBeforeCall(appId, integrationId, null, null);
+    public ApiResponse<Void> deleteServiceAccountWithHttpInfo(String serviceAccountId) throws ApiException {
+        com.squareup.okhttp.Call call = deleteServiceAccountValidateBeforeCall(serviceAccountId, null, null);
         return apiClient.execute(call);
     }
 
     /**
      *  (asynchronously)
-     * Delete the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Delete the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call deleteIntegrationMenuAsync(String appId, String integrationId, final ApiCallback<Void> callback) throws ApiException {
+    public com.squareup.okhttp.Call deleteServiceAccountAsync(String serviceAccountId, final ApiCallback<Void> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -599,26 +571,26 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = deleteIntegrationMenuValidateBeforeCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = deleteServiceAccountValidateBeforeCall(serviceAccountId, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }
     /**
-     * Build call for getIntegration
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Build call for getJwt
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getIntegrationCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getJwtCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}/keys/{keyId}/jwt"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()))
+            .replaceAll("\\{" + "keyId" + "\\}", apiClient.escapeString(keyId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -655,20 +627,20 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getIntegrationValidateBeforeCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getJwtValidateBeforeCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getIntegration(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling getJwt(Async)");
         }
         
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getIntegration(Async)");
+        // verify the required parameter 'keyId' is set
+        if (keyId == null) {
+            throw new ApiException("Missing the required parameter 'keyId' when calling getJwt(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = getIntegrationCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getJwtCall(serviceAccountId, keyId, progressListener, progressRequestListener);
         return call;
 
         
@@ -679,41 +651,41 @@ public class IntegrationApi {
 
     /**
      * 
-     * Get the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @return IntegrationResponse
+     * Get an account-scoped JWT for the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
+     * @return JwtResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IntegrationResponse getIntegration(String appId, String integrationId) throws ApiException {
-        ApiResponse<IntegrationResponse> resp = getIntegrationWithHttpInfo(appId, integrationId);
+    public JwtResponse getJwt(String serviceAccountId, String keyId) throws ApiException {
+        ApiResponse<JwtResponse> resp = getJwtWithHttpInfo(serviceAccountId, keyId);
         return resp.getData();
     }
 
     /**
      * 
-     * Get the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @return ApiResponse&lt;IntegrationResponse&gt;
+     * Get an account-scoped JWT for the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
+     * @return ApiResponse&lt;JwtResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IntegrationResponse> getIntegrationWithHttpInfo(String appId, String integrationId) throws ApiException {
-        com.squareup.okhttp.Call call = getIntegrationValidateBeforeCall(appId, integrationId, null, null);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
+    public ApiResponse<JwtResponse> getJwtWithHttpInfo(String serviceAccountId, String keyId) throws ApiException {
+        com.squareup.okhttp.Call call = getJwtValidateBeforeCall(serviceAccountId, keyId, null, null);
+        Type localVarReturnType = new TypeToken<JwtResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Get an account-scoped JWT for the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getIntegrationAsync(String appId, String integrationId, final ApiCallback<IntegrationResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getJwtAsync(String serviceAccountId, String keyId, final ApiCallback<JwtResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -734,27 +706,27 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getIntegrationValidateBeforeCall(appId, integrationId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
+        com.squareup.okhttp.Call call = getJwtValidateBeforeCall(serviceAccountId, keyId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<JwtResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for getIntegrationMenu
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Build call for getSecretKey
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call getIntegrationMenuCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getSecretKeyCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}/menu"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}/keys/{keyId}"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()))
+            .replaceAll("\\{" + "keyId" + "\\}", apiClient.escapeString(keyId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -791,20 +763,20 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call getIntegrationMenuValidateBeforeCall(String appId, String integrationId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getSecretKeyValidateBeforeCall(String serviceAccountId, String keyId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling getIntegrationMenu(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling getSecretKey(Async)");
         }
         
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling getIntegrationMenu(Async)");
+        // verify the required parameter 'keyId' is set
+        if (keyId == null) {
+            throw new ApiException("Missing the required parameter 'keyId' when calling getSecretKey(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = getIntegrationMenuCall(appId, integrationId, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getSecretKeyCall(serviceAccountId, keyId, progressListener, progressRequestListener);
         return call;
 
         
@@ -815,41 +787,41 @@ public class IntegrationApi {
 
     /**
      * 
-     * Get the specified integration&#39;s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @return MenuResponse
+     * Get the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
+     * @return SecretKeyResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MenuResponse getIntegrationMenu(String appId, String integrationId) throws ApiException {
-        ApiResponse<MenuResponse> resp = getIntegrationMenuWithHttpInfo(appId, integrationId);
+    public SecretKeyResponse getSecretKey(String serviceAccountId, String keyId) throws ApiException {
+        ApiResponse<SecretKeyResponse> resp = getSecretKeyWithHttpInfo(serviceAccountId, keyId);
         return resp.getData();
     }
 
     /**
      * 
-     * Get the specified integration&#39;s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @return ApiResponse&lt;MenuResponse&gt;
+     * Get the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
+     * @return ApiResponse&lt;SecretKeyResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MenuResponse> getIntegrationMenuWithHttpInfo(String appId, String integrationId) throws ApiException {
-        com.squareup.okhttp.Call call = getIntegrationMenuValidateBeforeCall(appId, integrationId, null, null);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
+    public ApiResponse<SecretKeyResponse> getSecretKeyWithHttpInfo(String serviceAccountId, String keyId) throws ApiException {
+        com.squareup.okhttp.Call call = getSecretKeyValidateBeforeCall(serviceAccountId, keyId, null, null);
+        Type localVarReturnType = new TypeToken<SecretKeyResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Get the specified integration&#39;s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
+     * Get the specified service account secret key.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param keyId Identifies the secret key. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getIntegrationMenuAsync(String appId, String integrationId, final ApiCallback<MenuResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getSecretKeyAsync(String serviceAccountId, String keyId, final ApiCallback<SecretKeyResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -870,30 +842,27 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getIntegrationMenuValidateBeforeCall(appId, integrationId, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
+        com.squareup.okhttp.Call call = getSecretKeyValidateBeforeCall(serviceAccountId, keyId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<SecretKeyResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for listIntegrations
-     * @param appId Identifies the app. (required)
-     * @param types List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types&#x3D;*twilio*,*line*.  (optional)
+     * Build call for getServiceAccount
+     * @param serviceAccountId Identifies the service account. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call listIntegrationsCall(String appId, String types, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call getServiceAccountCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (types != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -928,15 +897,15 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call listIntegrationsValidateBeforeCall(String appId, String types, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call getServiceAccountValidateBeforeCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling listIntegrations(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling getServiceAccount(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = listIntegrationsCall(appId, types, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = getServiceAccountCall(serviceAccountId, progressListener, progressRequestListener);
         return call;
 
         
@@ -947,41 +916,38 @@ public class IntegrationApi {
 
     /**
      * 
-     * List integrations for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param types List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types&#x3D;*twilio*,*line*.  (optional)
-     * @return ListIntegrationsResponse
+     * Get the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @return ServiceAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ListIntegrationsResponse listIntegrations(String appId, String types) throws ApiException {
-        ApiResponse<ListIntegrationsResponse> resp = listIntegrationsWithHttpInfo(appId, types);
+    public ServiceAccountResponse getServiceAccount(String serviceAccountId) throws ApiException {
+        ApiResponse<ServiceAccountResponse> resp = getServiceAccountWithHttpInfo(serviceAccountId);
         return resp.getData();
     }
 
     /**
      * 
-     * List integrations for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param types List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types&#x3D;*twilio*,*line*.  (optional)
-     * @return ApiResponse&lt;ListIntegrationsResponse&gt;
+     * Get the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @return ApiResponse&lt;ServiceAccountResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<ListIntegrationsResponse> listIntegrationsWithHttpInfo(String appId, String types) throws ApiException {
-        com.squareup.okhttp.Call call = listIntegrationsValidateBeforeCall(appId, types, null, null);
-        Type localVarReturnType = new TypeToken<ListIntegrationsResponse>(){}.getType();
+    public ApiResponse<ServiceAccountResponse> getServiceAccountWithHttpInfo(String serviceAccountId) throws ApiException {
+        com.squareup.okhttp.Call call = getServiceAccountValidateBeforeCall(serviceAccountId, null, null);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * List integrations for the specified app.
-     * @param appId Identifies the app. (required)
-     * @param types List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types&#x3D;*twilio*,*line*.  (optional)
+     * Get the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call listIntegrationsAsync(String appId, String types, final ApiCallback<ListIntegrationsResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call getServiceAccountAsync(String serviceAccountId, final ApiCallback<ServiceAccountResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1002,28 +968,280 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = listIntegrationsValidateBeforeCall(appId, types, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<ListIntegrationsResponse>(){}.getType();
+        com.squareup.okhttp.Call call = getServiceAccountValidateBeforeCall(serviceAccountId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
     /**
-     * Build call for updateIntegration
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param integrationUpdateBody Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
+     * Build call for listSecretKeys
+     * @param serviceAccountId Identifies the service account. (required)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call updateIntegrationCall(String appId, String integrationId, IntegrationUpdate integrationUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = integrationUpdateBody;
+    public com.squareup.okhttp.Call listSecretKeysCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
         
         // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
+        String localVarPath = "/serviceaccounts/{serviceAccountId}/keys"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listSecretKeysValidateBeforeCall(String serviceAccountId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling listSecretKeys(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = listSecretKeysCall(serviceAccountId, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * List the secret keys for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @return ListSecretKeysResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListSecretKeysResponse listSecretKeys(String serviceAccountId) throws ApiException {
+        ApiResponse<ListSecretKeysResponse> resp = listSecretKeysWithHttpInfo(serviceAccountId);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * List the secret keys for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @return ApiResponse&lt;ListSecretKeysResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListSecretKeysResponse> listSecretKeysWithHttpInfo(String serviceAccountId) throws ApiException {
+        com.squareup.okhttp.Call call = listSecretKeysValidateBeforeCall(serviceAccountId, null, null);
+        Type localVarReturnType = new TypeToken<ListSecretKeysResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * List the secret keys for the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listSecretKeysAsync(String serviceAccountId, final ApiCallback<ListSecretKeysResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listSecretKeysValidateBeforeCall(serviceAccountId, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListSecretKeysResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for listServiceAccounts
+     * @param limit The number of records to return. (optional, default to 25)
+     * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call listServiceAccountsCall(Integer limit, Integer offset, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/serviceaccounts";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
+        if (offset != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call listServiceAccountsValidateBeforeCall(Integer limit, Integer offset, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        
+        com.squareup.okhttp.Call call = listServiceAccountsCall(limit, offset, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * List all service accounts configured.
+     * @param limit The number of records to return. (optional, default to 25)
+     * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+     * @return ListServiceAccountsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ListServiceAccountsResponse listServiceAccounts(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<ListServiceAccountsResponse> resp = listServiceAccountsWithHttpInfo(limit, offset);
+        return resp.getData();
+    }
+
+    /**
+     * 
+     * List all service accounts configured.
+     * @param limit The number of records to return. (optional, default to 25)
+     * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+     * @return ApiResponse&lt;ListServiceAccountsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ListServiceAccountsResponse> listServiceAccountsWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+        com.squareup.okhttp.Call call = listServiceAccountsValidateBeforeCall(limit, offset, null, null);
+        Type localVarReturnType = new TypeToken<ListServiceAccountsResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     *  (asynchronously)
+     * List all service accounts configured.
+     * @param limit The number of records to return. (optional, default to 25)
+     * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call listServiceAccountsAsync(Integer limit, Integer offset, final ApiCallback<ListServiceAccountsResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = listServiceAccountsValidateBeforeCall(limit, offset, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ListServiceAccountsResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for updateServiceAccount
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param serviceAccountUpdateBody Body for an updateServiceAccount request. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call updateServiceAccountCall(String serviceAccountId, ServiceAccountUpdate serviceAccountUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = serviceAccountUpdateBody;
+        
+        // create path and map variables
+        String localVarPath = "/serviceaccounts/{serviceAccountId}"
+            .replaceAll("\\{" + "serviceAccountId" + "\\}", apiClient.escapeString(serviceAccountId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
 
@@ -1060,25 +1278,20 @@ public class IntegrationApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateIntegrationValidateBeforeCall(String appId, String integrationId, IntegrationUpdate integrationUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call updateServiceAccountValidateBeforeCall(String serviceAccountId, ServiceAccountUpdate serviceAccountUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling updateIntegration(Async)");
+        // verify the required parameter 'serviceAccountId' is set
+        if (serviceAccountId == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountId' when calling updateServiceAccount(Async)");
         }
         
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling updateIntegration(Async)");
-        }
-        
-        // verify the required parameter 'integrationUpdateBody' is set
-        if (integrationUpdateBody == null) {
-            throw new ApiException("Missing the required parameter 'integrationUpdateBody' when calling updateIntegration(Async)");
+        // verify the required parameter 'serviceAccountUpdateBody' is set
+        if (serviceAccountUpdateBody == null) {
+            throw new ApiException("Missing the required parameter 'serviceAccountUpdateBody' when calling updateServiceAccount(Async)");
         }
         
         
-        com.squareup.okhttp.Call call = updateIntegrationCall(appId, integrationId, integrationUpdateBody, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = updateServiceAccountCall(serviceAccountId, serviceAccountUpdateBody, progressListener, progressRequestListener);
         return call;
 
         
@@ -1089,44 +1302,41 @@ public class IntegrationApi {
 
     /**
      * 
-     * Update the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param integrationUpdateBody Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
-     * @return IntegrationResponse
+     * Update the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param serviceAccountUpdateBody Body for an updateServiceAccount request. (required)
+     * @return ServiceAccountResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public IntegrationResponse updateIntegration(String appId, String integrationId, IntegrationUpdate integrationUpdateBody) throws ApiException {
-        ApiResponse<IntegrationResponse> resp = updateIntegrationWithHttpInfo(appId, integrationId, integrationUpdateBody);
+    public ServiceAccountResponse updateServiceAccount(String serviceAccountId, ServiceAccountUpdate serviceAccountUpdateBody) throws ApiException {
+        ApiResponse<ServiceAccountResponse> resp = updateServiceAccountWithHttpInfo(serviceAccountId, serviceAccountUpdateBody);
         return resp.getData();
     }
 
     /**
      * 
-     * Update the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param integrationUpdateBody Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
-     * @return ApiResponse&lt;IntegrationResponse&gt;
+     * Update the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param serviceAccountUpdateBody Body for an updateServiceAccount request. (required)
+     * @return ApiResponse&lt;ServiceAccountResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<IntegrationResponse> updateIntegrationWithHttpInfo(String appId, String integrationId, IntegrationUpdate integrationUpdateBody) throws ApiException {
-        com.squareup.okhttp.Call call = updateIntegrationValidateBeforeCall(appId, integrationId, integrationUpdateBody, null, null);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
+    public ApiResponse<ServiceAccountResponse> updateServiceAccountWithHttpInfo(String serviceAccountId, ServiceAccountUpdate serviceAccountUpdateBody) throws ApiException {
+        com.squareup.okhttp.Call call = updateServiceAccountValidateBeforeCall(serviceAccountId, serviceAccountUpdateBody, null, null);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
      *  (asynchronously)
-     * Update the specified integration.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param integrationUpdateBody Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  (required)
+     * Update the specified service account.
+     * @param serviceAccountId Identifies the service account. (required)
+     * @param serviceAccountUpdateBody Body for an updateServiceAccount request. (required)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call updateIntegrationAsync(String appId, String integrationId, IntegrationUpdate integrationUpdateBody, final ApiCallback<IntegrationResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call updateServiceAccountAsync(String serviceAccountId, ServiceAccountUpdate serviceAccountUpdateBody, final ApiCallback<ServiceAccountResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -1147,153 +1357,8 @@ public class IntegrationApi {
             };
         }
 
-        com.squareup.okhttp.Call call = updateIntegrationValidateBeforeCall(appId, integrationId, integrationUpdateBody, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<IntegrationResponse>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for updateIntegrationMenu
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuUpdateBody Body for a updateMenu request. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call updateIntegrationMenuCall(String appId, String integrationId, Menu menuUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = menuUpdateBody;
-        
-        // create path and map variables
-        String localVarPath = "/apps/{appId}/integrations/{integrationId}/menu"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "integrationId" + "\\}", apiClient.escapeString(integrationId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call updateIntegrationMenuValidateBeforeCall(String appId, String integrationId, Menu menuUpdateBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling updateIntegrationMenu(Async)");
-        }
-        
-        // verify the required parameter 'integrationId' is set
-        if (integrationId == null) {
-            throw new ApiException("Missing the required parameter 'integrationId' when calling updateIntegrationMenu(Async)");
-        }
-        
-        // verify the required parameter 'menuUpdateBody' is set
-        if (menuUpdateBody == null) {
-            throw new ApiException("Missing the required parameter 'menuUpdateBody' when calling updateIntegrationMenu(Async)");
-        }
-        
-        
-        com.squareup.okhttp.Call call = updateIntegrationMenuCall(appId, integrationId, menuUpdateBody, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Update the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuUpdateBody Body for a updateMenu request. (required)
-     * @return MenuResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public MenuResponse updateIntegrationMenu(String appId, String integrationId, Menu menuUpdateBody) throws ApiException {
-        ApiResponse<MenuResponse> resp = updateIntegrationMenuWithHttpInfo(appId, integrationId, menuUpdateBody);
-        return resp.getData();
-    }
-
-    /**
-     * 
-     * Update the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuUpdateBody Body for a updateMenu request. (required)
-     * @return ApiResponse&lt;MenuResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<MenuResponse> updateIntegrationMenuWithHttpInfo(String appId, String integrationId, Menu menuUpdateBody) throws ApiException {
-        com.squareup.okhttp.Call call = updateIntegrationMenuValidateBeforeCall(appId, integrationId, menuUpdateBody, null, null);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     *  (asynchronously)
-     * Update the specified integration’s menu.
-     * @param appId Identifies the app. (required)
-     * @param integrationId Identifies the integration. (required)
-     * @param menuUpdateBody Body for a updateMenu request. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call updateIntegrationMenuAsync(String appId, String integrationId, Menu menuUpdateBody, final ApiCallback<MenuResponse> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = updateIntegrationMenuValidateBeforeCall(appId, integrationId, menuUpdateBody, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MenuResponse>(){}.getType();
+        com.squareup.okhttp.Call call = updateServiceAccountValidateBeforeCall(serviceAccountId, serviceAccountUpdateBody, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ServiceAccountResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

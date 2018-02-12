@@ -15,19 +15,19 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.App;
+import io.smooch.client.model.ServiceAccount;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ListAppsResponse
+ * ListServiceAccountsResponse
  */
 
-public class ListAppsResponse {
-  @SerializedName("apps")
-  private List<App> apps = null;
+public class ListServiceAccountsResponse {
+  @SerializedName("serviceAccounts")
+  private List<ServiceAccount> serviceAccounts = null;
 
   @SerializedName("hasMore")
   private Boolean hasMore = null;
@@ -35,42 +35,42 @@ public class ListAppsResponse {
   @SerializedName("offset")
   private Integer offset = null;
 
-  public ListAppsResponse apps(List<App> apps) {
-    this.apps = apps;
+  public ListServiceAccountsResponse serviceAccounts(List<ServiceAccount> serviceAccounts) {
+    this.serviceAccounts = serviceAccounts;
     return this;
   }
 
-  public ListAppsResponse addAppsItem(App appsItem) {
-    if (this.apps == null) {
-      this.apps = new ArrayList<App>();
+  public ListServiceAccountsResponse addServiceAccountsItem(ServiceAccount serviceAccountsItem) {
+    if (this.serviceAccounts == null) {
+      this.serviceAccounts = new ArrayList<ServiceAccount>();
     }
-    this.apps.add(appsItem);
+    this.serviceAccounts.add(serviceAccountsItem);
     return this;
   }
 
    /**
-   * The list of apps.
-   * @return apps
+   * The list of service accounts.
+   * @return serviceAccounts
   **/
-  @ApiModelProperty(value = "The list of apps.")
-  public List<App> getApps() {
-    return apps;
+  @ApiModelProperty(value = "The list of service accounts.")
+  public List<ServiceAccount> getServiceAccounts() {
+    return serviceAccounts;
   }
 
-  public void setApps(List<App> apps) {
-    this.apps = apps;
+  public void setServiceAccounts(List<ServiceAccount> serviceAccounts) {
+    this.serviceAccounts = serviceAccounts;
   }
 
-  public ListAppsResponse hasMore(Boolean hasMore) {
+  public ListServiceAccountsResponse hasMore(Boolean hasMore) {
     this.hasMore = hasMore;
     return this;
   }
 
    /**
-   * Flag indicating if there are more apps that are not present in the response.
+   * Flag indicating if there are more service accounts that are not present in the response.
    * @return hasMore
   **/
-  @ApiModelProperty(value = "Flag indicating if there are more apps that are not present in the response.")
+  @ApiModelProperty(value = "Flag indicating if there are more service accounts that are not present in the response.")
   public Boolean getHasMore() {
     return hasMore;
   }
@@ -79,16 +79,16 @@ public class ListAppsResponse {
     this.hasMore = hasMore;
   }
 
-  public ListAppsResponse offset(Integer offset) {
+  public ListServiceAccountsResponse offset(Integer offset) {
     this.offset = offset;
     return this;
   }
 
    /**
-   * The number of app records skipped in the returned list.
+   * The number of service account records skipped in the returned list.
    * @return offset
   **/
-  @ApiModelProperty(value = "The number of app records skipped in the returned list.")
+  @ApiModelProperty(value = "The number of service account records skipped in the returned list.")
   public Integer getOffset() {
     return offset;
   }
@@ -106,24 +106,24 @@ public class ListAppsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListAppsResponse listAppsResponse = (ListAppsResponse) o;
-    return Objects.equals(this.apps, listAppsResponse.apps) &&
-        Objects.equals(this.hasMore, listAppsResponse.hasMore) &&
-        Objects.equals(this.offset, listAppsResponse.offset);
+    ListServiceAccountsResponse listServiceAccountsResponse = (ListServiceAccountsResponse) o;
+    return Objects.equals(this.serviceAccounts, listServiceAccountsResponse.serviceAccounts) &&
+        Objects.equals(this.hasMore, listServiceAccountsResponse.hasMore) &&
+        Objects.equals(this.offset, listServiceAccountsResponse.offset);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apps, hasMore, offset);
+    return Objects.hash(serviceAccounts, hasMore, offset);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListAppsResponse {\n");
+    sb.append("class ListServiceAccountsResponse {\n");
     
-    sb.append("    apps: ").append(toIndentedString(apps)).append("\n");
+    sb.append("    serviceAccounts: ").append(toIndentedString(serviceAccounts)).append("\n");
     sb.append("    hasMore: ").append(toIndentedString(hasMore)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("}");

@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>2.8.0</version>
+    <version>2.9.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:2.8.0"
+compile "io.smooch:api:2.9.0"
 ```
 
 ## Getting Started
@@ -162,6 +162,16 @@ Class | Method | HTTP request | Description
 *MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /apps/{appId}/menu | 
 *MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /apps/{appId}/menu | 
 *MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /apps/{appId}/menu | 
+*ServiceAccountApi* | [**createSecretKey**](docs/ServiceAccountApi.md#createSecretKey) | **POST** /serviceaccounts/{serviceAccountId}/keys | 
+*ServiceAccountApi* | [**createServiceAccount**](docs/ServiceAccountApi.md#createServiceAccount) | **POST** /serviceaccounts | 
+*ServiceAccountApi* | [**deleteSecretKey**](docs/ServiceAccountApi.md#deleteSecretKey) | **DELETE** /serviceaccounts/{serviceAccountId}/keys/{keyId} | 
+*ServiceAccountApi* | [**deleteServiceAccount**](docs/ServiceAccountApi.md#deleteServiceAccount) | **DELETE** /serviceaccounts/{serviceAccountId} | 
+*ServiceAccountApi* | [**getJwt**](docs/ServiceAccountApi.md#getJwt) | **GET** /serviceaccounts/{serviceAccountId}/keys/{keyId}/jwt | 
+*ServiceAccountApi* | [**getSecretKey**](docs/ServiceAccountApi.md#getSecretKey) | **GET** /serviceaccounts/{serviceAccountId}/keys/{keyId} | 
+*ServiceAccountApi* | [**getServiceAccount**](docs/ServiceAccountApi.md#getServiceAccount) | **GET** /serviceaccounts/{serviceAccountId} | 
+*ServiceAccountApi* | [**listSecretKeys**](docs/ServiceAccountApi.md#listSecretKeys) | **GET** /serviceaccounts/{serviceAccountId}/keys | 
+*ServiceAccountApi* | [**listServiceAccounts**](docs/ServiceAccountApi.md#listServiceAccounts) | **GET** /serviceaccounts | 
+*ServiceAccountApi* | [**updateServiceAccount**](docs/ServiceAccountApi.md#updateServiceAccount) | **PUT** /serviceaccounts/{serviceAccountId} | 
 *WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /apps/{appId}/webhooks | 
 *WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /apps/{appId}/webhooks/{webhookId} | 
 *WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /apps/{appId}/webhooks/{webhookId} | 
@@ -205,6 +215,7 @@ Class | Method | HTTP request | Description
  - [ListAppsResponse](docs/ListAppsResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListSecretKeysResponse](docs/ListSecretKeysResponse.md)
+ - [ListServiceAccountsResponse](docs/ListServiceAccountsResponse.md)
  - [ListWebhooksResponse](docs/ListWebhooksResponse.md)
  - [Menu](docs/Menu.md)
  - [MenuItem](docs/MenuItem.md)
@@ -216,6 +227,10 @@ Class | Method | HTTP request | Description
  - [SecretKey](docs/SecretKey.md)
  - [SecretKeyCreate](docs/SecretKeyCreate.md)
  - [SecretKeyResponse](docs/SecretKeyResponse.md)
+ - [ServiceAccount](docs/ServiceAccount.md)
+ - [ServiceAccountCreate](docs/ServiceAccountCreate.md)
+ - [ServiceAccountResponse](docs/ServiceAccountResponse.md)
+ - [ServiceAccountUpdate](docs/ServiceAccountUpdate.md)
  - [Source](docs/Source.md)
  - [TypingActivityTrigger](docs/TypingActivityTrigger.md)
  - [Webhook](docs/Webhook.md)

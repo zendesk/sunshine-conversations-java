@@ -402,7 +402,7 @@ Name | Type | Description  | Notes
 
 <a name="listApps"></a>
 # **listApps**
-> ListAppsResponse listApps(limit, offset)
+> ListAppsResponse listApps(limit, offset, serviceAccountId)
 
 
 
@@ -425,10 +425,11 @@ jwt.setApiKey("YOUR JWT");
 jwt.setApiKeyPrefix("Bearer");
 
 AppApi apiInstance = new AppApi();
-Integer limit = 0; // Integer | The number of records to return.
+Integer limit = 25; // Integer | The number of records to return.
 Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+String serviceAccountId = ""; // String | The service account ID for which to list apps.
 try {
-    ListAppsResponse result = apiInstance.listApps(limit, offset);
+    ListAppsResponse result = apiInstance.listApps(limit, offset, serviceAccountId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppApi#listApps");
@@ -440,8 +441,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **limit** | **Integer**| The number of records to return. | [optional] [default to 0]
+ **limit** | **Integer**| The number of records to return. | [optional] [default to 25]
  **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
+ **serviceAccountId** | **String**| The service account ID for which to list apps. | [optional] [default to ]
 
 ### Return type
 
