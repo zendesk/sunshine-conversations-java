@@ -47,6 +47,7 @@ Name | Type | Description | Notes
 **integrationOrder** | **List&lt;String&gt;** | A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **businessName** | **String** | A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **businessIconUrl** | **String** | A custom business icon url for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
+**backgroundImageUrl** | **String** | A custom background url for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 
 
 
