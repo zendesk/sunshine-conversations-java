@@ -44,6 +44,8 @@ Name | Type | Description | Notes
 **actionColor** | **String** | This color will be used for call-to-actions inside your messages. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **displayStyle** | **String** | Choose how the messenger will appear on your website. Must be either button or tab. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **buttonIconUrl** | **String** | With the button style Web Messenger, you have the option of selecting your own button icon. (Optional) Used for *Web Messenger* integrations.  |  [optional]
+**buttonWidth** | **String** | With the button style Web Messenger, you have the option of specifying its width. (Optional) Used for *Web Messenger* integrations.  |  [optional]
+**buttonHeight** | **String** | With the button style Web Messenger, you have the option of specifying its height. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **integrationOrder** | **List&lt;String&gt;** | A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **businessName** | **String** | A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **businessIconUrl** | **String** | A custom business icon url for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
