@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **text** | **String** | The message text. Required for text messages.  | 
 **email** | **String** | The email address of the message author. |  [optional]
 **avatarUrl** | **String** | The URL of the desired message avatar image. | 
-**received** | **Float** | The unix timestamp of the moment the message was received. | 
+**received** | **Double** | The unix timestamp of the moment the message was received. | 
 **mediaUrl** | **String** | The mediaUrl for the message. Required for image/file messages.  |  [optional]
 **mediaType** | **String** | The mediaType for the message. Required for image/file messages.  |  [optional]
 **metadata** | **Object** | Flat JSON object containing any custom properties associated with the message. |  [optional]
