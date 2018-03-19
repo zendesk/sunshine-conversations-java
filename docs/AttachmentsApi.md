@@ -1,10 +1,10 @@
 # AttachmentsApi
 
-All URIs are relative to *https://api.smooch.io/v1*
+All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /apps/{appId}/attachments | 
+[**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
 
 
 <a name="uploadAttachment"></a>

@@ -1,14 +1,14 @@
 # ConversationApi
 
-All URIs are relative to *https://api.smooch.io/v1*
+All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /apps/{appId}/appusers/{userId}/messages | 
-[**getMessages**](ConversationApi.md#getMessages) | **GET** /apps/{appId}/appusers/{userId}/messages | 
-[**postMessage**](ConversationApi.md#postMessage) | **POST** /apps/{appId}/appusers/{userId}/messages | 
-[**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /apps/{appId}/appusers/{userId}/conversation/read | 
-[**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /apps/{appId}/appusers/{userId}/conversation/activity | 
+[**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages | 
+[**getMessages**](ConversationApi.md#getMessages) | **GET** /v1/apps/{appId}/appusers/{userId}/messages | 
+[**postMessage**](ConversationApi.md#postMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/messages | 
+[**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/read | 
+[**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/activity | 
 
 
 <a name="deleteMessages"></a>

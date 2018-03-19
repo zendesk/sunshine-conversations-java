@@ -1,19 +1,19 @@
 # AppApi
 
-All URIs are relative to *https://api.smooch.io/v1*
+All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createApp**](AppApi.md#createApp) | **POST** /apps | 
-[**createSecretKey**](AppApi.md#createSecretKey) | **POST** /apps/{appId}/keys | 
-[**deleteApp**](AppApi.md#deleteApp) | **DELETE** /apps/{appId} | 
-[**deleteSecretKey**](AppApi.md#deleteSecretKey) | **DELETE** /apps/{appId}/keys/{keyId} | 
-[**getApp**](AppApi.md#getApp) | **GET** /apps/{appId} | 
-[**getAppJwt**](AppApi.md#getAppJwt) | **GET** /apps/{appId}/keys/{keyId}/jwt | 
-[**getSecretKey**](AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
-[**listApps**](AppApi.md#listApps) | **GET** /apps | 
-[**listSecretKeys**](AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
-[**updateApp**](AppApi.md#updateApp) | **PUT** /apps/{appId} | 
+[**createApp**](AppApi.md#createApp) | **POST** /v1/apps | 
+[**createSecretKey**](AppApi.md#createSecretKey) | **POST** /v1/apps/{appId}/keys | 
+[**deleteApp**](AppApi.md#deleteApp) | **DELETE** /v1/apps/{appId} | 
+[**deleteSecretKey**](AppApi.md#deleteSecretKey) | **DELETE** /v1/apps/{appId}/keys/{keyId} | 
+[**getApp**](AppApi.md#getApp) | **GET** /v1/apps/{appId} | 
+[**getAppJwt**](AppApi.md#getAppJwt) | **GET** /v1/apps/{appId}/keys/{keyId}/jwt | 
+[**getSecretKey**](AppApi.md#getSecretKey) | **GET** /v1/apps/{appId}/keys/{keyId} | 
+[**listApps**](AppApi.md#listApps) | **GET** /v1/apps | 
+[**listSecretKeys**](AppApi.md#listSecretKeys) | **GET** /v1/apps/{appId}/keys | 
+[**updateApp**](AppApi.md#updateApp) | **PUT** /v1/apps/{appId} | 
 
 
 <a name="createApp"></a>

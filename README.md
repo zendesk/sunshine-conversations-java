@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.0.0</version>
+    <version>3.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.0.0"
+compile "io.smooch:api:3.1.0"
 ```
 
 ## Getting Started
@@ -119,64 +119,64 @@ public class AppApiExample {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.smooch.io/v1*
+All URIs are relative to *https://api.smooch.io*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AppApi* | [**createApp**](docs/AppApi.md#createApp) | **POST** /apps | 
-*AppApi* | [**createSecretKey**](docs/AppApi.md#createSecretKey) | **POST** /apps/{appId}/keys | 
-*AppApi* | [**deleteApp**](docs/AppApi.md#deleteApp) | **DELETE** /apps/{appId} | 
-*AppApi* | [**deleteSecretKey**](docs/AppApi.md#deleteSecretKey) | **DELETE** /apps/{appId}/keys/{keyId} | 
-*AppApi* | [**getApp**](docs/AppApi.md#getApp) | **GET** /apps/{appId} | 
-*AppApi* | [**getAppJwt**](docs/AppApi.md#getAppJwt) | **GET** /apps/{appId}/keys/{keyId}/jwt | 
-*AppApi* | [**getSecretKey**](docs/AppApi.md#getSecretKey) | **GET** /apps/{appId}/keys/{keyId} | 
-*AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /apps | 
-*AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /apps/{appId}/keys | 
-*AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /apps/{appId} | 
-*AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /apps/{appId}/appusers/{userId}/profile | 
-*AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /apps/{appId}/appusers/{userId} | 
-*AppUserApi* | [**getAppUserAuthCode**](docs/AppUserApi.md#getAppUserAuthCode) | **GET** /apps/{appId}/appusers/{userId}/authcode | 
-*AppUserApi* | [**getAppUserBusinessSystemIds**](docs/AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /apps/{appId}/appusers/{userId}/businesssystems | 
-*AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /apps/{appId}/appusers/{userId}/channels | 
-*AppUserApi* | [**getLinkRequests**](docs/AppUserApi.md#getLinkRequests) | **GET** /apps/{appId}/appusers/{userId}/linkrequest | 
-*AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /apps/{appId}/appusers/{userId}/channels | 
-*AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /apps/{appId}/appusers/{userId}/images | 
-*AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /apps/{appId}/appusers | 
-*AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /apps/{appId}/appusers/{userId}/channels/{channel} | 
-*AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /apps/{appId}/appusers/{userId} | 
-*AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /apps/{appId}/attachments | 
-*ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /apps/{appId}/appusers/{userId}/messages | 
-*ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /apps/{appId}/appusers/{userId}/messages | 
-*ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /apps/{appId}/appusers/{userId}/messages | 
-*ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /apps/{appId}/appusers/{userId}/conversation/read | 
-*ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /apps/{appId}/appusers/{userId}/conversation/activity | 
-*IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /apps/{appId}/integrations | 
-*IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /apps/{appId}/integrations/{integrationId}/menu | 
-*IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /apps/{appId}/integrations/{integrationId} | 
-*IntegrationApi* | [**deleteIntegrationMenu**](docs/IntegrationApi.md#deleteIntegrationMenu) | **DELETE** /apps/{appId}/integrations/{integrationId}/menu | 
-*IntegrationApi* | [**getIntegration**](docs/IntegrationApi.md#getIntegration) | **GET** /apps/{appId}/integrations/{integrationId} | 
-*IntegrationApi* | [**getIntegrationMenu**](docs/IntegrationApi.md#getIntegrationMenu) | **GET** /apps/{appId}/integrations/{integrationId}/menu | 
-*IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /apps/{appId}/integrations | 
-*IntegrationApi* | [**updateIntegration**](docs/IntegrationApi.md#updateIntegration) | **PUT** /apps/{appId}/integrations/{integrationId} | 
-*IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /apps/{appId}/integrations/{integrationId}/menu | 
-*MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /apps/{appId}/menu | 
-*MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /apps/{appId}/menu | 
-*MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /apps/{appId}/menu | 
-*ServiceAccountApi* | [**createSecretKey**](docs/ServiceAccountApi.md#createSecretKey) | **POST** /serviceaccounts/{serviceAccountId}/keys | 
-*ServiceAccountApi* | [**createServiceAccount**](docs/ServiceAccountApi.md#createServiceAccount) | **POST** /serviceaccounts | 
-*ServiceAccountApi* | [**deleteSecretKey**](docs/ServiceAccountApi.md#deleteSecretKey) | **DELETE** /serviceaccounts/{serviceAccountId}/keys/{keyId} | 
-*ServiceAccountApi* | [**deleteServiceAccount**](docs/ServiceAccountApi.md#deleteServiceAccount) | **DELETE** /serviceaccounts/{serviceAccountId} | 
-*ServiceAccountApi* | [**getJwt**](docs/ServiceAccountApi.md#getJwt) | **GET** /serviceaccounts/{serviceAccountId}/keys/{keyId}/jwt | 
-*ServiceAccountApi* | [**getSecretKey**](docs/ServiceAccountApi.md#getSecretKey) | **GET** /serviceaccounts/{serviceAccountId}/keys/{keyId} | 
-*ServiceAccountApi* | [**getServiceAccount**](docs/ServiceAccountApi.md#getServiceAccount) | **GET** /serviceaccounts/{serviceAccountId} | 
-*ServiceAccountApi* | [**listSecretKeys**](docs/ServiceAccountApi.md#listSecretKeys) | **GET** /serviceaccounts/{serviceAccountId}/keys | 
-*ServiceAccountApi* | [**listServiceAccounts**](docs/ServiceAccountApi.md#listServiceAccounts) | **GET** /serviceaccounts | 
-*ServiceAccountApi* | [**updateServiceAccount**](docs/ServiceAccountApi.md#updateServiceAccount) | **PUT** /serviceaccounts/{serviceAccountId} | 
-*WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /apps/{appId}/webhooks | 
-*WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /apps/{appId}/webhooks/{webhookId} | 
-*WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /apps/{appId}/webhooks/{webhookId} | 
-*WebhookApi* | [**listWebhooks**](docs/WebhookApi.md#listWebhooks) | **GET** /apps/{appId}/webhooks | 
-*WebhookApi* | [**updateWebhook**](docs/WebhookApi.md#updateWebhook) | **PUT** /apps/{appId}/webhooks/{webhookId} | 
+*AppApi* | [**createApp**](docs/AppApi.md#createApp) | **POST** /v1/apps | 
+*AppApi* | [**createSecretKey**](docs/AppApi.md#createSecretKey) | **POST** /v1/apps/{appId}/keys | 
+*AppApi* | [**deleteApp**](docs/AppApi.md#deleteApp) | **DELETE** /v1/apps/{appId} | 
+*AppApi* | [**deleteSecretKey**](docs/AppApi.md#deleteSecretKey) | **DELETE** /v1/apps/{appId}/keys/{keyId} | 
+*AppApi* | [**getApp**](docs/AppApi.md#getApp) | **GET** /v1/apps/{appId} | 
+*AppApi* | [**getAppJwt**](docs/AppApi.md#getAppJwt) | **GET** /v1/apps/{appId}/keys/{keyId}/jwt | 
+*AppApi* | [**getSecretKey**](docs/AppApi.md#getSecretKey) | **GET** /v1/apps/{appId}/keys/{keyId} | 
+*AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /v1/apps | 
+*AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /v1/apps/{appId}/keys | 
+*AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /v1/apps/{appId} | 
+*AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1/apps/{appId}/appusers/{userId}/profile | 
+*AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /v1/apps/{appId}/appusers/{userId} | 
+*AppUserApi* | [**getAppUserAuthCode**](docs/AppUserApi.md#getAppUserAuthCode) | **GET** /v1/apps/{appId}/appusers/{userId}/authcode | 
+*AppUserApi* | [**getAppUserBusinessSystemIds**](docs/AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /v1/apps/{appId}/appusers/{userId}/businesssystems | 
+*AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /v1/apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**getLinkRequests**](docs/AppUserApi.md#getLinkRequests) | **GET** /v1/apps/{appId}/appusers/{userId}/linkrequest | 
+*AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /v1/apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/images | 
+*AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /v1/apps/{appId}/appusers | 
+*AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId}/channels/{channel} | 
+*AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /v1/apps/{appId}/appusers/{userId} | 
+*AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
+*ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /v1/apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/messages | 
+*ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/read | 
+*ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/activity | 
+*IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /v1/apps/{appId}/integrations | 
+*IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /v1/apps/{appId}/integrations/{integrationId} | 
+*IntegrationApi* | [**deleteIntegrationMenu**](docs/IntegrationApi.md#deleteIntegrationMenu) | **DELETE** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**getIntegration**](docs/IntegrationApi.md#getIntegration) | **GET** /v1/apps/{appId}/integrations/{integrationId} | 
+*IntegrationApi* | [**getIntegrationMenu**](docs/IntegrationApi.md#getIntegrationMenu) | **GET** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /v1/apps/{appId}/integrations | 
+*IntegrationApi* | [**updateIntegration**](docs/IntegrationApi.md#updateIntegration) | **PUT** /v1/apps/{appId}/integrations/{integrationId} | 
+*IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+*MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /v1/apps/{appId}/menu | 
+*MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /v1/apps/{appId}/menu | 
+*MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /v1/apps/{appId}/menu | 
+*ServiceAccountApi* | [**createSecretKey**](docs/ServiceAccountApi.md#createSecretKey) | **POST** /v1/serviceaccounts/{serviceAccountId}/keys | 
+*ServiceAccountApi* | [**createServiceAccount**](docs/ServiceAccountApi.md#createServiceAccount) | **POST** /v1/serviceaccounts | 
+*ServiceAccountApi* | [**deleteSecretKey**](docs/ServiceAccountApi.md#deleteSecretKey) | **DELETE** /v1/serviceaccounts/{serviceAccountId}/keys/{keyId} | 
+*ServiceAccountApi* | [**deleteServiceAccount**](docs/ServiceAccountApi.md#deleteServiceAccount) | **DELETE** /v1/serviceaccounts/{serviceAccountId} | 
+*ServiceAccountApi* | [**getJwt**](docs/ServiceAccountApi.md#getJwt) | **GET** /v1/serviceaccounts/{serviceAccountId}/keys/{keyId}/jwt | 
+*ServiceAccountApi* | [**getSecretKey**](docs/ServiceAccountApi.md#getSecretKey) | **GET** /v1/serviceaccounts/{serviceAccountId}/keys/{keyId} | 
+*ServiceAccountApi* | [**getServiceAccount**](docs/ServiceAccountApi.md#getServiceAccount) | **GET** /v1/serviceaccounts/{serviceAccountId} | 
+*ServiceAccountApi* | [**listSecretKeys**](docs/ServiceAccountApi.md#listSecretKeys) | **GET** /v1/serviceaccounts/{serviceAccountId}/keys | 
+*ServiceAccountApi* | [**listServiceAccounts**](docs/ServiceAccountApi.md#listServiceAccounts) | **GET** /v1/serviceaccounts | 
+*ServiceAccountApi* | [**updateServiceAccount**](docs/ServiceAccountApi.md#updateServiceAccount) | **PUT** /v1/serviceaccounts/{serviceAccountId} | 
+*WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /v1/apps/{appId}/webhooks | 
+*WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /v1/apps/{appId}/webhooks/{webhookId} | 
+*WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /v1/apps/{appId}/webhooks/{webhookId} | 
+*WebhookApi* | [**listWebhooks**](docs/WebhookApi.md#listWebhooks) | **GET** /v1/apps/{appId}/webhooks | 
+*WebhookApi* | [**updateWebhook**](docs/WebhookApi.md#updateWebhook) | **PUT** /v1/apps/{appId}/webhooks/{webhookId} | 
 
 
 ## Documentation for Models
