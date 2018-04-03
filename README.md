@@ -117,6 +117,14 @@ public class AppApiExample {
 
 ```
 
+### Region
+
+Smooch is available in the following [regions](https://docs.smooch.io/rest/#region). The US region will be used by default. To target any other region, specify the region [API host](https://docs.smooch.io/rest/#region) in `setBasePath()`. For example:
+
+```java
+defaultClient.setBasePath("https://api.eu-1.smooch.io");
+```
+
 ## Documentation for API Endpoints
 
 All URIs are relative to *https://api.smooch.io*
