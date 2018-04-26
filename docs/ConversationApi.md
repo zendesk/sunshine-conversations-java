@@ -4,12 +4,70 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteMessage**](ConversationApi.md#deleteMessage) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages/{messageId} | 
 [**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages | 
 [**getMessages**](ConversationApi.md#getMessages) | **GET** /v1/apps/{appId}/appusers/{userId}/messages | 
 [**postMessage**](ConversationApi.md#postMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/messages | 
 [**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/read | 
 [**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /v1/apps/{appId}/appusers/{userId}/conversation/activity | 
 
+
+<a name="deleteMessage"></a>
+# **deleteMessage**
+> deleteMessage(appId, userId, messageId)
+
+
+
+Deletes a single message.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
+String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
+String messageId = "messageId_example"; // String | Identifies the message.
+try {
+    apiInstance.deleteMessage(appId, userId, messageId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ConversationApi#deleteMessage");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
+ **messageId** | **String**| Identifies the message. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="deleteMessages"></a>
 # **deleteMessages**

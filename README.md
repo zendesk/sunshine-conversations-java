@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.4.0</version>
+    <version>.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.4.0"
+compile "io.smooch:api:.0"
 ```
 
 ## Getting Started
@@ -153,6 +153,7 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId}/channels/{channel} | 
 *AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /v1/apps/{appId}/appusers/{userId} | 
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
+*ConversationApi* | [**deleteMessage**](docs/ConversationApi.md#deleteMessage) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages/{messageId} | 
 *ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /v1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/messages | 
