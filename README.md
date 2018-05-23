@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.5.0</version>
+    <version>3.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.5.0"
+compile "io.smooch:api:3.6.0"
 ```
 
 ## Getting Started
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /v1/apps/{appId}/appusers | 
 *AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId}/channels/{channel} | 
 *AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /v1/apps/{appId}/appusers/{userId} | 
+*AttachmentsApi* | [**removeAttachment**](docs/AttachmentsApi.md#removeAttachment) | **POST** /v1/apps/{appId}/attachments/remove | 
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
 *ConversationApi* | [**deleteMessage**](docs/ConversationApi.md#deleteMessage) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages/{messageId} | 
 *ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /v1/apps/{appId}/appusers/{userId}/messages | 
@@ -203,6 +204,7 @@ Class | Method | HTTP request | Description
  - [AppUserPreCreate](docs/AppUserPreCreate.md)
  - [AppUserResponse](docs/AppUserResponse.md)
  - [AppUserUpdate](docs/AppUserUpdate.md)
+ - [AttachmentRemove](docs/AttachmentRemove.md)
  - [AttachmentResponse](docs/AttachmentResponse.md)
  - [AuthCodeResponse](docs/AuthCodeResponse.md)
  - [BusinessSystemItem](docs/BusinessSystemItem.md)

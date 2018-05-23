@@ -4,8 +4,64 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**removeAttachment**](AttachmentsApi.md#removeAttachment) | **POST** /v1/apps/{appId}/attachments/remove | 
 [**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
 
+
+<a name="removeAttachment"></a>
+# **removeAttachment**
+> removeAttachment(appId, attachmentRemoveBody)
+
+
+
+Remove an attachment uploaded to Smooch.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AttachmentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+AttachmentsApi apiInstance = new AttachmentsApi();
+String appId = "appId_example"; // String | Identifies the app.
+AttachmentRemove attachmentRemoveBody = new AttachmentRemove(); // AttachmentRemove | Body for a removeAttachment request. 
+try {
+    apiInstance.removeAttachment(appId, attachmentRemoveBody);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AttachmentsApi#removeAttachment");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **attachmentRemoveBody** | [**AttachmentRemove**](AttachmentRemove.md)| Body for a removeAttachment request.  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="uploadAttachment"></a>
 # **uploadAttachment**

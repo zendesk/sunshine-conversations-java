@@ -15,44 +15,33 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Integration;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ListIntegrationsResponse
+ * AttachmentRemove
  */
 
-public class ListIntegrationsResponse {
-  @SerializedName("integrations")
-  private List<Integration> integrations = null;
+public class AttachmentRemove {
+  @SerializedName("mediaUrl")
+  private String mediaUrl = null;
 
-  public ListIntegrationsResponse integrations(List<Integration> integrations) {
-    this.integrations = integrations;
-    return this;
-  }
-
-  public ListIntegrationsResponse addIntegrationsItem(Integration integrationsItem) {
-    if (this.integrations == null) {
-      this.integrations = new ArrayList<Integration>();
-    }
-    this.integrations.add(integrationsItem);
+  public AttachmentRemove mediaUrl(String mediaUrl) {
+    this.mediaUrl = mediaUrl;
     return this;
   }
 
    /**
-   * The list of integrations.
-   * @return integrations
+   * The mediaUrl for the message. Required for image/file messages. 
+   * @return mediaUrl
   **/
-  @ApiModelProperty(value = "The list of integrations.")
-  public List<Integration> getIntegrations() {
-    return integrations;
+  @ApiModelProperty(required = true, value = "The mediaUrl for the message. Required for image/file messages. ")
+  public String getMediaUrl() {
+    return mediaUrl;
   }
 
-  public void setIntegrations(List<Integration> integrations) {
-    this.integrations = integrations;
+  public void setMediaUrl(String mediaUrl) {
+    this.mediaUrl = mediaUrl;
   }
 
 
@@ -64,22 +53,22 @@ public class ListIntegrationsResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ListIntegrationsResponse listIntegrationsResponse = (ListIntegrationsResponse) o;
-    return Objects.equals(this.integrations, listIntegrationsResponse.integrations);
+    AttachmentRemove attachmentRemove = (AttachmentRemove) o;
+    return Objects.equals(this.mediaUrl, attachmentRemove.mediaUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrations);
+    return Objects.hash(mediaUrl);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ListIntegrationsResponse {\n");
+    sb.append("class AttachmentRemove {\n");
     
-    sb.append("    integrations: ").append(toIndentedString(integrations)).append("\n");
+    sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }
