@@ -29,6 +29,7 @@ Name | Type | Description | Notes
 **accessKey** | **String** | The public API key of your MessageBird account. Required for *messagebird* integrations.  |  [optional]
 **originator** | **String** | Smooch will receive all messages sent to this phone number. Required for *messagebird* integrations.  |  [optional]
 **brandColor** | **String** | This color will be used in the messenger header and the button or tab in idle state. (Optional) Used for *Web Messenger* integrations.  |  [optional]
+**fixedIntroPane** | **Boolean** | When &#x60;true&#x60;, the introduction pane will be pinned at the top of the conversation instead of scrolling with it. The default value is &#x60;false&#x60;. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **conversationColor** | **String** | This color will be used for customer messages, quick replies and actions in the footer. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **actionColor** | **String** | This color will be used for call-to-actions inside your messages. (Optional) Used for *Web Messenger* integrations.  |  [optional]
 **displayStyle** | **String** | Choose how the messenger will appear on your website. Must be either button or tab. (Optional) Used for *Web Messenger* integrations.  |  [optional]
