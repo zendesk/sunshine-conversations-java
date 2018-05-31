@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.7.0</version>
+    <version>3.8.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.7.0"
+compile "io.smooch:api:3.8.0"
 ```
 
 ## Getting Started
@@ -141,6 +141,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /v1/apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /v1/apps/{appId}/keys | 
 *AppApi* | [**updateApp**](docs/AppApi.md#updateApp) | **PUT** /v1/apps/{appId} | 
+*AppUserApi* | [**deleteAppUser**](docs/AppUserApi.md#deleteAppUser) | **DELETE** /v1/apps/{appId}/appusers | 
 *AppUserApi* | [**deleteAppUserProfile**](docs/AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1/apps/{appId}/appusers/{userId}/profile | 
 *AppUserApi* | [**getAppUser**](docs/AppUserApi.md#getAppUser) | **GET** /v1/apps/{appId}/appusers/{userId} | 
 *AppUserApi* | [**getAppUserAuthCode**](docs/AppUserApi.md#getAppUserAuthCode) | **GET** /v1/apps/{appId}/appusers/{userId}/authcode | 

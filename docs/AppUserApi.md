@@ -4,6 +4,7 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteAppUser**](AppUserApi.md#deleteAppUser) | **DELETE** /v1/apps/{appId}/appusers | 
 [**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1/apps/{appId}/appusers/{userId}/profile | 
 [**getAppUser**](AppUserApi.md#getAppUser) | **GET** /v1/apps/{appId}/appusers/{userId} | 
 [**getAppUserAuthCode**](AppUserApi.md#getAppUserAuthCode) | **GET** /v1/apps/{appId}/appusers/{userId}/authcode | 
@@ -16,6 +17,59 @@ Method | HTTP request | Description
 [**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId}/channels/{channel} | 
 [**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /v1/apps/{appId}/appusers/{userId} | 
 
+
+<a name="deleteAppUser"></a>
+# **deleteAppUser**
+> deleteAppUser(appId)
+
+
+
+Delete specified app user.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppUserApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+AppUserApi apiInstance = new AppUserApi();
+String appId = "appId_example"; // String | Identifies the app.
+try {
+    apiInstance.deleteAppUser(appId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppUserApi#deleteAppUser");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="deleteAppUserProfile"></a>
 # **deleteAppUserProfile**
