@@ -22,6 +22,8 @@ Name | Type | Description | Notes
 **autoUpdateBadge** | **Boolean** | Use the unread count of the conversation as the application badge. (Optional) Used for *apn* integrations.  |  [optional]
 **serverKey** | **String** | Your server key from the fcm console. Required for *fcm* integrations.  |  [optional]
 **senderId** | **String** | Your sender id from the fcm console. Required for *fcm* integrations.  |  [optional]
+**tier** | **String** | Your Twitter app’s tier. Accepted values are enterprise or premium.  |  [optional]
+**envName** | **String** | The Twitter environment name, e.g.: env-beta. Required for *twitter* integrations with *premium* tier.  |  [optional]
 **consumerKey** | **String** | The consumer key for your Twitter app. Required for *twitter* integrations.  |  [optional]
 **consumerSecret** | **String** | The consumer secret for your Twitter app. Required for *twitter* integrations.  |  [optional]
 **accessTokenKey** | **String** | The access token key obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]

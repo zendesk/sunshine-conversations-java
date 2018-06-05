@@ -30,6 +30,8 @@ Name | Type | Description | Notes
 **production** | **Boolean** | Flag specifying whether the certificate is production. Returned on successful *apn* integrations.  |  [optional]
 **serverKey** | **String** | Your server key from the fcm console. Required for *fcm* integrations.  |  [optional]
 **senderId** | **String** | Your sender id from the fcm console. Required for *fcm* integrations.  |  [optional]
+**tier** | **String** | Your Twitter app’s tier. Accepted values are enterprise or premium.  |  [optional]
+**envName** | **String** | The Twitter environment name, e.g.: env-beta. Required for *twitter* integrations with *premium* tier.  |  [optional]
 **consumerKey** | **String** | The consumer key for your Twitter app. Required for *twitter* integrations.  |  [optional]
 **consumerSecret** | **String** | The consumer secret for your Twitter app. Required for *twitter* integrations.  |  [optional]
 **accessTokenKey** | **String** | The access token key obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]
