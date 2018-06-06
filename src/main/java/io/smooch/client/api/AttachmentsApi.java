@@ -192,12 +192,15 @@ public class AttachmentsApi {
      * @param appId Identifies the app. (required)
      * @param source File to be uploaded (required)
      * @param access Access level for the resulting file (required)
+     * @param _for The intended container for the attachment (optional)
+     * @param appUserId The appUserId of the user that will receive the attachment Used in attachments for messages  (optional)
+     * @param userId The userId of the user that will receive the attachment Used in attachments for messages  (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call uploadAttachmentCall(String appId, File source, String access, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call uploadAttachmentCall(String appId, File source, String access, String _for, String appUserId, String userId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -207,6 +210,12 @@ public class AttachmentsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         if (access != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "access", access));
+        if (_for != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "for", _for));
+        if (appUserId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "appUserId", appUserId));
+        if (userId != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "userId", userId));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -243,7 +252,7 @@ public class AttachmentsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call uploadAttachmentValidateBeforeCall(String appId, File source, String access, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call uploadAttachmentValidateBeforeCall(String appId, File source, String access, String _for, String appUserId, String userId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         
         // verify the required parameter 'appId' is set
         if (appId == null) {
@@ -261,7 +270,7 @@ public class AttachmentsApi {
         }
         
         
-        com.squareup.okhttp.Call call = uploadAttachmentCall(appId, source, access, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = uploadAttachmentCall(appId, source, access, _for, appUserId, userId, progressListener, progressRequestListener);
         return call;
 
         
@@ -276,11 +285,14 @@ public class AttachmentsApi {
      * @param appId Identifies the app. (required)
      * @param source File to be uploaded (required)
      * @param access Access level for the resulting file (required)
+     * @param _for The intended container for the attachment (optional)
+     * @param appUserId The appUserId of the user that will receive the attachment Used in attachments for messages  (optional)
+     * @param userId The userId of the user that will receive the attachment Used in attachments for messages  (optional)
      * @return AttachmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public AttachmentResponse uploadAttachment(String appId, File source, String access) throws ApiException {
-        ApiResponse<AttachmentResponse> resp = uploadAttachmentWithHttpInfo(appId, source, access);
+    public AttachmentResponse uploadAttachment(String appId, File source, String access, String _for, String appUserId, String userId) throws ApiException {
+        ApiResponse<AttachmentResponse> resp = uploadAttachmentWithHttpInfo(appId, source, access, _for, appUserId, userId);
         return resp.getData();
     }
 
@@ -290,11 +302,14 @@ public class AttachmentsApi {
      * @param appId Identifies the app. (required)
      * @param source File to be uploaded (required)
      * @param access Access level for the resulting file (required)
+     * @param _for The intended container for the attachment (optional)
+     * @param appUserId The appUserId of the user that will receive the attachment Used in attachments for messages  (optional)
+     * @param userId The userId of the user that will receive the attachment Used in attachments for messages  (optional)
      * @return ApiResponse&lt;AttachmentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<AttachmentResponse> uploadAttachmentWithHttpInfo(String appId, File source, String access) throws ApiException {
-        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, null, null);
+    public ApiResponse<AttachmentResponse> uploadAttachmentWithHttpInfo(String appId, File source, String access, String _for, String appUserId, String userId) throws ApiException {
+        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, _for, appUserId, userId, null, null);
         Type localVarReturnType = new TypeToken<AttachmentResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -305,11 +320,14 @@ public class AttachmentsApi {
      * @param appId Identifies the app. (required)
      * @param source File to be uploaded (required)
      * @param access Access level for the resulting file (required)
+     * @param _for The intended container for the attachment (optional)
+     * @param appUserId The appUserId of the user that will receive the attachment Used in attachments for messages  (optional)
+     * @param userId The userId of the user that will receive the attachment Used in attachments for messages  (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call uploadAttachmentAsync(String appId, File source, String access, final ApiCallback<AttachmentResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call uploadAttachmentAsync(String appId, File source, String access, String _for, String appUserId, String userId, final ApiCallback<AttachmentResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -330,7 +348,7 @@ public class AttachmentsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = uploadAttachmentValidateBeforeCall(appId, source, access, _for, appUserId, userId, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<AttachmentResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

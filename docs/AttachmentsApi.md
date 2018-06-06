@@ -65,7 +65,7 @@ null (empty response body)
 
 <a name="uploadAttachment"></a>
 # **uploadAttachment**
-> AttachmentResponse uploadAttachment(appId, source, access)
+> AttachmentResponse uploadAttachment(appId, source, access, _for, appUserId, userId)
 
 
 
@@ -91,8 +91,11 @@ AttachmentsApi apiInstance = new AttachmentsApi();
 String appId = "appId_example"; // String | Identifies the app.
 File source = new File("/path/to/file.txt"); // File | File to be uploaded
 String access = "access_example"; // String | Access level for the resulting file
+String _for = "_for_example"; // String | The intended container for the attachment
+String appUserId = "appUserId_example"; // String | The appUserId of the user that will receive the attachment Used in attachments for messages 
+String userId = "userId_example"; // String | The userId of the user that will receive the attachment Used in attachments for messages 
 try {
-    AttachmentResponse result = apiInstance.uploadAttachment(appId, source, access);
+    AttachmentResponse result = apiInstance.uploadAttachment(appId, source, access, _for, appUserId, userId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AttachmentsApi#uploadAttachment");
@@ -107,6 +110,9 @@ Name | Type | Description  | Notes
  **appId** | **String**| Identifies the app. |
  **source** | **File**| File to be uploaded |
  **access** | **String**| Access level for the resulting file |
+ **_for** | **String**| The intended container for the attachment | [optional]
+ **appUserId** | **String**| The appUserId of the user that will receive the attachment Used in attachments for messages  | [optional]
+ **userId** | **String**| The userId of the user that will receive the attachment Used in attachments for messages  | [optional]
 
 ### Return type
 
