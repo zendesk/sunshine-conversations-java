@@ -4,7 +4,7 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteAppUser**](AppUserApi.md#deleteAppUser) | **DELETE** /v1/apps/{appId}/appusers | 
+[**deleteAppUser**](AppUserApi.md#deleteAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId} | 
 [**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1/apps/{appId}/appusers/{userId}/profile | 
 [**getAppUser**](AppUserApi.md#getAppUser) | **GET** /v1/apps/{appId}/appusers/{userId} | 
 [**getAppUserAuthCode**](AppUserApi.md#getAppUserAuthCode) | **GET** /v1/apps/{appId}/appusers/{userId}/authcode | 
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 <a name="deleteAppUser"></a>
 # **deleteAppUser**
-> deleteAppUser(appId)
+> deleteAppUser(appId, userId)
 
 
 
@@ -44,8 +44,9 @@ jwt.setApiKeyPrefix("Bearer");
 
 AppUserApi apiInstance = new AppUserApi();
 String appId = "appId_example"; // String | Identifies the app.
+String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 try {
-    apiInstance.deleteAppUser(appId);
+    apiInstance.deleteAppUser(appId, userId);
 } catch (ApiException e) {
     System.err.println("Exception when calling AppUserApi#deleteAppUser");
     e.printStackTrace();
@@ -57,6 +58,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
+ **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
 
 ### Return type
 
