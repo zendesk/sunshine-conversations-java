@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.11.0</version>
+    <version>3.12.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.11.0"
+compile "io.smooch:api:3.12.0"
 ```
 
 ## Getting Started
@@ -244,6 +244,7 @@ Class | Method | HTTP request | Description
  - [ServiceAccountResponse](docs/ServiceAccountResponse.md)
  - [ServiceAccountUpdate](docs/ServiceAccountUpdate.md)
  - [Source](docs/Source.md)
+ - [SubMenuItem](docs/SubMenuItem.md)
  - [TypingActivityTrigger](docs/TypingActivityTrigger.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookCreate](docs/WebhookCreate.md)

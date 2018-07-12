@@ -15,17 +15,14 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.SubMenuItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * MenuItem
+ * SubMenuItem
  */
 
-public class MenuItem {
+public class SubMenuItem {
   @SerializedName("text")
   private String text = null;
 
@@ -38,10 +35,7 @@ public class MenuItem {
   @SerializedName("payload")
   private String payload = null;
 
-  @SerializedName("items")
-  private List<SubMenuItem> items = null;
-
-  public MenuItem text(String text) {
+  public SubMenuItem text(String text) {
     this.text = text;
     return this;
   }
@@ -59,7 +53,7 @@ public class MenuItem {
     this.text = text;
   }
 
-  public MenuItem uri(String uri) {
+  public SubMenuItem uri(String uri) {
     this.uri = uri;
     return this;
   }
@@ -77,7 +71,7 @@ public class MenuItem {
     this.uri = uri;
   }
 
-  public MenuItem type(String type) {
+  public SubMenuItem type(String type) {
     this.type = type;
     return this;
   }
@@ -95,7 +89,7 @@ public class MenuItem {
     this.type = type;
   }
 
-  public MenuItem payload(String payload) {
+  public SubMenuItem payload(String payload) {
     this.payload = payload;
     return this;
   }
@@ -113,32 +107,6 @@ public class MenuItem {
     this.payload = payload;
   }
 
-  public MenuItem items(List<SubMenuItem> items) {
-    this.items = items;
-    return this;
-  }
-
-  public MenuItem addItemsItem(SubMenuItem itemsItem) {
-    if (this.items == null) {
-      this.items = new ArrayList<SubMenuItem>();
-    }
-    this.items.add(itemsItem);
-    return this;
-  }
-
-   /**
-   * A list of menu items for a submenu.
-   * @return items
-  **/
-  @ApiModelProperty(value = "A list of menu items for a submenu.")
-  public List<SubMenuItem> getItems() {
-    return items;
-  }
-
-  public void setItems(List<SubMenuItem> items) {
-    this.items = items;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -148,30 +116,28 @@ public class MenuItem {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MenuItem menuItem = (MenuItem) o;
-    return Objects.equals(this.text, menuItem.text) &&
-        Objects.equals(this.uri, menuItem.uri) &&
-        Objects.equals(this.type, menuItem.type) &&
-        Objects.equals(this.payload, menuItem.payload) &&
-        Objects.equals(this.items, menuItem.items);
+    SubMenuItem subMenuItem = (SubMenuItem) o;
+    return Objects.equals(this.text, subMenuItem.text) &&
+        Objects.equals(this.uri, subMenuItem.uri) &&
+        Objects.equals(this.type, subMenuItem.type) &&
+        Objects.equals(this.payload, subMenuItem.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(text, uri, type, payload, items);
+    return Objects.hash(text, uri, type, payload);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MenuItem {\n");
+    sb.append("class SubMenuItem {\n");
     
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    uri: ").append(toIndentedString(uri)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
   }
