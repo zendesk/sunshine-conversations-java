@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.12.0</version>
+    <version>3.13.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.12.0"
+compile "io.smooch:api:3.13.0"
 ```
 
 ## Getting Started
@@ -183,6 +183,11 @@ Class | Method | HTTP request | Description
 *ServiceAccountApi* | [**listSecretKeys**](docs/ServiceAccountApi.md#listSecretKeys) | **GET** /v1/serviceaccounts/{serviceAccountId}/keys | 
 *ServiceAccountApi* | [**listServiceAccounts**](docs/ServiceAccountApi.md#listServiceAccounts) | **GET** /v1/serviceaccounts | 
 *ServiceAccountApi* | [**updateServiceAccount**](docs/ServiceAccountApi.md#updateServiceAccount) | **PUT** /v1/serviceaccounts/{serviceAccountId} | 
+*TemplateApi* | [**createTemplate**](docs/TemplateApi.md#createTemplate) | **POST** /v1/apps/{appId}/templates | 
+*TemplateApi* | [**deleteTemplate**](docs/TemplateApi.md#deleteTemplate) | **DELETE** /v1/apps/{appId}/templates/{templateId} | 
+*TemplateApi* | [**getTemplate**](docs/TemplateApi.md#getTemplate) | **GET** /v1/apps/{appId}/templates/{templateId} | 
+*TemplateApi* | [**listTemplates**](docs/TemplateApi.md#listTemplates) | **GET** /v1/apps/{appId}/templates | 
+*TemplateApi* | [**updateTemplate**](docs/TemplateApi.md#updateTemplate) | **PUT** /v1/apps/{appId}/templates/{templateId} | 
 *WebhookApi* | [**createWebhook**](docs/WebhookApi.md#createWebhook) | **POST** /v1/apps/{appId}/webhooks | 
 *WebhookApi* | [**deleteWebhook**](docs/WebhookApi.md#deleteWebhook) | **DELETE** /v1/apps/{appId}/webhooks/{webhookId} | 
 *WebhookApi* | [**getWebhook**](docs/WebhookApi.md#getWebhook) | **GET** /v1/apps/{appId}/webhooks/{webhookId} | 
@@ -228,6 +233,7 @@ Class | Method | HTTP request | Description
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListSecretKeysResponse](docs/ListSecretKeysResponse.md)
  - [ListServiceAccountsResponse](docs/ListServiceAccountsResponse.md)
+ - [ListTemplatesResponse](docs/ListTemplatesResponse.md)
  - [ListWebhooksResponse](docs/ListWebhooksResponse.md)
  - [Menu](docs/Menu.md)
  - [MenuItem](docs/MenuItem.md)
@@ -245,6 +251,10 @@ Class | Method | HTTP request | Description
  - [ServiceAccountUpdate](docs/ServiceAccountUpdate.md)
  - [Source](docs/Source.md)
  - [SubMenuItem](docs/SubMenuItem.md)
+ - [Template](docs/Template.md)
+ - [TemplateCreate](docs/TemplateCreate.md)
+ - [TemplateResponse](docs/TemplateResponse.md)
+ - [TemplateUpdate](docs/TemplateUpdate.md)
  - [TypingActivityTrigger](docs/TypingActivityTrigger.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookCreate](docs/WebhookCreate.md)
