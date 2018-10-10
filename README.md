@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.17.0</version>
+    <version>3.18.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.17.0"
+compile "io.smooch:api:3.18.0"
 ```
 
 ## Getting Started
@@ -64,20 +64,20 @@ Using the [jjwt](https://github.com/jwtk/jjwt) package:
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
-import java.security.Key;
+import io.jsonwebtoken.security.Keys;
 
 import static io.jsonwebtoken.JwsHeader.KEY_ID;
 
 // ...
 
 String jwt = Jwts.builder()
-  .claim("scope", "app")
-  .setHeaderParam(KEY_ID, "YOUR_KEY_ID")
-  .signWith(
-    SignatureAlgorithm.HS256,
-    "YOUR_SECRET".getBytes("UTF-8")
-  )
-  .compact();
+    .claim("scope", "app")
+    .setHeaderParam(KEY_ID, "YOUR_KEY_ID")
+    .signWith(
+        Keys.hmacShaKeyFor("YOUR_SECRET".getBytes()),
+        SignatureAlgorithm.HS256
+    )
+    .compact();
 ```
 
 ### Running the code
