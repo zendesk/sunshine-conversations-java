@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>3.18.0</version>
+    <version>3.19.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:3.18.0"
+compile "io.smooch:api:3.19.0"
 ```
 
 ## Getting Started
@@ -170,6 +170,7 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /v1/apps/{appId}/integrations | 
 *IntegrationApi* | [**updateIntegration**](docs/IntegrationApi.md#updateIntegration) | **PUT** /v1/apps/{appId}/integrations/{integrationId} | 
 *IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**updateIntegrationProfile**](docs/IntegrationApi.md#updateIntegrationProfile) | **PUT** /v1/apps/{appId}/integrations/{integrationId}/profile | 
 *MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /v1/apps/{appId}/menu | 
 *MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /v1/apps/{appId}/menu | 
 *MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /v1/apps/{appId}/menu | 
@@ -224,6 +225,7 @@ Class | Method | HTTP request | Description
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
  - [Integration](docs/Integration.md)
  - [IntegrationCreate](docs/IntegrationCreate.md)
+ - [IntegrationProfileUpdate](docs/IntegrationProfileUpdate.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
  - [IntegrationUpdate](docs/IntegrationUpdate.md)
  - [JwtResponse](docs/JwtResponse.md)

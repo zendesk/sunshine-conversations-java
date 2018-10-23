@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**listIntegrations**](IntegrationApi.md#listIntegrations) | **GET** /v1/apps/{appId}/integrations | 
 [**updateIntegration**](IntegrationApi.md#updateIntegration) | **PUT** /v1/apps/{appId}/integrations/{integrationId} | 
 [**updateIntegrationMenu**](IntegrationApi.md#updateIntegrationMenu) | **PUT** /v1/apps/{appId}/integrations/{integrationId}/menu | 
+[**updateIntegrationProfile**](IntegrationApi.md#updateIntegrationProfile) | **PUT** /v1/apps/{appId}/integrations/{integrationId}/profile | 
 
 
 <a name="createIntegration"></a>
@@ -513,6 +514,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**MenuResponse**](MenuResponse.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="updateIntegrationProfile"></a>
+# **updateIntegrationProfile**
+> updateIntegrationProfile(appId, integrationId, integrationProfileBody)
+
+
+
+Update the specified integration’s profile.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+IntegrationApi apiInstance = new IntegrationApi();
+String appId = "appId_example"; // String | Identifies the app.
+String integrationId = "integrationId_example"; // String | Identifies the integration.
+IntegrationProfileUpdate integrationProfileBody = new IntegrationProfileUpdate(); // IntegrationProfileUpdate | Body for a profileUpdate request.
+try {
+    apiInstance.updateIntegrationProfile(appId, integrationId, integrationProfileBody);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#updateIntegrationProfile");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **integrationId** | **String**| Identifies the integration. |
+ **integrationProfileBody** | [**IntegrationProfileUpdate**](IntegrationProfileUpdate.md)| Body for a profileUpdate request. |
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 
