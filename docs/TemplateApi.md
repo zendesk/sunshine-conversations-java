@@ -4,11 +4,11 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTemplate**](TemplateApi.md#createTemplate) | **POST** /v1/apps/{appId}/templates | 
-[**deleteTemplate**](TemplateApi.md#deleteTemplate) | **DELETE** /v1/apps/{appId}/templates/{templateId} | 
-[**getTemplate**](TemplateApi.md#getTemplate) | **GET** /v1/apps/{appId}/templates/{templateId} | 
-[**listTemplates**](TemplateApi.md#listTemplates) | **GET** /v1/apps/{appId}/templates | 
-[**updateTemplate**](TemplateApi.md#updateTemplate) | **PUT** /v1/apps/{appId}/templates/{templateId} | 
+[**createTemplate**](TemplateApi.md#createTemplate) | **POST** /v1.1/apps/{appId}/templates | 
+[**deleteTemplate**](TemplateApi.md#deleteTemplate) | **DELETE** /v1.1/apps/{appId}/templates/{templateId} | 
+[**getTemplate**](TemplateApi.md#getTemplate) | **GET** /v1.1/apps/{appId}/templates/{templateId} | 
+[**listTemplates**](TemplateApi.md#listTemplates) | **GET** /v1.1/apps/{appId}/templates | 
+[**updateTemplate**](TemplateApi.md#updateTemplate) | **PUT** /v1.1/apps/{appId}/templates/{templateId} | 
 
 
 <a name="createTemplate"></a>

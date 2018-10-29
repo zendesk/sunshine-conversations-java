@@ -4,8 +4,8 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**removeAttachment**](AttachmentsApi.md#removeAttachment) | **POST** /v1/apps/{appId}/attachments/remove | 
-[**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v1/apps/{appId}/attachments | 
+[**removeAttachment**](AttachmentsApi.md#removeAttachment) | **POST** /v1.1/apps/{appId}/attachments/remove | 
+[**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v1.1/apps/{appId}/attachments | 
 
 
 <a name="removeAttachment"></a>

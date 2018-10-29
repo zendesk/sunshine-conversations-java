@@ -4,18 +4,18 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteAppUser**](AppUserApi.md#deleteAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId} | 
-[**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1/apps/{appId}/appusers/{userId}/profile | 
-[**getAppUser**](AppUserApi.md#getAppUser) | **GET** /v1/apps/{appId}/appusers/{userId} | 
-[**getAppUserAuthCode**](AppUserApi.md#getAppUserAuthCode) | **GET** /v1/apps/{appId}/appusers/{userId}/authcode | 
-[**getAppUserBusinessSystemIds**](AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /v1/apps/{appId}/appusers/{userId}/businesssystems | 
-[**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /v1/apps/{appId}/appusers/{userId}/channels | 
-[**getLinkRequests**](AppUserApi.md#getLinkRequests) | **GET** /v1/apps/{appId}/appusers/{userId}/linkrequest | 
-[**linkAppUser**](AppUserApi.md#linkAppUser) | **POST** /v1/apps/{appId}/appusers/{userId}/channels | 
-[**postImageMessage**](AppUserApi.md#postImageMessage) | **POST** /v1/apps/{appId}/appusers/{userId}/images | 
-[**preCreateAppUser**](AppUserApi.md#preCreateAppUser) | **POST** /v1/apps/{appId}/appusers | 
-[**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /v1/apps/{appId}/appusers/{userId}/channels/{channel} | 
-[**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /v1/apps/{appId}/appusers/{userId} | 
+[**deleteAppUser**](AppUserApi.md#deleteAppUser) | **DELETE** /v1.1/apps/{appId}/appusers/{userId} | 
+[**deleteAppUserProfile**](AppUserApi.md#deleteAppUserProfile) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/profile | 
+[**getAppUser**](AppUserApi.md#getAppUser) | **GET** /v1.1/apps/{appId}/appusers/{userId} | 
+[**getAppUserAuthCode**](AppUserApi.md#getAppUserAuthCode) | **GET** /v1.1/apps/{appId}/appusers/{userId}/authcode | 
+[**getAppUserBusinessSystemIds**](AppUserApi.md#getAppUserBusinessSystemIds) | **GET** /v1.1/apps/{appId}/appusers/{userId}/businesssystems | 
+[**getAppUserEntityIds**](AppUserApi.md#getAppUserEntityIds) | **GET** /v1.1/apps/{appId}/appusers/{userId}/channels | 
+[**getLinkRequests**](AppUserApi.md#getLinkRequests) | **GET** /v1.1/apps/{appId}/appusers/{userId}/linkrequest | 
+[**linkAppUser**](AppUserApi.md#linkAppUser) | **POST** /v1.1/apps/{appId}/appusers/{userId}/channels | 
+[**postImageMessage**](AppUserApi.md#postImageMessage) | **POST** /v1.1/apps/{appId}/appusers/{userId}/images | 
+[**preCreateAppUser**](AppUserApi.md#preCreateAppUser) | **POST** /v1.1/apps/{appId}/appusers | 
+[**unlinkAppUser**](AppUserApi.md#unlinkAppUser) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/channels/{channel} | 
+[**updateAppUser**](AppUserApi.md#updateAppUser) | **PUT** /v1.1/apps/{appId}/appusers/{userId} | 
 
 
 <a name="deleteAppUser"></a>

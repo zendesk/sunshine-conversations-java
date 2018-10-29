@@ -4,9 +4,9 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMenu**](MenuApi.md#deleteMenu) | **DELETE** /v1/apps/{appId}/menu | 
-[**getMenu**](MenuApi.md#getMenu) | **GET** /v1/apps/{appId}/menu | 
-[**updateMenu**](MenuApi.md#updateMenu) | **PUT** /v1/apps/{appId}/menu | 
+[**deleteMenu**](MenuApi.md#deleteMenu) | **DELETE** /v1.1/apps/{appId}/menu | 
+[**getMenu**](MenuApi.md#getMenu) | **GET** /v1.1/apps/{appId}/menu | 
+[**updateMenu**](MenuApi.md#updateMenu) | **PUT** /v1.1/apps/{appId}/menu | 
 
 
 <a name="deleteMenu"></a>

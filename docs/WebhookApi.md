@@ -4,11 +4,11 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createWebhook**](WebhookApi.md#createWebhook) | **POST** /v1/apps/{appId}/webhooks | 
-[**deleteWebhook**](WebhookApi.md#deleteWebhook) | **DELETE** /v1/apps/{appId}/webhooks/{webhookId} | 
-[**getWebhook**](WebhookApi.md#getWebhook) | **GET** /v1/apps/{appId}/webhooks/{webhookId} | 
-[**listWebhooks**](WebhookApi.md#listWebhooks) | **GET** /v1/apps/{appId}/webhooks | 
-[**updateWebhook**](WebhookApi.md#updateWebhook) | **PUT** /v1/apps/{appId}/webhooks/{webhookId} | 
+[**createWebhook**](WebhookApi.md#createWebhook) | **POST** /v1.1/apps/{appId}/webhooks | 
+[**deleteWebhook**](WebhookApi.md#deleteWebhook) | **DELETE** /v1.1/apps/{appId}/webhooks/{webhookId} | 
+[**getWebhook**](WebhookApi.md#getWebhook) | **GET** /v1.1/apps/{appId}/webhooks/{webhookId} | 
+[**listWebhooks**](WebhookApi.md#listWebhooks) | **GET** /v1.1/apps/{appId}/webhooks | 
+[**updateWebhook**](WebhookApi.md#updateWebhook) | **PUT** /v1.1/apps/{appId}/webhooks/{webhookId} | 
 
 
 <a name="createWebhook"></a>
