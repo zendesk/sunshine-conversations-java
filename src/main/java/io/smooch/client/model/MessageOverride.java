@@ -15,44 +15,34 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.LinkRequestResponseLinkRequests;
+import io.smooch.client.model.MessageOverrideWhatsapp;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * LinkRequestResponse
+ * MessageOverride
  */
 
-public class LinkRequestResponse {
-  @SerializedName("linkRequests")
-  private List<LinkRequestResponseLinkRequests> linkRequests = null;
+public class MessageOverride {
+  @SerializedName("whatsapp")
+  private MessageOverrideWhatsapp whatsapp = null;
 
-  public LinkRequestResponse linkRequests(List<LinkRequestResponseLinkRequests> linkRequests) {
-    this.linkRequests = linkRequests;
-    return this;
-  }
-
-  public LinkRequestResponse addLinkRequestsItem(LinkRequestResponseLinkRequests linkRequestsItem) {
-    if (this.linkRequests == null) {
-      this.linkRequests = new ArrayList<LinkRequestResponseLinkRequests>();
-    }
-    this.linkRequests.add(linkRequestsItem);
+  public MessageOverride whatsapp(MessageOverrideWhatsapp whatsapp) {
+    this.whatsapp = whatsapp;
     return this;
   }
 
    /**
-   * The list of link requests.
-   * @return linkRequests
+   * Get whatsapp
+   * @return whatsapp
   **/
-  @ApiModelProperty(value = "The list of link requests.")
-  public List<LinkRequestResponseLinkRequests> getLinkRequests() {
-    return linkRequests;
+  @ApiModelProperty(value = "")
+  public MessageOverrideWhatsapp getWhatsapp() {
+    return whatsapp;
   }
 
-  public void setLinkRequests(List<LinkRequestResponseLinkRequests> linkRequests) {
-    this.linkRequests = linkRequests;
+  public void setWhatsapp(MessageOverrideWhatsapp whatsapp) {
+    this.whatsapp = whatsapp;
   }
 
 
@@ -64,22 +54,22 @@ public class LinkRequestResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    LinkRequestResponse linkRequestResponse = (LinkRequestResponse) o;
-    return Objects.equals(this.linkRequests, linkRequestResponse.linkRequests);
+    MessageOverride messageOverride = (MessageOverride) o;
+    return Objects.equals(this.whatsapp, messageOverride.whatsapp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(linkRequests);
+    return Objects.hash(whatsapp);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LinkRequestResponse {\n");
+    sb.append("class MessageOverride {\n");
     
-    sb.append("    linkRequests: ").append(toIndentedString(linkRequests)).append("\n");
+    sb.append("    whatsapp: ").append(toIndentedString(whatsapp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

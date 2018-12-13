@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>4.1.0</version>
+    <version>4.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:4.1.0"
+compile "io.smooch:api:4.2.0"
 ```
 
 ## Getting Started
@@ -251,6 +251,8 @@ Class | Method | HTTP request | Description
  - [MenuResponse](docs/MenuResponse.md)
  - [Message](docs/Message.md)
  - [MessageItem](docs/MessageItem.md)
+ - [MessageOverride](docs/MessageOverride.md)
+ - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessageResponse](docs/MessageResponse.md)
  - [SecretKey](docs/SecretKey.md)
