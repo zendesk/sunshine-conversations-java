@@ -44,10 +44,10 @@ public class BusinessSystemItem {
   }
 
    /**
-   * The type of business system (ex. slack, hipchat, zendesk etc...)
+   * The type of business system. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of business system (ex. slack, hipchat, zendesk etc...)")
+  @ApiModelProperty(required = true, value = "The type of business system. See Enums.md for available values.")
   public String getType() {
     return type;
   }

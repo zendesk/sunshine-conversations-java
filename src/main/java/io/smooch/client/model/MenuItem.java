@@ -83,10 +83,10 @@ public class MenuItem {
   }
 
    /**
-   * Can either be link, postback, which correspond to Smooch’s link and postback actions, or submenu for nested menus.
+   * Can either be link, postback, which correspond to Smooch’s link and postback actions, or submenu for nested menus. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "Can either be link, postback, which correspond to Smooch’s link and postback actions, or submenu for nested menus.")
+  @ApiModelProperty(required = true, value = "Can either be link, postback, which correspond to Smooch’s link and postback actions, or submenu for nested menus. See Enums.md for available values.")
   public String getType() {
     return type;
   }

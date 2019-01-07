@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **phoneNumber** | **String** | The client&#39;s phone number. |  [optional]
 **radioAccessTechnology** | **String** | The client&#39;s radioAccessTechnology (Ex. HSDPA). |  [optional]
 **state** | **String** | The client&#39;s state or province. |  [optional]
-**timezone** | **Integer** | The client&#39;s timezone offset. |  [optional]
+**timezone** | **Double** | The client&#39;s timezone offset. |  [optional]
 **wifi** | **String** | Whether or not the client has wifi. |  [optional]
 
 

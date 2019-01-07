@@ -44,10 +44,10 @@ public class ChannelEntityItem {
   }
 
    /**
-   * The type of channel (ex. messenger, viber, twilio etc...)
+   * The type of channel. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of channel (ex. messenger, viber, twilio etc...)")
+  @ApiModelProperty(required = true, value = "The type of channel. See Enums.md for available values.")
   public String getType() {
     return type;
   }

@@ -51,10 +51,10 @@ public class AppUserLink {
   }
 
    /**
-   * The type of the channel to link.
+   * The type of the channel to link. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of the channel to link.")
+  @ApiModelProperty(required = true, value = "The type of the channel to link. See Enums.md for available values.")
   public String getType() {
     return type;
   }

@@ -63,10 +63,10 @@ public class WebhookUpdate {
   }
 
    /**
-   * An array of triggers you wish to have the webhook listen to. If unspecified the default trigger is *message*.
+   * An array of triggers you wish to have the webhook listen to. See Enums.md for available values.
    * @return triggers
   **/
-  @ApiModelProperty(value = "An array of triggers you wish to have the webhook listen to. If unspecified the default trigger is *message*.")
+  @ApiModelProperty(value = "An array of triggers you wish to have the webhook listen to. See Enums.md for available values.")
   public List<String> getTriggers() {
     return triggers;
   }

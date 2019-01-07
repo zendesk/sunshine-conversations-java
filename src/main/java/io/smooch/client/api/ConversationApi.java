@@ -27,10 +27,10 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.smooch.client.model.ConversationActivity;
 import io.smooch.client.model.GetMessagesResponse;
 import io.smooch.client.model.MessagePost;
 import io.smooch.client.model.MessageResponse;
-import io.smooch.client.model.TypingActivityTrigger;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -57,6 +57,147 @@ public class ConversationApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for conversationActivity
+     * @param appId Identifies the app. (required)
+     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
+     * @param conversationActivityBody Body for a triggerConversationActivity request. (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call conversationActivityCall(String appId, String userId, ConversationActivity conversationActivityBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = conversationActivityBody;
+        
+        // create path and map variables
+        String localVarPath = "/v1.1/apps/{appId}/appusers/{userId}/conversation/activity"
+            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+            .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(userId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "jwt" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call conversationActivityValidateBeforeCall(String appId, String userId, ConversationActivity conversationActivityBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+        // verify the required parameter 'appId' is set
+        if (appId == null) {
+            throw new ApiException("Missing the required parameter 'appId' when calling conversationActivity(Async)");
+        }
+        
+        // verify the required parameter 'userId' is set
+        if (userId == null) {
+            throw new ApiException("Missing the required parameter 'userId' when calling conversationActivity(Async)");
+        }
+        
+        // verify the required parameter 'conversationActivityBody' is set
+        if (conversationActivityBody == null) {
+            throw new ApiException("Missing the required parameter 'conversationActivityBody' when calling conversationActivity(Async)");
+        }
+        
+        
+        com.squareup.okhttp.Call call = conversationActivityCall(appId, userId, conversationActivityBody, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * 
+     * Notify Smooch when an app maker starts or stops typing a response.
+     * @param appId Identifies the app. (required)
+     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
+     * @param conversationActivityBody Body for a triggerConversationActivity request. (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public void conversationActivity(String appId, String userId, ConversationActivity conversationActivityBody) throws ApiException {
+        conversationActivityWithHttpInfo(appId, userId, conversationActivityBody);
+    }
+
+    /**
+     * 
+     * Notify Smooch when an app maker starts or stops typing a response.
+     * @param appId Identifies the app. (required)
+     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
+     * @param conversationActivityBody Body for a triggerConversationActivity request. (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<Void> conversationActivityWithHttpInfo(String appId, String userId, ConversationActivity conversationActivityBody) throws ApiException {
+        com.squareup.okhttp.Call call = conversationActivityValidateBeforeCall(appId, userId, conversationActivityBody, null, null);
+        return apiClient.execute(call);
+    }
+
+    /**
+     *  (asynchronously)
+     * Notify Smooch when an app maker starts or stops typing a response.
+     * @param appId Identifies the app. (required)
+     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
+     * @param conversationActivityBody Body for a triggerConversationActivity request. (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call conversationActivityAsync(String appId, String userId, ConversationActivity conversationActivityBody, final ApiCallback<Void> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = conversationActivityValidateBeforeCall(appId, userId, conversationActivityBody, progressListener, progressRequestListener);
+        apiClient.executeAsync(call, callback);
+        return call;
+    }
     /**
      * Build call for deleteMessage
      * @param appId Identifies the app. (required)
@@ -753,147 +894,6 @@ public class ConversationApi {
         }
 
         com.squareup.okhttp.Call call = resetUnreadCountValidateBeforeCall(appId, userId, progressListener, progressRequestListener);
-        apiClient.executeAsync(call, callback);
-        return call;
-    }
-    /**
-     * Build call for triggerTypingActivity
-     * @param appId Identifies the app. (required)
-     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
-     * @param typingActivityTriggerBody Body for a triggerTypingActivity request. (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call triggerTypingActivityCall(String appId, String userId, TypingActivityTrigger typingActivityTriggerBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = typingActivityTriggerBody;
-        
-        // create path and map variables
-        String localVarPath = "/v1.1/apps/{appId}/appusers/{userId}/conversation/activity"
-            .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-            .replaceAll("\\{" + "userId" + "\\}", apiClient.escapeString(userId.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "jwt" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call triggerTypingActivityValidateBeforeCall(String appId, String userId, TypingActivityTrigger typingActivityTriggerBody, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        
-        // verify the required parameter 'appId' is set
-        if (appId == null) {
-            throw new ApiException("Missing the required parameter 'appId' when calling triggerTypingActivity(Async)");
-        }
-        
-        // verify the required parameter 'userId' is set
-        if (userId == null) {
-            throw new ApiException("Missing the required parameter 'userId' when calling triggerTypingActivity(Async)");
-        }
-        
-        // verify the required parameter 'typingActivityTriggerBody' is set
-        if (typingActivityTriggerBody == null) {
-            throw new ApiException("Missing the required parameter 'typingActivityTriggerBody' when calling triggerTypingActivity(Async)");
-        }
-        
-        
-        com.squareup.okhttp.Call call = triggerTypingActivityCall(appId, userId, typingActivityTriggerBody, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * 
-     * Notify Smooch when an app maker starts or stops typing a response.
-     * @param appId Identifies the app. (required)
-     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
-     * @param typingActivityTriggerBody Body for a triggerTypingActivity request. (required)
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public void triggerTypingActivity(String appId, String userId, TypingActivityTrigger typingActivityTriggerBody) throws ApiException {
-        triggerTypingActivityWithHttpInfo(appId, userId, typingActivityTriggerBody);
-    }
-
-    /**
-     * 
-     * Notify Smooch when an app maker starts or stops typing a response.
-     * @param appId Identifies the app. (required)
-     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
-     * @param typingActivityTriggerBody Body for a triggerTypingActivity request. (required)
-     * @return ApiResponse&lt;Void&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<Void> triggerTypingActivityWithHttpInfo(String appId, String userId, TypingActivityTrigger typingActivityTriggerBody) throws ApiException {
-        com.squareup.okhttp.Call call = triggerTypingActivityValidateBeforeCall(appId, userId, typingActivityTriggerBody, null, null);
-        return apiClient.execute(call);
-    }
-
-    /**
-     *  (asynchronously)
-     * Notify Smooch when an app maker starts or stops typing a response.
-     * @param appId Identifies the app. (required)
-     * @param userId Identifies the user. Can be either the smoochId or the userId. (required)
-     * @param typingActivityTriggerBody Body for a triggerTypingActivity request. (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call triggerTypingActivityAsync(String appId, String userId, TypingActivityTrigger typingActivityTriggerBody, final ApiCallback<Void> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = triggerTypingActivityValidateBeforeCall(appId, userId, typingActivityTriggerBody, progressListener, progressRequestListener);
         apiClient.executeAsync(call, callback);
         return call;
     }

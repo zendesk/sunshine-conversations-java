@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>4.2.0</version>
+    <version>5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:4.2.0"
+compile "io.smooch:api:5.0"
 ```
 
 ## Getting Started
@@ -164,12 +164,12 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**updateAppUser**](docs/AppUserApi.md#updateAppUser) | **PUT** /v1.1/apps/{appId}/appusers/{userId} | 
 *AttachmentsApi* | [**removeAttachment**](docs/AttachmentsApi.md#removeAttachment) | **POST** /v1.1/apps/{appId}/attachments/remove | 
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v1.1/apps/{appId}/attachments | 
+*ConversationApi* | [**conversationActivity**](docs/ConversationApi.md#conversationActivity) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/activity | 
 *ConversationApi* | [**deleteMessage**](docs/ConversationApi.md#deleteMessage) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/messages/{messageId} | 
 *ConversationApi* | [**deleteMessages**](docs/ConversationApi.md#deleteMessages) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/read | 
-*ConversationApi* | [**triggerTypingActivity**](docs/ConversationApi.md#triggerTypingActivity) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/activity | 
 *IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /v1.1/apps/{appId}/integrations | 
 *IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /v1.1/apps/{appId}/integrations/{integrationId} | 
@@ -229,8 +229,10 @@ Class | Method | HTTP request | Description
  - [ClientInfo](docs/ClientInfo.md)
  - [Confirmation](docs/Confirmation.md)
  - [Conversation](docs/Conversation.md)
+ - [ConversationActivity](docs/ConversationActivity.md)
  - [Destination](docs/Destination.md)
  - [DisplaySettings](docs/DisplaySettings.md)
+ - [Enums](docs/Enums.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
  - [Integration](docs/Integration.md)
  - [IntegrationCreate](docs/IntegrationCreate.md)
@@ -268,7 +270,6 @@ Class | Method | HTTP request | Description
  - [TemplateCreate](docs/TemplateCreate.md)
  - [TemplateResponse](docs/TemplateResponse.md)
  - [TemplateUpdate](docs/TemplateUpdate.md)
- - [TypingActivityTrigger](docs/TypingActivityTrigger.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookCreate](docs/WebhookCreate.md)
  - [WebhookResponse](docs/WebhookResponse.md)

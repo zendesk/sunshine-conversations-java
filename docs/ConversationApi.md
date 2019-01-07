@@ -4,13 +4,70 @@ All URIs are relative to *https://api.smooch.io*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**conversationActivity**](ConversationApi.md#conversationActivity) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/activity | 
 [**deleteMessage**](ConversationApi.md#deleteMessage) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/messages/{messageId} | 
 [**deleteMessages**](ConversationApi.md#deleteMessages) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 [**getMessages**](ConversationApi.md#getMessages) | **GET** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 [**postMessage**](ConversationApi.md#postMessage) | **POST** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 [**resetUnreadCount**](ConversationApi.md#resetUnreadCount) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/read | 
-[**triggerTypingActivity**](ConversationApi.md#triggerTypingActivity) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/activity | 
 
+
+<a name="conversationActivity"></a>
+# **conversationActivity**
+> conversationActivity(appId, userId, conversationActivityBody)
+
+
+
+Notify Smooch when an app maker starts or stops typing a response.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.ConversationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+ConversationApi apiInstance = new ConversationApi();
+String appId = "appId_example"; // String | Identifies the app.
+String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
+ConversationActivity conversationActivityBody = new ConversationActivity(); // ConversationActivity | Body for a triggerConversationActivity request.
+try {
+    apiInstance.conversationActivity(appId, userId, conversationActivityBody);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ConversationApi#conversationActivity");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
+ **conversationActivityBody** | [**ConversationActivity**](ConversationActivity.md)| Body for a triggerConversationActivity request. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="deleteMessage"></a>
 # **deleteMessage**
@@ -283,63 +340,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-[jwt](../README.md#jwt)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="triggerTypingActivity"></a>
-# **triggerTypingActivity**
-> triggerTypingActivity(appId, userId, typingActivityTriggerBody)
-
-
-
-Notify Smooch when an app maker starts or stops typing a response.
-
-### Example
-```java
-// Import classes:
-import io.smooch.client.ApiClient;
-import io.smooch.client.ApiException;
-import io.smooch.client.Configuration;
-import io.smooch.client.auth.*;
-import io.smooch.client.api.ConversationApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: jwt
-ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
-jwt.setApiKey("YOUR JWT");
-jwt.setApiKeyPrefix("Bearer");
-
-ConversationApi apiInstance = new ConversationApi();
-String appId = "appId_example"; // String | Identifies the app.
-String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
-TypingActivityTrigger typingActivityTriggerBody = new TypingActivityTrigger(); // TypingActivityTrigger | Body for a triggerTypingActivity request.
-try {
-    apiInstance.triggerTypingActivity(appId, userId, typingActivityTriggerBody);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ConversationApi#triggerTypingActivity");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
- **typingActivityTriggerBody** | [**TypingActivityTrigger**](TypingActivityTrigger.md)| Body for a triggerTypingActivity request. |
 
 ### Return type
 

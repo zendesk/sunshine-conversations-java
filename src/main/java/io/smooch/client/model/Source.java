@@ -53,10 +53,10 @@ public class Source {
   }
 
    /**
-   * An identifier for the channel from which a message originated.
+   * An identifier for the channel from which a message originated. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(value = "An identifier for the channel from which a message originated.")
+  @ApiModelProperty(value = "An identifier for the channel from which a message originated. See Enums.md for available values.")
   public String getType() {
     return type;
   }

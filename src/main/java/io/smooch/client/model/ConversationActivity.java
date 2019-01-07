@@ -19,10 +19,10 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * TypingActivityTrigger
+ * ConversationActivity
  */
 
-public class TypingActivityTrigger {
+public class ConversationActivity {
   @SerializedName("role")
   private String role = null;
 
@@ -35,16 +35,16 @@ public class TypingActivityTrigger {
   @SerializedName("avatarUrl")
   private String avatarUrl = null;
 
-  public TypingActivityTrigger role(String role) {
+  public ConversationActivity role(String role) {
     this.role = role;
     return this;
   }
 
    /**
-   * The role of the actor. Must be *appMaker*.
+   * The role of the actor. Must be *appMaker*. See Enums.md for available values.
    * @return role
   **/
-  @ApiModelProperty(required = true, value = "The role of the actor. Must be *appMaker*.")
+  @ApiModelProperty(required = true, value = "The role of the actor. Must be *appMaker*. See Enums.md for available values.")
   public String getRole() {
     return role;
   }
@@ -53,16 +53,16 @@ public class TypingActivityTrigger {
     this.role = role;
   }
 
-  public TypingActivityTrigger type(String type) {
+  public ConversationActivity type(String type) {
     this.type = type;
     return this;
   }
 
    /**
-   * The type of activity to trigger. Must be either *typing:start* or *typing:stop*.
+   * The type of activity to trigger. Must be either *typing:start* or *typing:stop*. See Enums.md for available values.
    * @return type
   **/
-  @ApiModelProperty(required = true, value = "The type of activity to trigger. Must be either *typing:start* or *typing:stop*.")
+  @ApiModelProperty(required = true, value = "The type of activity to trigger. Must be either *typing:start* or *typing:stop*. See Enums.md for available values.")
   public String getType() {
     return type;
   }
@@ -71,7 +71,7 @@ public class TypingActivityTrigger {
     this.type = type;
   }
 
-  public TypingActivityTrigger name(String name) {
+  public ConversationActivity name(String name) {
     this.name = name;
     return this;
   }
@@ -89,7 +89,7 @@ public class TypingActivityTrigger {
     this.name = name;
   }
 
-  public TypingActivityTrigger avatarUrl(String avatarUrl) {
+  public ConversationActivity avatarUrl(String avatarUrl) {
     this.avatarUrl = avatarUrl;
     return this;
   }
@@ -116,11 +116,11 @@ public class TypingActivityTrigger {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TypingActivityTrigger typingActivityTrigger = (TypingActivityTrigger) o;
-    return Objects.equals(this.role, typingActivityTrigger.role) &&
-        Objects.equals(this.type, typingActivityTrigger.type) &&
-        Objects.equals(this.name, typingActivityTrigger.name) &&
-        Objects.equals(this.avatarUrl, typingActivityTrigger.avatarUrl);
+    ConversationActivity conversationActivity = (ConversationActivity) o;
+    return Objects.equals(this.role, conversationActivity.role) &&
+        Objects.equals(this.type, conversationActivity.type) &&
+        Objects.equals(this.name, conversationActivity.name) &&
+        Objects.equals(this.avatarUrl, conversationActivity.avatarUrl);
   }
 
   @Override
@@ -132,7 +132,7 @@ public class TypingActivityTrigger {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TypingActivityTrigger {\n");
+    sb.append("class ConversationActivity {\n");
     
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

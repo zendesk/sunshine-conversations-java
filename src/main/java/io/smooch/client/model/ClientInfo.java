@@ -69,7 +69,7 @@ public class ClientInfo {
   private String state = null;
 
   @SerializedName("timezone")
-  private Integer timezone = null;
+  private Double timezone = null;
 
   @SerializedName("wifi")
   private String wifi = null;
@@ -344,7 +344,7 @@ public class ClientInfo {
     this.state = state;
   }
 
-  public ClientInfo timezone(Integer timezone) {
+  public ClientInfo timezone(Double timezone) {
     this.timezone = timezone;
     return this;
   }
@@ -354,11 +354,11 @@ public class ClientInfo {
    * @return timezone
   **/
   @ApiModelProperty(value = "The client's timezone offset.")
-  public Integer getTimezone() {
+  public Double getTimezone() {
     return timezone;
   }
 
-  public void setTimezone(Integer timezone) {
+  public void setTimezone(Double timezone) {
     this.timezone = timezone;
   }
 

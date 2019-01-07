@@ -104,10 +104,10 @@ public class MessageItem {
   }
 
    /**
-   * The size of the image to be shown in the carousel/list item. Only top item of Facebook Messenger carousel supported. Choose from *compact* and *large*. 
+   * The size of the image to be shown in the carousel/list item. Only top item of Facebook Messenger carousel supported. See Enums.md for available values. 
    * @return size
   **/
-  @ApiModelProperty(value = "The size of the image to be shown in the carousel/list item. Only top item of Facebook Messenger carousel supported. Choose from *compact* and *large*. ")
+  @ApiModelProperty(value = "The size of the image to be shown in the carousel/list item. Only top item of Facebook Messenger carousel supported. See Enums.md for available values. ")
   public String getSize() {
     return size;
   }
