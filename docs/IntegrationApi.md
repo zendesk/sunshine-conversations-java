@@ -354,7 +354,7 @@ Name | Type | Description  | Notes
 
 <a name="listIntegrations"></a>
 # **listIntegrations**
-> ListIntegrationsResponse listIntegrations(appId, types)
+> ListIntegrationsResponse listIntegrations(appId, types, limit, offset)
 
 
 
@@ -379,8 +379,10 @@ jwt.setApiKeyPrefix("Bearer");
 IntegrationApi apiInstance = new IntegrationApi();
 String appId = "appId_example"; // String | Identifies the app.
 String types = "types_example"; // String | List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types=*twilio*,*line*. 
+Integer limit = 25; // Integer | The number of records to return.
+Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
 try {
-    ListIntegrationsResponse result = apiInstance.listIntegrations(appId, types);
+    ListIntegrationsResponse result = apiInstance.listIntegrations(appId, types, limit, offset);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling IntegrationApi#listIntegrations");
@@ -394,6 +396,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **types** | **String**| List of types to filter the query by. More than one value can be specified through comma separation e.g. ?types&#x3D;*twilio*,*line*.  | [optional]
+ **limit** | **Integer**| The number of records to return. | [optional] [default to 25]
+ **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
 
 ### Return type
 
