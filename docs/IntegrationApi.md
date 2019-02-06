@@ -439,7 +439,7 @@ jwt.setApiKeyPrefix("Bearer");
 IntegrationApi apiInstance = new IntegrationApi();
 String appId = "appId_example"; // String | Identifies the app.
 String integrationId = "integrationId_example"; // String | Identifies the integration.
-IntegrationUpdate integrationUpdateBody = new IntegrationUpdate(); // IntegrationUpdate | Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration) 
+IntegrationUpdate integrationUpdateBody = new IntegrationUpdate(); // IntegrationUpdate | Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#update-integration) 
 try {
     IntegrationResponse result = apiInstance.updateIntegration(appId, integrationId, integrationUpdateBody);
     System.out.println(result);
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **integrationId** | **String**| Identifies the integration. |
- **integrationUpdateBody** | [**IntegrationUpdate**](IntegrationUpdate.md)| Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#create-integration)  |
+ **integrationUpdateBody** | [**IntegrationUpdate**](IntegrationUpdate.md)| Body for a updateIntegration request. Additional arguments are necessary based on integration type. For detailed instructions, visit our [official docs](https://docs.smooch.io/rest/#update-integration)  |
 
 ### Return type
 
