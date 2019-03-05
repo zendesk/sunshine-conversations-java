@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * AuthCodeResponse
+ * GetIntegrationProfileResponse
  */
 
-public class AuthCodeResponse {
-  @SerializedName("authCode")
-  private String authCode = null;
+public class GetIntegrationProfileResponse {
+  @SerializedName("profile")
+  private Object profile = null;
 
-  public AuthCodeResponse authCode(String authCode) {
-    this.authCode = authCode;
+  public GetIntegrationProfileResponse profile(Object profile) {
+    this.profile = profile;
     return this;
   }
 
    /**
-   * The auth code
-   * @return authCode
+   * JSON object containing the integration profile. [More info](https://docs.smooch.io/rest/#get-integration-profile)
+   * @return profile
   **/
-  @ApiModelProperty(required = true, value = "The auth code")
-  public String getAuthCode() {
-    return authCode;
+  @ApiModelProperty(value = "JSON object containing the integration profile. [More info](https://docs.smooch.io/rest/#get-integration-profile)")
+  public Object getProfile() {
+    return profile;
   }
 
-  public void setAuthCode(String authCode) {
-    this.authCode = authCode;
+  public void setProfile(Object profile) {
+    this.profile = profile;
   }
 
 
@@ -53,22 +53,22 @@ public class AuthCodeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AuthCodeResponse authCodeResponse = (AuthCodeResponse) o;
-    return Objects.equals(this.authCode, authCodeResponse.authCode);
+    GetIntegrationProfileResponse getIntegrationProfileResponse = (GetIntegrationProfileResponse) o;
+    return Objects.equals(this.profile, getIntegrationProfileResponse.profile);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authCode);
+    return Objects.hash(profile);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AuthCodeResponse {\n");
+    sb.append("class GetIntegrationProfileResponse {\n");
     
-    sb.append("    authCode: ").append(toIndentedString(authCode)).append("\n");
+    sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("}");
     return sb.toString();
   }

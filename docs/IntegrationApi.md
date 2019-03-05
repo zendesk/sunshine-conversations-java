@@ -10,10 +10,12 @@ Method | HTTP request | Description
 [**deleteIntegrationMenu**](IntegrationApi.md#deleteIntegrationMenu) | **DELETE** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 [**getIntegration**](IntegrationApi.md#getIntegration) | **GET** /v1.1/apps/{appId}/integrations/{integrationId} | 
 [**getIntegrationMenu**](IntegrationApi.md#getIntegrationMenu) | **GET** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
+[**getIntegrationProfile**](IntegrationApi.md#getIntegrationProfile) | **GET** /v1.1/apps/{appId}/integrations/{integrationId}/profile | 
 [**listIntegrations**](IntegrationApi.md#listIntegrations) | **GET** /v1.1/apps/{appId}/integrations | 
 [**updateIntegration**](IntegrationApi.md#updateIntegration) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId} | 
 [**updateIntegrationMenu**](IntegrationApi.md#updateIntegrationMenu) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 [**updateIntegrationProfile**](IntegrationApi.md#updateIntegrationProfile) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/profile | 
+[**uploadIntegrationProfilePhoto**](IntegrationApi.md#uploadIntegrationProfilePhoto) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/profile/photo | 
 
 
 <a name="createIntegration"></a>
@@ -352,6 +354,62 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getIntegrationProfile"></a>
+# **getIntegrationProfile**
+> GetIntegrationProfileResponse getIntegrationProfile(appId, integrationId)
+
+
+
+Get the specified integration’s profile.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+IntegrationApi apiInstance = new IntegrationApi();
+String appId = "appId_example"; // String | Identifies the app.
+String integrationId = "integrationId_example"; // String | Identifies the integration.
+try {
+    GetIntegrationProfileResponse result = apiInstance.getIntegrationProfile(appId, integrationId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#getIntegrationProfile");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **integrationId** | **String**| Identifies the integration. |
+
+### Return type
+
+[**GetIntegrationProfileResponse**](GetIntegrationProfileResponse.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="listIntegrations"></a>
 # **listIntegrations**
 > ListIntegrationsResponse listIntegrations(appId, types, limit, offset)
@@ -583,5 +641,63 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="uploadIntegrationProfilePhoto"></a>
+# **uploadIntegrationProfilePhoto**
+> UploadIntegrationProfilePhotoResponse uploadIntegrationProfilePhoto(appId, integrationId, source)
+
+
+
+Upload a photo to be used for the the specified integration’s profile.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.IntegrationApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+IntegrationApi apiInstance = new IntegrationApi();
+String appId = "appId_example"; // String | Identifies the app.
+String integrationId = "integrationId_example"; // String | Identifies the integration.
+File source = new File("/path/to/file.txt"); // File | Photo to be uploaded
+try {
+    UploadIntegrationProfilePhotoResponse result = apiInstance.uploadIntegrationProfilePhoto(appId, integrationId, source);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling IntegrationApi#uploadIntegrationProfilePhoto");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+ **integrationId** | **String**| Identifies the integration. |
+ **source** | **File**| Photo to be uploaded |
+
+### Return type
+
+[**UploadIntegrationProfilePhotoResponse**](UploadIntegrationProfilePhotoResponse.md)
+
+### Authorization
+
+[jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 

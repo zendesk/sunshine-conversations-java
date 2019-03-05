@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.5.0</version>
+    <version>5.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.5.0"
+compile "io.smooch:api:5.6.0"
 ```
 
 ## Getting Started
@@ -176,10 +176,12 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**deleteIntegrationMenu**](docs/IntegrationApi.md#deleteIntegrationMenu) | **DELETE** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**getIntegration**](docs/IntegrationApi.md#getIntegration) | **GET** /v1.1/apps/{appId}/integrations/{integrationId} | 
 *IntegrationApi* | [**getIntegrationMenu**](docs/IntegrationApi.md#getIntegrationMenu) | **GET** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
+*IntegrationApi* | [**getIntegrationProfile**](docs/IntegrationApi.md#getIntegrationProfile) | **GET** /v1.1/apps/{appId}/integrations/{integrationId}/profile | 
 *IntegrationApi* | [**listIntegrations**](docs/IntegrationApi.md#listIntegrations) | **GET** /v1.1/apps/{appId}/integrations | 
 *IntegrationApi* | [**updateIntegration**](docs/IntegrationApi.md#updateIntegration) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId} | 
 *IntegrationApi* | [**updateIntegrationMenu**](docs/IntegrationApi.md#updateIntegrationMenu) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**updateIntegrationProfile**](docs/IntegrationApi.md#updateIntegrationProfile) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/profile | 
+*IntegrationApi* | [**uploadIntegrationProfilePhoto**](docs/IntegrationApi.md#uploadIntegrationProfilePhoto) | **PUT** /v1.1/apps/{appId}/integrations/{integrationId}/profile/photo | 
 *MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /v1.1/apps/{appId}/menu | 
 *MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /v1.1/apps/{appId}/menu | 
 *MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /v1.1/apps/{appId}/menu | 
@@ -233,6 +235,7 @@ Class | Method | HTTP request | Description
  - [Destination](docs/Destination.md)
  - [DisplaySettings](docs/DisplaySettings.md)
  - [Enums](docs/Enums.md)
+ - [GetIntegrationProfileResponse](docs/GetIntegrationProfileResponse.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
  - [Integration](docs/Integration.md)
  - [IntegrationCreate](docs/IntegrationCreate.md)
@@ -270,6 +273,7 @@ Class | Method | HTTP request | Description
  - [TemplateCreate](docs/TemplateCreate.md)
  - [TemplateResponse](docs/TemplateResponse.md)
  - [TemplateUpdate](docs/TemplateUpdate.md)
+ - [UploadIntegrationProfilePhotoResponse](docs/UploadIntegrationProfilePhotoResponse.md)
  - [Webhook](docs/Webhook.md)
  - [WebhookCreate](docs/WebhookCreate.md)
  - [WebhookResponse](docs/WebhookResponse.md)

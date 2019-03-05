@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * AuthCodeResponse
+ * UploadIntegrationProfilePhotoResponse
  */
 
-public class AuthCodeResponse {
-  @SerializedName("authCode")
-  private String authCode = null;
+public class UploadIntegrationProfilePhotoResponse {
+  @SerializedName("photoUrl")
+  private String photoUrl = null;
 
-  public AuthCodeResponse authCode(String authCode) {
-    this.authCode = authCode;
+  public UploadIntegrationProfilePhotoResponse photoUrl(String photoUrl) {
+    this.photoUrl = photoUrl;
     return this;
   }
 
    /**
-   * The auth code
-   * @return authCode
+   * The photo URL after uploading.
+   * @return photoUrl
   **/
-  @ApiModelProperty(required = true, value = "The auth code")
-  public String getAuthCode() {
-    return authCode;
+  @ApiModelProperty(required = true, value = "The photo URL after uploading.")
+  public String getPhotoUrl() {
+    return photoUrl;
   }
 
-  public void setAuthCode(String authCode) {
-    this.authCode = authCode;
+  public void setPhotoUrl(String photoUrl) {
+    this.photoUrl = photoUrl;
   }
 
 
@@ -53,22 +53,22 @@ public class AuthCodeResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AuthCodeResponse authCodeResponse = (AuthCodeResponse) o;
-    return Objects.equals(this.authCode, authCodeResponse.authCode);
+    UploadIntegrationProfilePhotoResponse uploadIntegrationProfilePhotoResponse = (UploadIntegrationProfilePhotoResponse) o;
+    return Objects.equals(this.photoUrl, uploadIntegrationProfilePhotoResponse.photoUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(authCode);
+    return Objects.hash(photoUrl);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AuthCodeResponse {\n");
+    sb.append("class UploadIntegrationProfilePhotoResponse {\n");
     
-    sb.append("    authCode: ").append(toIndentedString(authCode)).append("\n");
+    sb.append("    photoUrl: ").append(toIndentedString(photoUrl)).append("\n");
     sb.append("}");
     return sb.toString();
   }
