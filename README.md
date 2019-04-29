@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.7.0</version>
+    <version>5.8.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.7.0"
+compile "io.smooch:api:5.8.0"
 ```
 
 ## Getting Started
@@ -170,6 +170,12 @@ Class | Method | HTTP request | Description
 *ConversationApi* | [**getMessages**](docs/ConversationApi.md#getMessages) | **GET** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**postMessage**](docs/ConversationApi.md#postMessage) | **POST** /v1.1/apps/{appId}/appusers/{userId}/messages | 
 *ConversationApi* | [**resetUnreadCount**](docs/ConversationApi.md#resetUnreadCount) | **POST** /v1.1/apps/{appId}/appusers/{userId}/conversation/read | 
+*DeploymentApi* | [**activatePhoneNumber**](docs/DeploymentApi.md#activatePhoneNumber) | **POST** /v1.1/whatsapp/deployments/{deploymentId}/activate | 
+*DeploymentApi* | [**confirmCode**](docs/DeploymentApi.md#confirmCode) | **POST** /v1.1/whatsapp/deployments/{deploymentId}/code/confirm | 
+*DeploymentApi* | [**createDeployment**](docs/DeploymentApi.md#createDeployment) | **POST** /v1.1/whatsapp/deployments | 
+*DeploymentApi* | [**deleteDeployment**](docs/DeploymentApi.md#deleteDeployment) | **DELETE** /v1.1/whatsapp/deployments/{deploymentId} | 
+*DeploymentApi* | [**getDeployment**](docs/DeploymentApi.md#getDeployment) | **GET** /v1.1/whatsapp/deployments/{deploymentId} | 
+*DeploymentApi* | [**listDeployments**](docs/DeploymentApi.md#listDeployments) | **GET** /v1.1/whatsapp/deployments | 
 *IntegrationApi* | [**createIntegration**](docs/IntegrationApi.md#createIntegration) | **POST** /v1.1/apps/{appId}/integrations | 
 *IntegrationApi* | [**createIntegrationMenu**](docs/IntegrationApi.md#createIntegrationMenu) | **POST** /v1.1/apps/{appId}/integrations/{integrationId}/menu | 
 *IntegrationApi* | [**deleteIntegration**](docs/IntegrationApi.md#deleteIntegration) | **DELETE** /v1.1/apps/{appId}/integrations/{integrationId} | 
@@ -232,6 +238,11 @@ Class | Method | HTTP request | Description
  - [Confirmation](docs/Confirmation.md)
  - [Conversation](docs/Conversation.md)
  - [ConversationActivity](docs/ConversationActivity.md)
+ - [Deployment](docs/Deployment.md)
+ - [DeploymentActivatePhoneNumber](docs/DeploymentActivatePhoneNumber.md)
+ - [DeploymentConfirmCode](docs/DeploymentConfirmCode.md)
+ - [DeploymentCreate](docs/DeploymentCreate.md)
+ - [DeploymentResponse](docs/DeploymentResponse.md)
  - [Destination](docs/Destination.md)
  - [DisplaySettings](docs/DisplaySettings.md)
  - [Enums](docs/Enums.md)
@@ -246,6 +257,7 @@ Class | Method | HTTP request | Description
  - [LinkRequestResponse](docs/LinkRequestResponse.md)
  - [LinkRequestResponseLinkRequests](docs/LinkRequestResponseLinkRequests.md)
  - [ListAppsResponse](docs/ListAppsResponse.md)
+ - [ListDeploymentsResponse](docs/ListDeploymentsResponse.md)
  - [ListIntegrationsResponse](docs/ListIntegrationsResponse.md)
  - [ListSecretKeysResponse](docs/ListSecretKeysResponse.md)
  - [ListServiceAccountsResponse](docs/ListServiceAccountsResponse.md)

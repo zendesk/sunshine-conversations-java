@@ -17,6 +17,9 @@ Name | Type | Description | Notes
 **messageType** | [**MessageTypeEnum**](#MessageTypeEnum) |  |  [optional]
 **role** | [**RoleEnum**](#RoleEnum) |  |  [optional]
 **webhookTriggers** | [**WebhookTriggersEnum**](#WebhookTriggersEnum) |  |  [optional]
+**deploymentHosting** | [**DeploymentHostingEnum**](#DeploymentHostingEnum) |  |  [optional]
+**deploymentStatus** | [**DeploymentStatusEnum**](#DeploymentStatusEnum) |  |  [optional]
+**deploymentActivationMethod** | [**DeploymentActivationMethodEnum**](#DeploymentActivationMethodEnum) |  |  [optional]
 
 
 <a name="ActionSizeEnum"></a>
@@ -165,6 +168,35 @@ MESSAGE_DELIVERY_USER | &quot;message:delivery:user&quot;
 PAYMENT_SUCCESS | &quot;payment:success&quot;
 POSTBACK | &quot;postback&quot;
 TYPING_APPUSER | &quot;typing:appUser&quot;
+
+
+<a name="DeploymentHostingEnum"></a>
+## Enum: DeploymentHostingEnum
+Name | Value
+---- | -----
+SELF | &quot;self&quot;
+SMOOCH | &quot;smooch&quot;
+
+
+<a name="DeploymentStatusEnum"></a>
+## Enum: DeploymentStatusEnum
+Name | Value
+---- | -----
+STARTING | &quot;starting&quot;
+UNREGISTERED | &quot;unregistered&quot;
+REGISTERED | &quot;registered&quot;
+INTEGRATED | &quot;integrated&quot;
+PENDING | &quot;pending&quot;
+DELETING | &quot;deleting&quot;
+ERROR | &quot;error&quot;
+
+
+<a name="DeploymentActivationMethodEnum"></a>
+## Enum: DeploymentActivationMethodEnum
+Name | Value
+---- | -----
+VOICE | &quot;voice&quot;
+SMS | &quot;sms&quot;
 
 
 
