@@ -7,8 +7,12 @@ Name | Type | Description | Notes
 **actionSize** | [**ActionSizeEnum**](#ActionSizeEnum) |  |  [optional]
 **actionType** | [**ActionTypeEnum**](#ActionTypeEnum) |  |  [optional]
 **businessSystemType** | [**BusinessSystemTypeEnum**](#BusinessSystemTypeEnum) |  |  [optional]
+**clientStatus** | [**ClientStatusEnum**](#ClientStatusEnum) |  |  [optional]
 **confirmationType** | [**ConfirmationTypeEnum**](#ConfirmationTypeEnum) |  |  [optional]
 **conversationActivityType** | [**ConversationActivityTypeEnum**](#ConversationActivityTypeEnum) |  |  [optional]
+**deploymentActivationMethod** | [**DeploymentActivationMethodEnum**](#DeploymentActivationMethodEnum) |  |  [optional]
+**deploymentHosting** | [**DeploymentHostingEnum**](#DeploymentHostingEnum) |  |  [optional]
+**deploymentStatus** | [**DeploymentStatusEnum**](#DeploymentStatusEnum) |  |  [optional]
 **imageAspectRatio** | [**ImageAspectRatioEnum**](#ImageAspectRatioEnum) |  |  [optional]
 **integrationStatus** | [**IntegrationStatusEnum**](#IntegrationStatusEnum) |  |  [optional]
 **integrationType** | [**IntegrationTypeEnum**](#IntegrationTypeEnum) |  |  [optional]
@@ -17,9 +21,6 @@ Name | Type | Description | Notes
 **messageType** | [**MessageTypeEnum**](#MessageTypeEnum) |  |  [optional]
 **role** | [**RoleEnum**](#RoleEnum) |  |  [optional]
 **webhookTriggers** | [**WebhookTriggersEnum**](#WebhookTriggersEnum) |  |  [optional]
-**deploymentHosting** | [**DeploymentHostingEnum**](#DeploymentHostingEnum) |  |  [optional]
-**deploymentStatus** | [**DeploymentStatusEnum**](#DeploymentStatusEnum) |  |  [optional]
-**deploymentActivationMethod** | [**DeploymentActivationMethodEnum**](#DeploymentActivationMethodEnum) |  |  [optional]
 
 
 <a name="ActionSizeEnum"></a>
@@ -53,6 +54,16 @@ SLACK | &quot;slack&quot;
 ZENDESK | &quot;zendesk&quot;
 
 
+<a name="ClientStatusEnum"></a>
+## Enum: ClientStatusEnum
+Name | Value
+---- | -----
+ACTIVE | &quot;active&quot;
+BLOCKED | &quot;blocked&quot;
+INACTIVE | &quot;inactive&quot;
+PENDING | &quot;pending&quot;
+
+
 <a name="ConfirmationTypeEnum"></a>
 ## Enum: ConfirmationTypeEnum
 Name | Value
@@ -69,6 +80,35 @@ Name | Value
 CONVERSATION_READ | &quot;conversation:read&quot;
 TYPING_START | &quot;typing:start&quot;
 TYPING_STOP | &quot;typing:stop&quot;
+
+
+<a name="DeploymentActivationMethodEnum"></a>
+## Enum: DeploymentActivationMethodEnum
+Name | Value
+---- | -----
+SMS | &quot;sms&quot;
+VOICE | &quot;voice&quot;
+
+
+<a name="DeploymentHostingEnum"></a>
+## Enum: DeploymentHostingEnum
+Name | Value
+---- | -----
+SELF | &quot;self&quot;
+SMOOCH | &quot;smooch&quot;
+
+
+<a name="DeploymentStatusEnum"></a>
+## Enum: DeploymentStatusEnum
+Name | Value
+---- | -----
+DELETING | &quot;deleting&quot;
+ERROR | &quot;error&quot;
+INTEGRATED | &quot;integrated&quot;
+PENDING | &quot;pending&quot;
+REGISTERED | &quot;registered&quot;
+STARTING | &quot;starting&quot;
+UNREGISTERED | &quot;unregistered&quot;
 
 
 <a name="ImageAspectRatioEnum"></a>
@@ -168,35 +208,6 @@ MESSAGE_DELIVERY_USER | &quot;message:delivery:user&quot;
 PAYMENT_SUCCESS | &quot;payment:success&quot;
 POSTBACK | &quot;postback&quot;
 TYPING_APPUSER | &quot;typing:appUser&quot;
-
-
-<a name="DeploymentHostingEnum"></a>
-## Enum: DeploymentHostingEnum
-Name | Value
----- | -----
-SELF | &quot;self&quot;
-SMOOCH | &quot;smooch&quot;
-
-
-<a name="DeploymentStatusEnum"></a>
-## Enum: DeploymentStatusEnum
-Name | Value
----- | -----
-STARTING | &quot;starting&quot;
-UNREGISTERED | &quot;unregistered&quot;
-REGISTERED | &quot;registered&quot;
-INTEGRATED | &quot;integrated&quot;
-PENDING | &quot;pending&quot;
-DELETING | &quot;deleting&quot;
-ERROR | &quot;error&quot;
-
-
-<a name="DeploymentActivationMethodEnum"></a>
-## Enum: DeploymentActivationMethodEnum
-Name | Value
----- | -----
-VOICE | &quot;voice&quot;
-SMS | &quot;sms&quot;
 
 
 
