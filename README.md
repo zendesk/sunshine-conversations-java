@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.10.0</version>
+    <version>5.11.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.10.0"
+compile "io.smooch:api:5.11.0"
 ```
 
 ## Getting Started
@@ -158,6 +158,7 @@ Class | Method | HTTP request | Description
 *AppUserApi* | [**getAppUserEntityIds**](docs/AppUserApi.md#getAppUserEntityIds) | **GET** /v1.1/apps/{appId}/appusers/{userId}/channels | 
 *AppUserApi* | [**getLinkRequests**](docs/AppUserApi.md#getLinkRequests) | **GET** /v1.1/apps/{appId}/appusers/{userId}/linkrequest | 
 *AppUserApi* | [**linkAppUser**](docs/AppUserApi.md#linkAppUser) | **POST** /v1.1/apps/{appId}/appusers/{userId}/channels | 
+*AppUserApi* | [**mergeUsers**](docs/AppUserApi.md#mergeUsers) | **POST** /v1.1/apps/{appId}/appusers/merge | 
 *AppUserApi* | [**postImageMessage**](docs/AppUserApi.md#postImageMessage) | **POST** /v1.1/apps/{appId}/appusers/{userId}/images | 
 *AppUserApi* | [**preCreateAppUser**](docs/AppUserApi.md#preCreateAppUser) | **POST** /v1.1/apps/{appId}/appusers | 
 *AppUserApi* | [**unlinkAppUser**](docs/AppUserApi.md#unlinkAppUser) | **DELETE** /v1.1/apps/{appId}/appusers/{userId}/channels/{channel} | 
@@ -225,6 +226,7 @@ Class | Method | HTTP request | Description
  - [AppUserBusinessSystemsResponse](docs/AppUserBusinessSystemsResponse.md)
  - [AppUserChannelsResponse](docs/AppUserChannelsResponse.md)
  - [AppUserLink](docs/AppUserLink.md)
+ - [AppUserMerge](docs/AppUserMerge.md)
  - [AppUserPreCreate](docs/AppUserPreCreate.md)
  - [AppUserResponse](docs/AppUserResponse.md)
  - [AppUserUpdate](docs/AppUserUpdate.md)
@@ -266,6 +268,7 @@ Class | Method | HTTP request | Description
  - [Menu](docs/Menu.md)
  - [MenuItem](docs/MenuItem.md)
  - [MenuResponse](docs/MenuResponse.md)
+ - [MergedUser](docs/MergedUser.md)
  - [Message](docs/Message.md)
  - [MessageItem](docs/MessageItem.md)
  - [MessageOverride](docs/MessageOverride.md)

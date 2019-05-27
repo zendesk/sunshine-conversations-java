@@ -15,34 +15,33 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.AppUser;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * AppUserResponse
+ * MergedUser
  */
 
-public class AppUserResponse {
-  @SerializedName("appUser")
-  private AppUser appUser = null;
+public class MergedUser {
+  @SerializedName("_id")
+  private String id = null;
 
-  public AppUserResponse appUser(AppUser appUser) {
-    this.appUser = appUser;
+  public MergedUser id(String id) {
+    this.id = id;
     return this;
   }
 
    /**
-   * The app user.
-   * @return appUser
+   * The `_id` of the user to merge.
+   * @return id
   **/
-  @ApiModelProperty(required = true, value = "The app user.")
-  public AppUser getAppUser() {
-    return appUser;
+  @ApiModelProperty(value = "The `_id` of the user to merge.")
+  public String getId() {
+    return id;
   }
 
-  public void setAppUser(AppUser appUser) {
-    this.appUser = appUser;
+  public void setId(String id) {
+    this.id = id;
   }
 
 
@@ -54,22 +53,22 @@ public class AppUserResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AppUserResponse appUserResponse = (AppUserResponse) o;
-    return Objects.equals(this.appUser, appUserResponse.appUser);
+    MergedUser mergedUser = (MergedUser) o;
+    return Objects.equals(this.id, mergedUser.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(appUser);
+    return Objects.hash(id);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AppUserResponse {\n");
+    sb.append("class MergedUser {\n");
     
-    sb.append("    appUser: ").append(toIndentedString(appUser)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
