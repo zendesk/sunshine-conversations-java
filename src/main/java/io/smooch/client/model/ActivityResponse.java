@@ -15,34 +15,34 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.Deployment;
+import io.smooch.client.model.Conversation;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * DeploymentResponse
+ * ActivityResponse
  */
 
-public class DeploymentResponse {
-  @SerializedName("deployment")
-  private Deployment deployment = null;
+public class ActivityResponse {
+  @SerializedName("conversation")
+  private Conversation conversation = null;
 
-  public DeploymentResponse deployment(Deployment deployment) {
-    this.deployment = deployment;
+  public ActivityResponse conversation(Conversation conversation) {
+    this.conversation = conversation;
     return this;
   }
 
    /**
-   * The deployment.
-   * @return deployment
+   * The conversation.
+   * @return conversation
   **/
-  @ApiModelProperty(required = true, value = "The deployment.")
-  public Deployment getDeployment() {
-    return deployment;
+  @ApiModelProperty(required = true, value = "The conversation.")
+  public Conversation getConversation() {
+    return conversation;
   }
 
-  public void setDeployment(Deployment deployment) {
-    this.deployment = deployment;
+  public void setConversation(Conversation conversation) {
+    this.conversation = conversation;
   }
 
 
@@ -54,22 +54,22 @@ public class DeploymentResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DeploymentResponse deploymentResponse = (DeploymentResponse) o;
-    return Objects.equals(this.deployment, deploymentResponse.deployment);
+    ActivityResponse activityResponse = (ActivityResponse) o;
+    return Objects.equals(this.conversation, activityResponse.conversation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(deployment);
+    return Objects.hash(conversation);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DeploymentResponse {\n");
+    sb.append("class ActivityResponse {\n");
     
-    sb.append("    deployment: ").append(toIndentedString(deployment)).append("\n");
+    sb.append("    conversation: ").append(toIndentedString(conversation)).append("\n");
     sb.append("}");
     return sb.toString();
   }

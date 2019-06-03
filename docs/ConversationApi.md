@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="conversationActivity"></a>
 # **conversationActivity**
-> conversationActivity(appId, userId, conversationActivityBody)
+> ActivityResponse conversationActivity(appId, userId, conversationActivityBody)
 
 
 
@@ -41,7 +41,8 @@ String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
 ConversationActivity conversationActivityBody = new ConversationActivity(); // ConversationActivity | Body for a triggerConversationActivity request.
 try {
-    apiInstance.conversationActivity(appId, userId, conversationActivityBody);
+    ActivityResponse result = apiInstance.conversationActivity(appId, userId, conversationActivityBody);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ConversationApi#conversationActivity");
     e.printStackTrace();
@@ -58,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**ActivityResponse**](ActivityResponse.md)
 
 ### Authorization
 

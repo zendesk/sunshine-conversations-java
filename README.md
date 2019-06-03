@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.11.0</version>
+    <version>5.12.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.11.0"
+compile "io.smooch:api:5.12.0"
 ```
 
 ## Getting Started
@@ -217,6 +217,7 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Action](docs/Action.md)
+ - [ActivityResponse](docs/ActivityResponse.md)
  - [App](docs/App.md)
  - [AppCreate](docs/AppCreate.md)
  - [AppResponse](docs/AppResponse.md)
