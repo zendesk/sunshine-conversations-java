@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **menuItemType** | [**MenuItemTypeEnum**](#MenuItemTypeEnum) |  |  [optional]
 **messageItemSize** | [**MessageItemSizeEnum**](#MessageItemSizeEnum) |  |  [optional]
 **messageType** | [**MessageTypeEnum**](#MessageTypeEnum) |  |  [optional]
+**fieldType** | [**FieldTypeEnum**](#FieldTypeEnum) |  |  [optional]
+**quotedMessageType** | [**QuotedMessageTypeEnum**](#QuotedMessageTypeEnum) |  |  [optional]
 **role** | [**RoleEnum**](#RoleEnum) |  |  [optional]
 **webhookTriggers** | [**WebhookTriggersEnum**](#WebhookTriggersEnum) |  |  [optional]
 
@@ -177,6 +179,25 @@ IMAGE | &quot;image&quot;
 LIST | &quot;list&quot;
 LOCATION | &quot;location&quot;
 TEXT | &quot;text&quot;
+FORM | &quot;form&quot;
+FORMRESPONSE | &quot;formResponse&quot;
+
+
+<a name="FieldTypeEnum"></a>
+## Enum: FieldTypeEnum
+Name | Value
+---- | -----
+TEXT | &quot;text&quot;
+EMAIL | &quot;email&quot;
+SELECT | &quot;select&quot;
+
+
+<a name="QuotedMessageTypeEnum"></a>
+## Enum: QuotedMessageTypeEnum
+Name | Value
+---- | -----
+MESSAGE | &quot;message&quot;
+EXTERNALMESSAGEID | &quot;externalMessageId&quot;
 
 
 <a name="RoleEnum"></a>

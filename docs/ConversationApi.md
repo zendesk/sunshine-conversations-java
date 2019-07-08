@@ -31,6 +31,9 @@ import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -89,6 +92,9 @@ import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -146,6 +152,9 @@ import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -200,6 +209,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
@@ -261,6 +273,9 @@ import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -269,7 +284,7 @@ jwt.setApiKeyPrefix("Bearer");
 ConversationApi apiInstance = new ConversationApi();
 String appId = "appId_example"; // String | Identifies the app.
 String userId = "userId_example"; // String | Identifies the user. Can be either the smoochId or the userId.
-MessagePost messagePostBody = new MessagePost(); // MessagePost | Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message)) 
+MessagePost messagePostBody = new MessagePost(); // MessagePost | Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest/#text), [image](https://docs.smooch.io/rest/#image), [carousel](https://docs.smooch.io/rest/#carousel), [list](https://docs.smooch.io/rest/#list), [form](https://docs.smooch.io/rest/#form)) 
 try {
     MessageResponse result = apiInstance.postMessage(appId, userId, messagePostBody);
     System.out.println(result);
@@ -285,7 +300,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **userId** | **String**| Identifies the user. Can be either the smoochId or the userId. |
- **messagePostBody** | [**MessagePost**](MessagePost.md)| Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest#text-message), [image](https://docs.smooch.io/rest#image-message), [carousel](https://docs.smooch.io/rest#carousel-message), [list](https://docs.smooch.io/rest#list-message))  |
+ **messagePostBody** | [**MessagePost**](MessagePost.md)| Body for a postMessage request. Additional arguments are necessary based on message type ([text](https://docs.smooch.io/rest/#text), [image](https://docs.smooch.io/rest/#image), [carousel](https://docs.smooch.io/rest/#carousel), [list](https://docs.smooch.io/rest/#list), [form](https://docs.smooch.io/rest/#form))  |
 
 ### Return type
 
@@ -318,6 +333,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ConversationApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");

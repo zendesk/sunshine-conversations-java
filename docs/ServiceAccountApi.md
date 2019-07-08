@@ -35,6 +35,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -91,6 +94,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -144,6 +150,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
@@ -200,6 +209,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -252,6 +264,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
@@ -309,6 +324,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -365,6 +383,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -419,6 +440,9 @@ import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
+
+// OR
+
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
 jwt.setApiKey("YOUR JWT");
@@ -472,6 +496,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
@@ -528,6 +555,9 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.ServiceAccountApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// OR
 
 // Configure API key authorization: jwt
 ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");

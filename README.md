@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.12.0</version>
+    <version>5.13.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,24 +48,22 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.12.0"
+compile "io.smooch:api:5.13.0"
 ```
 
 ## Getting Started
 
+Familiarity with [Smooch API authentication](https://docs.smooch.io/guide/authentication-overview) is recommended.
+
+### Basic Authentication (recommended)
+
+With [basic authentication](https://docs.smooch.io/guide/basic-authentication), you can use your API key ID and secret to authenticate API requests. See below for a code sample.
+
 ### Authentication with JSON Web Tokens (JWTs)
 
-JSON Web Tokens (JWTs) are an industry standard authentication mechanism. A great introduction to the technology is available [here](https://jwt.io/introduction/), and a broad set of supported JWT libraries for a variety of languages and platforms are available.
+See the [JSON Web Tokens (JWTs)](https://docs.smooch.io/guide/jwt) guide for more information and guidelines on when to use this method. In general, you'll want to favor using basic authentication.
 
-A JWT is composed of a header, a payload, and a signature. The payload contains information called claims which describe the subject to whom the token was issued.
-
-Before you can make calls to the Smooch API, you'll need to create a JWT that proves you are authorized to use the API.
-
- #### **Step 1** Generate a KEY ID and SECRET on the settings tab in the [Smooch Dashboard](https://app.smooch.io/).
-
-![secret key and id](https://docs.smooch.io/images/secret_keys.png)
-
- #### **Step 2** Generate the JWT
+To generate a JWT, use your API key ID and secret.
 
 Using the [jjwt](https://github.com/jwtk/jjwt) package:
 
@@ -107,7 +105,10 @@ public class AppApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
-        // Configure API key authorization: jwt
+
+        // OR
+
+        // Configure JWT authorization (alternative method): jwt
         ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
         jwt.setApiKey("YOUR JWT");
         jwt.setApiKeyPrefix("Bearer");
@@ -249,6 +250,8 @@ Class | Method | HTTP request | Description
  - [Destination](docs/Destination.md)
  - [DisplaySettings](docs/DisplaySettings.md)
  - [Enums](docs/Enums.md)
+ - [Field](docs/Field.md)
+ - [FieldPost](docs/FieldPost.md)
  - [GetIntegrationProfileResponse](docs/GetIntegrationProfileResponse.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
  - [Integration](docs/Integration.md)
@@ -276,9 +279,12 @@ Class | Method | HTTP request | Description
  - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessageResponse](docs/MessageResponse.md)
+ - [Option](docs/Option.md)
+ - [QuotedMessage](docs/QuotedMessage.md)
  - [SecretKey](docs/SecretKey.md)
  - [SecretKeyCreate](docs/SecretKeyCreate.md)
  - [SecretKeyResponse](docs/SecretKeyResponse.md)
+ - [Select](docs/Select.md)
  - [ServiceAccount](docs/ServiceAccount.md)
  - [ServiceAccountCreate](docs/ServiceAccountCreate.md)
  - [ServiceAccountResponse](docs/ServiceAccountResponse.md)

@@ -21,6 +21,11 @@ Name | Type | Description | Notes
 **actions** | [**List&lt;Action&gt;**](Action.md) | The actions in the message. |  [optional]
 **payload** | **String** | The payload of a reply action, if applicable. |  [optional]
 **displaySettings** | [**DisplaySettings**](DisplaySettings.md) | Settings to adjust the carousel layout. See [Display Settings](https://docs.smooch.io/rest/#display-settings). |  [optional]
+**blockChatInput** | **Boolean** | Indicates if the Web SDK chat input should be blocked. Defaults to false. Only for form messages.  |  [optional]
+**fields** | [**List&lt;Field&gt;**](Field.md) | The fields in the form. Required for form and formResponse messages.  |  [optional]
+**submitted** | **Boolean** | Indicates if the form was submitted. Generated automatically. |  [optional]
+**quotedMessage** | [**QuotedMessage**](QuotedMessage.md) | The form message a formResponse message responds to. Required for formResponse messages.  |  [optional]
+**textFallback** | **String** | The text fallback displayed in channels that do not support form messages. Only for formResponse messages. Generated automatically.  |  [optional]
 
 
 
