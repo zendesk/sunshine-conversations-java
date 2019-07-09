@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.13.0</version>
+    <version>5.14.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.13.0"
+compile "io.smooch:api:5.14.0"
 ```
 
 ## Getting Started
@@ -105,6 +105,11 @@ public class AppApiExample {
     public static void main(String[] args) {
         ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization (recommended): basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
+
 
         // OR
 
@@ -305,6 +310,10 @@ Class | Method | HTTP request | Description
 ## Documentation for Authorization
 
 Authentication schemes defined for the API:
+### basicAuth
+
+- **Type**: HTTP basic authentication
+
 ### jwt
 
 - **Type**: API key

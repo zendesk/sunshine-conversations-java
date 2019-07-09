@@ -36,6 +36,12 @@ import io.smooch.client.api.AppApi;
 ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
+
+
 // OR
 
 // Configure API key authorization: jwt
@@ -66,7 +72,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -91,6 +97,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -125,7 +137,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -150,6 +162,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -181,7 +199,7 @@ null (empty response body)
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -206,6 +224,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -239,7 +263,7 @@ null (empty response body)
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -264,6 +288,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -296,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -321,6 +351,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -355,7 +391,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -380,6 +416,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -414,7 +456,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -439,6 +481,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -475,7 +523,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -500,6 +548,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -532,7 +586,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
@@ -557,6 +611,12 @@ import io.smooch.client.auth.*;
 import io.smooch.client.api.AppApi;
 
 ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
 
 
 // OR
@@ -591,7 +651,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[jwt](../README.md#jwt)
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
 
 ### HTTP request headers
 
