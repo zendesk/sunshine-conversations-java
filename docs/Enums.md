@@ -217,6 +217,7 @@ CLIENT_ADD | &quot;client:add&quot;
 CLIENT_REMOVE | &quot;client:remove&quot;
 CONVERSATION_READ | &quot;conversation:read&quot;
 CONVERSATION_REFERRAL | &quot;conversation:referral&quot;
+CONVERSATION_START | &quot;conversation:start&quot;
 LINK_FAILURE | &quot;link:failure&quot;
 LINK_MATCH | &quot;link:match&quot;
 LINK_SUCCESS | &quot;link:success&quot;

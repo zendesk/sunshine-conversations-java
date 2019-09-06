@@ -609,6 +609,9 @@ public class Enums {
     @SerializedName("conversation:referral")
     CONVERSATION_REFERRAL("conversation:referral"),
     
+    @SerializedName("conversation:start")
+    CONVERSATION_START("conversation:start"),
+    
     @SerializedName("link:failure")
     LINK_FAILURE("link:failure"),
     
