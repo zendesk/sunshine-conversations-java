@@ -15,41 +15,54 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.MenuItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Menu
+ * Coordinates
  */
 
-public class Menu {
-  @SerializedName("items")
-  private List<MenuItem> items = new ArrayList<MenuItem>();
+public class Coordinates {
+  @SerializedName("lat")
+  private Double lat = null;
 
-  public Menu items(List<MenuItem> items) {
-    this.items = items;
-    return this;
-  }
+  @SerializedName("long")
+  private Double _long = null;
 
-  public Menu addItemsItem(MenuItem itemsItem) {
-    this.items.add(itemsItem);
+  public Coordinates lat(Double lat) {
+    this.lat = lat;
     return this;
   }
 
    /**
-   * A list of menu items.
-   * @return items
+   * A floating point value representing the latitude of the location.
+   * @return lat
   **/
-  @ApiModelProperty(required = true, value = "A list of menu items.")
-  public List<MenuItem> getItems() {
-    return items;
+  @ApiModelProperty(required = true, value = "A floating point value representing the latitude of the location.")
+  public Double getLat() {
+    return lat;
   }
 
-  public void setItems(List<MenuItem> items) {
-    this.items = items;
+  public void setLat(Double lat) {
+    this.lat = lat;
+  }
+
+  public Coordinates _long(Double _long) {
+    this._long = _long;
+    return this;
+  }
+
+   /**
+   * A floating point value representing the longitude of the location.
+   * @return _long
+  **/
+  @ApiModelProperty(required = true, value = "A floating point value representing the longitude of the location.")
+  public Double getLong() {
+    return _long;
+  }
+
+  public void setLong(Double _long) {
+    this._long = _long;
   }
 
 
@@ -61,22 +74,24 @@ public class Menu {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Menu menu = (Menu) o;
-    return Objects.equals(this.items, menu.items);
+    Coordinates coordinates = (Coordinates) o;
+    return Objects.equals(this.lat, coordinates.lat) &&
+        Objects.equals(this._long, coordinates._long);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(lat, _long);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Menu {\n");
+    sb.append("class Coordinates {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    lat: ").append(toIndentedString(lat)).append("\n");
+    sb.append("    _long: ").append(toIndentedString(_long)).append("\n");
     sb.append("}");
     return sb.toString();
   }

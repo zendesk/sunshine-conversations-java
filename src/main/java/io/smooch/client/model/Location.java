@@ -15,41 +15,54 @@ package io.smooch.client.model;
 
 import java.util.Objects;
 import com.google.gson.annotations.SerializedName;
-import io.smooch.client.model.MenuItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Menu
+ * Location
  */
 
-public class Menu {
-  @SerializedName("items")
-  private List<MenuItem> items = new ArrayList<MenuItem>();
+public class Location {
+  @SerializedName("address")
+  private String address = null;
 
-  public Menu items(List<MenuItem> items) {
-    this.items = items;
-    return this;
-  }
+  @SerializedName("name")
+  private String name = null;
 
-  public Menu addItemsItem(MenuItem itemsItem) {
-    this.items.add(itemsItem);
+  public Location address(String address) {
+    this.address = address;
     return this;
   }
 
    /**
-   * A list of menu items.
-   * @return items
+   * The location's street address.
+   * @return address
   **/
-  @ApiModelProperty(required = true, value = "A list of menu items.")
-  public List<MenuItem> getItems() {
-    return items;
+  @ApiModelProperty(value = "The location's street address.")
+  public String getAddress() {
+    return address;
   }
 
-  public void setItems(List<MenuItem> items) {
-    this.items = items;
+  public void setAddress(String address) {
+    this.address = address;
+  }
+
+  public Location name(String name) {
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * A name for the location.
+   * @return name
+  **/
+  @ApiModelProperty(value = "A name for the location.")
+  public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
   }
 
 
@@ -61,22 +74,24 @@ public class Menu {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Menu menu = (Menu) o;
-    return Objects.equals(this.items, menu.items);
+    Location location = (Location) o;
+    return Objects.equals(this.address, location.address) &&
+        Objects.equals(this.name, location.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(items);
+    return Objects.hash(address, name);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Menu {\n");
+    sb.append("class Location {\n");
     
-    sb.append("    items: ").append(toIndentedString(items)).append("\n");
+    sb.append("    address: ").append(toIndentedString(address)).append("\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("}");
     return sb.toString();
   }
