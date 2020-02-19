@@ -19,29 +19,29 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * GetIntegrationProfileResponse
+ * MessageOverrideMessenger
  */
 
-public class GetIntegrationProfileResponse {
-  @SerializedName("profile")
-  private Object profile = null;
+public class MessageOverrideMessenger {
+  @SerializedName("payload")
+  private Object payload = null;
 
-  public GetIntegrationProfileResponse profile(Object profile) {
-    this.profile = profile;
+  public MessageOverrideMessenger payload(Object payload) {
+    this.payload = payload;
     return this;
   }
 
    /**
-   * JSON object containing the integration profile. [More info](https://docs.smooch.io/rest/#get-integration-profile)
-   * @return profile
+   * The exact payload to send to Facebook Messenger.
+   * @return payload
   **/
-  @ApiModelProperty(value = "JSON object containing the integration profile. [More info](https://docs.smooch.io/rest/#get-integration-profile)")
-  public Object getProfile() {
-    return profile;
+  @ApiModelProperty(value = "The exact payload to send to Facebook Messenger.")
+  public Object getPayload() {
+    return payload;
   }
 
-  public void setProfile(Object profile) {
-    this.profile = profile;
+  public void setPayload(Object payload) {
+    this.payload = payload;
   }
 
 
@@ -53,22 +53,22 @@ public class GetIntegrationProfileResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    GetIntegrationProfileResponse getIntegrationProfileResponse = (GetIntegrationProfileResponse) o;
-    return Objects.equals(this.profile, getIntegrationProfileResponse.profile);
+    MessageOverrideMessenger messageOverrideMessenger = (MessageOverrideMessenger) o;
+    return Objects.equals(this.payload, messageOverrideMessenger.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(profile);
+    return Objects.hash(payload);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class GetIntegrationProfileResponse {\n");
+    sb.append("class MessageOverrideMessenger {\n");
     
-    sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
+    sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("}");
     return sb.toString();
   }
