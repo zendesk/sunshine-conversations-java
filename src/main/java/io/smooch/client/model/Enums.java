@@ -639,6 +639,15 @@ public class Enums {
     @SerializedName("message:delivery:user")
     MESSAGE_DELIVERY_USER("message:delivery:user"),
     
+    @SerializedName("notification:delivery:channel")
+    NOTIFICATION_DELIVERY_CHANNEL("notification:delivery:channel"),
+    
+    @SerializedName("notification:delivery:failure")
+    NOTIFICATION_DELIVERY_FAILURE("notification:delivery:failure"),
+    
+    @SerializedName("notification:delivery:user")
+    NOTIFICATION_DELIVERY_USER("notification:delivery:user"),
+    
     @SerializedName("payment:success")
     PAYMENT_SUCCESS("payment:success"),
     

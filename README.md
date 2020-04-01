@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.25.0</version>
+    <version>5.26.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.25.0"
+compile "io.smooch:api:5.26.0"
 ```
 
 ## Getting Started
@@ -198,6 +198,7 @@ Class | Method | HTTP request | Description
 *MenuApi* | [**deleteMenu**](docs/MenuApi.md#deleteMenu) | **DELETE** /v1.1/apps/{appId}/menu | 
 *MenuApi* | [**getMenu**](docs/MenuApi.md#getMenu) | **GET** /v1.1/apps/{appId}/menu | 
 *MenuApi* | [**updateMenu**](docs/MenuApi.md#updateMenu) | **PUT** /v1.1/apps/{appId}/menu | 
+*NotificationApi* | [**postNotification**](docs/NotificationApi.md#postNotification) | **POST** /v1/apps/{appId}/notifications | 
 *ServiceAccountApi* | [**createSecretKey**](docs/ServiceAccountApi.md#createSecretKey) | **POST** /v1.1/serviceaccounts/{serviceAccountId}/keys | 
 *ServiceAccountApi* | [**createServiceAccount**](docs/ServiceAccountApi.md#createServiceAccount) | **POST** /v1.1/serviceaccounts | 
 *ServiceAccountApi* | [**deleteSecretKey**](docs/ServiceAccountApi.md#deleteSecretKey) | **DELETE** /v1.1/serviceaccounts/{serviceAccountId}/keys/{keyId} | 
@@ -240,6 +241,7 @@ Class | Method | HTTP request | Description
  - [AttachmentRemove](docs/AttachmentRemove.md)
  - [AttachmentResponse](docs/AttachmentResponse.md)
  - [AuthCodeResponse](docs/AuthCodeResponse.md)
+ - [Author](docs/Author.md)
  - [BusinessSystemItem](docs/BusinessSystemItem.md)
  - [ChannelEntityItem](docs/ChannelEntityItem.md)
  - [Client](docs/Client.md)
@@ -288,6 +290,10 @@ Class | Method | HTTP request | Description
  - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessageResponse](docs/MessageResponse.md)
+ - [NotificationPost](docs/NotificationPost.md)
+ - [NotificationPostDestination](docs/NotificationPostDestination.md)
+ - [NotificationResponse](docs/NotificationResponse.md)
+ - [NotificationResponseNotification](docs/NotificationResponseNotification.md)
  - [Option](docs/Option.md)
  - [QuotedMessage](docs/QuotedMessage.md)
  - [SecretKey](docs/SecretKey.md)
