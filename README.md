@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>5.26.0</version>
+    <version>5.27.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -48,7 +48,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:5.26.0"
+compile "io.smooch:api:5.27.0"
 ```
 
 ## Getting Started
@@ -152,6 +152,7 @@ Class | Method | HTTP request | Description
 *AppApi* | [**deleteSecretKey**](docs/AppApi.md#deleteSecretKey) | **DELETE** /v1.1/apps/{appId}/keys/{keyId} | 
 *AppApi* | [**getApp**](docs/AppApi.md#getApp) | **GET** /v1.1/apps/{appId} | 
 *AppApi* | [**getAppJwt**](docs/AppApi.md#getAppJwt) | **GET** /v1.1/apps/{appId}/keys/{keyId}/jwt | 
+*AppApi* | [**getSdkIds**](docs/AppApi.md#getSdkIds) | **GET** /v1.1/apps/{appId}/sdks | 
 *AppApi* | [**getSecretKey**](docs/AppApi.md#getSecretKey) | **GET** /v1.1/apps/{appId}/keys/{keyId} | 
 *AppApi* | [**listApps**](docs/AppApi.md#listApps) | **GET** /v1.1/apps | 
 *AppApi* | [**listSecretKeys**](docs/AppApi.md#listSecretKeys) | **GET** /v1.1/apps/{appId}/keys | 
@@ -262,6 +263,7 @@ Class | Method | HTTP request | Description
  - [FieldPost](docs/FieldPost.md)
  - [GetIntegrationProfileResponse](docs/GetIntegrationProfileResponse.md)
  - [GetMessagesResponse](docs/GetMessagesResponse.md)
+ - [GetSdkIdsResponse](docs/GetSdkIdsResponse.md)
  - [Integration](docs/Integration.md)
  - [IntegrationCreate](docs/IntegrationCreate.md)
  - [IntegrationProfileUpdate](docs/IntegrationProfileUpdate.md)

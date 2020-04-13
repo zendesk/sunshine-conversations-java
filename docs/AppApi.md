@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteSecretKey**](AppApi.md#deleteSecretKey) | **DELETE** /v1.1/apps/{appId}/keys/{keyId} | 
 [**getApp**](AppApi.md#getApp) | **GET** /v1.1/apps/{appId} | 
 [**getAppJwt**](AppApi.md#getAppJwt) | **GET** /v1.1/apps/{appId}/keys/{keyId}/jwt | 
+[**getSdkIds**](AppApi.md#getSdkIds) | **GET** /v1.1/apps/{appId}/sdks | 
 [**getSecretKey**](AppApi.md#getSecretKey) | **GET** /v1.1/apps/{appId}/keys/{keyId} | 
 [**listApps**](AppApi.md#listApps) | **GET** /v1.1/apps | 
 [**listSecretKeys**](AppApi.md#listSecretKeys) | **GET** /v1.1/apps/{appId}/keys | 
@@ -388,6 +389,69 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**JwtResponse**](JwtResponse.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [jwt](../README.md#jwt)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="getSdkIds"></a>
+# **getSdkIds**
+> GetSdkIdsResponse getSdkIds(appId)
+
+
+
+Retrieve the IDs of the three SDK integrations (&#x60;android&#x60;, &#x60;ios&#x60;, and &#x60;web&#x60;) for the specified app, to be used when initializing the SDKs.
+
+### Example
+```java
+// Import classes:
+import io.smooch.client.ApiClient;
+import io.smooch.client.ApiException;
+import io.smooch.client.Configuration;
+import io.smooch.client.auth.*;
+import io.smooch.client.api.AppApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+
+// Configure HTTP basic authorization (recommended): basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("API_KEY_ID");
+basicAuth.setPassword("API_KEY_SECRET");
+
+
+// OR
+
+// Configure API key authorization: jwt
+ApiKeyAuth jwt = (ApiKeyAuth) defaultClient.getAuthentication("jwt");
+jwt.setApiKey("YOUR JWT");
+jwt.setApiKeyPrefix("Bearer");
+
+AppApi apiInstance = new AppApi();
+String appId = "appId_example"; // String | Identifies the app.
+try {
+    GetSdkIdsResponse result = apiInstance.getSdkIds(appId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppApi#getSdkIds");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **appId** | **String**| Identifies the app. |
+
+### Return type
+
+[**GetSdkIdsResponse**](GetSdkIdsResponse.md)
 
 ### Authorization
 
