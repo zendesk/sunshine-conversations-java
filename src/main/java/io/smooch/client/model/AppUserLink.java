@@ -41,6 +41,9 @@ public class AppUserLink {
 
   @SerializedName("subject")
   private String subject = null;
+  
+  @SerializedName("integrationId")
+  private String integrationId = null;
 
   @SerializedName("confirmation")
   private Confirmation confirmation = null;
@@ -153,6 +156,24 @@ public class AppUserLink {
     this.subject = subject;
   }
 
+  public AppUserLink integrationId(String integrationId) {
+    this.integrationId = integrationId;
+    return this;
+  }
+  
+   /**
+   * Integration id for apps with more than one integrations. (Optional). 
+   * @return integrationId
+  **/
+  @ApiModelProperty(value = "Integration id for apps with more than one integrations. (Optional). ")
+  public String getIntegrationId() {
+    return integrationId;
+  }
+
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
+  }
+
   public AppUserLink confirmation(Confirmation confirmation) {
     this.confirmation = confirmation;
     return this;
@@ -187,12 +208,13 @@ public class AppUserLink {
         Objects.equals(this.givenName, appUserLink.givenName) &&
         Objects.equals(this.surname, appUserLink.surname) &&
         Objects.equals(this.subject, appUserLink.subject) &&
+        Objects.equals(this.integrationId, appUserLink.integrationId) &&
         Objects.equals(this.confirmation, appUserLink.confirmation);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, phoneNumber, address, givenName, surname, subject, confirmation);
+    return Objects.hash(type, phoneNumber, address, givenName, surname, subject, integrationId, confirmation);
   }
 
 
@@ -207,6 +229,7 @@ public class AppUserLink {
     sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
     sb.append("    surname: ").append(toIndentedString(surname)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
     sb.append("    confirmation: ").append(toIndentedString(confirmation)).append("\n");
     sb.append("}");
     return sb.toString();
