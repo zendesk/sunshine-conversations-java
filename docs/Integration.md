@@ -1,74 +1,85 @@
 
+
 # Integration
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The integration ID, generated automatically. | 
-**type** | **String** | The integration type. See [**IntegrationTypeEnum**](Enums.md#IntegrationTypeEnum) for available values. | 
-**displayName** | **String** | The integration display name. Used to map a human-friendly name to an integration.  |  [optional]
-**pageAccessToken** | **String** | Facebook Page Access Token. Required for *messenger* integrations.  |  [optional]
-**appId** | **String** | Facebook App ID OR WeChat App ID. Required for *messenger* and *wechat* integrations.  |  [optional]
-**appSecret** | **String** | Facebook Page App Secret OR WeChat App Secret. Required for *messenger* and *wechat* integrations.  |  [optional]
-**accessTokenUrl** | **String** | Optional endpoint to generate access tokens for WeChat. Used to coordinate API access with third party systems.  |  [optional]
-**webhookSecret** | **String** | Secret to verify webhooks. Returned on successful *wechat* and *messagebird* integrations.  |  [optional]
-**pageId** | **String** | Facebook Page App ID. Returned on successful *messenger* integrations.  |  [optional]
-**accountSid** | **String** | Twilio Account SID. Required for *twilio* integrations.  |  [optional]
-**authToken** | **String** | Twilio Auth Token. Required for *twilio* integrations.  |  [optional]
-**phoneNumberSid** | **String** | SID for specific phone number. Required for *twilio* integrations.  |  [optional]
-**phoneNumber** | **String** | Smooch will receive all messages sent to this phone number. Returned on successful *twilio* integrations.  |  [optional]
-**name** | **String** | Name on the account. Returned on successful *twilio* integrations.  |  [optional]
-**token** | **String** | Telegram Bot Token OR Viber Public Account token. Required for *twilio* and *viber* integrations.  |  [optional]
-**uri** | **String** | The viber URI to find the account. Returned on successful *viber* integrations.  |  [optional]
-**channelId** | **String** | LINE Channel ID. Required for *line* integrations.  |  [optional]
-**channelSecret** | **String** | LINE Channel Secret. Required for *line* integrations.  |  [optional]
-**channelAccessToken** | **String** | LINE Channel Access Token. Required for *line* integrations.  |  [optional]
-**serviceCode** | **String** | LINE Service Code.  |  [optional]
-**switcherSecret** | **String** | LINE Switcher Secret.  |  [optional]
-**qrCodeUrl** | **String** | URL provided by LINE in the [Developer Console](https://developers.line.biz/console/).  |  [optional]
-**lineId** | **String** | LINE Basic ID. Generated automatically when a &#x60;qrCodeUrl&#x60; is updated.  |  [optional]
-**botName** | **String** | The bot&#39;s name. Returned on successful *line* integrations.  |  [optional]
-**encodingAesKey** | **String** | AES Encoding Key. (Optional) Used for *wechat* integrations.  |  [optional]
-**fromAddress** | **String** | Email address to use as the &#x60;From&#x60; and &#x60;Reply-To&#x60; address if it must be different from &#x60;incomingAddress&#x60;. Only use this option if the address that you supply is configured to forward emails to the &#x60;incomingAddress&#x60;, otherwise user replies will be lost. You must also make sure that the domain is properly configured as a mail provider so as to not be flagged as spam by the user&#39;s email client.  (Optional) Used for *mailgun* integrations.  |  [optional]
-**certificate** | **String** | The binary of your APN certificate base64 encoded. Required for *apn* integrations.  |  [optional]
-**deploymentId** | **String** | Your WhatsApp deployment ID. Required for *WhatsApp* integrations.  |  [optional]
-**baseUrl** | **String** | Your WhatsApp API client&#39;s URL. Required for *WhatsApp* integrations. (this usage is deprecated)  |  [optional]
-**hsmFallbackLanguage** | **String** | Specification of a fallback language. (Optional) Used for *WhatsApp* integrations.  |  [optional]
-**password** | **String** | The password for your APN certificate or WhatsApp API client. Required for *WhatsApp* integrations. (this usage is deprecated) (Optional) Used for *apn* integrations.  |  [optional]
-**autoUpdateBadge** | **Boolean** | Use the unread count of the conversation as the application badge. (Optional) Used for *apn* integrations.  |  [optional]
-**production** | **Boolean** | Flag specifying the APN environment to connect to (&#x60;production&#x60; if true, &#x60;sandbox&#x60; otherwise). Defaults to value inferred from certificate if not specified. (Optional) Used for *apn* integrations.  |  [optional]
-**serverKey** | **String** | Your server key from the fcm console. Required for *fcm* integrations.  |  [optional]
-**senderId** | **String** | Your sender id from the fcm console. Required for *fcm* integrations.  |  [optional]
-**tier** | **String** | Your Twitter app’s tier. Accepted values are enterprise or premium.  |  [optional]
-**envName** | **String** | The Twitter environment name, e.g.: env-beta. Required for *twitter* integrations with *premium* tier.  |  [optional]
-**consumerKey** | **String** | The consumer key for your Twitter app. Required for *twitter* integrations.  |  [optional]
-**consumerSecret** | **String** | The consumer secret for your Twitter app. Required for *twitter* integrations.  |  [optional]
-**accessTokenKey** | **String** | The access token key obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]
-**accessTokenSecret** | **String** | The access token secret obtained from your user via oauth. Required for *twitter* integrations.  |  [optional]
-**userId** | **String** | The twitter userId. Returned on successful *twitter* integrations.  |  [optional]
-**username** | **String** | The username for the account. Returned on successful *twitter* and *telegram* integrations. Required for *WhatsApp* integrations. (this usage is deprecated)  |  [optional]
-**apiKey** | **String** | The public API key of your Mailgun account. Required for *mailgun* integrations.  |  [optional]
-**domain** | **String** | The domain used to relay email. Required for *mailgun* integrations.  |  [optional]
-**incomingAddress** | **String** | Smooch will receive all emails sent to this address. Required for *mailgun* integrations.  |  [optional]
-**accessKey** | **String** | The public API key of your MessageBird account. Required for *messagebird* integrations.  |  [optional]
-**originator** | **String** | Smooch will receive all messages sent to this phone number. Required for *messagebird* integrations.  |  [optional]
-**signingKey** | **String** | The signing key of your MessageBird account. Used to validate the webhooks&#39; origin. (Optional) Used for *messagebird* integrations.  |  [optional]
-**brandColor** | **String** | This color will be used in the messenger header and the button or tab in idle state. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**fixedIntroPane** | **Boolean** | When &#x60;true&#x60;, the introduction pane will be pinned at the top of the conversation instead of scrolling with it. The default value is &#x60;false&#x60;. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**conversationColor** | **String** | This color will be used for customer messages, quick replies and actions in the footer. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**actionColor** | **String** | This color will be used for call-to-actions inside your messages. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**displayStyle** | **String** | Choose how the messenger will appear on your website. Must be either button or tab. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**buttonIconUrl** | **String** | With the button style Web Messenger, you have the option of selecting your own button icon. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**buttonWidth** | **String** | With the button style Web Messenger, you have the option of specifying its width. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**buttonHeight** | **String** | With the button style Web Messenger, you have the option of specifying its height. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**integrationOrder** | **List&lt;String&gt;** | Array of integration IDs, order will be reflected in the Web Messenger. When set, only integrations from this list will be displayed in the Web Messenger. If unset, all integrations will be displayed (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**businessName** | **String** | A custom business name for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**businessIconUrl** | **String** | A custom business icon url for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**backgroundImageUrl** | **String** | A custom background url for the Web Messenger. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**originWhitelist** | **List&lt;String&gt;** | A list of origins to whitelist. When set, only the origins from this list will be able to initialize the Web Messenger. If unset, all origins are whitelisted. The elements in the list should follow the serialized-origin format from RFC 6454 &#x60;scheme \&quot;://\&quot; host [ \&quot;:\&quot; port ]&#x60;, where scheme is &#x60;http&#x60; or &#x60;https&#x60;. (Optional) Used for *Web Messenger* integrations.  |  [optional]
-**hideUnsubscribeLink** | **Boolean** | When &#x60;true&#x60;, unsubscribe links will not be included in outbound emails. If this setting is enabled, it is expected that the business is providing the user a way to unsubscribe by some other means. (Optional) Used for *mailgun* integrations.  |  [optional]
-**status** | **String** | The integration status. See [**IntegrationStatusEnum**](Enums.md#IntegrationStatusEnum) for available values. [More info](https://docs.smooch.io/#integration-status). |  [optional]
-**error** | **String** | The error causing the integration to fail. Will be present when &#x60;status&#x60; is &#39;error&#39;. |  [optional]
+**id** | **String** | The unique ID of the integration. |  [optional] [readonly]
+**type** | **String** | The type of integration. | 
+**status** | [**Status**](Status.md) |  |  [optional]
+**error** | **String** | If the integration status is error, contains a description of the problem. |  [optional] [readonly]
+**displayName** | **String** | A human-friendly name used to identify the integration. |  [optional]
+**serverKey** | **String** | Your server key from the fcm console. |  [optional]
+**senderId** | **String** | Your sender id from the fcm console. |  [optional]
+**canUserCreateConversation** | **Boolean** | Allows users to create more than one conversation on the web messenger integration. |  [optional]
+**webhook** | [**Webhook**](Webhook.md) | The webhook associated with the integration. | 
+**certificate** | **String** | The binary of your APN certificate base64 encoded. |  [optional]
+**password** | **String** | The password for your APN certificate. |  [optional]
+**production** | **Boolean** | The APN environment to connect to (Production, if true, or Sandbox). Defaults to value inferred from certificate if not specified. |  [optional]
+**autoUpdateBadge** | **Boolean** | Use the unread count of the conversation as the application badge. |  [optional]
+**channelId** | **String** | LINE Channel ID. | 
+**channelSecret** | **String** | LINE Channel Secret. | 
+**channelAccessToken** | **String** | LINE Channel Access Token. |  [optional]
+**serviceCode** | **String** | LINE Service Code. |  [optional]
+**switcherSecret** | **String** | LINE Switcher Secret. |  [optional]
+**qrCodeUrl** | **String** | URL provided by LINE in the [Developer Console](https://developers.line.biz/console/). |  [optional]
+**lineId** | **String** | LINE Basic ID. Is automatically set when qrCodeUrl is updated. |  [optional] [readonly]
+**apiKey** | **String** | The public API key of your Mailgun account. | 
+**domain** | **String** | The domain used to relay email. This domain must be configured and verified in your Mailgun account. | 
+**incomingAddress** | **String** | Sunshine Conversations will receive all emails sent to this address. It will also be used as the Reply-To address. | 
+**hideUnsubscribeLink** | **Boolean** | A boolean value indicating whether the unsubscribe link should be omitted from outgoing emails. When enabled, it is expected that the business is providing the user a way to unsubscribe by some other means. By default, the unsubscribe link will be included in all outgoing emails. |  [optional]
+**fromAddress** | **String** | Email address to use as the From and Reply-To address if it must be different from incomingAddress. Only use this option if the address that you supply is configured to forward emails to the incomingAddress, otherwise user replies will be lost. You must also make sure that the domain is properly configured as a mail provider so as to not be flagged as spam by the user’s email client. May be unset with null. |  [optional]
+**accessKey** | **String** | The public API key of your MessageBird account. | 
+**signingKey** | **String** | The signing key of your MessageBird account. Used to validate the webhooks&#39; origin. | 
+**originator** | **String** | Sunshine Conversations will receive all messages sent to this phone number. | 
+**webhookSecret** | **String** | The secret that is used to configure webhooks in MessageBird. |  [optional] [readonly]
+**pageAccessToken** | **String** | A Facebook Page Access Token. | 
+**appId** | **String** | WeChat App ID. | 
+**appSecret** | **Boolean** | WeChat App Secret. | 
+**token** | **String** | Viber Public Account token. | 
+**username** | **String** | Username of the botId |  [optional] [readonly]
+**botId** | **String** | A human-friendly name used to identify the integration. |  [optional] [readonly]
+**accountSid** | **String** | Twilio Account SID. | 
+**authToken** | **String** | Twilio Auth Token. | 
+**phoneNumberSid** | **String** | SID for specific phone number. | 
+**tier** | [**TierEnum**](#TierEnum) | Your Twitter app’s tier, sandbox, premium or enterprise. | 
+**envName** | **String** | The Twitter dev environments label (required for sandbox and premium tiers). |  [optional]
+**consumerKey** | **String** | The consumer key for your Twitter app. | 
+**consumerSecret** | **String** | The consumer key secret for your Twitter app. | 
+**accessTokenKey** | **String** | The access token key obtained from your user via oauth. |  [optional]
+**accessTokenSecret** | **String** | The access token secret obtained from your user via oauth. | 
+**uri** | **String** | Unique URI of the Viber account. |  [optional] [readonly]
+**accountId** | **String** | The business ID associated with the WhatsApp account. In combination with accountManagementAccessToken, it’s used for Message Template Reconstruction. |  [optional]
+**brandColor** | **String** | This color will be used in the messenger header and the button or tab in idle state. Must be a 3 or 6-character hexadecimal color. |  [optional]
+**fixedIntroPane** | **Boolean** | When true, the introduction pane will be pinned at the top of the conversation instead of scrolling with it. |  [optional]
+**conversationColor** | **String** | This color will be used for customer messages, quick replies and actions in the footer. Must be a 3 or 6-character hexadecimal color. |  [optional]
+**actionColor** | **String** | This color will be used for call-to-actions inside your messages. Must be a 3 or 6-character hexadecimal color. |  [optional]
+**displayStyle** | **String** | Choose how the messenger will appear on your website. Must be either button or tab. |  [optional]
+**buttonIconUrl** | **String** | With the button style Web Messenger, you have the option of selecting your own button icon. The image must be at least 200 x 200 pixels and must be in either JPG, PNG, or GIF format. |  [optional]
+**buttonWidth** | **Integer** | With the button style Web Messenger, you have the option of specifying the button width. |  [optional]
+**buttonHeight** | **Integer** | With the button style Web Messenger, you have the option of specifying the button height. |  [optional]
+**integrationOrder** | **List&lt;String&gt;** | Array of integration IDs, order will be reflected in the Web Messenger. When set, only integrations from this list will be displayed in the Web Messenger. If unset, all integrations will be displayed. |  [optional]
+**businessName** | **String** | A custom business name for the Web Messenger. |  [optional]
+**businessIconUrl** | **String** | A custom business icon url for the Web Messenger. The image must be at least 200 x 200 pixels and must be in either JPG, PNG, or GIF format. |  [optional]
+**backgroundImageUrl** | **String** | A background image url for the conversation. Image will be tiled to fit the window. |  [optional]
+**originWhitelist** | **List&lt;String&gt;** | A list of origins to whitelist. When set, only the origins from this list will be able to initialize the Web Messenger. If unset, all origins are whitelisted. The elements in the list should follow the serialized-origin format from RFC 6454: scheme \&quot;://\&quot; host [ \&quot;:\&quot; port ], where scheme is http or https.  |  [optional]
+**prechatCapture** | [**PrechatCapture**](PrechatCapture.md) | Object whose properties can be set to specify the add-on’s options. See the guide to learn more about Prechat Capture. |  [optional]
+**encodingAesKey** | **String** | AES Encoding Key. |  [optional]
+**deploymentId** | **String** | The Id of the deployment. The integrationId and the appId will be added to the deployment. Additionally, the deployment’s status will be set to integrated. | 
+**hsmFallbackLanguage** | **String** | Specify a fallback language to use when sending WhatsApp message template using the short hand syntax. Defaults to en_US. See WhatsApp documentation for more info. |  [optional]
+**accountManagementAccessToken** | **String** | An access token associated with the accountId used to query the WhatsApp Account Management API. In combination with accountId, it’s used for Message Template Reconstruction. |  [optional]
+
+
+
+## Enum: TierEnum
+
+Name | Value
+---- | -----
+SANDBOX | &quot;sandbox&quot;
+PREMIUM | &quot;premium&quot;
+ENTERPRISE | &quot;enterprise&quot;
 
 
 

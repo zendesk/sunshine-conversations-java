@@ -1,21 +1,33 @@
 
+
 # Client
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | An identifier for the client. Must be globally unique. | 
-**status** | **String** | The client status. Indicates if the client is able to receive messages or not. See [**ClientStatusEnum**](Enums.md#ClientStatusEnum) for available values. |  [optional]
-**externalId** | **String** | The ID of the user on an external channel. For example, the user&#39;s phone number for Twilio, or their page-scoped user ID for Facebook Messenger. Applies only to non-SDK clients. |  [optional]
-**active** | **Boolean** | Deprecated - use the status property instead. |  [optional]
-**lastSeen** | **String** | The date time the client was last seen. |  [optional]
-**platform** | **String** | The client&#39;s platform. See [**IntegrationTypeEnum**](Enums.md#IntegrationTypeEnum) for available values. | 
-**integrationId** | **String** | The ID of the integration that the client was created for. |  [optional]
-**pushNotificationToken** | **String** | The GCM or APN token to be used for sending push notifications to the device. Applies to only *android* and *ios* clients.  |  [optional]
-**appVersion** | **String** | A reserved string field for reporting the app version running on the device. |  [optional]
-**displayName** | **String** | The client&#39;s display name. |  [optional]
-**info** | [**ClientInfo**](ClientInfo.md) |  |  [optional]
-**raw** | **Object** | An Object with raw properties that vary for each client platform. All keys are optional and not guaranteed to be available. |  [optional]
+**id** | **String** | The unique ID of the client. |  [optional]
+**type** | [**ClientType**](ClientType.md) |  |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | The client status. Indicates if the client is able to receive messages or not. Can be pending, inactive, active, or blocked. |  [optional]
+**integrationId** | **String** | The ID of the integration that the client was created for. Unused for clients of type sdk, as they incorporate multiple integrations. |  [optional]
+**externalId** | **String** | The ID of the user on an external channel. For example, the user’s phone number for Twilio, or their page-scoped user ID for Facebook Messenger. Applies only to non-SDK clients. |  [optional]
+**lastSeen** | **String** | A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the last time the user interacted with this client. |  [optional]
+**linkedAt** | **String** | A timestamp signifying when the client was added to the user. Formatted as YYYY-MM-DDThh:mm:ss.SSSZ. |  [optional]
+**displayName** | **String** | The user&#39;s display name on the channel. |  [optional]
+**avatarUrl** | [**URI**](URI.md) | The URL for the user&#39;s avatar on the channel. |  [optional]
+**info** | **Object** | A flat curated object with properties that vary for each client platform. All keys are optional and not guaranteed to be available. |  [optional]
+**raw** | **Object** | An object with raw properties that vary for each client platform. All keys are optional and not guaranteed to be available. |  [optional]
+
+
+
+## Enum: StatusEnum
+
+Name | Value
+---- | -----
+ACTIVE | &quot;active&quot;
+BLOCKED | &quot;blocked&quot;
+INACTIVE | &quot;inactive&quot;
+PENDING | &quot;pending&quot;
 
 
 
