@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 Post Activity
 
-Notify Sunshine Conversations of different conversation activities. Supported activity types are: * Typing activity * Conversation read event Equivalent to the v1 Conversation Activity API. 
+Notify Sunshine Conversations of different conversation activities. Supported activity types are: * Typing activity * Conversation read event 
 
 ### Example
 

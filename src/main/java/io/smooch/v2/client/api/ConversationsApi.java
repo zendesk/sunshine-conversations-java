@@ -191,7 +191,7 @@ public class ConversationsApi {
       }
   /**
    * List Conversations
-   * Lists all conversations that a user is part of. This API is [paginated](#pagination). &#x60;&#x60;&#x60;shell    /v2/apps/:appId/conversations?userId&#x3D;42589ad070d43be9b00ff7e5&amp;limit&#x3D;30&amp;offset&#x3D;0 &#x60;&#x60;&#x60; 
+   * Lists all conversations that a user is part of. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell    /v2/apps/:appId/conversations?userId&#x3D;42589ad070d43be9b00ff7e5&amp;limit&#x3D;30&amp;offset&#x3D;0 &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
    * @param userId The user&#39;s id. One of userId or userExternalId is required, but not both. (optional)
    * @param userExternalId The external Id of the user. One of userId or userExternalId is required, but not both. (optional)

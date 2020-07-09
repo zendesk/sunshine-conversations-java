@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.text.DateFormat;
@@ -34,6 +37,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
+import io.smooch.v2.client.model.Filter;
+import io.smooch.v2.client.model.Page;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.internal.ClientConfiguration;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataOutput;
@@ -74,7 +79,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/6.0.0-alpha/java");
+    setUserAgent("OpenAPI-Generator/6.0.0-alpha.1/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -327,6 +332,17 @@ public class ApiClient {
   }
 
   /*
+    Serialization for deepObject style query parameters
+  */
+  public <T> List<Pair> serializeDeepObjectParameter(List<Pair> params, String objectName, String fieldName, T fieldValue){
+    if (fieldValue != null) {
+      params.add(new Pair(String.format("%s[%s]", objectName, fieldName), fieldValue.toString()));
+    }
+
+    return params;
+  }
+
+  /*
     Format to {@code Pair} objects.
   */
   public List<Pair> parameterToPairs(String collectionFormat, String name, Object value){
@@ -339,7 +355,27 @@ public class ApiClient {
     if (value instanceof Collection) {
       valueCollection = (Collection) value;
     } else {
-      params.add(new Pair(name, parameterToString(value)));
+      if (value instanceof Page) {
+        serializeDeepObjectParameter(params, name, "size", ((Page) value).getSize());
+        serializeDeepObjectParameter(params, name, "before", ((Page) value).getBefore());
+        serializeDeepObjectParameter(params, name, "after", ((Page) value).getAfter());
+      } else if (value instanceof Filter) {
+        Field[] fields = value.getClass().getDeclaredFields();
+        for(Field field: fields) {
+          if (!java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
+            String fieldName = field.getName();
+            try {
+              Method fieldGetter = value.getClass().getDeclaredMethod(String.format("get%s%s", fieldName.substring(0, 1).toUpperCase(), fieldName.substring(1)));
+              serializeDeepObjectParameter(params, name, fieldName, fieldGetter.invoke(value));
+            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+              e.printStackTrace();
+            }
+          }
+        }
+      } else {
+        params.add(new Pair(name, parameterToString(value)));
+      }
+
       return params;
     }
 

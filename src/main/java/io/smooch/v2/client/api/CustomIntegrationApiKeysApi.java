@@ -152,7 +152,7 @@ public class CustomIntegrationApiKeysApi {
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Create Integration Key
+   * Get Integration Key
    * Get the specified API key.
    * @param appId Identifies the app. (required)
    * @param integrationId The id of the integration. (required)

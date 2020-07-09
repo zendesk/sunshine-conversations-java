@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha</version>
+    <version>6.0.0-alpha.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha"
+compile "io.smooch:api:6.0.0-alpha.1"
 ```
 
 ## Getting Started
@@ -144,6 +144,15 @@ All URIs are relative to *https://api.smooch.io*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *ActivitiesApi* | [**postActivity**](docs/ActivitiesApi.md#postActivity) | **POST** /v2/apps/{appId}/conversations/{conversationId}/activity | Post Activity
+*AppKeysApi* | [**createAppKey**](docs/AppKeysApi.md#createAppKey) | **POST** /v2/apps/{appId}/keys | Create App Key
+*AppKeysApi* | [**deleteAppKey**](docs/AppKeysApi.md#deleteAppKey) | **DELETE** /v2/apps/{appId}/keys/{keyId} | Delete App Key
+*AppKeysApi* | [**getAppKey**](docs/AppKeysApi.md#getAppKey) | **GET** /v2/apps/{appId}/keys/{keyId} | Get App Key
+*AppKeysApi* | [**listAppKeys**](docs/AppKeysApi.md#listAppKeys) | **GET** /v2/apps/{appId}/keys | List App Keys
+*AppsApi* | [**createApp**](docs/AppsApi.md#createApp) | **POST** /v2/apps | Create App
+*AppsApi* | [**deleteApp**](docs/AppsApi.md#deleteApp) | **DELETE** /v2/apps/{appId} | Delete App
+*AppsApi* | [**getApp**](docs/AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App
+*AppsApi* | [**listApps**](docs/AppsApi.md#listApps) | **GET** /v2/apps | List Apps
+*AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PUT** /v2/apps/{appId} | Update App
 *ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userId}/clients | Create Client
 *ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userId}/clients | List Clients
 *ClientsApi* | [**removeClient**](docs/ClientsApi.md#removeClient) | **DELETE** /v2/apps/{appId}/users/{userId}/clients/{clientId} | Remove Client
@@ -154,7 +163,7 @@ Class | Method | HTTP request | Description
 *ConversationsApi* | [**updateConversation**](docs/ConversationsApi.md#updateConversation) | **PUT** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
 *CustomIntegrationApiKeysApi* | [**createCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#createCustomIntegrationKey) | **POST** /v2/apps/{appId}/integrations/{integrationId}/keys | Create Integration Key
 *CustomIntegrationApiKeysApi* | [**deleteCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#deleteCustomIntegrationKey) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Delete Integration Key
-*CustomIntegrationApiKeysApi* | [**getCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#getCustomIntegrationKey) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Create Integration Key
+*CustomIntegrationApiKeysApi* | [**getCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#getCustomIntegrationKey) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Get Integration Key
 *CustomIntegrationApiKeysApi* | [**listCustomIntegrationKeys**](docs/CustomIntegrationApiKeysApi.md#listCustomIntegrationKeys) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys | List Integration Keys
 *IntegrationsApi* | [**createIntegration**](docs/IntegrationsApi.md#createIntegration) | **POST** /v2/apps/{appId}/integrations | Create Integration
 *IntegrationsApi* | [**deleteIntegration**](docs/IntegrationsApi.md#deleteIntegration) | **DELETE** /v2/apps/{appId}/integrations/{integrationId} | Delete Integration
@@ -179,6 +188,16 @@ Class | Method | HTTP request | Description
  - [AndroidAllOf](docs/AndroidAllOf.md)
  - [AndroidUpdate](docs/AndroidUpdate.md)
  - [ApiKey](docs/ApiKey.md)
+ - [App](docs/App.md)
+ - [AppCreateBody](docs/AppCreateBody.md)
+ - [AppKey](docs/AppKey.md)
+ - [AppKeyCreateBody](docs/AppKeyCreateBody.md)
+ - [AppKeyListResponse](docs/AppKeyListResponse.md)
+ - [AppKeyResponse](docs/AppKeyResponse.md)
+ - [AppListResponse](docs/AppListResponse.md)
+ - [AppResponse](docs/AppResponse.md)
+ - [AppSettings](docs/AppSettings.md)
+ - [AppUpdateBody](docs/AppUpdateBody.md)
  - [Author](docs/Author.md)
  - [Buy](docs/Buy.md)
  - [CarouselMessage](docs/CarouselMessage.md)
@@ -208,6 +227,7 @@ Class | Method | HTTP request | Description
  - [ExtraChannelOptionsMessenger](docs/ExtraChannelOptionsMessenger.md)
  - [Field](docs/Field.md)
  - [FileMessage](docs/FileMessage.md)
+ - [Filter](docs/Filter.md)
  - [FormMessage](docs/FormMessage.md)
  - [FormResponseMessage](docs/FormResponseMessage.md)
  - [ImageMessage](docs/ImageMessage.md)
@@ -230,6 +250,7 @@ Class | Method | HTTP request | Description
  - [LineAllOf](docs/LineAllOf.md)
  - [LineUpdate](docs/LineUpdate.md)
  - [Link](docs/Link.md)
+ - [Links](docs/Links.md)
  - [ListMessage](docs/ListMessage.md)
  - [LocationMessage](docs/LocationMessage.md)
  - [LocationMessageCoordinates](docs/LocationMessageCoordinates.md)
@@ -251,6 +272,8 @@ Class | Method | HTTP request | Description
  - [MessengerAllOf](docs/MessengerAllOf.md)
  - [MessengerUpdate](docs/MessengerUpdate.md)
  - [MessengerUpdateAllOf](docs/MessengerUpdateAllOf.md)
+ - [Meta](docs/Meta.md)
+ - [Page](docs/Page.md)
  - [Participant](docs/Participant.md)
  - [ParticipantJoinBody](docs/ParticipantJoinBody.md)
  - [ParticipantLeaveBody](docs/ParticipantLeaveBody.md)
@@ -283,9 +306,9 @@ Class | Method | HTTP request | Description
  - [WeChat](docs/WeChat.md)
  - [WeChatAllOf](docs/WeChatAllOf.md)
  - [WeChatUpdate](docs/WeChatUpdate.md)
- - [WebMessenger](docs/WebMessenger.md)
- - [WebMessengerAllOf](docs/WebMessengerAllOf.md)
- - [WebMessengerUpdate](docs/WebMessengerUpdate.md)
+ - [Web](docs/Web.md)
+ - [WebAllOf](docs/WebAllOf.md)
+ - [WebUpdate](docs/WebUpdate.md)
  - [Webhook](docs/Webhook.md)
  - [Webview](docs/Webview.md)
  - [WhatsAppUpdate](docs/WhatsAppUpdate.md)

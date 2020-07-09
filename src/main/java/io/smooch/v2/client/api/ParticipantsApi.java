@@ -154,7 +154,7 @@ public class ParticipantsApi {
       }
   /**
    * List Participants
-   * Lists all the participants of a particular conversation. This API is paginated. This endpoint has no v1 equivalent 
+   * Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). 
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
    * @param limit Limit the number of records to return. (optional, default to 25)

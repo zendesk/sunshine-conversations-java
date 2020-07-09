@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 List Clients
 
-Get all the clients for a particular user, including both linked clients and pending clients. This API is paginated.
+Get all the clients for a particular user, including both linked clients and pending clients. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
 
 ### Example
 

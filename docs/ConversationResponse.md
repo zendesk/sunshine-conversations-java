@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**conversation** | [**Conversation**](Conversation.md) | The created or updated conversation. |  [optional]
+**conversation** | [**Conversation**](Conversation.md) | The conversation. |  [optional]
 
 
 

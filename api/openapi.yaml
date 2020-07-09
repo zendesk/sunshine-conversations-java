@@ -19,21 +19,30 @@ info:
     >same-origin policy</a> browser error. For more information, refer \nto the <a\
     \ href=\"http://docs.smooch.io/guide/authorization/#handle-credentials-with-caution\"\
     >Authorization guide</a>.</aside>\n\n## API pagination and records limits\n\n\
-    Some APIs can be paginated by providing the offset query string parameter.\nThe\
-    \ offset is the number of initial records to skip before picking records to return.\
-    \ Default 0.\nThe limit query string can also be provided to change the number\
-    \ of records to return (maximum\n100, default 25)\n\n  Sunshine Conversations\
-    \ is available in the following regions. Each Sunshine Conversations region has\
-    \ its own API host.\n\n## Regions\n\n| Region         | Host                 \
-    \      |\n| -------------- | -------------------------- |\n| United States  |\
-    \ https://api.smooch.io      |\n| European Union | https://api.eu-1.smooch.io\
-    \ |\n\n  For more information on regions, visit [the guide](/guide/regions/).\n\
-    \n  <aside class=\"notice\">When configuring an API host, make sure to always\
-    \ use `https`. Some API clients can have unexpected behaviour when following redirects\
-    \ from `http` to `https`.</aside>\n"
+    Some APIs can be paginated by providing the `offset` query string parameter.\n\
+    \nThe `offset` is the number of initial records to skip before picking records\
+    \ to return (default 0).\n\nThe `limit` query string can also be provided to change\
+    \ the number of records to return (maximum\n100, default 25).\n\nAll paginated\
+    \ endpoints will eventually support cursor pagination and `offset` based pagination\
+    \ support will be dropped.\n\n### Cursor Pagination\n\nSome APIs are paginated\
+    \ through cursor pagination. Rather than providing an `offset`, a `page[after]`\
+    \ or `page[before]` query string parameter may be provided. `page[after]` and\
+    \ `page[before]` are cursors pointing to a record id.\n\nThe `page[after]` cursor\
+    \ indicates that only records **subsequent** to it should be returned.\n\nThe\
+    \ `page[before]` cursor indicates that only records **preceding** it should be\
+    \ returned.\n\n**Only one** of `page[after]` or `page[before]` may be provided\
+    \ in a query, not both.\n\nIn cursor pagination, the equivalent to the `limit`\
+    \ query string is the `page[size]` query string parameter.\n\n## Regions\n\nSunshine\
+    \ Conversations is available in the following regions. Each Sunshine Conversations\
+    \ region has its own API host.\n\n| Region         | Host                    \
+    \   |\n| -------------- | -------------------------- |\n| United States  | https://api.smooch.io\
+    \      |\n| European Union | https://api.eu-1.smooch.io |\n\n  For more information\
+    \ on regions, visit [the guide](/guide/regions/).\n\n  <aside class=\"notice\"\
+    >When configuring an API host, make sure to always use `https`. Some API clients\
+    \ can have unexpected behaviour when following redirects from `http` to `https`.</aside>\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha
+  version: 6.0.0-alpha.1
   x-logo:
     url: sunco_logo.png
     altText: Sunshine Conversations
@@ -50,6 +59,12 @@ security:
   - app
   - account
 tags:
+- description: App operations
+  name: Apps
+  x-displayName: Apps
+- description: App Keys operations
+  name: App Keys
+  x-displayName: App Keys
 - description: Conversation operations
   name: Conversations
   x-displayName: Conversations
@@ -77,10 +92,297 @@ tags:
   name: CustomIntegrationApiKeys
   x-displayName: Custom Integration API Keys
 paths:
+  /v2/apps:
+    get:
+      description: "Lists all apps that a user is part of. This API is paginated through\
+        \ [cursor pagination](#section/Introduction/API-pagination-and-records-limits).\
+        \ \n```shell\n   /v2/apps?page[after]=5e1606762556d93e9c176f69&page[size]=10\n\
+        ```\n"
+      operationId: listApps
+      parameters:
+      - description: Contains parameters for applying cursor pagination.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/page'
+        style: deepObject
+      - $ref: '#/components/parameters/filter'
+        description: Contains parameters for filtering the results.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          properties:
+            serviceAccountId:
+              description: When specified, lists only the apps that the service account
+                has access to.
+              type: string
+          type: object
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appListResponse'
+          description: Ok
+      summary: List Apps
+      tags:
+      - Apps
+      x-accepts: application/json
+    post:
+      description: Create an app.
+      operationId: createApp
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/appCreateBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appResponse'
+          description: Created
+      summary: Create App
+      tags:
+      - Apps
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}:
+    delete:
+      description: Removes the specified app, including all its enabled integrations.
+      operationId: deleteApp
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Delete App
+      tags:
+      - Apps
+      x-accepts: application/json
+    get:
+      description: Fetches an individual app.
+      operationId: getApp
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Get App
+      tags:
+      - Apps
+      x-accepts: application/json
+    put:
+      description: Updates an app.
+      operationId: updateApp
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/appUpdateBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Update App
+      tags:
+      - Apps
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/keys:
+    get:
+      description: Lists all API keys for a given app.
+      operationId: listAppKeys
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appKeyListResponse'
+          description: Ok
+      summary: List App Keys
+      tags:
+      - App Keys
+      x-accepts: application/json
+    post:
+      description: "Creates an API key for the specified app. The response body will\
+        \ include a secret \nas well as its corresponding id, which you can use to\
+        \ generate JSON Web Tokens to \nsecurely make API calls on behalf of the app.\n"
+      operationId: createAppKey
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        $ref: '#/components/requestBodies/AppKeyCreateBody'
+        content:
+          application/json:
+            schema:
+              example:
+                displayName: ""
+              properties:
+                displayName:
+                  allOf:
+                  - $ref: '#/components/schemas/displayName'
+              required:
+              - displayName
+              title: AppKeyCreateBody
+              type: object
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appKeyResponse'
+          description: Created
+      summary: Create App Key
+      tags:
+      - App Keys
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/keys/{keyId}:
+    delete:
+      description: Removes an API key.
+      operationId: deleteAppKey
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the key.
+        explode: false
+        in: path
+        name: keyId
+        required: true
+        schema:
+          example: int_5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Delete App Key
+      tags:
+      - App Keys
+      x-accepts: application/json
+    get:
+      description: Returns an API key.
+      operationId: getAppKey
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the key.
+        explode: false
+        in: path
+        name: keyId
+        required: true
+        schema:
+          example: int_5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appKeyResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Get App Key
+      tags:
+      - App Keys
+      x-accepts: application/json
   /v2/apps/{appId}/conversations:
     get:
       description: |
-        Lists all conversations that a user is part of. This API is [paginated](#pagination).
+        Lists all conversations that a user is part of. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
         ```shell
            /v2/apps/:appId/conversations?userId=42589ad070d43be9b00ff7e5&limit=30&offset=0
         ```
@@ -349,8 +651,7 @@ paths:
   /v2/apps/{appId}/conversations/{conversationId}/participants:
     get:
       description: |
-        Lists all the participants of a particular conversation. This API is paginated. This endpoint has no v1
-        equivalent
+        Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
       operationId: listParticipants
       parameters:
       - description: Identifies the app.
@@ -453,8 +754,7 @@ paths:
       x-accepts: application/json
   /v2/apps/{appId}/conversations/{conversationId}/messages:
     delete:
-      description: Delete all messages of a particular conversation. Equivalent to
-        the v1 Delete All Messages API.
+      description: Delete all messages of a particular conversation.
       operationId: deleteAllMessages
       parameters:
       - description: Identifies the app.
@@ -489,7 +789,7 @@ paths:
       - Messages
       x-accepts: application/json
     get:
-      description: List all messages for a particular conversation. This API is paginated.
+      description: List all messages for a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
         It returns a maximum of 100 messages at a time. It returns the previous/next
         pages URLs in the response body. Equivalent to the v1 Get Messages API
       operationId: listMessages
@@ -546,8 +846,7 @@ paths:
       - Messages
       x-accepts: application/json
     post:
-      description: Send a message in a particular conversation. Equivalent to the
-        v1 Post Message API.
+      description: Send a message in a particular conversation.
       operationId: postMessage
       parameters:
       - description: Identifies the app.
@@ -588,8 +887,7 @@ paths:
       x-accepts: application/json
   /v2/apps/{appId}/conversations/{conversationId}/messages/{messageId}:
     delete:
-      description: Delete a single message of a particular conversation. Equivalent
-        to the v1 Delete Single Message API.
+      description: Delete a single message of a particular conversation.
       operationId: deleteMessage
       parameters:
       - description: Identifies the app.
@@ -638,7 +936,6 @@ paths:
         Notify Sunshine Conversations of different conversation activities. Supported activity types are:
         * Typing activity
         * Conversation read event
-        Equivalent to the v1 Conversation Activity API.
       operationId: postActivity
       parameters:
       - description: Identifies the app.
@@ -676,7 +973,7 @@ paths:
   /v2/apps/{appId}/users/{userId}/clients:
     get:
       description: Get all the clients for a particular user, including both linked
-        clients and pending clients. This API is paginated.
+        clients and pending clients. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
       operationId: listClients
       parameters:
       - description: Identifies the app.
@@ -1182,12 +1479,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/IntegrationApiKeyResponse'
           description: Ok
-      summary: Create Integration Key
+      summary: Get Integration Key
       tags:
       - CustomIntegrationApiKeys
       x-accepts: application/json
 components:
   parameters:
+    pageQuery:
+      description: Contains parameters for applying cursor pagination.
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        $ref: '#/components/schemas/page'
+      style: deepObject
+    appFilterQuery:
+      $ref: '#/components/parameters/filter'
+      description: Contains parameters for filtering the results.
+      explode: true
+      in: query
+      name: filter
+      required: false
+      schema:
+        properties:
+          serviceAccountId:
+            description: When specified, lists only the apps that the service account
+              has access to.
+            type: string
+        type: object
+      style: deepObject
     appId:
       description: Identifies the app.
       explode: false
@@ -1196,6 +1517,16 @@ components:
       required: true
       schema:
         example: 5d8cff3cd55b040010928b5b
+        type: string
+      style: simple
+    keyId:
+      description: The id of the key.
+      explode: false
+      in: path
+      name: keyId
+      required: true
+      schema:
+        example: int_5d8cff3cd55b040010928b5b
         type: string
       style: simple
     userIdQuery:
@@ -1328,17 +1659,13 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
-    keyId:
-      description: The id of the key.
-      explode: false
-      in: path
-      name: keyId
-      required: true
-      schema:
-        example: int_5d8cff3cd55b040010928b5b
-        type: string
-      style: simple
   requestBodies:
+    AppKeyCreateBody:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/AppKeyCreateBody'
+      required: true
     IntegrationApiKey:
       content:
         application/json:
@@ -1346,6 +1673,291 @@ components:
             $ref: '#/components/schemas/IntegrationApiKey'
       required: true
   schemas:
+    page:
+      properties:
+        after:
+          description: "A record id. Results will only contain the records that come\
+            \ after the specified record. \nOnly one of `after` or `before` can be\
+            \ provided, not both.\n"
+          example: 5e1606762556d93e9c176f69
+          type: string
+        before:
+          description: |
+            A record id. Results will only contain the records that come before the specified record.
+            Only one of `after` or `before` can be provided, not both.
+          example: 5e1606762556d93e9c176f69
+          type: string
+        size:
+          default: 25
+          description: The number of records to return.
+          example: 10
+          maximum: 100
+          minimum: 0
+          type: integer
+      type: object
+    displayName:
+      maxLength: 100
+      nullable: true
+      type: string
+    appSettings:
+      description: Customizable app settings.
+      example:
+        conversationRetentionSeconds: 0
+        ignoreAutoConversationStart: true
+        useAnimalNames: true
+        echoPostback: true
+        multiConvoEnabled: true
+        maskCreditCardNumbers: true
+      properties:
+        conversationRetentionSeconds:
+          description: "Number of seconds of inactivity before a conversation’s messages\
+            \ \nwill be automatically deleted. See \n[Conversation Retention Seconds](https://docs.smooch.io/rest/#conversation-retention-seconds)\n\
+            for more information.\n"
+          type: integer
+        maskCreditCardNumbers:
+          description: "A boolean specifying whether credit card numbers should be\
+            \ masked \nwhen sent through Sunshine Conversations.\n"
+          type: boolean
+        useAnimalNames:
+          description: "A boolean specifying whether animal names should be used for\
+            \ \nunnamed users. See the \n[user naming guide](https://docs.smooch.io/guide/receiving-messages/#message-author-name)\n\
+            for details.\n"
+          type: boolean
+        echoPostback:
+          description: "A boolean specifying whether a message should be added to\
+            \ the conversation \nhistory when a postback button is clicked. See \n\
+            [Echo Postbacks](https://docs.smooch.io/rest/#echo-postbacks)\nfor more\
+            \ information.\n"
+          type: boolean
+        ignoreAutoConversationStart:
+          description: "A boolean specifying whether a non message event coming from\
+            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#conversation-events)\n\
+            event and count as an active user conversation (AUC).\n<aside class=\"\
+            notice\">Calling <code>startConversation()</code> (or equivalent) from\
+            \ the Android, \niOS or Web SDK will count as an AUC, regardless of the\
+            \ value of this setting.</aside>\n"
+          type: boolean
+        multiConvoEnabled:
+          description: |
+            A boolean specifying whether users are allowed to be part of several conversations.
+            Enabling `multiConvo` is **irreversible**.
+          type: boolean
+      type: object
+    metadata:
+      description: "Flat object containing custom properties. Strings, numbers and\
+        \ booleans \nare the only supported format that can be passed to metadata.\n\
+        The metadata is limited to 4KB in size.\n"
+      example:
+        ref: 4213572
+      nullable: true
+      type: object
+    app:
+      example:
+        settings:
+          conversationRetentionSeconds: 0
+          ignoreAutoConversationStart: true
+          useAnimalNames: true
+          echoPostback: true
+          multiConvoEnabled: true
+          maskCreditCardNumbers: true
+        metadata:
+          ref: 4213572
+        displayName: ""
+        id: 55c8d9758590aa1900b9b9f6
+      properties:
+        id:
+          description: A canonical ID that can be used to retrieve the Sunshine Conversations
+            app.
+          example: 55c8d9758590aa1900b9b9f6
+          type: string
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
+          description: The friendly name of the app.
+        settings:
+          $ref: '#/components/schemas/appSettings'
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            ref: 4213572
+          nullable: true
+          type: object
+      type: object
+    meta:
+      example:
+        beforeCursor: 55c8d9758590aa1900b9b9f6
+        afterCursor: 55c8d9758590aa1900b9b9f6
+        hasMore: hasMore
+      properties:
+        hasMore:
+          description: A flag that indicates if there are more records that can be
+            fetched.
+          type: string
+        afterCursor:
+          description: "A record id that can be used as a `page[after]` parameter\
+            \ in a new request to get the next page. \nNot specified if there are\
+            \ no subsequent pages.\n"
+          example: 55c8d9758590aa1900b9b9f6
+          type: string
+        beforeCursor:
+          description: "A record id that can be used as a `page[before]` parameter\
+            \ in a new request to get the previous page. \nNot specified if there\
+            \ are no previous pages.\n"
+          example: 55c8d9758590aa1900b9b9f6
+          type: string
+      type: object
+    links:
+      example:
+        next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+        prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+      properties:
+        prev:
+          description: A link to the previous page. Not specified if there are no
+            previous pages.
+          example: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          type: string
+        next:
+          description: A link to the next page. Not specified if there are no subsequent
+            pages.
+          example: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          type: string
+      type: object
+    appListResponse:
+      example:
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: hasMore
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+        apps:
+        - settings:
+            conversationRetentionSeconds: 0
+            ignoreAutoConversationStart: true
+            useAnimalNames: true
+            echoPostback: true
+            multiConvoEnabled: true
+            maskCreditCardNumbers: true
+          metadata:
+            ref: 4213572
+          displayName: ""
+          id: 55c8d9758590aa1900b9b9f6
+        - settings:
+            conversationRetentionSeconds: 0
+            ignoreAutoConversationStart: true
+            useAnimalNames: true
+            echoPostback: true
+            multiConvoEnabled: true
+            maskCreditCardNumbers: true
+          metadata:
+            ref: 4213572
+          displayName: ""
+          id: 55c8d9758590aa1900b9b9f6
+      properties:
+        apps:
+          description: List of returned apps.
+          items:
+            $ref: '#/components/schemas/app'
+          type: array
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
+      type: object
+    appCreateBody:
+      properties:
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
+          description: The friendly name of the app.
+        settings:
+          $ref: '#/components/schemas/appSettings'
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            ref: 4213572
+          nullable: true
+          type: object
+      required:
+      - displayName
+      title: AppCreateBody
+      type: object
+    appResponse:
+      example:
+        app: ""
+      properties:
+        app:
+          allOf:
+          - $ref: '#/components/schemas/app'
+          description: The app.
+      title: AppResponse
+      type: object
+    appUpdateBody:
+      properties:
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
+          description: The friendly name of the app.
+        settings:
+          $ref: '#/components/schemas/appSettings'
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            ref: 4213572
+          nullable: true
+          type: object
+      type: object
+    appKey:
+      example:
+        displayName: displayName
+        id: id
+        secret: secret
+      properties:
+        id:
+          description: The unique ID of the API key, used when signing JWTs or accessing
+            the API using Basic Authentication.
+          type: string
+        displayName:
+          description: The name of the API key.
+          type: string
+        secret:
+          description: The secret of the API key, used when signing JWTs or accessing
+            the API using Basic Authentication
+          type: string
+      type: object
+    appKeyListResponse:
+      example:
+        keys:
+        - displayName: displayName
+          id: id
+          secret: secret
+        - displayName: displayName
+          id: id
+          secret: secret
+      properties:
+        keys:
+          description: List of returned keys.
+          items:
+            $ref: '#/components/schemas/appKey'
+          type: array
+      type: object
+    appKeyResponse:
+      example:
+        key: ""
+      properties:
+        key:
+          allOf:
+          - $ref: '#/components/schemas/appKey'
+          description: The created key object.
+      title: AppKeyResponse
+      type: object
     conversationType:
       description: The type of the conversation.
       enum:
@@ -1353,16 +1965,6 @@ components:
       - sdkGroup
       example: personal
       type: string
-    displayName:
-      maxLength: 100
-      nullable: true
-      type: string
-    metadata:
-      description: |
-        Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
-      example:
-        ref: 4213572
-      type: object
     conversation:
       example:
         isDefault: false
@@ -1394,10 +1996,12 @@ components:
             A friendly name for the conversation, may be displayed to the business or
             the user.
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
         appMakerLastRead:
           description: |
@@ -1494,10 +2098,12 @@ components:
             A friendly name for the conversation, may be displayed to the business or
             the user.
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - type
@@ -1510,7 +2116,7 @@ components:
         conversation:
           allOf:
           - $ref: '#/components/schemas/conversation'
-          description: The created or updated conversation.
+          description: The conversation.
       title: ConversationResponse
       type: object
     conversationUpdateBody:
@@ -1522,10 +2128,12 @@ components:
             A friendly name for the conversation, may be displayed to the business or
             the user.
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       type: object
     participantJoinBody:
@@ -1702,10 +2310,12 @@ components:
             of type buy.
           type: string
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - amount
@@ -1737,10 +2347,12 @@ components:
             link.
           type: boolean
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
         extraChannelOptions:
           $ref: '#/components/schemas/extraChannelOptions'
@@ -1759,10 +2371,12 @@ components:
           description: The button text.
           type: string
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - text
@@ -1780,10 +2394,12 @@ components:
           description: The payload of a postback or reply button.
           type: object
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - payload
@@ -1805,10 +2421,12 @@ components:
             when posting the reply. You can also use metadata for more complex needs.
           type: object
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
         iconUrl:
           description: An icon to render next to the reply option.
@@ -1840,10 +2458,12 @@ components:
             link.
           type: boolean
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
         extraChannelOptions:
           $ref: '#/components/schemas/extraChannelOptions'
@@ -1935,10 +2555,12 @@ components:
           minItems: 1
           type: array
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - actions
@@ -2514,10 +3136,12 @@ components:
         destination:
           $ref: '#/components/schemas/destination'
         metadata:
-          description: |
-            Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata.
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
           example:
             ref: 4213572
+          nullable: true
           type: object
       required:
       - author
@@ -2781,10 +3405,10 @@ components:
             $ref: '#/components/schemas/field'
           type: array
       type: object
-    webMessenger:
+    web:
       allOf:
       - $ref: '#/components/schemas/integrationBase'
-      - $ref: '#/components/schemas/webMessenger_allOf'
+      - $ref: '#/components/schemas/web_allOf'
     weChat:
       allOf:
       - $ref: '#/components/schemas/integrationBase'
@@ -2808,7 +3432,7 @@ components:
       - $ref: '#/components/schemas/twilio'
       - $ref: '#/components/schemas/twitter'
       - $ref: '#/components/schemas/viber'
-      - $ref: '#/components/schemas/webMessenger'
+      - $ref: '#/components/schemas/web'
       - $ref: '#/components/schemas/weChat'
       - $ref: '#/components/schemas/whatsapp'
     integrationListResponse:
@@ -2880,10 +3504,10 @@ components:
     viberUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-    webMessengerUpdate:
+    webUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/webMessenger_allOf'
+      - $ref: '#/components/schemas/web_allOf'
     weChatUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -2904,7 +3528,7 @@ components:
       - $ref: '#/components/schemas/twilioUpdate'
       - $ref: '#/components/schemas/twitterUpdate'
       - $ref: '#/components/schemas/viberUpdate'
-      - $ref: '#/components/schemas/webMessengerUpdate'
+      - $ref: '#/components/schemas/webUpdate'
       - $ref: '#/components/schemas/weChatUpdate'
       - $ref: '#/components/schemas/whatsAppUpdate'
     apiKey:
@@ -2924,6 +3548,24 @@ components:
           description: The secret of the API key, used when signing JWTs or accessing
             the API using Basic Authentication
           type: string
+      type: object
+    filter:
+      properties:
+        serviceAccountId:
+          description: When specified, lists only the apps that the service account
+            has access to.
+          type: string
+      type: object
+    AppKeyCreateBody:
+      example:
+        displayName: ""
+      properties:
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
+      required:
+      - displayName
+      title: AppKeyCreateBody
       type: object
     ParticipantResponse:
       description: The created participant.
@@ -3427,7 +4069,7 @@ components:
           type: string
       required:
       - token
-    webMessenger_allOf:
+    web_allOf:
       description: |
         To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
       properties:
@@ -3463,15 +4105,15 @@ components:
           nullable: true
           type: string
         buttonWidth:
-          default: 58
+          default: "58"
           description: With the button style Web Messenger, you have the option of
             specifying the button width.
-          type: integer
+          type: string
         buttonHeight:
-          default: 58
+          default: "58"
           description: With the button style Web Messenger, you have the option of
             specifying the button height.
-          type: integer
+          type: string
         integrationOrder:
           description: Array of integration IDs, order will be reflected in the Web
             Messenger. When set, only integrations from this list will be displayed
@@ -3619,6 +4261,10 @@ components:
       scheme: bearer
       type: http
 x-tagGroups:
+- name: Account Provisioning
+  tags:
+  - Apps
+  - App Keys
 - name: Conversations
   tags:
   - Conversations

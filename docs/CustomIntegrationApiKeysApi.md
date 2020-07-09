@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createCustomIntegrationKey**](CustomIntegrationApiKeysApi.md#createCustomIntegrationKey) | **POST** /v2/apps/{appId}/integrations/{integrationId}/keys | Create Integration Key
 [**deleteCustomIntegrationKey**](CustomIntegrationApiKeysApi.md#deleteCustomIntegrationKey) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Delete Integration Key
-[**getCustomIntegrationKey**](CustomIntegrationApiKeysApi.md#getCustomIntegrationKey) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Create Integration Key
+[**getCustomIntegrationKey**](CustomIntegrationApiKeysApi.md#getCustomIntegrationKey) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Get Integration Key
 [**listCustomIntegrationKeys**](CustomIntegrationApiKeysApi.md#listCustomIntegrationKeys) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys | List Integration Keys
 
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 > IntegrationApiKeyResponse getCustomIntegrationKey(appId, integrationId, keyId)
 
-Create Integration Key
+Get Integration Key
 
 Get the specified API key.
 

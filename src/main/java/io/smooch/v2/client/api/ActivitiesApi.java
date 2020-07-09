@@ -36,7 +36,7 @@ public class ActivitiesApi {
 
   /**
    * Post Activity
-   * Notify Sunshine Conversations of different conversation activities. Supported activity types are: * Typing activity * Conversation read event Equivalent to the v1 Conversation Activity API. 
+   * Notify Sunshine Conversations of different conversation activities. Supported activity types are: * Typing activity * Conversation read event 
    * @param activityPost  (required)
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)

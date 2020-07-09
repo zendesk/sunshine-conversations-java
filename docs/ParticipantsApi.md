@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 
 List Participants
 
-Lists all the participants of a particular conversation. This API is paginated. This endpoint has no v1 equivalent 
+Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). 
 
 ### Example
 

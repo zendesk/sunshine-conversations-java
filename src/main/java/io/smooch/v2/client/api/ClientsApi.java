@@ -95,7 +95,7 @@ public class ClientsApi {
       }
   /**
    * List Clients
-   * Get all the clients for a particular user, including both linked clients and pending clients. This API is paginated.
+   * Get all the clients for a particular user, including both linked clients and pending clients. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
    * @param appId Identifies the app. (required)
    * @param userId The user&#39;s id or externalId. (required)
    * @param limit Limit the number of records to return. (optional, default to 25)

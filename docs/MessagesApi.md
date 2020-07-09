@@ -17,7 +17,7 @@ Method | HTTP request | Description
 
 Delete All Messages
 
-Delete all messages of a particular conversation. Equivalent to the v1 Delete All Messages API.
+Delete all messages of a particular conversation.
 
 ### Example
 
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 Delete Message
 
-Delete a single message of a particular conversation. Equivalent to the v1 Delete Single Message API.
+Delete a single message of a particular conversation.
 
 ### Example
 
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 List Messages
 
-List all messages for a particular conversation. This API is paginated. It returns a maximum of 100 messages at a time. It returns the previous/next pages URLs in the response body. Equivalent to the v1 Get Messages API
+List all messages for a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). It returns a maximum of 100 messages at a time. It returns the previous/next pages URLs in the response body. Equivalent to the v1 Get Messages API
 
 ### Example
 
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 Post Message
 
-Send a message in a particular conversation. Equivalent to the v1 Post Message API.
+Send a message in a particular conversation.
 
 ### Example
 
