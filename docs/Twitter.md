@@ -29,4 +29,8 @@ PREMIUM | &quot;premium&quot;
 ENTERPRISE | &quot;enterprise&quot;
 
 
+## Implemented Interfaces
+
+* Integration
+
 

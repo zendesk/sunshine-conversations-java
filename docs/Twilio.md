@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **phoneNumberSid** | **String** | SID for specific phone number. | 
 
 
+## Implemented Interfaces
+
+* Integration
+
 

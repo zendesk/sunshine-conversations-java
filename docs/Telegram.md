@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **botId** | **String** | A human-friendly name used to identify the integration. |  [optional] [readonly]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

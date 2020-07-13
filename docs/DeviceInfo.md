@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**anyValue** | **Object** |  |  [optional]
+**anyValue** | [**Object**](.md) |  |  [optional]
 
 
 

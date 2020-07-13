@@ -20,4 +20,8 @@ Name | Type | Description | Notes
 **lineId** | **String** | LINE Basic ID. Is automatically set when qrCodeUrl is updated. |  [optional] [readonly]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

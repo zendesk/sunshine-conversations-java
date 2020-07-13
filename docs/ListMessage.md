@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **actions** | [**List&lt;ActionSubset&gt;**](ActionSubset.md) | An array of objects representing the actions associated with the message. The array length is limited by the third party channel. |  [optional]
 
 
+## Implemented Interfaces
+
+* Content
+
 

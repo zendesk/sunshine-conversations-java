@@ -14,4 +14,8 @@ Name | Type | Description | Notes
 **canUserCreateConversation** | **Boolean** | Allows users to create more than one conversation on the iOS integration. |  [optional]
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 

@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **location** | [**LocationMessageLocation**](LocationMessageLocation.md) |  |  [optional]
 
 
+## Implemented Interfaces
+
+* Content
+
 

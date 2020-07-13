@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **mediaUrl** | [**URI**](URI.md) | The URL for media, such as an image, attached to the message. |  [optional]
 
 
+## Implemented Interfaces
+
+* Content
+
 

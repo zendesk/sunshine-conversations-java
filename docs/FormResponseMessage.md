@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **quotedMessage** | [**QuotedMessage**](QuotedMessage.md) | Object indicating the form message that is being responded to. |  [optional]
 
 
+## Implemented Interfaces
+
+* Content
+
 

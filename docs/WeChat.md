@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **encodingAesKey** | **String** | AES Encoding Key. |  [optional]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

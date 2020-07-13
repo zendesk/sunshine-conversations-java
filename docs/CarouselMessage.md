@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **displaySettings** | [**CarouselMessageDisplaySettings**](CarouselMessageDisplaySettings.md) |  |  [optional]
 
 
+## Implemented Interfaces
+
+* Content
+
 

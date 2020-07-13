@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **canUserCreateConversation** | **Boolean** | Allows users to create more than one conversation on the android integration. |  [optional]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

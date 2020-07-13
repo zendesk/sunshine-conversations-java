@@ -17,4 +17,8 @@ Name | Type | Description | Notes
 **webhookSecret** | **String** | The secret that is used to configure webhooks in MessageBird. |  [optional] [readonly]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

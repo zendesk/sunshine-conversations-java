@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **accountManagementAccessToken** | **String** | An access token associated with the accountId used to query the WhatsApp Account Management API. In combination with accountId, it’s used for Message Template Reconstruction. |  [optional]
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 

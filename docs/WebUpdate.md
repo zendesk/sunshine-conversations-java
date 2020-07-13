@@ -24,4 +24,8 @@ Name | Type | Description | Notes
 **canUserCreateConversation** | **Boolean** | Allows users to create more than one conversation on the web messenger integration. |  [optional]
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 

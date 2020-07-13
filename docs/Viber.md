@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **accountId** | **String** | Unique ID of the Viber account. |  [optional] [readonly]
 
 
+## Implemented Interfaces
+
+* Integration
+
 

@@ -12,4 +12,8 @@ Name | Type | Description | Notes
 **fields** | [**List&lt;Field&gt;**](Field.md) | An array of objects representing fields associated with the message. Only present in form and formResponse messages. | 
 
 
+## Implemented Interfaces
+
+* Content
+
 

@@ -16,4 +16,8 @@ Name | Type | Description | Notes
 **appSecret** | **String** | A Facebook App Secret. | 
 
 
+## Implemented Interfaces
+
+* Integration
+
 
