@@ -24,95 +24,39 @@ import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Facebook Messenger Setup steps: Take note of your Facebook app ID and secret (apps can be created at developer.facebook.com); The Facebook app must have been submitted to Facebook for approval with the “manage_pages” (to receive messages through webhook) and “pages_messaging” (to send messages) permissions. In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token. 
+ * AcceptControlBody
  */
-@ApiModel(description = "Facebook Messenger Setup steps: Take note of your Facebook app ID and secret (apps can be created at developer.facebook.com); The Facebook app must have been submitted to Facebook for approval with the “manage_pages” (to receive messages through webhook) and “pages_messaging” (to send messages) permissions. In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token. ")
 @JsonPropertyOrder({
-  MessengerAllOf.JSON_PROPERTY_PAGE_ACCESS_TOKEN,
-  MessengerAllOf.JSON_PROPERTY_APP_ID,
-  MessengerAllOf.JSON_PROPERTY_APP_SECRET
+  AcceptControlBody.JSON_PROPERTY_METADATA
 })
 
-public class MessengerAllOf {
-  public static final String JSON_PROPERTY_PAGE_ACCESS_TOKEN = "pageAccessToken";
-  private String pageAccessToken;
-
-  public static final String JSON_PROPERTY_APP_ID = "appId";
-  private String appId;
-
-  public static final String JSON_PROPERTY_APP_SECRET = "appSecret";
-  private String appSecret;
+public class AcceptControlBody {
+  public static final String JSON_PROPERTY_METADATA = "metadata";
+  private Object metadata = null;
 
 
-  public MessengerAllOf pageAccessToken(String pageAccessToken) {
+  public AcceptControlBody metadata(Object metadata) {
     
-    this.pageAccessToken = pageAccessToken;
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * A Facebook Page Access Token.
-   * @return pageAccessToken
+   * Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the switchboard:acceptControl and switchboard:acceptControl:failure webhooks.
+   * @return metadata
   **/
-  @ApiModelProperty(required = true, value = "A Facebook Page Access Token.")
-  @JsonProperty(JSON_PROPERTY_PAGE_ACCESS_TOKEN)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the switchboard:acceptControl and switchboard:acceptControl:failure webhooks.")
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getPageAccessToken() {
-    return pageAccessToken;
+  public Object getMetadata() {
+    return metadata;
   }
 
 
-  public void setPageAccessToken(String pageAccessToken) {
-    this.pageAccessToken = pageAccessToken;
-  }
-
-
-  public MessengerAllOf appId(String appId) {
-    
-    this.appId = appId;
-    return this;
-  }
-
-   /**
-   * A Facebook App ID.
-   * @return appId
-  **/
-  @ApiModelProperty(required = true, value = "A Facebook App ID.")
-  @JsonProperty(JSON_PROPERTY_APP_ID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAppId() {
-    return appId;
-  }
-
-
-  public void setAppId(String appId) {
-    this.appId = appId;
-  }
-
-
-  public MessengerAllOf appSecret(String appSecret) {
-    
-    this.appSecret = appSecret;
-    return this;
-  }
-
-   /**
-   * A Facebook App Secret.
-   * @return appSecret
-  **/
-  @ApiModelProperty(required = true, value = "A Facebook App Secret.")
-  @JsonProperty(JSON_PROPERTY_APP_SECRET)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getAppSecret() {
-    return appSecret;
-  }
-
-
-  public void setAppSecret(String appSecret) {
-    this.appSecret = appSecret;
+  public void setMetadata(Object metadata) {
+    this.metadata = metadata;
   }
 
 
@@ -124,25 +68,21 @@ public class MessengerAllOf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessengerAllOf messengerAllOf = (MessengerAllOf) o;
-    return Objects.equals(this.pageAccessToken, messengerAllOf.pageAccessToken) &&
-        Objects.equals(this.appId, messengerAllOf.appId) &&
-        Objects.equals(this.appSecret, messengerAllOf.appSecret);
+    AcceptControlBody acceptControlBody = (AcceptControlBody) o;
+    return Objects.equals(this.metadata, acceptControlBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pageAccessToken, appId, appSecret);
+    return Objects.hash(metadata);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessengerAllOf {\n");
-    sb.append("    pageAccessToken: ").append(toIndentedString(pageAccessToken)).append("\n");
-    sb.append("    appId: ").append(toIndentedString(appId)).append("\n");
-    sb.append("    appSecret: ").append(toIndentedString(appSecret)).append("\n");
+    sb.append("class AcceptControlBody {\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha.3</version>
+    <version>6.0.0-alpha.4</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha.3"
+compile "io.smooch:api:6.0.0-alpha.4"
 ```
 
 ## Getting Started
@@ -178,6 +178,8 @@ Class | Method | HTTP request | Description
 *ParticipantsApi* | [**joinConversation**](docs/ParticipantsApi.md#joinConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/join | Join Conversation
 *ParticipantsApi* | [**leaveConversation**](docs/ParticipantsApi.md#leaveConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/leave | Leave Conversation
 *ParticipantsApi* | [**listParticipants**](docs/ParticipantsApi.md#listParticipants) | **GET** /v2/apps/{appId}/conversations/{conversationId}/participants | List Participants
+*SwitchboardActionsApi* | [**acceptControl**](docs/SwitchboardActionsApi.md#acceptControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/acceptControl | Accept Control
+*SwitchboardActionsApi* | [**offerControl**](docs/SwitchboardActionsApi.md#offerControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/offerControl | Offer Control
 *SwitchboardActionsApi* | [**passControl**](docs/SwitchboardActionsApi.md#passControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/passControl | Pass Control
 *SwitchboardIntegrationsApi* | [**createSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#createSwitchboardIntegration) | **POST** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | Create Switchboard Integration
 *SwitchboardIntegrationsApi* | [**deleteSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#deleteSwitchboardIntegration) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Delete Switchboard Integration
@@ -191,6 +193,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AcceptControlBody](docs/AcceptControlBody.md)
  - [Action](docs/Action.md)
  - [ActionSubset](docs/ActionSubset.md)
  - [ActivityPost](docs/ActivityPost.md)
@@ -283,6 +286,7 @@ Class | Method | HTTP request | Description
  - [MessengerUpdate](docs/MessengerUpdate.md)
  - [MessengerUpdateAllOf](docs/MessengerUpdateAllOf.md)
  - [Meta](docs/Meta.md)
+ - [OfferControlBody](docs/OfferControlBody.md)
  - [Page](docs/Page.md)
  - [Participant](docs/Participant.md)
  - [ParticipantJoinBody](docs/ParticipantJoinBody.md)

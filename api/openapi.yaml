@@ -42,7 +42,7 @@ info:
     \ can have unexpected behaviour when following redirects from `http` to `https`.</aside>\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha.3
+  version: 6.0.0-alpha.4
   x-logo:
     url: sunco_logo.png
     altText: Sunshine Conversations
@@ -458,6 +458,15 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: List Conversations
       tags:
       - Conversations
@@ -490,6 +499,15 @@ paths:
           description: Created
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Create Conversation
       tags:
       - Conversations
@@ -529,6 +547,15 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Delete Conversation
       tags:
       - Conversations
@@ -564,6 +591,15 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Get Conversation
       tags:
       - Conversations
@@ -605,6 +641,15 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Update Conversation
       tags:
       - Conversations
@@ -652,6 +697,15 @@ paths:
           description: Too many participants
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Join Conversation
       tags:
       - Participants
@@ -713,6 +767,15 @@ paths:
           description: Ok
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: List Participants
       tags:
       - Participants
@@ -756,6 +819,15 @@ paths:
           description: Ok
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Leave Conversation
       tags:
       - Participants
@@ -793,6 +865,15 @@ paths:
           description: Ok
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Delete All Messages
       tags:
       - Messages
@@ -850,6 +931,15 @@ paths:
           description: Ok
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: List Messages
       tags:
       - Messages
@@ -889,6 +979,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagePostResponse'
           description: Created
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Post Message
       tags:
       - Messages
@@ -935,6 +1034,15 @@ paths:
           description: Ok
         "404":
           description: Not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Delete Message
       tags:
       - Messages
@@ -978,9 +1086,130 @@ paths:
               schema:
                 type: object
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Post Activity
       tags:
       - Activities
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/conversations/{conversationId}/acceptControl:
+    post:
+      description: The acceptControl action transfers the control of the conversation
+        to the pending switchboard integration. When using integration auth scope,
+        a 403 is returned if the pending switchboard integration is not the authenticated
+        integration.
+      operationId: acceptControl
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the conversation.
+        explode: false
+        in: path
+        name: conversationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/acceptControlBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Accept Control
+      tags:
+      - Switchboard Actions
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/conversations/{conversationId}/offerControl:
+    post:
+      description: The offerControl action will invite a switchboard integration to
+        accept control of the conversation (changing its status to pending), and trigger
+        a webhook signal to that integration indicating that they have been offered
+        control of the conversation. Invalidates previous offerControl actions.
+      operationId: offerControl
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the conversation.
+        explode: false
+        in: path
+        name: conversationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/offerControlBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Offer Control
+      tags:
+      - Switchboard Actions
       x-contentType: application/json
       x-accepts: application/json
   /v2/apps/{appId}/conversations/{conversationId}/passControl:
@@ -1015,9 +1244,22 @@ paths:
         required: true
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                type: object
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Pass Control
       tags:
       - Switchboard Actions
@@ -1077,6 +1319,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/clientListResponse'
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: List Clients
       tags:
       - Clients
@@ -1116,6 +1367,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/ClientResponse'
           description: Created
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Create Client
       tags:
       - Clients
@@ -1161,6 +1421,15 @@ paths:
               schema:
                 type: object
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
       summary: Remove Client
       tags:
       - Clients
@@ -3617,6 +3886,36 @@ components:
       required:
       - author
       - type
+      type: object
+    acceptControlBody:
+      properties:
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          description: Flat object containing custom properties. Strings, numbers
+            and booleans are the only supported format that can be passed to metadata.
+            The metadata is limited to 4KB in size. The metadata object will be included
+            in the switchboard:acceptControl and switchboard:acceptControl:failure
+            webhooks.
+      type: object
+    offerControlBody:
+      properties:
+        switchboardIntegration:
+          description: The id or the name of the switchboard integration that will
+            become pending. Also supports the `next` keyword to offer control to the
+            next switchboard integration designated in the switchboard hierarchy configuration.
+            This cannot match the active switchboard integration.
+          example: next
+          type: string
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          description: Flat object containing custom properties. Strings, numbers
+            and booleans are the only supported format that can be passed to metadata.
+            The metadata is limited to 4KB in size. The metadata object will be included
+            in the switchboard:offerControl and switchboard:offerControl:failure webhooks.
+      required:
+      - switchboardIntegration
       type: object
     passControlBody:
       properties:
