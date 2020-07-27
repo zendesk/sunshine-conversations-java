@@ -40,9 +40,10 @@ public class ActivitiesApi {
    * @param activityPost  (required)
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
+   * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public void postActivity(ActivityPost activityPost, String appId, String conversationId) throws ApiException {
+  public Object postActivity(ActivityPost activityPost, String appId, String conversationId) throws ApiException {
     Object localVarPostBody = activityPost;
     
     // verify the required parameter 'activityPost' is set
@@ -76,7 +77,7 @@ public class ActivitiesApi {
     
     
     final String[] localVarAccepts = {
-      
+      "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -87,7 +88,7 @@ public class ActivitiesApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
 
-
-    apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-  }
+    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
 }

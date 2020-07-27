@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha.2</version>
+    <version>6.0.0-alpha.3</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha.2"
+compile "io.smooch:api:6.0.0-alpha.3"
 ```
 
 ## Getting Started
@@ -119,7 +119,8 @@ public class ActivitiesApiExample {
         String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
         String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
         try {
-            apiInstance.postActivity(activityPost, appId, conversationId);
+            Object result = apiInstance.postActivity(activityPost, appId, conversationId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ActivitiesApi#postActivity");
             e.printStackTrace();
@@ -177,6 +178,15 @@ Class | Method | HTTP request | Description
 *ParticipantsApi* | [**joinConversation**](docs/ParticipantsApi.md#joinConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/join | Join Conversation
 *ParticipantsApi* | [**leaveConversation**](docs/ParticipantsApi.md#leaveConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/leave | Leave Conversation
 *ParticipantsApi* | [**listParticipants**](docs/ParticipantsApi.md#listParticipants) | **GET** /v2/apps/{appId}/conversations/{conversationId}/participants | List Participants
+*SwitchboardActionsApi* | [**passControl**](docs/SwitchboardActionsApi.md#passControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/passControl | Pass Control
+*SwitchboardIntegrationsApi* | [**createSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#createSwitchboardIntegration) | **POST** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | Create Switchboard Integration
+*SwitchboardIntegrationsApi* | [**deleteSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#deleteSwitchboardIntegration) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Delete Switchboard Integration
+*SwitchboardIntegrationsApi* | [**listSwitchboardIntegrations**](docs/SwitchboardIntegrationsApi.md#listSwitchboardIntegrations) | **GET** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | List Switchboard Integrations
+*SwitchboardIntegrationsApi* | [**updateSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#updateSwitchboardIntegration) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Update Switchboard Integration
+*SwitchboardsApi* | [**createSwitchboard**](docs/SwitchboardsApi.md#createSwitchboard) | **POST** /v2/apps/{appId}/switchboards | Create Switchboard
+*SwitchboardsApi* | [**deleteSwitchboard**](docs/SwitchboardsApi.md#deleteSwitchboard) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId} | Delete Switchboard
+*SwitchboardsApi* | [**listSwitchboards**](docs/SwitchboardsApi.md#listSwitchboards) | **GET** /v2/apps/{appId}/switchboards | List Switchboards
+*SwitchboardsApi* | [**updateSwitchboard**](docs/SwitchboardsApi.md#updateSwitchboard) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId} | Update Switchboard
 
 
 ## Documentation for Models
@@ -236,10 +246,10 @@ Class | Method | HTTP request | Description
  - [IntegrationApiKeyListResponse](docs/IntegrationApiKeyListResponse.md)
  - [IntegrationApiKeyResponse](docs/IntegrationApiKeyResponse.md)
  - [IntegrationBase](docs/IntegrationBase.md)
- - [IntegrationId](docs/IntegrationId.md)
+ - [IntegrationId1](docs/IntegrationId1.md)
  - [IntegrationListResponse](docs/IntegrationListResponse.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
- - [IntegrationType](docs/IntegrationType.md)
+ - [IntegrationType1](docs/IntegrationType1.md)
  - [IntegrationUpdate](docs/IntegrationUpdate.md)
  - [IntegrationUpdateBase](docs/IntegrationUpdateBase.md)
  - [Ios](docs/Ios.md)
@@ -283,12 +293,22 @@ Class | Method | HTTP request | Description
  - [ParticipantListResponse](docs/ParticipantListResponse.md)
  - [ParticipantResponse](docs/ParticipantResponse.md)
  - [ParticipantSubSchema](docs/ParticipantSubSchema.md)
+ - [PassControlBody](docs/PassControlBody.md)
  - [Postback](docs/Postback.md)
  - [PrechatCapture](docs/PrechatCapture.md)
  - [QuotedMessage](docs/QuotedMessage.md)
  - [Reply](docs/Reply.md)
  - [Source](docs/Source.md)
  - [Status](docs/Status.md)
+ - [Switchboard](docs/Switchboard.md)
+ - [SwitchboardIntegration](docs/SwitchboardIntegration.md)
+ - [SwitchboardIntegrationCreateBody](docs/SwitchboardIntegrationCreateBody.md)
+ - [SwitchboardIntegrationListResponse](docs/SwitchboardIntegrationListResponse.md)
+ - [SwitchboardIntegrationResponse](docs/SwitchboardIntegrationResponse.md)
+ - [SwitchboardIntegrationUpdateBody](docs/SwitchboardIntegrationUpdateBody.md)
+ - [SwitchboardListResponse](docs/SwitchboardListResponse.md)
+ - [SwitchboardResponse](docs/SwitchboardResponse.md)
+ - [SwitchboardUpdateBody](docs/SwitchboardUpdateBody.md)
  - [Target](docs/Target.md)
  - [Telegram](docs/Telegram.md)
  - [TelegramAllOf](docs/TelegramAllOf.md)

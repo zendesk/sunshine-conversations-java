@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 Create Conversation
 
-Create a conversation for the specified user.
+Create a conversation for the specified user(s).
 
 ### Example
 

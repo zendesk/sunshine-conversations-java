@@ -42,7 +42,7 @@ info:
     \ can have unexpected behaviour when following redirects from `http` to `https`.</aside>\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha.2
+  version: 6.0.0-alpha.3
   x-logo:
     url: sunco_logo.png
     altText: Sunshine Conversations
@@ -80,6 +80,9 @@ tags:
 - description: Client operations
   name: Clients
   x-displayName: Clients
+- description: Manage which switchboard integration has control over a conversation.
+  name: Switchboard Actions
+  x-displayName: Switchboard Actions
 - description: |
     This set of endpoints is used to configure and manage various front-end messaging channels.
   name: Integrations
@@ -91,6 +94,12 @@ tags:
     type.
   name: CustomIntegrationApiKeys
   x-displayName: Custom Integration API Keys
+- description: Switchboard operations
+  name: Switchboards
+  x-displayName: Switchboards
+- description: Switchboard Integrations operations
+  name: Switchboard Integrations
+  x-displayName: Switchboard Integrations
 paths:
   /v2/apps:
     get:
@@ -454,7 +463,7 @@ paths:
       - Conversations
       x-accepts: application/json
     post:
-      description: Create a conversation for the specified user.
+      description: Create a conversation for the specified user(s).
       operationId: createConversation
       parameters:
       - description: Identifies the app.
@@ -964,10 +973,54 @@ paths:
         required: true
       responses:
         "200":
+          content:
+            application/json:
+              schema:
+                type: object
           description: Ok
       summary: Post Activity
       tags:
       - Activities
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/conversations/{conversationId}/passControl:
+    post:
+      description: Mark the named switchboard integration as active and transition
+        all the other switchboard integrations to standby status.
+      operationId: passControl
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the conversation.
+        explode: false
+        in: path
+        name: conversationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/passControlBody'
+        required: true
+      responses:
+        "200":
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Pass Control
+      tags:
+      - Switchboard Actions
       x-contentType: application/json
       x-accepts: application/json
   /v2/apps/{appId}/users/{userId}/clients:
@@ -1483,6 +1536,322 @@ paths:
       tags:
       - CustomIntegrationApiKeys
       x-accepts: application/json
+  /v2/apps/{appId}/switchboards:
+    get:
+      description: |
+        Lists all switchboards belonging to the app.
+      operationId: listSwitchboards
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardListResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: List Switchboards
+      tags:
+      - Switchboards
+      x-accepts: application/json
+    post:
+      description: Create a switchboard.
+      operationId: createSwitchboard
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardResponse'
+          description: Created
+        "404":
+          description: Not Found
+      summary: Create Switchboard
+      tags:
+      - Switchboards
+      x-accepts: application/json
+  /v2/apps/{appId}/switchboards/{switchboardId}:
+    delete:
+      description: Deletes the switchboard and all its switchboard integrations. The
+        integrations linked to these switchboard integrations are not deleted and
+        will start receiving all conversation events.
+      operationId: deleteSwitchboard
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Delete Switchboard
+      tags:
+      - Switchboards
+      x-accepts: application/json
+    patch:
+      description: Updates a switchboard record.
+      operationId: updateSwitchboard
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchboardUpdateBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Update Switchboard
+      tags:
+      - Switchboards
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations:
+    get:
+      description: |
+        Lists all switchboard integrations linked to the switchboard.
+      operationId: listSwitchboardIntegrations
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardIntegrationListResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: List Switchboard Integrations
+      tags:
+      - Switchboard Integrations
+      x-accepts: application/json
+    post:
+      description: Create a switchboard integration.
+      operationId: createSwitchboardIntegration
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchboardIntegrationCreateBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardIntegrationResponse'
+          description: Created
+        "404":
+          description: Not Found
+      summary: Create Switchboard Integration
+      tags:
+      - Switchboard Integrations
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId}:
+    delete:
+      description: Deletes the switchboard integration. If the deleted switchboard
+        integration had an active status for some conversations, the default switchboard
+        integration will replace it. Note that it is forbidden to delete a switchboard
+        integration if it's the default one (a new one must be chosen first) or if
+        another switchboard integration's `nextSwitchboardIntegrationId` refers to
+        it. The integration that was linked to the deleted switchboard integration
+        will start receiving all conversation events, regardless of the switchboard
+        status.
+      operationId: deleteSwitchboardIntegration
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard integration.
+        explode: false
+        in: path
+        name: switchboardIntegrationId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Delete Switchboard Integration
+      tags:
+      - Switchboard Integrations
+      x-accepts: application/json
+    patch:
+      description: Updates a switchboard integration record.
+      operationId: updateSwitchboardIntegration
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard.
+        explode: false
+        in: path
+        name: switchboardId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the switchboard integration.
+        explode: false
+        in: path
+        name: switchboardIntegrationId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/switchboardIntegrationUpdateBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/switchboardIntegrationResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      summary: Update Switchboard Integration
+      tags:
+      - Switchboard Integrations
+      x-contentType: application/json
+      x-accepts: application/json
 components:
   parameters:
     pageQuery:
@@ -1657,6 +2026,26 @@ components:
       required: true
       schema:
         example: 029c31f25a21b47effd7be90
+        type: string
+      style: simple
+    switchboardId:
+      description: Identifies the switchboard.
+      explode: false
+      in: path
+      name: switchboardId
+      required: true
+      schema:
+        example: 5d8cff3cd55b040010928b5b
+        type: string
+      style: simple
+    switchboardIntegrationId:
+      description: Identifies the switchboard integration.
+      explode: false
+      in: path
+      name: switchboardIntegrationId
+      required: true
+      schema:
+        example: 5d8cff3cd55b040010928b5b
         type: string
       style: simple
   requestBodies:
@@ -2893,6 +3282,15 @@ components:
       type: object
     content:
       discriminator:
+        mapping:
+          text: '#/components/schemas/textMessage'
+          carousel: '#/components/schemas/carouselMessage'
+          file: '#/components/schemas/fileMessage'
+          form: '#/components/schemas/formMessage'
+          formResponse: '#/components/schemas/formResponseMessage'
+          image: '#/components/schemas/imageMessage'
+          list: '#/components/schemas/listMessage'
+          location: '#/components/schemas/locationMessage'
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/textMessage'
@@ -3125,8 +3523,8 @@ components:
       type: object
     destination:
       oneOf:
-      - $ref: '#/components/schemas/integrationId'
-      - $ref: '#/components/schemas/integrationType'
+      - $ref: '#/components/schemas/integrationId_1'
+      - $ref: '#/components/schemas/integrationType_1'
       x-one-of-name: Destination
     messagePost:
       properties:
@@ -3219,6 +3617,25 @@ components:
       required:
       - author
       - type
+      type: object
+    passControlBody:
+      properties:
+        switchboardIntegration:
+          description: The id or the name of the switchboard integration that will
+            become active. May also use the `next` keyword to transfer control to
+            the next switchboard integration designated in the switchboard hierarchy
+            configuration
+          example: next
+          type: string
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          description: Flat object containing custom properties. Strings, numbers
+            and booleans are the only supported format that can be passed to metadata.
+            The metadata is limited to 4KB in size. The metadata object will be included
+            in the switchboard:passControl webhook.
+      required:
+      - switchboardIntegration
       type: object
     clientListResponse:
       example:
@@ -3556,6 +3973,249 @@ components:
             the API using Basic Authentication
           type: string
       type: object
+    enabled:
+      description: Whether the switchboard is enabled. Allows creating the switchboard
+        in a disabled state so that messages don't get lost or misrouted during switchboard
+        configuration. When a switchboard is disabled, integrations linked to the
+        switchboard will receive all events.
+      type: boolean
+    defaultSwitchboardIntegrationId:
+      description: The id of the switchboard integration that will be given control
+        when a new conversation begins. It will also be used for conversations that
+        existed before the switchboard was enabled.
+      example: 5ef21b132f21af34f088530e
+      type: string
+    switchboard:
+      example:
+        defaultSwitchboardIntegrationId: 5ef21b132f21af34f088530e
+        id: 5ef21b132f21af34f088530d
+        enabled: true
+      properties:
+        id:
+          description: The unique ID of the switchboard.
+          example: 5ef21b132f21af34f088530d
+          type: string
+        enabled:
+          description: Whether the switchboard is enabled. Allows creating the switchboard
+            in a disabled state so that messages don't get lost or misrouted during
+            switchboard configuration. When a switchboard is disabled, integrations
+            linked to the switchboard will receive all events.
+          type: boolean
+        defaultSwitchboardIntegrationId:
+          description: The id of the switchboard integration that will be given control
+            when a new conversation begins. It will also be used for conversations
+            that existed before the switchboard was enabled.
+          example: 5ef21b132f21af34f088530e
+          type: string
+      required:
+      - enabled
+      - id
+      type: object
+    switchboardListResponse:
+      example:
+        switchboards:
+        - defaultSwitchboardIntegrationId: 5ef21b132f21af34f088530e
+          id: 5ef21b132f21af34f088530d
+          enabled: true
+        - defaultSwitchboardIntegrationId: 5ef21b132f21af34f088530e
+          id: 5ef21b132f21af34f088530d
+          enabled: true
+      properties:
+        switchboards:
+          description: List of returned switchboards.
+          items:
+            $ref: '#/components/schemas/switchboard'
+          type: array
+      type: object
+    switchboardResponse:
+      example:
+        switchboard: ""
+      properties:
+        switchboard:
+          allOf:
+          - $ref: '#/components/schemas/switchboard'
+          description: The switchboard.
+      title: SwitchboardResponse
+      type: object
+    switchboardUpdateBody:
+      properties:
+        enabled:
+          description: Whether the switchboard is enabled. Allows creating the switchboard
+            in a disabled state so that messages don't get lost or misrouted during
+            switchboard configuration. When a switchboard is disabled, integrations
+            linked to the switchboard will receive all events.
+          type: boolean
+        defaultSwitchboardIntegrationId:
+          description: The id of the switchboard integration that will be given control
+            when a new conversation begins. It will also be used for conversations
+            that existed before the switchboard was enabled.
+          example: 5ef21b132f21af34f088530e
+          type: string
+      type: object
+    name:
+      description: Identifier for use in control transfer protocols. Restricted to
+        alphanumeric characters, - and _.
+      example: bot
+      maxLength: 128
+      type: string
+    integrationId:
+      description: Id of the integration that should deliver events routed by the
+        switchboard.
+      example: 5ef21b86e933b7355c11c605
+      type: string
+    integrationType:
+      description: Type of integration that should deliver events routed by the switchboard.
+        If referencing an OAuth integration, the clientId issued by Sunshine Conversations
+        during the OAuth partnership process will be the value of integrationType.
+      example: zd:agentWorkspace
+      type: string
+    deliverStandbyEvents:
+      description: Setting to determine if webhooks should be sent when the switchboard
+        integration is not in control of a conversation (standby status)
+      type: boolean
+    nextSwitchboardIntegrationId:
+      description: The switchboard integration id to which control of a conversation
+        is passed / offered by default.
+      example: 5ef21b86e933b7355c11c606
+      type: string
+    switchboardIntegration:
+      example:
+        integrationType: zd:agentWorkspace
+        deliverStandbyEvents: true
+        nextSwitchboardIntegrationId: 5ef21b86e933b7355c11c606
+        name: bot
+        integrationId: 5ef21b86e933b7355c11c605
+        id: 5ef21b86e933b7355c11c604
+      properties:
+        id:
+          description: The unique ID of the switchboard integration.
+          example: 5ef21b86e933b7355c11c604
+          type: string
+        name:
+          description: Identifier for use in control transfer protocols. Restricted
+            to alphanumeric characters, - and _.
+          example: bot
+          maxLength: 128
+          type: string
+        integrationId:
+          description: Id of the integration that should deliver events routed by
+            the switchboard.
+          example: 5ef21b86e933b7355c11c605
+          type: string
+        integrationType:
+          description: Type of integration that should deliver events routed by the
+            switchboard. If referencing an OAuth integration, the clientId issued
+            by Sunshine Conversations during the OAuth partnership process will be
+            the value of integrationType.
+          example: zd:agentWorkspace
+          type: string
+        deliverStandbyEvents:
+          description: Setting to determine if webhooks should be sent when the switchboard
+            integration is not in control of a conversation (standby status)
+          type: boolean
+        nextSwitchboardIntegrationId:
+          description: The switchboard integration id to which control of a conversation
+            is passed / offered by default.
+          example: 5ef21b86e933b7355c11c606
+          type: string
+      required:
+      - deliverStandbyEvents
+      - id
+      - integrationId
+      - integrationType
+      - name
+      type: object
+    switchboardIntegrationListResponse:
+      example:
+        switchboardIntegrations:
+        - integrationType: zd:agentWorkspace
+          deliverStandbyEvents: true
+          nextSwitchboardIntegrationId: 5ef21b86e933b7355c11c606
+          name: bot
+          integrationId: 5ef21b86e933b7355c11c605
+          id: 5ef21b86e933b7355c11c604
+        - integrationType: zd:agentWorkspace
+          deliverStandbyEvents: true
+          nextSwitchboardIntegrationId: 5ef21b86e933b7355c11c606
+          name: bot
+          integrationId: 5ef21b86e933b7355c11c605
+          id: 5ef21b86e933b7355c11c604
+      properties:
+        switchboardIntegrations:
+          description: List of returned switchboard integrations.
+          items:
+            $ref: '#/components/schemas/switchboardIntegration'
+          type: array
+      type: object
+    switchboardIntegrationCreateBody:
+      properties:
+        name:
+          description: Identifier for use in control transfer protocols. Restricted
+            to alphanumeric characters, - and _.
+          example: bot
+          maxLength: 128
+          type: string
+        integrationId:
+          allOf:
+          - $ref: '#/components/schemas/integrationId'
+          description: The id of the integration to link to the switchboard integration.
+            Must be used when linking a custom integration. One of integrationId or
+            integrationType must be provided.
+        integrationType:
+          allOf:
+          - $ref: '#/components/schemas/integrationType'
+          description: The type of the integration to link to the switchboard integration.
+            Must be used when linking an OAuth integration. One of integrationId or
+            integrationType must be provided.
+        deliverStandbyEvents:
+          allOf:
+          - $ref: '#/components/schemas/deliverStandbyEvents'
+        nextSwitchboardIntegrationId:
+          allOf:
+          - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
+          nullable: true
+      required:
+      - name
+      type: object
+    switchboardIntegrationResponse:
+      example:
+        switchboardIntegration: ""
+      properties:
+        switchboardIntegration:
+          allOf:
+          - $ref: '#/components/schemas/switchboardIntegration'
+          description: The switchboard integration.
+      title: SwitchboardIntegrationResponse
+      type: object
+    switchboardIntegrationUpdateBody:
+      properties:
+        name:
+          description: Identifier for use in control transfer protocols. Restricted
+            to alphanumeric characters, - and _.
+          example: bot
+          maxLength: 128
+          type: string
+        integrationId:
+          allOf:
+          - $ref: '#/components/schemas/integrationId'
+          description: The id of the integration to link to the switchboard integration.
+            Must be used when linking a custom integration. Can't provide both integrationId
+            and integrationType.
+        integrationType:
+          allOf:
+          - $ref: '#/components/schemas/integrationType'
+          description: The type of the integration to link to the switchboard integration.
+            Must be used when linking an OAuth integration. Can't provide both integrationId
+            and integrationType.
+        deliverStandbyEvents:
+          description: Setting to determine if webhooks should be sent when the switchboard
+            integration is not in control of a conversation (standby status)
+          type: boolean
+        nextSwitchboardIntegrationId:
+          allOf:
+          - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
+          nullable: true
+      type: object
     filter:
       properties:
         serviceAccountId:
@@ -3718,7 +4378,7 @@ components:
       nullable: true
       properties:
         AnyValue: {}
-    integrationId:
+    integrationId_1:
       properties:
         integrationId:
           description: |
@@ -3726,7 +4386,7 @@ components:
             the integration does not exist or if the user does not have a client for the
             integration attached to the conversation.
           type: string
-    integrationType:
+    integrationType_1:
       properties:
         integrationType:
           description: |
@@ -4279,8 +4939,13 @@ x-tagGroups:
   - Messages
   - Activities
   - Clients
+  - Switchboard Actions
 - name: Integrations
   tags:
   - Integrations
   - CustomIntegrationApiKeys
+- name: Switchboards
+  tags:
+  - Switchboards
+  - Switchboard Integrations
 

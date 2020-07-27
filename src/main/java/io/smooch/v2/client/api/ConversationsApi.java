@@ -39,7 +39,7 @@ public class ConversationsApi {
 
   /**
    * Create Conversation
-   * Create a conversation for the specified user.
+   * Create a conversation for the specified user(s).
    * @param conversationCreateBody  (required)
    * @param appId Identifies the app. (required)
    * @return a {@code ConversationResponse}

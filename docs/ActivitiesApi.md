@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## postActivity
 
-> postActivity(activityPost, appId, conversationId)
+> Object postActivity(activityPost, appId, conversationId)
 
 Post Activity
 
@@ -46,7 +46,8 @@ public class Example {
         String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
         String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
         try {
-            apiInstance.postActivity(activityPost, appId, conversationId);
+            Object result = apiInstance.postActivity(activityPost, appId, conversationId);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ActivitiesApi#postActivity");
             System.err.println("Status code: " + e.getCode());
@@ -69,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -78,7 +79,7 @@ null (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: application/json
-- **Accept**: Not defined
+- **Accept**: application/json
 
 ### HTTP response details
 | Status code | Description | Response headers |

@@ -4,7 +4,7 @@
 
 ## Implementing Classes
 
-* IntegrationId
-* IntegrationType
+* IntegrationId1
+* IntegrationType1
 
 

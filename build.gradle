@@ -1,9 +1,11 @@
+apply plugin: 'maven-publish'
+
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'io.smooch'
-version = '6.0.0-alpha.2'
+version = '6.0.0-alpha.3'
 
 buildscript {
     repositories {
@@ -146,4 +148,12 @@ dependencies {
     compile "joda-time:joda-time:$jodatime_version"
     compile "com.brsanthu:migbase64:2.2"
     testCompile "junit:junit:$junit_version"
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
 }
