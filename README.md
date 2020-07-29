@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha.4</version>
+    <version>6.0.0-alpha.5</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha.4"
+compile "io.smooch:api:6.0.0-alpha.5"
 ```
 
 ## Getting Started
@@ -355,7 +355,7 @@ Authentication schemes defined for the API:
 
 ## Recommendation
 
-It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues.
+It's recommended to create an instance of `ApiClient` per thread in a multithreaded environment to avoid any potential issues. Alternatively, configure the connectionPool to use a number of threads for the ApiClient. The default number is 20, but can be configured through the constructor `new ApiClient(30);`
 
 ## Copyright and license
 

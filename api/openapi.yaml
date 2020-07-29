@@ -42,7 +42,7 @@ info:
     \ can have unexpected behaviour when following redirects from `http` to `https`.</aside>\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha.4
+  version: 6.0.0-alpha.5
   x-logo:
     url: sunco_logo.png
     altText: Sunshine Conversations

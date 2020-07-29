@@ -40,6 +40,7 @@ import javax.ws.rs.core.Response.Status;
 import io.smooch.v2.client.model.Filter;
 import io.smooch.v2.client.model.Page;
 import org.jboss.logging.Logger;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.internal.ClientConfiguration;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataOutput;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
@@ -55,6 +56,7 @@ public class ApiClient {
   private Map<String, String> defaultCookieMap = new HashMap<String, String>();
   private String basePath = "https://api.smooch.io";
   private boolean debugging = false;
+  private static int DEFAULT_CONNECTION_POOL_SIZE = 20;
 
   private Client httpClient;
   private JSON json;
@@ -63,11 +65,17 @@ public class ApiClient {
   private Map<String, Authentication> authentications;
 
   private int statusCode;
+  private int connectionPoolSize;
   private Map<String, List<String>> responseHeaders;
 
   private DateFormat dateFormat;
 
-  public ApiClient() {
+  public ApiClient(){
+    this(DEFAULT_CONNECTION_POOL_SIZE);
+  }
+
+  public ApiClient(int connectionPoolSize) {
+    this.connectionPoolSize = connectionPoolSize;
     json = new JSON();
     httpClient = buildHttpClient(debugging);
 
@@ -79,7 +87,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/6.0.0-alpha.4/java");
+    setUserAgent("OpenAPI-Generator/6.0.0-alpha.5/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -741,7 +749,11 @@ public class ApiClient {
     if(debugging){
       clientConfig.register(Logger.class);
     }
-    return ClientBuilder.newClient(clientConfig);
+
+    ResteasyClientBuilder clientBuilder = (ResteasyClientBuilder) ResteasyClientBuilder.newBuilder();
+    clientBuilder.connectionPoolSize(connectionPoolSize);
+    clientBuilder.withConfig(clientConfig);
+    return clientBuilder.build();
   }
   private Map<String, List<String>> buildResponseHeaders(Response response) {
     Map<String, List<String>> responseHeaders = new HashMap<String, List<String>>();

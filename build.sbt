@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "io.smooch",
     name := "api",
-    version := "6.0.0-alpha.4",
+    version := "6.0.0-alpha.5",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
