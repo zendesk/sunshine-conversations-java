@@ -7,6 +7,7 @@ For LINE, each of your customers will need to manually configure a webhook in th
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of integration. |  [optional]
 **channelId** | **String** | LINE Channel ID. | 
 **channelSecret** | **String** | LINE Channel Secret. | 
 **channelAccessToken** | **String** | LINE Channel Access Token. |  [optional]

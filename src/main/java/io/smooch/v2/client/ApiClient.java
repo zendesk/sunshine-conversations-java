@@ -37,7 +37,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import io.smooch.v2.client.model.Filter;
+import io.smooch.v2.client.model.AppListFilter;
+import io.smooch.v2.client.model.ConversationListFilter;
 import io.smooch.v2.client.model.Page;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -87,7 +88,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/6.0.0-alpha.5/java");
+    setUserAgent("OpenAPI-Generator/6.0.0-alpha.6/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -367,14 +368,14 @@ public class ApiClient {
         serializeDeepObjectParameter(params, name, "size", ((Page) value).getSize());
         serializeDeepObjectParameter(params, name, "before", ((Page) value).getBefore());
         serializeDeepObjectParameter(params, name, "after", ((Page) value).getAfter());
-      } else if (value instanceof Filter) {
+      } else if (value instanceof AppListFilter || value instanceof ConversationListFilter) {
         Field[] fields = value.getClass().getDeclaredFields();
         for(Field field: fields) {
           if (!java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
             String fieldName = field.getName();
             try {
               Method fieldGetter = value.getClass().getDeclaredMethod(String.format("get%s%s", fieldName.substring(0, 1).toUpperCase(), fieldName.substring(1)));
-              serializeDeepObjectParameter(params, name, fieldName, fieldGetter.invoke(value));
+              serializeDeepObjectParameter(params, "filter", fieldName, fieldGetter.invoke(value));
             } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
               e.printStackTrace();
             }
@@ -639,7 +640,10 @@ public class ApiClient {
    * @throws ApiException if the invocation failed
    */
   public <T> T invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
-    updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
+    // In case a per-request authorization is used, skip applying default authorization
+    if(!headerParams.containsKey("Authorization")){
+        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
+    }
 
     // Not using `.target(this.basePath).path(path)` below,
     // to support (constant) query string in `path`, e.g. "/posts?draft=1"

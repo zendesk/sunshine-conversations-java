@@ -5,6 +5,7 @@
 ## Implementing Classes
 
 * Android
+* Apple
 * Custom
 * Ios
 * Line
@@ -15,7 +16,6 @@
 * Twilio
 * Twitter
 * Viber
-* WeChat
 * Web
 * Whatsapp
 

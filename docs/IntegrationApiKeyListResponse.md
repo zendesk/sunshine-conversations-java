@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**keys** | [**List&lt;ApiKey&gt;**](ApiKey.md) |  |  [optional]
+**keys** | [**List&lt;ApiKey&gt;**](ApiKey.md) | Integration keys of the supplied integration. |  [optional]
 
 
 

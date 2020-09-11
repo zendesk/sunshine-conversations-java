@@ -22,12 +22,11 @@ Creates an API key for the specified custom integration. The response body will 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.CustomIntegrationApiKeysApi;
 
 public class Example {
@@ -37,17 +36,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
         IntegrationApiKey integrationApiKey = new IntegrationApiKey(); // IntegrationApiKey | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        // Add required body parameters
+
         try {
             IntegrationApiKeyResponse result = apiInstance.createCustomIntegrationKey(integrationApiKey, appId, integrationId);
             System.out.println(result);
@@ -101,12 +102,11 @@ Removes an API key.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.CustomIntegrationApiKeysApi;
 
 public class Example {
@@ -116,17 +116,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
-        String keyId = int_5d8cff3cd55b040010928b5b; // String | The id of the key.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteCustomIntegrationKey(appId, integrationId, keyId);
             System.out.println(result);
@@ -180,12 +182,11 @@ Get the specified API key.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.CustomIntegrationApiKeysApi;
 
 public class Example {
@@ -195,17 +196,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
-        String keyId = int_5d8cff3cd55b040010928b5b; // String | The id of the key.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        // Add required body parameters
+
         try {
             IntegrationApiKeyResponse result = apiInstance.getCustomIntegrationKey(appId, integrationId, keyId);
             System.out.println(result);
@@ -259,12 +262,11 @@ Lists all API keys for a given integration.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.CustomIntegrationApiKeysApi;
 
 public class Example {
@@ -274,16 +276,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        // Add required body parameters
+
         try {
             IntegrationApiKeyListResponse result = apiInstance.listCustomIntegrationKeys(appId, integrationId);
             System.out.println(result);
@@ -323,4 +327,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** | API keys are available only for custom integrations |  -  |
 

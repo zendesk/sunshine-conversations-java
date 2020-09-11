@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **id** | **String** | The unique ID of the integration. |  [optional] [readonly]
 **type** | **String** | The type of integration. | 
 **status** | [**Status**](Status.md) |  |  [optional]
-**error** | **String** | If the integration status is error, contains a description of the problem. |  [optional] [readonly]
 **displayName** | **String** | A human-friendly name used to identify the integration. |  [optional]
 **apiKey** | **String** | The public API key of your Mailgun account. | 
 **domain** | **String** | The domain used to relay email. This domain must be configured and verified in your Mailgun account. | 

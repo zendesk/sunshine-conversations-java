@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha.5</version>
+    <version>6.0.0-alpha.6</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha.5"
+compile "io.smooch:api:6.0.0-alpha.6"
 ```
 
 ## Getting Started
@@ -153,15 +153,15 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**deleteApp**](docs/AppsApi.md#deleteApp) | **DELETE** /v2/apps/{appId} | Delete App
 *AppsApi* | [**getApp**](docs/AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App
 *AppsApi* | [**listApps**](docs/AppsApi.md#listApps) | **GET** /v2/apps | List Apps
-*AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PUT** /v2/apps/{appId} | Update App
-*ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userId}/clients | Create Client
-*ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userId}/clients | List Clients
-*ClientsApi* | [**removeClient**](docs/ClientsApi.md#removeClient) | **DELETE** /v2/apps/{appId}/users/{userId}/clients/{clientId} | Remove Client
+*AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
+*ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | Create Client
+*ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | List Clients
+*ClientsApi* | [**removeClient**](docs/ClientsApi.md#removeClient) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId} | Remove Client
 *ConversationsApi* | [**createConversation**](docs/ConversationsApi.md#createConversation) | **POST** /v2/apps/{appId}/conversations | Create Conversation
 *ConversationsApi* | [**deleteConversation**](docs/ConversationsApi.md#deleteConversation) | **DELETE** /v2/apps/{appId}/conversations/{conversationId} | Delete Conversation
 *ConversationsApi* | [**getConversation**](docs/ConversationsApi.md#getConversation) | **GET** /v2/apps/{appId}/conversations/{conversationId} | Get Conversation
 *ConversationsApi* | [**listConversations**](docs/ConversationsApi.md#listConversations) | **GET** /v2/apps/{appId}/conversations | List Conversations
-*ConversationsApi* | [**updateConversation**](docs/ConversationsApi.md#updateConversation) | **PUT** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
+*ConversationsApi* | [**updateConversation**](docs/ConversationsApi.md#updateConversation) | **PATCH** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
 *CustomIntegrationApiKeysApi* | [**createCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#createCustomIntegrationKey) | **POST** /v2/apps/{appId}/integrations/{integrationId}/keys | Create Integration Key
 *CustomIntegrationApiKeysApi* | [**deleteCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#deleteCustomIntegrationKey) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Delete Integration Key
 *CustomIntegrationApiKeysApi* | [**getCustomIntegrationKey**](docs/CustomIntegrationApiKeysApi.md#getCustomIntegrationKey) | **GET** /v2/apps/{appId}/integrations/{integrationId}/keys/{keyId} | Get Integration Key
@@ -170,7 +170,7 @@ Class | Method | HTTP request | Description
 *IntegrationsApi* | [**deleteIntegration**](docs/IntegrationsApi.md#deleteIntegration) | **DELETE** /v2/apps/{appId}/integrations/{integrationId} | Delete Integration
 *IntegrationsApi* | [**getIntegration**](docs/IntegrationsApi.md#getIntegration) | **GET** /v2/apps/{appId}/integrations/{integrationId} | Get Integration
 *IntegrationsApi* | [**listIntegrations**](docs/IntegrationsApi.md#listIntegrations) | **GET** /v2/apps/{appId}/integrations | List Integrations
-*IntegrationsApi* | [**updateIntegration**](docs/IntegrationsApi.md#updateIntegration) | **PUT** /v2/apps/{appId}/integrations/{integrationId} | Update Integration
+*IntegrationsApi* | [**updateIntegration**](docs/IntegrationsApi.md#updateIntegration) | **PATCH** /v2/apps/{appId}/integrations/{integrationId} | Update Integration
 *MessagesApi* | [**deleteAllMessages**](docs/MessagesApi.md#deleteAllMessages) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages | Delete All Messages
 *MessagesApi* | [**deleteMessage**](docs/MessagesApi.md#deleteMessage) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages/{messageId} | Delete Message
 *MessagesApi* | [**listMessages**](docs/MessagesApi.md#listMessages) | **GET** /v2/apps/{appId}/conversations/{conversationId}/messages | List Messages
@@ -189,6 +189,11 @@ Class | Method | HTTP request | Description
 *SwitchboardsApi* | [**deleteSwitchboard**](docs/SwitchboardsApi.md#deleteSwitchboard) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId} | Delete Switchboard
 *SwitchboardsApi* | [**listSwitchboards**](docs/SwitchboardsApi.md#listSwitchboards) | **GET** /v2/apps/{appId}/switchboards | List Switchboards
 *SwitchboardsApi* | [**updateSwitchboard**](docs/SwitchboardsApi.md#updateSwitchboard) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId} | Update Switchboard
+*WebhooksApi* | [**createWebhook**](docs/WebhooksApi.md#createWebhook) | **POST** /v2/apps/{appId}/integrations/{integrationId}/webhooks | Create Webhook
+*WebhooksApi* | [**deleteWebhook**](docs/WebhooksApi.md#deleteWebhook) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Delete Webhook
+*WebhooksApi* | [**getWebhook**](docs/WebhooksApi.md#getWebhook) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Get Webhook
+*WebhooksApi* | [**listWebhooks**](docs/WebhooksApi.md#listWebhooks) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks | List Webhooks
+*WebhooksApi* | [**updateWebhook**](docs/WebhooksApi.md#updateWebhook) | **PATCH** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Update Webhook
 
 
 ## Documentation for Models
@@ -196,10 +201,15 @@ Class | Method | HTTP request | Description
  - [AcceptControlBody](docs/AcceptControlBody.md)
  - [Action](docs/Action.md)
  - [ActionSubset](docs/ActionSubset.md)
+ - [Activity](docs/Activity.md)
+ - [ActivityAllOf](docs/ActivityAllOf.md)
  - [ActivityPost](docs/ActivityPost.md)
+ - [ActivityPostAllOf](docs/ActivityPostAllOf.md)
+ - [ActivityTypes](docs/ActivityTypes.md)
  - [Android](docs/Android.md)
  - [AndroidAllOf](docs/AndroidAllOf.md)
  - [AndroidUpdate](docs/AndroidUpdate.md)
+ - [AndroidUpdateAllOf](docs/AndroidUpdateAllOf.md)
  - [ApiKey](docs/ApiKey.md)
  - [App](docs/App.md)
  - [AppCreateBody](docs/AppCreateBody.md)
@@ -207,11 +217,17 @@ Class | Method | HTTP request | Description
  - [AppKeyCreateBody](docs/AppKeyCreateBody.md)
  - [AppKeyListResponse](docs/AppKeyListResponse.md)
  - [AppKeyResponse](docs/AppKeyResponse.md)
+ - [AppListFilter](docs/AppListFilter.md)
  - [AppListResponse](docs/AppListResponse.md)
  - [AppResponse](docs/AppResponse.md)
  - [AppSettings](docs/AppSettings.md)
+ - [AppSubSchema](docs/AppSubSchema.md)
  - [AppUpdateBody](docs/AppUpdateBody.md)
+ - [Apple](docs/Apple.md)
+ - [AppleAllOf](docs/AppleAllOf.md)
+ - [AppleUpdate](docs/AppleUpdate.md)
  - [Author](docs/Author.md)
+ - [AuthorWebhook](docs/AuthorWebhook.md)
  - [Buy](docs/Buy.md)
  - [CarouselMessage](docs/CarouselMessage.md)
  - [CarouselMessageDisplaySettings](docs/CarouselMessageDisplaySettings.md)
@@ -224,23 +240,48 @@ Class | Method | HTTP request | Description
  - [Confirmation](docs/Confirmation.md)
  - [Content](docs/Content.md)
  - [Conversation](docs/Conversation.md)
+ - [ConversationAllOf](docs/ConversationAllOf.md)
  - [ConversationCreateBody](docs/ConversationCreateBody.md)
+ - [ConversationCreateEvent](docs/ConversationCreateEvent.md)
+ - [ConversationCreateEventAllOf](docs/ConversationCreateEventAllOf.md)
+ - [ConversationCreateEventAllOfPayload](docs/ConversationCreateEventAllOfPayload.md)
+ - [ConversationListFilter](docs/ConversationListFilter.md)
  - [ConversationListResponse](docs/ConversationListResponse.md)
+ - [ConversationMessageDeliveryChannelEvent](docs/ConversationMessageDeliveryChannelEvent.md)
+ - [ConversationMessageDeliveryChannelEventAllOf](docs/ConversationMessageDeliveryChannelEventAllOf.md)
+ - [ConversationMessageDeliveryFailureEvent](docs/ConversationMessageDeliveryFailureEvent.md)
+ - [ConversationMessageDeliveryFailureEventAllOf](docs/ConversationMessageDeliveryFailureEventAllOf.md)
+ - [ConversationMessageDeliveryPayload](docs/ConversationMessageDeliveryPayload.md)
+ - [ConversationMessageDeliveryPayloadDestination](docs/ConversationMessageDeliveryPayloadDestination.md)
+ - [ConversationMessageDeliveryPayloadExternalMessages](docs/ConversationMessageDeliveryPayloadExternalMessages.md)
+ - [ConversationMessageDeliveryPayloadMessage](docs/ConversationMessageDeliveryPayloadMessage.md)
+ - [ConversationMessageDeliveryUserEvent](docs/ConversationMessageDeliveryUserEvent.md)
+ - [ConversationMessageEvent](docs/ConversationMessageEvent.md)
+ - [ConversationMessageEventAllOf](docs/ConversationMessageEventAllOf.md)
+ - [ConversationMessageEventAllOfPayload](docs/ConversationMessageEventAllOfPayload.md)
+ - [ConversationPostbackEvent](docs/ConversationPostbackEvent.md)
+ - [ConversationPostbackEventAllOf](docs/ConversationPostbackEventAllOf.md)
+ - [ConversationPostbackEventAllOfPayload](docs/ConversationPostbackEventAllOfPayload.md)
+ - [ConversationReadEvent](docs/ConversationReadEvent.md)
+ - [ConversationReadEventAllOf](docs/ConversationReadEventAllOf.md)
+ - [ConversationReadEventAllOfPayload](docs/ConversationReadEventAllOfPayload.md)
  - [ConversationResponse](docs/ConversationResponse.md)
+ - [ConversationTruncated](docs/ConversationTruncated.md)
  - [ConversationType](docs/ConversationType.md)
+ - [ConversationTypingEvent](docs/ConversationTypingEvent.md)
+ - [ConversationTypingEventAllOf](docs/ConversationTypingEventAllOf.md)
+ - [ConversationTypingEventAllOfPayload](docs/ConversationTypingEventAllOfPayload.md)
  - [ConversationUpdateBody](docs/ConversationUpdateBody.md)
  - [Custom](docs/Custom.md)
  - [CustomAllOf](docs/CustomAllOf.md)
  - [CustomUpdate](docs/CustomUpdate.md)
- - [CustomUpdateAllOf](docs/CustomUpdateAllOf.md)
  - [Destination](docs/Destination.md)
  - [Device](docs/Device.md)
- - [DeviceInfo](docs/DeviceInfo.md)
+ - [EventSubSchema](docs/EventSubSchema.md)
  - [ExtraChannelOptions](docs/ExtraChannelOptions.md)
  - [ExtraChannelOptionsMessenger](docs/ExtraChannelOptionsMessenger.md)
  - [Field](docs/Field.md)
  - [FileMessage](docs/FileMessage.md)
- - [Filter](docs/Filter.md)
  - [FormMessage](docs/FormMessage.md)
  - [FormResponseMessage](docs/FormResponseMessage.md)
  - [ImageMessage](docs/ImageMessage.md)
@@ -249,15 +290,16 @@ Class | Method | HTTP request | Description
  - [IntegrationApiKeyListResponse](docs/IntegrationApiKeyListResponse.md)
  - [IntegrationApiKeyResponse](docs/IntegrationApiKeyResponse.md)
  - [IntegrationBase](docs/IntegrationBase.md)
- - [IntegrationId1](docs/IntegrationId1.md)
+ - [IntegrationId](docs/IntegrationId.md)
  - [IntegrationListResponse](docs/IntegrationListResponse.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
- - [IntegrationType1](docs/IntegrationType1.md)
+ - [IntegrationType](docs/IntegrationType.md)
  - [IntegrationUpdate](docs/IntegrationUpdate.md)
  - [IntegrationUpdateBase](docs/IntegrationUpdateBase.md)
  - [Ios](docs/Ios.md)
  - [IosAllOf](docs/IosAllOf.md)
  - [IosUpdate](docs/IosUpdate.md)
+ - [IosUpdateAllOf](docs/IosUpdateAllOf.md)
  - [Item](docs/Item.md)
  - [Line](docs/Line.md)
  - [LineAllOf](docs/LineAllOf.md)
@@ -274,11 +316,26 @@ Class | Method | HTTP request | Description
  - [MailgunUpdate](docs/MailgunUpdate.md)
  - [MailgunUpdateAllOf](docs/MailgunUpdateAllOf.md)
  - [MatchCriteria](docs/MatchCriteria.md)
+ - [MatchCriteriaBase](docs/MatchCriteriaBase.md)
+ - [MatchCriteriaMailgun](docs/MatchCriteriaMailgun.md)
+ - [MatchCriteriaMailgunAllOf](docs/MatchCriteriaMailgunAllOf.md)
+ - [MatchCriteriaMessagebird](docs/MatchCriteriaMessagebird.md)
+ - [MatchCriteriaMessagebirdAllOf](docs/MatchCriteriaMessagebirdAllOf.md)
+ - [MatchCriteriaTwilio](docs/MatchCriteriaTwilio.md)
+ - [MatchCriteriaTwilioAllOf](docs/MatchCriteriaTwilioAllOf.md)
+ - [MatchCriteriaWhatsapp](docs/MatchCriteriaWhatsapp.md)
+ - [MatchCriteriaWhatsappAllOf](docs/MatchCriteriaWhatsappAllOf.md)
  - [Message](docs/Message.md)
  - [MessageBird](docs/MessageBird.md)
  - [MessageBirdAllOf](docs/MessageBirdAllOf.md)
  - [MessageBirdUpdate](docs/MessageBirdUpdate.md)
  - [MessageListResponse](docs/MessageListResponse.md)
+ - [MessageOverride](docs/MessageOverride.md)
+ - [MessageOverrideApple](docs/MessageOverrideApple.md)
+ - [MessageOverrideLine](docs/MessageOverrideLine.md)
+ - [MessageOverrideMessenger](docs/MessageOverrideMessenger.md)
+ - [MessageOverridePayload](docs/MessageOverridePayload.md)
+ - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessagePostResponse](docs/MessagePostResponse.md)
  - [Messenger](docs/Messenger.md)
@@ -297,20 +354,43 @@ Class | Method | HTTP request | Description
  - [ParticipantListResponse](docs/ParticipantListResponse.md)
  - [ParticipantResponse](docs/ParticipantResponse.md)
  - [ParticipantSubSchema](docs/ParticipantSubSchema.md)
+ - [ParticipantWithUserExternalId](docs/ParticipantWithUserExternalId.md)
+ - [ParticipantWithUserId](docs/ParticipantWithUserId.md)
  - [PassControlBody](docs/PassControlBody.md)
  - [Postback](docs/Postback.md)
+ - [PostbackWebhook](docs/PostbackWebhook.md)
  - [PrechatCapture](docs/PrechatCapture.md)
  - [QuotedMessage](docs/QuotedMessage.md)
+ - [QuotedMessageExternalMessageId](docs/QuotedMessageExternalMessageId.md)
+ - [QuotedMessageMessage](docs/QuotedMessageMessage.md)
+ - [Referral](docs/Referral.md)
+ - [ReferralDetails](docs/ReferralDetails.md)
  - [Reply](docs/Reply.md)
  - [Source](docs/Source.md)
+ - [SourceWebhook](docs/SourceWebhook.md)
  - [Status](docs/Status.md)
  - [Switchboard](docs/Switchboard.md)
+ - [SwitchboardAcceptControl](docs/SwitchboardAcceptControl.md)
+ - [SwitchboardAcceptControlAllOf](docs/SwitchboardAcceptControlAllOf.md)
+ - [SwitchboardAcceptControlAllOfPayload](docs/SwitchboardAcceptControlAllOfPayload.md)
+ - [SwitchboardAcceptControlFailure](docs/SwitchboardAcceptControlFailure.md)
+ - [SwitchboardAcceptControlFailureAllOf](docs/SwitchboardAcceptControlFailureAllOf.md)
+ - [SwitchboardAcceptControlFailureAllOfPayload](docs/SwitchboardAcceptControlFailureAllOfPayload.md)
  - [SwitchboardIntegration](docs/SwitchboardIntegration.md)
  - [SwitchboardIntegrationCreateBody](docs/SwitchboardIntegrationCreateBody.md)
  - [SwitchboardIntegrationListResponse](docs/SwitchboardIntegrationListResponse.md)
  - [SwitchboardIntegrationResponse](docs/SwitchboardIntegrationResponse.md)
  - [SwitchboardIntegrationUpdateBody](docs/SwitchboardIntegrationUpdateBody.md)
+ - [SwitchboardIntegrationWebhook](docs/SwitchboardIntegrationWebhook.md)
  - [SwitchboardListResponse](docs/SwitchboardListResponse.md)
+ - [SwitchboardOfferControl](docs/SwitchboardOfferControl.md)
+ - [SwitchboardOfferControlAllOf](docs/SwitchboardOfferControlAllOf.md)
+ - [SwitchboardOfferControlAllOfPayload](docs/SwitchboardOfferControlAllOfPayload.md)
+ - [SwitchboardOfferControlFailure](docs/SwitchboardOfferControlFailure.md)
+ - [SwitchboardPassControl](docs/SwitchboardPassControl.md)
+ - [SwitchboardPassControlAllOf](docs/SwitchboardPassControlAllOf.md)
+ - [SwitchboardPassControlAllOfPayload](docs/SwitchboardPassControlAllOfPayload.md)
+ - [SwitchboardPassControlFailure](docs/SwitchboardPassControlFailure.md)
  - [SwitchboardResponse](docs/SwitchboardResponse.md)
  - [SwitchboardUpdateBody](docs/SwitchboardUpdateBody.md)
  - [Target](docs/Target.md)
@@ -324,16 +404,28 @@ Class | Method | HTTP request | Description
  - [Twitter](docs/Twitter.md)
  - [TwitterAllOf](docs/TwitterAllOf.md)
  - [TwitterUpdate](docs/TwitterUpdate.md)
+ - [User](docs/User.md)
+ - [UserAllOf](docs/UserAllOf.md)
+ - [UserAllOfProfile](docs/UserAllOfProfile.md)
+ - [UserMergeEvent](docs/UserMergeEvent.md)
+ - [UserMergeEventAllOf](docs/UserMergeEventAllOf.md)
+ - [UserMergeEventAllOfPayload](docs/UserMergeEventAllOfPayload.md)
+ - [UserMergeEventAllOfPayloadMergedConversations](docs/UserMergeEventAllOfPayloadMergedConversations.md)
+ - [UserMergeEventAllOfPayloadMergedUsers](docs/UserMergeEventAllOfPayloadMergedUsers.md)
+ - [UserTruncated](docs/UserTruncated.md)
  - [Viber](docs/Viber.md)
  - [ViberAllOf](docs/ViberAllOf.md)
  - [ViberUpdate](docs/ViberUpdate.md)
- - [WeChat](docs/WeChat.md)
- - [WeChatAllOf](docs/WeChatAllOf.md)
- - [WeChatUpdate](docs/WeChatUpdate.md)
  - [Web](docs/Web.md)
  - [WebAllOf](docs/WebAllOf.md)
  - [WebUpdate](docs/WebUpdate.md)
+ - [WebUpdateAllOf](docs/WebUpdateAllOf.md)
  - [Webhook](docs/Webhook.md)
+ - [WebhookBody](docs/WebhookBody.md)
+ - [WebhookCreateBody](docs/WebhookCreateBody.md)
+ - [WebhookListResponse](docs/WebhookListResponse.md)
+ - [WebhookResponse](docs/WebhookResponse.md)
+ - [WebhookSubSchema](docs/WebhookSubSchema.md)
  - [Webview](docs/Webview.md)
  - [WhatsAppUpdate](docs/WhatsAppUpdate.md)
  - [WhatsAppUpdateAllOf](docs/WhatsAppUpdateAllOf.md)

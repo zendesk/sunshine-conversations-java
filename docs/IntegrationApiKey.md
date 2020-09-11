@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The name of the API key. | 
+**displayName** | **String** | The name of the API key. | 
 
 
 

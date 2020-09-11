@@ -22,12 +22,11 @@ Create a switchboard integration.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -37,17 +36,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
         SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody = new SwitchboardIntegrationCreateBody(); // SwitchboardIntegrationCreateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        // Add required body parameters
+
         try {
             SwitchboardIntegrationResponse result = apiInstance.createSwitchboardIntegration(switchboardIntegrationCreateBody, appId, switchboardId);
             System.out.println(result);
@@ -88,7 +89,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **404** | Not Found |  -  |
+| **400** | Only one switchboard per app can be created |  -  |
+| **404** | Switchboard not found |  -  |
 
 
 ## deleteSwitchboardIntegration
@@ -102,12 +104,11 @@ Deletes the switchboard integration. If the deleted switchboard integration had 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -117,17 +118,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
-        String switchboardIntegrationId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId);
             System.out.println(result);
@@ -182,12 +185,11 @@ Lists all switchboard integrations linked to the switchboard.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -197,16 +199,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        // Add required body parameters
+
         try {
             SwitchboardIntegrationListResponse result = apiInstance.listSwitchboardIntegrations(appId, switchboardId);
             System.out.println(result);
@@ -246,7 +250,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Switchboard not found |  -  |
 
 
 ## updateSwitchboardIntegration
@@ -260,12 +264,11 @@ Updates a switchboard integration record.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -275,18 +278,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
         SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = new SwitchboardIntegrationUpdateBody(); // SwitchboardIntegrationUpdateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
-        String switchboardIntegrationId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
+        // Add required body parameters
+
         try {
             SwitchboardIntegrationResponse result = apiInstance.updateSwitchboardIntegration(switchboardIntegrationUpdateBody, appId, switchboardId, switchboardIntegrationId);
             System.out.println(result);
@@ -328,5 +333,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Enabled switchboard must have an associated default switchboardIntegration |  -  |
 

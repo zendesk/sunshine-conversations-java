@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deleteIntegration**](IntegrationsApi.md#deleteIntegration) | **DELETE** /v2/apps/{appId}/integrations/{integrationId} | Delete Integration
 [**getIntegration**](IntegrationsApi.md#getIntegration) | **GET** /v2/apps/{appId}/integrations/{integrationId} | Get Integration
 [**listIntegrations**](IntegrationsApi.md#listIntegrations) | **GET** /v2/apps/{appId}/integrations | List Integrations
-[**updateIntegration**](IntegrationsApi.md#updateIntegration) | **PUT** /v2/apps/{appId}/integrations/{integrationId} | Update Integration
+[**updateIntegration**](IntegrationsApi.md#updateIntegration) | **PATCH** /v2/apps/{appId}/integrations/{integrationId} | Update Integration
 
 
 
@@ -18,17 +18,16 @@ Method | HTTP request | Description
 
 Create Integration
 
-The Create Integration endpoint allows you to provision apps with front-end messaging channels. See the sections below for channel specific instructions.
+The Create Integration endpoint allows you to provision apps with front-end messaging channels. Selecting a &#x60;custom&#x60; integration allows the creation of webhooks.
 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.IntegrationsApi;
 
 public class Example {
@@ -38,16 +37,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
         Integration integration = new Integration(); // Integration | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             IntegrationResponse result = apiInstance.createIntegration(integration, appId);
             System.out.println(result);
@@ -87,6 +88,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | Invalid integration type |  -  |
 
 
 ## deleteIntegration
@@ -100,12 +102,11 @@ Delete the specified integration.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.IntegrationsApi;
 
 public class Example {
@@ -115,16 +116,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteIntegration(appId, integrationId);
             System.out.println(result);
@@ -164,6 +167,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **404** | Integration not found |  -  |
 
 
 ## getIntegration
@@ -177,12 +181,11 @@ Get integration.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.IntegrationsApi;
 
 public class Example {
@@ -192,16 +195,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        // Add required body parameters
+
         try {
             IntegrationResponse result = apiInstance.getIntegration(appId, integrationId);
             System.out.println(result);
@@ -241,6 +246,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **404** | Integration not found |  -  |
 
 
 ## listIntegrations
@@ -254,12 +260,11 @@ List available integrations.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.IntegrationsApi;
 
 public class Example {
@@ -269,18 +274,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String types = android,ios; // String | Comma-separated list of types to return. If omitted, all types are returned.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String types = "android,ios"; // String | Comma-separated list of types to return. If omitted, all types are returned.
         Integer limit = 25; // Integer | Limit the number of records to return.
         Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+        // Add required body parameters
+
         try {
             IntegrationListResponse result = apiInstance.listIntegrations(appId, types, limit, offset);
             System.out.println(result);
@@ -335,12 +342,11 @@ Allows you to update certain fields of existing integrations. If updating a spec
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.IntegrationsApi;
 
 public class Example {
@@ -350,17 +356,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
         IntegrationUpdate integrationUpdate = new IntegrationUpdate(); // IntegrationUpdate | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String integrationId = 029c31f25a21b47effd7be90; // String | The id of the integration.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        // Add required body parameters
+
         try {
             IntegrationResponse result = apiInstance.updateIntegration(integrationUpdate, appId, integrationId);
             System.out.println(result);
@@ -401,4 +409,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **404** | Integration not found |  -  |
 

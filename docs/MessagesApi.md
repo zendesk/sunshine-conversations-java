@@ -22,12 +22,11 @@ Delete all messages of a particular conversation.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.MessagesApi;
 
 public class Example {
@@ -37,16 +36,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteAllMessages(appId, conversationId);
             System.out.println(result);
@@ -100,12 +101,11 @@ Delete a single message of a particular conversation.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.MessagesApi;
 
 public class Example {
@@ -115,17 +115,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
-        String messageId = 029c31f25a21b47effd7be90; // String | The id of the message.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String messageId = "029c31f25a21b47effd7be90"; // String | The id of the message.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteMessage(appId, conversationId, messageId);
             System.out.println(result);
@@ -171,21 +173,20 @@ Name | Type | Description  | Notes
 
 ## listMessages
 
-> MessageListResponse listMessages(appId, conversationId, before, after)
+> MessageListResponse listMessages(appId, conversationId, page)
 
 List Messages
 
-List all messages for a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). It returns a maximum of 100 messages at a time. It returns the previous/next pages URLs in the response body. Equivalent to the v1 Get Messages API
+List all messages for a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits), in the _backwards_ direction, with the most recent (i.e. last) page of messages being returned by default. The &#x60;hasMore&#x60; flag indicates whether more messages exist in the direction you are currently paginating through. To page backwards in the history, use the &#x60;beforeCursor&#x60; or follow the &#x60;prev&#x60; link. The page size limit is fixed at 100 messages per page.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/messages?page[before]&#x3D;5f32b88acf6bf25073b2be56 &#x60;&#x60;&#x60; 
 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.MessagesApi;
 
 public class Example {
@@ -195,20 +196,21 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
-        Integer before = 1471995755; // Integer | When specified, only messages older than the given timestamp are returned.
-        Integer after = 1471995721; // Integer | When specified, only messages newer than the given timestamp are returned.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
+        // Add required body parameters
+
         try {
-            MessageListResponse result = apiInstance.listMessages(appId, conversationId, before, after);
+            MessageListResponse result = apiInstance.listMessages(appId, conversationId, page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#listMessages");
@@ -228,8 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **conversationId** | **String**| Identifies the conversation. |
- **before** | **Integer**| When specified, only messages older than the given timestamp are returned. | [optional]
- **after** | **Integer**| When specified, only messages newer than the given timestamp are returned. | [optional]
+ **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
 
 ### Return type
 
@@ -248,7 +249,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not found |  -  |
+| **404** | Message not found |  -  |
 
 
 ## postMessage
@@ -262,12 +263,11 @@ Send a message in a particular conversation.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.MessagesApi;
 
 public class Example {
@@ -277,17 +277,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
         MessagePost messagePost = new MessagePost(); // MessagePost | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             MessagePostResponse result = apiInstance.postMessage(messagePost, appId, conversationId);
             System.out.println(result);

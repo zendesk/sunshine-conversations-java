@@ -2,6 +2,7 @@
 
 # Links
 
+Previous and next page links, if they exist.
 ## Properties
 
 Name | Type | Description | Notes

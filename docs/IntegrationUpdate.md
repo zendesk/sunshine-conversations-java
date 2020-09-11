@@ -5,6 +5,7 @@
 ## Implementing Classes
 
 * AndroidUpdate
+* AppleUpdate
 * CustomUpdate
 * IosUpdate
 * LineUpdate
@@ -15,7 +16,6 @@
 * TwilioUpdate
 * TwitterUpdate
 * ViberUpdate
-* WeChatUpdate
 * WebUpdate
 * WhatsAppUpdate
 

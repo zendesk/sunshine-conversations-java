@@ -22,12 +22,11 @@ Create a switchboard.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardsApi;
 
 public class Example {
@@ -37,15 +36,17 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             SwitchboardResponse result = apiInstance.createSwitchboard(appId);
             System.out.println(result);
@@ -98,12 +99,11 @@ Deletes the switchboard and all its switchboard integrations. The integrations l
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardsApi;
 
 public class Example {
@@ -113,16 +113,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteSwitchboard(appId, switchboardId);
             System.out.println(result);
@@ -176,12 +178,11 @@ Lists all switchboards belonging to the app.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardsApi;
 
 public class Example {
@@ -191,15 +192,17 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             SwitchboardListResponse result = apiInstance.listSwitchboards(appId);
             System.out.println(result);
@@ -252,12 +255,11 @@ Updates a switchboard record.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.SwitchboardsApi;
 
 public class Example {
@@ -267,17 +269,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
         SwitchboardUpdateBody switchboardUpdateBody = new SwitchboardUpdateBody(); // SwitchboardUpdateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String switchboardId = 5d8cff3cd55b040010928b5b; // String | Identifies the switchboard.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        // Add required body parameters
+
         try {
             SwitchboardResponse result = apiInstance.updateSwitchboard(switchboardUpdateBody, appId, switchboardId);
             System.out.println(result);

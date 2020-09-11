@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /v2/apps/{appId} | Delete App
 [**getApp**](AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App
 [**listApps**](AppsApi.md#listApps) | **GET** /v2/apps | List Apps
-[**updateApp**](AppsApi.md#updateApp) | **PUT** /v2/apps/{appId} | Update App
+[**updateApp**](AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
 
 
 
@@ -18,17 +18,16 @@ Method | HTTP request | Description
 
 Create App
 
-Create an app.
+Creates a new app. When using [service account](#service-accounts) credentials, the service account is automatically granted access to the app.
 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.AppsApi;
 
 public class Example {
@@ -38,15 +37,17 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         AppCreateBody appCreateBody = new AppCreateBody(); // AppCreateBody | 
+        // Add required body parameters
+
         try {
             AppResponse result = apiInstance.createApp(appCreateBody);
             System.out.println(result);
@@ -85,6 +86,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
+| **400** | should have required property &#39;displayName&#39; |  -  |
+| **402** | Your account has reached the maximum number of apps for your subscription plan |  -  |
 
 
 ## deleteApp
@@ -98,12 +101,11 @@ Removes the specified app, including all its enabled integrations.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.AppsApi;
 
 public class Example {
@@ -113,15 +115,17 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteApp(appId);
             System.out.println(result);
@@ -160,7 +164,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | App not found |  -  |
 
 
 ## getApp
@@ -174,12 +178,11 @@ Fetches an individual app.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.AppsApi;
 
 public class Example {
@@ -189,15 +192,17 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             AppResponse result = apiInstance.getApp(appId);
             System.out.println(result);
@@ -236,26 +241,25 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | App not found |  -  |
 
 
 ## listApps
 
-> AppListResponse listApps(page, filter)
+> AppListResponse listApps(page, appListFilter)
 
 List Apps
 
-Lists all apps that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell    /v2/apps?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10 &#x60;&#x60;&#x60; 
+Lists all apps that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell /v2/apps?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10 &#x60;&#x60;&#x60; 
 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.AppsApi;
 
 public class Example {
@@ -265,18 +269,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
-        Filter filter = new Filter(); // Filter | Contains parameters for filtering the results.
+        AppListFilter appListFilter = new AppListFilter(); // AppListFilter | Contains parameters for filtering the results.
+        // Add required body parameters
+
         try {
-            AppListResponse result = apiInstance.listApps(page, filter);
+            AppListResponse result = apiInstance.listApps(page, appListFilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#listApps");
@@ -295,7 +301,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
- **filter** | [**Filter**](.md)| Contains parameters for filtering the results. | [optional]
+ **appListFilter** | [**AppListFilter**](.md)| Contains parameters for filtering the results. | [optional]
 
 ### Return type
 
@@ -314,6 +320,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** | Can supply only one of page[after] or page[before], not both |  -  |
+| **403** | The serviceAccountId provided does not match supplied credentials |  -  |
 
 
 ## updateApp
@@ -327,12 +335,11 @@ Updates an app.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.AppsApi;
 
 public class Example {
@@ -342,16 +349,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         AppUpdateBody appUpdateBody = new AppUpdateBody(); // AppUpdateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             AppResponse result = apiInstance.updateApp(appUpdateBody, appId);
             System.out.println(result);
@@ -391,5 +400,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **400** | App metadata is limited to 4096 bytes in size. |  -  |
+| **404** | App not found |  -  |
 

@@ -21,12 +21,11 @@ Adds a user to a conversation using either their userId or userExternalId. The e
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ParticipantsApi;
 
 public class Example {
@@ -36,17 +35,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
         ParticipantJoinBody participantJoinBody = new ParticipantJoinBody(); // ParticipantJoinBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             ParticipantResponse result = apiInstance.joinConversation(participantJoinBody, appId, conversationId);
             System.out.println(result);
@@ -88,7 +89,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
 | **400** | Too many participants |  -  |
-| **404** | Not found |  -  |
+| **404** | Conversation not found |  -  |
 
 
 ## leaveConversation
@@ -102,12 +103,11 @@ Removes a user from a conversation using either their userId, userExternalId, or
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ParticipantsApi;
 
 public class Example {
@@ -117,17 +117,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
         ParticipantLeaveBody participantLeaveBody = new ParticipantLeaveBody(); // ParticipantLeaveBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.leaveConversation(participantLeaveBody, appId, conversationId);
             System.out.println(result);
@@ -168,7 +170,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not found |  -  |
+| **404** | User is not a member of the conversation |  -  |
 
 
 ## listParticipants
@@ -182,12 +184,11 @@ Lists all the participants of a particular conversation. This API is [paginated]
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ParticipantsApi;
 
 public class Example {
@@ -197,18 +198,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         Integer limit = 25; // Integer | Limit the number of records to return.
         Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+        // Add required body parameters
+
         try {
             ParticipantListResponse result = apiInstance.listParticipants(appId, conversationId, limit, offset);
             System.out.println(result);

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deleteConversation**](ConversationsApi.md#deleteConversation) | **DELETE** /v2/apps/{appId}/conversations/{conversationId} | Delete Conversation
 [**getConversation**](ConversationsApi.md#getConversation) | **GET** /v2/apps/{appId}/conversations/{conversationId} | Get Conversation
 [**listConversations**](ConversationsApi.md#listConversations) | **GET** /v2/apps/{appId}/conversations | List Conversations
-[**updateConversation**](ConversationsApi.md#updateConversation) | **PUT** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
+[**updateConversation**](ConversationsApi.md#updateConversation) | **PATCH** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
 
 
 
@@ -23,12 +23,11 @@ Create a conversation for the specified user(s).
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ConversationsApi;
 
 public class Example {
@@ -38,16 +37,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
         ConversationCreateBody conversationCreateBody = new ConversationCreateBody(); // ConversationCreateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        // Add required body parameters
+
         try {
             ConversationResponse result = apiInstance.createConversation(conversationCreateBody, appId);
             System.out.println(result);
@@ -87,7 +88,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **404** | Not Found |  -  |
+| **404** | App not found |  -  |
 
 
 ## deleteConversation
@@ -101,12 +102,11 @@ Delete an entire conversation record, along with its messages and attachments. N
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ConversationsApi;
 
 public class Example {
@@ -116,16 +116,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             Object result = apiInstance.deleteConversation(appId, conversationId);
             System.out.println(result);
@@ -165,7 +167,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **400** | Conversation c93bb9c14dde8ffb94564eae cannot be deleted because it is the default. |  -  |
+| **404** | Conversation not found |  -  |
 
 
 ## getConversation
@@ -179,12 +182,11 @@ Fetches an individual conversation.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ConversationsApi;
 
 public class Example {
@@ -194,16 +196,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             ConversationResponse result = apiInstance.getConversation(appId, conversationId);
             System.out.println(result);
@@ -243,26 +247,25 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Conversation not found |  -  |
 
 
 ## listConversations
 
-> ConversationListResponse listConversations(appId, userId, userExternalId, limit, offset)
+> ConversationListResponse listConversations(appId, page, conversationListFilter)
 
 List Conversations
 
-Lists all conversations that a user is part of. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell    /v2/apps/:appId/conversations?userId&#x3D;42589ad070d43be9b00ff7e5&amp;limit&#x3D;30&amp;offset&#x3D;0 &#x60;&#x60;&#x60; 
+Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
 
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ConversationsApi;
 
 public class Example {
@@ -272,21 +275,21 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String userId = 42589ad070d43be9b00ff7e5; // String | The user's id. One of userId or userExternalId is required, but not both.
-        String userExternalId = your-own-user-id; // String | The external Id of the user. One of userId or userExternalId is required, but not both.
-        Integer limit = 25; // Integer | Limit the number of records to return.
-        Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
+        ConversationListFilter conversationListFilter = new ConversationListFilter(); // ConversationListFilter | Contains parameters for filtering the results.
+        // Add required body parameters
+
         try {
-            ConversationListResponse result = apiInstance.listConversations(appId, userId, userExternalId, limit, offset);
+            ConversationListResponse result = apiInstance.listConversations(appId, page, conversationListFilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#listConversations");
@@ -305,10 +308,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
- **userId** | **String**| The user&#39;s id. One of userId or userExternalId is required, but not both. | [optional]
- **userExternalId** | **String**| The external Id of the user. One of userId or userExternalId is required, but not both. | [optional]
- **limit** | **Integer**| Limit the number of records to return. | [optional] [default to 25]
- **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
+ **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
+ **conversationListFilter** | [**ConversationListFilter**](.md)| Contains parameters for filtering the results. | [optional]
 
 ### Return type
 
@@ -327,7 +328,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | User not found |  -  |
 
 
 ## updateConversation
@@ -341,12 +342,11 @@ Updates a conversation record.
 ### Example
 
 ```java
-// Import classes:
 import io.smooch.v2.client.ApiClient;
 import io.smooch.v2.client.ApiException;
 import io.smooch.v2.client.Configuration;
 import io.smooch.v2.client.auth.*;
-import io.smooch.v2.client.models.*;
+import io.smooch.v2.client.model.*;
 import io.smooch.v2.client.api.ConversationsApi;
 
 public class Example {
@@ -356,17 +356,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("YOUR USERNAME");
-        basicAuth.setPassword("YOUR PASSWORD");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
 
-        // Configure HTTP bearer authorization: bearerAuth
-        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setBearerToken("BEARER TOKEN");
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
         ConversationUpdateBody conversationUpdateBody = new ConversationUpdateBody(); // ConversationUpdateBody | 
-        String appId = 5d8cff3cd55b040010928b5b; // String | Identifies the app.
-        String conversationId = 029c31f25a21b47effd7be90; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
         try {
             ConversationResponse result = apiInstance.updateConversation(conversationUpdateBody, appId, conversationId);
             System.out.println(result);
@@ -407,5 +409,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Conversation not found |  -  |
 

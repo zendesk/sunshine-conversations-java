@@ -2,6 +2,7 @@
 
 # ExtraChannelOptionsMessenger
 
+Messenger channel options.
 ## Properties
 
 Name | Type | Description | Notes

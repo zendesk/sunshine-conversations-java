@@ -1,50 +1,131 @@
 openapi: 3.0.2
 info:
-  description: "# \n<aside class=\"notice\">As a stepping stone to new and greater\
-    \ things, we’ve released an update to the SunCo API, which is v2. For users wanting\
-    \ to access v1, please proceed <a href=\"https://docs.smooch.io/rest/\">here</a>.\
-    \ \n</aside>\n\n# Introduction\n\nWelcome to the Sunshine Conversations API. The\
-    \ API allows you to craft entirely unique messaging experiences for your app and\
-    \ website as well as talk to any backend or external service.\n\nThe Sunshine\
-    \ Conversations API is designed according to REST principles. The API accepts\
-    \ JSON in request bodies and requires that the content-type: application/json\
-    \ header be specified for \nall such requests. The API will always respond with\
-    \ an object. Depending on context, resources may be returned as single objects\
-    \ or as arrays of objects, nested within the response object.\n\nIn some cases,\
-    \ the API will also facilitate cross-origin resource sharing so that it can be\
-    \ called from a web application.\n\n<aside class=\"notice\">Note that for authenticated\
-    \ requests, cross-origin resource sharing is only available to appUser scoped\
-    \ credentials. Attempting to call the API from the browser using \napp or account\
-    \ scoped credentials will result in a <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy\"\
+  description: "# Introduction\n<aside class=\"notice\">As a stepping stone to new\
+    \ and greater things, we’ve updated Sunshine Conversations API to v2. For users\
+    \ wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/\"\
+    >here</a>. \n</aside>\n\nWelcome to the Sunshine Conversations API. The API allows\
+    \ you to craft entirely unique messaging experiences for your app and website\
+    \ as well as talk to any backend or external service.\n\nThe Sunshine Conversations\
+    \ API is designed according to REST principles. The API accepts JSON in request\
+    \ bodies and requires that the content-type: application/json header be specified\
+    \ for \nall such requests. The API will always respond with an object. Depending\
+    \ on context, resources may be returned as single objects or as arrays of objects,\
+    \ nested within the response object.\n\nIn some cases, the API will also facilitate\
+    \ cross-origin resource sharing so that it can be called from a web application.\n\
+    \n<aside class=\"notice\">Note that for authenticated requests, cross-origin resource\
+    \ sharing is only available to appUser scoped credentials. Attempting to call\
+    \ the API from the browser using \napp or account scoped credentials will result\
+    \ in a <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy\"\
     >same-origin policy</a> browser error. For more information, refer \nto the <a\
     \ href=\"http://docs.smooch.io/guide/authorization/#handle-credentials-with-caution\"\
-    >Authorization guide</a>.</aside>\n\n## API pagination and records limits\n\n\
-    Some APIs can be paginated by providing the `offset` query string parameter.\n\
-    \nThe `offset` is the number of initial records to skip before picking records\
-    \ to return (default 0).\n\nThe `limit` query string can also be provided to change\
-    \ the number of records to return (maximum\n100, default 25).\n\nAll paginated\
-    \ endpoints will eventually support cursor pagination and `offset` based pagination\
-    \ support will be dropped.\n\n### Cursor Pagination\n\nSome APIs are paginated\
-    \ through cursor pagination. Rather than providing an `offset`, a `page[after]`\
-    \ or `page[before]` query string parameter may be provided. `page[after]` and\
-    \ `page[before]` are cursors pointing to a record id.\n\nThe `page[after]` cursor\
-    \ indicates that only records **subsequent** to it should be returned.\n\nThe\
-    \ `page[before]` cursor indicates that only records **preceding** it should be\
-    \ returned.\n\n**Only one** of `page[after]` or `page[before]` may be provided\
-    \ in a query, not both.\n\nIn cursor pagination, the equivalent to the `limit`\
-    \ query string is the `page[size]` query string parameter.\n\n## Regions\n\nSunshine\
-    \ Conversations is available in the following regions. Each Sunshine Conversations\
-    \ region has its own API host.\n\n| Region         | Host                    \
-    \   |\n| -------------- | -------------------------- |\n| United States  | https://api.smooch.io\
-    \      |\n| European Union | https://api.eu-1.smooch.io |\n\n  For more information\
-    \ on regions, visit [the guide](/guide/regions/).\n\n  <aside class=\"notice\"\
-    >When configuring an API host, make sure to always use `https`. Some API clients\
-    \ can have unexpected behaviour when following redirects from `http` to `https`.</aside>\n"
+    >Authorization guide</a>.</aside>\n\n## Regions\n\nSunshine Conversations is available\
+    \ in the following regions. Each Sunshine Conversations region has its own API\
+    \ host.\n\n| Region         | Host                       |\n| -------------- |\
+    \ -------------------------- |\n| United States  | https://api.smooch.io     \
+    \ |\n| European Union | https://api.eu-1.smooch.io |\n\nFor more information on\
+    \ regions, visit [the guide](/guide/regions/).\n\n<aside class=\"notice\">When\
+    \ configuring an API host, make sure to always use `https`. Some API clients can\
+    \ have unexpected behaviour when following redirects from `http` to `https`.</aside>\n\
+    \n## Errors\n\nSunshine Conversations uses standard HTTP status codes to communicate\
+    \ errors. In general, a `2xx` status code indicates success while `4xx` indicates\
+    \ an error, in which case, the response body includes a JSON object which includes\
+    \ an array of errors, with a text `code` and `title` containing more details.\
+    \ Multiple errors can only be included in a `400 Bad Request`. A `5xx` status\
+    \ code indicates that something went wrong on our end.\n\n```javascript\n{\n \
+    \  \"errors\":  [\n    {\n        \"code\": \"unauthorized\",\n        \"title\"\
+    : \"Authorization is required\"\n    }\n   ]\n}\n```\n\n## API Version\n\nThe\
+    \ latest version of the API is v2. Version v1.1 is still supported and you can\
+    \ continue using it but we encourage you to upgrade to the latest version. To\
+    \ learn more about API versioning at Sunshine Conversations, including instructions\
+    \ on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
+    \n## API Pagination and Records Limits\n\nSome APIs can be paginated by providing\
+    \ the `offset` query string parameter.\n\nThe `offset` is the number of initial\
+    \ records to skip before picking records to return (default 0).\n\nThe `limit`\
+    \ query string can also be provided to change the number of records to return\
+    \ (maximum\n100, default 25).\n\nAll paginated endpoints will eventually support\
+    \ cursor pagination and `offset` based pagination support will be dropped.\n\n\
+    ### Cursor Pagination\n\nSome APIs are paginated through cursor pagination. Rather\
+    \ than providing an `offset`, a `page[after]` or `page[before]` query string parameter\
+    \ may be provided. `page[after]` and `page[before]` are cursors pointing to a\
+    \ record id.\n\nThe `page[after]` cursor indicates that only records **subsequent**\
+    \ to it should be returned.\n\nThe `page[before]` cursor indicates that only records\
+    \ **preceding** it should be returned.\n\n**Only one** of `page[after]` or `page[before]`\
+    \ may be provided in a query, not both.\n\nIn cursor pagination, the equivalent\
+    \ to the `limit` query string is the `page[size]` query string parameter.\n\n\
+    ## API Libraries\n\nSunshine Conversations provides an official API library for\
+    \ [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages\
+    \ to come. These helpful libraries wrap calls to the API and can make interfacing\
+    \ with Sunshine Conversations easier.\n\n## Postman Collection\n\nIn addition\
+    \ to API libraries, Sunshine Conversations also has a Postman collection that\
+    \ can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
+    \ for information on how to install and use the collection in your Postman client.\n\
+    \n## Rate Limits\n\nSunshine Conversations APIs are subject to rate limiting.\
+    \ If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many\
+    \ Requests` HTTP status code. We apply rate limits to prevent abuse, spam, denial-of-service\
+    \ attacks, and similar issues. Our goal is to keep the limits high enough so that\
+    \ any application using Sunshine Conversations as intended will not encounter\
+    \ them. However usage spikes do occur and encountering a rate limit may be unavoidable.\
+    \ In order to avoid production outages, when calling the Sunshine Conversations\
+    \ API you should implement `429` retry logic using exponential backoff and jitter.\n\
+    \nIf your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).\n\
+    \n## Request Size Limits\n\nThe Sunshine Conversations API imposes the following\
+    \ size limits on HTTP requests:\n\n| Request Type   | Limit           |\n| --------------\
+    \ | --------------- |\n| JSON           | 100kb           |\n| File upload\t |\
+    \ 25mb            |\n\n## Authorization\n\nThis is an overview of how authorization\
+    \ works with the Sunshine Conversations API. Sunshine Conversations allows basic\
+    \ authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server\
+    \ calls. [See below](#authentication) for more details.\nThere are two different\
+    \ authorization scopes available - app and account.\n\n| Scope          | Authorized\
+    \ Methods                        |\n| -------------- | -----------------------------------------\
+    \ |\n| app            | All methods besides Account Provisioning  |\n| account\
+    \   \t | All methods                               |\n\nThe app scope can be used\
+    \ to access any of the Sunshine Conversations APIs, besides account provisioning\
+    \ methods, on behalf of a single app, or any app user related to that app. The\
+    \ account scope can be used to access any of the Sunshine Conversations and Account\
+    \ Provisioning APIs on behalf of the account owner, any app belonging to the account,\
+    \ or any app user related to those apps.\n\n<aside class=\"notice\">An additional\
+    \ scope of `appUser` can also be used to authenticate users when using one of\
+    \ the Sunshine Conversations native SDK integrations. For information on how and\
+    \ when to use this scope, see the guide for [authenticating users](#https://docs.smooch.io/guide/authenticating-users/).</aside>\n\
+    \n## Authentication\n\nTo authenticate requests to the API, you will need an API\
+    \ key, composed of a key id and a secret.\nFor an overview of how authentication\
+    \ works in Sunshine Conversations and instructions on how to generate an API key,\
+    \ see the guide.\nAPI requests can be authenticated in two ways:\n * With Basic\
+    \ authentication you can make requests using an API key directly.\n * With JSON\
+    \ Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate\
+    \ with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
+    \ to learn if JWTs are relevant for your usage.\n * Before using an API key in\
+    \ production, make sure to familiarize yourself with best practices on how to\
+    \ [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).\n\
+    \n### Basic Authentication\n\nAPI requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)\
+    \ using an API key. The key id is used as the username and the secret as the password.\
+    \ The scope of access is determined by the owner of the API key. See the [guide](https://docs.smooch.io/guide/basic-authentication/#scope-of-access)\
+    \ for more details.\n\n### JWTs\n\nJSON Web Tokens (JWTs) are an industry standard\
+    \ authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519),\
+    \ and a set of supported JWT libraries for a variety of languages and platforms\
+    \ can be found at http://jwt.io. To summarize, a JWT is composed of a header,\
+    \ a payload, and a signature. The payload contains information called claims which\
+    \ describe the subject to whom the token was issued.\nThe JWT itself is transmitted\
+    \ via the HTTP `authorization` header. The token should be prefixed with “Bearer”\
+    \ followed by a space. For example: `Bearer your-jwt`.\nTo generate a JWT, you\
+    \ need an API key, which is composed of a key ID and a secret. The key ID is included\
+    \ in a JWT’s header, as the `kid` property, while the secret is used to sign the\
+    \ JWT.\nFor more in-depth coverage, see the [guide](https://docs.smooch.io/guide/jwt).\n\
+    \n#### Header \n\nThe JWT header must contain the key id (kid) of the API key\
+    \ that is used to sign it. The algorithm (alg) used should be HS256. Unsigned\
+    \ JWTs are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"\
+    typ\": \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n####\
+    \ Payload\nThe JWT payload must include a scope claim which specifies the caller’\
+    s scope of access.\n\n * account-scoped JWTs must be generated with an API key\
+    \ associated with a Sunshine Conversations account (act_) or service account (svc_).\n\
+    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n * app-scoped JWTs can be\
+    \ generated with an API key associated with an app (app_).\n ```javascript\n{\n\
+    \    \"scope\": \"app\"\n}\n ```"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha.5
+  version: 6.0.0-alpha.6
   x-logo:
-    url: sunco_logo.png
+    url: sunco_logo.svg
     altText: Sunshine Conversations
 servers:
 - description: United States server
@@ -59,25 +140,45 @@ security:
   - app
   - account
 tags:
-- description: App operations
+- description: "If you’re looking to enable messaging inside your product for your\
+    \ customers, with as much control over the experience as you’d like, you can create\
+    \ and control Sunshine Conversations apps programmatically using [Account Provisioning](https://docs.smooch.io/guide/intro-to-account-provisioning/).\n\
+    ### Authentication\nAccount Provisioning endpoints require `account` scope. See\
+    \ the [authorization](#authorization) and [authentication](#authentication) sections\
+    \ for information.\nA user account API key (key id that starts with `act_`) can\
+    \ access all account provisioning routes. You can create an account key by going\
+    \ to your account page.\nA service account API key (key id that starts with `svc_`)\
+    \ may be used to manage apps, but not service accounts or service account keys.\n\
+    \n| Key Type       | Authorized Methods                                      \
+    \          |\n| -------------- | -----------------------------------------------------------------\
+    \ |\n| act            | All Core and Account Provisioning methods.           \
+    \             |\n| svc   \t     | All Core methods, App Management methods, and\
+    \ App Keys methods.     |\n\n### Service Accounts\nService Account schema and\
+    \ endpoints used for provisioning service accounts. A service account represents\
+    \ an API user, with its own set of credentials, that has only access to a certain\
+    \ subset of apps. For software makers that create apps on behalf of separate customers\
+    \ or businesses, service accounts can be used to generate and distribute credentials\
+    \ that only have access to a single business's data.\n"
   name: Apps
   x-displayName: Apps
-- description: App Keys operations
+- description: This set of endpoints is used to provision and revoke API keys for
+    a Sunshine Conversations app. An app can have a maximum of 10 keys.
   name: App Keys
   x-displayName: App Keys
-- description: Conversation operations
+- description: A stored history of messages sent to and received from a `user`. This
+    set of endpoints is used to provision and manage conversations.
   name: Conversations
   x-displayName: Conversations
-- description: Participant operations
+- description: Endpoints used for managing conversation [participants](https://docs.smooch.io/guide/multi-party-conversations#participant).
   name: Participants
   x-displayName: Participants
-- description: Message operations
+- description: Endpoints used for managing [messages](https://docs.smooch.io/guide/key-concepts/#message).
   name: Messages
   x-displayName: Messages
-- description: Activity operations
+- description: Notify Sunshine Conversations of different conversation activities.
   name: Activities
   x-displayName: Activities
-- description: Client operations
+- description: Endpoints used for provisioning [clients](https://docs.smooch.io/guide/key-concepts/#client).
   name: Clients
   x-displayName: Clients
 - description: Manage which switchboard integration has control over a conversation.
@@ -100,12 +201,17 @@ tags:
 - description: Switchboard Integrations operations
   name: Switchboard Integrations
   x-displayName: Switchboard Integrations
+- description: All notable changes to the API will be referenced in the [v2 API changelog](https://docs.smooch.io/guide/v2-api-changelog/).
+  name: Changelog
+- description: Endpoints for managing webhooks associated to a Sunshine Conversations
+    Connect integration or a custom integration.
+  name: Webhooks
 paths:
   /v2/apps:
     get:
       description: "Lists all apps that a user is part of. This API is paginated through\
         \ [cursor pagination](#section/Introduction/API-pagination-and-records-limits).\
-        \ \n```shell\n   /v2/apps?page[after]=5e1606762556d93e9c176f69&page[size]=10\n\
+        \ \n```shell\n/v2/apps?page[after]=5e1606762556d93e9c176f69&page[size]=10\n\
         ```\n"
       operationId: listApps
       parameters:
@@ -117,11 +223,11 @@ paths:
         schema:
           $ref: '#/components/schemas/page'
         style: deepObject
-      - $ref: '#/components/parameters/filter'
+      - $ref: '#/components/parameters/appListFilter'
         description: Contains parameters for filtering the results.
         explode: true
         in: query
-        name: filter
+        name: appListFilter
         required: false
         schema:
           properties:
@@ -138,12 +244,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/appListResponse'
           description: Ok
+        "400":
+          description: Can supply only one of page[after] or page[before], not both
+        "403":
+          description: The serviceAccountId provided does not match supplied credentials
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: List Apps
       tags:
       - Apps
       x-accepts: application/json
     post:
-      description: Create an app.
+      description: Creates a new app. When using [service account](#service-accounts)
+        credentials, the service account is automatically granted access to the app.
       operationId: createApp
       requestBody:
         content:
@@ -158,6 +274,16 @@ paths:
               schema:
                 $ref: '#/components/schemas/appResponse'
           description: Created
+        "400":
+          description: should have required property 'displayName'
+        "402":
+          description: Your account has reached the maximum number of apps for your
+            subscription plan
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Create App
       tags:
       - Apps
@@ -185,7 +311,12 @@ paths:
                 type: object
           description: Ok
         "404":
-          description: Not Found
+          description: App not found
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Delete App
       tags:
       - Apps
@@ -211,12 +342,19 @@ paths:
                 $ref: '#/components/schemas/appResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: App not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Get App
       tags:
       - Apps
       x-accepts: application/json
-    put:
+    patch:
       description: Updates an app.
       operationId: updateApp
       parameters:
@@ -242,8 +380,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/appResponse'
           description: Ok
+        "400":
+          description: App metadata is limited to 4096 bytes in size.
         "404":
-          description: Not Found
+          description: App not found
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Update App
       tags:
       - Apps
@@ -270,6 +415,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/appKeyListResponse'
           description: Ok
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: List App Keys
       tags:
       - App Keys
@@ -295,11 +445,12 @@ paths:
           application/json:
             schema:
               example:
-                displayName: ""
+                displayName: Key 1
               properties:
                 displayName:
                   allOf:
                   - $ref: '#/components/schemas/displayName'
+                  example: Key 1
               required:
               - displayName
               title: AppKeyCreateBody
@@ -312,6 +463,11 @@ paths:
               schema:
                 $ref: '#/components/schemas/appKeyResponse'
           description: Created
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Create App Key
       tags:
       - App Keys
@@ -348,7 +504,12 @@ paths:
                 type: object
           description: Ok
         "404":
-          description: Not Found
+          description: App not found
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Delete App Key
       tags:
       - App Keys
@@ -384,6 +545,11 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - account
+      - bearerAuth:
+        - account
       summary: Get App Key
       tags:
       - App Keys
@@ -391,9 +557,9 @@ paths:
   /v2/apps/{appId}/conversations:
     get:
       description: |
-        Lists all conversations that a user is part of. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
+        Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
         ```shell
-           /v2/apps/:appId/conversations?userId=42589ad070d43be9b00ff7e5&limit=30&offset=0
+        /v2/apps/:appId/conversations?filter[userId]=42589ad070d43be9b00ff7e5
         ```
       operationId: listConversations
       parameters:
@@ -406,49 +572,32 @@ paths:
           example: 5d8cff3cd55b040010928b5b
           type: string
         style: simple
-      - description: The user's id. One of userId or userExternalId is required, but
-          not both.
+      - description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
-        name: userId
+        name: page
         required: false
         schema:
-          example: 42589ad070d43be9b00ff7e5
-          type: string
-        style: form
-      - description: The external Id of the user. One of userId or userExternalId
-          is required, but not both.
+          $ref: '#/components/schemas/page'
+        style: deepObject
+      - $ref: '#/components/parameters/conversationListFilter'
+        description: Contains parameters for filtering the results.
         explode: true
         in: query
-        name: userExternalId
+        name: conversationListFilter
         required: false
         schema:
-          example: your-own-user-id
-          type: string
-        style: form
-      - description: Limit the number of records to return.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          example: 25
-          maximum: 100
-          minimum: 0
-          type: integer
-        style: form
-      - description: The number of initial records to skip before picking records
-          to return.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          example: 0
-          type: integer
-        style: form
+          properties:
+            userId:
+              description: The user's id. One of `userId` or `userExternalId` is required,
+                but not both.
+              type: string
+            userExternalId:
+              description: The external Id of the user. One of `userId` or `userExternalId`
+                is required, but not both.
+              type: string
+          type: object
+        style: deepObject
       responses:
         "200":
           content:
@@ -457,16 +606,16 @@ paths:
                 $ref: '#/components/schemas/conversationListResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: User not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: List Conversations
       tags:
       - Conversations
@@ -498,16 +647,16 @@ paths:
                 $ref: '#/components/schemas/conversationResponse'
           description: Created
         "404":
-          description: Not Found
+          description: App not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Create Conversation
       tags:
       - Conversations
@@ -545,17 +694,20 @@ paths:
               schema:
                 type: object
           description: Ok
+        "400":
+          description: Conversation c93bb9c14dde8ffb94564eae cannot be deleted because
+            it is the default.
         "404":
-          description: Not Found
+          description: Conversation not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Delete Conversation
       tags:
       - Conversations
@@ -590,21 +742,21 @@ paths:
                 $ref: '#/components/schemas/conversationResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: Conversation not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Get Conversation
       tags:
       - Conversations
       x-accepts: application/json
-    put:
+    patch:
       description: Updates a conversation record.
       operationId: updateConversation
       parameters:
@@ -640,16 +792,16 @@ paths:
                 $ref: '#/components/schemas/conversationResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: Conversation not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Update Conversation
       tags:
       - Conversations
@@ -696,16 +848,16 @@ paths:
         "400":
           description: Too many participants
         "404":
-          description: Not found
+          description: Conversation not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Join Conversation
       tags:
       - Participants
@@ -769,13 +921,13 @@ paths:
           description: Not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: List Participants
       tags:
       - Participants
@@ -818,16 +970,16 @@ paths:
                 type: object
           description: Ok
         "404":
-          description: Not found
+          description: User is not a member of the conversation
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Leave Conversation
       tags:
       - Participants
@@ -867,21 +1019,28 @@ paths:
           description: Not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Delete All Messages
       tags:
       - Messages
       x-accepts: application/json
     get:
-      description: List all messages for a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
-        It returns a maximum of 100 messages at a time. It returns the previous/next
-        pages URLs in the response body. Equivalent to the v1 Get Messages API
+      description: |
+        List all messages for a particular conversation. This API is paginated through
+        [cursor pagination](#section/Introduction/API-pagination-and-records-limits), in the _backwards_ direction, with the
+        most recent (i.e. last) page of messages being returned by default. The `hasMore` flag indicates whether more messages
+        exist in the direction you are currently paginating through. To page backwards in the history, use the `beforeCursor` or follow the `prev`
+        link. The page size limit is fixed at 100 messages per page.
+
+        ```shell
+        /v2/apps/:appId/conversations/:conversationId/messages?page[before]=5f32b88acf6bf25073b2be56
+        ```
       operationId: listMessages
       parameters:
       - description: Identifies the app.
@@ -902,26 +1061,14 @@ paths:
           example: 029c31f25a21b47effd7be90
           type: string
         style: simple
-      - description: When specified, only messages older than the given timestamp
-          are returned.
+      - description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
-        name: before
+        name: page
         required: false
         schema:
-          example: 1471995755
-          type: integer
-        style: form
-      - description: When specified, only messages newer than the given timestamp
-          are returned.
-        explode: true
-        in: query
-        name: after
-        required: false
-        schema:
-          example: 1471995721
-          type: integer
-        style: form
+          $ref: '#/components/schemas/page'
+        style: deepObject
       responses:
         "200":
           content:
@@ -930,16 +1077,16 @@ paths:
                 $ref: '#/components/schemas/messageListResponse'
           description: Ok
         "404":
-          description: Not found
+          description: Message not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: List Messages
       tags:
       - Messages
@@ -981,13 +1128,13 @@ paths:
           description: Created
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Post Message
       tags:
       - Messages
@@ -1036,13 +1183,13 @@ paths:
           description: Not found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Delete Message
       tags:
       - Messages
@@ -1088,13 +1235,13 @@ paths:
           description: Ok
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Post Activity
       tags:
       - Activities
@@ -1145,13 +1292,13 @@ paths:
           description: Not Found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Accept Control
       tags:
       - Switchboard Actions
@@ -1200,13 +1347,13 @@ paths:
           description: Not Found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Offer Control
       tags:
       - Switchboard Actions
@@ -1253,19 +1400,19 @@ paths:
           description: Not Found
       security:
       - basicAuth:
+        - integration
         - app
         - account
-        - integration
       - bearerAuth:
+        - integration
         - app
         - account
-        - integration
       summary: Pass Control
       tags:
       - Switchboard Actions
       x-contentType: application/json
       x-accepts: application/json
-  /v2/apps/{appId}/users/{userId}/clients:
+  /v2/apps/{appId}/users/{userIdOrExternalId}/clients:
     get:
       description: Get all the clients for a particular user, including both linked
         clients and pending clients. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
@@ -1283,7 +1430,7 @@ paths:
       - description: The user's id or externalId.
         explode: false
         in: path
-        name: userId
+        name: userIdOrExternalId
         required: true
         schema:
           example: 42589ad070d43be9b00ff7e5
@@ -1348,7 +1495,7 @@ paths:
       - description: The user's id or externalId.
         explode: false
         in: path
-        name: userId
+        name: userIdOrExternalId
         required: true
         schema:
           example: 42589ad070d43be9b00ff7e5
@@ -1381,7 +1528,7 @@ paths:
       - Clients
       x-contentType: application/json
       x-accepts: application/json
-  /v2/apps/{appId}/users/{userId}/clients/{clientId}:
+  /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId}:
     delete:
       description: Remove a particular client and unsubscribe it from all connected
         conversations.
@@ -1399,7 +1546,7 @@ paths:
       - description: The user's id or externalId.
         explode: false
         in: path
-        name: userId
+        name: userIdOrExternalId
         required: true
         schema:
           example: 42589ad070d43be9b00ff7e5
@@ -1421,6 +1568,10 @@ paths:
               schema:
                 type: object
           description: Ok
+        "400":
+          description: Cannot remove a client of type 'sdk'
+        "404":
+          description: Client not found
       security:
       - basicAuth:
         - app
@@ -1488,14 +1639,21 @@ paths:
               schema:
                 $ref: '#/components/schemas/integrationListResponse'
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: List Integrations
       tags:
       - Integrations
       x-accepts: application/json
     post:
       description: The Create Integration endpoint allows you to provision apps with
-        front-end messaging channels. See the sections below for channel specific
-        instructions.
+        front-end messaging channels. Selecting a `custom` integration allows the
+        creation of webhooks.
       operationId: createIntegration
       parameters:
       - description: Identifies the app.
@@ -1518,8 +1676,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationResponse'
+                allOf:
+                - $ref: '#/components/schemas/integrationResponse'
+                description: The created integration.
           description: Created
+        "400":
+          description: Invalid integration type
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Create Integration
       tags:
       - Integrations
@@ -1555,6 +1724,15 @@ paths:
               schema:
                 type: object
           description: Ok
+        "404":
+          description: Integration not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Delete Integration
       tags:
       - Integrations
@@ -1586,13 +1764,24 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationResponse'
+                allOf:
+                - $ref: '#/components/schemas/integrationResponse'
+                description: The fetched integration.
           description: Ok
+        "404":
+          description: Integration not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Get Integration
       tags:
       - Integrations
       x-accepts: application/json
-    put:
+    patch:
       description: Allows you to update certain fields of existing integrations. If
         updating a specific property is not supported, you must delete the integration
         and re-create it with the new data.
@@ -1627,8 +1816,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationResponse'
+                allOf:
+                - $ref: '#/components/schemas/integrationResponse'
+                description: The updated integration.
           description: Ok
+        "404":
+          description: Integration not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Update Integration
       tags:
       - Integrations
@@ -1664,6 +1864,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/IntegrationApiKeyListResponse'
           description: Ok
+        "400":
+          description: API keys are available only for custom integrations
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: List Integration Keys
       tags:
       - CustomIntegrationApiKeys
@@ -1698,13 +1907,14 @@ paths:
           application/json:
             schema:
               example:
-                name: name
+                displayName: My custom key
               properties:
-                name:
+                displayName:
                   description: The name of the API key.
+                  example: My custom key
                   type: string
               required:
-              - name
+              - displayName
               title: IntegrationApiKey
               type: object
         required: true
@@ -1713,8 +1923,15 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationApiKeyResponse'
+                $ref: '#/components/schemas/integrationApiKeyResponse'
           description: Created
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Create Integration Key
       tags:
       - CustomIntegrationApiKeys
@@ -1759,6 +1976,13 @@ paths:
               schema:
                 type: object
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Delete Integration Key
       tags:
       - CustomIntegrationApiKeys
@@ -1799,11 +2023,284 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/IntegrationApiKeyResponse'
+                $ref: '#/components/schemas/integrationApiKeyResponse'
           description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Get Integration Key
       tags:
       - CustomIntegrationApiKeys
+      x-accepts: application/json
+  /v2/apps/{appId}/integrations/{integrationId}/webhooks:
+    get:
+      description: Lists all webhooks for a given Sunshine Conversations Connect integration
+        or custom integration.
+      operationId: listWebhooks
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the integration.
+        explode: false
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhookListResponse'
+          description: Ok
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+      - bearerAuth:
+        - integration
+        - app
+      summary: List Webhooks
+      tags:
+      - Webhooks
+      x-accepts: application/json
+    post:
+      description: Creates a new webhook associated with a Sunshine Conversations
+        Connect integration or a custom integration.
+      operationId: createWebhook
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the integration.
+        explode: false
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/webhookCreateBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhookResponse'
+          description: Created
+        "400":
+          description: Bad Request
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+      - bearerAuth:
+        - integration
+        - app
+      summary: Create Webhook
+      tags:
+      - Webhooks
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId}:
+    delete:
+      description: Deletes the specified webhook associated with a Sunshine Conversations
+        Connect integration or a custom integration.
+      operationId: deleteWebhook
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the integration.
+        explode: false
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      - description: The id of the webhook.
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+      - bearerAuth:
+        - integration
+        - app
+      summary: Delete Webhook
+      tags:
+      - Webhooks
+      x-accepts: application/json
+    get:
+      description: Gets the specified webhook associated with a Sunshine Conversations
+        Connect integration or a custom integration.
+      operationId: getWebhook
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the integration.
+        explode: false
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      - description: The id of the webhook.
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhookResponse'
+          description: Ok
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+      - bearerAuth:
+        - integration
+        - app
+      summary: Get Webhook
+      tags:
+      - Webhooks
+      x-accepts: application/json
+    patch:
+      description: Updates the specified webhook associated with a Sunshine Conversations
+        Connect integration or a custom integration.
+      operationId: updateWebhook
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The id of the integration.
+        explode: false
+        in: path
+        name: integrationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      - description: The id of the webhook.
+        explode: false
+        in: path
+        name: webhookId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/webhookBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/webhookResponse'
+          description: Ok
+        "400":
+          description: Bad Request
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+      - bearerAuth:
+        - integration
+        - app
+      summary: Update Webhook
+      tags:
+      - Webhooks
+      x-contentType: application/json
       x-accepts: application/json
   /v2/apps/{appId}/switchboards:
     get:
@@ -1829,6 +2326,13 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: List Switchboards
       tags:
       - Switchboards
@@ -1855,6 +2359,13 @@ paths:
           description: Created
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Create Switchboard
       tags:
       - Switchboards
@@ -1893,6 +2404,13 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Delete Switchboard
       tags:
       - Switchboards
@@ -1934,6 +2452,13 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Update Switchboard
       tags:
       - Switchboards
@@ -1971,7 +2496,14 @@ paths:
                 $ref: '#/components/schemas/switchboardIntegrationListResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: Switchboard not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: List Switchboard Integrations
       tags:
       - Switchboard Integrations
@@ -2011,8 +2543,17 @@ paths:
               schema:
                 $ref: '#/components/schemas/switchboardIntegrationResponse'
           description: Created
+        "400":
+          description: Only one switchboard per app can be created
         "404":
-          description: Not Found
+          description: Switchboard not found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Create Switchboard Integration
       tags:
       - Switchboard Integrations
@@ -2066,6 +2607,13 @@ paths:
           description: Ok
         "404":
           description: Not Found
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Delete Switchboard Integration
       tags:
       - Switchboard Integrations
@@ -2115,7 +2663,14 @@ paths:
                 $ref: '#/components/schemas/switchboardIntegrationResponse'
           description: Ok
         "404":
-          description: Not Found
+          description: Enabled switchboard must have an associated default switchboardIntegration
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
       summary: Update Switchboard Integration
       tags:
       - Switchboard Integrations
@@ -2133,11 +2688,11 @@ components:
         $ref: '#/components/schemas/page'
       style: deepObject
     appFilterQuery:
-      $ref: '#/components/parameters/filter'
+      $ref: '#/components/parameters/appListFilter'
       description: Contains parameters for filtering the results.
       explode: true
       in: query
-      name: filter
+      name: appListFilter
       required: false
       schema:
         properties:
@@ -2167,28 +2722,35 @@ components:
         example: int_5d8cff3cd55b040010928b5b
         type: string
       style: simple
-    userIdQuery:
-      description: The user's id. One of userId or userExternalId is required, but
-        not both.
+    conversationFilterQuery:
+      $ref: '#/components/parameters/conversationListFilter'
+      description: Contains parameters for filtering the results.
       explode: true
       in: query
-      name: userId
+      name: conversationListFilter
       required: false
       schema:
-        example: 42589ad070d43be9b00ff7e5
-        type: string
-      style: form
-    userExternalIdQuery:
-      description: The external Id of the user. One of userId or userExternalId is
-        required, but not both.
-      explode: true
-      in: query
-      name: userExternalId
-      required: false
+        properties:
+          userId:
+            description: The user's id. One of `userId` or `userExternalId` is required,
+              but not both.
+            type: string
+          userExternalId:
+            description: The external Id of the user. One of `userId` or `userExternalId`
+              is required, but not both.
+            type: string
+        type: object
+      style: deepObject
+    conversationId:
+      description: Identifies the conversation.
+      explode: false
+      in: path
+      name: conversationId
+      required: true
       schema:
-        example: your-own-user-id
+        example: 029c31f25a21b47effd7be90
         type: string
-      style: form
+      style: simple
     limitQuery:
       description: Limit the number of records to return.
       explode: true
@@ -2214,38 +2776,6 @@ components:
         example: 0
         type: integer
       style: form
-    conversationId:
-      description: Identifies the conversation.
-      explode: false
-      in: path
-      name: conversationId
-      required: true
-      schema:
-        example: 029c31f25a21b47effd7be90
-        type: string
-      style: simple
-    before:
-      description: When specified, only messages older than the given timestamp are
-        returned.
-      explode: true
-      in: query
-      name: before
-      required: false
-      schema:
-        example: 1471995755
-        type: integer
-      style: form
-    after:
-      description: When specified, only messages newer than the given timestamp are
-        returned.
-      explode: true
-      in: query
-      name: after
-      required: false
-      schema:
-        example: 1471995721
-        type: integer
-      style: form
     messageId:
       description: The id of the message.
       explode: false
@@ -2256,11 +2786,11 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
-    userId:
+    userIdOrExternalId:
       description: The user's id or externalId.
       explode: false
       in: path
-      name: userId
+      name: userIdOrExternalId
       required: true
       schema:
         example: 42589ad070d43be9b00ff7e5
@@ -2292,6 +2822,16 @@ components:
       explode: false
       in: path
       name: integrationId
+      required: true
+      schema:
+        example: 029c31f25a21b47effd7be90
+        type: string
+      style: simple
+    webhookId:
+      description: The id of the webhook.
+      explode: false
+      in: path
+      name: webhookId
       required: true
       schema:
         example: 029c31f25a21b47effd7be90
@@ -2355,6 +2895,7 @@ components:
       type: object
     displayName:
       maxLength: 100
+      minLength: 1
       nullable: true
       type: string
     appSettings:
@@ -2371,6 +2912,7 @@ components:
           description: "Number of seconds of inactivity before a conversation’s messages\
             \ \nwill be automatically deleted. See \n[Conversation Retention Seconds](https://docs.smooch.io/rest/#conversation-retention-seconds)\n\
             for more information.\n"
+          minimum: 0
           type: integer
         maskCreditCardNumbers:
           description: "A boolean specifying whether credit card numbers should be\
@@ -2406,7 +2948,7 @@ components:
         \ booleans \nare the only supported format that can be passed to metadata.\n\
         The metadata is limited to 4KB in size.\n"
       example:
-        ref: 4213572
+        lang: en-ca
       nullable: true
       type: object
     app:
@@ -2419,19 +2961,20 @@ components:
           multiConvoEnabled: true
           maskCreditCardNumbers: true
         metadata:
-          ref: 4213572
-        displayName: ""
-        id: 55c8d9758590aa1900b9b9f6
+          lang: en-ca
+        displayName: My App
+        id: 5d8cff3cd55b040010928b5b
       properties:
         id:
           description: A canonical ID that can be used to retrieve the Sunshine Conversations
             app.
-          example: 55c8d9758590aa1900b9b9f6
+          example: 5d8cff3cd55b040010928b5b
           type: string
         displayName:
           allOf:
           - $ref: '#/components/schemas/displayName'
           description: The friendly name of the app.
+          example: My App
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
@@ -2439,20 +2982,21 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       type: object
     meta:
+      description: Response metadata.
       example:
         beforeCursor: 55c8d9758590aa1900b9b9f6
         afterCursor: 55c8d9758590aa1900b9b9f6
-        hasMore: hasMore
+        hasMore: true
       properties:
         hasMore:
           description: A flag that indicates if there are more records that can be
             fetched.
-          type: string
+          type: boolean
         afterCursor:
           description: "A record id that can be used as a `page[after]` parameter\
             \ in a new request to get the next page. \nNot specified if there are\
@@ -2467,6 +3011,7 @@ components:
           type: string
       type: object
     links:
+      description: Previous and next page links, if they exist.
       example:
         next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
         prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
@@ -2487,7 +3032,7 @@ components:
         meta:
           beforeCursor: 55c8d9758590aa1900b9b9f6
           afterCursor: 55c8d9758590aa1900b9b9f6
-          hasMore: hasMore
+          hasMore: true
         links:
           next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
           prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
@@ -2500,9 +3045,9 @@ components:
             multiConvoEnabled: true
             maskCreditCardNumbers: true
           metadata:
-            ref: 4213572
-          displayName: ""
-          id: 55c8d9758590aa1900b9b9f6
+            lang: en-ca
+          displayName: My App
+          id: 5d8cff3cd55b040010928b5b
         - settings:
             conversationRetentionSeconds: 0
             ignoreAutoConversationStart: true
@@ -2511,9 +3056,9 @@ components:
             multiConvoEnabled: true
             maskCreditCardNumbers: true
           metadata:
-            ref: 4213572
-          displayName: ""
-          id: 55c8d9758590aa1900b9b9f6
+            lang: en-ca
+          displayName: My App
+          id: 5d8cff3cd55b040010928b5b
       properties:
         apps:
           description: List of returned apps.
@@ -2531,6 +3076,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/displayName'
           description: The friendly name of the app.
+          example: My App
+          nullable: false
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
@@ -2538,7 +3085,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -2561,6 +3108,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/displayName'
           description: The friendly name of the app.
+          example: My App
+          nullable: false
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
@@ -2568,37 +3117,40 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       type: object
     appKey:
       example:
-        displayName: displayName
-        id: id
-        secret: secret
+        displayName: Key 1
+        id: app_5723a347f82ba0516cb4ea34
+        secret: 5XJ85yjUtRcaQu_pDINblPZb
       properties:
         id:
           description: The unique ID of the API key, used when signing JWTs or accessing
             the API using Basic Authentication.
+          example: app_5723a347f82ba0516cb4ea34
           type: string
         displayName:
           description: The name of the API key.
+          example: Key 1
           type: string
         secret:
           description: The secret of the API key, used when signing JWTs or accessing
             the API using Basic Authentication
+          example: 5XJ85yjUtRcaQu_pDINblPZb
           type: string
       type: object
     appKeyListResponse:
       example:
         keys:
-        - displayName: displayName
-          id: id
-          secret: secret
-        - displayName: displayName
-          id: id
-          secret: secret
+        - displayName: Key 1
+          id: app_5723a347f82ba0516cb4ea34
+          secret: 5XJ85yjUtRcaQu_pDINblPZb
+        - displayName: Key 1
+          id: app_5723a347f82ba0516cb4ea34
+          secret: 5XJ85yjUtRcaQu_pDINblPZb
       properties:
         keys:
           description: List of returned keys.
@@ -2623,16 +3175,49 @@ components:
       - sdkGroup
       example: personal
       type: string
-    conversation:
-      example:
-        isDefault: false
-        metadata:
-          ref: 4213572
-        appMakerLastRead: appMakerLastRead
-        lastUpdatedAt: lastUpdatedAt
-        displayName: ""
-        id: c93bb9c14dde8ffb94564eae
-        type: personal
+    name:
+      description: Identifier for use in control transfer protocols. Restricted to
+        alphanumeric characters, `-` and `_`.
+      example: bot
+      maxLength: 128
+      type: string
+    switchboardIntegrationId:
+      description: Id of the integration that should deliver events routed by the
+        switchboard.
+      example: 5ef21b86e933b7355c11c605
+      type: string
+    switchboardIntegrationType:
+      description: Type of integration that should deliver events routed by the switchboard.
+        If referencing an OAuth integration, the clientId issued by Sunshine Conversations
+        during the OAuth partnership process will be the value of integrationType.
+      example: zd:agentWorkspace
+      type: string
+    switchboardIntegrationWebhook:
+      properties:
+        id:
+          description: The unique ID of the switchboard integration.
+          example: 5ef21b86e933b7355c11c604
+          type: string
+        name:
+          description: Identifier for use in control transfer protocols. Restricted
+            to alphanumeric characters, `-` and `_`.
+          example: bot
+          maxLength: 128
+          type: string
+        integrationId:
+          description: Id of the integration that should deliver events routed by
+            the switchboard.
+          example: 5ef21b86e933b7355c11c605
+          type: string
+        integrationType:
+          description: Type of integration that should deliver events routed by the
+            switchboard. If referencing an OAuth integration, the clientId issued
+            by Sunshine Conversations during the OAuth partnership process will be
+            the value of integrationType.
+          example: zd:agentWorkspace
+          type: string
+      type: object
+    conversationTruncated:
       properties:
         id:
           description: The unique ID of the conversation.
@@ -2640,110 +3225,75 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/conversationType'
-        isDefault:
-          description: |
-            Whether the conversation is the default conversation for the user. Will be
-            rue for the first personal conversation created for the user, and false in
-            all other cases.
-          example: false
-          type: boolean
-        displayName:
+        activeSwitchboardIntegration:
           allOf:
-          - $ref: '#/components/schemas/displayName'
-          description: |
-            A friendly name for the conversation, may be displayed to the business or
-            the user.
-        metadata:
-          description: "Flat object containing custom properties. Strings, numbers\
-            \ and booleans \nare the only supported format that can be passed to metadata.\n\
-            The metadata is limited to 4KB in size.\n"
-          example:
-            ref: 4213572
+          - $ref: '#/components/schemas/switchboardIntegrationWebhook'
+          description: The current switchboard integration that is in control of the
+            conversation. This field is omitted if no `activeSwitchboardIntegration`
+            exists for the conversation.
           nullable: true
-          type: object
-        appMakerLastRead:
-          description: |
-            A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
-            representing the moment the conversation was last marked as read with
-            role appMaker.
+        pendingSwitchboardIntegration:
+          allOf:
+          - $ref: '#/components/schemas/switchboardIntegrationWebhook'
+          description: The switchboard integration that is awaiting control. This
+            field is omitted if no switchboard integration has been previously offered
+            control.
           nullable: true
-          type: string
-        lastUpdatedAt:
-          description: |
-            A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
-            representing the moment the last message was received in the
-            conversation, or the creation time if no messages have been received yet.
-          nullable: true
-          type: string
       type: object
+    description:
+      description: A short text describing the conversation.
+      example: Conversation between Rogers and Carl.
+      maxLength: 100
+      minLength: 1
+      nullable: true
+      type: string
+    icon:
+      description: A custom conversation icon url. The image must be in either JPG,
+        PNG, or GIF format
+      example: https://www.gravatar.com/image.jpg
+      format: uri
+      maxLength: 2048
+      minLength: 1
+      nullable: true
+      type: string
+    conversation:
+      allOf:
+      - $ref: '#/components/schemas/conversationTruncated'
+      - $ref: '#/components/schemas/conversation_allOf'
     conversationListResponse:
       example:
-        offset: 0
-        hasMore: true
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: true
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
         conversations:
-        - isDefault: false
-          metadata:
-            ref: 4213572
-          appMakerLastRead: appMakerLastRead
-          lastUpdatedAt: lastUpdatedAt
-          displayName: ""
-          id: c93bb9c14dde8ffb94564eae
-          type: personal
-        - isDefault: false
-          metadata:
-            ref: 4213572
-          appMakerLastRead: appMakerLastRead
-          lastUpdatedAt: lastUpdatedAt
-          displayName: ""
-          id: c93bb9c14dde8ffb94564eae
-          type: personal
+        - null
+        - null
       properties:
         conversations:
           description: List of returned conversations.
           items:
             $ref: '#/components/schemas/conversation'
           type: array
-        hasMore:
-          description: A flag that indicates if there are more records that can be
-            fetched.
-          type: boolean
-        offset:
-          description: The offset parameter sent with the request.
-          type: integer
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
       type: object
     participantSubSchema:
-      properties:
-        userId:
-          description: The id of the user that will be participating in the conversation.
-            It will return 404 if the user can’t be found. One of userId or userExternalId
-            is required, but not both.
-          example: 42589ad070d43be9b00ff7e5
-          type: string
-        userExternalId:
-          description: The externalId of the user that will be participating in the
-            conversation. It will return 404 if the user can’t be found. One of userId
-            or userExternalId is required, but not both.
-          example: your-own-user-id
-          type: string
-        subscribeSDKClient:
-          description: When passed as true, the SDK client of the concerned participant
-            will be subscribed to the conversation. The user will start receiving
-            push notifications for this conversation right away, without having to
-            view the conversation on the SDK beforehand. An SDK client will be created
-            for users that don’t already have one. This field is required if the conversation
-            is of type sdkGroup.
-          example: false
-          type: boolean
-      type: object
+      anyOf:
+      - $ref: '#/components/schemas/ParticipantWithUserId'
+      - $ref: '#/components/schemas/ParticipantWithUserExternalId'
     conversationCreateBody:
       properties:
         type:
           $ref: '#/components/schemas/conversationType'
         participants:
           description: |
-            The users participating in the conversation. See participant sub-schema
-            below. For `personal` conversations, this field is required with a length of exactly
-            1. For `sdkGroup` conversations, must have a length less than or equal to 10.
+            The users participating in the conversation. For `personal` conversations, this field is required with a length of exactly 1. For `sdkGroup` conversations, must have a length less than or equal to 10.
             Can be omitted to have a conversation with no participants if the type is `sdkGroup`.
           items:
             $ref: '#/components/schemas/participantSubSchema'
@@ -2755,12 +3305,29 @@ components:
           description: |
             A friendly name for the conversation, may be displayed to the business or
             the user.
+          example: My conversation
+        description:
+          description: A short text describing the conversation.
+          example: Conversation between Rogers and Carl.
+          maxLength: 100
+          minLength: 1
+          nullable: true
+          type: string
+        iconUrl:
+          description: A custom conversation icon url. The image must be in either
+            JPG, PNG, or GIF format
+          example: https://www.gravatar.com/image.jpg
+          format: uri
+          maxLength: 2048
+          minLength: 1
+          nullable: true
+          type: string
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -2785,12 +3352,29 @@ components:
           description: |
             A friendly name for the conversation, may be displayed to the business or
             the user.
+          example: My conversation
+        description:
+          description: A short text describing the conversation.
+          example: Conversation between Rogers and Carl.
+          maxLength: 100
+          minLength: 1
+          nullable: true
+          type: string
+        iconUrl:
+          description: A custom conversation icon url. The image must be in either
+            JPG, PNG, or GIF format
+          example: https://www.gravatar.com/image.jpg
+          format: uri
+          maxLength: 2048
+          minLength: 1
+          nullable: true
+          type: string
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       type: object
@@ -2922,58 +3506,68 @@ components:
       - $ref: '#/components/schemas/ParticipantLeaveBodyParticipantId'
       x-one-of-name: ParticipantLeaveBody
     author:
+      description: The author of the message.
       example:
-        role: appMaker
-        avatarUrl: https://openapi-generator.tech
-        name: name
-        userExternalId: userExternalId
-        userId: userId
+        avatarUrl: ""
+        displayName: Steve
+        userExternalId: your-own-id
+        type: business
+        userId: 5963c0d619a30a2e00de36b8
       properties:
-        role:
-          description: The role of the message or activity.
+        type:
+          description: The type of the message or activity.
           enum:
-          - appMaker
+          - business
           - user
           type: string
         userId:
           description: The id of the user. Only supported when role is user.
+          example: 5963c0d619a30a2e00de36b8
           type: string
         userExternalId:
           description: The externalId of the user. Only supported when role is user.
+          example: your-own-id
           type: string
           writeOnly: true
-        name:
+        displayName:
           description: The display name of the message author.
+          example: Steve
           type: string
         avatarUrl:
-          description: The URL of the desired message avatar image.
-          format: uri
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/icon'
+          description: A custom message icon url. The image must be in either JPG,
+            PNG, or GIF format
+          nullable: false
       required:
-      - role
+      - type
       type: object
     buy:
       properties:
         type:
+          default: buy
           description: The type of action.
           type: string
         text:
           description: The button text.
+          example: Buy vinegar
           type: string
         amount:
           description: The amount being charged. It needs to be specified in cents
             and is an integer (9.99$ -> 999).
+          example: 8000
           type: integer
         currency:
           description: An ISO 4217 standard currency code in lowercase. Used for actions
             of type buy.
+          example: CAD
           type: string
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -2982,6 +3576,7 @@ components:
       - type
       type: object
     extraChannelOptions:
+      description: Extra options to pass directly to the channel API.
       properties:
         messenger:
           $ref: '#/components/schemas/extraChannelOptions_messenger'
@@ -2990,6 +3585,7 @@ components:
       description: A link action will open the provided URI when tapped.
       properties:
         type:
+          default: link
           description: The type of action.
           type: string
         uri:
@@ -3010,7 +3606,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
         extraChannelOptions:
@@ -3024,6 +3620,7 @@ components:
       description: A location request action will prompt the user to share their location.
       properties:
         type:
+          default: locationRequest
           description: The type of action.
           type: string
         text:
@@ -3034,7 +3631,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -3044,6 +3641,7 @@ components:
     postback:
       properties:
         type:
+          default: postback
           description: The type of action.
           type: string
         text:
@@ -3057,7 +3655,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -3084,7 +3682,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
         iconUrl:
@@ -3121,7 +3719,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
         extraChannelOptions:
@@ -3158,14 +3756,17 @@ components:
     textMessage:
       properties:
         type:
+          default: text
           description: The type of message.
           type: string
         text:
           description: The text content of the message. Optional only if actions are
             provided.
+          example: Hello!
           maxLength: 4096
           type: string
         actions:
+          description: Array of message actions.
           items:
             $ref: '#/components/schemas/action'
           type: array
@@ -3220,7 +3821,7 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
       required:
@@ -3237,6 +3838,7 @@ components:
         message actions.
       properties:
         type:
+          default: carousel
           description: The type of message.
           type: string
         items:
@@ -3256,6 +3858,7 @@ components:
     fileMessage:
       properties:
         type:
+          default: file
           description: The type of message.
           type: string
         text:
@@ -3370,6 +3973,7 @@ components:
       description: A form type message without text or actions.
       properties:
         type:
+          default: form
           description: The type of message.
           type: string
         blockChatInput:
@@ -3393,18 +3997,18 @@ components:
         metadata: ""
         deleted: true
         author:
-          role: appMaker
-          avatarUrl: https://openapi-generator.tech
-          name: name
-          userExternalId: userExternalId
-          userId: userId
-        received: received
-        id: id
+          avatarUrl: ""
+          displayName: Steve
+          userExternalId: your-own-id
+          type: business
+          userId: 5963c0d619a30a2e00de36b8
+        received: 2019-03-21T18:48:52.760Z
+        id: 5e552ef595e5206375bb835d
         source:
-          originalMessageTimestamp: originalMessageTimestamp
-          integrationId: ""
+          originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+          integrationId: de13bee15b51033b34162411
           client: ""
-          originalMessageId: originalMessageId
+          originalMessageId: 5f40256af057d0000dda9bd7
           type: ios
           device: ""
         content: ""
@@ -3412,10 +4016,12 @@ components:
       properties:
         id:
           description: The unique ID of the message.
+          example: 5e552ef595e5206375bb835d
           type: string
         received:
           description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
             representing when Sunshine Conversations received the message.
+          example: 2019-03-21T18:48:52.760Z
           type: string
         author:
           $ref: '#/components/schemas/author'
@@ -3428,6 +4034,8 @@ components:
         quotedMessage:
           allOf:
           - $ref: '#/components/schemas/quotedMessage'
+          description: The quoted message is currently only available for WhatsApp
+            and Web Messenger `formResponse` messages.
           nullable: true
         metadata:
           allOf:
@@ -3439,30 +4047,42 @@ components:
           nullable: true
           type: boolean
       type: object
-    quotedMessage:
-      description: The quoted message, currently only available for WhatsApp and Web
-        Messenger formResponse messages.
+    quotedMessageMessage:
       properties:
         type:
-          description: The type of quotedMessage. Can be either `message`, when a
-            complete Sunshine Conversations message can be provided, or `externalMessageId`
-            if no Sunshine Conversations message matched the quoted message.
-          type: string
-        externalMessageId:
-          description: The external message Id of the quoted message. Only available
-            when type is externalMessageId.
+          default: message
+          description: The type of quotedMessage - a complete Sunshine Conversations
+            message is provided.
           type: string
         message:
-          $ref: '#/components/schemas/message'
-      required:
-      - type
+          allOf:
+          - $ref: '#/components/schemas/message'
+      title: QuotedMessageMessage
       type: object
+    quotedMessageExternalMessageId:
+      properties:
+        type:
+          default: externalMessageId
+          description: The type of quotedMessage - `externalMessageId` if no Sunshine
+            Conversations message matched the quoted message.
+          type: string
+        externalMessageId:
+          description: The external message Id of the quoted message.
+          type: string
+      title: QuotedMessageExternalMessageId
+      type: object
+    quotedMessage:
+      oneOf:
+      - $ref: '#/components/schemas/quotedMessageMessage'
+      - $ref: '#/components/schemas/quotedMessageExternalMessageId'
+      x-one-of-name: QuotedMessage
     formResponseMessage:
       description: A formResponse type message is a response to a form type message.
         formResponse type messages are only supported as responses to form messages
         on Web Messenger and cannot be sent via the API.
       properties:
         type:
+          default: formResponse
           description: The type of message.
           type: string
         fields:
@@ -3484,6 +4104,7 @@ components:
     imageMessage:
       properties:
         type:
+          default: image
           description: The type of message.
           type: string
         text:
@@ -3491,6 +4112,7 @@ components:
             provided.
           type: string
         actions:
+          description: Array of message actions.
           items:
             $ref: '#/components/schemas/action'
           type: array
@@ -3510,6 +4132,7 @@ components:
         * On all other platforms, Sunshine Conversations converts list messages to raw text.
       properties:
         type:
+          default: list
           description: The type of message.
           type: string
         items:
@@ -3540,6 +4163,7 @@ components:
         Request.
       properties:
         type:
+          default: location
           description: The type of message.
           type: string
         coordinates:
@@ -3573,20 +4197,21 @@ components:
       x-one-of-name: Content
     client:
       example:
-        lastSeen: lastSeen
+        lastSeen: 2020-08-20T16:13:07.462Z
         avatarUrl: https://openapi-generator.tech
-        displayName: displayName
-        integrationId: integrationId
-        externalId: externalId
-        linkedAt: linkedAt
+        displayName: Steve
+        integrationId: 582dedf230e788746891281a
+        externalId: your-own-id
+        linkedAt: 2020-06-23T14:33:47.492Z
         raw: '{}'
-        id: id
+        id: 5c9a34160c89726709136733
         type: sdk
         status: active
         info: '{}'
       properties:
         id:
           description: The unique ID of the client.
+          example: 5c9a34160c89726709136733
           type: string
         type:
           $ref: '#/components/schemas/clientType'
@@ -3598,30 +4223,36 @@ components:
           - blocked
           - inactive
           - pending
+          example: active
           type: string
         integrationId:
           description: The ID of the integration that the client was created for.
             Unused for clients of type sdk, as they incorporate multiple integrations.
+          example: 582dedf230e788746891281a
           nullable: true
           type: string
         externalId:
           description: The ID of the user on an external channel. For example, the
             user’s phone number for Twilio, or their page-scoped user ID for Facebook
             Messenger. Applies only to non-SDK clients.
+          example: your-own-id
           nullable: true
           type: string
         lastSeen:
           description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
             representing the last time the user interacted with this client.
+          example: 2020-08-20T16:13:07.462Z
           nullable: true
           type: string
         linkedAt:
           description: A timestamp signifying when the client was added to the user.
             Formatted as YYYY-MM-DDThh:mm:ss.SSSZ.
+          example: 2020-06-23T14:33:47.492Z
           nullable: true
           type: string
         displayName:
           description: The user's display name on the channel.
+          example: Steve
           nullable: true
           type: string
         avatarUrl:
@@ -3644,6 +4275,7 @@ components:
       properties:
         id:
           description: The unique ID of the device.
+          example: de13bee15b51033b34162411
           type: string
         type:
           description: The type of integration that the device represents.
@@ -3678,7 +4310,10 @@ components:
           nullable: true
           type: string
         info:
-          $ref: '#/components/schemas/device_info'
+          description: A flat curated object with properties that vary for each SDK
+            platform. All keys are optional and not guaranteed to be available.
+          nullable: true
+          type: object
         appVersion:
           description: Version of the mobile app in which the SDK is embedded. Not
             applicable for devices of type web.
@@ -3686,11 +4321,12 @@ components:
           type: string
       type: object
     source:
+      description: The source of the message.
       example:
-        originalMessageTimestamp: originalMessageTimestamp
-        integrationId: ""
+        originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+        integrationId: de13bee15b51033b34162411
         client: ""
-        originalMessageId: originalMessageId
+        originalMessageId: 5f40256af057d0000dda9bd7
         type: ios
         device: ""
       properties:
@@ -3702,55 +4338,59 @@ components:
         integrationId:
           description: Identifier indicating which integration the message was sent
             from. For user messages only.
+          example: de13bee15b51033b34162411
           nullable: true
+          type: string
         originalMessageId:
           description: Message identifier assigned by the originating channel.
+          example: 5f40256af057d0000dda9bd7
           nullable: true
           type: string
         originalMessageTimestamp:
           description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
             representing when the third party channel received the message.
+          example: 2019-03-21T18:45:53.720Z
           nullable: true
           type: string
         client:
           allOf:
           - $ref: '#/components/schemas/client'
           description: The client from which the user authored the message or activity,
-            if applicable. See client schema for more information. This field is not
-            applicable in API responses, it is used only in webhook payloads if the
-            includeFullSource option is enabled.
+            if applicable. This field is not applicable in API responses, it is used
+            only in webhook payloads if the `includeFullSource` option is enabled.
           nullable: true
         device:
           allOf:
           - $ref: '#/components/schemas/device'
           description: The device from which the user authored the message or activity,
-            if applicable. See device schema for more information. This field is not
-            applicable in API responses, it is used only in webhook payloads if the
-            includeFullSource option is enabled.
+            if applicable. This field is not applicable in API responses, it is used
+            only in webhook payloads if the `includeFullSource` option is enabled.
           nullable: true
       required:
       - type
       type: object
     messageListResponse:
       example:
-        next: next
-        previous: previous
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: true
         messages:
         - metadata: ""
           deleted: true
           author:
-            role: appMaker
-            avatarUrl: https://openapi-generator.tech
-            name: name
-            userExternalId: userExternalId
-            userId: userId
-          received: received
-          id: id
+            avatarUrl: ""
+            displayName: Steve
+            userExternalId: your-own-id
+            type: business
+            userId: 5963c0d619a30a2e00de36b8
+          received: 2019-03-21T18:48:52.760Z
+          id: 5e552ef595e5206375bb835d
           source:
-            originalMessageTimestamp: originalMessageTimestamp
-            integrationId: ""
+            originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+            integrationId: de13bee15b51033b34162411
             client: ""
-            originalMessageId: originalMessageId
+            originalMessageId: 5f40256af057d0000dda9bd7
             type: ios
             device: ""
           content: ""
@@ -3758,43 +4398,62 @@ components:
         - metadata: ""
           deleted: true
           author:
-            role: appMaker
-            avatarUrl: https://openapi-generator.tech
-            name: name
-            userExternalId: userExternalId
-            userId: userId
-          received: received
-          id: id
+            avatarUrl: ""
+            displayName: Steve
+            userExternalId: your-own-id
+            type: business
+            userId: 5963c0d619a30a2e00de36b8
+          received: 2019-03-21T18:48:52.760Z
+          id: 5e552ef595e5206375bb835d
           source:
-            originalMessageTimestamp: originalMessageTimestamp
-            integrationId: ""
+            originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+            integrationId: de13bee15b51033b34162411
             client: ""
-            originalMessageId: originalMessageId
+            originalMessageId: 5f40256af057d0000dda9bd7
             type: ios
             device: ""
           content: ""
           quotedMessage: ""
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
       properties:
         messages:
           description: List of returned messages.
           items:
             $ref: '#/components/schemas/message'
           type: array
-        previous:
-          description: Endpoint URL that would return the previous page. Not specified
-            if there are no older messages.
-          type: string
-        next:
-          description: Endpoint URL that would return the next page. Not specified
-            if there are no newer messages.
-          type: string
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
       title: MessageListResponse
       type: object
     destination:
+      description: The destination of the message, in the case of channel targeting.
+        Only applicable if the author role is `business` and the conversation is of
+        type `personal`.
       oneOf:
-      - $ref: '#/components/schemas/integrationId_1'
-      - $ref: '#/components/schemas/integrationType_1'
+      - $ref: '#/components/schemas/integrationId'
+      - $ref: '#/components/schemas/integrationType'
       x-one-of-name: Destination
+    messageOverridePayload:
+      description: The exact payload to send to the channel.
+      properties:
+        payload:
+          type: object
+      type: object
+    messageOverride:
+      anyOf:
+      - $ref: '#/components/schemas/MessageOverrideApple'
+      - $ref: '#/components/schemas/MessageOverrideLine'
+      - $ref: '#/components/schemas/MessageOverrideMessenger'
+      - $ref: '#/components/schemas/MessageOverrideWhatsapp'
+      description: A raw payload containing a message that is sent directly to a channel.
+        Messages for [Apple Business Chat](https://docs.smooch.io/guide/apple-business-chat/#passthrough-api),
+        [Line](https://docs.smooch.io/guide/line/#passthrough-api), [Messenger](https://docs.smooch.io/guide/facebook-messenger/#passthrough-api),
+        [Whatsapp](https://docs.smooch.io/guide/whatsapp/#passthrough-api) channels
+        are supported.
     messagePost:
       properties:
         author:
@@ -3812,9 +4471,11 @@ components:
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
           example:
-            ref: 4213572
+            lang: en-ca
           nullable: true
           type: object
+        override:
+          $ref: '#/components/schemas/messageOverride'
       required:
       - author
       - content
@@ -3828,18 +4489,18 @@ components:
         - metadata: ""
           deleted: true
           author:
-            role: appMaker
-            avatarUrl: https://openapi-generator.tech
-            name: name
-            userExternalId: userExternalId
-            userId: userId
-          received: received
-          id: id
+            avatarUrl: ""
+            displayName: Steve
+            userExternalId: your-own-id
+            type: business
+            userId: 5963c0d619a30a2e00de36b8
+          received: 2019-03-21T18:48:52.760Z
+          id: 5e552ef595e5206375bb835d
           source:
-            originalMessageTimestamp: originalMessageTimestamp
-            integrationId: ""
+            originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+            integrationId: de13bee15b51033b34162411
             client: ""
-            originalMessageId: originalMessageId
+            originalMessageId: 5f40256af057d0000dda9bd7
             type: ios
             device: ""
           content: ""
@@ -3847,18 +4508,18 @@ components:
         - metadata: ""
           deleted: true
           author:
-            role: appMaker
-            avatarUrl: https://openapi-generator.tech
-            name: name
-            userExternalId: userExternalId
-            userId: userId
-          received: received
-          id: id
+            avatarUrl: ""
+            displayName: Steve
+            userExternalId: your-own-id
+            type: business
+            userId: 5963c0d619a30a2e00de36b8
+          received: 2019-03-21T18:48:52.760Z
+          id: 5e552ef595e5206375bb835d
           source:
-            originalMessageTimestamp: originalMessageTimestamp
-            integrationId: ""
+            originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+            integrationId: de13bee15b51033b34162411
             client: ""
-            originalMessageId: originalMessageId
+            originalMessageId: 5f40256af057d0000dda9bd7
             type: ios
             device: ""
           content: ""
@@ -3869,12 +4530,8 @@ components:
             $ref: '#/components/schemas/message'
           type: array
       type: object
-    activityPost:
+    activityTypes:
       properties:
-        author:
-          allOf:
-          - $ref: '#/components/schemas/author'
-          description: The author of the activity.
         type:
           description: Must be conversation:read, typing:start or typing:stop. If
             the author role is `user`, only conversation:read is supported.
@@ -3883,10 +4540,14 @@ components:
           - typing:start
           - typing:stop
           type: string
+      type: object
+    activityPost:
+      allOf:
+      - $ref: '#/components/schemas/activityPost_allOf'
+      - $ref: '#/components/schemas/activityTypes'
       required:
       - author
       - type
-      type: object
     acceptControlBody:
       properties:
         metadata:
@@ -3939,25 +4600,25 @@ components:
     clientListResponse:
       example:
         clients:
-        - lastSeen: lastSeen
+        - lastSeen: 2020-08-20T16:13:07.462Z
           avatarUrl: https://openapi-generator.tech
-          displayName: displayName
-          integrationId: integrationId
-          externalId: externalId
-          linkedAt: linkedAt
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
           raw: '{}'
-          id: id
+          id: 5c9a34160c89726709136733
           type: sdk
           status: active
           info: '{}'
-        - lastSeen: lastSeen
+        - lastSeen: 2020-08-20T16:13:07.462Z
           avatarUrl: https://openapi-generator.tech
-          displayName: displayName
-          integrationId: integrationId
-          externalId: externalId
-          linkedAt: linkedAt
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
           raw: '{}'
-          id: id
+          id: 5c9a34160c89726709136733
           type: sdk
           status: active
           info: '{}'
@@ -3977,6 +4638,59 @@ components:
           description: The offset parameter sent with the request.
           type: integer
       type: object
+    matchCriteriaMailgun:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaMailgun_allOf'
+    matchCriteriaMessagebird:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaMessagebird_allOf'
+    matchCriteriaTwilio:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaTwilio_allOf'
+    matchCriteriaWhatsapp:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaWhatsapp_allOf'
+    matchCriteriaBase:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          description: The channel type.
+          type: string
+        integrationId:
+          description: The ID of the integration to link. Must match the provided
+            type.
+          example: 582dedf230e788746891281a
+          type: string
+        primary:
+          default: true
+          description: Flag indicating whether the client will become the primary
+            for the target conversation once linking is complete.
+          type: boolean
+      required:
+      - integrationId
+      - type
+      type: object
+    matchCriteria:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      discriminator:
+        mapping:
+          mailgun: '#/components/schemas/matchCriteriaMailgun'
+          messagebird: '#/components/schemas/matchCriteriaMessagebird'
+          twilio: '#/components/schemas/matchCriteriaTwilio'
+          whatsapp: '#/components/schemas/matchCriteriaWhatsapp'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/matchCriteriaMailgun'
+      - $ref: '#/components/schemas/matchCriteriaMessagebird'
+      - $ref: '#/components/schemas/matchCriteriaTwilio'
+      - $ref: '#/components/schemas/matchCriteriaWhatsapp'
+      x-one-of-name: MatchCriteria
     clientCreate:
       properties:
         matchCriteria:
@@ -4002,19 +4716,15 @@ components:
       properties:
         id:
           description: The unique ID of the integration.
+          example: 5e4af71a81966cfff3ef6550
           readOnly: true
           type: string
         type:
           description: The type of integration.
+          example: android
           type: string
         status:
           $ref: '#/components/schemas/status'
-        error:
-          description: If the integration status is error, contains a description
-            of the problem.
-          nullable: true
-          readOnly: true
-          type: string
         displayName:
           description: A human-friendly name used to identify the integration.
           example: Channel name
@@ -4028,30 +4738,78 @@ components:
       allOf:
       - $ref: '#/components/schemas/integrationBase'
       - $ref: '#/components/schemas/android_allOf'
+    apple:
+      allOf:
+      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/apple_allOf'
+    target:
+      description: URL to be called when the webhook is triggered.
+      example: http://example.com/callback
+      type: string
+    triggers:
+      description: An array of triggers the integration is subscribed to. This property
+        is case sensitive. Current supported triggers in v2 are `conversation:create`,
+        `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
+        `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
+        `conversation:typing`, `conversation:postback`, and `user:merge`
+      items:
+        example: '["conversation:read","conversation:message"]'
+        type: string
+      type: array
+    includeFullUser:
+      default: false
+      description: A boolean specifying whether webhook payloads should include the
+        complete user schema for events involving a specific user.
+      type: boolean
+    includeFullSource:
+      default: false
+      description: A boolean specifying whether webhook payloads should include the
+        client and device object (when applicable).
+      type: boolean
     webhook:
+      example:
+        includeFullSource: false
+        id: 5e554d2cac66fb73a3c01871
+        secret: 8564b3e6a8b20a4bdb68b05ce9bc5936
+        triggers:
+        - '["conversation:read","conversation:message"]'
+        - '["conversation:read","conversation:message"]'
+        version: v2
+        includeFullUser: false
+        target: http://example.com/callback
       properties:
+        id:
+          description: A unique identifier for the webhook.
+          example: 5e554d2cac66fb73a3c01871
+          type: string
         version:
           description: Schema version of the payload delivered to this webhook. Can
-            be v1, v1.1 or v2.
+            be `v1`, `v1.1` or `v2`.
+          example: v2
           readOnly: true
           type: string
         target:
           description: URL to be called when the webhook is triggered.
+          example: http://example.com/callback
           type: string
         triggers:
-          description: An array of triggers the integration is subscribed to. Current
-            supported triggers in v2 are conversation:message, conversation:read,
-            conversation:typing, and user:merge
+          description: An array of triggers the integration is subscribed to. This
+            property is case sensitive. Current supported triggers in v2 are `conversation:create`,
+            `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
+            `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
+            `conversation:typing`, `conversation:postback`, and `user:merge`
           items:
+            example: '["conversation:read","conversation:message"]'
             type: string
           type: array
         secret:
           description: Webhook secret, used to verify the origin of incoming requests.
+          example: 8564b3e6a8b20a4bdb68b05ce9bc5936
           type: string
         includeFullUser:
           default: false
           description: A boolean specifying whether webhook payloads should include
-            the complete user schema for events involving a specific user
+            the complete user schema for events involving a specific user.
           type: boolean
         includeFullSource:
           default: false
@@ -4108,6 +4866,7 @@ components:
           default: undefined
           description: Sets the URL of the avatar to use for the automatic reply to
             the prechat capture messages.
+          example: http://domain.com/images/avatar.png
           type: string
         enabled:
           default: false
@@ -4122,6 +4881,15 @@ components:
         fields:
           description: Array of Fields. Overrides the default Prechat Capture fields
             to define a custom form.
+          example:
+          - type: email
+            name: email
+            label: Email
+            placeholder: your@email.com
+          - type: text
+            name: company-website
+            label: Company website
+            placeholder: mycompany.com
           items:
             $ref: '#/components/schemas/field'
           type: array
@@ -4130,10 +4898,6 @@ components:
       allOf:
       - $ref: '#/components/schemas/integrationBase'
       - $ref: '#/components/schemas/web_allOf'
-    weChat:
-      allOf:
-      - $ref: '#/components/schemas/integrationBase'
-      - $ref: '#/components/schemas/weChat_allOf'
     whatsapp:
       allOf:
       - $ref: '#/components/schemas/integrationBase'
@@ -4143,6 +4907,7 @@ components:
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/android'
+      - $ref: '#/components/schemas/apple'
       - $ref: '#/components/schemas/custom'
       - $ref: '#/components/schemas/ios'
       - $ref: '#/components/schemas/line'
@@ -4154,7 +4919,6 @@ components:
       - $ref: '#/components/schemas/twitter'
       - $ref: '#/components/schemas/viber'
       - $ref: '#/components/schemas/web'
-      - $ref: '#/components/schemas/weChat'
       - $ref: '#/components/schemas/whatsapp'
       x-one-of-name: Integration
     integrationListResponse:
@@ -4180,26 +4944,36 @@ components:
           example: 0
           type: integer
       type: object
+    integrationResponse:
+      properties:
+        integration:
+          $ref: '#/components/schemas/integration'
+      type: object
     integrationUpdateBase:
       properties:
         displayName:
-          description: A human-friendly name used to identify the integration.
+          description: A human-friendly name used to identify the integration. `displayName`
+            can be unset by changing it to `null`.
+          example: My awesome integration
           maxLength: 100
+          minLength: 1
           nullable: true
           type: string
       type: object
     androidUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/android_allOf'
+      - $ref: '#/components/schemas/androidUpdate_allOf'
+    appleUpdate:
+      allOf:
+      - $ref: '#/components/schemas/integrationUpdateBase'
     customUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/customUpdate_allOf'
     iosUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/ios_allOf'
+      - $ref: '#/components/schemas/iosUpdate_allOf'
     lineUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -4229,10 +5003,7 @@ components:
     webUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/web_allOf'
-    weChatUpdate:
-      allOf:
-      - $ref: '#/components/schemas/integrationUpdateBase'
+      - $ref: '#/components/schemas/webUpdate_allOf'
     whatsAppUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -4240,6 +5011,7 @@ components:
     integrationUpdate:
       oneOf:
       - $ref: '#/components/schemas/androidUpdate'
+      - $ref: '#/components/schemas/appleUpdate'
       - $ref: '#/components/schemas/customUpdate'
       - $ref: '#/components/schemas/iosUpdate'
       - $ref: '#/components/schemas/lineUpdate'
@@ -4251,26 +5023,111 @@ components:
       - $ref: '#/components/schemas/twitterUpdate'
       - $ref: '#/components/schemas/viberUpdate'
       - $ref: '#/components/schemas/webUpdate'
-      - $ref: '#/components/schemas/weChatUpdate'
       - $ref: '#/components/schemas/whatsAppUpdate'
       x-one-of-name: IntegrationUpdate
     apiKey:
+      description: The integration key.
       example:
-        name: name
-        id: id
-        secret: secret
+        displayName: My custom key
+        id: int_5e4b0f225aca01092928f917
+        secret: Ck1LjzzlUzvlCTtqAdQ2z1QukuBTrN3TIx
       properties:
         id:
           description: The unique ID of the API key, used when signing JWTs or accessing
             the API using Basic Authentication.
+          example: int_5e4b0f225aca01092928f917
           type: string
-        name:
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
           description: The name of the API key.
-          type: string
+          example: My custom key
         secret:
           description: The secret of the API key, used when signing JWTs or accessing
             the API using Basic Authentication
+          example: Ck1LjzzlUzvlCTtqAdQ2z1QukuBTrN3TIx
           type: string
+      type: object
+    integrationApiKeyResponse:
+      example:
+        key:
+          displayName: My custom key
+          id: int_5e4b0f225aca01092928f917
+          secret: Ck1LjzzlUzvlCTtqAdQ2z1QukuBTrN3TIx
+      properties:
+        key:
+          $ref: '#/components/schemas/apiKey'
+      type: object
+    webhookListResponse:
+      example:
+        webhooks:
+        - includeFullSource: false
+          id: 5e554d2cac66fb73a3c01871
+          secret: 8564b3e6a8b20a4bdb68b05ce9bc5936
+          triggers:
+          - '["conversation:read","conversation:message"]'
+          - '["conversation:read","conversation:message"]'
+          version: v2
+          includeFullUser: false
+          target: http://example.com/callback
+        - includeFullSource: false
+          id: 5e554d2cac66fb73a3c01871
+          secret: 8564b3e6a8b20a4bdb68b05ce9bc5936
+          triggers:
+          - '["conversation:read","conversation:message"]'
+          - '["conversation:read","conversation:message"]'
+          version: v2
+          includeFullUser: false
+          target: http://example.com/callback
+      properties:
+        webhooks:
+          description: List of webhooks associated with the integration.
+          items:
+            $ref: '#/components/schemas/webhook'
+          type: array
+      type: object
+    webhookBody:
+      properties:
+        target:
+          description: URL to be called when the webhook is triggered.
+          example: http://example.com/callback
+          type: string
+        triggers:
+          description: An array of triggers the integration is subscribed to. This
+            property is case sensitive. Current supported triggers in v2 are `conversation:create`,
+            `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
+            `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
+            `conversation:typing`, `conversation:postback`, and `user:merge`
+          items:
+            example: '["conversation:read","conversation:message"]'
+            type: string
+          type: array
+        includeFullUser:
+          default: false
+          description: A boolean specifying whether webhook payloads should include
+            the complete user schema for events involving a specific user.
+          type: boolean
+        includeFullSource:
+          default: false
+          description: A boolean specifying whether webhook payloads should include
+            the client and device object (when applicable).
+          type: boolean
+      type: object
+    webhookCreateBody:
+      allOf:
+      - $ref: '#/components/schemas/webhookBody'
+      required:
+      - target
+      - triggers
+    webhookResponse:
+      example:
+        webhook: ""
+      properties:
+        webhook:
+          allOf:
+          - $ref: '#/components/schemas/webhook'
+          description: The webhook.
+      title: WebhookResponse
       type: object
     enabled:
       description: Whether the switchboard is enabled. Allows creating the switchboard
@@ -4351,23 +5208,6 @@ components:
           example: 5ef21b132f21af34f088530e
           type: string
       type: object
-    name:
-      description: Identifier for use in control transfer protocols. Restricted to
-        alphanumeric characters, - and _.
-      example: bot
-      maxLength: 128
-      type: string
-    integrationId:
-      description: Id of the integration that should deliver events routed by the
-        switchboard.
-      example: 5ef21b86e933b7355c11c605
-      type: string
-    integrationType:
-      description: Type of integration that should deliver events routed by the switchboard.
-        If referencing an OAuth integration, the clientId issued by Sunshine Conversations
-        during the OAuth partnership process will be the value of integrationType.
-      example: zd:agentWorkspace
-      type: string
     deliverStandbyEvents:
       description: Setting to determine if webhooks should be sent when the switchboard
         integration is not in control of a conversation (standby status)
@@ -4392,7 +5232,7 @@ components:
           type: string
         name:
           description: Identifier for use in control transfer protocols. Restricted
-            to alphanumeric characters, - and _.
+            to alphanumeric characters, `-` and `_`.
           example: bot
           maxLength: 128
           type: string
@@ -4450,19 +5290,19 @@ components:
       properties:
         name:
           description: Identifier for use in control transfer protocols. Restricted
-            to alphanumeric characters, - and _.
+            to alphanumeric characters, `-` and `_`.
           example: bot
           maxLength: 128
           type: string
         integrationId:
           allOf:
-          - $ref: '#/components/schemas/integrationId'
+          - $ref: '#/components/schemas/switchboardIntegrationId'
           description: The id of the integration to link to the switchboard integration.
             Must be used when linking a custom integration. One of integrationId or
             integrationType must be provided.
         integrationType:
           allOf:
-          - $ref: '#/components/schemas/integrationType'
+          - $ref: '#/components/schemas/switchboardIntegrationType'
           description: The type of the integration to link to the switchboard integration.
             Must be used when linking an OAuth integration. One of integrationId or
             integrationType must be provided.
@@ -4490,19 +5330,19 @@ components:
       properties:
         name:
           description: Identifier for use in control transfer protocols. Restricted
-            to alphanumeric characters, - and _.
+            to alphanumeric characters, `-` and `_`.
           example: bot
           maxLength: 128
           type: string
         integrationId:
           allOf:
-          - $ref: '#/components/schemas/integrationId'
+          - $ref: '#/components/schemas/switchboardIntegrationId'
           description: The id of the integration to link to the switchboard integration.
             Must be used when linking a custom integration. Can't provide both integrationId
             and integrationType.
         integrationType:
           allOf:
-          - $ref: '#/components/schemas/integrationType'
+          - $ref: '#/components/schemas/switchboardIntegrationType'
           description: The type of the integration to link to the switchboard integration.
             Must be used when linking an OAuth integration. Can't provide both integrationId
             and integrationType.
@@ -4515,7 +5355,253 @@ components:
           - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
           nullable: true
       type: object
-    filter:
+    appSubSchema:
+      description: The app that triggered the events.
+      properties:
+        id:
+          description: The unique ID of the app.
+          example: 5e4af71a81966cfff3ef6550
+          type: string
+      type: object
+    webhookSubSchema:
+      description: The webhook that generated the payload.
+      example:
+        id: 582dedf230e788746891281a
+        version: v2
+      properties:
+        id:
+          description: The unique ID of the webhook.
+          type: string
+        version:
+          description: Schema version of the payload delivered to this webhook (v2).
+          type: string
+      type: object
+    eventSubSchema:
+      example:
+        id: 0ca7d56ba7b2e081e479fe9e
+        type: conversation:message
+        createdAt: 2020-02-25T18:06:37.547Z
+      properties:
+        id:
+          description: The unique ID of the event. May be used to ensure that an event
+            is not processed twice in the case of a webhook that is re-tried due to
+            an error or timeout.
+          type: string
+        type:
+          description: The type of the event. Will match one of the subscribed triggers
+            for your [webhook](#operation/createWebhook).
+          type: string
+        createdAt:
+          description: A timestamp signifying when the event was generated. Formatted
+            as `YYYY-MM-DDThh:mm:ss.SSSZ`.
+          type: string
+      type: object
+    sourceWebhook:
+      properties:
+        type:
+          description: An identifier for the channel from which a message originated.
+            May include one of api, sdk, messenger, or any number of other channels.
+          example: ios
+          type: string
+        integrationId:
+          description: Identifier indicating which integration the message was sent
+            from. For user messages only.
+          type: string
+        originalMessageId:
+          description: Message identifier assigned by the originating channel.
+          nullable: true
+          type: string
+        originalMessageTimestamp:
+          description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
+            representing when the third-party channel received the message.
+          nullable: true
+          type: string
+        client:
+          allOf:
+          - $ref: '#/components/schemas/client'
+          description: The client from which the user authored the message or activity,
+            if applicable. This field will only be present if the `includeFullSource`
+            option is enabled for the webhook.
+          nullable: true
+        device:
+          allOf:
+          - $ref: '#/components/schemas/device'
+          description: The device from which the user authored the message or activity,
+            if applicable. This field will only be present if the `includeFullSource`
+            option is enabled for the webhook
+          nullable: true
+      type: object
+    userTruncated:
+      properties:
+        id:
+          description: The unique ID of the user.
+          example: 7494535bff5cef41a15be74d
+          type: string
+        externalId:
+          description: |
+            An optional ID that if specified can also be used to retrieve the user.
+          example: your-own-id
+          nullable: true
+          type: string
+      type: object
+    user:
+      allOf:
+      - $ref: '#/components/schemas/userTruncated'
+      - $ref: '#/components/schemas/user_allOf'
+    referral:
+      properties:
+        code:
+          description: The referral’s identifier.
+          type: string
+        details:
+          $ref: '#/components/schemas/referral_details'
+      type: object
+    conversationCreateEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationCreateEvent_allOf'
+      title: conversation:create
+    conversationMessageDeliveryPayload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user associated with the conversation.
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the message was sent.
+        message:
+          $ref: '#/components/schemas/conversationMessageDeliveryPayload_message'
+        destination:
+          $ref: '#/components/schemas/conversationMessageDeliveryPayload_destination'
+        externalMessages:
+          description: An array of objects representing the third-party messages associated
+            with the event. The order of the external messages is not guaranteed to
+            be the same across the different triggers. Note that some channels don’t
+            expose message IDs, in which case this field will be unset.
+          items:
+            $ref: '#/components/schemas/conversationMessageDeliveryPayload_externalMessages'
+          nullable: true
+          type: array
+        isFinalEvent:
+          description: A boolean indicating whether the webhook is the final one for
+            the `message.id` and `destination.type` pair.
+          type: boolean
+      type: object
+    conversationMessageDeliveryChannelEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationMessageDeliveryChannelEvent_allOf'
+      title: conversation:message:delivery:channel
+    conversationMessageDeliveryFailureEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationMessageDeliveryFailureEvent_allOf'
+      title: conversation:message:delivery:failure
+    conversationMessageDeliveryUserEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationMessageDeliveryChannelEvent_allOf'
+      title: conversation:message:delivery:user
+    authorWebhook:
+      description: The author of the activity.
+      properties:
+        type:
+          description: The role of the message or activity.
+          enum:
+          - business
+          - user
+          type: string
+        userId:
+          description: The id of the user. Only supported when role is `user`.
+          example: 5963c0d619a30a2e00de36b8
+          type: string
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: Full profile of the user that authored the message or activity.
+            It is used only in webhook payloads if the `includeFullUser` option is
+            enabled.
+      required:
+      - type
+      type: object
+    conversationMessageEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationMessageEvent_allOf'
+      title: conversation:message
+    postbackWebhook:
+      properties:
+        payload:
+          description: The payload associated with the postback.
+          type: string
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+      type: object
+    conversationPostbackEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationPostbackEvent_allOf'
+      title: conversation:postback
+    activity:
+      allOf:
+      - $ref: '#/components/schemas/activityTypes'
+      - $ref: '#/components/schemas/activity_allOf'
+    conversationReadEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationReadEvent_allOf'
+      title: conversation:read
+    conversationTypingEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationTypingEvent_allOf'
+      title: conversation:typing
+    switchboardAcceptControl:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardAcceptControl_allOf'
+      title: switchboard:acceptControl
+    switchboardAcceptControlFailure:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardAcceptControlFailure_allOf'
+      title: switchboard:acceptControl:failure
+    switchboardOfferControl:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardOfferControl_allOf'
+      title: switchboard:offerControl
+    switchboardOfferControlFailure:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardAcceptControlFailure_allOf'
+      title: switchboard:offerControl:failure
+    switchboardPassControl:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardPassControl_allOf'
+      title: switchboard:passControl
+    switchboardPassControlFailure:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/switchboardAcceptControlFailure_allOf'
+      title: switchboard:passControl:failure
+    userMergeEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/userMergeEvent_allOf'
+      title: user:merge
+    appListFilter:
       properties:
         serviceAccountId:
           description: When specified, lists only the apps that the service account
@@ -4524,14 +5610,26 @@ components:
       type: object
     AppKeyCreateBody:
       example:
-        displayName: ""
+        displayName: Key 1
       properties:
         displayName:
           allOf:
           - $ref: '#/components/schemas/displayName'
+          example: Key 1
       required:
       - displayName
       title: AppKeyCreateBody
+      type: object
+    conversationListFilter:
+      properties:
+        userId:
+          description: The user's id. One of `userId` or `userExternalId` is required,
+            but not both.
+          type: string
+        userExternalId:
+          description: The external Id of the user. One of `userId` or `userExternalId`
+            is required, but not both.
+          type: string
       type: object
     ParticipantResponse:
       description: The created participant.
@@ -4553,59 +5651,137 @@ components:
     ClientResponse:
       example:
         client:
-          lastSeen: lastSeen
+          lastSeen: 2020-08-20T16:13:07.462Z
           avatarUrl: https://openapi-generator.tech
-          displayName: displayName
-          integrationId: integrationId
-          externalId: externalId
-          linkedAt: linkedAt
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
           raw: '{}'
-          id: id
+          id: 5c9a34160c89726709136733
           type: sdk
           status: active
           info: '{}'
       properties:
         client:
           $ref: '#/components/schemas/client'
-    IntegrationResponse:
-      example: {}
-      properties:
-        integration:
-          $ref: '#/components/schemas/integration'
     IntegrationApiKeyListResponse:
       example:
         keys:
-        - name: name
-          id: id
-          secret: secret
-        - name: name
-          id: id
-          secret: secret
+        - displayName: My custom key
+          id: int_5e4b0f225aca01092928f917
+          secret: Ck1LjzzlUzvlCTtqAdQ2z1QukuBTrN3TIx
+        - displayName: My custom key
+          id: int_5e4b0f225aca01092928f917
+          secret: Ck1LjzzlUzvlCTtqAdQ2z1QukuBTrN3TIx
       properties:
         keys:
+          description: Integration keys of the supplied integration.
           items:
             $ref: '#/components/schemas/apiKey'
           type: array
     IntegrationApiKey:
       example:
-        name: name
+        displayName: My custom key
       properties:
-        name:
+        displayName:
           description: The name of the API key.
+          example: My custom key
           type: string
       required:
-      - name
+      - displayName
       title: IntegrationApiKey
       type: object
-    IntegrationApiKeyResponse:
-      example:
-        key:
-          name: name
-          id: id
-          secret: secret
+    conversation_allOf:
       properties:
-        key:
-          $ref: '#/components/schemas/apiKey'
+        isDefault:
+          description: |
+            Whether the conversation is the default conversation for the user. Will be
+            true for the first personal conversation created for the user, and false in
+            all other cases.
+          example: false
+          type: boolean
+        displayName:
+          allOf:
+          - $ref: '#/components/schemas/displayName'
+          description: |
+            A friendly name for the conversation, may be displayed to the business or
+            the user.
+          example: My conversation
+        description:
+          description: A short text describing the conversation.
+          example: Conversation between Rogers and Carl.
+          maxLength: 100
+          minLength: 1
+          nullable: true
+          type: string
+        iconUrl:
+          description: A custom conversation icon url. The image must be in either
+            JPG, PNG, or GIF format
+          example: https://www.gravatar.com/image.jpg
+          format: uri
+          maxLength: 2048
+          minLength: 1
+          nullable: true
+          type: string
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+        businessLastRead:
+          description: |
+            A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
+            representing the moment the conversation was last marked as read with
+            role business.
+          example: 2020-06-23T14:33:47.492Z
+          nullable: true
+          type: string
+        lastUpdatedAt:
+          description: |
+            A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
+            representing the moment the last message was received in the
+            conversation, or the creation time if no messages have been received yet.
+          example: 2020-06-26T14:33:47.120Z
+          nullable: true
+          type: string
+    ParticipantWithUserId:
+      properties:
+        userId:
+          description: The id of the user that will be participating in the conversation.
+            It will return 404 if the user can’t be found. One of userId or userExternalId
+            is required, but not both.
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        subscribeSDKClient:
+          description: When passed as true, the SDK client of the concerned participant
+            will be subscribed to the conversation. The user will start receiving
+            push notifications for this conversation right away, without having to
+            view the conversation on the SDK beforehand. An SDK client will be created
+            for users that don’t already have one. This field is required if the conversation
+            is of type sdkGroup.
+          example: false
+          type: boolean
+    ParticipantWithUserExternalId:
+      properties:
+        userExternalId:
+          description: The externalId of the user that will be participating in the
+            conversation. It will return 404 if the user can’t be found. One of userId
+            or userExternalId is required, but not both.
+          example: your-own-user-id
+          type: string
+        subscribeSDKClient:
+          description: When passed as true, the SDK client of the concerned participant
+            will be subscribed to the conversation. The user will start receiving
+            push notifications for this conversation right away, without having to
+            view the conversation on the SDK beforehand. An SDK client will be created
+            for users that don’t already have one. This field is required if the conversation
+            is of type sdkGroup.
+          example: false
+          type: boolean
     ParticipantLeaveBodyUserId:
       properties:
         userId:
@@ -4631,6 +5807,7 @@ components:
           example: 42589ad070d43be9b00ff7e5
           type: string
     extraChannelOptions_messenger:
+      description: Messenger channel options.
       properties:
         messenger_extensions:
           default: false
@@ -4673,64 +5850,115 @@ components:
         name:
           description: A string representing the name of the location.
           type: string
-    device_info:
-      nullable: true
-      properties:
-        AnyValue: {}
-    integrationId_1:
+    integrationId:
       properties:
         integrationId:
           description: |
             The id of the integration to deliver the message to. Will return an error if
             the integration does not exist or if the user does not have a client for the
             integration attached to the conversation.
+          example: 582dedf230e788746891281a
           type: string
-    integrationType_1:
+    integrationType:
       properties:
         integrationType:
           description: |
             The type of the integration to deliver the message to. Will return an error
             if the user does not have a client of that type attached to the
             conversation.
+          example: whatsapp
           type: string
-    matchCriteria:
+    MessageOverrideApple:
+      properties:
+        apple:
+          $ref: '#/components/schemas/messageOverridePayload'
+    MessageOverrideLine:
+      properties:
+        line:
+          $ref: '#/components/schemas/messageOverridePayload'
+    MessageOverrideMessenger:
+      properties:
+        messenger:
+          $ref: '#/components/schemas/messageOverridePayload'
+    MessageOverrideWhatsapp:
+      properties:
+        whatsapp:
+          $ref: '#/components/schemas/messageOverridePayload'
+    activityPost_allOf:
+      properties:
+        author:
+          allOf:
+          - $ref: '#/components/schemas/author'
+          description: The author of the activity.
+    matchCriteriaMailgun_allOf:
       description: The set of criteria used to determine the user's identity on a
         third-party channel.
       properties:
         type:
+          default: mailgun
           description: The channel type.
-          enum:
-          - twilio
-          - messagebird
-          - whatsapp
-          - mailgun
           type: string
-        integrationId:
-          description: The ID of the integration to link. Must match the provided
-            type.
+        address:
+          description: The user’s email address.
+          example: steveb@channel5.com
+          type: string
+        subject:
+          default: New message from {appName}
+          description: May be specified to set the subject for the outgoing email.
+          type: string
+      required:
+      - address
+    matchCriteriaMessagebird_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: messagebird
+          description: The channel type.
           type: string
         phoneNumber:
           description: |
             The user’s phone number. It must contain the + prefix and the country code.
             Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
-            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368. Applies to `twilio`, `messagebird` and `whatsapp` integrations.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
           type: string
-        address:
-          description: The user’s email address. Applies to the `mailgun` integration.
-          type: string
-        subject:
-          default: New message from {appName}
-          description: May be specified to set the subject for the outgoing email.
-            Only applicable with mailgun.
-          type: string
-        primary:
-          default: true
-          description: Flag indicating whether the client will become the primary
-            for the target conversation once linking is complete.
-          type: boolean
       required:
-      - integrationId
-      - type
+      - phoneNumber
+    matchCriteriaTwilio_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: twilio
+          description: The channel type.
+          type: string
+        phoneNumber:
+          description: |
+            The user’s phone number. It must contain the + prefix and the country code.
+            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
+          type: string
+      required:
+      - phoneNumber
+    matchCriteriaWhatsapp_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: whatsapp
+          description: The channel type.
+          type: string
+        phoneNumber:
+          description: |
+            The user’s phone number. It must contain the + prefix and the country code.
+            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
+          type: string
+      required:
+      - phoneNumber
     Confirmation:
       description: The confirmation options of the link request.
       properties:
@@ -4755,19 +5983,26 @@ components:
       properties:
         conversationId:
           description: The conversation ID of the target conversation.
+          example: 029c31f25a21b47effd7be90
           type: string
       required:
       - conversationId
     android_allOf:
       properties:
+        type:
+          default: android
+          description: The type of integration.
+          type: string
         serverKey:
           description: Your server key from the fcm console.
+          example: <server-key>
           minLength: 1
           nullable: true
           type: string
           writeOnly: true
         senderId:
           description: Your sender id from the fcm console.
+          example: <sender-id>
           minLength: 1
           nullable: true
           type: string
@@ -4775,24 +6010,63 @@ components:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
+    apple_allOf:
+      description: |
+        To configure an Apple Business Chat integration, acquire the required information and call the Create Integration endpoint.
+      properties:
+        type:
+          default: apple
+          description: The type of integration.
+          type: string
+        businessId:
+          description: Apple Business Chat ID.
+          example: 2740f141-89c1-515f-07eb-1128dd73491
+          type: string
+        apiSecret:
+          description: Your Apple API secret which is tied to your Messaging Service
+            Provider.
+          example: QLA//Z13paUYo/2tLReQa-43c5JEAASujGamiY/QTvs=
+          type: string
+          writeOnly: true
+        mspId:
+          description: Your Messaging Service Provider ID.
+          example: e7e495d5-bf78-531d-baf6-7f419f7fb592
+          type: string
+      required:
+      - apiSecret
+      - businessId
+      - mspId
     custom_allOf:
       properties:
-        webhook:
-          allOf:
-          - $ref: '#/components/schemas/webhook'
-          description: The webhook associated with the integration.
+        type:
+          default: custom
+          description: The type of integration.
+          type: string
+        webhooks:
+          description: An array of webhooks associated with the custom integration.
+          items:
+            $ref: '#/components/schemas/webhook'
+          maxItems: 1
+          minItems: 1
+          type: array
       required:
-      - webhook
+      - webhooks
     ios_allOf:
       properties:
+        type:
+          default: ios
+          description: The type of integration.
+          type: string
         certificate:
           description: The binary of your APN certificate base64 encoded.
+          example: your_APN_certificate
           minLength: 1
           nullable: true
           type: string
           writeOnly: true
         password:
           description: The password for your APN certificate.
+          example: your_APN_password
           type: string
           writeOnly: true
         production:
@@ -4814,27 +6088,38 @@ components:
         Then, using the returned integration _id, your customer must set the Callback URL field in their LINE Business Center page.
         The URL should look like the following: `https://app.smooch.io:443/api/line/webhooks/{appId}/{integrationId}`.
       properties:
+        type:
+          default: line
+          description: The type of integration.
+          type: string
         channelId:
           description: LINE Channel ID.
+          example: "1286564967"
           type: string
         channelSecret:
           description: LINE Channel Secret.
+          example: your_line_channel_secret
           type: string
         channelAccessToken:
           description: LINE Channel Access Token.
+          example: your_line_channel_token
           type: string
         serviceCode:
           description: LINE Service Code.
+          example: your_line_service_code
           type: string
         switcherSecret:
           description: LINE Switcher Secret.
+          example: your_line_switcher_secret
           minLength: 1
           type: string
         qrCodeUrl:
           description: URL provided by LINE in the [Developer Console](https://developers.line.biz/console/).
+          example: https://qr-official.line.me/M/1O4fb8.png
           type: string
         lineId:
           description: LINE Basic ID. Is automatically set when qrCodeUrl is updated.
+          example: 104fb8
           readOnly: true
           type: string
       required:
@@ -4844,19 +6129,26 @@ components:
       description: |
         To configure a Mailgun integration, visit the API Keys tab in the settings page of the Mailgun dashboard and copy your active API key. Call the Create Integration endpoint with your API Key, a domain you have configured in Mailgun, and the incoming address you would like to use. Must have the same domain as the one specified in the domain parameter.
       properties:
+        type:
+          default: mailgun
+          description: The type of integration.
+          type: string
         apiKey:
           description: The public API key of your Mailgun account.
+          example: key-f265hj32f0sd897lqd2j5keb96784043
           minLength: 1
           type: string
           writeOnly: true
         domain:
           description: The domain used to relay email. This domain must be configured
             and verified in your Mailgun account.
+          example: sandbox123.mailgun.org
           minLength: 1
           type: string
         incomingAddress:
           description: Sunshine Conversations will receive all emails sent to this
             address. It will also be used as the Reply-To address.
+          example: mytestemail@sandbox123.mailgun.org
           minLength: 1
           type: string
         hideUnsubscribeLink:
@@ -4872,6 +6164,7 @@ components:
             otherwise user replies will be lost. You must also make sure that the
             domain is properly configured as a mail provider so as to not be flagged
             as spam by the user’s email client. May be unset with null.
+          example: test@sandbox123.mailgun.org
           minLength: 1
           nullable: true
           type: string
@@ -4893,24 +6186,32 @@ components:
         * Select application/json for the Set Content-Type header field.\n* Save and\
         \ publish your changes.\n"
       properties:
+        type:
+          default: messagebird
+          description: The type of integration.
+          type: string
         accessKey:
           description: The public API key of your MessageBird account.
+          example: 9V2iJmd93kFJ390L9495JCl11
           minLength: 1
           type: string
           writeOnly: true
         signingKey:
           description: The signing key of your MessageBird account. Used to validate
             the webhooks' origin.
+          example: Uu6N09Lkdji3820DJIO89I39sl9dJ
           minLength: 1
           type: string
           writeOnly: true
         originator:
           description: Sunshine Conversations will receive all messages sent to this
             phone number.
+          example: "12262121021"
           minLength: 1
           type: string
         webhookSecret:
           description: The secret that is used to configure webhooks in MessageBird.
+          example: 72ade38394d1da51566cede33bd1e67e
           readOnly: true
           type: string
       required:
@@ -4924,14 +6225,21 @@ components:
         The Facebook app must have been submitted to Facebook for approval with the “manage_pages” (to receive messages through webhook) and “pages_messaging” (to send messages) permissions.
         In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
       properties:
+        type:
+          default: messenger
+          description: The type of integration.
+          type: string
         pageAccessToken:
           description: A Facebook Page Access Token.
+          example: your_access_token
           type: string
         appId:
           description: A Facebook App ID.
+          example: your_facebook_app_id
           type: string
         appSecret:
           description: A Facebook App Secret.
+          example: your_facebook_app_secret
           type: string
           writeOnly: true
       required:
@@ -4942,8 +6250,13 @@ components:
       description: |
         To configure a Telegram integration, acquire the required information from the user and call the Create Integration endpoint.
       properties:
+        type:
+          default: telegram
+          description: The type of integration.
+          type: string
         token:
           description: Telegram Bot Token.
+          example: 192033615:AAEuee2FS2JYKWfDlTulfygjaIGJi4s
           minLength: 1
           type: string
           writeOnly: true
@@ -4961,16 +6274,23 @@ components:
       description: |
         To configure a Twilio integration, acquire the required information from the user and call the Create Integration endpoint.
       properties:
+        type:
+          default: twilio
+          description: The type of integration.
+          type: string
         accountSid:
           description: Twilio Account SID.
+          example: ACa1b4c65ee0722712fab89867cb14eac7
           type: string
         authToken:
           description: Twilio Auth Token.
+          example: 160c024303f53049e1e060fd67ca6aefc
           minLength: 1
           type: string
           writeOnly: true
         phoneNumberSid:
           description: SID for specific phone number.
+          example: PN0674df0ecee0c9819bca0ff0bc0a159e
           minLength: 1
           type: string
       required:
@@ -4981,6 +6301,10 @@ components:
       description: |
         To set up a Twitter integration, please follow the steps outlined in the [Twitter Setup Guide](https://docs.smooch.io/guide/twitter/#setup).
       properties:
+        type:
+          default: twitter
+          description: The type of integration.
+          type: string
         tier:
           description: Your Twitter app’s tier, sandbox, premium or enterprise.
           enum:
@@ -4991,23 +6315,28 @@ components:
         envName:
           description: The Twitter dev environments label (required for sandbox and
             premium tiers).
+          example: your_env_label
           minLength: 1
           type: string
         consumerKey:
           description: The consumer key for your Twitter app.
+          example: your_consumer_key
           minLength: 1
           type: string
         consumerSecret:
           description: The consumer key secret for your Twitter app.
+          example: your_consumer_secret
           minLength: 1
           type: string
         accessTokenKey:
           description: The access token key obtained from your user via oauth.
+          example: your_access_token_key
           minLength: 1
           type: string
           writeOnly: true
         accessTokenSecret:
           description: The access token secret obtained from your user via oauth.
+          example: your_access_token_secret
           minLength: 1
           type: string
       required:
@@ -5020,8 +6349,13 @@ components:
       description: |
         To configure a Viber integration, acquire the Viber Public Account token from the user and call the Create Integration endpoint.
       properties:
+        type:
+          default: viber
+          description: The type of integration.
+          type: string
         token:
           description: Viber Public Account token.
+          example: 445da6az1s345z78-dazcczb2542zv51a-e0vc5fva17480im9
           minLength: 1
           type: string
           writeOnly: true
@@ -5036,6 +6370,208 @@ components:
       required:
       - token
     web_allOf:
+      description: |
+        To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
+      properties:
+        type:
+          default: web
+          description: The type of integration.
+          type: string
+        brandColor:
+          default: 65758e
+          description: This color will be used in the messenger header and the button
+            or tab in idle state. Must be a 3 or 6-character hexadecimal color.
+          type: string
+        fixedIntroPane:
+          default: false
+          description: When true, the introduction pane will be pinned at the top
+            of the conversation instead of scrolling with it.
+          type: boolean
+        conversationColor:
+          default: 0099ff
+          description: This color will be used for customer messages, quick replies
+            and actions in the footer. Must be a 3 or 6-character hexadecimal color.
+          type: string
+        actionColor:
+          default: 0099ff
+          description: This color will be used for call-to-actions inside your messages.
+            Must be a 3 or 6-character hexadecimal color.
+          type: string
+        displayStyle:
+          default: button
+          description: Choose how the messenger will appear on your website. Must
+            be either button or tab.
+          type: string
+        buttonIconUrl:
+          description: With the button style Web Messenger, you have the option of
+            selecting your own button icon. The image must be at least 200 x 200 pixels
+            and must be in either JPG, PNG, or GIF format.
+          example: http://domain.com/images/avatar.png
+          nullable: true
+          type: string
+        buttonWidth:
+          default: "58"
+          description: With the button style Web Messenger, you have the option of
+            specifying the button width.
+          type: string
+        buttonHeight:
+          default: "58"
+          description: With the button style Web Messenger, you have the option of
+            specifying the button height.
+          type: string
+        integrationOrder:
+          description: Array of integration IDs, order will be reflected in the Web
+            Messenger. When set, only integrations from this list will be displayed
+            in the Web Messenger. If unset, all integrations will be displayed.
+          example:
+          - 59fc8466260f48003505228b
+          - 59d79780481d34002b7d3617
+          items:
+            type: string
+          nullable: true
+          type: array
+        businessName:
+          description: A custom business name for the Web Messenger.
+          example: Kent Shop
+          type: string
+        businessIconUrl:
+          description: A custom business icon url for the Web Messenger. The image
+            must be at least 200 x 200 pixels and must be in either JPG, PNG, or GIF
+            format.
+          example: https://www.gravatar.com/image.jpg
+          type: string
+        backgroundImageUrl:
+          description: A background image url for the conversation. Image will be
+            tiled to fit the window.
+          example: https://a-beautiful-tile.png
+          type: string
+        originWhitelist:
+          description: |
+            A list of origins to whitelist. When set, only the origins from this list will be able to initialize the Web Messenger. If unset, all origins are whitelisted.
+            The elements in the list should follow the serialized-origin format from RFC 6454: scheme "://" host [ ":" port ], where scheme is http or https.
+          example:
+          - https://yourdomain.com
+          items:
+            type: string
+          nullable: true
+          type: array
+        prechatCapture:
+          allOf:
+          - $ref: '#/components/schemas/prechatCapture'
+          description: Object whose properties can be set to specify the add-on’s
+            options. See the [guide](https://docs.smooch.io/guide/web-messenger/#prechat-capture)
+            to learn more about Prechat Capture.
+        canUserCreateConversation:
+          description: Allows users to create more than one conversation on the web
+            messenger integration.
+          type: boolean
+    whatsapp_allOf:
+      description: |
+        To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
+      properties:
+        type:
+          default: whatsapp
+          description: The type of integration.
+          type: string
+        deploymentId:
+          description: The Id of the deployment. The integrationId and the appId will
+            be added to the deployment. Additionally, the deployment’s status will
+            be set to integrated.
+          example: 55c8d9758590aa1900b9b9aa
+          type: string
+        hsmFallbackLanguage:
+          default: en_US
+          description: Specify a fallback language to use when sending WhatsApp message
+            template using the short hand syntax. Defaults to en_US. See WhatsApp
+            documentation for more info.
+          nullable: true
+          type: string
+        accountId:
+          description: The business ID associated with the WhatsApp account. In combination
+            with accountManagementAccessToken, it’s used for Message Template Reconstruction.
+          example: your_whatsApp_account_id
+          nullable: true
+          type: string
+        accountManagementAccessToken:
+          description: An access token associated with the accountId used to query
+            the WhatsApp Account Management API. In combination with accountId, it’s
+            used for Message Template Reconstruction.
+          example: your_access_token
+          nullable: true
+          type: string
+      required:
+      - deploymentId
+    androidUpdate_allOf:
+      properties:
+        serverKey:
+          description: Your server key from the fcm console.
+          example: <server-key>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        senderId:
+          description: Your sender id from the fcm console.
+          example: <sender-id>
+          minLength: 1
+          nullable: true
+          type: string
+        canUserCreateConversation:
+          description: Allows users to create more than one conversation on the android
+            integration.
+          type: boolean
+    iosUpdate_allOf:
+      properties:
+        certificate:
+          description: The binary of your APN certificate base64 encoded.
+          example: your_APN_certificate
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        password:
+          description: The password for your APN certificate.
+          example: your_APN_password
+          type: string
+          writeOnly: true
+        production:
+          description: The APN environment to connect to (Production, if true, or
+            Sandbox). Defaults to value inferred from certificate if not specified.
+          type: boolean
+        autoUpdateBadge:
+          description: Use the unread count of the conversation as the application
+            badge.
+          type: boolean
+        canUserCreateConversation:
+          description: Allows users to create more than one conversation on the iOS
+            integration.
+          type: boolean
+    mailgunUpdate_allOf:
+      properties:
+        hideUnsubscribeLink:
+          description: A boolean value indicating whether the unsubscribe link should
+            be omitted from outgoing emails. When enabled, it is expected that the
+            business is providing the user a way to unsubscribe by some other means.
+            By default, the unsubscribe link will be included in all outgoing emails.
+          type: boolean
+        fromAddress:
+          description: Email address to use as the From and Reply-To address if it
+            must be different from incomingAddress. Only use this option if the address
+            that you supply is configured to forward emails to the incomingAddress,
+            otherwise user replies will be lost. You must also make sure that the
+            domain is properly configured as a mail provider so as to not be flagged
+            as spam by the user’s email client. May be unset with null.
+          example: test@sandbox123.mailgun.org
+          minLength: 1
+          nullable: true
+          type: string
+    messengerUpdate_allOf:
+      properties:
+        pageAccessToken:
+          description: A Facebook Page Access Token.
+          example: your_access_token
+          type: string
+    webUpdate_allOf:
       description: |
         To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
       properties:
@@ -5084,21 +6620,27 @@ components:
           description: Array of integration IDs, order will be reflected in the Web
             Messenger. When set, only integrations from this list will be displayed
             in the Web Messenger. If unset, all integrations will be displayed.
+          example:
+          - 59fc8466260f48003505228b
+          - 59d79780481d34002b7d3617
           items:
             type: string
           nullable: true
           type: array
         businessName:
           description: A custom business name for the Web Messenger.
+          example: Kent Shop
           type: string
         businessIconUrl:
           description: A custom business icon url for the Web Messenger. The image
             must be at least 200 x 200 pixels and must be in either JPG, PNG, or GIF
             format.
+          example: https://www.gravatar.com/image.jpg
           type: string
         backgroundImageUrl:
           description: A background image url for the conversation. Image will be
             tiled to fit the window.
+          example: https://a-beautiful-tile.png
           type: string
         originWhitelist:
           description: |
@@ -5112,96 +6654,16 @@ components:
           allOf:
           - $ref: '#/components/schemas/prechatCapture'
           description: Object whose properties can be set to specify the add-on’s
-            options. See the guide to learn more about Prechat Capture.
+            options. See the [guide](https://docs.smooch.io/guide/web-messenger/#prechat-capture)
+            to learn more about Prechat Capture.
         canUserCreateConversation:
           description: Allows users to create more than one conversation on the web
             messenger integration.
           type: boolean
-    weChat_allOf:
-      description: |
-        To configure a WeChat integration, browse to the Develop section of the [WeChat dashboard](https://mp.weixin.qq.com/) and add the following IP addresses to the whitelist, separated by new lines. This must be done before calling the Create Integration endpoint.
-        * 34.224.190.28
-        * 52.6.201.31
-        * 52.0.232.16
-        * 34.246.106.80
-        * 34.246.57.194
-        From the same page, acquire the WeChat App ID and App Secret from the customer and call the Create Integration endpoint.
-        In their [WeChat dashboard](https://mp.weixin.qq.com/), the customer must set the "URL" field to https://app.smooch.io/api/wechat/webhooks/{smoochAppId}/{smoochIntegrationId}, and set the “Token” field to the value of the webhookSecret found in the response to the call to the Create Integration endpoint.
-      properties:
-        appId:
-          description: WeChat App ID.
-          type: string
-        appSecret:
-          description: WeChat App Secret.
-          type: boolean
-          writeOnly: true
-        encodingAesKey:
-          default: 0099ff
-          description: AES Encoding Key.
-          type: string
-      required:
-      - appId
-      - appSecret
-    whatsapp_allOf:
-      description: |
-        To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
-      properties:
-        deploymentId:
-          description: The Id of the deployment. The integrationId and the appId will
-            be added to the deployment. Additionally, the deployment’s status will
-            be set to integrated.
-          type: string
-        hsmFallbackLanguage:
-          description: Specify a fallback language to use when sending WhatsApp message
-            template using the short hand syntax. Defaults to en_US. See WhatsApp
-            documentation for more info.
-          nullable: true
-          type: string
-        accountId:
-          description: The business ID associated with the WhatsApp account. In combination
-            with accountManagementAccessToken, it’s used for Message Template Reconstruction.
-          nullable: true
-          type: string
-        accountManagementAccessToken:
-          description: An access token associated with the accountId used to query
-            the WhatsApp Account Management API. In combination with accountId, it’s
-            used for Message Template Reconstruction.
-          nullable: true
-          type: string
-      required:
-      - deploymentId
-    customUpdate_allOf:
-      properties:
-        webhook:
-          allOf:
-          - $ref: '#/components/schemas/webhook'
-          description: The webhook associated with the integration.
-    mailgunUpdate_allOf:
-      properties:
-        hideUnsubscribeLink:
-          description: A boolean value indicating whether the unsubscribe link should
-            be omitted from outgoing emails. When enabled, it is expected that the
-            business is providing the user a way to unsubscribe by some other means.
-            By default, the unsubscribe link will be included in all outgoing emails.
-          type: boolean
-        fromAddress:
-          description: Email address to use as the From and Reply-To address if it
-            must be different from incomingAddress. Only use this option if the address
-            that you supply is configured to forward emails to the incomingAddress,
-            otherwise user replies will be lost. You must also make sure that the
-            domain is properly configured as a mail provider so as to not be flagged
-            as spam by the user’s email client. May be unset with null.
-          minLength: 1
-          nullable: true
-          type: string
-    messengerUpdate_allOf:
-      properties:
-        pageAccessToken:
-          description: A Facebook Page Access Token.
-          type: string
     whatsAppUpdate_allOf:
       properties:
         hsmFallbackLanguage:
+          default: en_US
           description: Specify a fallback language to use when sending WhatsApp message
             template using the short hand syntax. Defaults to en_US. See WhatsApp
             documentation for more info.
@@ -5210,14 +6672,401 @@ components:
         accountId:
           description: The business ID associated with the WhatsApp account. In combination
             with accountManagementAccessToken, it’s used for Message Template Reconstruction.
+          example: your_whatsApp_account_id
           nullable: true
           type: string
         accountManagementAccessToken:
           description: An access token associated with the accountId used to query
             the WhatsApp Account Management API. In combination with accountId, it’s
             used for Message Template Reconstruction.
+          example: your_access_token
           nullable: true
           type: string
+    user_allOf_profile:
+      description: Object hosting user profile information.
+      properties:
+        givenName:
+          description: An optional given name.
+          example: Steve
+          nullable: true
+          type: string
+        surname:
+          description: An optional surname.
+          example: Rogers
+          nullable: true
+          type: string
+        email:
+          description: An optional email address.
+          example: steve@rogers.com
+          format: email
+          nullable: true
+          type: string
+    user_allOf:
+      properties:
+        signedUpAt:
+          description: |
+            A datetime string with the format `YYYY-MM-DDThh:mm:ss.SSSZ`
+            representing the moment the user was created.
+          example: 2019-01-14T18:55:12.515Z
+          type: string
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          nullable: false
+        profile:
+          $ref: '#/components/schemas/user_allOf_profile'
+    referral_details:
+      description: Nested object containing additional information.
+      nullable: true
+      properties:
+        source:
+          description: The source of the referral - MESSENGER_CODE, ADS etc…
+          example: MESSENGER_CODE
+          type: string
+        type:
+          description: The type of referral, typically OPEN-THREAD.
+          example: OPEN-THREAD
+          type: string
+        adId:
+          description: If the referral came from an ad, this field will be present
+            with the ad’s Id.
+          example: "4216212847577"
+          nullable: true
+          type: string
+    conversationCreateEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation that was created.
+        creationReason:
+          description: |
+            The reason why the conversation was created, if applicable.
+            * `linkRequest` - The conversation was created in order to generate a link request to transfer the user to a different channel.
+            * `message` - The conversation was created because a message was sent.
+            * `none` - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API.
+            * `notification` - The conversation was created by a call to the Notification API.
+            * `prechatCapture` - The conversation was created because the user completed a prechat capture form in the Web Messenger.
+            * `startConversation` - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel.
+          enum:
+          - linkRequest
+          - message
+          - none
+          - notification
+          - prechatCapture
+          - startConversation
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/sourceWebhook'
+          description: The source of the creation.
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user associated with the conversation. Only present if
+            the created conversation was of type personal. For sdkGroup conversations,
+            the list of participants can be fetched using the List Participants API,
+            if required.
+          nullable: true
+        referral:
+          allOf:
+          - $ref: '#/components/schemas/referral'
+          description: Referral information, if applicable.
+          nullable: true
+    conversationCreateEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationCreateEvent_allOf_payload'
+    conversationMessageDeliveryPayload_message:
+      description: The message that was sent.
+      properties:
+        id:
+          description: A string representing the ID of the message.
+          type: string
+    conversationMessageDeliveryPayload_destination:
+      description: A nested object representing the destination of the message.
+      properties:
+        type:
+          description: An identifier for the channel to which a message was sent to.
+            May include one of "web", "ios", "android", "messenger", "viber", "telegram",
+            "wechat", "line", "twilio", "api", "notification", or any other channel.
+          type: string
+        integrationId:
+          description: Identifier indicating which integration the message was sent
+            to.
+          type: string
+    conversationMessageDeliveryPayload_externalMessages:
+      properties:
+        id:
+          description: A string representing the ID of the external message.
+          type: string
+    conversationMessageDeliveryChannelEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationMessageDeliveryPayload'
+    conversationMessageDeliveryFailureEvent_allOf:
+      properties:
+        payload:
+          allOf:
+          - $ref: '#/components/schemas/conversationMessageDeliveryPayload'
+          - properties:
+              error:
+                description: A nested object representing the error associated with
+                  the delivery failure.
+                properties:
+                  code:
+                    description: A string representing the error code associated with
+                      the error.
+                    type: string
+                  message:
+                    description: The description associated with the error.
+                    type: string
+                type: object
+            type: object
+    conversationMessageEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the message was sent.
+        message:
+          allOf:
+          - $ref: '#/components/schemas/message'
+          - properties:
+              author:
+                $ref: '#/components/schemas/authorWebhook'
+            type: object
+          description: The message that was sent.
+        recentNotifications:
+          description: Messages sent with the Notification API since the last user
+            message.
+          items:
+            $ref: '#/components/schemas/message'
+          type: array
+    conversationMessageEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationMessageEvent_allOf_payload'
+    conversationPostbackEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        postback:
+          allOf:
+          - $ref: '#/components/schemas/postbackWebhook'
+          description: The postback associated with the event.
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation linked to the postback.
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user that triggered the postback.
+        source:
+          allOf:
+          - $ref: '#/components/schemas/sourceWebhook'
+          description: The source of the postback.
+    conversationPostbackEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationPostbackEvent_allOf_payload'
+    activity_allOf:
+      properties:
+        source:
+          allOf:
+          - $ref: '#/components/schemas/sourceWebhook'
+          description: The source of the activity.
+        author:
+          $ref: '#/components/schemas/authorWebhook'
+    conversationReadEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the message was read.
+        activity:
+          allOf:
+          - $ref: '#/components/schemas/activity'
+          - properties:
+              type:
+                default: conversation:read
+                description: The type of activity.
+                type: string
+            type: object
+          description: The activity that was sent.
+    conversationReadEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationReadEvent_allOf_payload'
+    conversationTypingEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the activity was sent.
+        activity:
+          allOf:
+          - $ref: '#/components/schemas/activity'
+          - properties:
+              type:
+                description: The type of activity.
+                enum:
+                - typing:start
+                - typing:stop
+                type: string
+            type: object
+          description: The activity that was sent.
+    conversationTypingEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationTypingEvent_allOf_payload'
+    switchboardAcceptControl_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation from which the switchboard event was fired.
+            Will include an `activeSwitchboardIntegration` representing the integration
+            that has just accepted control.
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+    switchboardAcceptControl_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/switchboardAcceptControl_allOf_payload'
+    switchboardAcceptControlFailure_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        error:
+          description: Object containing details of what went wrong.
+          type: object
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation from which the switchboard event was fired.
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+    switchboardAcceptControlFailure_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/switchboardAcceptControlFailure_allOf_payload'
+    switchboardOfferControl_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation from which the switchboard event was fired.
+            On success, the payload will include an `activeSwitchboardIntegration`,
+            representing the integration from which control is being offered, and
+            a `pendingSwitchboardIntegration`, representing the integration being
+            offered control.
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+    switchboardOfferControl_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/switchboardOfferControl_allOf_payload'
+    switchboardPassControl_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation from which the switchboard event was fired.
+            On success, the payload will include an `activeSwitchboardIntegration`,
+            representing the switchboard integration that is now in control of the
+            conversation.
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+    switchboardPassControl_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/switchboardPassControl_allOf_payload'
+    userMergeEvent_allOf_payload_mergedUsers:
+      description: Contains information about the users that were merged together.
+      properties:
+        surviving:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user that now represents the merged user object.
+        discarded:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user that was unified into the surviving user object.
+    userMergeEvent_allOf_payload_mergedConversations:
+      description: Contains information about the conversations that were merged together
+        as a result of the operation, if applicable. If no conversations were merged,
+        this property is omitted.
+      nullable: true
+      properties:
+        surviving:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation that now represents the merged conversation
+            object.
+        discarded:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation that was unified into the surviving conversation
+            object.
+    userMergeEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        mergedUsers:
+          $ref: '#/components/schemas/userMergeEvent_allOf_payload_mergedUsers'
+        mergedConversations:
+          $ref: '#/components/schemas/userMergeEvent_allOf_payload_mergedConversations'
+        discardedMetadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          description: A flat object with the set of metadata properties that were
+            discarded when merging the two users. This should contain values only
+            if the combined metadata fields exceed the 4KB limit.
+          nullable: true
+    userMergeEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/userMergeEvent_allOf_payload'
   securitySchemes:
     basicAuth:
       scheme: basic
@@ -5242,9 +7091,58 @@ x-tagGroups:
 - name: Integrations
   tags:
   - Integrations
+  - Webhooks
   - CustomIntegrationApiKeys
 - name: Switchboards
   tags:
   - Switchboards
   - Switchboard Integrations
+- name: Changelog
+  tags:
+  - Changelog
+x-webhooks:
+  Webhook Event:
+    post:
+      tags:
+      - Webhooks
+      description: "A webhook payload contains an array of events, which may or may\
+        \ not originate from the same user\nor conversation. When processing webhook\
+        \ payloads, your application should take care to process\neach event in the\
+        \ array. \n"
+      summary: Webhook Events
+      operationId: eventWebhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                app:
+                  $ref: '#/components/schemas/appSubSchema'
+                webhook:
+                  $ref: '#/components/schemas/webhookSubSchema'
+                events:
+                  type: array
+                  description: The list of events that occurred.
+                  items:
+                    anyOf:
+                    - $ref: '#/components/schemas/conversationCreateEvent'
+                    - $ref: '#/components/schemas/conversationMessageDeliveryChannelEvent'
+                    - $ref: '#/components/schemas/conversationMessageDeliveryFailureEvent'
+                    - $ref: '#/components/schemas/conversationMessageDeliveryUserEvent'
+                    - $ref: '#/components/schemas/conversationMessageEvent'
+                    - $ref: '#/components/schemas/conversationPostbackEvent'
+                    - $ref: '#/components/schemas/conversationReadEvent'
+                    - $ref: '#/components/schemas/conversationTypingEvent'
+                    - $ref: '#/components/schemas/switchboardAcceptControl'
+                    - $ref: '#/components/schemas/switchboardAcceptControlFailure'
+                    - $ref: '#/components/schemas/switchboardOfferControl'
+                    - $ref: '#/components/schemas/switchboardOfferControlFailure'
+                    - $ref: '#/components/schemas/switchboardPassControl'
+                    - $ref: '#/components/schemas/switchboardPassControlFailure'
+                    - $ref: '#/components/schemas/userMergeEvent'
+      responses:
+        "200":
+          description: Ok
 

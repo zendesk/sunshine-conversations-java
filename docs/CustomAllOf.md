@@ -6,7 +6,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**webhook** | [**Webhook**](Webhook.md) | The webhook associated with the integration. | 
+**type** | **String** | The type of integration. |  [optional]
+**webhooks** | [**List&lt;Webhook&gt;**](Webhook.md) | An array of webhooks associated with the custom integration. | 
 
 
 

@@ -7,6 +7,7 @@ To set up a Twitter integration, please follow the steps outlined in the [Twitte
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of integration. |  [optional]
 **tier** | [**TierEnum**](#TierEnum) | Your Twitter app’s tier, sandbox, premium or enterprise. | 
 **envName** | **String** | The Twitter dev environments label (required for sandbox and premium tiers). |  [optional]
 **consumerKey** | **String** | The consumer key for your Twitter app. | 
