@@ -195,17 +195,22 @@ public class ConversationsApi {
    * List Conversations
    * Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
+   * @param filter Contains parameters for filtering the results. (required)
    * @param page Contains parameters for applying cursor pagination. (optional)
-   * @param conversationListFilter Contains parameters for filtering the results. (optional)
    * @return a {@code ConversationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationListResponse listConversations(String appId, Page page, ConversationListFilter conversationListFilter) throws ApiException {
+  public ConversationListResponse listConversations(String appId, ConversationListFilter filter, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
     if (appId == null) {
       throw new ApiException(400, "Missing the required parameter 'appId' when calling listConversations");
+    }
+    
+    // verify the required parameter 'filter' is set
+    if (filter == null) {
+      throw new ApiException(400, "Missing the required parameter 'filter' when calling listConversations");
     }
     
     // create path and map variables
@@ -219,7 +224,7 @@ public class ConversationsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "conversationListFilter", conversationListFilter));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     
@@ -467,17 +472,22 @@ public class ConversationsApi {
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
+   * @param filter Contains parameters for filtering the results. (required)
    * @param page Contains parameters for applying cursor pagination. (optional)
-   * @param conversationListFilter Contains parameters for filtering the results. (optional)
    * @return a {@code ConversationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationListResponse listConversations(String bearerToken, String appId, Page page, ConversationListFilter conversationListFilter) throws ApiException {
+  public ConversationListResponse listConversations(String bearerToken, String appId, ConversationListFilter filter, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
     if (appId == null) {
       throw new ApiException(400, "Missing the required parameter 'appId' when calling listConversations");
+    }
+    
+    // verify the required parameter 'filter' is set
+    if (filter == null) {
+      throw new ApiException(400, "Missing the required parameter 'filter' when calling listConversations");
     }
     
     // create path and map variables
@@ -491,7 +501,7 @@ public class ConversationsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "conversationListFilter", conversationListFilter));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     

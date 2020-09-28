@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.smooch</groupId>
     <artifactId>api</artifactId>
-    <version>6.0.0-alpha.6</version>
+    <version>6.0.0-alpha.7</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.smooch:api:6.0.0-alpha.6"
+compile "io.smooch:api:6.0.0-alpha.7"
 ```
 
 ## Getting Started
@@ -154,6 +154,10 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**getApp**](docs/AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App
 *AppsApi* | [**listApps**](docs/AppsApi.md#listApps) | **GET** /v2/apps | List Apps
 *AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
+*AttachmentsApi* | [**deleteAttachment**](docs/AttachmentsApi.md#deleteAttachment) | **POST** /v2/apps/{appId}/attachments/remove | Delete Attachment
+*AttachmentsApi* | [**generateMediaJsonWebToken**](docs/AttachmentsApi.md#generateMediaJsonWebToken) | **POST** /v2/apps/{appId}/attachments/token | Generate Media Token
+*AttachmentsApi* | [**setCookie**](docs/AttachmentsApi.md#setCookie) | **POST** /v2/apps/{appId}/attachments/cookie | Set Cookie
+*AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v2/apps/{appId}/attachments | Upload Attachment
 *ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | Create Client
 *ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | List Clients
 *ClientsApi* | [**removeClient**](docs/ClientsApi.md#removeClient) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId} | Remove Client
@@ -189,6 +193,11 @@ Class | Method | HTTP request | Description
 *SwitchboardsApi* | [**deleteSwitchboard**](docs/SwitchboardsApi.md#deleteSwitchboard) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId} | Delete Switchboard
 *SwitchboardsApi* | [**listSwitchboards**](docs/SwitchboardsApi.md#listSwitchboards) | **GET** /v2/apps/{appId}/switchboards | List Switchboards
 *SwitchboardsApi* | [**updateSwitchboard**](docs/SwitchboardsApi.md#updateSwitchboard) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId} | Update Switchboard
+*UsersApi* | [**createUser**](docs/UsersApi.md#createUser) | **POST** /v2/apps/{appId}/users/ | Create User
+*UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId} | Delete User
+*UsersApi* | [**deleteUserPersonalInformation**](docs/UsersApi.md#deleteUserPersonalInformation) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation | Delete User Personal Information
+*UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId} | Get User
+*UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PATCH** /v2/apps/{appId}/users/{userIdOrExternalId} | Update User
 *WebhooksApi* | [**createWebhook**](docs/WebhooksApi.md#createWebhook) | **POST** /v2/apps/{appId}/integrations/{integrationId}/webhooks | Create Webhook
 *WebhooksApi* | [**deleteWebhook**](docs/WebhooksApi.md#deleteWebhook) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Delete Webhook
 *WebhooksApi* | [**getWebhook**](docs/WebhooksApi.md#getWebhook) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Get Webhook
@@ -226,6 +235,12 @@ Class | Method | HTTP request | Description
  - [Apple](docs/Apple.md)
  - [AppleAllOf](docs/AppleAllOf.md)
  - [AppleUpdate](docs/AppleUpdate.md)
+ - [AttachmentDeleteBody](docs/AttachmentDeleteBody.md)
+ - [AttachmentMediaTokenBody](docs/AttachmentMediaTokenBody.md)
+ - [AttachmentMediaTokenResponse](docs/AttachmentMediaTokenResponse.md)
+ - [AttachmentResponse](docs/AttachmentResponse.md)
+ - [AttachmentSchema](docs/AttachmentSchema.md)
+ - [AttachmentUploadBody](docs/AttachmentUploadBody.md)
  - [Author](docs/Author.md)
  - [AuthorWebhook](docs/AuthorWebhook.md)
  - [Buy](docs/Buy.md)
@@ -289,8 +304,8 @@ Class | Method | HTTP request | Description
  - [IntegrationApiKey](docs/IntegrationApiKey.md)
  - [IntegrationApiKeyListResponse](docs/IntegrationApiKeyListResponse.md)
  - [IntegrationApiKeyResponse](docs/IntegrationApiKeyResponse.md)
- - [IntegrationBase](docs/IntegrationBase.md)
  - [IntegrationId](docs/IntegrationId.md)
+ - [IntegrationListFilter](docs/IntegrationListFilter.md)
  - [IntegrationListResponse](docs/IntegrationListResponse.md)
  - [IntegrationResponse](docs/IntegrationResponse.md)
  - [IntegrationType](docs/IntegrationType.md)
@@ -360,6 +375,7 @@ Class | Method | HTTP request | Description
  - [Postback](docs/Postback.md)
  - [PostbackWebhook](docs/PostbackWebhook.md)
  - [PrechatCapture](docs/PrechatCapture.md)
+ - [Profile](docs/Profile.md)
  - [QuotedMessage](docs/QuotedMessage.md)
  - [QuotedMessageExternalMessageId](docs/QuotedMessageExternalMessageId.md)
  - [QuotedMessageMessage](docs/QuotedMessageMessage.md)
@@ -406,13 +422,15 @@ Class | Method | HTTP request | Description
  - [TwitterUpdate](docs/TwitterUpdate.md)
  - [User](docs/User.md)
  - [UserAllOf](docs/UserAllOf.md)
- - [UserAllOfProfile](docs/UserAllOfProfile.md)
+ - [UserCreateBody](docs/UserCreateBody.md)
  - [UserMergeEvent](docs/UserMergeEvent.md)
  - [UserMergeEventAllOf](docs/UserMergeEventAllOf.md)
  - [UserMergeEventAllOfPayload](docs/UserMergeEventAllOfPayload.md)
  - [UserMergeEventAllOfPayloadMergedConversations](docs/UserMergeEventAllOfPayloadMergedConversations.md)
  - [UserMergeEventAllOfPayloadMergedUsers](docs/UserMergeEventAllOfPayloadMergedUsers.md)
+ - [UserResponse](docs/UserResponse.md)
  - [UserTruncated](docs/UserTruncated.md)
+ - [UserUpdateBody](docs/UserUpdateBody.md)
  - [Viber](docs/Viber.md)
  - [ViberAllOf](docs/ViberAllOf.md)
  - [ViberUpdate](docs/ViberUpdate.md)

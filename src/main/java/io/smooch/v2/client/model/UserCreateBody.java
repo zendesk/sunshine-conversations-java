@@ -2,7 +2,7 @@
  * Sunshine Conversations API
  * # Introduction <aside class=\"notice\">As a stepping stone to new and greater things, we’ve updated Sunshine Conversations API to v2. For users wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/\">here</a>.  </aside>  Welcome to the Sunshine Conversations API. The API allows you to craft entirely unique messaging experiences for your app and website as well as talk to any backend or external service.  The Sunshine Conversations API is designed according to REST principles. The API accepts JSON in request bodies and requires that the content-type: application/json header be specified for  all such requests. The API will always respond with an object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.  In some cases, the API will also facilitate cross-origin resource sharing so that it can be called from a web application.  <aside class=\"notice\">Note that for authenticated requests, cross-origin resource sharing is only available to appUser scoped credentials. Attempting to call the API from the browser using  app or account scoped credentials will result in a <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy\">same-origin policy</a> browser error. For more information, refer  to the <a href=\"http://docs.smooch.io/guide/authorization/#handle-credentials-with-caution\">Authorization guide</a>.</aside>  ## Regions  Sunshine Conversations is available in the following regions. Each Sunshine Conversations region has its own API host.  | Region         | Host                       | | -------------- | -------------------------- | | United States  | https://api.smooch.io      | | European Union | https://api.eu-1.smooch.io |  For more information on regions, visit [the guide](/guide/regions/).  <aside class=\"notice\">When configuring an API host, make sure to always use `https`. Some API clients can have unexpected behaviour when following redirects from `http` to `https`.</aside>  ## Errors  Sunshine Conversations uses standard HTTP status codes to communicate errors. In general, a `2xx` status code indicates success while `4xx` indicates an error, in which case, the response body includes a JSON object which includes an array of errors, with a text `code` and `title` containing more details. Multiple errors can only be included in a `400 Bad Request`. A `5xx` status code indicates that something went wrong on our end.  ```javascript {    \"errors\":  [     {         \"code\": \"unauthorized\",         \"title\": \"Authorization is required\"     }    ] } ```  ## API Version  The latest version of the API is v2. Version v1.1 is still supported and you can continue using it but we encourage you to upgrade to the latest version. To learn more about API versioning at Sunshine Conversations, including instructions on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).  ## API Pagination and Records Limits  Some APIs can be paginated by providing the `offset` query string parameter.  The `offset` is the number of initial records to skip before picking records to return (default 0).  The `limit` query string can also be provided to change the number of records to return (maximum 100, default 25).  All paginated endpoints will eventually support cursor pagination and `offset` based pagination support will be dropped.  ### Cursor Pagination  Some APIs are paginated through cursor pagination. Rather than providing an `offset`, a `page[after]` or `page[before]` query string parameter may be provided. `page[after]` and `page[before]` are cursors pointing to a record id.  The `page[after]` cursor indicates that only records **subsequent** to it should be returned.  The `page[before]` cursor indicates that only records **preceding** it should be returned.  **Only one** of `page[after]` or `page[before]` may be provided in a query, not both.  In cursor pagination, the equivalent to the `limit` query string is the `page[size]` query string parameter.  ## API Libraries  Sunshine Conversations provides an official API library for [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages to come. These helpful libraries wrap calls to the API and can make interfacing with Sunshine Conversations easier.  ## Postman Collection  In addition to API libraries, Sunshine Conversations also has a Postman collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/) for information on how to install and use the collection in your Postman client.  ## Rate Limits  Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many Requests` HTTP status code. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using Sunshine Conversations as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, when calling the Sunshine Conversations API you should implement `429` retry logic using exponential backoff and jitter.  If your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).  ## Request Size Limits  The Sunshine Conversations API imposes the following size limits on HTTP requests:  | Request Type   | Limit           | | -------------- | --------------- | | JSON           | 100kb           | | File upload  | 25mb            |  ## Authorization  This is an overview of how authorization works with the Sunshine Conversations API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server calls. [See below](#authentication) for more details. There are two different authorization scopes available - app and account.  | Scope          | Authorized Methods                        | | -------------- | ----------------------------------------- | | app            | All methods besides Account Provisioning  | | account     | All methods                               |  The app scope can be used to access any of the Sunshine Conversations APIs, besides account provisioning methods, on behalf of a single app, or any app user related to that app. The account scope can be used to access any of the Sunshine Conversations and Account Provisioning APIs on behalf of the account owner, any app belonging to the account, or any app user related to those apps.  <aside class=\"notice\">An additional scope of `appUser` can also be used to authenticate users when using one of the Sunshine Conversations native SDK integrations. For information on how and when to use this scope, see the guide for [authenticating users](#https://docs.smooch.io/guide/authenticating-users/).</aside>  ## Authentication  To authenticate requests to the API, you will need an API key, composed of a key id and a secret. For an overview of how authentication works in Sunshine Conversations and instructions on how to generate an API key, see the guide. API requests can be authenticated in two ways:  * With Basic authentication you can make requests using an API key directly.  * With JSON Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts) to learn if JWTs are relevant for your usage.  * Before using an API key in production, make sure to familiarize yourself with best practices on how to [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).  ### Basic Authentication  API requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using an API key. The key id is used as the username and the secret as the password. The scope of access is determined by the owner of the API key. See the [guide](https://docs.smooch.io/guide/basic-authentication/#scope-of-access) for more details.  ### JWTs  JSON Web Tokens (JWTs) are an industry standard authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519), and a set of supported JWT libraries for a variety of languages and platforms can be found at http://jwt.io. To summarize, a JWT is composed of a header, a payload, and a signature. The payload contains information called claims which describe the subject to whom the token was issued. The JWT itself is transmitted via the HTTP `authorization` header. The token should be prefixed with “Bearer” followed by a space. For example: `Bearer your-jwt`. To generate a JWT, you need an API key, which is composed of a key ID and a secret. The key ID is included in a JWT’s header, as the `kid` property, while the secret is used to sign the JWT. For more in-depth coverage, see the [guide](https://docs.smooch.io/guide/jwt).  #### Header   The JWT header must contain the key id (kid) of the API key that is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs are not accepted.  ```javascript {     \"alg\": \"HS256\",     \"typ\": \"JWT\",     \"kid\": \"act_5963ceb97cde542d000dbdb1\" } ```  #### Payload The JWT payload must include a scope claim which specifies the caller’s scope of access.   * account-scoped JWTs must be generated with an API key associated with a Sunshine Conversations account (act_) or service account (svc_). ```javascript {     \"scope\": \"account\" } ```  * app-scoped JWTs can be generated with an API key associated with an app (app_).  ```javascript {     \"scope\": \"app\" }  ```
  *
- * The version of the OpenAPI document: 6.0.0-alpha.6
+ * The version of the OpenAPI document: 6.0.0-alpha.7
  * Contact: hello@smooch.io
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
@@ -19,6 +19,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import io.smooch.v2.client.model.Profile;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,128 +28,135 @@ import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Object hosting user profile information.
+ * UserCreateBody
  */
-@ApiModel(description = "Object hosting user profile information.")
 @JsonPropertyOrder({
-  UserAllOfProfile.JSON_PROPERTY_GIVEN_NAME,
-  UserAllOfProfile.JSON_PROPERTY_SURNAME,
-  UserAllOfProfile.JSON_PROPERTY_EMAIL
+  UserCreateBody.JSON_PROPERTY_EXTERNAL_ID,
+  UserCreateBody.JSON_PROPERTY_SIGNED_UP_AT,
+  UserCreateBody.JSON_PROPERTY_PROFILE,
+  UserCreateBody.JSON_PROPERTY_METADATA
 })
 
-public class UserAllOfProfile {
-  public static final String JSON_PROPERTY_GIVEN_NAME = "givenName";
-  private JsonNullable<String> givenName = JsonNullable.<String>undefined();
+public class UserCreateBody {
+  public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";
+  private String externalId;
 
-  public static final String JSON_PROPERTY_SURNAME = "surname";
-  private JsonNullable<String> surname = JsonNullable.<String>undefined();
+  public static final String JSON_PROPERTY_SIGNED_UP_AT = "signedUpAt";
+  private String signedUpAt;
 
-  public static final String JSON_PROPERTY_EMAIL = "email";
-  private JsonNullable<String> email = JsonNullable.<String>undefined();
+  public static final String JSON_PROPERTY_PROFILE = "profile";
+  private Profile profile;
+
+  public static final String JSON_PROPERTY_METADATA = "metadata";
+  private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
 
-  public UserAllOfProfile givenName(String givenName) {
-    this.givenName = JsonNullable.<String>of(givenName);
+  public UserCreateBody externalId(String externalId) {
+    
+    this.externalId = externalId;
+    return this;
+  }
+
+   /**
+   * A unique identifier for the user. The &#x60;externalId&#x60; can be used to link a user to the same conversation [across multiple devices](https://docs.smooch.io/guide/authenticating-users/). 
+   * @return externalId
+  **/
+  @ApiModelProperty(example = "your-own-id", required = true, value = "A unique identifier for the user. The `externalId` can be used to link a user to the same conversation [across multiple devices](https://docs.smooch.io/guide/authenticating-users/). ")
+  @JsonProperty(JSON_PROPERTY_EXTERNAL_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getExternalId() {
+    return externalId;
+  }
+
+
+  public void setExternalId(String externalId) {
+    this.externalId = externalId;
+  }
+
+
+  public UserCreateBody signedUpAt(String signedUpAt) {
+    
+    this.signedUpAt = signedUpAt;
+    return this;
+  }
+
+   /**
+   * The date at which the user signed up. Must be ISO 8601 time format &#x60;YYYY-MM-DDThh:mm:ss.sssZ&#x60;.
+   * @return signedUpAt
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2020-05-21T15:53:30.197Z", value = "The date at which the user signed up. Must be ISO 8601 time format `YYYY-MM-DDThh:mm:ss.sssZ`.")
+  @JsonProperty(JSON_PROPERTY_SIGNED_UP_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getSignedUpAt() {
+    return signedUpAt;
+  }
+
+
+  public void setSignedUpAt(String signedUpAt) {
+    this.signedUpAt = signedUpAt;
+  }
+
+
+  public UserCreateBody profile(Profile profile) {
+    
+    this.profile = profile;
+    return this;
+  }
+
+   /**
+   * Get profile
+   * @return profile
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_PROFILE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Profile getProfile() {
+    return profile;
+  }
+
+
+  public void setProfile(Profile profile) {
+    this.profile = profile;
+  }
+
+
+  public UserCreateBody metadata(Object metadata) {
+    this.metadata = JsonNullable.<Object>of(metadata);
     
     return this;
   }
 
    /**
-   * An optional given name.
-   * @return givenName
+   * Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. 
+   * @return metadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Steve", value = "An optional given name.")
+  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
   @JsonIgnore
 
-  public String getGivenName() {
-        return givenName.orElse(null);
+  public Object getMetadata() {
+        return metadata.orElse(null);
   }
 
-  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
+  @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getGivenName_JsonNullable() {
-    return givenName;
+  public JsonNullable<Object> getMetadata_JsonNullable() {
+    return metadata;
   }
   
-  @JsonProperty(JSON_PROPERTY_GIVEN_NAME)
-  public void setGivenName_JsonNullable(JsonNullable<String> givenName) {
-    this.givenName = givenName;
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  public void setMetadata_JsonNullable(JsonNullable<Object> metadata) {
+    this.metadata = metadata;
   }
 
-  public void setGivenName(String givenName) {
-    this.givenName = JsonNullable.<String>of(givenName);
-  }
-
-
-  public UserAllOfProfile surname(String surname) {
-    this.surname = JsonNullable.<String>of(surname);
-    
-    return this;
-  }
-
-   /**
-   * An optional surname.
-   * @return surname
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Rogers", value = "An optional surname.")
-  @JsonIgnore
-
-  public String getSurname() {
-        return surname.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_SURNAME)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<String> getSurname_JsonNullable() {
-    return surname;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_SURNAME)
-  public void setSurname_JsonNullable(JsonNullable<String> surname) {
-    this.surname = surname;
-  }
-
-  public void setSurname(String surname) {
-    this.surname = JsonNullable.<String>of(surname);
-  }
-
-
-  public UserAllOfProfile email(String email) {
-    this.email = JsonNullable.<String>of(email);
-    
-    return this;
-  }
-
-   /**
-   * An optional email address.
-   * @return email
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "steve@rogers.com", value = "An optional email address.")
-  @JsonIgnore
-
-  public String getEmail() {
-        return email.orElse(null);
-  }
-
-  @JsonProperty(JSON_PROPERTY_EMAIL)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public JsonNullable<String> getEmail_JsonNullable() {
-    return email;
-  }
-  
-  @JsonProperty(JSON_PROPERTY_EMAIL)
-  public void setEmail_JsonNullable(JsonNullable<String> email) {
-    this.email = email;
-  }
-
-  public void setEmail(String email) {
-    this.email = JsonNullable.<String>of(email);
+  public void setMetadata(Object metadata) {
+    this.metadata = JsonNullable.<Object>of(metadata);
   }
 
 
@@ -160,25 +168,27 @@ public class UserAllOfProfile {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    UserAllOfProfile userAllOfProfile = (UserAllOfProfile) o;
-    return Objects.equals(this.givenName, userAllOfProfile.givenName) &&
-        Objects.equals(this.surname, userAllOfProfile.surname) &&
-        Objects.equals(this.email, userAllOfProfile.email);
+    UserCreateBody userCreateBody = (UserCreateBody) o;
+    return Objects.equals(this.externalId, userCreateBody.externalId) &&
+        Objects.equals(this.signedUpAt, userCreateBody.signedUpAt) &&
+        Objects.equals(this.profile, userCreateBody.profile) &&
+        Objects.equals(this.metadata, userCreateBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, surname, email);
+    return Objects.hash(externalId, signedUpAt, profile, metadata);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UserAllOfProfile {\n");
-    sb.append("    givenName: ").append(toIndentedString(givenName)).append("\n");
-    sb.append("    surname: ").append(toIndentedString(surname)).append("\n");
-    sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("class UserCreateBody {\n");
+    sb.append("    externalId: ").append(toIndentedString(externalId)).append("\n");
+    sb.append("    signedUpAt: ").append(toIndentedString(signedUpAt)).append("\n");
+    sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");
     return sb.toString();
   }

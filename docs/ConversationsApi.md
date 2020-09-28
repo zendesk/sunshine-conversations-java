@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## listConversations
 
-> ConversationListResponse listConversations(appId, page, conversationListFilter)
+> ConversationListResponse listConversations(appId, filter, page)
 
 List Conversations
 
@@ -284,12 +284,12 @@ public class Example {
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        ConversationListFilter filter = new ConversationListFilter(); // ConversationListFilter | Contains parameters for filtering the results.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
-        ConversationListFilter conversationListFilter = new ConversationListFilter(); // ConversationListFilter | Contains parameters for filtering the results.
         // Add required body parameters
 
         try {
-            ConversationListResponse result = apiInstance.listConversations(appId, page, conversationListFilter);
+            ConversationListResponse result = apiInstance.listConversations(appId, filter, page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#listConversations");
@@ -308,8 +308,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
+ **filter** | [**ConversationListFilter**](.md)| Contains parameters for filtering the results. |
  **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
- **conversationListFilter** | [**ConversationListFilter**](.md)| Contains parameters for filtering the results. | [optional]
 
 ### Return type
 

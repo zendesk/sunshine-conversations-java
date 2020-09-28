@@ -174,11 +174,11 @@ public class AppsApi {
    * List Apps
    * Lists all apps that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell /v2/apps?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10 &#x60;&#x60;&#x60; 
    * @param page Contains parameters for applying cursor pagination. (optional)
-   * @param appListFilter Contains parameters for filtering the results. (optional)
+   * @param filter Contains parameters for filtering the results. (optional)
    * @return a {@code AppListResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppListResponse listApps(Page page, AppListFilter appListFilter) throws ApiException {
+  public AppListResponse listApps(Page page, AppListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -191,7 +191,7 @@ public class AppsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "appListFilter", appListFilter));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     
@@ -411,11 +411,11 @@ public class AppsApi {
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param page Contains parameters for applying cursor pagination. (optional)
-   * @param appListFilter Contains parameters for filtering the results. (optional)
+   * @param filter Contains parameters for filtering the results. (optional)
    * @return a {@code AppListResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppListResponse listApps(String bearerToken, Page page, AppListFilter appListFilter) throws ApiException {
+  public AppListResponse listApps(String bearerToken, Page page, AppListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -428,7 +428,7 @@ public class AppsApi {
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "appListFilter", appListFilter));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     

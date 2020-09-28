@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of message. | 
 **fields** | [**List&lt;Field&gt;**](Field.md) | Array of field objects that contain the submitted fields. | 
-**quotedMessage** | [**QuotedMessage**](QuotedMessage.md) | Object indicating the form message that is being responded to. |  [optional]
+**textFallback** | **String** | A string containing the &#x60;label: value&#x60; of all fields, each separated by a newline character. |  [optional] [readonly]
 
 
 ## Implemented Interfaces

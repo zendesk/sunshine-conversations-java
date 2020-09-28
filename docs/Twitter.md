@@ -6,10 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The unique ID of the integration. |  [optional] [readonly]
-**type** | **String** | The type of integration. | 
-**status** | [**Status**](Status.md) |  |  [optional]
-**displayName** | **String** | A human-friendly name used to identify the integration. |  [optional]
+**type** | **String** | The type of integration. |  [optional]
 **tier** | [**TierEnum**](#TierEnum) | Your Twitter app’s tier, sandbox, premium or enterprise. | 
 **envName** | **String** | The Twitter dev environments label (required for sandbox and premium tiers). |  [optional]
 **consumerKey** | **String** | The consumer key for your Twitter app. | 
@@ -27,9 +24,5 @@ SANDBOX | &quot;sandbox&quot;
 PREMIUM | &quot;premium&quot;
 ENTERPRISE | &quot;enterprise&quot;
 
-
-## Implemented Interfaces
-
-* Integration
 
 

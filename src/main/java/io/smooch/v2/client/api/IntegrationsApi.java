@@ -8,9 +8,11 @@ import io.smooch.v2.client.Pair;
 import javax.ws.rs.core.GenericType;
 
 import io.smooch.v2.client.model.Integration;
+import io.smooch.v2.client.model.IntegrationListFilter;
 import io.smooch.v2.client.model.IntegrationListResponse;
 import io.smooch.v2.client.model.IntegrationResponse;
 import io.smooch.v2.client.model.IntegrationUpdate;
+import io.smooch.v2.client.model.Page;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -191,15 +193,14 @@ public class IntegrationsApi {
       }
   /**
    * List Integrations
-   * List available integrations.
+   * List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/integrations?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10&amp;filter[types]&#x3D;custom,web &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
-   * @param types Comma-separated list of types to return. If omitted, all types are returned. (optional)
-   * @param limit Limit the number of records to return. (optional, default to 25)
-   * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+   * @param page Contains parameters for applying cursor pagination. (optional)
+   * @param filter Contains parameters for filtering the results. (optional)
    * @return a {@code IntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationListResponse listIntegrations(String appId, String types, Integer limit, Integer offset) throws ApiException {
+  public IntegrationListResponse listIntegrations(String appId, Page page, IntegrationListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -217,9 +218,8 @@ public class IntegrationsApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     
@@ -463,17 +463,16 @@ public class IntegrationsApi {
       }
   /**
    * List Integrations
-   * List available integrations.
+   * List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/integrations?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10&amp;filter[types]&#x3D;custom,web &#x60;&#x60;&#x60; 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
-   * @param types Comma-separated list of types to return. If omitted, all types are returned. (optional)
-   * @param limit Limit the number of records to return. (optional, default to 25)
-   * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+   * @param page Contains parameters for applying cursor pagination. (optional)
+   * @param filter Contains parameters for filtering the results. (optional)
    * @return a {@code IntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationListResponse listIntegrations(String bearerToken, String appId, String types, Integer limit, Integer offset) throws ApiException {
+  public IntegrationListResponse listIntegrations(String bearerToken, String appId, Page page, IntegrationListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -491,9 +490,8 @@ public class IntegrationsApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "types", types));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "filter", filter));
 
     
     

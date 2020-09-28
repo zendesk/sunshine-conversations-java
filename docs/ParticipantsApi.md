@@ -175,11 +175,11 @@ Name | Type | Description  | Notes
 
 ## listParticipants
 
-> ParticipantListResponse listParticipants(appId, conversationId, limit, offset)
+> ParticipantListResponse listParticipants(appId, conversationId, page)
 
 List Participants
 
-Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). 
+Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/participants?page[before]&#x3D;26508c10541a4b0ff472e5e2 &#x60;&#x60;&#x60; 
 
 ### Example
 
@@ -208,12 +208,11 @@ public class Example {
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
-        Integer limit = 25; // Integer | Limit the number of records to return.
-        Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+        Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
-            ParticipantListResponse result = apiInstance.listParticipants(appId, conversationId, limit, offset);
+            ParticipantListResponse result = apiInstance.listParticipants(appId, conversationId, page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ParticipantsApi#listParticipants");
@@ -233,8 +232,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **conversationId** | **String**| Identifies the conversation. |
- **limit** | **Integer**| Limit the number of records to return. | [optional] [default to 25]
- **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
+ **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
 
 ### Return type
 

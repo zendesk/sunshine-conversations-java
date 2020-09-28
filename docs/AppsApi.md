@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ## listApps
 
-> AppListResponse listApps(page, appListFilter)
+> AppListResponse listApps(page, filter)
 
 List Apps
 
@@ -278,11 +278,11 @@ public class Example {
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
-        AppListFilter appListFilter = new AppListFilter(); // AppListFilter | Contains parameters for filtering the results.
+        AppListFilter filter = new AppListFilter(); // AppListFilter | Contains parameters for filtering the results.
         // Add required body parameters
 
         try {
-            AppListResponse result = apiInstance.listApps(page, appListFilter);
+            AppListResponse result = apiInstance.listApps(page, filter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#listApps");
@@ -301,7 +301,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
- **appListFilter** | [**AppListFilter**](.md)| Contains parameters for filtering the results. | [optional]
+ **filter** | [**AppListFilter**](.md)| Contains parameters for filtering the results. | [optional]
 
 ### Return type
 

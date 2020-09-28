@@ -7,6 +7,7 @@ import io.smooch.v2.client.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import io.smooch.v2.client.model.Page;
 import io.smooch.v2.client.model.ParticipantJoinBody;
 import io.smooch.v2.client.model.ParticipantLeaveBody;
 import io.smooch.v2.client.model.ParticipantListResponse;
@@ -154,15 +155,14 @@ public class ParticipantsApi {
       }
   /**
    * List Participants
-   * Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). 
+   * Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/participants?page[before]&#x3D;26508c10541a4b0ff472e5e2 &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
-   * @param limit Limit the number of records to return. (optional, default to 25)
-   * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+   * @param page Contains parameters for applying cursor pagination. (optional)
    * @return a {@code ParticipantListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ParticipantListResponse listParticipants(String appId, String conversationId, Integer limit, Integer offset) throws ApiException {
+  public ParticipantListResponse listParticipants(String appId, String conversationId, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -186,8 +186,7 @@ public class ParticipantsApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
 
     
     
@@ -332,17 +331,16 @@ public class ParticipantsApi {
       }
   /**
    * List Participants
-   * Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits). 
+   * Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/participants?page[before]&#x3D;26508c10541a4b0ff472e5e2 &#x60;&#x60;&#x60; 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
-   * @param limit Limit the number of records to return. (optional, default to 25)
-   * @param offset The number of initial records to skip before picking records to return. (optional, default to 0)
+   * @param page Contains parameters for applying cursor pagination. (optional)
    * @return a {@code ParticipantListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ParticipantListResponse listParticipants(String bearerToken, String appId, String conversationId, Integer limit, Integer offset) throws ApiException {
+  public ParticipantListResponse listParticipants(String bearerToken, String appId, String conversationId, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -366,8 +364,7 @@ public class ParticipantsApi {
     Map<String, String> localVarCookieParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "limit", limit));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "offset", offset));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
 
     
     

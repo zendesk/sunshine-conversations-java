@@ -251,11 +251,11 @@ Name | Type | Description  | Notes
 
 ## listIntegrations
 
-> IntegrationListResponse listIntegrations(appId, types, limit, offset)
+> IntegrationListResponse listIntegrations(appId, page, filter)
 
 List Integrations
 
-List available integrations.
+List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/integrations?page[after]&#x3D;5e1606762556d93e9c176f69&amp;page[size]&#x3D;10&amp;filter[types]&#x3D;custom,web &#x60;&#x60;&#x60; 
 
 ### Example
 
@@ -283,13 +283,12 @@ public class Example {
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String types = "android,ios"; // String | Comma-separated list of types to return. If omitted, all types are returned.
-        Integer limit = 25; // Integer | Limit the number of records to return.
-        Integer offset = 0; // Integer | The number of initial records to skip before picking records to return.
+        Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
+        IntegrationListFilter filter = new IntegrationListFilter(); // IntegrationListFilter | Contains parameters for filtering the results.
         // Add required body parameters
 
         try {
-            IntegrationListResponse result = apiInstance.listIntegrations(appId, types, limit, offset);
+            IntegrationListResponse result = apiInstance.listIntegrations(appId, page, filter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#listIntegrations");
@@ -308,9 +307,8 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
- **types** | **String**| Comma-separated list of types to return. If omitted, all types are returned. | [optional]
- **limit** | **Integer**| Limit the number of records to return. | [optional] [default to 25]
- **offset** | **Integer**| The number of initial records to skip before picking records to return. | [optional] [default to 0]
+ **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
+ **filter** | [**IntegrationListFilter**](.md)| Contains parameters for filtering the results. | [optional]
 
 ### Return type
 

@@ -123,10 +123,11 @@ info:
     \    \"scope\": \"app\"\n}\n ```"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 6.0.0-alpha.6
+  version: 6.0.0-alpha.7
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
+    href: https://smooch.io/
 servers:
 - description: United States server
   url: https://api.smooch.io
@@ -165,6 +166,15 @@ tags:
     a Sunshine Conversations app. An app can have a maximum of 10 keys.
   name: App Keys
   x-displayName: App Keys
+- description: |
+    You can upload files of any type that can then be used to send a file, image or carousel message to a user.
+
+    ## Attachments for Messages
+    The attachments API allows you to upload a file for the purpose of sending a message.
+    Using the for parameter, you can signal to Sunshine Conversations that your upload will be used to send a message to a user.
+    Knowing this, Sunshine Conversations will safely delete the attachment when the message, conversation or user is deleted.
+  name: Attachments
+  x-displayName: Attachments
 - description: A stored history of messages sent to and received from a `user`. This
     set of endpoints is used to provision and manage conversations.
   name: Conversations
@@ -178,9 +188,6 @@ tags:
 - description: Notify Sunshine Conversations of different conversation activities.
   name: Activities
   x-displayName: Activities
-- description: Endpoints used for provisioning [clients](https://docs.smooch.io/guide/key-concepts/#client).
-  name: Clients
-  x-displayName: Clients
 - description: Manage which switchboard integration has control over a conversation.
   name: Switchboard Actions
   x-displayName: Switchboard Actions
@@ -201,10 +208,44 @@ tags:
 - description: Switchboard Integrations operations
   name: Switchboard Integrations
   x-displayName: Switchboard Integrations
+- description: This set of endpoints is used to manage users.
+  name: Users
+  x-displayName: Users
+- description: Endpoints used for provisioning [clients](https://docs.smooch.io/guide/key-concepts/#client).
+  name: Clients
+  x-displayName: Clients
 - description: All notable changes to the API will be referenced in the [v2 API changelog](https://docs.smooch.io/guide/v2-api-changelog/).
   name: Changelog
-- description: Endpoints for managing webhooks associated to a Sunshine Conversations
-    Connect integration or a custom integration.
+- description: "Endpoints for managing webhooks associated to a Sunshine Conversations\
+    \ Connect integration or a custom integration. Webhooks are a fantastic way to\
+    \ extend the Sunshine Conversations platform beyond the built-in feature set.\
+    \ You can use webhooks to build your own Sunshine Conversations chat clients,\
+    \ to integrate more deeply with your favorite CRM, or to build a bot.\nA webhook\
+    \ can only operate within the scope of a single Sunshine Conversations app.\n\
+    <aside class=\"notice\">An app is limited to 10 webhooks. A webhook can subscribe\
+    \ to multiple trigger events. We recommend using a single webhook that registers\
+    \ to all the events you need.</aside>\n\n## Webhook Triggers\nWhen a webhook trigger\
+    \ is triggered, a POST request will be made to the URL configured in your webhook\
+    \ object along with a JSON payload specific for the event type.\n\n| Trigger \
+    \                | Description                       |\n| ----------------------\
+    \  | -------------------------- |\n| conversation:create     | When a new conversation\
+    \ is created.    |\n| conversation:message  | When a new message was sent in the\
+    \ conversation. |\n| conversation:message:delivery:channel  | When a message is\
+    \ successfully delivered to a channel. |\n| conversation:message:delivery:failure\
+    \  | When a new message fails to be delivered in the conversation. |\n| conversation:message:delivery:user\
+    \  | When a new message is successfully delivered to a user. |\n| conversation:postback\
+    \  | When a user clicks on a postback action button. |\n| conversation:read  |\
+    \ When a user has read the conversation. |\n| conversation:typing  | When a user\
+    \ starts or stops typing. |\n| switchboard:acceptControl | When a switchboard\
+    \ integration accepts control of a conversation. | \n| switchboard:acceptControl:failure\
+    \   | When control of a conversation fails to be accepted by a switchboard integration.\
+    \ |\n| switchboard:offerControl  | When a switchboard integration has been offered\
+    \ control of the conversation. |\n| switchboard:offerControl:failure | When control\
+    \ of a conversation can't be offered to another switchboard integration. |\n|\
+    \ switchboard:passControl | When a switchboard integration gives control of the\
+    \ conversation to another switchboard integration. |\n| switchboard:passControl:failure\
+    \ | When changing a switchboard integration to active fails. |\n| user:merge \
+    \        | When two or more users are merged into one. |\n"
   name: Webhooks
 paths:
   /v2/apps:
@@ -227,7 +268,7 @@ paths:
         description: Contains parameters for filtering the results.
         explode: true
         in: query
-        name: appListFilter
+        name: filter
         required: false
         schema:
           properties:
@@ -235,6 +276,7 @@ paths:
               description: When specified, lists only the apps that the service account
                 has access to.
               type: string
+          title: appListFilter
           type: object
         style: deepObject
       responses:
@@ -554,6 +596,200 @@ paths:
       tags:
       - App Keys
       x-accepts: application/json
+  /v2/apps/{appId}/attachments:
+    post:
+      description: |
+        Upload an attachment to Sunshine Conversations to use in future messages. Files are uploaded using the multipart/form-data content type. Use the returned mediaUrl to send a file, image or carousel message.
+        <aside class="notice">Note that Sunshine Conversations limits the size and type of file you can upload to the platform. See the <a href="https://docs.smooch.io/guide/validating-files">file validation</a> guide for more details.</aside>
+      operationId: uploadAttachment
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The access level for the attachment. Currently the available
+          access levels are public and private.
+        explode: true
+        in: query
+        name: access
+        required: true
+        schema:
+          default: public
+          example: public
+          type: string
+        style: form
+      - description: Specifies the intended container for the attachment, to enable
+          automatic attachment deletion (on deletion of associated message, conversation
+          or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages)
+          for details.
+        explode: true
+        in: query
+        name: for
+        required: false
+        schema:
+          example: message
+          type: string
+        style: form
+      - description: Links the attachment getting uploaded to the conversation ID.
+        explode: true
+        in: query
+        name: conversationId
+        required: false
+        schema:
+          example: c616a583e4c240a871818541
+          type: string
+        style: form
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/attachmentUploadBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attachmentResponse'
+          description: Created
+        "400":
+          description: Bad request
+      security:
+      - basicAuth:
+        - integration
+        - app
+        - account
+      - bearerAuth:
+        - integration
+        - app
+        - account
+      summary: Upload Attachment
+      tags:
+      - Attachments
+      x-contentType: multipart/form-data
+      x-accepts: application/json
+  /v2/apps/{appId}/attachments/remove:
+    post:
+      description: |
+        Remove an attachment uploaded to Sunshine Conversations through the Upload attachment API.
+        See [Attachments for Messages](#section/Attachments-for-Messages) to have attachments automatically deleted when deleting messages, conversations or users.
+        <aside class="notice">Note that deleted attachments can remain available on our CDN’s cache up to 15 minutes after the delete call.</aside>
+      operationId: deleteAttachment
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/attachmentDeleteBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: Attachment not found
+      security:
+      - basicAuth:
+        - integration
+        - app
+        - account
+      - bearerAuth:
+        - integration
+        - app
+        - account
+      summary: Delete Attachment
+      tags:
+      - Attachments
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/attachments/token:
+    post:
+      description: |
+        Generates a media JWT for a list of attachment paths. This media token is a prerequisite for setting the cookie needed to visualize a private attachment.
+        <aside class="notice">Note you have the ability to allow files using different rules, see <a href="https://docs.smooch.io/guide/private-attachments">Private Attachments</a> for more details.</aside>
+      operationId: generateMediaJsonWebToken
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/attachmentMediaTokenBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/attachmentMediaTokenResponse'
+          description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+      - bearerAuth:
+        - app
+        - account
+      summary: Generate Media Token
+      tags:
+      - Attachments
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/attachments/cookie:
+    post:
+      description: |
+        With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT.
+        The expiration date of this cookie will match the expiration date of the media JWT. This cookie will be needed to visualize a private attachment.
+      operationId: setCookie
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+      security:
+      - bearerAuth:
+        - mediaToken
+      summary: Set Cookie
+      tags:
+      - Attachments
+      x-accepts: application/json
   /v2/apps/{appId}/conversations:
     get:
       description: |
@@ -584,8 +820,8 @@ paths:
         description: Contains parameters for filtering the results.
         explode: true
         in: query
-        name: conversationListFilter
-        required: false
+        name: filter
+        required: true
         schema:
           properties:
             userId:
@@ -596,6 +832,7 @@ paths:
               description: The external Id of the user. One of `userId` or `userExternalId`
                 is required, but not both.
               type: string
+          title: conversationListFilter
           type: object
         style: deepObject
       responses:
@@ -866,7 +1103,11 @@ paths:
   /v2/apps/{appId}/conversations/{conversationId}/participants:
     get:
       description: |
-        Lists all the participants of a particular conversation. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
+        Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+
+        ```shell
+        /v2/apps/:appId/conversations/:conversationId/participants?page[before]=26508c10541a4b0ff472e5e2
+        ```
       operationId: listParticipants
       parameters:
       - description: Identifies the app.
@@ -887,29 +1128,14 @@ paths:
           example: 029c31f25a21b47effd7be90
           type: string
         style: simple
-      - description: Limit the number of records to return.
+      - description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
-        name: limit
+        name: page
         required: false
         schema:
-          default: 25
-          example: 25
-          maximum: 100
-          minimum: 0
-          type: integer
-        style: form
-      - description: The number of initial records to skip before picking records
-          to return.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          example: 0
-          type: integer
-        style: form
+          $ref: '#/components/schemas/page'
+        style: deepObject
       responses:
         "200":
           content:
@@ -1412,182 +1638,13 @@ paths:
       - Switchboard Actions
       x-contentType: application/json
       x-accepts: application/json
-  /v2/apps/{appId}/users/{userIdOrExternalId}/clients:
-    get:
-      description: Get all the clients for a particular user, including both linked
-        clients and pending clients. This API is [paginated](#section/Introduction/API-pagination-and-records-limits).
-      operationId: listClients
-      parameters:
-      - description: Identifies the app.
-        explode: false
-        in: path
-        name: appId
-        required: true
-        schema:
-          example: 5d8cff3cd55b040010928b5b
-          type: string
-        style: simple
-      - description: The user's id or externalId.
-        explode: false
-        in: path
-        name: userIdOrExternalId
-        required: true
-        schema:
-          example: 42589ad070d43be9b00ff7e5
-          type: string
-        style: simple
-      - description: Limit the number of records to return.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          default: 25
-          example: 25
-          maximum: 100
-          minimum: 0
-          type: integer
-        style: form
-      - description: The number of initial records to skip before picking records
-          to return.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          example: 0
-          type: integer
-        style: form
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/clientListResponse'
-          description: Ok
-      security:
-      - basicAuth:
-        - app
-        - account
-        - integration
-      - bearerAuth:
-        - app
-        - account
-        - integration
-      summary: List Clients
-      tags:
-      - Clients
-      x-accepts: application/json
-    post:
-      description: Create a client and link it to a channel specified by the matchCriteria.type.
-      operationId: createClient
-      parameters:
-      - description: Identifies the app.
-        explode: false
-        in: path
-        name: appId
-        required: true
-        schema:
-          example: 5d8cff3cd55b040010928b5b
-          type: string
-        style: simple
-      - description: The user's id or externalId.
-        explode: false
-        in: path
-        name: userIdOrExternalId
-        required: true
-        schema:
-          example: 42589ad070d43be9b00ff7e5
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/clientCreate'
-        required: true
-      responses:
-        "201":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ClientResponse'
-          description: Created
-      security:
-      - basicAuth:
-        - app
-        - account
-        - integration
-      - bearerAuth:
-        - app
-        - account
-        - integration
-      summary: Create Client
-      tags:
-      - Clients
-      x-contentType: application/json
-      x-accepts: application/json
-  /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId}:
-    delete:
-      description: Remove a particular client and unsubscribe it from all connected
-        conversations.
-      operationId: removeClient
-      parameters:
-      - description: Identifies the app.
-        explode: false
-        in: path
-        name: appId
-        required: true
-        schema:
-          example: 5d8cff3cd55b040010928b5b
-          type: string
-        style: simple
-      - description: The user's id or externalId.
-        explode: false
-        in: path
-        name: userIdOrExternalId
-        required: true
-        schema:
-          example: 42589ad070d43be9b00ff7e5
-          type: string
-        style: simple
-      - description: The client's id.
-        explode: false
-        in: path
-        name: clientId
-        required: true
-        schema:
-          example: 5d8cff3cd55b040010928b5b
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                type: object
-          description: Ok
-        "400":
-          description: Cannot remove a client of type 'sdk'
-        "404":
-          description: Client not found
-      security:
-      - basicAuth:
-        - app
-        - account
-        - integration
-      - bearerAuth:
-        - app
-        - account
-        - integration
-      summary: Remove Client
-      tags:
-      - Clients
-      x-accepts: application/json
   /v2/apps/{appId}/integrations:
     get:
-      description: List available integrations.
+      description: |
+        List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+        ```shell
+        /v2/apps/:appId/integrations?page[after]=5e1606762556d93e9c176f69&page[size]=10&filter[types]=custom,web
+        ```
       operationId: listIntegrations
       parameters:
       - description: Identifies the app.
@@ -1599,43 +1656,37 @@ paths:
           example: 5d8cff3cd55b040010928b5b
           type: string
         style: simple
-      - description: Comma-separated list of types to return. If omitted, all types
-          are returned.
+      - description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
-        name: types
+        name: page
         required: false
         schema:
-          example: android,ios
-          type: string
-        style: form
-      - description: Limit the number of records to return.
+          $ref: '#/components/schemas/page'
+        style: deepObject
+      - $ref: '#/components/parameters/integrationListFilter'
+        description: Contains parameters for filtering the results.
         explode: true
         in: query
-        name: limit
+        name: filter
         required: false
         schema:
-          default: 25
-          example: 25
-          maximum: 100
-          minimum: 0
-          type: integer
-        style: form
-      - description: The number of initial records to skip before picking records
-          to return.
-        explode: true
-        in: query
-        name: offset
-        required: false
-        schema:
-          default: 0
-          example: 0
-          type: integer
-        style: form
+          properties:
+            types:
+              description: Comma-separated list of types to return. If omitted, all
+                types are returned.
+              example: android,ios
+              type: string
+          title: integrationListFilter
+          type: object
+        style: deepObject
       responses:
         "200":
           content:
             application/json:
+              examples:
+                success:
+                  $ref: '#/components/examples/integrationListResponse'
               schema:
                 $ref: '#/components/schemas/integrationListResponse'
           description: Ok
@@ -1675,6 +1726,9 @@ paths:
         "201":
           content:
             application/json:
+              examples:
+                success:
+                  $ref: '#/components/examples/integrationResponse'
               schema:
                 allOf:
                 - $ref: '#/components/schemas/integrationResponse'
@@ -1763,6 +1817,9 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                success:
+                  $ref: '#/components/examples/integrationResponse'
               schema:
                 allOf:
                 - $ref: '#/components/schemas/integrationResponse'
@@ -1815,6 +1872,9 @@ paths:
         "200":
           content:
             application/json:
+              examples:
+                success:
+                  $ref: '#/components/examples/integrationResponse'
               schema:
                 allOf:
                 - $ref: '#/components/schemas/integrationResponse'
@@ -2676,7 +2736,442 @@ paths:
       - Switchboard Integrations
       x-contentType: application/json
       x-accepts: application/json
+  /v2/apps/{appId}/users/:
+    post:
+      description: Creates a new user.
+      operationId: createUser
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userCreateBody'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+          description: Created
+        "409":
+          description: User already exists
+      security:
+      - basicAuth:
+        - account
+        - app
+        - integration
+      - bearerAuth:
+        - account
+        - app
+        - integration
+      summary: Create User
+      tags:
+      - Users
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}:
+    delete:
+      description: Delete a user, its clients and its conversation history. The user
+        is considered completely deleted once the `user:delete` webhook is fired.
+        To only delete a user’s personal information, see [Delete User Personal Information](#operation/deleteUserPersonalInformation).
+      operationId: deleteUser
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "404":
+          description: User not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Delete User
+      tags:
+      - Users
+      x-accepts: application/json
+    get:
+      description: Fetches an individual user.
+      operationId: getUser
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+          description: Ok
+        "404":
+          description: User not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Get User
+      tags:
+      - Users
+      x-accepts: application/json
+    patch:
+      description: Updates a user.
+      operationId: updateUser
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/userUpdateBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userResponse'
+          description: Ok
+        "404":
+          description: User not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Update User
+      tags:
+      - Users
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}/clients:
+    get:
+      description: |
+        Get all the clients for a particular user, including both linked clients and pending clients.
+        This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+
+        ```shell
+        /v2/apps/:appId/users/:userId/clients?page[after]=5ebee0975ac5304b664a12fa
+        ```
+      operationId: listClients
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      - description: Contains parameters for applying cursor pagination.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          $ref: '#/components/schemas/page'
+        style: deepObject
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clientListResponse'
+          description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: List Clients
+      tags:
+      - Clients
+      x-accepts: application/json
+    post:
+      description: Create a client and link it to a channel specified by the matchCriteria.type.
+      operationId: createClient
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/clientCreate'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientResponse'
+          description: Created
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Create Client
+      tags:
+      - Clients
+      x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId}:
+    delete:
+      description: Remove a particular client and unsubscribe it from all connected
+        conversations.
+      operationId: removeClient
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      - description: The client's id.
+        explode: false
+        in: path
+        name: clientId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "400":
+          description: Cannot remove a client of type 'sdk'
+        "404":
+          description: Client not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Remove Client
+      tags:
+      - Clients
+      x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation:
+    delete:
+      description: Delete a user’s personal information. Calling this API will clear
+        `givenName`, `surname`, `email` and `avatarUrl` and every custom property
+        for the specified user. For every client owned by the user, it will also clear
+        `displayName`, `avatarUrl` and any channel specific information stored in
+        the info and raw fields. Calling this API doesn’t delete the user’s conversation
+        history. To fully delete the user, see [Delete User](#operation/deleteUser).
+      operationId: deleteUserPersonalInformation
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                success:
+                  $ref: '#/components/examples/userDeletePersonalInformationResponse'
+              schema:
+                $ref: '#/components/schemas/userResponse'
+          description: Ok
+        "404":
+          description: User not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Delete User Personal Information
+      tags:
+      - Users
+      x-accepts: application/json
 components:
+  examples:
+    integrationListResponse:
+      value:
+        integrations:
+        - id: 5e4af71a81966cfff3ef6550
+          type: android
+          status: active
+          displayName: Android
+          serverId: <sender-id>
+          canUserCreateMoreConversations: true
+        meta:
+          hasMore: true
+          afterCursor: 5e4af71a81966cfff3ef6550
+          beforeCursor: 5e4af71a81966cfff3ef6550
+        links:
+          prev: https://api.smooch.io/v2/apps/5e4af71a81966cfff3ef6551/integrations?page[before]=5e4af71a81966cfff3ef6550
+          after: https://api.smooch.io/v2/apps/5e4af71a81966cfff3ef6551/integrations?page[after]=5e4af71a81966cfff3ef6550
+    integrationResponse:
+      value:
+        integration:
+          id: 5e4af71a81966cfff3ef6550
+          type: android
+          status: active
+          displayName: Android
+          serverId: <sender-id>
+          canUserCreateMoreConversations: true
+    userDeletePersonalInformationResponse:
+      value:
+        user:
+          id: 6e416caac6a5e9544e3fb6d7,
+          externalId: your-own-id,
+          profile: {}
+          signedUpAt: 2020-05-21T15:53:30.197Z,
+          metadata: {}
   parameters:
     pageQuery:
       description: Contains parameters for applying cursor pagination.
@@ -2692,7 +3187,7 @@ components:
       description: Contains parameters for filtering the results.
       explode: true
       in: query
-      name: appListFilter
+      name: filter
       required: false
       schema:
         properties:
@@ -2700,6 +3195,7 @@ components:
             description: When specified, lists only the apps that the service account
               has access to.
             type: string
+        title: appListFilter
         type: object
       style: deepObject
     appId:
@@ -2722,13 +3218,48 @@ components:
         example: int_5d8cff3cd55b040010928b5b
         type: string
       style: simple
+    accessQuery:
+      description: The access level for the attachment. Currently the available access
+        levels are public and private.
+      explode: true
+      in: query
+      name: access
+      required: true
+      schema:
+        default: public
+        example: public
+        type: string
+      style: form
+    forQuery:
+      description: Specifies the intended container for the attachment, to enable
+        automatic attachment deletion (on deletion of associated message, conversation
+        or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages)
+        for details.
+      explode: true
+      in: query
+      name: for
+      required: false
+      schema:
+        example: message
+        type: string
+      style: form
+    conversationIdQuery:
+      description: Links the attachment getting uploaded to the conversation ID.
+      explode: true
+      in: query
+      name: conversationId
+      required: false
+      schema:
+        example: c616a583e4c240a871818541
+        type: string
+      style: form
     conversationFilterQuery:
       $ref: '#/components/parameters/conversationListFilter'
       description: Contains parameters for filtering the results.
       explode: true
       in: query
-      name: conversationListFilter
-      required: false
+      name: filter
+      required: true
       schema:
         properties:
           userId:
@@ -2739,6 +3270,7 @@ components:
             description: The external Id of the user. One of `userId` or `userExternalId`
               is required, but not both.
             type: string
+        title: conversationListFilter
         type: object
       style: deepObject
     conversationId:
@@ -2751,31 +3283,6 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
-    limitQuery:
-      description: Limit the number of records to return.
-      explode: true
-      in: query
-      name: limit
-      required: false
-      schema:
-        default: 25
-        example: 25
-        maximum: 100
-        minimum: 0
-        type: integer
-      style: form
-    offsetQuery:
-      description: The number of initial records to skip before picking records to
-        return.
-      explode: true
-      in: query
-      name: offset
-      required: false
-      schema:
-        default: 0
-        example: 0
-        type: integer
-      style: form
     messageId:
       description: The id of the message.
       explode: false
@@ -2786,37 +3293,23 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
-    userIdOrExternalId:
-      description: The user's id or externalId.
-      explode: false
-      in: path
-      name: userIdOrExternalId
-      required: true
-      schema:
-        example: 42589ad070d43be9b00ff7e5
-        type: string
-      style: simple
-    clientId:
-      description: The client's id.
-      explode: false
-      in: path
-      name: clientId
-      required: true
-      schema:
-        example: 5d8cff3cd55b040010928b5b
-        type: string
-      style: simple
-    typesQuery:
-      description: Comma-separated list of types to return. If omitted, all types
-        are returned.
+    integrationFilterQuery:
+      $ref: '#/components/parameters/integrationListFilter'
+      description: Contains parameters for filtering the results.
       explode: true
       in: query
-      name: types
+      name: filter
       required: false
       schema:
-        example: android,ios
-        type: string
-      style: form
+        properties:
+          types:
+            description: Comma-separated list of types to return. If omitted, all
+              types are returned.
+            example: android,ios
+            type: string
+        title: integrationListFilter
+        type: object
+      style: deepObject
     integrationId:
       description: The id of the integration.
       explode: false
@@ -2852,6 +3345,26 @@ components:
       explode: false
       in: path
       name: switchboardIntegrationId
+      required: true
+      schema:
+        example: 5d8cff3cd55b040010928b5b
+        type: string
+      style: simple
+    userIdOrExternalId:
+      description: The user's id or externalId.
+      explode: false
+      in: path
+      name: userIdOrExternalId
+      required: true
+      schema:
+        example: 42589ad070d43be9b00ff7e5
+        type: string
+      style: simple
+    clientId:
+      description: The client's id.
+      explode: false
+      in: path
+      name: clientId
       required: true
       schema:
         example: 5d8cff3cd55b040010928b5b
@@ -2901,11 +3414,13 @@ components:
     appSettings:
       description: Customizable app settings.
       example:
+        attachmentsAccess: attachmentsAccess
         conversationRetentionSeconds: 0
         ignoreAutoConversationStart: true
         useAnimalNames: true
         echoPostback: true
         multiConvoEnabled: true
+        attachmentsTokenExpirationSeconds: attachmentsTokenExpirationSeconds
         maskCreditCardNumbers: true
       properties:
         conversationRetentionSeconds:
@@ -2932,16 +3447,27 @@ components:
         ignoreAutoConversationStart:
           description: "A boolean specifying whether a non message event coming from\
             \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#conversation-events)\n\
-            event and count as an active user conversation (AUC).\n<aside class=\"\
-            notice\">Calling <code>startConversation()</code> (or equivalent) from\
-            \ the Android, \niOS or Web SDK will count as an AUC, regardless of the\
-            \ value of this setting.</aside>\n"
+            event and count as a monthly active user (MAU).\n<aside class=\"notice\"\
+            >Calling <code>startConversation()</code> (or equivalent) from the Android,\
+            \ \niOS or Web SDK will count as a MAU, regardless of the value of this\
+            \ setting.</aside>\n"
           type: boolean
         multiConvoEnabled:
           description: |
             A boolean specifying whether users are allowed to be part of several conversations.
             Enabling `multiConvo` is **irreversible**.
           type: boolean
+        attachmentsAccess:
+          description: |
+            A string specifying whether attachments should be stored in a publicly or privately accessible cloud storage.
+            attachmentsAccess is set to public by default but can be modified to private.
+            See <a href="https://docs.smooch.io/guide/private-attachments/">Private Attachments</a> for more information.
+          type: string
+        attachmentsTokenExpirationSeconds:
+          description: |
+            Number of seconds representing the expiration time of the generated media tokens for private attachments. The JWT will be valid for 2 hours by default.
+            See See <a href="https://docs.smooch.io/guide/private-attachments/">Private Attachments</a> for more information.
+          type: string
       type: object
     metadata:
       description: "Flat object containing custom properties. Strings, numbers and\
@@ -2954,11 +3480,13 @@ components:
     app:
       example:
         settings:
+          attachmentsAccess: attachmentsAccess
           conversationRetentionSeconds: 0
           ignoreAutoConversationStart: true
           useAnimalNames: true
           echoPostback: true
           multiConvoEnabled: true
+          attachmentsTokenExpirationSeconds: attachmentsTokenExpirationSeconds
           maskCreditCardNumbers: true
         metadata:
           lang: en-ca
@@ -3038,22 +3566,26 @@ components:
           prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
         apps:
         - settings:
+            attachmentsAccess: attachmentsAccess
             conversationRetentionSeconds: 0
             ignoreAutoConversationStart: true
             useAnimalNames: true
             echoPostback: true
             multiConvoEnabled: true
+            attachmentsTokenExpirationSeconds: attachmentsTokenExpirationSeconds
             maskCreditCardNumbers: true
           metadata:
             lang: en-ca
           displayName: My App
           id: 5d8cff3cd55b040010928b5b
         - settings:
+            attachmentsAccess: attachmentsAccess
             conversationRetentionSeconds: 0
             ignoreAutoConversationStart: true
             useAnimalNames: true
             echoPostback: true
             multiConvoEnabled: true
+            attachmentsTokenExpirationSeconds: attachmentsTokenExpirationSeconds
             maskCreditCardNumbers: true
           metadata:
             lang: en-ca
@@ -3167,6 +3699,72 @@ components:
           - $ref: '#/components/schemas/appKey'
           description: The created key object.
       title: AppKeyResponse
+      type: object
+    attachmentUploadBody:
+      properties:
+        source:
+          format: binary
+          type: string
+      required:
+      - source
+      type: object
+    attachmentSchema:
+      properties:
+        mediaUrl:
+          description: Uploaded attachment’s url
+          example: http://smooch.io/rocks.smooch.media-dev/apps/5ec41c54fe13cc5ac404bedc/conversations/c616a583e4c240a871818541/TmYMVQUBNsQRItX4fKf4aC-T/Screen%20Shot%202020-09-02%20at%204.04.41%20PM.png
+          type: string
+        mediaType:
+          description: Uploaded attachment's media type
+          example: image/png
+          type: string
+      type: object
+    attachmentResponse:
+      example:
+        attachment: ""
+      properties:
+        attachment:
+          allOf:
+          - $ref: '#/components/schemas/attachmentSchema'
+          description: The uploaded attachment object.
+      title: AttachmentResponse
+      type: object
+    attachmentDeleteBody:
+      properties:
+        mediaUrl:
+          description: The media URL used for a file or image message.
+          type: string
+      required:
+      - mediaUrl
+      type: object
+    attachmentMediaTokenBody:
+      properties:
+        paths:
+          description: An array of strings representing the list of attachment paths
+            used to generate the media JWT. One token will be generated for each path.
+            Each token will be valid for 2 hours by default. This value can be modified,
+            see [App Settings](#operation/createApp) for more information.
+          items:
+            example: /apps/5ec41c54fe13cc5ac404bedc
+            type: string
+          type: array
+      required:
+      - paths
+      type: object
+    attachmentMediaTokenResponse:
+      example:
+        tokens:
+          /apps/5ec41c54fe13cc5ac404bedc: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjM3NzdBNUM3LUI3QUQtNDEyMC1BNEVDLUNBNzk1ODlDRTYxNSJ9.eyJwYXRoIjoiL2FwcHMvNWVkYTk3ZDBhNmQ5ZmUwMDBmN2U2ODQyIiwiZXhwIjoxNTkzMjA2MzEzLCJpYXQiOjE1OTMxOTkxMTN9.R1i7e5YgRHv_QjUqUcP9c5xa4VgJ5aen675V84r1euCjNz165qqkZaep6of7aXNBKsZ29AI1CgbVt_nPn3ZsYTBc1cQ96ucqTv8tFR0FHf20-oR-_1egdyyLqJjxb0UI1wGZPGCP8mEs3mQwMu4lvZMF9vaty1Ye8wy-lPAPYFuZMb1rCES0QT6QUOAn45hAAfdT1zKqQ8ImV5eWVi6m0ENqV-JjExsiZ2mAMwyguDJ5yJUQLGKOV3f_Our1fVWfit5cGoMk-97o3009o628gVfSZVzPuvdNIfQOb0UUr_ELsI2qbY_Ju4REpSqYwdkjvSd3T20baf5K7_FGOrxPQitHAZojQAdlRK3mB-kC3IbVa93YFBcLK5UbRXnJYAo24UH828vU-MLgRrgzD6oVpcxNk8yyaLThJpTynO9Eoi0vKJ0m-_3A1ASKzYrR6ZZZWmRsFtZVtlpS21oYuO2tvS4EkbM8AhH4nh6V8oQUkQtvYIZKkEOadc0AFTjbv-le35hHLmHBZigUTRoZKokeglSDKr0FwDZylp7V3O8l6X0EhOU0BCoP1UYrEf8GjPdSLvu0Mno_k6hFw2Hx9DTdvnybZYroMkG31To2nmVhPglZ4FCswGV85HcqCcWQjhugFmB--9aE19G-OGOVFJfH6rFp0_cB4AxM9kSHQsWyuUs
+      properties:
+        tokens:
+          additionalProperties:
+            type: string
+          description: Object with key value pair where the key is the path and the
+            value is the media JWT.
+          example:
+            /apps/5ec41c54fe13cc5ac404bedc: eyJhbGciOiJSUzUxMiIsInR5cCI6IkpXVCIsImtpZCI6IjM3NzdBNUM3LUI3QUQtNDEyMC1BNEVDLUNBNzk1ODlDRTYxNSJ9.eyJwYXRoIjoiL2FwcHMvNWVkYTk3ZDBhNmQ5ZmUwMDBmN2U2ODQyIiwiZXhwIjoxNTkzMjA2MzEzLCJpYXQiOjE1OTMxOTkxMTN9.R1i7e5YgRHv_QjUqUcP9c5xa4VgJ5aen675V84r1euCjNz165qqkZaep6of7aXNBKsZ29AI1CgbVt_nPn3ZsYTBc1cQ96ucqTv8tFR0FHf20-oR-_1egdyyLqJjxb0UI1wGZPGCP8mEs3mQwMu4lvZMF9vaty1Ye8wy-lPAPYFuZMb1rCES0QT6QUOAn45hAAfdT1zKqQ8ImV5eWVi6m0ENqV-JjExsiZ2mAMwyguDJ5yJUQLGKOV3f_Our1fVWfit5cGoMk-97o3009o628gVfSZVzPuvdNIfQOb0UUr_ELsI2qbY_Ju4REpSqYwdkjvSd3T20baf5K7_FGOrxPQitHAZojQAdlRK3mB-kC3IbVa93YFBcLK5UbRXnJYAo24UH828vU-MLgRrgzD6oVpcxNk8yyaLThJpTynO9Eoi0vKJ0m-_3A1ASKzYrR6ZZZWmRsFtZVtlpS21oYuO2tvS4EkbM8AhH4nh6V8oQUkQtvYIZKkEOadc0AFTjbv-le35hHLmHBZigUTRoZKokeglSDKr0FwDZylp7V3O8l6X0EhOU0BCoP1UYrEf8GjPdSLvu0Mno_k6hFw2Hx9DTdvnybZYroMkG31To2nmVhPglZ4FCswGV85HcqCcWQjhugFmB--9aE19G-OGOVFJfH6rFp0_cB4AxM9kSHQsWyuUs
+          type: object
+      title: AttachmentMediaTokenResponse
       type: object
     conversationType:
       description: The type of the conversation.
@@ -3463,8 +4061,13 @@ components:
     participantListResponse:
       description: List of returned participants.
       example:
-        offset: 0
-        hasMore: true
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: true
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
         participants:
         - unreadCount: 0
           userExternalId: your-own-id
@@ -3491,13 +4094,10 @@ components:
           items:
             $ref: '#/components/schemas/participant'
           type: array
-        hasMore:
-          description: A flag that indicates if there are more records that can be
-            fetched.
-          type: boolean
-        offset:
-          description: The offset parameter sent with the request.
-          type: integer
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
       type: object
     participantLeaveBody:
       oneOf:
@@ -3598,8 +4198,7 @@ components:
           type: string
         default:
           description: Boolean value indicating whether the action is the default
-            action for a message item in Facebook Messenger. Used for actions of type
-            link.
+            action for a message item in Facebook Messenger.
           type: boolean
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
@@ -3676,7 +4275,7 @@ components:
         payload:
           description: A string payload to help you identify the action context. Used
             when posting the reply. You can also use metadata for more complex needs.
-          type: object
+          type: string
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
@@ -3711,8 +4310,7 @@ components:
           type: string
         default:
           description: Boolean value indicating whether the action is the default
-            action for a message item in Facebook Messenger. Used for actions of type
-            link.
+            action for a message item in Facebook Messenger.
           type: boolean
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
@@ -3726,7 +4324,11 @@ components:
           $ref: '#/components/schemas/extraChannelOptions'
         size:
           description: The size to display a webview. Used for actions of type webview.
-          type: integer
+          enum:
+          - compact
+          - tall
+          - full
+          type: string
         fallback:
           description: The fallback uri for channels that don’t support webviews.
             Used for actions of type webview.
@@ -3841,6 +4443,11 @@ components:
           default: carousel
           description: The type of message.
           type: string
+        text:
+          description: The fallback text message used when carousel messages are not
+            supported by the channel.
+          readOnly: true
+          type: string
         items:
           description: An array of objects representing the items associated with
             the message. Only present in carousel and list type messages.
@@ -3867,6 +4474,14 @@ components:
         mediaUrl:
           description: The URL for media, such as an image, attached to the message.
           format: uri
+          type: string
+        mediaSize:
+          description: The size of the media.
+          readOnly: true
+          type: number
+        mediaType:
+          description: The media type of the file.
+          readOnly: true
           type: string
       required:
       - type
@@ -3992,90 +4607,6 @@ components:
       - fields
       - type
       type: object
-    message:
-      example:
-        metadata: ""
-        deleted: true
-        author:
-          avatarUrl: ""
-          displayName: Steve
-          userExternalId: your-own-id
-          type: business
-          userId: 5963c0d619a30a2e00de36b8
-        received: 2019-03-21T18:48:52.760Z
-        id: 5e552ef595e5206375bb835d
-        source:
-          originalMessageTimestamp: 2019-03-21T18:45:53.720Z
-          integrationId: de13bee15b51033b34162411
-          client: ""
-          originalMessageId: 5f40256af057d0000dda9bd7
-          type: ios
-          device: ""
-        content: ""
-        quotedMessage: ""
-      properties:
-        id:
-          description: The unique ID of the message.
-          example: 5e552ef595e5206375bb835d
-          type: string
-        received:
-          description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
-            representing when Sunshine Conversations received the message.
-          example: 2019-03-21T18:48:52.760Z
-          type: string
-        author:
-          $ref: '#/components/schemas/author'
-        content:
-          allOf:
-          - $ref: '#/components/schemas/content'
-          description: The content of the message.
-        source:
-          $ref: '#/components/schemas/source'
-        quotedMessage:
-          allOf:
-          - $ref: '#/components/schemas/quotedMessage'
-          description: The quoted message is currently only available for WhatsApp
-            and Web Messenger `formResponse` messages.
-          nullable: true
-        metadata:
-          allOf:
-          - $ref: '#/components/schemas/metadata'
-          nullable: true
-        deleted:
-          description: true if the message serves as a placeholder for one that has
-            been deleted.
-          nullable: true
-          type: boolean
-      type: object
-    quotedMessageMessage:
-      properties:
-        type:
-          default: message
-          description: The type of quotedMessage - a complete Sunshine Conversations
-            message is provided.
-          type: string
-        message:
-          allOf:
-          - $ref: '#/components/schemas/message'
-      title: QuotedMessageMessage
-      type: object
-    quotedMessageExternalMessageId:
-      properties:
-        type:
-          default: externalMessageId
-          description: The type of quotedMessage - `externalMessageId` if no Sunshine
-            Conversations message matched the quoted message.
-          type: string
-        externalMessageId:
-          description: The external message Id of the quoted message.
-          type: string
-      title: QuotedMessageExternalMessageId
-      type: object
-    quotedMessage:
-      oneOf:
-      - $ref: '#/components/schemas/quotedMessageMessage'
-      - $ref: '#/components/schemas/quotedMessageExternalMessageId'
-      x-one-of-name: QuotedMessage
     formResponseMessage:
       description: A formResponse type message is a response to a form type message.
         formResponse type messages are only supported as responses to form messages
@@ -4092,11 +4623,11 @@ components:
           maxItems: 20
           minItems: 1
           type: array
-        quotedMessage:
-          allOf:
-          - $ref: '#/components/schemas/quotedMessage'
-          description: Object indicating the form message that is being responded
-            to.
+        textFallback:
+          description: 'A string containing the `label: value` of all fields, each
+            separated by a newline character.'
+          readOnly: true
+          type: string
       required:
       - fields
       - type
@@ -4165,6 +4696,11 @@ components:
         type:
           default: location
           description: The type of message.
+          type: string
+        text:
+          description: The fallback text message used when location messages are not
+            supported by the channel.
+          readOnly: true
           type: string
         coordinates:
           $ref: '#/components/schemas/locationMessage_coordinates'
@@ -4369,6 +4905,90 @@ components:
       required:
       - type
       type: object
+    message:
+      example:
+        metadata: ""
+        deleted: true
+        author:
+          avatarUrl: ""
+          displayName: Steve
+          userExternalId: your-own-id
+          type: business
+          userId: 5963c0d619a30a2e00de36b8
+        received: 2019-03-21T18:48:52.760Z
+        id: 5e552ef595e5206375bb835d
+        source:
+          originalMessageTimestamp: 2019-03-21T18:45:53.720Z
+          integrationId: de13bee15b51033b34162411
+          client: ""
+          originalMessageId: 5f40256af057d0000dda9bd7
+          type: ios
+          device: ""
+        content: ""
+        quotedMessage: ""
+      properties:
+        id:
+          description: The unique ID of the message.
+          example: 5e552ef595e5206375bb835d
+          type: string
+        received:
+          description: A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
+            representing when Sunshine Conversations received the message.
+          example: 2019-03-21T18:48:52.760Z
+          type: string
+        author:
+          $ref: '#/components/schemas/author'
+        content:
+          allOf:
+          - $ref: '#/components/schemas/content'
+          description: The content of the message.
+        source:
+          $ref: '#/components/schemas/source'
+        quotedMessage:
+          allOf:
+          - $ref: '#/components/schemas/quotedMessage'
+          description: The quoted message is currently only available for WhatsApp
+            and Web Messenger `formResponse` messages.
+          nullable: true
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          nullable: true
+        deleted:
+          description: true if the message serves as a placeholder for one that has
+            been deleted.
+          nullable: true
+          type: boolean
+      type: object
+    quotedMessageMessage:
+      properties:
+        type:
+          default: message
+          description: The type of quotedMessage - a complete Sunshine Conversations
+            message is provided.
+          type: string
+        message:
+          allOf:
+          - $ref: '#/components/schemas/message'
+      title: QuotedMessageMessage
+      type: object
+    quotedMessageExternalMessageId:
+      properties:
+        type:
+          default: externalMessageId
+          description: The type of quotedMessage - `externalMessageId` if no Sunshine
+            Conversations message matched the quoted message.
+          type: string
+        externalMessageId:
+          description: The external message Id of the quoted message.
+          type: string
+      title: QuotedMessageExternalMessageId
+      type: object
+    quotedMessage:
+      oneOf:
+      - $ref: '#/components/schemas/quotedMessageMessage'
+      - $ref: '#/components/schemas/quotedMessageExternalMessageId'
+      x-one-of-name: QuotedMessage
     messageListResponse:
       example:
         meta:
@@ -4597,122 +5217,29 @@ components:
       required:
       - switchboardIntegration
       type: object
-    clientListResponse:
-      example:
-        clients:
-        - lastSeen: 2020-08-20T16:13:07.462Z
-          avatarUrl: https://openapi-generator.tech
-          displayName: Steve
-          integrationId: 582dedf230e788746891281a
-          externalId: your-own-id
-          linkedAt: 2020-06-23T14:33:47.492Z
-          raw: '{}'
-          id: 5c9a34160c89726709136733
-          type: sdk
-          status: active
-          info: '{}'
-        - lastSeen: 2020-08-20T16:13:07.462Z
-          avatarUrl: https://openapi-generator.tech
-          displayName: Steve
-          integrationId: 582dedf230e788746891281a
-          externalId: your-own-id
-          linkedAt: 2020-06-23T14:33:47.492Z
-          raw: '{}'
-          id: 5c9a34160c89726709136733
-          type: sdk
-          status: active
-          info: '{}'
-        offset: 0
-        hasMore: true
-      properties:
-        clients:
-          description: List of returned clients.
-          items:
-            $ref: '#/components/schemas/client'
-          type: array
-        hasMore:
-          description: A flag that indicates if there are more records that can be
-            fetched.
-          type: boolean
-        offset:
-          description: The offset parameter sent with the request.
-          type: integer
-      type: object
-    matchCriteriaMailgun:
-      allOf:
-      - $ref: '#/components/schemas/matchCriteriaBase'
-      - $ref: '#/components/schemas/matchCriteriaMailgun_allOf'
-    matchCriteriaMessagebird:
-      allOf:
-      - $ref: '#/components/schemas/matchCriteriaBase'
-      - $ref: '#/components/schemas/matchCriteriaMessagebird_allOf'
-    matchCriteriaTwilio:
-      allOf:
-      - $ref: '#/components/schemas/matchCriteriaBase'
-      - $ref: '#/components/schemas/matchCriteriaTwilio_allOf'
-    matchCriteriaWhatsapp:
-      allOf:
-      - $ref: '#/components/schemas/matchCriteriaBase'
-      - $ref: '#/components/schemas/matchCriteriaWhatsapp_allOf'
-    matchCriteriaBase:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
-      properties:
-        type:
-          description: The channel type.
-          type: string
-        integrationId:
-          description: The ID of the integration to link. Must match the provided
-            type.
-          example: 582dedf230e788746891281a
-          type: string
-        primary:
-          default: true
-          description: Flag indicating whether the client will become the primary
-            for the target conversation once linking is complete.
-          type: boolean
-      required:
-      - integrationId
-      - type
-      type: object
-    matchCriteria:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
+    integration:
+      description: The integration.
       discriminator:
         mapping:
-          mailgun: '#/components/schemas/matchCriteriaMailgun'
-          messagebird: '#/components/schemas/matchCriteriaMessagebird'
-          twilio: '#/components/schemas/matchCriteriaTwilio'
-          whatsapp: '#/components/schemas/matchCriteriaWhatsapp'
+          android: '#/components/schemas/android'
+          apple: '#/components/schemas/apple'
+          custom: '#/components/schemas/custom'
+          ios: '#/components/schemas/ios'
+          line: '#/components/schemas/line'
+          mailgun: '#/components/schemas/mailgun'
+          messagebird: '#/components/schemas/messageBird'
+          messenger: '#/components/schemas/messenger'
+          telegram: '#/components/schemas/telegram'
+          twilio: '#/components/schemas/twilio'
+          twitter: '#/components/schemas/twitter'
+          viber: '#/components/schemas/viber'
+          web: '#/components/schemas/web'
+          whatsapp: '#/components/schemas/whatsapp'
         propertyName: type
-      oneOf:
-      - $ref: '#/components/schemas/matchCriteriaMailgun'
-      - $ref: '#/components/schemas/matchCriteriaMessagebird'
-      - $ref: '#/components/schemas/matchCriteriaTwilio'
-      - $ref: '#/components/schemas/matchCriteriaWhatsapp'
-      x-one-of-name: MatchCriteria
-    clientCreate:
-      properties:
-        matchCriteria:
-          $ref: '#/components/schemas/matchCriteria'
-        confirmation:
-          $ref: '#/components/schemas/Confirmation'
-        target:
-          $ref: '#/components/schemas/Target'
-      required:
-      - confirmation
-      - matchCriteria
-      - target
-      type: object
-    status:
-      description: The status of the integration.
-      enum:
-      - inactive
-      - active
-      - error
-      readOnly: true
-      type: string
-    integrationBase:
+      example:
+        displayName: Channel name
+        id: 5e4af71a81966cfff3ef6550
+        type: android
       properties:
         id:
           description: The unique ID of the integration.
@@ -4736,11 +5263,11 @@ components:
       type: object
     android:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/android_allOf'
     apple:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/apple_allOf'
     target:
       description: URL to be called when the webhook is triggered.
@@ -4822,43 +5349,43 @@ components:
       type: object
     custom:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/custom_allOf'
     ios:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/ios_allOf'
     line:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/line_allOf'
     mailgun:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/mailgun_allOf'
     messageBird:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/messageBird_allOf'
     messenger:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/messenger_allOf'
     telegram:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/telegram_allOf'
     twilio:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/twilio_allOf'
     twitter:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/twitter_allOf'
     viber:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/viber_allOf'
     prechatCapture:
       properties:
@@ -4896,58 +5423,52 @@ components:
       type: object
     web:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/web_allOf'
     whatsapp:
       allOf:
-      - $ref: '#/components/schemas/integrationBase'
+      - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/whatsapp_allOf'
-    integration:
-      discriminator:
-        propertyName: type
-      oneOf:
-      - $ref: '#/components/schemas/android'
-      - $ref: '#/components/schemas/apple'
-      - $ref: '#/components/schemas/custom'
-      - $ref: '#/components/schemas/ios'
-      - $ref: '#/components/schemas/line'
-      - $ref: '#/components/schemas/mailgun'
-      - $ref: '#/components/schemas/messageBird'
-      - $ref: '#/components/schemas/messenger'
-      - $ref: '#/components/schemas/telegram'
-      - $ref: '#/components/schemas/twilio'
-      - $ref: '#/components/schemas/twitter'
-      - $ref: '#/components/schemas/viber'
-      - $ref: '#/components/schemas/web'
-      - $ref: '#/components/schemas/whatsapp'
-      x-one-of-name: Integration
+    status:
+      description: The status of the integration.
+      enum:
+      - inactive
+      - active
+      - error
+      readOnly: true
+      type: string
     integrationListResponse:
       example:
-        offset: 0
-        hasMore: false
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: true
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
         integrations:
-        - null
-        - null
+        - displayName: Channel name
+          id: 5e4af71a81966cfff3ef6550
+          type: android
+        - displayName: Channel name
+          id: 5e4af71a81966cfff3ef6550
+          type: android
       properties:
         integrations:
           description: List of returned integrations.
           items:
             $ref: '#/components/schemas/integration'
           type: array
-        hasMore:
-          description: A flag that indicates if there are more records that can be
-            fetched.
-          example: false
-          type: boolean
-        offset:
-          description: The offset parameter sent with the request.
-          example: 0
-          type: integer
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
       type: object
     integrationResponse:
       properties:
         integration:
           $ref: '#/components/schemas/integration'
+      title: integrationResponse
       type: object
     integrationUpdateBase:
       properties:
@@ -5355,6 +5876,227 @@ components:
           - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
           nullable: true
       type: object
+    signedUpAt:
+      description: The date at which the user signed up. Must be ISO 8601 time format
+        `YYYY-MM-DDThh:mm:ss.sssZ`.
+      example: 2020-05-21T15:53:30.197Z
+      type: string
+    profile:
+      description: Object hosting user profile information.
+      properties:
+        givenName:
+          description: The user's given name (first name).
+          example: Jane
+          maxLength: 128
+          minLength: 1
+          nullable: true
+          type: string
+        surname:
+          description: The user's surname (last name).
+          example: Doe
+          maxLength: 128
+          minLength: 1
+          nullable: true
+          type: string
+        email:
+          description: The user's email address.
+          example: jane.doe@gmail.com
+          format: email
+          maxLength: 128
+          minLength: 1
+          nullable: true
+          type: string
+        avatarUrl:
+          description: The user's avatar.
+          example: https://s3.amazonaws.com/avatar.jpg
+          format: uri
+          maxLength: 2048
+          minLength: 1
+          nullable: true
+          type: string
+      type: object
+    userCreateBody:
+      properties:
+        externalId:
+          description: |
+            A unique identifier for the user. The `externalId` can be used to link a user to the same conversation [across multiple devices](https://docs.smooch.io/guide/authenticating-users/).
+          example: your-own-id
+          maxLength: 1024
+          minLength: 1
+          type: string
+        signedUpAt:
+          description: The date at which the user signed up. Must be ISO 8601 time
+            format `YYYY-MM-DDThh:mm:ss.sssZ`.
+          example: 2020-05-21T15:53:30.197Z
+          type: string
+        profile:
+          $ref: '#/components/schemas/profile'
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+      required:
+      - externalId
+      title: UserCreateBody
+      type: object
+    userTruncated:
+      properties:
+        id:
+          description: The unique ID of the user.
+          example: 7494535bff5cef41a15be74d
+          type: string
+        externalId:
+          description: |
+            An optional ID that if specified can also be used to retrieve the user.
+          example: your-own-id
+          nullable: true
+          type: string
+      type: object
+    user:
+      allOf:
+      - $ref: '#/components/schemas/userTruncated'
+      - $ref: '#/components/schemas/user_allOf'
+    userResponse:
+      example:
+        user: ""
+      properties:
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user.
+      title: UserResponse
+      type: object
+    userUpdateBody:
+      properties:
+        signedUpAt:
+          allOf:
+          - $ref: '#/components/schemas/signedUpAt'
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/profile'
+        metadata:
+          description: "Flat object containing custom properties. Strings, numbers\
+            \ and booleans \nare the only supported format that can be passed to metadata.\n\
+            The metadata is limited to 4KB in size.\n"
+          example:
+            lang: en-ca
+          nullable: true
+          type: object
+      title: UserUpdateBody
+      type: object
+    clientListResponse:
+      example:
+        clients:
+        - lastSeen: 2020-08-20T16:13:07.462Z
+          avatarUrl: https://openapi-generator.tech
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
+          raw: '{}'
+          id: 5c9a34160c89726709136733
+          type: sdk
+          status: active
+          info: '{}'
+        - lastSeen: 2020-08-20T16:13:07.462Z
+          avatarUrl: https://openapi-generator.tech
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
+          raw: '{}'
+          id: 5c9a34160c89726709136733
+          type: sdk
+          status: active
+          info: '{}'
+        meta:
+          beforeCursor: 55c8d9758590aa1900b9b9f6
+          afterCursor: 55c8d9758590aa1900b9b9f6
+          hasMore: true
+        links:
+          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+      properties:
+        clients:
+          description: List of returned clients.
+          items:
+            $ref: '#/components/schemas/client'
+          type: array
+        meta:
+          $ref: '#/components/schemas/meta'
+        links:
+          $ref: '#/components/schemas/links'
+      type: object
+    matchCriteriaMailgun:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaMailgun_allOf'
+    matchCriteriaMessagebird:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaMessagebird_allOf'
+    matchCriteriaTwilio:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaTwilio_allOf'
+    matchCriteriaWhatsapp:
+      allOf:
+      - $ref: '#/components/schemas/matchCriteriaBase'
+      - $ref: '#/components/schemas/matchCriteriaWhatsapp_allOf'
+    matchCriteriaBase:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          description: The channel type.
+          type: string
+        integrationId:
+          description: The ID of the integration to link. Must match the provided
+            type.
+          example: 582dedf230e788746891281a
+          type: string
+        primary:
+          default: true
+          description: Flag indicating whether the client will become the primary
+            for the target conversation once linking is complete.
+          type: boolean
+      required:
+      - integrationId
+      - type
+      type: object
+    matchCriteria:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      discriminator:
+        mapping:
+          mailgun: '#/components/schemas/matchCriteriaMailgun'
+          messagebird: '#/components/schemas/matchCriteriaMessagebird'
+          twilio: '#/components/schemas/matchCriteriaTwilio'
+          whatsapp: '#/components/schemas/matchCriteriaWhatsapp'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/matchCriteriaMailgun'
+      - $ref: '#/components/schemas/matchCriteriaMessagebird'
+      - $ref: '#/components/schemas/matchCriteriaTwilio'
+      - $ref: '#/components/schemas/matchCriteriaWhatsapp'
+      x-one-of-name: MatchCriteria
+    clientCreate:
+      properties:
+        matchCriteria:
+          $ref: '#/components/schemas/matchCriteria'
+        confirmation:
+          $ref: '#/components/schemas/Confirmation'
+        target:
+          $ref: '#/components/schemas/Target'
+      required:
+      - confirmation
+      - matchCriteria
+      - target
+      type: object
     appSubSchema:
       description: The app that triggered the events.
       properties:
@@ -5431,23 +6173,6 @@ components:
             option is enabled for the webhook
           nullable: true
       type: object
-    userTruncated:
-      properties:
-        id:
-          description: The unique ID of the user.
-          example: 7494535bff5cef41a15be74d
-          type: string
-        externalId:
-          description: |
-            An optional ID that if specified can also be used to retrieve the user.
-          example: your-own-id
-          nullable: true
-          type: string
-      type: object
-    user:
-      allOf:
-      - $ref: '#/components/schemas/userTruncated'
-      - $ref: '#/components/schemas/user_allOf'
     referral:
       properties:
         code:
@@ -5607,6 +6332,7 @@ components:
           description: When specified, lists only the apps that the service account
             has access to.
           type: string
+      title: appListFilter
       type: object
     AppKeyCreateBody:
       example:
@@ -5630,6 +6356,7 @@ components:
           description: The external Id of the user. One of `userId` or `userExternalId`
             is required, but not both.
           type: string
+      title: conversationListFilter
       type: object
     ParticipantResponse:
       description: The created participant.
@@ -5648,23 +6375,15 @@ components:
       properties:
         participant:
           $ref: '#/components/schemas/participant'
-    ClientResponse:
-      example:
-        client:
-          lastSeen: 2020-08-20T16:13:07.462Z
-          avatarUrl: https://openapi-generator.tech
-          displayName: Steve
-          integrationId: 582dedf230e788746891281a
-          externalId: your-own-id
-          linkedAt: 2020-06-23T14:33:47.492Z
-          raw: '{}'
-          id: 5c9a34160c89726709136733
-          type: sdk
-          status: active
-          info: '{}'
+    integrationListFilter:
       properties:
-        client:
-          $ref: '#/components/schemas/client'
+        types:
+          description: Comma-separated list of types to return. If omitted, all types
+            are returned.
+          example: android,ios
+          type: string
+      title: integrationListFilter
+      type: object
     IntegrationApiKeyListResponse:
       example:
         keys:
@@ -5692,6 +6411,23 @@ components:
       - displayName
       title: IntegrationApiKey
       type: object
+    ClientResponse:
+      example:
+        client:
+          lastSeen: 2020-08-20T16:13:07.462Z
+          avatarUrl: https://openapi-generator.tech
+          displayName: Steve
+          integrationId: 582dedf230e788746891281a
+          externalId: your-own-id
+          linkedAt: 2020-06-23T14:33:47.492Z
+          raw: '{}'
+          id: 5c9a34160c89726709136733
+          type: sdk
+          status: active
+          info: '{}'
+      properties:
+        client:
+          $ref: '#/components/schemas/client'
     conversation_allOf:
       properties:
         isDefault:
@@ -5890,103 +6626,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/author'
           description: The author of the activity.
-    matchCriteriaMailgun_allOf:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
-      properties:
-        type:
-          default: mailgun
-          description: The channel type.
-          type: string
-        address:
-          description: The user’s email address.
-          example: steveb@channel5.com
-          type: string
-        subject:
-          default: New message from {appName}
-          description: May be specified to set the subject for the outgoing email.
-          type: string
-      required:
-      - address
-    matchCriteriaMessagebird_allOf:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
-      properties:
-        type:
-          default: messagebird
-          description: The channel type.
-          type: string
-        phoneNumber:
-          description: |
-            The user’s phone number. It must contain the + prefix and the country code.
-            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
-            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
-          example: +15550001234
-          type: string
-      required:
-      - phoneNumber
-    matchCriteriaTwilio_allOf:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
-      properties:
-        type:
-          default: twilio
-          description: The channel type.
-          type: string
-        phoneNumber:
-          description: |
-            The user’s phone number. It must contain the + prefix and the country code.
-            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
-            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
-          example: +15550001234
-          type: string
-      required:
-      - phoneNumber
-    matchCriteriaWhatsapp_allOf:
-      description: The set of criteria used to determine the user's identity on a
-        third-party channel.
-      properties:
-        type:
-          default: whatsapp
-          description: The channel type.
-          type: string
-        phoneNumber:
-          description: |
-            The user’s phone number. It must contain the + prefix and the country code.
-            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
-            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
-          example: +15550001234
-          type: string
-      required:
-      - phoneNumber
-    Confirmation:
-      description: The confirmation options of the link request.
-      properties:
-        type:
-          description: The type of confirmation.
-          enum:
-          - immediate
-          - userActivity
-          - prompt
-          type: string
-        message:
-          allOf:
-          - $ref: '#/components/schemas/messagePost'
-          description: The message used to reach out to the user, if desired. Messages
-            sent via this method can only be of type text and image. If actions are
-            included they can only be of type link. The confirmation message will
-            not be added to the user’s conversation.
-      required:
-      - type
-    Target:
-      description: The target conversation to attach the client to.
-      properties:
-        conversationId:
-          description: The conversation ID of the target conversation.
-          example: 029c31f25a21b47effd7be90
-          type: string
-      required:
-      - conversationId
     android_allOf:
       properties:
         type:
@@ -6006,7 +6645,7 @@ components:
           minLength: 1
           nullable: true
           type: string
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
@@ -6077,7 +6716,7 @@ components:
           description: Use the unread count of the conversation as the application
             badge.
           type: boolean
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the iOS
             integration.
           type: boolean
@@ -6461,7 +7100,7 @@ components:
           description: Object whose properties can be set to specify the add-on’s
             options. See the [guide](https://docs.smooch.io/guide/web-messenger/#prechat-capture)
             to learn more about Prechat Capture.
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the web
             messenger integration.
           type: boolean
@@ -6682,39 +7321,115 @@ components:
           example: your_access_token
           nullable: true
           type: string
-    user_allOf_profile:
-      description: Object hosting user profile information.
-      properties:
-        givenName:
-          description: An optional given name.
-          example: Steve
-          nullable: true
-          type: string
-        surname:
-          description: An optional surname.
-          example: Rogers
-          nullable: true
-          type: string
-        email:
-          description: An optional email address.
-          example: steve@rogers.com
-          format: email
-          nullable: true
-          type: string
     user_allOf:
       properties:
         signedUpAt:
-          description: |
-            A datetime string with the format `YYYY-MM-DDThh:mm:ss.SSSZ`
-            representing the moment the user was created.
-          example: 2019-01-14T18:55:12.515Z
-          type: string
+          allOf:
+          - $ref: '#/components/schemas/signedUpAt'
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/profile'
         metadata:
           allOf:
           - $ref: '#/components/schemas/metadata'
           nullable: false
-        profile:
-          $ref: '#/components/schemas/user_allOf_profile'
+    matchCriteriaMailgun_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: mailgun
+          description: The channel type.
+          type: string
+        address:
+          description: The user’s email address.
+          example: steveb@channel5.com
+          type: string
+        subject:
+          default: New message from {appName}
+          description: May be specified to set the subject for the outgoing email.
+          type: string
+      required:
+      - address
+    matchCriteriaMessagebird_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: messagebird
+          description: The channel type.
+          type: string
+        phoneNumber:
+          description: |
+            The user’s phone number. It must contain the + prefix and the country code.
+            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
+          type: string
+      required:
+      - phoneNumber
+    matchCriteriaTwilio_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: twilio
+          description: The channel type.
+          type: string
+        phoneNumber:
+          description: |
+            The user’s phone number. It must contain the + prefix and the country code.
+            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
+          type: string
+      required:
+      - phoneNumber
+    matchCriteriaWhatsapp_allOf:
+      description: The set of criteria used to determine the user's identity on a
+        third-party channel.
+      properties:
+        type:
+          default: whatsapp
+          description: The channel type.
+          type: string
+        phoneNumber:
+          description: |
+            The user’s phone number. It must contain the + prefix and the country code.
+            Examples of valid phone numbers: +1 212-555-2368, +12125552368, +1 212 555 2368.
+            Examples of invalid phone numbers: 212 555 2368, 1 212 555 2368.
+          example: +15550001234
+          type: string
+      required:
+      - phoneNumber
+    Confirmation:
+      description: The confirmation options of the link request.
+      properties:
+        type:
+          description: The type of confirmation.
+          enum:
+          - immediate
+          - userActivity
+          - prompt
+          type: string
+        message:
+          allOf:
+          - $ref: '#/components/schemas/messagePost'
+          description: The message used to reach out to the user, if desired. Messages
+            sent via this method can only be of type text and image. If actions are
+            included they can only be of type link. The confirmation message will
+            not be added to the user’s conversation.
+      required:
+      - type
+    Target:
+      description: The target conversation to attach the client to.
+      properties:
+        conversationId:
+          description: The conversation ID of the target conversation.
+          example: 029c31f25a21b47effd7be90
+          type: string
+      required:
+      - conversationId
     referral_details:
       description: Nested object containing additional information.
       nullable: true
@@ -7080,13 +7795,15 @@ x-tagGroups:
   tags:
   - Apps
   - App Keys
+- name: Attachments
+  tags:
+  - Attachments
 - name: Conversations
   tags:
   - Conversations
   - Participants
   - Messages
   - Activities
-  - Clients
   - Switchboard Actions
 - name: Integrations
   tags:
@@ -7097,6 +7814,10 @@ x-tagGroups:
   tags:
   - Switchboards
   - Switchboard Integrations
+- name: Users
+  tags:
+  - Users
+  - Clients
 - name: Changelog
   tags:
   - Changelog

@@ -8,6 +8,7 @@ Carousel messages are a horizontally scrollable set of items that may each conta
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of message. | 
+**text** | **String** | The fallback text message used when carousel messages are not supported by the channel. |  [optional] [readonly]
 **items** | [**List&lt;Item&gt;**](Item.md) | An array of objects representing the items associated with the message. Only present in carousel and list type messages. | 
 **displaySettings** | [**CarouselMessageDisplaySettings**](CarouselMessageDisplaySettings.md) |  |  [optional]
 

@@ -39,6 +39,7 @@ import javax.ws.rs.core.Response.Status;
 
 import io.smooch.v2.client.model.AppListFilter;
 import io.smooch.v2.client.model.ConversationListFilter;
+import io.smooch.v2.client.model.IntegrationListFilter;
 import io.smooch.v2.client.model.Page;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
@@ -88,7 +89,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/6.0.0-alpha.6/java");
+    setUserAgent("OpenAPI-Generator/6.0.0-alpha.7/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -368,7 +369,7 @@ public class ApiClient {
         serializeDeepObjectParameter(params, name, "size", ((Page) value).getSize());
         serializeDeepObjectParameter(params, name, "before", ((Page) value).getBefore());
         serializeDeepObjectParameter(params, name, "after", ((Page) value).getAfter());
-      } else if (value instanceof AppListFilter || value instanceof ConversationListFilter) {
+      } else if (value instanceof AppListFilter || value instanceof ConversationListFilter || value instanceof IntegrationListFilter) {
         Field[] fields = value.getClass().getDeclaredFields();
         for(Field field: fields) {
           if (!java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
@@ -510,20 +511,19 @@ public class ApiClient {
     Entity<?> entity = null;
     if (contentType.startsWith("multipart/form-data")) {
       MultipartFormDataOutput multipart = new MultipartFormDataOutput();
-      //MultiPart multiPart = new MultiPart();
       for (Entry<String, Object> param: formParams.entrySet()) {
         if (param.getValue() instanceof File) {
           File file = (File) param.getValue();
           try {
-            multipart.addFormData(param.getValue().toString(),new FileInputStream(file),MediaType.APPLICATION_OCTET_STREAM_TYPE);
+            multipart.addFormData(param.getKey(), new FileInputStream(file),MediaType.APPLICATION_OCTET_STREAM_TYPE, file.getName());
           } catch (FileNotFoundException e) {
             throw new ApiException("Could not serialize multipart/form-data "+e.getMessage());
           }
         } else {
-          multipart.addFormData(param.getValue().toString(),param.getValue().toString(),MediaType.APPLICATION_OCTET_STREAM_TYPE);
+          multipart.addFormData(param.getKey(),param.getValue().toString(),MediaType.APPLICATION_OCTET_STREAM_TYPE);
         }
       }
-      entity = Entity.entity(multipart.getFormData(), MediaType.MULTIPART_FORM_DATA_TYPE);
+      entity = Entity.entity(multipart, MediaType.MULTIPART_FORM_DATA_TYPE);
     } else if (contentType.startsWith("application/x-www-form-urlencoded")) {
       Form form = new Form();
       for (Entry<String, Object> param: formParams.entrySet()) {
