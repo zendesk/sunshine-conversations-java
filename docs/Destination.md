@@ -1,11 +1,11 @@
 
-# Destination
 
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**integrationId** | **String** | The ID of the target integration. | 
-**integrationType** | **String** | The type of the target integration. See [**IntegrationTypeEnum**](Enums.md#IntegrationTypeEnum) for available values. | 
+# Interface Destination
 
+The destination of the message, in the case of channel targeting. Only applicable if the author role is `business` and the conversation is of type `personal`.
+## Implementing Classes
+
+* IntegrationId
+* IntegrationType
 
 
