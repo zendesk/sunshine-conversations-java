@@ -1,7 +1,8 @@
 
 
-# WhatsApp
+# WhatsappAllOf
 
+To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting. 
 ## Properties
 
 Name | Type | Description | Notes

@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  description: "# Introduction\n<aside class=\"notice\">As a stepping stone to new\
+  description: "# Introduction\n\n<aside class=\"notice\">As a stepping stone to new\
     \ and greater things, we’ve updated Sunshine Conversations API to v2. For users\
     \ wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/v1\"\
     >here</a>. \n</aside>\n\nWelcome to the Sunshine Conversations API. The API allows\
@@ -8,7 +8,7 @@ info:
     \ as well as talk to any backend or external service.\n\nThe Sunshine Conversations\
     \ API is designed according to REST principles. The API accepts JSON in request\
     \ bodies and requires that the content-type: application/json header be specified\
-    \ for \nall such requests. The API will always respond with an object. Depending\
+    \ for\nall such requests. The API will always respond with an object. Depending\
     \ on context, resources may be returned as single objects or as arrays of objects,\
     \ nested within the response object.\n\nIn some cases, the API will also facilitate\
     \ cross-origin resource sharing so that it can be called from a web application.\n\
@@ -58,7 +58,7 @@ info:
     \ with Sunshine Conversations easier.\n\n## Postman Collection\n\n<a style=\"\
     display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
     \ 123px;\" href=\"https://app.getpostman.com/run-collection/0c7cc8fc66039065d20f\"\
-    ></a> \n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
+    ></a>\n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
     \ collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
     \ for information on how to install and use the collection in your Postman client.\n\
     \n## Rate Limits\n\nSunshine Conversations APIs are subject to rate limiting.\
@@ -71,32 +71,32 @@ info:
     \ API you should implement `429` retry logic using exponential backoff and jitter.\n\
     \nIf your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).\n\
     \n## Request Size Limits\n\nThe Sunshine Conversations API imposes the following\
-    \ size limits on HTTP requests:\n\n| Request Type   | Limit           |\n| --------------\
-    \ | --------------- |\n| JSON           | 100kb           |\n| File upload\t |\
-    \ 25mb            |\n\n## Authorization\n\nThis is an overview of how authorization\
-    \ works with the Sunshine Conversations API. Sunshine Conversations allows basic\
-    \ authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server\
-    \ calls. [See below](#authentication) for more details.\nThere are two different\
-    \ authorization scopes available - app and account.\n\n| Scope          | Authorized\
-    \ Methods                        |\n| -------------- | -----------------------------------------\
-    \ |\n| app            | All methods besides Account Provisioning  |\n| account\
-    \   \t | All methods                               |\n\nThe app scope can be used\
-    \ to access any of the Sunshine Conversations APIs, besides account provisioning\
-    \ methods, on behalf of a single app, or any app user related to that app. The\
-    \ account scope can be used to access any of the Sunshine Conversations and Account\
-    \ Provisioning APIs on behalf of the account owner, any app belonging to the account,\
-    \ or any app user related to those apps.\n\n<aside class=\"notice\">An additional\
-    \ scope of `appUser` can also be used to authenticate users when using one of\
-    \ the Sunshine Conversations native SDK integrations. For information on how and\
-    \ when to use this scope, see the guide for <a href=\"https://docs.smooch.io/guide/authenticating-users/\"\
-    >authenticating users.</a></aside>\n\n## Authentication\n\nTo authenticate requests\
-    \ to the API, you will need an API key, composed of a key id and a secret.\nFor\
-    \ an overview of how authentication works in Sunshine Conversations and instructions\
-    \ on how to generate an API key, see the guide.\nAPI requests can be authenticated\
-    \ in two ways:\n * With Basic authentication you can make requests using an API\
-    \ key directly.\n * With JSON Web Tokens (JWTs) you sign tokens with an API key,\
-    \ which are then used to authenticate with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
-    \ to learn if JWTs are relevant for your usage.\n * Before using an API key in\
+    \ size limits on HTTP requests:\n\n| Request Type | Limit |\n| ------------ |\
+    \ ----- |\n| JSON         | 100kb |\n| File upload  | 50mb  |\n\n## Authorization\n\
+    \nThis is an overview of how authorization works with the Sunshine Conversations\
+    \ API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs)\
+    \ as authentication methods for server-to-server calls. [See below](#authentication)\
+    \ for more details.\nThere are two different authorization scopes available -\
+    \ app and account.\n\n| Scope   | Authorized Methods                       |\n\
+    | ------- | ---------------------------------------- |\n| app     | All methods\
+    \ besides Account Provisioning |\n| account | All methods                    \
+    \          |\n\nThe app scope can be used to access any of the Sunshine Conversations\
+    \ APIs, besides account provisioning methods, on behalf of a single app, or any\
+    \ app user related to that app. The account scope can be used to access any of\
+    \ the Sunshine Conversations and Account Provisioning APIs on behalf of the account\
+    \ owner, any app belonging to the account, or any app user related to those apps.\n\
+    \n<aside class=\"notice\">An additional scope of `appUser` can also be used to\
+    \ authenticate users when using one of the Sunshine Conversations native SDK integrations.\
+    \ For information on how and when to use this scope, see the guide for <a href=\"\
+    https://docs.smooch.io/guide/authenticating-users/\">authenticating users.</a></aside>\n\
+    \n## Authentication\n\nTo authenticate requests to the API, you will need an API\
+    \ key, composed of a key id and a secret.\nFor an overview of how authentication\
+    \ works in Sunshine Conversations and instructions on how to generate an API key,\
+    \ see the guide.\nAPI requests can be authenticated in two ways:\n\n- With Basic\
+    \ authentication you can make requests using an API key directly.\n- With JSON\
+    \ Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate\
+    \ with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
+    \ to learn if JWTs are relevant for your usage.\n- Before using an API key in\
     \ production, make sure to familiarize yourself with best practices on how to\
     \ [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).\n\
     \n### Basic Authentication\n\nAPI requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)\
@@ -113,16 +113,16 @@ info:
     \ need an API key, which is composed of a key ID and a secret. The key ID is included\
     \ in a JWT’s header, as the `kid` property, while the secret is used to sign the\
     \ JWT.\nFor more in-depth coverage, see the [guide](https://docs.smooch.io/guide/jwt).\n\
-    \n#### Header \n\nThe JWT header must contain the key id (kid) of the API key\
-    \ that is used to sign it. The algorithm (alg) used should be HS256. Unsigned\
-    \ JWTs are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"\
-    typ\": \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n####\
-    \ Payload\nThe JWT payload must include a scope claim which specifies the caller’\
-    s scope of access.\n\n * account-scoped JWTs must be generated with an API key\
-    \ associated with a Sunshine Conversations account (act_) or service account (svc_).\n\
-    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n * app-scoped JWTs can be\
-    \ generated with an API key associated with an app (app_).\n ```javascript\n{\n\
-    \    \"scope\": \"app\"\n}\n ```"
+    \n#### Header\n\nThe JWT header must contain the key id (kid) of the API key that\
+    \ is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs\
+    \ are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"typ\"\
+    : \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n#### Payload\n\
+    \nThe JWT payload must include a scope claim which specifies the caller’s scope\
+    \ of access.\n\n- account-scoped JWTs must be generated with an API key associated\
+    \ with a Sunshine Conversations account (act*) or service account (svc*).\n\n\
+    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n\n- app-scoped JWTs can\
+    \ be generated with an API key associated with an app (app\\_).\n\n```javascript\n\
+    {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
   version: 9.0.0
@@ -155,13 +155,15 @@ tags:
     \n| Key Type       | Authorized Methods                                      \
     \          |\n| -------------- | -----------------------------------------------------------------\
     \ |\n| act            | All Core and Account Provisioning methods.           \
-    \             |\n| svc   \t     | All Core methods, App Management methods, and\
-    \ App Keys methods.     |\n\n### Service Accounts\nService Account schema and\
+    \             |\n| svc   \t       | All Core methods, App Management methods,\
+    \ and App Keys methods.   |\n\n### Service Accounts\nService Account schema and\
     \ endpoints used for provisioning service accounts. A service account represents\
     \ an API user, with its own set of credentials, that has only access to a certain\
     \ subset of apps. For software makers that create apps on behalf of separate customers\
     \ or businesses, service accounts can be used to generate and distribute credentials\
-    \ that only have access to a single business's data.\n"
+    \ that only have access to a single business's data.\n\n### App settings\nApps\
+    \ have a number of optional settings that can be used to customize specific behaviors.\
+    \ See \nthe `settings` object described below for more information.\n"
   name: Apps
   x-displayName: Apps
 - description: This set of endpoints is used to provision and revoke API keys for
@@ -4279,7 +4281,7 @@ components:
           type: boolean
         ignoreAutoConversationStart:
           description: "A boolean specifying whether a non message event coming from\
-            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#conversation-events)\n\
+            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#section/Webhook-Triggers)\n\
             event and count as a monthly active user (MAU).\n<aside class=\"notice\"\
             >Calling <code>startConversation()</code> (or equivalent) from the Android,\
             \ \niOS or Web SDK will count as a MAU, regardless of the value of this\
@@ -6078,7 +6080,7 @@ components:
           twitter: '#/components/schemas/twitter'
           viber: '#/components/schemas/viber'
           web: '#/components/schemas/web'
-          whatsapp: '#/components/schemas/whatsApp'
+          whatsapp: '#/components/schemas/whatsapp'
         propertyName: type
       example:
         displayName: Channel name
@@ -6274,10 +6276,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/web_allOf'
-    whatsApp:
+    whatsapp:
       allOf:
       - $ref: '#/components/schemas/integration'
-      - $ref: '#/components/schemas/whatsApp_allOf'
+      - $ref: '#/components/schemas/whatsapp_allOf'
     status:
       description: The status of the integration.
       enum:
@@ -7986,7 +7988,7 @@ components:
           description: Allows users to create more than one conversation on the web
             messenger integration.
           type: boolean
-    whatsApp_allOf:
+    whatsapp_allOf:
       description: |
         To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
       properties:

@@ -445,10 +445,10 @@ Class | Method | HTTP request | Description
  - [WebhookResponse](docs/WebhookResponse.md)
  - [WebhookSubSchema](docs/WebhookSubSchema.md)
  - [Webview](docs/Webview.md)
- - [WhatsApp](docs/WhatsApp.md)
- - [WhatsAppAllOf](docs/WhatsAppAllOf.md)
  - [WhatsAppUpdate](docs/WhatsAppUpdate.md)
  - [WhatsAppUpdateAllOf](docs/WhatsAppUpdateAllOf.md)
+ - [Whatsapp](docs/Whatsapp.md)
+ - [WhatsappAllOf](docs/WhatsappAllOf.md)
 
 
 ## Documentation for Authorization
