@@ -1,14 +1,14 @@
 openapi: 3.0.2
 info:
-  description: "# Introduction\n<aside class=\"notice\">As a stepping stone to new\
+  description: "# Introduction\n\n<aside class=\"notice\">As a stepping stone to new\
     \ and greater things, we’ve updated Sunshine Conversations API to v2. For users\
-    \ wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/\"\
+    \ wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/v1\"\
     >here</a>. \n</aside>\n\nWelcome to the Sunshine Conversations API. The API allows\
     \ you to craft entirely unique messaging experiences for your app and website\
     \ as well as talk to any backend or external service.\n\nThe Sunshine Conversations\
     \ API is designed according to REST principles. The API accepts JSON in request\
     \ bodies and requires that the content-type: application/json header be specified\
-    \ for \nall such requests. The API will always respond with an object. Depending\
+    \ for\nall such requests. The API will always respond with an object. Depending\
     \ on context, resources may be returned as single objects or as arrays of objects,\
     \ nested within the response object.\n\nIn some cases, the API will also facilitate\
     \ cross-origin resource sharing so that it can be called from a web application.\n\
@@ -55,9 +55,11 @@ info:
     ## API Libraries\n\nSunshine Conversations provides an official API library for\
     \ [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages\
     \ to come. These helpful libraries wrap calls to the API and can make interfacing\
-    \ with Sunshine Conversations easier.\n\n## Postman Collection\n\nIn addition\
-    \ to API libraries, Sunshine Conversations also has a Postman collection that\
-    \ can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
+    \ with Sunshine Conversations easier.\n\n## Postman Collection\n\n<a style=\"\
+    display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
+    \ 123px;\" href=\"https://app.getpostman.com/run-collection/0c7cc8fc66039065d20f\"\
+    ></a>\n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
+    \ collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
     \ for information on how to install and use the collection in your Postman client.\n\
     \n## Rate Limits\n\nSunshine Conversations APIs are subject to rate limiting.\
     \ If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many\
@@ -69,32 +71,32 @@ info:
     \ API you should implement `429` retry logic using exponential backoff and jitter.\n\
     \nIf your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).\n\
     \n## Request Size Limits\n\nThe Sunshine Conversations API imposes the following\
-    \ size limits on HTTP requests:\n\n| Request Type   | Limit           |\n| --------------\
-    \ | --------------- |\n| JSON           | 100kb           |\n| File upload\t |\
-    \ 25mb            |\n\n## Authorization\n\nThis is an overview of how authorization\
-    \ works with the Sunshine Conversations API. Sunshine Conversations allows basic\
-    \ authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server\
-    \ calls. [See below](#authentication) for more details.\nThere are two different\
-    \ authorization scopes available - app and account.\n\n| Scope          | Authorized\
-    \ Methods                        |\n| -------------- | -----------------------------------------\
-    \ |\n| app            | All methods besides Account Provisioning  |\n| account\
-    \   \t | All methods                               |\n\nThe app scope can be used\
-    \ to access any of the Sunshine Conversations APIs, besides account provisioning\
-    \ methods, on behalf of a single app, or any app user related to that app. The\
-    \ account scope can be used to access any of the Sunshine Conversations and Account\
-    \ Provisioning APIs on behalf of the account owner, any app belonging to the account,\
-    \ or any app user related to those apps.\n\n<aside class=\"notice\">An additional\
-    \ scope of `appUser` can also be used to authenticate users when using one of\
-    \ the Sunshine Conversations native SDK integrations. For information on how and\
-    \ when to use this scope, see the guide for <a href=\"https://docs.smooch.io/guide/authenticating-users/\"\
-    >authenticating users.</a></aside>\n\n## Authentication\n\nTo authenticate requests\
-    \ to the API, you will need an API key, composed of a key id and a secret.\nFor\
-    \ an overview of how authentication works in Sunshine Conversations and instructions\
-    \ on how to generate an API key, see the guide.\nAPI requests can be authenticated\
-    \ in two ways:\n * With Basic authentication you can make requests using an API\
-    \ key directly.\n * With JSON Web Tokens (JWTs) you sign tokens with an API key,\
-    \ which are then used to authenticate with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
-    \ to learn if JWTs are relevant for your usage.\n * Before using an API key in\
+    \ size limits on HTTP requests:\n\n| Request Type | Limit |\n| ------------ |\
+    \ ----- |\n| JSON         | 100kb |\n| File upload  | 50mb  |\n\n## Authorization\n\
+    \nThis is an overview of how authorization works with the Sunshine Conversations\
+    \ API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs)\
+    \ as authentication methods for server-to-server calls. [See below](#authentication)\
+    \ for more details.\nThere are two different authorization scopes available -\
+    \ app and account.\n\n| Scope   | Authorized Methods                       |\n\
+    | ------- | ---------------------------------------- |\n| app     | All methods\
+    \ besides Account Provisioning |\n| account | All methods                    \
+    \          |\n\nThe app scope can be used to access any of the Sunshine Conversations\
+    \ APIs, besides account provisioning methods, on behalf of a single app, or any\
+    \ app user related to that app. The account scope can be used to access any of\
+    \ the Sunshine Conversations and Account Provisioning APIs on behalf of the account\
+    \ owner, any app belonging to the account, or any app user related to those apps.\n\
+    \n<aside class=\"notice\">An additional scope of `appUser` can also be used to\
+    \ authenticate users when using one of the Sunshine Conversations native SDK integrations.\
+    \ For information on how and when to use this scope, see the guide for <a href=\"\
+    https://docs.smooch.io/guide/authenticating-users/\">authenticating users.</a></aside>\n\
+    \n## Authentication\n\nTo authenticate requests to the API, you will need an API\
+    \ key, composed of a key id and a secret.\nFor an overview of how authentication\
+    \ works in Sunshine Conversations and instructions on how to generate an API key,\
+    \ see the guide.\nAPI requests can be authenticated in two ways:\n\n- With Basic\
+    \ authentication you can make requests using an API key directly.\n- With JSON\
+    \ Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate\
+    \ with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
+    \ to learn if JWTs are relevant for your usage.\n- Before using an API key in\
     \ production, make sure to familiarize yourself with best practices on how to\
     \ [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).\n\
     \n### Basic Authentication\n\nAPI requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)\
@@ -111,16 +113,16 @@ info:
     \ need an API key, which is composed of a key ID and a secret. The key ID is included\
     \ in a JWT’s header, as the `kid` property, while the secret is used to sign the\
     \ JWT.\nFor more in-depth coverage, see the [guide](https://docs.smooch.io/guide/jwt).\n\
-    \n#### Header \n\nThe JWT header must contain the key id (kid) of the API key\
-    \ that is used to sign it. The algorithm (alg) used should be HS256. Unsigned\
-    \ JWTs are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"\
-    typ\": \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n####\
-    \ Payload\nThe JWT payload must include a scope claim which specifies the caller’\
-    s scope of access.\n\n * account-scoped JWTs must be generated with an API key\
-    \ associated with a Sunshine Conversations account (act_) or service account (svc_).\n\
-    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n * app-scoped JWTs can be\
-    \ generated with an API key associated with an app (app_).\n ```javascript\n{\n\
-    \    \"scope\": \"app\"\n}\n ```"
+    \n#### Header\n\nThe JWT header must contain the key id (kid) of the API key that\
+    \ is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs\
+    \ are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"typ\"\
+    : \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n#### Payload\n\
+    \nThe JWT payload must include a scope claim which specifies the caller’s scope\
+    \ of access.\n\n- account-scoped JWTs must be generated with an API key associated\
+    \ with a Sunshine Conversations account (act*) or service account (svc*).\n\n\
+    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n\n- app-scoped JWTs can\
+    \ be generated with an API key associated with an app (app\\_).\n\n```javascript\n\
+    {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
   version: 9.0.0
@@ -134,10 +136,10 @@ servers:
 - description: European Union server
   url: https://api.eu-1.smooch.io
 security:
-- basicAuth:
+- bearerAuth:
   - app
   - account
-- bearerAuth:
+- basicAuth:
   - app
   - account
 tags:
@@ -153,13 +155,15 @@ tags:
     \n| Key Type       | Authorized Methods                                      \
     \          |\n| -------------- | -----------------------------------------------------------------\
     \ |\n| act            | All Core and Account Provisioning methods.           \
-    \             |\n| svc   \t     | All Core methods, App Management methods, and\
-    \ App Keys methods.     |\n\n### Service Accounts\nService Account schema and\
+    \             |\n| svc   \t       | All Core methods, App Management methods,\
+    \ and App Keys methods.   |\n\n### Service Accounts\nService Account schema and\
     \ endpoints used for provisioning service accounts. A service account represents\
     \ an API user, with its own set of credentials, that has only access to a certain\
     \ subset of apps. For software makers that create apps on behalf of separate customers\
     \ or businesses, service accounts can be used to generate and distribute credentials\
-    \ that only have access to a single business's data.\n"
+    \ that only have access to a single business's data.\n\n### App settings\nApps\
+    \ have a number of optional settings that can be used to customize specific behaviors.\
+    \ See \nthe `settings` object described below for more information.\n"
   name: Apps
   x-displayName: Apps
 - description: This set of endpoints is used to provision and revoke API keys for
@@ -1343,17 +1347,22 @@ paths:
         content:
           application/json:
             examples:
-              request:
-                value:
-                  author:
-                    type: business
-                    displayName: Steve
-                    avatarUrl: https://www.gravatar.com/image.jpg
-                  content:
-                    type: text
-                    text: Hello!
-                  metadata:
-                    lang: en-ca
+              text:
+                $ref: '#/components/examples/text'
+              carousel:
+                $ref: '#/components/examples/carousel'
+              file:
+                $ref: '#/components/examples/file'
+              form:
+                $ref: '#/components/examples/form'
+              image:
+                $ref: '#/components/examples/image'
+              list:
+                $ref: '#/components/examples/list'
+              location:
+                $ref: '#/components/examples/location'
+              whatsapp template:
+                $ref: '#/components/examples/whatsappTemplate'
             schema:
               $ref: '#/components/schemas/messagePost'
         required: true
@@ -1362,22 +1371,20 @@ paths:
           content:
             application/json:
               examples:
-                response:
-                  value:
-                    messages:
-                    - id: 5f748c1a2b5315fc007e7977
-                      received: 2020-09-30T13:46:02.733Z
-                      author:
-                        type: business
-                        displayName: Steve
-                        avatarUrl: https://www.gravatar.com/image.jpg
-                      content:
-                        type: text
-                        text: Hello!
-                      metadata:
-                        lang: en-ca
-                      source:
-                        type: api:conversations
+                text:
+                  $ref: '#/components/examples/text-2'
+                carousel:
+                  $ref: '#/components/examples/carousel-2'
+                file:
+                  $ref: '#/components/examples/file-2'
+                form:
+                  $ref: '#/components/examples/form-2'
+                image:
+                  $ref: '#/components/examples/image-2'
+                list:
+                  $ref: '#/components/examples/list-2'
+                location:
+                  $ref: '#/components/examples/location-2'
               schema:
                 $ref: '#/components/schemas/messagePostResponse'
           description: Created
@@ -3283,6 +3290,329 @@ paths:
       x-accepts: application/json
 components:
   examples:
+    text:
+      value:
+        author:
+          type: business
+        content:
+          type: text
+          text: Hello!
+    carousel:
+      value:
+        author:
+          type: business
+        content:
+          type: carousel
+          items:
+          - title: Tacos
+            description: Get your tacos today!
+            mediaUrl: https://example.org/image.jpg
+            size: compact
+            actions:
+            - text: Select
+              type: postback
+              payload: TACOS
+            - text: More info
+              type: link
+              uri: https://example.org
+          - title: Ramen
+            description: Get your ramen today!
+            mediaUrl: https://example.org/image.jpg
+            size: compact
+            actions:
+            - text: Select
+              type: postback
+              payload: RAMEN
+            - text: More info
+              type: link
+              uri: https://example.org
+    file:
+      value:
+        author:
+          type: business
+        content:
+          type: file
+          text: Here's our FAQ!
+          mediaUrl: https://example.org/FAQ.pdf
+    form:
+      value:
+        author:
+          type: business
+        content:
+          type: form
+          blockChatInput: true
+          fields:
+          - type: text
+            name: full_name
+            label: Your name?
+            placeholder: Type your name...
+            minSize: 1
+            maxSize: 30
+          - type: email
+            name: email_address
+            label: Your email?
+            placeholder: email@example.com
+        destination:
+          integrationType: web
+    image:
+      value:
+        author:
+          type: business
+        content:
+          type: image
+          text: Hello!
+          mediaUrl: https://example.org/image.jpg
+    list:
+      value:
+        author:
+          type: business
+        content:
+          type: list
+          items:
+          - title: Tacos
+            description: Get your tacos today!
+            mediaUrl: https://example.org/image.jpg
+            size: compact
+            actions:
+            - text: Select
+              type: postback
+              payload: TACOS
+            - text: More info
+              type: link
+              uri: https://example.org
+          - title: Ramen
+            description: Get your ramen today!
+            mediaUrl: https://example.org/image.jpg
+            size: compact
+            actions:
+            - text: Select
+              type: postback
+              payload: RAMEN
+            - text: More info
+              type: link
+              uri: https://example.org
+    location:
+      value:
+        author:
+          type: business
+        content:
+          type: location
+          coordinates:
+            lat: 45.5261583
+            long: -73.595346
+          location:
+            address: 5333 avenue Casgrain
+            name: Zendesk Montréal
+    whatsappTemplate:
+      value:
+        author:
+          type: business
+        messageSchema: whatsapp
+        content:
+          type: template
+          template:
+            namespace: XXXXXXXX_XXXX_XXXX_XXXX_XXXXXXXXXXXX
+            name: hello_world
+            language:
+              policy: deterministic
+              code: en_US
+            component:
+            - type: header
+              parameters:
+              - type: image
+                image:
+                  link: https://image.jpg
+            - type: body
+              parameters:
+              - type: text
+                text: My User Name
+              - type: text
+                text: My Agent Name
+    text-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: text
+            text: Hello!
+          source:
+            type: api:conversations
+    carousel-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: carousel
+            text: |-
+              1. Tacos
+              Get your tacos today!
+              More info: https://example.org
+
+              2. Ramen
+              Get your ramen today!
+              More info: https://example.org
+            items:
+            - title: Tacos
+              description: Get your tacos today!
+              mediaUrl: https://example.org/image.jpg
+              mediaType: text/html; charset=UTF-8
+              size: compact
+              actions:
+              - text: Select
+                type: postback
+                payload: TACOS
+                uri: ""
+              - text: More info
+                type: link
+                uri: https://example.org
+            - title: Ramen
+              description: Get your ramen today!
+              mediaUrl: https://example.org/image.jpg
+              mediaType: text/html; charset=UTF-8
+              size: compact
+              actions:
+              - text: Select
+                type: postback
+                payload: RAMEN
+                uri: ""
+              - text: More info
+                type: link
+                uri: https://example.org
+          source:
+            type: api:conversations
+    file-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: file
+            text: Here's our FAQ!
+            mediaUrl: https://example.org/FAQ.pdf
+            mediaType: application/pdf
+            mediaSize: 627328
+          source:
+            type: api:conversations
+    form-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: form
+            submitted: false
+            blockChatInput: true
+            fields:
+            - type: text
+              name: full_name
+              label: Your name?
+              placeholder: Type your name...
+              minSize: 1
+              maxSize: 30
+            - type: email
+              name: email_address
+              label: Your email?
+              placeholder: email@example.com
+          source:
+            type: api:conversations
+    image-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: image
+            text: Hello!
+            mediaUrl: https://example.org/image.jpg
+            mediaType: image/jpg
+            mediaSize: 627328
+          source:
+            type: api:conversations
+    list-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: list
+            text": |-
+              1. Tacos
+              Get your tacos today!
+              More info: https://example.org
+
+              2. Ramen
+              Get your ramen today!
+              More info: https://example.org
+            items:
+            - title: Tacos
+              description: Get your tacos today!
+              mediaUrl: https://example.org/image.jpg
+              mediaType: text/html; charset=UTF-8
+              size: compact
+              actions:
+              - text: Select
+                type: postback
+                payload: TACOS
+                uri: ""
+              - text: More info
+                type: link
+                uri: https://example.org
+            - title: Ramen
+              description: Get your ramen today!
+              mediaUrl: https://example.org/image.jpg
+              mediaType: text/html; charset=UTF-8
+              size: compact
+              actions:
+              - text: Select
+                type: postback
+                payload: RAMEN
+                uri: ""
+              - text: More info
+                type: link
+                uri: https://example.org
+          source:
+            type: api:conversations
+    location-2:
+      value:
+        messages:
+        - id: 5f748c1a2b5315fc007e7977
+          received: 2020-09-30T13:46:02.733Z
+          author:
+            type: business
+            avatarUrl: https://www.gravatar.com/image.jpg
+          content:
+            type: location
+            text: |-
+              Location shared:
+              https://maps.google.com/maps?q=45.5261583,-73.595346
+            coordinates:
+              lat: 45.5261583
+              long: -73.595346
+            location:
+              address: 5333 avenue Casgrain
+              name: Zendesk Montréal
+          source:
+            type: api:conversations
     integrationListResponse:
       value:
         integrations:
@@ -3316,6 +3646,367 @@ components:
           profile: {}
           signedUpAt: 2020-05-21T15:53:30.197Z
           metadata: {}
+    conversationCreateEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:create
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+            creationReason: prechatCapture
+            source:
+              type: web
+              integrationId: 5ecff63ffc3ab25f4561c8a0
+    conversationMessageDeliveryChannelEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:message:delivery:channel
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+            destination:
+              type: telegram
+              integrationId: 5ec69c6e12dda33be985cb1a
+            externalMessages:
+            - id: "371"
+            message:
+              id: 5f74a31c2b5315fc007e7997
+            isFinalEvent: true
+    conversationMessageDeliveryFailureEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:message:delivery:failure
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+            destination:
+              type: twilio
+              integrationId: 5ecc061987d4d413774a8131
+            message:
+              id: 5f74be6256be263abf0ffd5f
+            isFinalEvent: true
+            error:
+              code: uncategorized_error
+              message: Unsupported message type `form`
+    conversationMessageDeliveryUserEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:message:delivery:user
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+            destination:
+              type: twilio
+              integrationId: 5ecc061987d4d413774a8131
+            externalMessages:
+            - id: SM900c83b124b6467eb6db835a969d7374
+            message:
+              id: 5f74b82c56be263abf0ffd50
+            isFinalEvent: true
+    conversationMessageEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:message
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            message:
+              id: 5f74c7d84a146f3abd72af1d
+              received: 2020-09-30T18:00:56.820Z
+              author:
+                userId: 26508c10541a4b0ff472e5e2
+                avatarUrl: https://s3.amazonaws.com/avatar.jpg
+                displayName: Steve Rogers
+                type: user
+                user:
+                  id: 26508c10541a4b0ff472e5e2
+                  externalId: "912382197"
+              content:
+                type: text
+                text: hello
+              source:
+                integrationId: 5ec69c6e12dda33be985cb1a
+                originalMessageId: "374"
+                originalMessageTimestamp: 2020-09-30T18:00:56.000Z
+                type: telegram
+    conversationPostbackEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:postback
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            postback:
+              payload: Greet
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+            source:
+              type: telegram
+              integrationId: 5ec69c6e12dda33be985cb1a
+    conversationReadEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:read
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            activity:
+              type: conversation:read
+              author:
+                type: user
+                userId: b5a0f8de1fd4198a96faa0af
+                user:
+                  id: b5a0f8de1fd4198a96faa0af
+              source:
+                type: web
+                integrationId: 5ecff63ffc3ab25f4561c8a0
+    conversationTypingEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:typing
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+            activity:
+              type: typing:start
+              author:
+                type: user
+                userId: 7283cdd6f586679a5fc43cfb
+                user:
+                  id: 7283cdd6f586679a5fc43cfb
+              source:
+                type: web
+                integrationId: 5ecff63ffc3ab25f4561c8a0
+    switchboardAcceptControlEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:acceptControl
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+    switchboardAcceptControlFailureEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:acceptControl:failure
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+            error:
+              code: switchboard_invalid_action
+              message: There is no pendingSwitchboardIntegration
+    switchboardOfferControlEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:offerControl
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+              pendingSwitchboardIntegration:
+                id: 5eece1cacdbffb08f5c3ed43
+                name: human
+                integrationId: 5f11a65ae4e987667c2051d2
+                integrationType: custom
+    switchboardOfferControlFailureEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:offerControl:failure
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+            error:
+              code: switchboard_invalid_target
+              message: Cannot offer control to the active switchboard integration.
+    switchboardPassControlEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:passControl
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+    switchboardPassControlFailureEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: switchboard:passControl:failure
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+            error:
+              code: switchboard_invalid_target
+              message: Switchboard invalid target
+    userMergeEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: user:merge
+          payload:
+            mergedUsers:
+              surviving:
+                id: 26508c10541a4b0ff472e5e2
+                externalId: "912382197"
+              discarded:
+                id: 1a64f7f75028fef55f815007
+                externalId: "912382198"
   parameters:
     pageQuery:
       description: Contains parameters for applying cursor pagination.
@@ -3564,7 +4255,7 @@ components:
         useAnimalNames: true
         echoPostback: true
         multiConvoEnabled: true
-        attachmentsTokenExpirationSeconds: "64028"
+        attachmentsTokenExpirationSeconds: 64028
         maskCreditCardNumbers: true
       properties:
         conversationRetentionSeconds:
@@ -3590,7 +4281,7 @@ components:
           type: boolean
         ignoreAutoConversationStart:
           description: "A boolean specifying whether a non message event coming from\
-            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#conversation-events)\n\
+            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#section/Webhook-Triggers)\n\
             event and count as a monthly active user (MAU).\n<aside class=\"notice\"\
             >Calling <code>startConversation()</code> (or equivalent) from the Android,\
             \ \niOS or Web SDK will count as a MAU, regardless of the value of this\
@@ -3612,8 +4303,8 @@ components:
           description: |
             Number of seconds representing the expiration time of the generated media tokens for private attachments. The JWT will be valid for 2 hours by default.
             See See <a href="https://docs.smooch.io/guide/private-attachments/">Private Attachments</a> for more information.
-          example: "64028"
-          type: string
+          example: 64028
+          type: integer
       type: object
     metadata:
       description: "Flat object containing custom properties. Strings, numbers and\
@@ -3632,7 +4323,7 @@ components:
           useAnimalNames: true
           echoPostback: true
           multiConvoEnabled: true
-          attachmentsTokenExpirationSeconds: "64028"
+          attachmentsTokenExpirationSeconds: 64028
           maskCreditCardNumbers: true
         metadata:
           lang: en-ca
@@ -3718,7 +4409,7 @@ components:
             useAnimalNames: true
             echoPostback: true
             multiConvoEnabled: true
-            attachmentsTokenExpirationSeconds: "64028"
+            attachmentsTokenExpirationSeconds: 64028
             maskCreditCardNumbers: true
           metadata:
             lang: en-ca
@@ -3731,7 +4422,7 @@ components:
             useAnimalNames: true
             echoPostback: true
             multiConvoEnabled: true
-            attachmentsTokenExpirationSeconds: "64028"
+            attachmentsTokenExpirationSeconds: 64028
             maskCreditCardNumbers: true
           metadata:
             lang: en-ca
@@ -3858,7 +4549,7 @@ components:
       properties:
         mediaUrl:
           description: Uploaded attachment’s url
-          example: http://smooch.io/rocks.smooch.media-dev/apps/5ec41c54fe13cc5ac404bedc/conversations/c616a583e4c240a871818541/TmYMVQUBNsQRItX4fKf4aC-T/Screen%20Shot%202020-09-02%20at%204.04.41%20PM.png
+          example: https://smooch.io/rocks.smooch.media-dev/apps/5ec41c54fe13cc5ac404bedc/conversations/c616a583e4c240a871818541/TmYMVQUBNsQRItX4fKf4aC-T/Screen%20Shot%202020-09-02%20at%204.04.41%20PM.png
           type: string
         mediaType:
           description: Uploaded attachment's media type
@@ -4396,7 +5087,7 @@ components:
           type: string
         payload:
           description: The payload of a postback or reply button.
-          type: object
+          type: string
         metadata:
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
@@ -5244,6 +5935,13 @@ components:
           type: object
         override:
           $ref: '#/components/schemas/messageOverride'
+        messageSchema:
+          description: |
+            Send WhatsApp Message Templates using "whatsapp", while populating the message key using the native [WhatsApp schema](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates).
+            When the `messageSchema` is specified, the message is automatically converted to the Sunshine Conversations schema to be stored in the conversation record. The Sunshine Conversations message schema is also used in the API response.
+            Go to [Post Message API](https://docs.smooch.io/guide/whatsapp/#post-message-api) to view an example.
+          example: whatsapp
+          type: string
       required:
       - author
       - content
@@ -5375,7 +6073,7 @@ components:
           ios: '#/components/schemas/ios'
           line: '#/components/schemas/line'
           mailgun: '#/components/schemas/mailgun'
-          messagebird: '#/components/schemas/messageBird'
+          messagebird: '#/components/schemas/messagebird'
           messenger: '#/components/schemas/messenger'
           telegram: '#/components/schemas/telegram'
           twilio: '#/components/schemas/twilio'
@@ -5419,7 +6117,7 @@ components:
       - $ref: '#/components/schemas/apple_allOf'
     target:
       description: URL to be called when the webhook is triggered.
-      example: http://example.com/callback
+      example: https://example.com/callback
       type: string
     triggers:
       description: An array of triggers the integration is subscribed to. This property
@@ -5453,7 +6151,7 @@ components:
         - conversation:message
         version: v2
         includeFullUser: false
-        target: http://example.com/callback
+        target: https://example.com/callback
       properties:
         id:
           description: A unique identifier for the webhook.
@@ -5468,7 +6166,7 @@ components:
           type: string
         target:
           description: URL to be called when the webhook is triggered.
-          example: http://example.com/callback
+          example: https://example.com/callback
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
@@ -5516,10 +6214,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/mailgun_allOf'
-    messageBird:
+    messagebird:
       allOf:
       - $ref: '#/components/schemas/integration'
-      - $ref: '#/components/schemas/messageBird_allOf'
+      - $ref: '#/components/schemas/messagebird_allOf'
     messenger:
       allOf:
       - $ref: '#/components/schemas/integration'
@@ -5546,7 +6244,7 @@ components:
           default: undefined
           description: Sets the URL of the avatar to use for the automatic reply to
             the prechat capture messages.
-          example: http://domain.com/images/avatar.png
+          example: https://domain.com/images/avatar.png
           type: string
         enabled:
           default: false
@@ -5743,7 +6441,7 @@ components:
           - conversation:message
           version: v2
           includeFullUser: false
-          target: http://example.com/callback
+          target: https://example.com/callback
         - includeFullSource: false
           id: 5e554d2cac66fb73a3c01871
           secret: 8564b3e6a8b20a4bdb68b05ce9bc5936
@@ -5752,7 +6450,7 @@ components:
           - conversation:message
           version: v2
           includeFullUser: false
-          target: http://example.com/callback
+          target: https://example.com/callback
       properties:
         webhooks:
           description: List of webhooks associated with the integration.
@@ -5764,7 +6462,7 @@ components:
       properties:
         target:
           description: URL to be called when the webhook is triggered.
-          example: http://example.com/callback
+          example: https://example.com/callback
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
@@ -6997,7 +7695,7 @@ components:
       - apiKey
       - domain
       - incomingAddress
-    messageBird_allOf:
+    messagebird_allOf:
       description: "To configure a MessageBird integration, acquire the accessKey,\
         \ the signingKey and the MessageBird number you would like to use, then call\
         \ the Create Integration endpoint. The response will include the integration’\
@@ -7231,7 +7929,7 @@ components:
           description: With the button style Web Messenger, you have the option of
             selecting your own button icon. The image must be at least 200 x 200 pixels
             and must be in either JPG, PNG, or GIF format.
-          example: http://domain.com/images/avatar.png
+          example: https://domain.com/images/avatar.png
           nullable: true
           type: string
         buttonWidth:
@@ -7341,7 +8039,7 @@ components:
           minLength: 1
           nullable: true
           type: string
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
@@ -7367,7 +8065,7 @@ components:
           description: Use the unread count of the conversation as the application
             badge.
           type: boolean
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the iOS
             integration.
           type: boolean
@@ -7481,7 +8179,7 @@ components:
           description: Object whose properties can be set to specify the add-on’s
             options. See the [guide](https://docs.smooch.io/guide/web-messenger/#prechat-capture)
             to learn more about Prechat Capture.
-        canUserCreateConversation:
+        canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the web
             messenger integration.
           type: boolean
@@ -7969,12 +8667,12 @@ components:
         payload:
           $ref: '#/components/schemas/userMergeEvent_allOf_payload'
   securitySchemes:
-    basicAuth:
-      scheme: basic
-      type: http
     bearerAuth:
       bearerFormat: JWT
       scheme: bearer
+      type: http
+    basicAuth:
+      scheme: basic
       type: http
 x-tagGroups:
 - name: Account Provisioning
@@ -7996,7 +8694,7 @@ x-tagGroups:
   - Integrations
   - Webhooks
   - CustomIntegrationApiKeys
-- name: Switchboards
+- name: Switchboards (EAP)
   tags:
   - Switchboards
   - Switchboard Integrations
@@ -8012,10 +8710,10 @@ x-webhooks:
     post:
       tags:
       - Webhooks
-      description: "A webhook payload contains an array of events, which may or may\
-        \ not originate from the same user\nor conversation. When processing webhook\
-        \ payloads, your application should take care to process\neach event in the\
-        \ array. \n"
+      description: |
+        A webhook payload contains an array of events, which may or may not originate from the same user
+        or conversation. When processing webhook payloads, your application should take care to process
+        each event in the array.
       summary: Webhook Events
       operationId: eventWebhooks
       requestBody:
@@ -8049,6 +8747,37 @@ x-webhooks:
                     - $ref: '#/components/schemas/switchboardPassControl'
                     - $ref: '#/components/schemas/switchboardPassControlFailure'
                     - $ref: '#/components/schemas/userMergeEvent'
+            examples:
+              conversation:create:
+                $ref: '#/components/examples/conversationCreateEvent'
+              conversation:message:delivery:channel:
+                $ref: '#/components/examples/conversationMessageDeliveryChannelEvent'
+              conversation:message:delivery:failure:
+                $ref: '#/components/examples/conversationMessageDeliveryFailureEvent'
+              conversation:message:delivery:user:
+                $ref: '#/components/examples/conversationMessageDeliveryUserEvent'
+              conversation:message:
+                $ref: '#/components/examples/conversationMessageEvent'
+              conversation:postback:
+                $ref: '#/components/examples/conversationPostbackEvent'
+              conversation:read:
+                $ref: '#/components/examples/conversationReadEvent'
+              conversation:typing:
+                $ref: '#/components/examples/conversationTypingEvent'
+              switchboard:acceptControl:
+                $ref: '#/components/examples/switchboardAcceptControlEvent'
+              switchboard:acceptControl:failure:
+                $ref: '#/components/examples/switchboardAcceptControlFailureEvent'
+              switchboard:offerControl:
+                $ref: '#/components/examples/switchboardOfferControlEvent'
+              switchboard:offerControl:failure:
+                $ref: '#/components/examples/switchboardOfferControlFailureEvent'
+              switchboard:passControl:
+                $ref: '#/components/examples/switchboardPassControlEvent'
+              switchboard:passControl:failure:
+                $ref: '#/components/examples/switchboardPassControlFailureEvent'
+              user:merge:
+                $ref: '#/components/examples/userMergeEvent'
       responses:
         "200":
           description: Ok

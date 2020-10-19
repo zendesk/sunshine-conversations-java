@@ -10,7 +10,7 @@ The Sunshine Conversations API offers multiple [versions](https://docs.smooch.io
 
 | Sunshine Conversations API version | `zendesk/sunshine-conversations-java` version to use |
 |--------------------|------------------------------|
-| `v2` [Implementation guide](https://docs.smooch.io/guide/multi-party-conversations/#implementation-guide/) | `6.*` or newer      |
+| `v2` [Implementation guide](https://docs.smooch.io/guide/multi-party-conversations/#implementation-guide/) | `9.*` or newer      |
 | `v1.1` [Upgrade guide](https://docs.smooch.io/guide/versioning/#upgrading-to-v11-from-v1) | `4.*` or `5.*`      |
 | `v1`               | `3.*` or older               |
 
@@ -341,8 +341,6 @@ Class | Method | HTTP request | Description
  - [MatchCriteriaWhatsapp](docs/MatchCriteriaWhatsapp.md)
  - [MatchCriteriaWhatsappAllOf](docs/MatchCriteriaWhatsappAllOf.md)
  - [Message](docs/Message.md)
- - [MessageBird](docs/MessageBird.md)
- - [MessageBirdAllOf](docs/MessageBirdAllOf.md)
  - [MessageBirdUpdate](docs/MessageBirdUpdate.md)
  - [MessageListResponse](docs/MessageListResponse.md)
  - [MessageOverride](docs/MessageOverride.md)
@@ -353,6 +351,8 @@ Class | Method | HTTP request | Description
  - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessagePostResponse](docs/MessagePostResponse.md)
+ - [Messagebird](docs/Messagebird.md)
+ - [MessagebirdAllOf](docs/MessagebirdAllOf.md)
  - [Messenger](docs/Messenger.md)
  - [MessengerAllOf](docs/MessengerAllOf.md)
  - [MessengerUpdate](docs/MessengerUpdate.md)

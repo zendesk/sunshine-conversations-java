@@ -285,7 +285,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        MessagePost messagePost = {"author":{"type":"business","displayName":"Steve","avatarUrl":"https://www.gravatar.com/image.jpg"},"content":{"type":"text","text":"Hello!"},"metadata":{"lang":"en-ca"}}; // MessagePost | 
+        MessagePost messagePost = new MessagePost(); // MessagePost | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         // Add required body parameters
