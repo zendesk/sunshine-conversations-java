@@ -36,7 +36,7 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
     <groupId>com.zendesk</groupId>
-    <artifactId>aloudin-sunshine-conversations-client</artifactId>
+    <artifactId>sunshine-conversations-client</artifactId>
     <version>9.0.1</version>
     <scope>compile</scope>
 </dependency>
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:aloudin-sunshine-conversations-client:9.0.1"
+compile "com.zendesk:sunshine-conversations-client:9.0.1"
 ```
 
 ## Getting Started

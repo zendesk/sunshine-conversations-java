@@ -112,7 +112,7 @@ if(hasProperty('target') && target == 'android') {
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'aloudin-sunshine-conversations-client'
+            pom.artifactId = 'sunshine-conversations-client'
         }
     }
 

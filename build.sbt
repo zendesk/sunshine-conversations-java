@@ -1,7 +1,7 @@
 lazy val root = (project in file(".")).
   settings(
     organization := "com.zendesk",
-    name := "aloudin-sunshine-conversations-client",
+    name := "sunshine-conversations-client",
     version := "9.0.1",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
