@@ -282,7 +282,7 @@ public class OAuthEndpointsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object revokeAccess(String bearerToken, ) throws ApiException {
+  public Object revokeAccess(String bearerToken ) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

@@ -8,12 +8,14 @@
 ### Changed
 
 - Changed the `mediaUrl` field to be required for `file` and `image` messages
+- Changed coordinates fields to be required in `location` messages
 - Updated the RESTEasy library to the latest version `4.5.8.Final`
 
 ### Fixed
 
 - Fixed the HTTP method used for `/attachments/cookie` from POST to GET
 - Fixed the comment headers in the models having a long description
+- Fixed generation for endpoints with no parameters
 
 ## [9.0.1] - 2020-10-19
 
