@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.0.1</version>
+    <version>9.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.0.1"
+compile "com.zendesk:sunshine-conversations-client:9.1.0"
 ```
 
 ## Getting Started
@@ -156,7 +156,7 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
 *AttachmentsApi* | [**deleteAttachment**](docs/AttachmentsApi.md#deleteAttachment) | **POST** /v2/apps/{appId}/attachments/remove | Delete Attachment
 *AttachmentsApi* | [**generateMediaJsonWebToken**](docs/AttachmentsApi.md#generateMediaJsonWebToken) | **POST** /v2/apps/{appId}/attachments/token | Generate Media Token
-*AttachmentsApi* | [**setCookie**](docs/AttachmentsApi.md#setCookie) | **POST** /v2/apps/{appId}/attachments/cookie | Set Cookie
+*AttachmentsApi* | [**setCookie**](docs/AttachmentsApi.md#setCookie) | **GET** /v2/apps/{appId}/attachments/cookie | Set Cookie
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v2/apps/{appId}/attachments | Upload Attachment
 *ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | Create Client
 *ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | List Clients
@@ -179,6 +179,9 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**deleteMessage**](docs/MessagesApi.md#deleteMessage) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages/{messageId} | Delete Message
 *MessagesApi* | [**listMessages**](docs/MessagesApi.md#listMessages) | **GET** /v2/apps/{appId}/conversations/{conversationId}/messages | List Messages
 *MessagesApi* | [**postMessage**](docs/MessagesApi.md#postMessage) | **POST** /v2/apps/{appId}/conversations/{conversationId}/messages | Post Message
+*OAuthEndpointsApi* | [**authorize**](docs/OAuthEndpointsApi.md#authorize) | **GET** /oauth/authorize | Authorize
+*OAuthEndpointsApi* | [**getToken**](docs/OAuthEndpointsApi.md#getToken) | **POST** /oauth/token | Get Token
+*OAuthEndpointsApi* | [**revokeAccess**](docs/OAuthEndpointsApi.md#revokeAccess) | **DELETE** /oauth/authorization | Revoke Access
 *ParticipantsApi* | [**joinConversation**](docs/ParticipantsApi.md#joinConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/join | Join Conversation
 *ParticipantsApi* | [**leaveConversation**](docs/ParticipantsApi.md#leaveConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/leave | Leave Conversation
 *ParticipantsApi* | [**listParticipants**](docs/ParticipantsApi.md#listParticipants) | **GET** /v2/apps/{appId}/conversations/{conversationId}/participants | List Participants
@@ -300,6 +303,7 @@ Class | Method | HTTP request | Description
  - [FormMessage](docs/FormMessage.md)
  - [FormResponseMessage](docs/FormResponseMessage.md)
  - [ImageMessage](docs/ImageMessage.md)
+ - [InlineObject](docs/InlineObject.md)
  - [Integration](docs/Integration.md)
  - [IntegrationApiKey](docs/IntegrationApiKey.md)
  - [IntegrationApiKeyListResponse](docs/IntegrationApiKeyListResponse.md)
@@ -351,6 +355,7 @@ Class | Method | HTTP request | Description
  - [MessageOverrideWhatsapp](docs/MessageOverrideWhatsapp.md)
  - [MessagePost](docs/MessagePost.md)
  - [MessagePostResponse](docs/MessagePostResponse.md)
+ - [MessageWebhook](docs/MessageWebhook.md)
  - [Messagebird](docs/Messagebird.md)
  - [MessagebirdAllOf](docs/MessagebirdAllOf.md)
  - [Messenger](docs/Messenger.md)
