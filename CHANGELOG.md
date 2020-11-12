@@ -1,4 +1,10 @@
 # Changelog
+## [9.1.1] - 2020-11-11
+
+### Fixed
+
+- Fixed `bearerToken` issue in some endpoints
+
 ## [9.1.0] - 2020-11-11
 
 ### Added
