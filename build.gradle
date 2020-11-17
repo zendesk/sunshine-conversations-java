@@ -45,6 +45,11 @@ task sourcesJar(type: Jar, dependsOn: classes) {
     from sourceSets.main.allSource
 }
 
+task copyDeps(type: Copy) {
+  from configurations.runtime
+  into 'build/lib'
+} 
+
 artifacts {
     archives sourcesJar
 }
