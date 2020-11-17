@@ -31,14 +31,14 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * MessengerUpdate
+ * InstagramUpdate
  */
 @JsonPropertyOrder({
-  MessengerUpdate.JSON_PROPERTY_DISPLAY_NAME,
-  MessengerUpdate.JSON_PROPERTY_PAGE_ACCESS_TOKEN
+  InstagramUpdate.JSON_PROPERTY_DISPLAY_NAME,
+  InstagramUpdate.JSON_PROPERTY_PAGE_ACCESS_TOKEN
 })
 
-public class MessengerUpdate implements IntegrationUpdate {
+public class InstagramUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -46,7 +46,7 @@ public class MessengerUpdate implements IntegrationUpdate {
   private String pageAccessToken;
 
 
-  public MessengerUpdate displayName(String displayName) {
+  public InstagramUpdate displayName(String displayName) {
     this.displayName = JsonNullable.<String>of(displayName);
     
     return this;
@@ -81,7 +81,7 @@ public class MessengerUpdate implements IntegrationUpdate {
   }
 
 
-  public MessengerUpdate pageAccessToken(String pageAccessToken) {
+  public InstagramUpdate pageAccessToken(String pageAccessToken) {
     
     this.pageAccessToken = pageAccessToken;
     return this;
@@ -114,9 +114,9 @@ public class MessengerUpdate implements IntegrationUpdate {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    MessengerUpdate messengerUpdate = (MessengerUpdate) o;
-    return Objects.equals(this.displayName, messengerUpdate.displayName) &&
-        Objects.equals(this.pageAccessToken, messengerUpdate.pageAccessToken);
+    InstagramUpdate instagramUpdate = (InstagramUpdate) o;
+    return Objects.equals(this.displayName, instagramUpdate.displayName) &&
+        Objects.equals(this.pageAccessToken, instagramUpdate.pageAccessToken);
   }
 
   @Override
@@ -128,7 +128,7 @@ public class MessengerUpdate implements IntegrationUpdate {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MessengerUpdate {\n");
+    sb.append("class InstagramUpdate {\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    pageAccessToken: ").append(toIndentedString(pageAccessToken)).append("\n");
     sb.append("}");

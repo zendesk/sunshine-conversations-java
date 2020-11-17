@@ -23,6 +23,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Android;
 import com.zendesk.sunshine_conversations_client.model.Apple;
 import com.zendesk.sunshine_conversations_client.model.Custom;
+import com.zendesk.sunshine_conversations_client.model.Instagram;
 import com.zendesk.sunshine_conversations_client.model.Integration;
 import com.zendesk.sunshine_conversations_client.model.Ios;
 import com.zendesk.sunshine_conversations_client.model.Line;
@@ -59,6 +60,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   @JsonSubTypes.Type(value = Android.class, name = "android"),
   @JsonSubTypes.Type(value = Apple.class, name = "apple"),
   @JsonSubTypes.Type(value = Custom.class, name = "custom"),
+  @JsonSubTypes.Type(value = Instagram.class, name = "instagram"),
   @JsonSubTypes.Type(value = Ios.class, name = "ios"),
   @JsonSubTypes.Type(value = Line.class, name = "line"),
   @JsonSubTypes.Type(value = Mailgun.class, name = "mailgun"),

@@ -21,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.AndroidUpdate;
 import com.zendesk.sunshine_conversations_client.model.AppleUpdate;
 import com.zendesk.sunshine_conversations_client.model.CustomUpdate;
+import com.zendesk.sunshine_conversations_client.model.InstagramUpdate;
 import com.zendesk.sunshine_conversations_client.model.IosUpdate;
 import com.zendesk.sunshine_conversations_client.model.LineUpdate;
 import com.zendesk.sunshine_conversations_client.model.MailgunUpdate;

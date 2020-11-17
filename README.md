@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.1.1</version>
+    <version>9.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.1.1"
+compile "com.zendesk:sunshine-conversations-client:9.2.0"
 ```
 
 ## Getting Started
@@ -304,6 +304,10 @@ Class | Method | HTTP request | Description
  - [FormResponseMessage](docs/FormResponseMessage.md)
  - [ImageMessage](docs/ImageMessage.md)
  - [InlineObject](docs/InlineObject.md)
+ - [Instagram](docs/Instagram.md)
+ - [InstagramAllOf](docs/InstagramAllOf.md)
+ - [InstagramUpdate](docs/InstagramUpdate.md)
+ - [InstagramUpdateAllOf](docs/InstagramUpdateAllOf.md)
  - [Integration](docs/Integration.md)
  - [IntegrationApiKey](docs/IntegrationApiKey.md)
  - [IntegrationApiKeyListResponse](docs/IntegrationApiKeyListResponse.md)
@@ -361,7 +365,6 @@ Class | Method | HTTP request | Description
  - [Messenger](docs/Messenger.md)
  - [MessengerAllOf](docs/MessengerAllOf.md)
  - [MessengerUpdate](docs/MessengerUpdate.md)
- - [MessengerUpdateAllOf](docs/MessengerUpdateAllOf.md)
  - [Meta](docs/Meta.md)
  - [OfferControlBody](docs/OfferControlBody.md)
  - [Page](docs/Page.md)

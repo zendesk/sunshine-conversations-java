@@ -6297,6 +6297,7 @@ components:
           android: '#/components/schemas/android'
           apple: '#/components/schemas/apple'
           custom: '#/components/schemas/custom'
+          instagram: '#/components/schemas/instagram'
           ios: '#/components/schemas/ios'
           line: '#/components/schemas/line'
           mailgun: '#/components/schemas/mailgun'
@@ -6429,6 +6430,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/custom_allOf'
+    instagram:
+      allOf:
+      - $ref: '#/components/schemas/integration'
+      - $ref: '#/components/schemas/instagram_allOf'
     ios:
       allOf:
       - $ref: '#/components/schemas/integration'
@@ -6569,6 +6574,10 @@ components:
     customUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
+    instagramUpdate:
+      allOf:
+      - $ref: '#/components/schemas/integrationUpdateBase'
+      - $ref: '#/components/schemas/instagramUpdate_allOf'
     iosUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -6586,7 +6595,7 @@ components:
     messengerUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
-      - $ref: '#/components/schemas/messengerUpdate_allOf'
+      - $ref: '#/components/schemas/instagramUpdate_allOf'
     telegramUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -6612,6 +6621,7 @@ components:
       - $ref: '#/components/schemas/androidUpdate'
       - $ref: '#/components/schemas/appleUpdate'
       - $ref: '#/components/schemas/customUpdate'
+      - $ref: '#/components/schemas/instagramUpdate'
       - $ref: '#/components/schemas/iosUpdate'
       - $ref: '#/components/schemas/lineUpdate'
       - $ref: '#/components/schemas/mailgunUpdate'
@@ -7863,6 +7873,69 @@ components:
           type: array
       required:
       - webhooks
+    instagram_allOf:
+      description: |
+        Instagram Direct setup steps:
+        Take note of your Facebook app ID and secret (apps can be created at [developer.facebook.com](https://developer.facebook.com));
+        The Facebook app must have been submitted to Facebook for app review with the "manage_pages" (to retrieve Page Access Tokens for the Pages and apps that the app user administers and to set a webhook), "instagram_basic", and "instagram_manage_messages" (to retrieve basic Instagram account information and send messages) permissions.
+        In order to integrate an Instagram Direct app, you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
+      properties:
+        type:
+          default: instagram
+          description: The type of integration.
+          type: string
+        pageAccessToken:
+          description: The Facebook Page Access Token of the Facebook page that is
+            linked to your Instagram account.
+          example: your_page_access_token
+          type: string
+          writeOnly: true
+        appId:
+          description: Your Facebook App ID.
+          example: your_facebook_app_id
+          type: string
+        appSecret:
+          description: Your Facebook App secret.
+          example: your_facebook_app_secret
+          type: string
+          writeOnly: true
+        businessName:
+          description: Your Instagram Business account name
+          example: instagram_name
+          readOnly: true
+          type: string
+        businessUsername:
+          description: Your Instagram Business unique username
+          example: instagram_username
+          readOnly: true
+          type: string
+        pageId:
+          description: The ID of the Facebook Page linked to your Instagram Business
+            account
+          example: "106731941223392"
+          readOnly: true
+          type: string
+        businessId:
+          description: The ID of the Instagram Business account
+          example: "17841444303043201"
+          readOnly: true
+          type: string
+        username:
+          description: The Facebook user's username. This is returned when integrating
+            through the Dashboard
+          example: facebook_username
+          readOnly: true
+          type: string
+        userId:
+          description: The Facebook user's user ID. This is returned when integrating
+            through the Dashboard
+          example: "100885965124932"
+          readOnly: true
+          type: string
+      required:
+      - appId
+      - appSecret
+      - pageAccessToken
     ios_allOf:
       properties:
         type:
@@ -8034,7 +8107,7 @@ components:
       description: |
         Facebook Messenger Setup steps:
         Take note of your Facebook app ID and secret (apps can be created at developer.facebook.com);
-        The Facebook app must have been submitted to Facebook for approval with the “manage_pages” (to receive messages through webhook) and “pages_messaging” (to send messages) permissions.
+        The Facebook app must have been submitted to Facebook for app review with the “manage_pages” (to retrieve Page Access Tokens for the Pages, apps that the app user administers and set a webhook) and “pages_messaging” (to send messages) permissions.
         In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
       properties:
         type:
@@ -8332,6 +8405,12 @@ components:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
+    instagramUpdate_allOf:
+      properties:
+        pageAccessToken:
+          description: A Facebook Page Access Token.
+          example: your_access_token
+          type: string
     iosUpdate_allOf:
       properties:
         certificate:
@@ -8376,12 +8455,6 @@ components:
           example: test@sandbox123.mailgun.org
           minLength: 1
           nullable: true
-          type: string
-    messengerUpdate_allOf:
-      properties:
-        pageAccessToken:
-          description: A Facebook Page Access Token.
-          example: your_access_token
           type: string
     webUpdate_allOf:
       description: |

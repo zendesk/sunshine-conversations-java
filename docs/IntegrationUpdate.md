@@ -7,6 +7,7 @@
 * AndroidUpdate
 * AppleUpdate
 * CustomUpdate
+* InstagramUpdate
 * IosUpdate
 * LineUpdate
 * MailgunUpdate
