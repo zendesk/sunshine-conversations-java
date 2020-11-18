@@ -125,7 +125,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.1.0
+  version: 9.3.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -3481,6 +3481,7 @@ components:
           - title: Tacos
             description: Get your tacos today!
             mediaUrl: https://example.org/image.jpg
+            altText: A giant taco
             size: compact
             actions:
             - text: Select
@@ -3492,6 +3493,7 @@ components:
           - title: Ramen
             description: Get your ramen today!
             mediaUrl: https://example.org/image.jpg
+            altText: A chicken vegetable ramen bowl
             size: compact
             actions:
             - text: Select
@@ -3508,6 +3510,7 @@ components:
           type: file
           text: Here's our FAQ!
           mediaUrl: https://example.org/FAQ.pdf
+          altText: FAQ.pdf
     form:
       value:
         author:
@@ -3536,6 +3539,7 @@ components:
           type: image
           text: Hello!
           mediaUrl: https://example.org/image.jpg
+          altText: A wonderful image
     list:
       value:
         author:
@@ -3637,6 +3641,7 @@ components:
             - title: Tacos
               description: Get your tacos today!
               mediaUrl: https://example.org/image.jpg
+              altText: A giant taco
               mediaType: text/html; charset=UTF-8
               size: compact
               actions:
@@ -3650,6 +3655,7 @@ components:
             - title: Ramen
               description: Get your ramen today!
               mediaUrl: https://example.org/image.jpg
+              altText: A chicken vegetable ramen bowl
               mediaType: text/html; charset=UTF-8
               size: compact
               actions:
@@ -3674,6 +3680,7 @@ components:
             type: file
             text: Here's our FAQ!
             mediaUrl: https://example.org/FAQ.pdf
+            altText: FAQ.pdf
             mediaType: application/pdf
             mediaSize: 627328
           source:
@@ -3715,6 +3722,7 @@ components:
             type: image
             text: Hello!
             mediaUrl: https://example.org/image.jpg
+            altText: A wonderful image
             mediaType: image/jpg
             mediaSize: 627328
           source:
@@ -5467,6 +5475,11 @@ components:
           description: The MIME type for any image attached in the mediaUrl.
           maxLength: 128
           type: string
+        altText:
+          description: An optional description of the media for accessibility purposes.
+            The field will be saved by default with the file name as the value.
+          maxLength: 128
+          type: string
         size:
           description: The size of the image.
           enum:
@@ -5542,6 +5555,11 @@ components:
         mediaType:
           description: The media type of the file.
           readOnly: true
+          type: string
+        altText:
+          description: An optional description of the file for accessibility purposes.
+            The field will be saved by default with the file name as the value.
+          maxLength: 128
           type: string
         text:
           description: The text content of the message.
@@ -5705,6 +5723,11 @@ components:
         mediaUrl:
           description: The URL for media, such as an image, attached to the message.
           format: uri
+          type: string
+        altText:
+          description: An optional description of the image for accessibility purposes.
+            The field will be saved by default with the file name as the value.
+          maxLength: 128
           type: string
         text:
           description: The text content of the message. Optional only if actions are
