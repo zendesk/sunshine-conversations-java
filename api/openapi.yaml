@@ -233,10 +233,13 @@ tags:
     \ object along with a JSON payload specific for the event type.\n\n| Trigger \
     \                | Description                       |\n| ----------------------\
     \  | -------------------------- |\n| conversation:create     | When a new conversation\
-    \ is created.    |\n| conversation:message  | When a new message was sent in the\
-    \ conversation. |\n| conversation:message:delivery:channel  | When a message is\
-    \ successfully delivered to a channel. |\n| conversation:message:delivery:failure\
-    \  | When a new message fails to be delivered in the conversation. |\n| conversation:message:delivery:user\
+    \ is created.    |\n| conversation:join     | When a new participant joins a `sdkGroup`\
+    \ conversation.    |\n| conversation:leave     | When a participant leaves a `sdkGroup`\
+    \ conversation.     |\n| conversation:remove  | When a conversation is deleted.\
+    \ |\n| conversation:message  | When a new message was sent in the conversation.\
+    \ |\n| conversation:message:delivery:channel  | When a message is successfully\
+    \ delivered to a channel. |\n| conversation:message:delivery:failure  | When a\
+    \ new message fails to be delivered in the conversation. |\n| conversation:message:delivery:user\
     \  | When a new message is successfully delivered to a user. |\n| conversation:postback\
     \  | When a user clicks on a postback action button. |\n| conversation:read  |\
     \ When a user has read the conversation. |\n| conversation:typing  | When a user\
@@ -3850,6 +3853,57 @@ components:
             source:
               type: web
               integrationId: 5ecff63ffc3ab25f4561c8a0
+    conversationJoinEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:join
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: sdkGroup
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+    conversationLeaveEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:leave
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: sdkGroup
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: "912382197"
+    conversationRemoveEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: conversation:remove
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: sdkGroup
     conversationMessageDeliveryChannelEvent:
       value:
         app:
@@ -6372,10 +6426,7 @@ components:
       type: string
     triggers:
       description: An array of triggers the integration is subscribed to. This property
-        is case sensitive. Current supported triggers in v2 are `conversation:create`,
-        `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
-        `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
-        `conversation:typing`, `conversation:postback`, and `user:merge`
+        is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
       example:
       - conversation:read
       - conversation:message
@@ -6421,10 +6472,7 @@ components:
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
-            property is case sensitive. Current supported triggers in v2 are `conversation:create`,
-            `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
-            `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
-            `conversation:typing`, `conversation:postback`, and `user:merge`
+            property is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
           example:
           - conversation:read
           - conversation:message
@@ -6726,10 +6774,7 @@ components:
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
-            property is case sensitive. Current supported triggers in v2 are `conversation:create`,
-            `conversation:message:delivery:channel`, `conversation:message:delivery:failure`,
-            `conversation:message:delivery:user`, `conversation:message`, `conversation:read`,
-            `conversation:typing`, `conversation:postback`, and `user:merge`
+            property is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
           example:
           - conversation:read
           - conversation:message
@@ -7330,6 +7375,21 @@ components:
       - $ref: '#/components/schemas/eventSubSchema'
       - $ref: '#/components/schemas/conversationCreateEvent_allOf'
       title: conversation:create
+    conversationJoinEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationJoinEvent_allOf'
+      title: conversation:join
+    conversationLeaveEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationLeaveEvent_allOf'
+      title: conversation:leave
+    conversationRemoveEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationRemoveEvent_allOf'
+      title: conversation:remove
     conversationMessageDeliveryPayload:
       description: The payload of the event. The contents of this object depend on
         the type of event.
@@ -8763,6 +8823,50 @@ components:
       properties:
         payload:
           $ref: '#/components/schemas/conversationCreateEvent_allOf_payload'
+    conversationJoinEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the user was added.
+        user:
+          allOf:
+          - $ref: '#/components/schemas/userTruncated'
+          description: The user that joined the conversation.
+    conversationJoinEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationJoinEvent_allOf_payload'
+    conversationLeaveEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation in which the user was removed.
+        user:
+          allOf:
+          - $ref: '#/components/schemas/userTruncated'
+          description: The user that left the conversation.
+    conversationLeaveEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationLeaveEvent_allOf_payload'
+    conversationRemoveEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation that was deleted.
+    conversationRemoveEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationRemoveEvent_allOf_payload'
     conversationMessageDeliveryPayload_message:
       description: The message that was sent.
       properties:
@@ -9115,6 +9219,9 @@ x-webhooks:
                   items:
                     anyOf:
                     - $ref: '#/components/schemas/conversationCreateEvent'
+                    - $ref: '#/components/schemas/conversationJoinEvent'
+                    - $ref: '#/components/schemas/conversationLeaveEvent'
+                    - $ref: '#/components/schemas/conversationRemoveEvent'
                     - $ref: '#/components/schemas/conversationMessageDeliveryChannelEvent'
                     - $ref: '#/components/schemas/conversationMessageDeliveryFailureEvent'
                     - $ref: '#/components/schemas/conversationMessageDeliveryUserEvent'
@@ -9132,6 +9239,12 @@ x-webhooks:
             examples:
               conversation:create:
                 $ref: '#/components/examples/conversationCreateEvent'
+              conversation:join:
+                $ref: '#/components/examples/conversationJoinEvent'
+              conversation:leave:
+                $ref: '#/components/examples/conversationLeaveEvent'
+              conversation:remove:
+                $ref: '#/components/examples/conversationRemoveEvent'
               conversation:message:delivery:channel:
                 $ref: '#/components/examples/conversationMessageDeliveryChannelEvent'
               conversation:message:delivery:failure:
