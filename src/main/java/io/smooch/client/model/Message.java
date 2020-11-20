@@ -69,6 +69,9 @@ public class Message {
   @SerializedName("mediaType")
   private String mediaType = null;
 
+  @SerializedName("altText")
+  private String altText = null;
+
   @SerializedName("metadata")
   private Object metadata = null;
 
@@ -319,6 +322,24 @@ public class Message {
 
   public void setMediaType(String mediaType) {
     this.mediaType = mediaType;
+  }
+
+  public Message altText(String altText) {
+    this.altText = altText;
+    return this;
+  }
+
+   /**
+   * An optional description of the image or the file for accessibility purposes. The field will be saved by default with the file name as the value.
+   * @return altText
+  **/
+  @ApiModelProperty(value = "An optional description of the image or the file for accessibility purposes. The field will be saved by default with the file name as the value.")
+  public String getAltText() {
+    return altText;
+  }
+
+  public void setAltText(String altText) {
+    this.altText = altText;
   }
 
   public Message metadata(Object metadata) {
@@ -583,6 +604,7 @@ public class Message {
         Objects.equals(this.received, message.received) &&
         Objects.equals(this.mediaUrl, message.mediaUrl) &&
         Objects.equals(this.mediaType, message.mediaType) &&
+        Objects.equals(this.altText, message.altText) &&
         Objects.equals(this.metadata, message.metadata) &&
         Objects.equals(this.items, message.items) &&
         Objects.equals(this.actions, message.actions) &&
@@ -599,7 +621,7 @@ public class Message {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, authorId, role, type, source, name, text, email, avatarUrl, received, mediaUrl, mediaType, metadata, items, actions, payload, displaySettings, blockChatInput, fields, submitted, quotedMessage, textFallback, coordinates, location);
+    return Objects.hash(id, authorId, role, type, source, name, text, email, avatarUrl, received, mediaUrl, mediaType, altText, metadata, items, actions, payload, displaySettings, blockChatInput, fields, submitted, quotedMessage, textFallback, coordinates, location);
   }
 
 
@@ -620,6 +642,7 @@ public class Message {
     sb.append("    received: ").append(toIndentedString(received)).append("\n");
     sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");

@@ -63,6 +63,9 @@ public class MessagePost {
   @SerializedName("mediaType")
   private String mediaType = null;
 
+  @SerializedName("altText")
+  private String altText = null;
+
   @SerializedName("items")
   private List<MessageItem> items = null;
 
@@ -268,6 +271,24 @@ public class MessagePost {
 
   public void setMediaType(String mediaType) {
     this.mediaType = mediaType;
+  }
+
+  public MessagePost altText(String altText) {
+    this.altText = altText;
+    return this;
+  }
+
+   /**
+   * An optional description of the image or the file for accessibility purposes. The field will be saved by default with the file name as the value.
+   * @return altText
+  **/
+  @ApiModelProperty(value = "An optional description of the image or the file for accessibility purposes. The field will be saved by default with the file name as the value.")
+  public String getAltText() {
+    return altText;
+  }
+
+  public void setAltText(String altText) {
+    this.altText = altText;
   }
 
   public MessagePost items(List<MessageItem> items) {
@@ -476,6 +497,7 @@ public class MessagePost {
         Objects.equals(this.text, messagePost.text) &&
         Objects.equals(this.mediaUrl, messagePost.mediaUrl) &&
         Objects.equals(this.mediaType, messagePost.mediaType) &&
+        Objects.equals(this.altText, messagePost.altText) &&
         Objects.equals(this.items, messagePost.items) &&
         Objects.equals(this.actions, messagePost.actions) &&
         Objects.equals(this.blockChatInput, messagePost.blockChatInput) &&
@@ -489,7 +511,7 @@ public class MessagePost {
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, type, name, email, avatarUrl, metadata, payload, text, mediaUrl, mediaType, items, actions, blockChatInput, displaySettings, fields, destination, override, coordinates, location);
+    return Objects.hash(role, type, name, email, avatarUrl, metadata, payload, text, mediaUrl, mediaType, altText, items, actions, blockChatInput, displaySettings, fields, destination, override, coordinates, location);
   }
 
 
@@ -508,6 +530,7 @@ public class MessagePost {
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
+    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
     sb.append("    blockChatInput: ").append(toIndentedString(blockChatInput)).append("\n");

@@ -35,6 +35,9 @@ public class MessageItem {
   @SerializedName("mediaUrl")
   private String mediaUrl = null;
 
+  @SerializedName("altText")
+  private String altText = null;
+
   @SerializedName("size")
   private String size = null;
 
@@ -96,6 +99,24 @@ public class MessageItem {
 
   public void setMediaUrl(String mediaUrl) {
     this.mediaUrl = mediaUrl;
+  }
+
+  public MessageItem altText(String altText) {
+    this.altText = altText;
+    return this;
+  }
+
+   /**
+   * An optional description of the media for accessibility purposes. The field will be saved by default with the file name as the value.
+   * @return altText
+  **/
+  @ApiModelProperty(value = "An optional description of the media for accessibility purposes. The field will be saved by default with the file name as the value.")
+  public String getAltText() {
+    return altText;
+  }
+
+  public void setAltText(String altText) {
+    this.altText = altText;
   }
 
   public MessageItem size(String size) {
@@ -170,6 +191,7 @@ public class MessageItem {
     return Objects.equals(this.title, messageItem.title) &&
         Objects.equals(this.description, messageItem.description) &&
         Objects.equals(this.mediaUrl, messageItem.mediaUrl) &&
+        Objects.equals(this.altText, messageItem.altText) &&
         Objects.equals(this.size, messageItem.size) &&
         Objects.equals(this.mediaType, messageItem.mediaType) &&
         Objects.equals(this.actions, messageItem.actions);
@@ -177,7 +199,7 @@ public class MessageItem {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, mediaUrl, size, mediaType, actions);
+    return Objects.hash(title, description, mediaUrl, altText, size, mediaType, actions);
   }
 
 
@@ -189,6 +211,7 @@ public class MessageItem {
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    mediaUrl: ").append(toIndentedString(mediaUrl)).append("\n");
+    sb.append("    altText: ").append(toIndentedString(altText)).append("\n");
     sb.append("    size: ").append(toIndentedString(size)).append("\n");
     sb.append("    mediaType: ").append(toIndentedString(mediaType)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
