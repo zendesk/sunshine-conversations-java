@@ -42,11 +42,11 @@ public class IntegrationType implements Destination {
   }
 
    /**
-   * The type of the integration to deliver the message to. Will return an error if the user does not have a client of that type attached to the conversation. 
+   * The type of the integration to deliver the message to. Can be set to &#x60;none&#x60; if sending a [silent message](https://docs.smooch.io/guide/sending-messages/#silent-messages). Will return an error if the user does not have a client of that type attached to the conversation. 
    * @return integrationType
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "whatsapp", value = "The type of the integration to deliver the message to. Will return an error if the user does not have a client of that type attached to the conversation. ")
+  @ApiModelProperty(example = "whatsapp", value = "The type of the integration to deliver the message to. Can be set to `none` if sending a [silent message](https://docs.smooch.io/guide/sending-messages/#silent-messages). Will return an error if the user does not have a client of that type attached to the conversation. ")
   @JsonProperty(JSON_PROPERTY_INTEGRATION_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
