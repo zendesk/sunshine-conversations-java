@@ -125,7 +125,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.3.0
+  version: 9.4.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -7112,6 +7112,13 @@ components:
           example: https://s3.amazonaws.com/avatar.jpg
           format: uri
           maxLength: 2048
+          minLength: 1
+          nullable: true
+          type: string
+        locale:
+          description: End-user's locale information in BCP 47 format.
+          example: fr-CA
+          maxLength: 64
           minLength: 1
           nullable: true
           type: string
