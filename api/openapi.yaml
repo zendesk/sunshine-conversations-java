@@ -5649,7 +5649,7 @@ components:
             minLength: 1
             type: string
         type: object
-      maxItems: 20
+      maxItems: 100
       type: array
     field:
       description: |
@@ -5724,7 +5724,7 @@ components:
                 minLength: 1
                 type: string
             type: object
-          maxItems: 20
+          maxItems: 100
           type: array
       required:
       - label
