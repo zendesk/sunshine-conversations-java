@@ -206,7 +206,7 @@ public class Example {
         MessagesApi apiInstance = new MessagesApi(defaultClient);
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
-        Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
+        Page1 page = new Page1(); // Page1 | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
@@ -230,7 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **conversationId** | **String**| Identifies the conversation. |
- **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
+ **page** | [**Page1**](.md)| Contains parameters for applying cursor pagination. | [optional]
 
 ### Return type
 

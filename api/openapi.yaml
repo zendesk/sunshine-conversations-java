@@ -1337,13 +1337,27 @@ paths:
           example: 029c31f25a21b47effd7be90
           type: string
         style: simple
-      - description: Contains parameters for applying cursor pagination.
+      - $ref: '#/components/parameters/page_1'
+        description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
         name: page
         required: false
         schema:
-          $ref: '#/components/schemas/page'
+          properties:
+            after:
+              description: "A record id. Results will only contain the records that\
+                \ come after the specified record. \nOnly one of `after` or `before`\
+                \ can be provided, not both.\n"
+              example: 5e1606762556d93e9c176f69
+              type: string
+            before:
+              description: |
+                A record id. Results will only contain the records that come before the specified record.
+                Only one of `after` or `before` can be provided, not both.
+              example: 5e1606762556d93e9c176f69
+              type: string
+          type: object
         style: deepObject
       responses:
         "200":
@@ -4365,6 +4379,29 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
+    pageWithoutSizeQuery:
+      $ref: '#/components/parameters/page_1'
+      description: Contains parameters for applying cursor pagination.
+      explode: true
+      in: query
+      name: page
+      required: false
+      schema:
+        properties:
+          after:
+            description: "A record id. Results will only contain the records that\
+              \ come after the specified record. \nOnly one of `after` or `before`\
+              \ can be provided, not both.\n"
+            example: 5e1606762556d93e9c176f69
+            type: string
+          before:
+            description: |
+              A record id. Results will only contain the records that come before the specified record.
+              Only one of `after` or `before` can be provided, not both.
+            example: 5e1606762556d93e9c176f69
+            type: string
+        type: object
+      style: deepObject
     messageId:
       description: The id of the message.
       explode: false
@@ -7633,6 +7670,21 @@ components:
       properties:
         participant:
           $ref: '#/components/schemas/participant'
+    page_1:
+      properties:
+        after:
+          description: "A record id. Results will only contain the records that come\
+            \ after the specified record. \nOnly one of `after` or `before` can be\
+            \ provided, not both.\n"
+          example: 5e1606762556d93e9c176f69
+          type: string
+        before:
+          description: |
+            A record id. Results will only contain the records that come before the specified record.
+            Only one of `after` or `before` can be provided, not both.
+          example: 5e1606762556d93e9c176f69
+          type: string
+      type: object
     integrationListFilter:
       properties:
         types:
