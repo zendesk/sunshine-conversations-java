@@ -57,7 +57,7 @@ info:
     \ to come. These helpful libraries wrap calls to the API and can make interfacing\
     \ with Sunshine Conversations easier.\n\n## Postman Collection\n\n<a style=\"\
     display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
-    \ 123px;\" href=\"https://app.getpostman.com/run-collection/0c7cc8fc66039065d20f\"\
+    \ 123px;\" href=\"https://s3.amazonaws.com/docs.smooch.io/sunco-openapi/postman_collection.json\"\
     ></a>\n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
     \ collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
     \ for information on how to install and use the collection in your Postman client.\n\
@@ -125,7 +125,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.4.0
+  version: 9.4.2
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5900,6 +5900,21 @@ components:
       - coordinates
       - type
       type: object
+    templateMessage:
+      properties:
+        type:
+          default: template
+          description: The type of message.
+          type: string
+        template:
+          description: The whatsapp template message to send. For more information,
+            consult the [guide](https://docs.smooch.io/guide/whatsapp#sending-message-templates).
+            `schema` must be set to `whatsapp`.
+          type: object
+      required:
+      - template
+      - type
+      type: object
     content:
       discriminator:
         mapping:
@@ -5911,6 +5926,7 @@ components:
           image: '#/components/schemas/imageMessage'
           list: '#/components/schemas/listMessage'
           location: '#/components/schemas/locationMessage'
+          template: '#/components/schemas/templateMessage'
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/textMessage'
@@ -5921,6 +5937,7 @@ components:
       - $ref: '#/components/schemas/imageMessage'
       - $ref: '#/components/schemas/listMessage'
       - $ref: '#/components/schemas/locationMessage'
+      - $ref: '#/components/schemas/templateMessage'
       x-one-of-name: Content
     client:
       example:
@@ -6288,10 +6305,9 @@ components:
           type: object
         override:
           $ref: '#/components/schemas/messageOverride'
-        messageSchema:
+        schema:
           description: |
-            Send WhatsApp Message Templates using "whatsapp", while populating the message key using the native [WhatsApp schema](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates).
-            When the `messageSchema` is specified, the message is automatically converted to the Sunshine Conversations schema to be stored in the conversation record. The Sunshine Conversations message schema is also used in the API response.
+            When the `schema` is set to `whatsapp`, the message is automatically converted to the Sunshine Conversations schema to be stored in the conversation record. The Sunshine Conversations message schema is also used in the API response.
             Go to [Post Message API](https://docs.smooch.io/guide/whatsapp/#post-message-api) to view an example.
           example: whatsapp
           type: string
@@ -6447,7 +6463,6 @@ components:
           readOnly: true
           type: string
         type:
-          description: The type of integration.
           example: android
           type: string
         status:
@@ -7967,7 +7982,9 @@ components:
       properties:
         type:
           default: android
-          description: The type of integration.
+          description: |
+            To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/). Copy the `serverKey` and `senderId` from the Cloud Messaging tab in the settings of your project and call the create integrations endpoint with this data.
+            If you would like to continue using your legacy GCM `serverKey` you can also obtain it from the [Google Developer Console](https://console.developers.google.com/).
           type: string
         serverKey:
           description: Your server key from the fcm console.
@@ -7987,12 +8004,11 @@ components:
             integration.
           type: boolean
     apple_allOf:
-      description: |
-        To configure an Apple Business Chat integration, acquire the required information and call the Create Integration endpoint.
       properties:
         type:
           default: apple
-          description: The type of integration.
+          description: |
+            To configure an Apple Business Chat integration, acquire the required information and call the Create Integration endpoint.
           type: string
         businessId:
           description: Apple Business Chat ID.
@@ -8016,7 +8032,8 @@ components:
       properties:
         type:
           default: custom
-          description: The type of integration.
+          description: |
+            To configure a custom integration you need to setup a webhook with a set of triggers and target.
           type: string
         webhooks:
           description: An array of webhooks associated with the custom integration.
@@ -8028,15 +8045,14 @@ components:
       required:
       - webhooks
     instagram_allOf:
-      description: |
-        Instagram Direct setup steps:
-        Take note of your Facebook app ID and secret (apps can be created at [developer.facebook.com](https://developer.facebook.com));
-        The Facebook app must have been submitted to Facebook for app review with the "manage_pages" (to retrieve Page Access Tokens for the Pages and apps that the app user administers and to set a webhook), "instagram_basic", and "instagram_manage_messages" (to retrieve basic Instagram account information and send messages) permissions.
-        In order to integrate an Instagram Direct app, you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
       properties:
         type:
           default: instagram
-          description: The type of integration.
+          description: |
+            Instagram Direct setup steps:
+              - Take note of your Facebook app ID and secret (apps can be created at [developer.facebook.com](https://developer.facebook.com));
+              - The Facebook app must have been submitted to Facebook for app review with the "manage_pages" (to retrieve Page Access Tokens for the Pages and apps that the app user administers and to set a webhook), "instagram_basic", and "instagram_manage_messages" (to retrieve basic Instagram account information and send messages) permissions.
+              - In order to integrate an Instagram Direct app, you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
           type: string
         pageAccessToken:
           description: The Facebook Page Access Token of the Facebook page that is
@@ -8094,7 +8110,8 @@ components:
       properties:
         type:
           default: ios
-          description: The type of integration.
+          description: |
+            To configure an ios integration, call the create integration endpoint with a base64 encoded Apple Push Notification certificate from the [Apple Developer Portal](https://developer.apple.com/).
           type: string
         certificate:
           description: The binary of your APN certificate base64 encoded.
@@ -8121,22 +8138,25 @@ components:
             integration.
           type: boolean
     line_allOf:
-      description: |
-        For LINE, each of your customers will need to manually configure a webhook in their LINE configuration page that will point to Sunshine Conversations servers. You must instruct your customers how to configure this manually on their LINE bot page.
-        Once you’ve acquired all the required information, call the Create Integration endpoint.
-        Then, using the returned integration _id, your customer must set the Callback URL field in their LINE Business Center page.
-        The URL should look like the following: `https://app.smooch.io:443/api/line/webhooks/{appId}/{integrationId}`.
       properties:
         type:
           default: line
-          description: The type of integration.
+          description: |
+            For LINE, each of your customers will need to manually configure a webhook in their LINE configuration page that will point to Sunshine Conversations servers. You must instruct your customers how to configure this manually on their LINE bot page.
+            Once you’ve acquired all the required information, call the Create Integration endpoint.
+            Then, using the returned integration _id, your customer must set the Callback URL field in their LINE Business Center page.
+            The URL should look like the following: `https://app.smooch.io:443/api/line/webhooks/{appId}/{integrationId}`.
           type: string
         channelId:
-          description: LINE Channel ID.
+          description: LINE Channel ID. Can be omitted along with `channelSecret`
+            to integrate LINE to setup a webhook before receiving the `channelId`
+            and `channelSecret` back from LINE.
           example: "1286564967"
           type: string
         channelSecret:
-          description: LINE Channel Secret.
+          description: LINE Channel Secret. Can be omitted along with `channelId`
+            to integrate LINE to setup a webhook before receiving the `channelId`
+            and `channelSecret` back from LINE.
           example: your_line_channel_secret
           type: string
         channelAccessToken:
@@ -8161,16 +8181,12 @@ components:
           example: 104fb8
           readOnly: true
           type: string
-      required:
-      - channelId
-      - channelSecret
     mailgun_allOf:
-      description: |
-        To configure a Mailgun integration, visit the API Keys tab in the settings page of the Mailgun dashboard and copy your active API key. Call the Create Integration endpoint with your API Key, a domain you have configured in Mailgun, and the incoming address you would like to use. Must have the same domain as the one specified in the domain parameter.
       properties:
         type:
           default: mailgun
-          description: The type of integration.
+          description: |
+            To configure a Mailgun integration, visit the API Keys tab in the settings page of the Mailgun dashboard and copy your active API key. Call the Create Integration endpoint with your API Key, a domain you have configured in Mailgun, and the incoming address you would like to use. Must have the same domain as the one specified in the domain parameter.
           type: string
         apiKey:
           description: The public API key of your Mailgun account.
@@ -8212,22 +8228,22 @@ components:
       - domain
       - incomingAddress
     messagebird_allOf:
-      description: "To configure a MessageBird integration, acquire the accessKey,\
-        \ the signingKey and the MessageBird number you would like to use, then call\
-        \ the Create Integration endpoint. The response will include the integration’\
-        s _id and webhookSecret, which must be used to configure the webhook in MessageBird.\n\
-        In the Flow Builder for the MessageBird number you’ve used to integrate, add\
-        \ a new step with the following settings:\n* Create a new Call HTTP endpoint\
-        \ with SMS flow.\n* Select your desired SMS number for Incoming SMS.\n* Click\
-        \ on Forward to URL and set its method to POST.\n* Then, using the integration\
-        \ _id and webhookSecret returned from the create integration call, enter the\
-        \ following into the URL field: \n`https://app.smooch.io/api/messagebird/webhooks/{appId}/{integrationId}/{webhookSecret}`\n\
-        * Select application/json for the Set Content-Type header field.\n* Save and\
-        \ publish your changes.\n"
       properties:
         type:
           default: messagebird
-          description: The type of integration.
+          description: "To configure a MessageBird integration, acquire the accessKey,\
+            \ the signingKey and the MessageBird number you would like to use, then\
+            \ call the Create Integration endpoint. The response will include the\
+            \ integration’s `_id` and `webhookSecret`, which must be used to configure\
+            \ the webhook in MessageBird.\nIn the Flow Builder for the MessageBird\
+            \ number you’ve used to integrate, add a new step with the following settings:\n\
+            - Create a new Call HTTP endpoint with SMS flow.\n- Select your desired\
+            \ SMS number for Incoming SMS.\n- Click on Forward to URL and set its\
+            \ method to POST.\n- Then, using the integration _id and webhookSecret\
+            \ returned from the create integration call, enter the following into\
+            \ the URL field: \n`https://app.smooch.io/api/messagebird/webhooks/{appId}/{integrationId}/{webhookSecret}`\n\
+            - Select application/json for the Set Content-Type header field.\n- Save\
+            \ and publish your changes.\n"
           type: string
         accessKey:
           description: The public API key of your MessageBird account.
@@ -8258,15 +8274,14 @@ components:
       - originator
       - signingKey
     messenger_allOf:
-      description: |
-        Facebook Messenger Setup steps:
-        Take note of your Facebook app ID and secret (apps can be created at developer.facebook.com);
-        The Facebook app must have been submitted to Facebook for app review with the “manage_pages” (to retrieve Page Access Tokens for the Pages, apps that the app user administers and set a webhook) and “pages_messaging” (to send messages) permissions.
-        In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
       properties:
         type:
           default: messenger
-          description: The type of integration.
+          description: |
+            Facebook Messenger Setup steps:
+            - Take note of your Facebook app ID and secret (apps can be created at developer.facebook.com);
+            - The Facebook app must have been submitted to Facebook for app review with the “manage_pages” (to retrieve Page Access Tokens for the Pages, apps that the app user administers and set a webhook) and “pages_messaging” (to send messages) permissions.
+            - In order to integrate a Facebook Messenger app you must acquire a Page Access Token from your user. Once you have acquired a page access token from your user, call the Create Integration endpoint with your app secret and ID and the user’s page access token.
           type: string
         pageAccessToken:
           description: A Facebook Page Access Token.
@@ -8286,12 +8301,11 @@ components:
       - appSecret
       - pageAccessToken
     telegram_allOf:
-      description: |
-        To configure a Telegram integration, acquire the required information from the user and call the Create Integration endpoint.
       properties:
         type:
           default: telegram
-          description: The type of integration.
+          description: |
+            To configure a Telegram integration, acquire the required information from the user and call the Create Integration endpoint.
           type: string
         token:
           description: Telegram Bot Token.
@@ -8310,12 +8324,11 @@ components:
       required:
       - token
     twilio_allOf:
-      description: |
-        To configure a Twilio integration, acquire the required information from the user and call the Create Integration endpoint.
       properties:
         type:
           default: twilio
-          description: The type of integration.
+          description: |
+            To configure a Twilio integration, acquire the required information from the user and call the Create Integration endpoint.
           type: string
         accountSid:
           description: Twilio Account SID.
@@ -8337,12 +8350,11 @@ components:
       - authToken
       - phoneNumberSid
     twitter_allOf:
-      description: |
-        To set up a Twitter integration, please follow the steps outlined in the [Twitter Setup Guide](https://docs.smooch.io/guide/twitter/#setup).
       properties:
         type:
           default: twitter
-          description: The type of integration.
+          description: |
+            To set up a Twitter integration, please follow the steps outlined in the [Twitter Setup Guide](https://docs.smooch.io/guide/twitter/#setup).
           type: string
         tier:
           description: Your Twitter app’s tier, sandbox, premium or enterprise.
@@ -8385,12 +8397,11 @@ components:
       - consumerSecret
       - tier
     viber_allOf:
-      description: |
-        To configure a Viber integration, acquire the Viber Public Account token from the user and call the Create Integration endpoint.
       properties:
         type:
           default: viber
-          description: The type of integration.
+          description: |
+            To configure a Viber integration, acquire the Viber Public Account token from the user and call the Create Integration endpoint.
           type: string
         token:
           description: Viber Public Account token.
@@ -8409,12 +8420,11 @@ components:
       required:
       - token
     web_allOf:
-      description: |
-        To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
       properties:
         type:
           default: web
-          description: The type of integration.
+          description: |
+            To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
           type: string
         brandColor:
           default: 65758e
@@ -8505,12 +8515,11 @@ components:
             messenger integration.
           type: boolean
     whatsapp_allOf:
-      description: |
-        To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
       properties:
         type:
           default: whatsapp
-          description: The type of integration.
+          description: |
+            To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
           type: string
         deploymentId:
           description: The Id of the deployment. The integrationId and the appId will
@@ -8537,6 +8546,13 @@ components:
             used for Message Template Reconstruction.
           example: your_access_token
           nullable: true
+          type: string
+        phoneNumber:
+          description: The phone number that is associated with the deployment of
+            this integration, if one exists.
+          example: "15144441919"
+          nullable: true
+          readOnly: true
           type: string
       required:
       - deploymentId

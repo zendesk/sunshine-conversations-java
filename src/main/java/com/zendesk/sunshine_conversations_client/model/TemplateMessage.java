@@ -18,43 +18,46 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Webhook;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import com.zendesk.sunshine_conversations_client.model.Content;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.math.BigDecimal;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * CustomAllOf
+ * TemplateMessage
  */
 @JsonPropertyOrder({
-  CustomAllOf.JSON_PROPERTY_TYPE,
-  CustomAllOf.JSON_PROPERTY_WEBHOOKS
+  TemplateMessage.JSON_PROPERTY_TYPE,
+  TemplateMessage.JSON_PROPERTY_TEMPLATE
 })
 
-public class CustomAllOf {
+public class TemplateMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";
-  private String type = "custom";
+  private String type = "template";
 
-  public static final String JSON_PROPERTY_WEBHOOKS = "webhooks";
-  private List<Webhook> webhooks = new ArrayList<Webhook>();
+  public static final String JSON_PROPERTY_TEMPLATE = "template";
+  private Object template;
 
 
-  public CustomAllOf type(String type) {
+  public TemplateMessage type(String type) {
     
     this.type = type;
     return this;
   }
 
    /**
-   * To configure a custom integration you need to setup a webhook with a set of triggers and target. 
+   * The type of message.
    * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "To configure a custom integration you need to setup a webhook with a set of triggers and target. ")
+  @ApiModelProperty(required = true, value = "The type of message.")
   @JsonProperty(JSON_PROPERTY_TYPE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
   public String getType() {
     return type;
@@ -66,32 +69,27 @@ public class CustomAllOf {
   }
 
 
-  public CustomAllOf webhooks(List<Webhook> webhooks) {
+  public TemplateMessage template(Object template) {
     
-    this.webhooks = webhooks;
-    return this;
-  }
-
-  public CustomAllOf addWebhooksItem(Webhook webhooksItem) {
-    this.webhooks.add(webhooksItem);
+    this.template = template;
     return this;
   }
 
    /**
-   * An array of webhooks associated with the custom integration.
-   * @return webhooks
+   * The whatsapp template message to send. For more information, consult the [guide](https://docs.smooch.io/guide/whatsapp#sending-message-templates). &#x60;schema&#x60; must be set to &#x60;whatsapp&#x60;.
+   * @return template
   **/
-  @ApiModelProperty(required = true, value = "An array of webhooks associated with the custom integration.")
-  @JsonProperty(JSON_PROPERTY_WEBHOOKS)
+  @ApiModelProperty(required = true, value = "The whatsapp template message to send. For more information, consult the [guide](https://docs.smooch.io/guide/whatsapp#sending-message-templates). `schema` must be set to `whatsapp`.")
+  @JsonProperty(JSON_PROPERTY_TEMPLATE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public List<Webhook> getWebhooks() {
-    return webhooks;
+  public Object getTemplate() {
+    return template;
   }
 
 
-  public void setWebhooks(List<Webhook> webhooks) {
-    this.webhooks = webhooks;
+  public void setTemplate(Object template) {
+    this.template = template;
   }
 
 
@@ -103,23 +101,23 @@ public class CustomAllOf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CustomAllOf customAllOf = (CustomAllOf) o;
-    return Objects.equals(this.type, customAllOf.type) &&
-        Objects.equals(this.webhooks, customAllOf.webhooks);
+    TemplateMessage templateMessage = (TemplateMessage) o;
+    return Objects.equals(this.type, templateMessage.type) &&
+        Objects.equals(this.template, templateMessage.template);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, webhooks);
+    return Objects.hash(type, template);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CustomAllOf {\n");
+    sb.append("class TemplateMessage {\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    webhooks: ").append(toIndentedString(webhooks)).append("\n");
+    sb.append("    template: ").append(toIndentedString(template)).append("\n");
     sb.append("}");
     return sb.toString();
   }
