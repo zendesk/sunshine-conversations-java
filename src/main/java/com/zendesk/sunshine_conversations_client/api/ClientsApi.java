@@ -39,7 +39,7 @@ public class ClientsApi {
 
   /**
    * Create Client
-   * Create a client and link it to a channel specified by the matchCriteria.type.
+   * Create a client and link it to a channel specified by the &#x60;matchCriteria.type&#x60;. Note that the client is initially created with a &#x60;pending&#x60; status. The status of the linking request can be tracked by listening to the &#x60;link:match&#x60;, &#x60;link:success&#x60; and &#x60;link:failure&#x60; webhooks (only available in v1). For more information, see [link-events](https://docs.smooch.io/rest/v1/#link-events).
    * @param clientCreate  (required)
    * @param appId Identifies the app. (required)
    * @param userIdOrExternalId The user&#39;s id or externalId. (required)
@@ -208,7 +208,7 @@ public class ClientsApi {
 
   /**
    * Create Client
-   * Create a client and link it to a channel specified by the matchCriteria.type.
+   * Create a client and link it to a channel specified by the &#x60;matchCriteria.type&#x60;. Note that the client is initially created with a &#x60;pending&#x60; status. The status of the linking request can be tracked by listening to the &#x60;link:match&#x60;, &#x60;link:success&#x60; and &#x60;link:failure&#x60; webhooks (only available in v1). For more information, see [link-events](https://docs.smooch.io/rest/v1/#link-events).
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param clientCreate  (required)
