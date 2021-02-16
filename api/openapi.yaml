@@ -38,25 +38,22 @@ info:
     \ continue using it but we encourage you to upgrade to the latest version. To\
     \ learn more about API versioning at Sunshine Conversations, including instructions\
     \ on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
-    \n## API Pagination and Records Limits\n\nSome APIs can be paginated by providing\
-    \ the `offset` query string parameter.\n\nThe `offset` is the number of initial\
-    \ records to skip before picking records to return (default 0).\n\nThe `limit`\
-    \ query string can also be provided to change the number of records to return\
-    \ (maximum\n100, default 25).\n\nAll paginated endpoints will eventually support\
-    \ cursor pagination and `offset` based pagination support will be dropped.\n\n\
-    ### Cursor Pagination\n\nSome APIs are paginated through cursor pagination. Rather\
-    \ than providing an `offset`, a `page[after]` or `page[before]` query string parameter\
-    \ may be provided. `page[after]` and `page[before]` are cursors pointing to a\
-    \ record id.\n\nThe `page[after]` cursor indicates that only records **subsequent**\
-    \ to it should be returned.\n\nThe `page[before]` cursor indicates that only records\
+    \n## API Pagination and Records Limits\n\nAll paginated endpoints support cursor-based\
+    \ pagination.\n### Cursor Pagination\n\nCursor-based pagination is a common pagination\
+    \ strategy that avoids many of the pitfalls of offset–limit pagination. It works\
+    \ by returning a pointer to a specific item in the dataset. On subsequent requests,\
+    \ the server returns results after the given pointer. \n\nA `page[after]` or `page[before]`\
+    \ query string parameter may be provided, they are cursors pointing to a record\
+    \ id.\n\nThe `page[after]` cursor indicates that only records **subsequent** to\
+    \ it should be returned.\n\nThe `page[before]` cursor indicates that only records\
     \ **preceding** it should be returned.\n\n**Only one** of `page[after]` or `page[before]`\
-    \ may be provided in a query, not both.\n\nIn cursor pagination, the equivalent\
-    \ to the `limit` query string is the `page[size]` query string parameter.\n\n\
-    ## API Libraries\n\nSunshine Conversations provides an official API library for\
-    \ [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages\
-    \ to come. These helpful libraries wrap calls to the API and can make interfacing\
-    \ with Sunshine Conversations easier.\n\n## Postman Collection\n\n<a style=\"\
-    display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
+    \ may be provided in a query, not both.\n\nIn most endpoints, an optional `page[size]`\
+    \ query parameter may be passed to control the number of records returned by the\
+    \ request.\n\n## API Libraries\n\nSunshine Conversations provides an official\
+    \ API library for [Java](https://github.com/zendesk/sunshine-conversations-java),\
+    \ with more languages to come. These helpful libraries wrap calls to the API and\
+    \ can make interfacing with Sunshine Conversations easier.\n\n## Postman Collection\n\
+    \n<a style=\"display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
     \ 123px;\" href=\"https://s3.amazonaws.com/docs.smooch.io/sunco-openapi/postman_collection.json\"\
     ></a>\n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
     \ collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
@@ -125,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.4.2
+  version: 9.4.3
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -252,18 +249,23 @@ tags:
     \ switchboard:passControl | When a switchboard integration gives control of the\
     \ conversation to another switchboard integration. |\n| switchboard:passControl:failure\
     \ | When changing a switchboard integration to active fails. |\n| user:merge \
-    \        | When two or more users are merged into one. |\n\n## Retry policy\n\n\
-    A webhook call will be attempted up to 5 times over a 15 minute window. The attempts\
-    \ will happen at an exponentially increasing interval if the target responds with\
-    \ anything but a success (2XX) or a [non-recoverable error](#non-recoverable-errors).\
-    \ If no response is received within 20 seconds, the call will be considered a\
-    \ failure and will also be reattempted.\n\n### Non-recoverable Errors\nThe following\
-    \ status codes are deemed to be non-recoverable and Sunshine Conversations will\
-    \ not reattempt a call when receiving a response with them:\n\n- 400: The target\
-    \ exists, but can’t process the payload.\n- 401: The target is behind authentication\
-    \ or doesn’t recognize the webhook secret.\n- 403: Sunshine Conversations should\
-    \ not be calling the target.\n- 404: The target doesn’t exist.\n- 406: The target\
-    \ exists, and rejected the webhook intentionally.\n"
+    \        | When two or more users are merged into one. |\n\n## Securing Sunshine\
+    \ Conversations Webhooks\nWhen a webhook is created, a shared secret will be generated\
+    \ for it. The secret can be used to determine the veracity of a request to your\
+    \ webhook route. It is included as an `X-API-Key` header with each webhook request\
+    \ sent to the target URL.\nThat secret is available in the response to the POST\
+    \ request used to generate the webhook, or through a GET request to the webhook\
+    \ route.\n\n## Retry policy\n\nA webhook call will be attempted up to 5 times\
+    \ over a 15 minute window. The attempts will happen at an exponentially increasing\
+    \ interval if the target responds with anything but a success (2XX) or a [non-recoverable\
+    \ error](#non-recoverable-errors). If no response is received within 20 seconds,\
+    \ the call will be considered a failure and will also be reattempted.\n\n### Non-recoverable\
+    \ Errors\nThe following status codes are deemed to be non-recoverable and Sunshine\
+    \ Conversations will not reattempt a call when receiving a response with them:\n\
+    \n- 400: The target exists, but can’t process the payload.\n- 401: The target\
+    \ is behind authentication or doesn’t recognize the webhook secret.\n- 403: Sunshine\
+    \ Conversations should not be calling the target.\n- 404: The target doesn’t exist.\n\
+    - 406: The target exists, and rejected the webhook intentionally.\n"
   name: Webhooks
 - description: |
     Sunshine Conversations has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Sunshine Conversations using our [partner application](https://smooch.io/partners/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Sunshine Conversations Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.
@@ -543,6 +545,7 @@ paths:
                   - $ref: '#/components/schemas/displayName'
                   description: The name of the API key.
                   example: Key 1
+                  nullable: false
               required:
               - displayName
               title: AppKeyCreateBody
@@ -1337,27 +1340,13 @@ paths:
           example: 029c31f25a21b47effd7be90
           type: string
         style: simple
-      - $ref: '#/components/parameters/page_1'
-        description: Contains parameters for applying cursor pagination.
+      - description: Contains parameters for applying cursor pagination.
         explode: true
         in: query
         name: page
         required: false
         schema:
-          properties:
-            after:
-              description: "A record id. Results will only contain the records that\
-                \ come after the specified record. \nOnly one of `after` or `before`\
-                \ can be provided, not both.\n"
-              example: 5e1606762556d93e9c176f69
-              type: string
-            before:
-              description: |
-                A record id. Results will only contain the records that come before the specified record.
-                Only one of `after` or `before` can be provided, not both.
-              example: 5e1606762556d93e9c176f69
-              type: string
-          type: object
+          $ref: '#/components/schemas/page'
         style: deepObject
       responses:
         "200":
@@ -3617,7 +3606,7 @@ components:
       value:
         author:
           type: business
-        messageSchema: whatsapp
+        schema: whatsapp
         content:
           type: template
           template:
@@ -3638,6 +3627,8 @@ components:
                 text: My User Name
               - type: text
                 text: My Agent Name
+        destination:
+          integrationType: whatsapp
     text-2:
       value:
         messages:
@@ -4383,29 +4374,6 @@ components:
         example: 029c31f25a21b47effd7be90
         type: string
       style: simple
-    pageWithoutSizeQuery:
-      $ref: '#/components/parameters/page_1'
-      description: Contains parameters for applying cursor pagination.
-      explode: true
-      in: query
-      name: page
-      required: false
-      schema:
-        properties:
-          after:
-            description: "A record id. Results will only contain the records that\
-              \ come after the specified record. \nOnly one of `after` or `before`\
-              \ can be provided, not both.\n"
-            example: 5e1606762556d93e9c176f69
-            type: string
-          before:
-            description: |
-              A record id. Results will only contain the records that come before the specified record.
-              Only one of `after` or `before` can be provided, not both.
-            example: 5e1606762556d93e9c176f69
-            type: string
-        type: object
-      style: deepObject
     messageId:
       description: The id of the message.
       explode: false
@@ -4573,7 +4541,8 @@ components:
           type: string
         size:
           default: 25
-          description: The number of records to return.
+          description: The number of records to return. Does not apply to the `listMessages`
+            endpoint.
           example: 10
           maximum: 100
           minimum: 0
@@ -6262,10 +6231,10 @@ components:
       title: MessageListResponse
       type: object
     destination:
-      description: The destination of the message, in the case of channel targeting
-        or sending [silent messages](https://docs.smooch.io/guide/sending-messages/#silent-messages).
-        Only applicable if the author role is `business` and the conversation is of
-        type `personal`.
+      description: |
+        The destination of the message, in the case of [channel targeting](https://docs.smooch.io/guide/sending-messages/#targeting-a-specific-channel) or sending [silent messages](https://docs.smooch.io/guide/sending-messages/#silent-messages). Only
+        applicable if the author role is `business` and the conversation is of type
+        `personal`.
       oneOf:
       - $ref: '#/components/schemas/integrationId'
       - $ref: '#/components/schemas/integrationType'
@@ -6311,8 +6280,8 @@ components:
           $ref: '#/components/schemas/messageOverride'
         schema:
           description: |
-            When the `schema` is set to `whatsapp`, the message is automatically converted to the Sunshine Conversations schema to be stored in the conversation record. The Sunshine Conversations message schema is also used in the API response.
-            Go to [Post Message API](https://docs.smooch.io/guide/whatsapp/#post-message-api) to view an example.
+            When `schema` is set to `"whatsapp"`, the `content` key is expected to conform to the [native WhatsApp schema](https://developers.facebook.com/docs/whatsapp/api/messages/message-templates) for sending message templates.
+            For more details, consult the documentation for [sending message templates on WhatsApp](https://docs.smooch.io/guide/whatsapp/#sending-message-templates).
           example: whatsapp
           type: string
       required:
@@ -7656,6 +7625,7 @@ components:
           - $ref: '#/components/schemas/displayName'
           description: The name of the API key.
           example: Key 1
+          nullable: false
       required:
       - displayName
       title: AppKeyCreateBody
@@ -7689,21 +7659,6 @@ components:
       properties:
         participant:
           $ref: '#/components/schemas/participant'
-    page_1:
-      properties:
-        after:
-          description: "A record id. Results will only contain the records that come\
-            \ after the specified record. \nOnly one of `after` or `before` can be\
-            \ provided, not both.\n"
-          example: 5e1606762556d93e9c176f69
-          type: string
-        before:
-          description: |
-            A record id. Results will only contain the records that come before the specified record.
-            Only one of `after` or `before` can be provided, not both.
-          example: 5e1606762556d93e9c176f69
-          type: string
-      type: object
     integrationListFilter:
       properties:
         types:
@@ -8118,7 +8073,9 @@ components:
             To configure an ios integration, call the create integration endpoint with a base64 encoded Apple Push Notification certificate from the [Apple Developer Portal](https://developer.apple.com/).
           type: string
         certificate:
-          description: The binary of your APN certificate base64 encoded.
+          description: |
+            The binary of your APN certificate base64 encoded. To base64 encode your certificate you can use this command in the terminal:
+            `openssl base64 -in YOUR_CERTIFICATE.p12 | tr -d '\n'`
           example: your_APN_certificate
           minLength: 1
           nullable: true
@@ -9267,7 +9224,7 @@ x-tagGroups:
   - Integrations
   - Webhooks
   - CustomIntegrationApiKeys
-- name: Switchboards (EAP)
+- name: Switchboards
   tags:
   - Switchboards
   - Switchboard Integrations

@@ -5,7 +5,7 @@
     <artifactId>sunshine-conversations-client</artifactId>
     <packaging>jar</packaging>
     <name>sunshine-conversations-client</name>
-    <version>9.4.2</version>
+    <version>9.4.3</version>
     <scm>
         <connection>scm:git:git@github.com:openapitools/openapi-generator.git</connection>
         <developerConnection>scm:git:git@github.com:openapitools/openapi-generator.git</developerConnection>

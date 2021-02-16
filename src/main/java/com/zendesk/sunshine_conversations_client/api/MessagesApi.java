@@ -10,7 +10,7 @@ import javax.ws.rs.core.GenericType;
 import com.zendesk.sunshine_conversations_client.model.MessageListResponse;
 import com.zendesk.sunshine_conversations_client.model.MessagePost;
 import com.zendesk.sunshine_conversations_client.model.MessagePostResponse;
-import com.zendesk.sunshine_conversations_client.model.Page1;
+import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -155,7 +155,7 @@ public class MessagesApi {
    * @return a {@code MessageListResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessageListResponse listMessages(String appId, String conversationId, Page1 page) throws ApiException {
+  public MessageListResponse listMessages(String appId, String conversationId, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -385,7 +385,7 @@ public class MessagesApi {
    * @return a {@code MessageListResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessageListResponse listMessages(String bearerToken, String appId, String conversationId, Page1 page) throws ApiException {
+  public MessageListResponse listMessages(String bearerToken, String appId, String conversationId, Page page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
