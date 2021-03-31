@@ -3,7 +3,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'io.smooch'
-version = '5.33.0'
+version = '5.34.0'
 
 buildscript {
     repositories {
