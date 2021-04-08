@@ -8302,14 +8302,19 @@ components:
           type: string
           writeOnly: true
         phoneNumberSid:
-          description: SID for specific phone number.
+          description: SID for specific phone number. One of `messagingServiceSid`
+            or `phoneNumberSid` must be provided when creating a Twilio integration.
           example: PN0674df0ecee0c9819bca0ff0bc0a159e
+          minLength: 1
+          type: string
+        messagingServiceSid:
+          description: SID for specific messaging service. One of `messagingServiceSid`
+            or `phoneNumberSid` must be provided when creating a Twilio integration.
           minLength: 1
           type: string
       required:
       - accountSid
       - authToken
-      - phoneNumberSid
     twitter_allOf:
       properties:
         type:

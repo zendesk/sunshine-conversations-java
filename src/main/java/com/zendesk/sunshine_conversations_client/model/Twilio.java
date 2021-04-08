@@ -49,7 +49,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Twilio.JSON_PROPERTY_TYPE,
   Twilio.JSON_PROPERTY_ACCOUNT_SID,
   Twilio.JSON_PROPERTY_AUTH_TOKEN,
-  Twilio.JSON_PROPERTY_PHONE_NUMBER_SID
+  Twilio.JSON_PROPERTY_PHONE_NUMBER_SID,
+  Twilio.JSON_PROPERTY_MESSAGING_SERVICE_SID
 })
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type", visible = true)
@@ -83,6 +84,9 @@ public class Twilio extends Integration {
 
   public static final String JSON_PROPERTY_PHONE_NUMBER_SID = "phoneNumberSid";
   private String phoneNumberSid;
+
+  public static final String JSON_PROPERTY_MESSAGING_SERVICE_SID = "messagingServiceSid";
+  private String messagingServiceSid;
 
 
   public Twilio type(String type) {
@@ -165,12 +169,13 @@ public class Twilio extends Integration {
   }
 
    /**
-   * SID for specific phone number.
+   * SID for specific phone number. One of &#x60;messagingServiceSid&#x60; or &#x60;phoneNumberSid&#x60; must be provided when creating a Twilio integration.
    * @return phoneNumberSid
   **/
-  @ApiModelProperty(example = "PN0674df0ecee0c9819bca0ff0bc0a159e", required = true, value = "SID for specific phone number.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "PN0674df0ecee0c9819bca0ff0bc0a159e", value = "SID for specific phone number. One of `messagingServiceSid` or `phoneNumberSid` must be provided when creating a Twilio integration.")
   @JsonProperty(JSON_PROPERTY_PHONE_NUMBER_SID)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
   public String getPhoneNumberSid() {
     return phoneNumberSid;
@@ -179,6 +184,31 @@ public class Twilio extends Integration {
 
   public void setPhoneNumberSid(String phoneNumberSid) {
     this.phoneNumberSid = phoneNumberSid;
+  }
+
+
+  public Twilio messagingServiceSid(String messagingServiceSid) {
+    
+    this.messagingServiceSid = messagingServiceSid;
+    return this;
+  }
+
+   /**
+   * SID for specific messaging service. One of &#x60;messagingServiceSid&#x60; or &#x60;phoneNumberSid&#x60; must be provided when creating a Twilio integration.
+   * @return messagingServiceSid
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "SID for specific messaging service. One of `messagingServiceSid` or `phoneNumberSid` must be provided when creating a Twilio integration.")
+  @JsonProperty(JSON_PROPERTY_MESSAGING_SERVICE_SID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getMessagingServiceSid() {
+    return messagingServiceSid;
+  }
+
+
+  public void setMessagingServiceSid(String messagingServiceSid) {
+    this.messagingServiceSid = messagingServiceSid;
   }
 
 
@@ -195,12 +225,13 @@ public class Twilio extends Integration {
         Objects.equals(this.accountSid, twilio.accountSid) &&
         Objects.equals(this.authToken, twilio.authToken) &&
         Objects.equals(this.phoneNumberSid, twilio.phoneNumberSid) &&
+        Objects.equals(this.messagingServiceSid, twilio.messagingServiceSid) &&
         super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, accountSid, authToken, phoneNumberSid, super.hashCode());
+    return Objects.hash(type, accountSid, authToken, phoneNumberSid, messagingServiceSid, super.hashCode());
   }
 
 
@@ -213,6 +244,7 @@ public class Twilio extends Integration {
     sb.append("    accountSid: ").append(toIndentedString(accountSid)).append("\n");
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
     sb.append("    phoneNumberSid: ").append(toIndentedString(phoneNumberSid)).append("\n");
+    sb.append("    messagingServiceSid: ").append(toIndentedString(messagingServiceSid)).append("\n");
     sb.append("}");
     return sb.toString();
   }
