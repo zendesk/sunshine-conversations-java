@@ -327,6 +327,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** | Invalid query parameters |  -  |
 
 
 ## updateIntegration

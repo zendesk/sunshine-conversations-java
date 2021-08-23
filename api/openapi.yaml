@@ -122,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.4.3
+  version: 9.4.5
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -295,7 +295,7 @@ tags:
     \ cannot see or modify webhooks that were created by other integrations, for example.\n\
     \n| API Root\t| Access\t| \n| --------  | ------- |\n| /v2/users/\\*\t| Yes\t\
     |\n| /v2/conversations/\\*\t| Yes\t|\n| /v2/integrations/me/webhooks/\\*\t| Yes\t\
-    |\n| /v2/apps/\\*\t| No | \n"
+    |\n| /v2/apps/\\*\t| No |\n"
   name: OAuth Endpoints
   x-displayName: OAuth Endpoints
 paths:
@@ -338,7 +338,7 @@ paths:
                 $ref: '#/components/schemas/appListResponse'
           description: Ok
         "400":
-          description: Can supply only one of page[after] or page[before], not both
+          description: Invalid page query parameters
         "403":
           description: The serviceAccountId provided does not match supplied credentials
       security:
@@ -895,6 +895,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/conversationListResponse'
           description: Ok
+        "400":
+          description: Invalid page query parameters
         "404":
           description: User not found
       security:
@@ -1196,6 +1198,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/participantListResponse'
           description: Ok
+        "400":
+          description: Invalid page query parameters
         "404":
           description: Not found
       security:
@@ -1782,6 +1786,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/integrationListResponse'
           description: Ok
+        "400":
+          description: Invalid query parameters
       security:
       - basicAuth:
         - app
@@ -3079,6 +3085,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/clientListResponse'
           description: Ok
+        "400":
+          description: Invalid page query parameters
       security:
       - basicAuth:
         - app
@@ -4532,12 +4540,16 @@ components:
             \ after the specified record. \nOnly one of `after` or `before` can be\
             \ provided, not both.\n"
           example: 5e1606762556d93e9c176f69
+          maxLength: 24
+          minLength: 24
           type: string
         before:
           description: |
             A record id. Results will only contain the records that come before the specified record.
             Only one of `after` or `before` can be provided, not both.
           example: 5e1606762556d93e9c176f69
+          maxLength: 24
+          minLength: 24
           type: string
         size:
           default: 25
@@ -4545,7 +4557,7 @@ components:
             endpoint.
           example: 10
           maximum: 100
-          minimum: 0
+          minimum: 1
           type: integer
       type: object
     displayName:
