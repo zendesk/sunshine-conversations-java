@@ -9,9 +9,9 @@
   <url>https://github.com/swagger-api/swagger-codegen</url>
   <description>Swagger Java</description>
   <scm>
-    <connection>scm:git:git@github.com:swagger-api/swagger-codegen.git</connection>
-    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
+    <connection>https://github.com/zendesk/sunshine-conversations-java</connection>
+    <developerConnection>https://github.com/zendesk/sunshine-conversations-java</developerConnection>
+    <url>https://github.com/zendesk/sunshine-conversations-java</url>
   </scm>
   <prerequisites>
     <maven>2.2.0</maven>
@@ -27,10 +27,10 @@
 
   <developers>
     <developer>
-      <name>Swagger</name>
-      <email>apiteam@swagger.io</email>
-      <organization>Swagger</organization>
-      <organizationUrl>http://swagger.io</organizationUrl>
+      <name>Sunshine Conversations Engine</name>
+      <email>sunco-eng-conversation-engine@zendesk.com</email>
+      <organization>Sunshine Conversations Zendesk</organization>
+      <organizationUrl>smooch.io</organizationUrl>
     </developer>
   </developers>
 
