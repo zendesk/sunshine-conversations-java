@@ -73,11 +73,11 @@ public class UserTruncated {
   }
 
    /**
-   * An optional ID that if specified can also be used to retrieve the user. 
+   * An optional ID that can also be used to retrieve the user. 
    * @return externalId
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "your-own-id", value = "An optional ID that if specified can also be used to retrieve the user. ")
+  @ApiModelProperty(example = "your-own-id", value = "An optional ID that can also be used to retrieve the user. ")
   @JsonIgnore
 
   public String getExternalId() {

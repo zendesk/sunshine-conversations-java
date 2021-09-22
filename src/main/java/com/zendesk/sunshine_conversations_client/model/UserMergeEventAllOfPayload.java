@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedClients;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedConversations;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedUsers;
 import io.swagger.annotations.ApiModel;
@@ -34,7 +35,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   UserMergeEventAllOfPayload.JSON_PROPERTY_MERGED_USERS,
   UserMergeEventAllOfPayload.JSON_PROPERTY_MERGED_CONVERSATIONS,
-  UserMergeEventAllOfPayload.JSON_PROPERTY_DISCARDED_METADATA
+  UserMergeEventAllOfPayload.JSON_PROPERTY_MERGED_CLIENTS,
+  UserMergeEventAllOfPayload.JSON_PROPERTY_DISCARDED_METADATA,
+  UserMergeEventAllOfPayload.JSON_PROPERTY_REASON
 })
 
 public class UserMergeEventAllOfPayload {
@@ -44,8 +47,51 @@ public class UserMergeEventAllOfPayload {
   public static final String JSON_PROPERTY_MERGED_CONVERSATIONS = "mergedConversations";
   private JsonNullable<UserMergeEventAllOfPayloadMergedConversations> mergedConversations = JsonNullable.<UserMergeEventAllOfPayloadMergedConversations>undefined();
 
+  public static final String JSON_PROPERTY_MERGED_CLIENTS = "mergedClients";
+  private JsonNullable<UserMergeEventAllOfPayloadMergedClients> mergedClients = JsonNullable.<UserMergeEventAllOfPayloadMergedClients>undefined();
+
   public static final String JSON_PROPERTY_DISCARDED_METADATA = "discardedMetadata";
   private JsonNullable<Object> discardedMetadata = JsonNullable.<Object>of(null);
+
+  /**
+   * The reason for which the users merged. * &#x60;api&#x60; - The users were merged using the API. * &#x60;channelLinking&#x60; - The users were merged as a result of initiating a channel link. * &#x60;sdkLogin&#x60; - The users were merged as a result of logging into an SDK device. 
+   */
+  public enum ReasonEnum {
+    API("api"),
+    
+    CHANNELLINKING("channelLinking"),
+    
+    SDKLOGIN("sdkLogin");
+
+    private String value;
+
+    ReasonEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ReasonEnum fromValue(String value) {
+      for (ReasonEnum b : ReasonEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+  }
+
+  public static final String JSON_PROPERTY_REASON = "reason";
+  private ReasonEnum reason;
 
 
   public UserMergeEventAllOfPayload mergedUsers(UserMergeEventAllOfPayloadMergedUsers mergedUsers) {
@@ -108,6 +154,41 @@ public class UserMergeEventAllOfPayload {
   }
 
 
+  public UserMergeEventAllOfPayload mergedClients(UserMergeEventAllOfPayloadMergedClients mergedClients) {
+    this.mergedClients = JsonNullable.<UserMergeEventAllOfPayloadMergedClients>of(mergedClients);
+    
+    return this;
+  }
+
+   /**
+   * Get mergedClients
+   * @return mergedClients
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonIgnore
+
+  public UserMergeEventAllOfPayloadMergedClients getMergedClients() {
+        return mergedClients.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_MERGED_CLIENTS)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<UserMergeEventAllOfPayloadMergedClients> getMergedClients_JsonNullable() {
+    return mergedClients;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_MERGED_CLIENTS)
+  public void setMergedClients_JsonNullable(JsonNullable<UserMergeEventAllOfPayloadMergedClients> mergedClients) {
+    this.mergedClients = mergedClients;
+  }
+
+  public void setMergedClients(UserMergeEventAllOfPayloadMergedClients mergedClients) {
+    this.mergedClients = JsonNullable.<UserMergeEventAllOfPayloadMergedClients>of(mergedClients);
+  }
+
+
   public UserMergeEventAllOfPayload discardedMetadata(Object discardedMetadata) {
     this.discardedMetadata = JsonNullable.<Object>of(discardedMetadata);
     
@@ -143,6 +224,31 @@ public class UserMergeEventAllOfPayload {
   }
 
 
+  public UserMergeEventAllOfPayload reason(ReasonEnum reason) {
+    
+    this.reason = reason;
+    return this;
+  }
+
+   /**
+   * The reason for which the users merged. * &#x60;api&#x60; - The users were merged using the API. * &#x60;channelLinking&#x60; - The users were merged as a result of initiating a channel link. * &#x60;sdkLogin&#x60; - The users were merged as a result of logging into an SDK device. 
+   * @return reason
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The reason for which the users merged. * `api` - The users were merged using the API. * `channelLinking` - The users were merged as a result of initiating a channel link. * `sdkLogin` - The users were merged as a result of logging into an SDK device. ")
+  @JsonProperty(JSON_PROPERTY_REASON)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public ReasonEnum getReason() {
+    return reason;
+  }
+
+
+  public void setReason(ReasonEnum reason) {
+    this.reason = reason;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -154,12 +260,14 @@ public class UserMergeEventAllOfPayload {
     UserMergeEventAllOfPayload userMergeEventAllOfPayload = (UserMergeEventAllOfPayload) o;
     return Objects.equals(this.mergedUsers, userMergeEventAllOfPayload.mergedUsers) &&
         Objects.equals(this.mergedConversations, userMergeEventAllOfPayload.mergedConversations) &&
-        Objects.equals(this.discardedMetadata, userMergeEventAllOfPayload.discardedMetadata);
+        Objects.equals(this.mergedClients, userMergeEventAllOfPayload.mergedClients) &&
+        Objects.equals(this.discardedMetadata, userMergeEventAllOfPayload.discardedMetadata) &&
+        Objects.equals(this.reason, userMergeEventAllOfPayload.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mergedUsers, mergedConversations, discardedMetadata);
+    return Objects.hash(mergedUsers, mergedConversations, mergedClients, discardedMetadata, reason);
   }
 
 
@@ -169,7 +277,9 @@ public class UserMergeEventAllOfPayload {
     sb.append("class UserMergeEventAllOfPayload {\n");
     sb.append("    mergedUsers: ").append(toIndentedString(mergedUsers)).append("\n");
     sb.append("    mergedConversations: ").append(toIndentedString(mergedConversations)).append("\n");
+    sb.append("    mergedClients: ").append(toIndentedString(mergedClients)).append("\n");
     sb.append("    discardedMetadata: ").append(toIndentedString(discardedMetadata)).append("\n");
+    sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("}");
     return sb.toString();
   }

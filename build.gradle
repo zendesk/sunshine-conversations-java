@@ -160,6 +160,24 @@ publishing {
     publications {
         maven(MavenPublication) {
             from components.java
+            pom.withXml {
+                asNode().appendNode('name', 'sunshine-conversations-client')
+                asNode().appendNode('description', 'Sunshine Conversations Client')
+                asNode().appendNode('url', 'https://zendesk.com')
+                asNode().appendNode('scm').
+                    appendNode('connection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
+                    appendNode('developerConnection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
+                    appendNode('url', 'https://github.com/zendesk/sunshine-conversations-java')
+                asNode().appendNode('licenses').appendNode('license').
+                        appendNode('name', 'Apache-2.0').parent().
+                        appendNode('url', 'http://www.apache.org/licenses/LICENSE-2.0.html').parent().
+                        appendNode('distribution', 'repo')
+                asNode().appendNode('developers').appendNode('developer').
+                        appendNode('name', 'Sunshine Conversations Engine').parent().
+                        appendNode('email', 'sunco-eng-conversation-engine@zendesk.com').parent().
+                        appendNode('organization', 'Sunshine Conversations Zendesk').parent().
+                        appendNode('organizationUrl', 'smooch.io')  
+              }
         }
     }
     repositories {
