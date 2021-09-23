@@ -3983,6 +3983,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4005,6 +4010,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: sdkGroup
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4023,6 +4033,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: sdkGroup
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4041,6 +4056,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: sdkGroup
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
     conversationMessageDeliveryChannelEvent:
       value:
         app:
@@ -4056,6 +4076,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4082,6 +4107,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4109,6 +4139,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
@@ -4135,6 +4170,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             message:
               id: 5f74c7d84a146f3abd72af1d
               received: 2020-09-30T18:00:56.820Z
@@ -4169,6 +4209,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             postback:
               payload: Greet
             user:
@@ -4192,6 +4237,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             activity:
               type: conversation:read
               author:
@@ -4217,6 +4267,11 @@ components:
             conversation:
               id: f52b01137aa6c250bc7251fa
               type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
             activity:
               type: typing:start
               author:
