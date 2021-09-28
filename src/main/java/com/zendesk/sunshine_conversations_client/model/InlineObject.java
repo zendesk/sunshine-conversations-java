@@ -77,10 +77,10 @@ public class InlineObject {
   }
 
    /**
-   * Must be set to authorization_code
+   * Must be set to the string &#x60;authorization_code&#x60;
    * @return grantType
   **/
-  @ApiModelProperty(example = "658965", required = true, value = "Must be set to authorization_code")
+  @ApiModelProperty(example = "authorization_code", required = true, value = "Must be set to the string `authorization_code`")
   @JsonProperty(JSON_PROPERTY_GRANT_TYPE)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
