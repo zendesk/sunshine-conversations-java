@@ -31,9 +31,9 @@ import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * A form type message without text or actions.
+ * A form type message without text or actions. Only supported in the Web SDK.
  */
-@ApiModel(description = "A form type message without text or actions.")
+@ApiModel(description = "A form type message without text or actions. Only supported in the Web SDK.")
 @JsonPropertyOrder({
   FormMessage.JSON_PROPERTY_TYPE,
   FormMessage.JSON_PROPERTY_BLOCK_CHAT_INPUT,
@@ -82,11 +82,11 @@ public class FormMessage implements Content {
   }
 
    /**
-   * true if the message should block the chat input on Web Messenger. form message only.
+   * true if the message should block the chat input on Web Messenger.
    * @return blockChatInput
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "true if the message should block the chat input on Web Messenger. form message only.")
+  @ApiModelProperty(value = "true if the message should block the chat input on Web Messenger.")
   @JsonProperty(JSON_PROPERTY_BLOCK_CHAT_INPUT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

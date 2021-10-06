@@ -189,11 +189,11 @@ public class Field {
   }
 
    /**
-   * Placeholder text for the field. form message only.
+   * Placeholder text for the field. Form message only.
    * @return placeholder
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Placeholder text for the field. form message only.")
+  @ApiModelProperty(value = "Placeholder text for the field. Form message only.")
   @JsonProperty(JSON_PROPERTY_PLACEHOLDER)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -214,13 +214,13 @@ public class Field {
   }
 
    /**
-   * The minimum allowed length for the response for a field of type text. form message only.
+   * The minimum allowed length for the response for a field of type text. Form message only.
    * minimum: 1
    * maximum: 128
    * @return minSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The minimum allowed length for the response for a field of type text. form message only.")
+  @ApiModelProperty(value = "The minimum allowed length for the response for a field of type text. Form message only.")
   @JsonProperty(JSON_PROPERTY_MIN_SIZE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -241,13 +241,13 @@ public class Field {
   }
 
    /**
-   * The maximum allowed length for the response for a field of type text. form message only.
+   * The maximum allowed length for the response for a field of type text. Form message only.
    * minimum: 1
    * maximum: 128
    * @return maxSize
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The maximum allowed length for the response for a field of type text. form message only.")
+  @ApiModelProperty(value = "The maximum allowed length for the response for a field of type text. Form message only.")
   @JsonProperty(JSON_PROPERTY_MAX_SIZE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -326,11 +326,11 @@ public class Field {
   }
 
    /**
-   * Array of objects representing the response for a field of type select. form and formResponse messages only.
+   * Array of objects representing the response for a field of type select. Form and formResponse messages only.
    * @return select
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Array of objects representing the response for a field of type select. form and formResponse messages only.")
+  @ApiModelProperty(value = "Array of objects representing the response for a field of type select. Form and formResponse messages only.")
   @JsonProperty(JSON_PROPERTY_SELECT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
