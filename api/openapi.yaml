@@ -4743,7 +4743,7 @@ components:
       properties:
         conversationRetentionSeconds:
           description: "Number of seconds of inactivity before a conversation’s messages\
-            \ \nwill be automatically deleted. See \n[Conversation Retention Seconds](https://docs.smooch.io/rest/#conversation-retention-seconds)\n\
+            \ \nwill be automatically deleted. See \n[Conversation Retention Seconds](https://docs.smooch.io/guide/creating-and-managing-apps/#conversation-retention-seconds)\n\
             for more information.\n"
           minimum: 0
           type: integer
@@ -4759,8 +4759,8 @@ components:
         echoPostback:
           description: "A boolean specifying whether a message should be added to\
             \ the conversation \nhistory when a postback button is clicked. See \n\
-            [Echo Postbacks](https://docs.smooch.io/rest/#echo-postbacks)\nfor more\
-            \ information.\n"
+            [Echo Postbacks](https://docs.smooch.io/guide/creating-and-managing-apps/#echo-postbacks)\n\
+            for more information.\n"
           type: boolean
         ignoreAutoConversationStart:
           description: "A boolean specifying whether a non message event coming from\

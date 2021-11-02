@@ -70,12 +70,12 @@ public class AppSettings {
   }
 
    /**
-   * Number of seconds of inactivity before a conversation’s messages  will be automatically deleted. See  [Conversation Retention Seconds](https://docs.smooch.io/rest/#conversation-retention-seconds) for more information. 
+   * Number of seconds of inactivity before a conversation’s messages  will be automatically deleted. See  [Conversation Retention Seconds](https://docs.smooch.io/guide/creating-and-managing-apps/#conversation-retention-seconds) for more information. 
    * minimum: 0
    * @return conversationRetentionSeconds
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Number of seconds of inactivity before a conversation’s messages  will be automatically deleted. See  [Conversation Retention Seconds](https://docs.smooch.io/rest/#conversation-retention-seconds) for more information. ")
+  @ApiModelProperty(value = "Number of seconds of inactivity before a conversation’s messages  will be automatically deleted. See  [Conversation Retention Seconds](https://docs.smooch.io/guide/creating-and-managing-apps/#conversation-retention-seconds) for more information. ")
   @JsonProperty(JSON_PROPERTY_CONVERSATION_RETENTION_SECONDS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -146,11 +146,11 @@ public class AppSettings {
   }
 
    /**
-   * A boolean specifying whether a message should be added to the conversation  history when a postback button is clicked. See  [Echo Postbacks](https://docs.smooch.io/rest/#echo-postbacks) for more information. 
+   * A boolean specifying whether a message should be added to the conversation  history when a postback button is clicked. See  [Echo Postbacks](https://docs.smooch.io/guide/creating-and-managing-apps/#echo-postbacks) for more information. 
    * @return echoPostback
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "A boolean specifying whether a message should be added to the conversation  history when a postback button is clicked. See  [Echo Postbacks](https://docs.smooch.io/rest/#echo-postbacks) for more information. ")
+  @ApiModelProperty(value = "A boolean specifying whether a message should be added to the conversation  history when a postback button is clicked. See  [Echo Postbacks](https://docs.smooch.io/guide/creating-and-managing-apps/#echo-postbacks) for more information. ")
   @JsonProperty(JSON_PROPERTY_ECHO_POSTBACK)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
