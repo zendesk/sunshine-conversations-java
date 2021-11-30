@@ -143,7 +143,7 @@ public class Participant {
 
   public Participant addClientAssociationsItem(ClientAssociation clientAssociationsItem) {
     if (this.clientAssociations == null) {
-      this.clientAssociations = new ArrayList<ClientAssociation>();
+      this.clientAssociations = new ArrayList<>();
     }
     this.clientAssociations.add(clientAssociationsItem);
     return this;

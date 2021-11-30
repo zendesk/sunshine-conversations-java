@@ -50,7 +50,7 @@ public class CarouselMessage implements Content {
   private String text;
 
   public static final String JSON_PROPERTY_ITEMS = "items";
-  private List<Item> items = new ArrayList<Item>();
+  private List<Item> items = new ArrayList<>();
 
   public static final String JSON_PROPERTY_DISPLAY_SETTINGS = "displaySettings";
   private CarouselMessageDisplaySettings displaySettings;

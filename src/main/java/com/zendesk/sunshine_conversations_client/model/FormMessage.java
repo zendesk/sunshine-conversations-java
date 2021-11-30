@@ -48,7 +48,7 @@ public class FormMessage implements Content {
   private Boolean blockChatInput;
 
   public static final String JSON_PROPERTY_FIELDS = "fields";
-  private List<Field> fields = new ArrayList<Field>();
+  private List<Field> fields = new ArrayList<>();
 
 
   public FormMessage type(String type) {

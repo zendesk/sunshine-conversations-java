@@ -45,7 +45,7 @@ public class IntegrationApiKeyListResponse {
 
   public IntegrationApiKeyListResponse addKeysItem(ApiKey keysItem) {
     if (this.keys == null) {
-      this.keys = new ArrayList<ApiKey>();
+      this.keys = new ArrayList<>();
     }
     this.keys.add(keysItem);
     return this;

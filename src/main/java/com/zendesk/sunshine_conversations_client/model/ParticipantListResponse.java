@@ -56,7 +56,7 @@ public class ParticipantListResponse {
 
   public ParticipantListResponse addParticipantsItem(Participant participantsItem) {
     if (this.participants == null) {
-      this.participants = new ArrayList<Participant>();
+      this.participants = new ArrayList<>();
     }
     this.participants.add(participantsItem);
     return this;

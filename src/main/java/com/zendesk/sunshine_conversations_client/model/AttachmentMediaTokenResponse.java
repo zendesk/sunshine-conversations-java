@@ -45,7 +45,7 @@ public class AttachmentMediaTokenResponse {
 
   public AttachmentMediaTokenResponse putTokensItem(String key, String tokensItem) {
     if (this.tokens == null) {
-      this.tokens = new HashMap<String, String>();
+      this.tokens = new HashMap<>();
     }
     this.tokens.put(key, tokensItem);
     return this;

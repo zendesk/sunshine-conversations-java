@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '9.4.6'
+version = '9.5.7'
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
@@ -68,8 +68,8 @@ if(hasProperty('target') && target == 'android') {
             targetSdkVersion 23
         }
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_7
-            targetCompatibility JavaVersion.VERSION_1_7
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
         }
 
         // Rename the aar correctly
@@ -113,8 +113,8 @@ if(hasProperty('target') && target == 'android') {
 
     apply plugin: 'java'
     apply plugin: 'maven'
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 
     install {
         repositories.mavenInstaller {
@@ -130,12 +130,11 @@ if(hasProperty('target') && target == 'android') {
 
 ext {
     swagger_annotations_version = "1.5.22"
-    jackson_version = "2.10.3"
-    jackson_databind_version = "2.10.3"
+    jackson_version = "2.13.0"
+    jackson_databind_version = "2.13.0"
     jackson_databind_nullable_version = "0.2.1"
-    threetenbp_version = "2.9.10"
-    resteasy_version = "4.7.0.Final"
-    jodatime_version = "2.9.9"
+    threetenbp_version = "2.12.5"
+    resteasy_version = "5.0.0.Final"
     junit_version = "4.13"
 }
 
@@ -150,9 +149,7 @@ dependencies {
     compile "com.fasterxml.jackson.core:jackson-databind:$jackson_databind_version"
     compile "com.github.joschi.jackson:jackson-datatype-threetenbp:$threetenbp_version"
     compile "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
-    compile "com.fasterxml.jackson.datatype:jackson-datatype-joda:$jackson_version"
-    compile "joda-time:joda-time:$jodatime_version"
-    compile "com.brsanthu:migbase64:2.2"
+    compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jackson_version"
     testCompile "junit:junit:$junit_version"
 }
 
@@ -195,4 +192,8 @@ publishing {
 
 signing {
     sign publishing.publications
+}
+
+tasks.withType(Sign) {
+    onlyIf { project.getProperties().get("disableSigning") != "true" }
 }

@@ -356,7 +356,7 @@ public class WebUpdate implements IntegrationUpdate {
 
   public WebUpdate addIntegrationOrderItem(String integrationOrderItem) {
     if (this.integrationOrder == null || !this.integrationOrder.isPresent()) {
-      this.integrationOrder = JsonNullable.<List<String>>of(new ArrayList<String>());
+      this.integrationOrder = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
       this.integrationOrder.get().add(integrationOrderItem);
@@ -478,7 +478,7 @@ public class WebUpdate implements IntegrationUpdate {
 
   public WebUpdate addOriginWhitelistItem(String originWhitelistItem) {
     if (this.originWhitelist == null || !this.originWhitelist.isPresent()) {
-      this.originWhitelist = JsonNullable.<List<String>>of(new ArrayList<String>());
+      this.originWhitelist = JsonNullable.<List<String>>of(new ArrayList<>());
     }
     try {
       this.originWhitelist.get().add(originWhitelistItem);

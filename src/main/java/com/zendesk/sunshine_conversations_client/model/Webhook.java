@@ -48,7 +48,7 @@ public class Webhook {
   private String target;
 
   public static final String JSON_PROPERTY_TRIGGERS = "triggers";
-  private List<String> triggers = new ArrayList<String>();
+  private List<String> triggers = new ArrayList<>();
 
   public static final String JSON_PROPERTY_SECRET = "secret";
   private String secret;

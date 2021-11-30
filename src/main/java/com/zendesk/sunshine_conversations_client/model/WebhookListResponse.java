@@ -45,7 +45,7 @@ public class WebhookListResponse {
 
   public WebhookListResponse addWebhooksItem(Webhook webhooksItem) {
     if (this.webhooks == null) {
-      this.webhooks = new ArrayList<Webhook>();
+      this.webhooks = new ArrayList<>();
     }
     this.webhooks.add(webhooksItem);
     return this;

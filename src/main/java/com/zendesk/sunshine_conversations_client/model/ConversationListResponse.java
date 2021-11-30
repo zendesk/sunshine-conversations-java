@@ -55,7 +55,7 @@ public class ConversationListResponse {
 
   public ConversationListResponse addConversationsItem(Conversation conversationsItem) {
     if (this.conversations == null) {
-      this.conversations = new ArrayList<Conversation>();
+      this.conversations = new ArrayList<>();
     }
     this.conversations.add(conversationsItem);
     return this;

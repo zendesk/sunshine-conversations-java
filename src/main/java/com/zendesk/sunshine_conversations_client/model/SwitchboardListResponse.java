@@ -45,7 +45,7 @@ public class SwitchboardListResponse {
 
   public SwitchboardListResponse addSwitchboardsItem(Switchboard switchboardsItem) {
     if (this.switchboards == null) {
-      this.switchboards = new ArrayList<Switchboard>();
+      this.switchboards = new ArrayList<>();
     }
     this.switchboards.add(switchboardsItem);
     return this;

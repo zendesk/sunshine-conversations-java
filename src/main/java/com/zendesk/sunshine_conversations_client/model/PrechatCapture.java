@@ -132,7 +132,7 @@ public class PrechatCapture {
 
   public PrechatCapture addFieldsItem(Field fieldsItem) {
     if (this.fields == null) {
-      this.fields = new ArrayList<Field>();
+      this.fields = new ArrayList<>();
     }
     this.fields.add(fieldsItem);
     return this;

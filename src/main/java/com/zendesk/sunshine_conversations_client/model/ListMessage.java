@@ -46,7 +46,7 @@ public class ListMessage implements Content {
   private String type = "list";
 
   public static final String JSON_PROPERTY_ITEMS = "items";
-  private List<Item> items = new ArrayList<Item>();
+  private List<Item> items = new ArrayList<>();
 
   public static final String JSON_PROPERTY_ACTIONS = "actions";
   private List<ActionSubset> actions = null;
@@ -113,7 +113,7 @@ public class ListMessage implements Content {
 
   public ListMessage addActionsItem(ActionSubset actionsItem) {
     if (this.actions == null) {
-      this.actions = new ArrayList<ActionSubset>();
+      this.actions = new ArrayList<>();
     }
     this.actions.add(actionsItem);
     return this;

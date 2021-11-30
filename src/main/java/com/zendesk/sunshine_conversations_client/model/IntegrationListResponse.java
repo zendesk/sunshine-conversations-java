@@ -55,7 +55,7 @@ public class IntegrationListResponse {
 
   public IntegrationListResponse addIntegrationsItem(Integration integrationsItem) {
     if (this.integrations == null) {
-      this.integrations = new ArrayList<Integration>();
+      this.integrations = new ArrayList<>();
     }
     this.integrations.add(integrationsItem);
     return this;

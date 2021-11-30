@@ -46,7 +46,7 @@ public class MessagePostResponse {
 
   public MessagePostResponse addMessagesItem(Message messagesItem) {
     if (this.messages == null) {
-      this.messages = new ArrayList<Message>();
+      this.messages = new ArrayList<>();
     }
     this.messages.add(messagesItem);
     return this;

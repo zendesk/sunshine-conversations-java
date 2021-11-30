@@ -45,7 +45,7 @@ public class FormResponseMessage implements Content {
   private String type = "formResponse";
 
   public static final String JSON_PROPERTY_FIELDS = "fields";
-  private List<Field> fields = new ArrayList<Field>();
+  private List<Field> fields = new ArrayList<>();
 
   public static final String JSON_PROPERTY_TEXT_FALLBACK = "textFallback";
   private String textFallback;

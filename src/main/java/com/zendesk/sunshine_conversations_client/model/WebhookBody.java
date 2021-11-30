@@ -81,7 +81,7 @@ public class WebhookBody {
 
   public WebhookBody addTriggersItem(String triggersItem) {
     if (this.triggers == null) {
-      this.triggers = new ArrayList<String>();
+      this.triggers = new ArrayList<>();
     }
     this.triggers.add(triggersItem);
     return this;

@@ -319,7 +319,7 @@ public class Field {
 
   public Field addSelectItem(Object selectItem) {
     if (this.select == null) {
-      this.select = new ArrayList<Object>();
+      this.select = new ArrayList<>();
     }
     this.select.add(selectItem);
     return this;
@@ -352,7 +352,7 @@ public class Field {
 
   public Field addOptionsItem(Object optionsItem) {
     if (this.options == null) {
-      this.options = new ArrayList<Object>();
+      this.options = new ArrayList<>();
     }
     this.options.add(optionsItem);
     return this;

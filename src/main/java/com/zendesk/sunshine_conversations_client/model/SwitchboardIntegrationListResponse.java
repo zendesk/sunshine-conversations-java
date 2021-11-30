@@ -45,7 +45,7 @@ public class SwitchboardIntegrationListResponse {
 
   public SwitchboardIntegrationListResponse addSwitchboardIntegrationsItem(SwitchboardIntegration switchboardIntegrationsItem) {
     if (this.switchboardIntegrations == null) {
-      this.switchboardIntegrations = new ArrayList<SwitchboardIntegration>();
+      this.switchboardIntegrations = new ArrayList<>();
     }
     this.switchboardIntegrations.add(switchboardIntegrationsItem);
     return this;

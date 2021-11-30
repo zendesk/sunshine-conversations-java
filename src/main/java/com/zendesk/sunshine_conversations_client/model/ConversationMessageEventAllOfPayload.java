@@ -105,7 +105,7 @@ public class ConversationMessageEventAllOfPayload {
 
   public ConversationMessageEventAllOfPayload addRecentNotificationsItem(MessageWebhook recentNotificationsItem) {
     if (this.recentNotifications == null) {
-      this.recentNotifications = new ArrayList<MessageWebhook>();
+      this.recentNotifications = new ArrayList<>();
     }
     this.recentNotifications.add(recentNotificationsItem);
     return this;

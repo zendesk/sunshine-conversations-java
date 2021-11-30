@@ -1,5 +1,14 @@
 # Changelog
 
+## [9.5.7] - 2021-11-25
+
+- Updated the following dependencies:
+  - com.fasterxml.jackson.core:jackson-databind from 2.10.3 to 2.13.0
+  - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.10.3 to 2.13.0
+  - com.github.joschi.jackson:jackson-datatype-threetenbp from 2.9.10 to 2.12.5
+  - org.jboss.resteasy:resteasy-client 3.1.3.Final to 5.0.0.Final
+  - org.jboss.resteasy:resteasy-multipart-provider from 3.1.3.Final 5.0.0.Final
+
 ## [9.4.6] - 2021-09-23
 
 - Added channel linking events

@@ -107,7 +107,7 @@ public class TextMessage implements Content {
 
   public TextMessage addActionsItem(Action actionsItem) {
     if (this.actions == null) {
-      this.actions = new ArrayList<Action>();
+      this.actions = new ArrayList<>();
     }
     this.actions.add(actionsItem);
     return this;

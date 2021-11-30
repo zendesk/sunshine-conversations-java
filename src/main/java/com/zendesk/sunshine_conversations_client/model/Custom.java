@@ -77,7 +77,7 @@ public class Custom extends Integration {
   protected String type = "custom";
 
   public static final String JSON_PROPERTY_WEBHOOKS = "webhooks";
-  private List<Webhook> webhooks = new ArrayList<Webhook>();
+  private List<Webhook> webhooks = new ArrayList<>();
 
 
   public Custom type(String type) {

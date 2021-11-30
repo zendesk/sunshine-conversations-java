@@ -98,7 +98,7 @@ public class Item {
   private SizeEnum size;
 
   public static final String JSON_PROPERTY_ACTIONS = "actions";
-  private List<ActionSubset> actions = new ArrayList<ActionSubset>();
+  private List<ActionSubset> actions = new ArrayList<>();
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();

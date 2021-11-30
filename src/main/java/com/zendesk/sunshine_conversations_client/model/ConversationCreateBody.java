@@ -94,7 +94,7 @@ public class ConversationCreateBody {
 
   public ConversationCreateBody addParticipantsItem(ParticipantSubSchema participantsItem) {
     if (this.participants == null) {
-      this.participants = new ArrayList<ParticipantSubSchema>();
+      this.participants = new ArrayList<>();
     }
     this.participants.add(participantsItem);
     return this;

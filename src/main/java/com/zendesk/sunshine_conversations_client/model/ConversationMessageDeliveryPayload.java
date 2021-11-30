@@ -173,7 +173,7 @@ public class ConversationMessageDeliveryPayload {
 
   public ConversationMessageDeliveryPayload addExternalMessagesItem(ConversationMessageDeliveryPayloadExternalMessages externalMessagesItem) {
     if (this.externalMessages == null || !this.externalMessages.isPresent()) {
-      this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>of(new ArrayList<ConversationMessageDeliveryPayloadExternalMessages>());
+      this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>of(new ArrayList<>());
     }
     try {
       this.externalMessages.get().add(externalMessagesItem);

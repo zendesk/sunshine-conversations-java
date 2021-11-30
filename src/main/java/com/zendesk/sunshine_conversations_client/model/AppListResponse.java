@@ -55,7 +55,7 @@ public class AppListResponse {
 
   public AppListResponse addAppsItem(App appsItem) {
     if (this.apps == null) {
-      this.apps = new ArrayList<App>();
+      this.apps = new ArrayList<>();
     }
     this.apps.add(appsItem);
     return this;

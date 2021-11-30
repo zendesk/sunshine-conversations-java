@@ -55,7 +55,7 @@ public class ClientListResponse {
 
   public ClientListResponse addClientsItem(Client clientsItem) {
     if (this.clients == null) {
-      this.clients = new ArrayList<Client>();
+      this.clients = new ArrayList<>();
     }
     this.clients.add(clientsItem);
     return this;

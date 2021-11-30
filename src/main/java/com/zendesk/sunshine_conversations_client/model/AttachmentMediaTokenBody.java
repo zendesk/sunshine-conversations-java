@@ -33,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class AttachmentMediaTokenBody {
   public static final String JSON_PROPERTY_PATHS = "paths";
-  private List<String> paths = new ArrayList<String>();
+  private List<String> paths = new ArrayList<>();
 
 
   public AttachmentMediaTokenBody paths(List<String> paths) {
