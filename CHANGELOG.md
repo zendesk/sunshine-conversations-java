@@ -1,5 +1,9 @@
 # Changelog
 
+## [9.5.8] - 2022-01-03
+
+- Add missing pageId and pageName properties on Messenger integration.
+
 ## [9.5.7] - 2021-11-25
 
 - Updated the following dependencies:
