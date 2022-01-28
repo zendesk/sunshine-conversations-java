@@ -36,7 +36,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   TextMessage.JSON_PROPERTY_TYPE,
   TextMessage.JSON_PROPERTY_TEXT,
-  TextMessage.JSON_PROPERTY_ACTIONS
+  TextMessage.JSON_PROPERTY_ACTIONS,
+  TextMessage.JSON_PROPERTY_PAYLOAD
 })
 
 public class TextMessage implements Content {
@@ -48,6 +49,9 @@ public class TextMessage implements Content {
 
   public static final String JSON_PROPERTY_ACTIONS = "actions";
   private List<Action> actions = null;
+
+  public static final String JSON_PROPERTY_PAYLOAD = "payload";
+  private String payload;
 
 
   public TextMessage type(String type) {
@@ -132,6 +136,31 @@ public class TextMessage implements Content {
   }
 
 
+  public TextMessage payload(String payload) {
+    
+    this.payload = payload;
+    return this;
+  }
+
+   /**
+   * The payload of a [reply button](https://docs.smooch.io/guide/structured-messages/#reply-buttons) response message.
+   * @return payload
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The payload of a [reply button](https://docs.smooch.io/guide/structured-messages/#reply-buttons) response message.")
+  @JsonProperty(JSON_PROPERTY_PAYLOAD)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getPayload() {
+    return payload;
+  }
+
+
+  public void setPayload(String payload) {
+    this.payload = payload;
+  }
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -143,12 +172,13 @@ public class TextMessage implements Content {
     TextMessage textMessage = (TextMessage) o;
     return Objects.equals(this.type, textMessage.type) &&
         Objects.equals(this.text, textMessage.text) &&
-        Objects.equals(this.actions, textMessage.actions);
+        Objects.equals(this.actions, textMessage.actions) &&
+        Objects.equals(this.payload, textMessage.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, actions);
+    return Objects.hash(type, text, actions, payload);
   }
 
 
@@ -159,6 +189,7 @@ public class TextMessage implements Content {
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    text: ").append(toIndentedString(text)).append("\n");
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
+    sb.append("    payload: ").append(toIndentedString(payload)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -5694,6 +5694,10 @@ components:
           items:
             $ref: '#/components/schemas/action'
           type: array
+        payload:
+          description: The payload of a [reply button](https://docs.smooch.io/guide/structured-messages/#reply-buttons)
+            response message.
+          type: string
       required:
       - type
       type: object
