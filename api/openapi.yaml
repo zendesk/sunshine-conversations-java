@@ -4435,6 +4435,7 @@ components:
               discarded:
                 id: 1a64f7f75028fef55f815007
                 externalId: "912382198"
+            reason: api
   parameters:
     pageQuery:
       description: Contains parameters for applying cursor pagination.
