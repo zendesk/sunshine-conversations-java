@@ -1,5 +1,10 @@
 # Changelog
 
+## [9.6.0] - 2022-03-23
+
+- Added `user:update` event. This event currently fires when an anonymous user is converted to an authenticated user.
+- Added missing `reason` in the `user:merge` webhook payload example.
+
 ## [9.5.8] - 2022-01-03
 
 - Add missing pageId and pageName properties on Messenger integration.

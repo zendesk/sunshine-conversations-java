@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.5.8</version>
+    <version>9.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.5.8"
+compile "com.zendesk:sunshine-conversations-client:9.6.0"
 ```
 
 ## Getting Started
@@ -459,6 +459,9 @@ Class | Method | HTTP request | Description
  - [UserResponse](docs/UserResponse.md)
  - [UserTruncated](docs/UserTruncated.md)
  - [UserUpdateBody](docs/UserUpdateBody.md)
+ - [UserUpdateEvent](docs/UserUpdateEvent.md)
+ - [UserUpdateEventAllOf](docs/UserUpdateEventAllOf.md)
+ - [UserUpdateEventAllOfPayload](docs/UserUpdateEventAllOfPayload.md)
  - [Viber](docs/Viber.md)
  - [ViberAllOf](docs/ViberAllOf.md)
  - [ViberUpdate](docs/ViberUpdate.md)

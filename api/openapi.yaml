@@ -122,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.4.6
+  version: 9.6.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -256,23 +256,25 @@ tags:
     \ switchboard:passControl | When a switchboard integration gives control of the\
     \ conversation to another switchboard integration. |\n| switchboard:passControl:failure\
     \ | When changing a switchboard integration to active fails. |\n| user:merge \
-    \        | When two or more users are merged into one. |\n\n## Securing Sunshine\
-    \ Conversations Webhooks\nWhen a webhook is created, a shared secret will be generated\
-    \ for it. The secret can be used to determine the veracity of a request to your\
-    \ webhook route. It is included as an `X-API-Key` header with each webhook request\
-    \ sent to the target URL.\nThat secret is available in the response to the POST\
-    \ request used to generate the webhook, or through a GET request to the webhook\
-    \ route.\n\n## Retry policy\n\nA webhook call will be attempted up to 5 times\
-    \ over a 15 minute window. The attempts will happen at an exponentially increasing\
-    \ interval if the target responds with anything but a success (2XX) or a [non-recoverable\
-    \ error](#non-recoverable-errors). If no response is received within 20 seconds,\
-    \ the call will be considered a failure and will also be reattempted.\n\n### Non-recoverable\
-    \ Errors\nThe following status codes are deemed to be non-recoverable and Sunshine\
-    \ Conversations will not reattempt a call when receiving a response with them:\n\
-    \n- 400: The target exists, but can’t process the payload.\n- 401: The target\
-    \ is behind authentication or doesn’t recognize the webhook secret.\n- 403: Sunshine\
-    \ Conversations should not be calling the target.\n- 404: The target doesn’t exist.\n\
-    - 406: The target exists, and rejected the webhook intentionally.\n"
+    \        | When two or more users are merged into one. |\n| user:update      \
+    \   | When a user is updated. (Currently, when a user's identification is updated.)|\n\
+    \n## Securing Sunshine Conversations Webhooks\nWhen a webhook is created, a shared\
+    \ secret will be generated for it. The secret can be used to determine the veracity\
+    \ of a request to your webhook route. It is included as an `X-API-Key` header\
+    \ with each webhook request sent to the target URL.\nThat secret is available\
+    \ in the response to the POST request used to generate the webhook, or through\
+    \ a GET request to the webhook route.\n\n## Retry policy\n\nA webhook call will\
+    \ be attempted up to 5 times over a 15 minute window. The attempts will happen\
+    \ at an exponentially increasing interval if the target responds with anything\
+    \ but a success (2XX) or a [non-recoverable error](#non-recoverable-errors). If\
+    \ no response is received within 20 seconds, the call will be considered a failure\
+    \ and will also be reattempted.\n\n### Non-recoverable Errors\nThe following status\
+    \ codes are deemed to be non-recoverable and Sunshine Conversations will not reattempt\
+    \ a call when receiving a response with them:\n\n- 400: The target exists, but\
+    \ can’t process the payload.\n- 401: The target is behind authentication or doesn’\
+    t recognize the webhook secret.\n- 403: Sunshine Conversations should not be calling\
+    \ the target.\n- 404: The target doesn’t exist.\n- 406: The target exists, and\
+    \ rejected the webhook intentionally.\n"
   name: Webhooks
 - description: |
     Sunshine Conversations has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Sunshine Conversations using our [partner application](https://smooch.io/partners/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Sunshine Conversations Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.
@@ -4436,6 +4438,25 @@ components:
                 id: 1a64f7f75028fef55f815007
                 externalId: "912382198"
             reason: api
+    userUpdateEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          createdAt: 2020-09-30T15:14:29.834Z
+          type: user:update
+          payload:
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: 9128asd219s7
+            reason: authentication
+            source:
+              type: web
+              integrationId: 5ecff63ffc3ab25f4561c8a0
   parameters:
     pageQuery:
       description: Contains parameters for applying cursor pagination.
@@ -7804,6 +7825,11 @@ components:
       - $ref: '#/components/schemas/eventSubSchema'
       - $ref: '#/components/schemas/userMergeEvent_allOf'
       title: user:merge
+    userUpdateEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/userUpdateEvent_allOf'
+      title: user:update
     appListFilter:
       properties:
         serviceAccountId:
@@ -9569,6 +9595,29 @@ components:
       properties:
         payload:
           $ref: '#/components/schemas/userMergeEvent_allOf_payload'
+    userUpdateEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The updated user.
+        reason:
+          description: |
+            The reason why the user was updated, if applicable.
+            * `authentication` - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user.
+          enum:
+          - authentication
+          type: string
+        source:
+          allOf:
+          - $ref: '#/components/schemas/sourceWebhook'
+          description: The source of the creation.
+    userUpdateEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/userUpdateEvent_allOf_payload'
   securitySchemes:
     bearerAuth:
       bearerFormat: JWT
@@ -9660,6 +9709,7 @@ x-webhooks:
                     - $ref: '#/components/schemas/switchboardPassControl'
                     - $ref: '#/components/schemas/switchboardPassControlFailure'
                     - $ref: '#/components/schemas/userMergeEvent'
+                    - $ref: '#/components/schemas/userUpdateEvent'
             examples:
               client:add:
                 $ref: '#/components/examples/clientAddEvent'
@@ -9703,6 +9753,8 @@ x-webhooks:
                 $ref: '#/components/examples/switchboardPassControlFailureEvent'
               user:merge:
                 $ref: '#/components/examples/userMergeEvent'
+              user:update:
+                $ref: '#/components/examples/userUpdateEvent'
       responses:
         "200":
           description: Ok

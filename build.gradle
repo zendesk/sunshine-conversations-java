@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '9.5.8'
+version = '9.6.0'
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
