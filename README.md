@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.6.0</version>
+    <version>9.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.6.0"
+compile "com.zendesk:sunshine-conversations-client:9.7.0"
 ```
 
 ## Getting Started
@@ -188,6 +188,7 @@ Class | Method | HTTP request | Description
 *SwitchboardActionsApi* | [**acceptControl**](docs/SwitchboardActionsApi.md#acceptControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/acceptControl | Accept Control
 *SwitchboardActionsApi* | [**offerControl**](docs/SwitchboardActionsApi.md#offerControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/offerControl | Offer Control
 *SwitchboardActionsApi* | [**passControl**](docs/SwitchboardActionsApi.md#passControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/passControl | Pass Control
+*SwitchboardActionsApi* | [**releaseControl**](docs/SwitchboardActionsApi.md#releaseControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/releaseControl | Release Control
 *SwitchboardIntegrationsApi* | [**createSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#createSwitchboardIntegration) | **POST** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | Create Switchboard Integration
 *SwitchboardIntegrationsApi* | [**deleteSwitchboardIntegration**](docs/SwitchboardIntegrationsApi.md#deleteSwitchboardIntegration) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Delete Switchboard Integration
 *SwitchboardIntegrationsApi* | [**listSwitchboardIntegrations**](docs/SwitchboardIntegrationsApi.md#listSwitchboardIntegrations) | **GET** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | List Switchboard Integrations

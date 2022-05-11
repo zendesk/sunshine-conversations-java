@@ -122,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.6.0
+  version: 9.7.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -1742,6 +1742,56 @@ paths:
       tags:
       - Switchboard Actions
       x-contentType: application/json
+      x-accepts: application/json
+  /v2/apps/{appId}/conversations/{conversationId}/releaseControl:
+    post:
+      description: The releaseControl action releases the control of the conversation
+        by nullifying its switchboard state. When using integration auth scope, a
+        403 is returned if the active switchboard integration is not the authenticated
+        integration.
+      operationId: releaseControl
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the conversation.
+        explode: false
+        in: path
+        name: conversationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+        "403":
+          description: Forbidden
+        "404":
+          description: Not Found
+      security:
+      - basicAuth:
+        - integration
+        - app
+        - account
+      - bearerAuth:
+        - integration
+        - app
+        - account
+      summary: Release Control
+      tags:
+      - Switchboard Actions
       x-accepts: application/json
   /v2/apps/{appId}/integrations:
     get:
