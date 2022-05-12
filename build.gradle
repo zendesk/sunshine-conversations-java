@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '9.7.0'
+version = '9.7.1'
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
@@ -130,11 +130,11 @@ if(hasProperty('target') && target == 'android') {
 
 ext {
     swagger_annotations_version = "1.5.22"
-    jackson_version = "2.13.0"
-    jackson_databind_version = "2.13.0"
-    jackson_databind_nullable_version = "0.2.1"
+    jackson_version = "2.13.2"
+    jackson_databind_version = "2.13.2.2"
+    jackson_databind_nullable_version = "0.2.2"
     threetenbp_version = "2.12.5"
-    resteasy_version = "5.0.0.Final"
+    resteasy_version = "5.0.3.Final"
     junit_version = "4.13"
 }
 

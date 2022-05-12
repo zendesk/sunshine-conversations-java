@@ -1,5 +1,19 @@
 # Changelog
 
+## [9.7.1] - 2022-05-12
+
+- Updated the following java dependencies:
+  - org.jboss.resteasy:resteasy-client from 5.0.0.Final to 5.0.3.Final
+  - org.jboss.resteasy:resteasy-multipart-provider from 5.0.0.Final to 5.0.3.Final
+  - org.jboss.resteasy:resteasy-jackson2-provider from 5.0.0.Final to 5.0.3.Final
+  - com.fasterxml.jackson.core:jackson-core from 2.13.0 to 2.13.2
+  - com.fasterxml.jackson.core:jackson-annotations from 2.13.0 to 2.13.2
+  - com.fasterxml.jackson.datatype:jackson-datatype-jsr310 from 2.13.0 to 2.13.2
+  - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.13.0 to 2.13.2
+  - com.fasterxml.jackson.core:jackson-databind from 2.13.0 to 2.13.2.2
+  - org.openapitools:jackson-databind-nullable from 0.2.1 to 0.2.2
+  - commons-io:commons-io from 2.5 to 2.11.0
+
 ## [9.7.0] - 2022-05-05
 
 ### Added
