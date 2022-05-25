@@ -1,5 +1,9 @@
 # Changelog
 
+## [9.7.2] - 2022-05-25
+
+- Fixes the issue where the Attachment API will fail to upload permitted file types
+
 ## [9.7.1] - 2022-05-12
 
 - Updated the following java dependencies:

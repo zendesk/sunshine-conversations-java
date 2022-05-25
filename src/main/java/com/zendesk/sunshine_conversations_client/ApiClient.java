@@ -36,6 +36,7 @@ import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import javax.activation.MimetypesFileTypeMap;
 
 import com.zendesk.sunshine_conversations_client.model.AppListFilter;
 import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
@@ -89,7 +90,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/9.7.1/java");
+    setUserAgent("OpenAPI-Generator/9.7.2/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -515,7 +516,9 @@ public class ApiClient {
         if (param.getValue() instanceof File) {
           File file = (File) param.getValue();
           try {
-            multipart.addFormData(param.getKey(), new FileInputStream(file),MediaType.APPLICATION_OCTET_STREAM_TYPE, file.getName());
+            MimetypesFileTypeMap fileTypeMap = new MimetypesFileTypeMap();
+            MediaType mediaType = MediaType.valueOf(fileTypeMap.getContentType(file));
+            multipart.addFormData(param.getKey(), new FileInputStream(file), mediaType, file.getName());
           } catch (FileNotFoundException e) {
             throw new ApiException("Could not serialize multipart/form-data "+e.getMessage());
           }
