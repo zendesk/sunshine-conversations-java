@@ -1694,8 +1694,9 @@ paths:
       x-accepts: application/json
   /v2/apps/{appId}/conversations/{conversationId}/passControl:
     post:
-      description: Mark the named switchboard integration as active and transition
-        all the other switchboard integrations to standby status.
+      description: The passControl action marks the named switchboard integration
+        as active and transition all the other switchboard integrations to standby
+        status.
       operationId: passControl
       parameters:
       - description: Identifies the app.

@@ -152,7 +152,7 @@ public class SwitchboardActionsApi {
       }
   /**
    * Pass Control
-   * Mark the named switchboard integration as active and transition all the other switchboard integrations to standby status.
+   * The passControl action marks the named switchboard integration as active and transition all the other switchboard integrations to standby status.
    * @param passControlBody  (required)
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
@@ -383,7 +383,7 @@ public class SwitchboardActionsApi {
       }
   /**
    * Pass Control
-   * Mark the named switchboard integration as active and transition all the other switchboard integrations to standby status.
+   * The passControl action marks the named switchboard integration as active and transition all the other switchboard integrations to standby status.
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param passControlBody  (required)
