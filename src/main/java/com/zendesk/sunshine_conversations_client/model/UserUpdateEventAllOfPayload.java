@@ -39,10 +39,12 @@ public class UserUpdateEventAllOfPayload {
   private User user = null;
 
   /**
-   * The reason why the user was updated, if applicable. * &#x60;authentication&#x60; - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. 
+   * The reason why the user was updated, if applicable. * &#x60;authentication&#x60; - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. * &#x60;localeDetection&#x60; - A user&#39;s was updated as a result of automated locale detection on messages sent. 
    */
   public enum ReasonEnum {
-    AUTHENTICATION("authentication");
+    AUTHENTICATION("authentication"),
+    
+    LOCALEDETECTION("localeDetection");
 
     private String value;
 
@@ -110,11 +112,11 @@ public class UserUpdateEventAllOfPayload {
   }
 
    /**
-   * The reason why the user was updated, if applicable. * &#x60;authentication&#x60; - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. 
+   * The reason why the user was updated, if applicable. * &#x60;authentication&#x60; - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. * &#x60;localeDetection&#x60; - A user&#39;s was updated as a result of automated locale detection on messages sent. 
    * @return reason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The reason why the user was updated, if applicable. * `authentication` - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. ")
+  @ApiModelProperty(value = "The reason why the user was updated, if applicable. * `authentication` - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. * `localeDetection` - A user's was updated as a result of automated locale detection on messages sent. ")
   @JsonProperty(JSON_PROPERTY_REASON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
