@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.8.0] - 2022-06-29
+
+### Added
+
+- `metadata` property now appear in the `conversation` object in webhook events
+
 ## [9.7.2] - 2022-05-25
 
 - Fixes the issue where the Attachment API will fail to upload permitted file types
