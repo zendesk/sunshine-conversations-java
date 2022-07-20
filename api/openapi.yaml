@@ -122,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.9.0
+  version: 9.10.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -9232,10 +9232,12 @@ components:
             The reason for which the client was updated.
             * `confirmed` - The client is now active and ready to use.
             * `blocked` - The user has unsubscribed from the conversation.
+            * `unblocked` - A previously unsubscribed user resubscribed to the conversation.
             * `matched` - The channel found a user that matches the information provided.
           enum:
           - confirmed
           - blocked
+          - unblocked
           - matched
           type: string
     clientUpdateEvent_allOf:
