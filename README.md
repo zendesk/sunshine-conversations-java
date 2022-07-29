@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.10.0</version>
+    <version>9.11.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.10.0"
+compile "com.zendesk:sunshine-conversations-client:9.11.0"
 ```
 
 ## Getting Started
@@ -299,6 +299,9 @@ Class | Method | HTTP request | Description
  - [ConversationReadEvent](docs/ConversationReadEvent.md)
  - [ConversationReadEventAllOf](docs/ConversationReadEventAllOf.md)
  - [ConversationReadEventAllOfPayload](docs/ConversationReadEventAllOfPayload.md)
+ - [ConversationReferralEvent](docs/ConversationReferralEvent.md)
+ - [ConversationReferralEventAllOf](docs/ConversationReferralEventAllOf.md)
+ - [ConversationReferralEventAllOfPayload](docs/ConversationReferralEventAllOfPayload.md)
  - [ConversationRemoveEvent](docs/ConversationRemoveEvent.md)
  - [ConversationRemoveEventAllOf](docs/ConversationRemoveEventAllOf.md)
  - [ConversationRemoveEventAllOfPayload](docs/ConversationRemoveEventAllOfPayload.md)

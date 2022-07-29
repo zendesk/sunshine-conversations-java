@@ -122,7 +122,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.10.0
+  version: 9.11.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -246,9 +246,11 @@ tags:
     \  | When a new message fails to be delivered in the conversation. |\n| conversation:message:delivery:user\
     \  | When a new message is successfully delivered to a user. |\n| conversation:postback\
     \  | When a user clicks on a postback action button. |\n| conversation:read  |\
-    \ When a user has read the conversation. |\n| conversation:typing  | When a user\
-    \ starts or stops typing. |\n| switchboard:acceptControl | When a switchboard\
-    \ integration accepts control of a conversation. | \n| switchboard:acceptControl:failure\
+    \ When a user has read the conversation. |\n| conversation:referral | When a user\
+    \ is referred to a conversation. See the <a href=\"https://docs.smooch.io/guide/conversation-referrals/\"\
+    >conversation referrals</a> guide for more details. |\n| conversation:typing \
+    \ | When a user starts or stops typing. |\n| switchboard:acceptControl | When\
+    \ a switchboard integration accepts control of a conversation. | \n| switchboard:acceptControl:failure\
     \   | When control of a conversation fails to be accepted by a switchboard integration.\
     \ |\n| switchboard:offerControl  | When a switchboard integration has been offered\
     \ control of the conversation. |\n| switchboard:offerControl:failure | When control\
@@ -4309,6 +4311,32 @@ components:
               source:
                 type: web
                 integrationId: 5ecff63ffc3ab25f4561c8a0
+    conversationReferralEvent:
+      value:
+        app:
+          id: 5ebee0975ac5304b664a12fa
+        webhook:
+          id: 5f4eaef81e3dcc117c7ba48a
+          version: v2
+        events:
+        - id: 5f74a0d52b5315fc007e798a
+          type: conversation:referral
+          payload:
+            conversation:
+              id: f52b01137aa6c250bc7251fa
+              type: personal
+              activeSwitchboardIntegration:
+                id: 5eecde2dcdbffb08f5c3ed37
+                name: bot
+                integrationId: 5f11a650e4e987667c2051d1
+                integrationType: custom
+            user:
+              id: 26508c10541a4b0ff472e5e2
+              externalId: 912382197
+            source:
+              type: web
+              integrationId: 5ecff63ffc3ab25f4561c8a0
+            referral: {}
     conversationTypingEvent:
       value:
         app:
@@ -7695,6 +7723,8 @@ components:
       - $ref: '#/components/schemas/clientUpdateEvent_allOf'
       title: client:update
     referral:
+      description: |
+        Data representing a referral object when a user is referred to a conversation. See the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation referrals</a> guide for more details.
       properties:
         code:
           description: The referral’s identifier.
@@ -7856,6 +7886,11 @@ components:
       - $ref: '#/components/schemas/eventSubSchema'
       - $ref: '#/components/schemas/conversationReadEvent_allOf'
       title: conversation:read
+    conversationReferralEvent:
+      allOf:
+      - $ref: '#/components/schemas/eventSubSchema'
+      - $ref: '#/components/schemas/conversationReferralEvent_allOf'
+      title: conversation:referral
     conversationTypingEvent:
       allOf:
       - $ref: '#/components/schemas/eventSubSchema'
@@ -9474,6 +9509,31 @@ components:
       properties:
         payload:
           $ref: '#/components/schemas/conversationReadEvent_allOf_payload'
+    conversationReferralEvent_allOf_payload:
+      description: The payload of the event. The contents of this object depend on
+        the type of event.
+      properties:
+        conversation:
+          allOf:
+          - $ref: '#/components/schemas/conversationTruncated'
+          description: The conversation a user lands in after being referred. See
+            the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation
+            referrals</a> guide for more details.
+        user:
+          allOf:
+          - $ref: '#/components/schemas/user'
+          description: The user associated with the conversation.
+        source:
+          allOf:
+          - $ref: '#/components/schemas/sourceWebhook'
+          description: The source of the referral.
+        referral:
+          allOf:
+          - $ref: '#/components/schemas/referral'
+    conversationReferralEvent_allOf:
+      properties:
+        payload:
+          $ref: '#/components/schemas/conversationReferralEvent_allOf_payload'
     conversationTypingEvent_allOf_payload:
       description: The payload of the event. The contents of this object depend on
         the type of event.
@@ -9768,6 +9828,7 @@ x-webhooks:
                     - $ref: '#/components/schemas/conversationMessageEvent'
                     - $ref: '#/components/schemas/conversationPostbackEvent'
                     - $ref: '#/components/schemas/conversationReadEvent'
+                    - $ref: '#/components/schemas/conversationReferralEvent'
                     - $ref: '#/components/schemas/conversationTypingEvent'
                     - $ref: '#/components/schemas/switchboardAcceptControl'
                     - $ref: '#/components/schemas/switchboardAcceptControlFailure'
@@ -9804,6 +9865,8 @@ x-webhooks:
                 $ref: '#/components/examples/conversationPostbackEvent'
               conversation:read:
                 $ref: '#/components/examples/conversationReadEvent'
+              conversation:referral:
+                $ref: '#/components/examples/conversationReferralEvent'
               conversation:typing:
                 $ref: '#/components/examples/conversationTypingEvent'
               switchboard:acceptControl:
