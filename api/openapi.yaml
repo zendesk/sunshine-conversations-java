@@ -5719,9 +5719,10 @@ components:
           description: The type of action.
           type: string
         text:
-          description: The button text. Text longer than 20 characters will be truncated
-            on Facebook Messenger, and longer than 40 characters will be truncated
-            on Web Messenger, iOS, and Android.
+          description: The button text. We recommend a non-empty value because some
+            channels may not support empty ones. Text longer than 20 characters will
+            be truncated on Facebook Messenger, and longer than 40 characters will
+            be truncated on Web Messenger, iOS, and Android.
           type: string
         payload:
           description: A string payload to help you identify the action context. Used
