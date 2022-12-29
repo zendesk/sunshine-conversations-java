@@ -1,30 +1,18 @@
 
+
 # Webhook
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | The webhook ID, generated automatically. | 
+**id** | **String** | A unique identifier for the webhook. |  [optional] [readonly]
+**version** | **String** | Schema version of the payload delivered to this webhook. Can be &#x60;v1&#x60;, &#x60;v1.1&#x60; or &#x60;v2&#x60;. |  [optional] [readonly]
 **target** | **String** | URL to be called when the webhook is triggered. | 
-**triggers** | [**List&lt;TriggersEnum&gt;**](#List&lt;TriggersEnum&gt;) | An array of triggers you wish to have the webhook listen to. If unspecified the default trigger is *message*. | 
-**secret** | **String** | Secret which will be transmitted with each webhook invocation and can be used to verify the authenticity of the caller. | 
-
-
-<a name="List<TriggersEnum>"></a>
-## Enum: List&lt;TriggersEnum&gt;
-Name | Value
----- | -----
-MESSAGE | &quot;message&quot;
-MESSAGE_APPUSER | &quot;message:appUser&quot;
-MESSAGE_APPMAKER | &quot;message:appMaker&quot;
-CONVERSATION_START | &quot;conversation:start&quot;
-CONVERSATION_READ | &quot;conversation:read&quot;
-POSTBACK | &quot;postback&quot;
-MERGE_APPUSER | &quot;merge:appUser&quot;
-DELIVERY_SUCCESS | &quot;delivery:success&quot;
-DELIVERY_FAILURE | &quot;delivery:failure&quot;
-PAYMENT_SUCCESS | &quot;payment:success&quot;
-STAR | &quot;*&quot;
+**triggers** | **List&lt;String&gt;** | An array of triggers the integration is subscribed to. This property is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers). | 
+**secret** | **String** | Webhook secret, used to verify the origin of incoming requests. |  [optional]
+**includeFullUser** | **Boolean** | A boolean specifying whether webhook payloads should include the complete user schema for events involving a specific user. |  [optional]
+**includeFullSource** | **Boolean** | A boolean specifying whether webhook payloads should include the client and device object (when applicable). |  [optional]
 
 
 

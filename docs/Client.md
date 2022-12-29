@@ -1,36 +1,33 @@
 
+
 # Client
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | An identifier for the client. Must be globally unique. | 
-**active** | **Boolean** | Flag indicating if the client is active. |  [optional]
-**lastSeen** | **String** | The date time the client was last seen. |  [optional]
-**platform** | [**PlatformEnum**](#PlatformEnum) | The client&#39;s platform. | 
-**pushNotificationToken** | **String** | The GCM or APN token to be used for sending push notifications to the device. Applies to only *android* and *ios* clients.  |  [optional]
-**appVersion** | **String** | A reserved string field for reporting the app version running on the device. |  [optional]
-**displayName** | **String** | The client&#39;s display name. |  [optional]
-**info** | [**ClientInfo**](ClientInfo.md) |  |  [optional]
+**id** | **String** | The unique ID of the client. |  [optional]
+**type** | [**ClientType**](ClientType.md) |  |  [optional]
+**status** | [**StatusEnum**](#StatusEnum) | The client status. Indicates if the client is able to receive messages or not. Can be pending, inactive, active, or blocked. |  [optional]
+**integrationId** | **String** | The ID of the integration that the client was created for. Unused for clients of type sdk, as they incorporate multiple integrations. |  [optional]
+**externalId** | **String** | The ID of the user on an external channel. For example, the user’s phone number for Twilio, or their page-scoped user ID for Facebook Messenger. Applies only to non-SDK clients. |  [optional]
+**lastSeen** | **String** | A datetime string with the format &#x60;YYYY-MM-DDThh:mm:ss.SSSZ&#x60; representing the last time the user interacted with this client. |  [optional]
+**linkedAt** | **String** | A timestamp signifying when the client was added to the user. Formatted as &#x60;YYYY-MM-DDThh:mm:ss.SSSZ&#x60;. |  [optional]
+**displayName** | **String** | The user&#39;s display name on the channel. |  [optional]
+**avatarUrl** | [**URI**](URI.md) | The URL for the user&#39;s avatar on the channel. |  [optional]
+**info** | [**Object**](.md) | A flat curated object with properties that vary for each client platform. All keys are optional and not guaranteed to be available. |  [optional]
+**raw** | [**Object**](.md) | An object with raw properties that vary for each client platform. All keys are optional and not guaranteed to be available. |  [optional]
 
 
-<a name="PlatformEnum"></a>
-## Enum: PlatformEnum
+
+## Enum: StatusEnum
+
 Name | Value
 ---- | -----
-IOS | &quot;ios&quot;
-ANDROID | &quot;android&quot;
-WEB | &quot;web&quot;
-TWILIO | &quot;twilio&quot;
-TELEGRAM | &quot;telegram&quot;
-MESSENGER | &quot;messenger&quot;
-FRONTENDEMAIL | &quot;frontendEmail&quot;
-LINE | &quot;line&quot;
-WECHAT | &quot;wechat&quot;
-VIBER | &quot;viber&quot;
-TWITTER | &quot;twitter&quot;
-MAILGUN | &quot;mailgun&quot;
-OTHER | &quot;other&quot;
+ACTIVE | &quot;active&quot;
+BLOCKED | &quot;blocked&quot;
+INACTIVE | &quot;inactive&quot;
+PENDING | &quot;pending&quot;
 
 
 
