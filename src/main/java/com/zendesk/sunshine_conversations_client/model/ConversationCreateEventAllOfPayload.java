@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.Referral;
-import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
+import com.zendesk.sunshine_conversations_client.model.SourceWithCampaignWebhook;
 import com.zendesk.sunshine_conversations_client.model.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -46,7 +46,7 @@ public class ConversationCreateEventAllOfPayload {
   private ConversationTruncated conversation = null;
 
   /**
-   * The reason why the conversation was created, if applicable. * &#x60;linkRequest&#x60; - The conversation was created in order to generate a link request to transfer the user to a different channel. * &#x60;message&#x60; - The conversation was created because a message was sent. * &#x60;none&#x60; - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * &#x60;notification&#x60; - The conversation was created by a call to the Notification API. * &#x60;prechatCapture&#x60; - The conversation was created because the user completed a prechat capture form in the Web Messenger. * &#x60;startConversation&#x60; - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. 
+   * The reason why the conversation was created, if applicable. * &#x60;linkRequest&#x60; - The conversation was created in order to generate a link request to transfer the user to a different channel. * &#x60;message&#x60; - The conversation was created because a message was sent. * &#x60;none&#x60; - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * &#x60;notification&#x60; - The conversation was created by a call to the Notification API. * &#x60;prechatCapture&#x60; - The conversation was created because the user completed a prechat capture form in the Web Messenger. * &#x60;startConversation&#x60; - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. * &#x60;proactiveMessaging&#x60; - The conversation was created because the user interacted with a campaign. 
    */
   public enum CreationReasonEnum {
     LINKREQUEST("linkRequest"),
@@ -59,7 +59,9 @@ public class ConversationCreateEventAllOfPayload {
     
     PRECHATCAPTURE("prechatCapture"),
     
-    STARTCONVERSATION("startConversation");
+    STARTCONVERSATION("startConversation"),
+    
+    PROACTIVEMESSAGING("proactiveMessaging");
 
     private String value;
 
@@ -92,7 +94,7 @@ public class ConversationCreateEventAllOfPayload {
   private CreationReasonEnum creationReason;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWebhook source = null;
+  private SourceWithCampaignWebhook source = null;
 
   public static final String JSON_PROPERTY_USER = "user";
   private JsonNullable<User> user = JsonNullable.<User>of(null);
@@ -133,11 +135,11 @@ public class ConversationCreateEventAllOfPayload {
   }
 
    /**
-   * The reason why the conversation was created, if applicable. * &#x60;linkRequest&#x60; - The conversation was created in order to generate a link request to transfer the user to a different channel. * &#x60;message&#x60; - The conversation was created because a message was sent. * &#x60;none&#x60; - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * &#x60;notification&#x60; - The conversation was created by a call to the Notification API. * &#x60;prechatCapture&#x60; - The conversation was created because the user completed a prechat capture form in the Web Messenger. * &#x60;startConversation&#x60; - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. 
+   * The reason why the conversation was created, if applicable. * &#x60;linkRequest&#x60; - The conversation was created in order to generate a link request to transfer the user to a different channel. * &#x60;message&#x60; - The conversation was created because a message was sent. * &#x60;none&#x60; - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * &#x60;notification&#x60; - The conversation was created by a call to the Notification API. * &#x60;prechatCapture&#x60; - The conversation was created because the user completed a prechat capture form in the Web Messenger. * &#x60;startConversation&#x60; - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. * &#x60;proactiveMessaging&#x60; - The conversation was created because the user interacted with a campaign. 
    * @return creationReason
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "The reason why the conversation was created, if applicable. * `linkRequest` - The conversation was created in order to generate a link request to transfer the user to a different channel. * `message` - The conversation was created because a message was sent. * `none` - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * `notification` - The conversation was created by a call to the Notification API. * `prechatCapture` - The conversation was created because the user completed a prechat capture form in the Web Messenger. * `startConversation` - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. ")
+  @ApiModelProperty(value = "The reason why the conversation was created, if applicable. * `linkRequest` - The conversation was created in order to generate a link request to transfer the user to a different channel. * `message` - The conversation was created because a message was sent. * `none` - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * `notification` - The conversation was created by a call to the Notification API. * `prechatCapture` - The conversation was created because the user completed a prechat capture form in the Web Messenger. * `startConversation` - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. * `proactiveMessaging` - The conversation was created because the user interacted with a campaign. ")
   @JsonProperty(JSON_PROPERTY_CREATION_REASON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -151,7 +153,7 @@ public class ConversationCreateEventAllOfPayload {
   }
 
 
-  public ConversationCreateEventAllOfPayload source(SourceWebhook source) {
+  public ConversationCreateEventAllOfPayload source(SourceWithCampaignWebhook source) {
     
     this.source = source;
     return this;
@@ -166,12 +168,12 @@ public class ConversationCreateEventAllOfPayload {
   @JsonProperty(JSON_PROPERTY_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SourceWebhook getSource() {
+  public SourceWithCampaignWebhook getSource() {
     return source;
   }
 
 
-  public void setSource(SourceWebhook source) {
+  public void setSource(SourceWithCampaignWebhook source) {
     this.source = source;
   }
 

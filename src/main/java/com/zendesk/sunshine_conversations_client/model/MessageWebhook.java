@@ -57,7 +57,7 @@ public class MessageWebhook {
   private Content content = null;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private Source source;
+  private Source source = null;
 
   public static final String JSON_PROPERTY_QUOTED_MESSAGE = "quotedMessage";
   private JsonNullable<QuotedMessage> quotedMessage = JsonNullable.<QuotedMessage>of(null);

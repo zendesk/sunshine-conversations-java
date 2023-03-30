@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.Referral;
-import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
+import com.zendesk.sunshine_conversations_client.model.SourceWithCampaignWebhook;
 import com.zendesk.sunshine_conversations_client.model.User;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,7 +45,7 @@ public class ConversationReferralEventAllOfPayload {
   private User user = null;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWebhook source = null;
+  private SourceWithCampaignWebhook source = null;
 
   public static final String JSON_PROPERTY_REFERRAL = "referral";
   private Referral referral = null;
@@ -101,7 +101,7 @@ public class ConversationReferralEventAllOfPayload {
   }
 
 
-  public ConversationReferralEventAllOfPayload source(SourceWebhook source) {
+  public ConversationReferralEventAllOfPayload source(SourceWithCampaignWebhook source) {
     
     this.source = source;
     return this;
@@ -116,12 +116,12 @@ public class ConversationReferralEventAllOfPayload {
   @JsonProperty(JSON_PROPERTY_SOURCE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public SourceWebhook getSource() {
+  public SourceWithCampaignWebhook getSource() {
     return source;
   }
 
 
-  public void setSource(SourceWebhook source) {
+  public void setSource(SourceWithCampaignWebhook source) {
     this.source = source;
   }
 

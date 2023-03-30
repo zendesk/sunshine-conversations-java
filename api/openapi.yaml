@@ -7731,6 +7731,19 @@ components:
       - $ref: '#/components/schemas/eventSubSchema'
       - $ref: '#/components/schemas/clientUpdateEvent_allOf'
       title: client:update
+    campaign:
+      description: The campaign the user interacted with (if applicable).
+      nullable: true
+      properties:
+        id:
+          description: The unique ID of the campaign.
+          example: de13bee15b51033b34162411
+          type: string
+      type: object
+    sourceWithCampaignWebhook:
+      allOf:
+      - $ref: '#/components/schemas/sourceWebhook'
+      - $ref: '#/components/schemas/sourceWithCampaignWebhook_allOf'
     referral:
       description: |
         Data representing a referral object when a user is referred to a conversation. See the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation referrals</a> guide for more details.
@@ -7845,7 +7858,12 @@ components:
           - $ref: '#/components/schemas/content'
           description: The content of the message.
         source:
-          $ref: '#/components/schemas/source'
+          allOf:
+          - $ref: '#/components/schemas/source'
+          - properties:
+              campaign:
+                $ref: '#/components/schemas/campaign'
+            type: object
         quotedMessage:
           allOf:
           - $ref: '#/components/schemas/quotedMessage'
@@ -9288,6 +9306,10 @@ components:
       properties:
         payload:
           $ref: '#/components/schemas/clientUpdateEvent_allOf_payload'
+    sourceWithCampaignWebhook_allOf:
+      properties:
+        campaign:
+          $ref: '#/components/schemas/campaign'
     referral_details:
       description: Nested object containing additional information.
       nullable: true
@@ -9323,6 +9345,7 @@ components:
             * `notification` - The conversation was created by a call to the Notification API.
             * `prechatCapture` - The conversation was created because the user completed a prechat capture form in the Web Messenger.
             * `startConversation` - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel.
+            * `proactiveMessaging` - The conversation was created because the user interacted with a campaign.
           enum:
           - linkRequest
           - message
@@ -9330,10 +9353,11 @@ components:
           - notification
           - prechatCapture
           - startConversation
+          - proactiveMessaging
           type: string
         source:
           allOf:
-          - $ref: '#/components/schemas/sourceWebhook'
+          - $ref: '#/components/schemas/sourceWithCampaignWebhook'
           description: The source of the creation.
         user:
           allOf:
@@ -9482,7 +9506,7 @@ components:
           description: The user that triggered the postback.
         source:
           allOf:
-          - $ref: '#/components/schemas/sourceWebhook'
+          - $ref: '#/components/schemas/sourceWithCampaignWebhook'
           description: The source of the postback.
     conversationPostbackEvent_allOf:
       properties:
@@ -9534,7 +9558,7 @@ components:
           description: The user associated with the conversation.
         source:
           allOf:
-          - $ref: '#/components/schemas/sourceWebhook'
+          - $ref: '#/components/schemas/sourceWithCampaignWebhook'
           description: The source of the referral.
         referral:
           allOf:

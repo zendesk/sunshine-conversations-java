@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>9.12.0</version>
+    <version>9.13.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:9.12.0"
+compile "com.zendesk:sunshine-conversations-client:9.13.0"
 ```
 
 ## Getting Started
@@ -248,6 +248,7 @@ Class | Method | HTTP request | Description
  - [Author](docs/Author.md)
  - [AuthorWebhook](docs/AuthorWebhook.md)
  - [Buy](docs/Buy.md)
+ - [Campaign](docs/Campaign.md)
  - [CarouselMessage](docs/CarouselMessage.md)
  - [CarouselMessageDisplaySettings](docs/CarouselMessageDisplaySettings.md)
  - [Client](docs/Client.md)
@@ -414,6 +415,8 @@ Class | Method | HTTP request | Description
  - [Reply](docs/Reply.md)
  - [Source](docs/Source.md)
  - [SourceWebhook](docs/SourceWebhook.md)
+ - [SourceWithCampaignWebhook](docs/SourceWithCampaignWebhook.md)
+ - [SourceWithCampaignWebhookAllOf](docs/SourceWithCampaignWebhookAllOf.md)
  - [Status](docs/Status.md)
  - [Switchboard](docs/Switchboard.md)
  - [SwitchboardAcceptControl](docs/SwitchboardAcceptControl.md)
