@@ -224,8 +224,8 @@ tags:
     \ to integrate more deeply with your favorite CRM, or to build a bot.\nA webhook\
     \ can only operate within the scope of a single Sunshine Conversations app.\n\
     <aside class=\"notice\">An app is limited to 10 webhooks. A webhook can subscribe\
-    \ to multiple trigger events. We recommend using a single webhook that registers\
-    \ to all the events you need.</aside>\n\n## Webhook Triggers\nWhen a webhook trigger\
+    \ to multiple trigger events. We recommend using a single webhook entry that includes\
+    \ all the required events.</aside>\n\n## Webhook Triggers\nWhen a webhook trigger\
     \ is triggered, a POST request will be made to the URL configured in your webhook\
     \ object along with a JSON payload specific for the event type.\n\n| Trigger \
     \                | Description                       |\n| ----------------------\
@@ -306,8 +306,8 @@ tags:
     \ cannot see or modify webhooks that were created by other integrations, for example.\n\
     \n| API\t      | Access\t|\n| --------  | ------- |\n| [/v2/apps/:appId/users/\\\
     *](#tag/Users)\t| Yes\t|\n| [/v2/apps/:appId/conversations/\\*](#tag/Conversations)\t\
-    | Yes\t|\n| [/v2/apps/:appId/integrations/me/webhooks/\\*](#tag/Webhooks/operation/eventWebhooks)\t\
-    | Yes\t|\n| [/v2/apps/:appId/switchboards/\\*](#tag/Switchboards) | No |\n| [/v2/apps/\\\
+    | Yes\t|\n| [/v2/apps/:appId/integrations/me/webhooks/\\*](#tag/Webhooks)\t| Yes\t\
+    |\n| [/v2/apps/:appId/switchboards/\\*](#tag/Switchboards) | No |\n| [/v2/apps/\\\
     *](#tag/Apps) | No |\n"
   name: OAuth Endpoints
   x-displayName: OAuth Endpoints
