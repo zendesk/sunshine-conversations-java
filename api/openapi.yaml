@@ -39,13 +39,13 @@ info:
     \ learn more about API versioning at Sunshine Conversations, including instructions\
     \ on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
     \n## API Pagination and Records Limits\n\nAll paginated endpoints support cursor-based\
-    \ pagination.\n### Cursor Pagination\n\nCursor-based pagination is a common pagination\
-    \ strategy that avoids many of the pitfalls of offset–limit pagination. It works\
-    \ by returning a pointer to a specific item in the dataset. On subsequent requests,\
-    \ the server returns results after the given pointer. \n\nA `page[after]` or `page[before]`\
-    \ query string parameter may be provided, they are cursors pointing to a record\
-    \ id.\n\nThe `page[after]` cursor indicates that only records **subsequent** to\
-    \ it should be returned.\n\nThe `page[before]` cursor indicates that only records\
+    \ pagination.\n\n### Cursor Pagination\n\nCursor-based pagination is a common\
+    \ pagination strategy that avoids many of the pitfalls of offset–limit pagination.\
+    \ It works by returning a pointer to a specific item in the dataset. On subsequent\
+    \ requests, the server returns results after the given pointer.\n\nA `page[after]`\
+    \ or `page[before]` query string parameter may be provided, they are cursors pointing\
+    \ to a record id.\n\nThe `page[after]` cursor indicates that only records **subsequent**\
+    \ to it should be returned.\n\nThe `page[before]` cursor indicates that only records\
     \ **preceding** it should be returned.\n\n**Only one** of `page[after]` or `page[before]`\
     \ may be provided in a query, not both.\n\nIn most endpoints, an optional `page[size]`\
     \ query parameter may be passed to control the number of records returned by the\
@@ -67,32 +67,38 @@ info:
     \ In order to avoid production outages, when calling the Sunshine Conversations\
     \ API you should implement `429` retry logic using exponential backoff and jitter.\n\
     \nIf your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).\n\
-    \n## Request Size Limits\n\nThe Sunshine Conversations API imposes the following\
-    \ size limits on HTTP requests:\n\n| Request Type | Limit |\n| ------------ |\
-    \ ----- |\n| JSON         | 100kb |\n| File upload  | 50mb  |\n\n## Authorization\n\
-    \nThis is an overview of how authorization works with the Sunshine Conversations\
-    \ API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs)\
-    \ as authentication methods for server-to-server calls. [See below](#authentication)\
-    \ for more details.\nThere are two different authorization scopes available -\
-    \ app and account.\n\n| Scope   | Authorized Methods                       |\n\
-    | ------- | ---------------------------------------- |\n| app     | All methods\
-    \ besides Account Provisioning |\n| account | All methods                    \
-    \          |\n\nThe app scope can be used to access any of the Sunshine Conversations\
-    \ APIs, besides account provisioning methods, on behalf of a single app, or any\
-    \ app user related to that app. The account scope can be used to access any of\
-    \ the Sunshine Conversations and Account Provisioning APIs on behalf of the account\
-    \ owner, any app belonging to the account, or any app user related to those apps.\n\
-    \n<aside class=\"notice\">An additional scope of `appUser` can also be used to\
-    \ authenticate users when using one of the Sunshine Conversations native SDK integrations.\
-    \ For information on how and when to use this scope, see the guide for <a href=\"\
-    https://docs.smooch.io/guide/authenticating-users/\">authenticating users.</a></aside>\n\
-    \n## Authentication\n\nTo authenticate requests to the API, you will need an API\
-    \ key, composed of a key id and a secret.\nFor an overview of how authentication\
-    \ works in Sunshine Conversations and instructions on how to generate an API key,\
-    \ see the guide.\nAPI requests can be authenticated in two ways:\n\n- With Basic\
-    \ authentication you can make requests using an API key directly.\n- With JSON\
-    \ Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate\
-    \ with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
+    \n## Conversation Size Limits\n\nConversations are limited to 30,000 messages.\
+    \ Once you reach this maximum, a `423 Locked` HTTP status code is returned when\
+    \ trying to post a new message. To allow more messages to be sent to the affected\
+    \ conversation, you must [delete all messages](https://docs.smooch.io/rest/#operation/deleteAllMessages)\
+    \ to make room.\n\nIf your use case involves conversations that could exceed this\
+    \ limit, please [contact us](https://smooch.io/contact). We will not extend your\
+    \ limit, but we want to understand your use case better.\n\n## Request Size Limits\n\
+    \nThe Sunshine Conversations API imposes the following size limits on HTTP requests:\n\
+    \n| Request Type | Limit |\n| ------------ | ----- |\n| JSON         | 100kb |\n\
+    | File upload  | 50mb  |\n\n## Authorization\n\nThis is an overview of how authorization\
+    \ works with the Sunshine Conversations API. Sunshine Conversations allows basic\
+    \ authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server\
+    \ calls. [See below](#authentication) for more details.\nThere are two different\
+    \ authorization scopes available - app and account.\n\n| Scope   | Authorized\
+    \ Methods                       |\n| ------- | ----------------------------------------\
+    \ |\n| app     | All methods besides Account Provisioning |\n| account | All methods\
+    \                              |\n\nThe app scope can be used to access any of\
+    \ the Sunshine Conversations APIs, besides account provisioning methods, on behalf\
+    \ of a single app, or any app user related to that app. The account scope can\
+    \ be used to access any of the Sunshine Conversations and Account Provisioning\
+    \ APIs on behalf of the account owner, any app belonging to the account, or any\
+    \ app user related to those apps.\n\n<aside class=\"notice\">An additional scope\
+    \ of `appUser` can also be used to authenticate users when using one of the Sunshine\
+    \ Conversations native SDK integrations. For information on how and when to use\
+    \ this scope, see the guide for <a href=\"https://docs.smooch.io/guide/authenticating-users/\"\
+    >authenticating users.</a></aside>\n\n## Authentication\n\nTo authenticate requests\
+    \ to the API, you will need an API key, composed of a key id and a secret.\nFor\
+    \ an overview of how authentication works in Sunshine Conversations and instructions\
+    \ on how to generate an API key, see the guide.\nAPI requests can be authenticated\
+    \ in two ways:\n\n- With Basic authentication you can make requests using an API\
+    \ key directly.\n- With JSON Web Tokens (JWTs) you sign tokens with an API key,\
+    \ which are then used to authenticate with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
     \ to learn if JWTs are relevant for your usage.\n- Before using an API key in\
     \ production, make sure to familiarize yourself with best practices on how to\
     \ [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).\n\
@@ -1455,6 +1461,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/messagePostResponse'
           description: Created
+        "423":
+          description: |
+            Message limit reached
+            <aside class="notice">To learn more about the conversation message limit, consult the section in the introduction linked <a href="#section/Introduction/Conversation-Size-Limits">here</a>.</aside>
       security:
       - basicAuth:
         - integration
