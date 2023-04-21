@@ -7511,6 +7511,24 @@ components:
           nullable: true
           type: string
       type: object
+    identity:
+      description: A connected user identity, such as an email.
+      properties:
+        type:
+          description: The type of identity.
+          example: email
+          type: string
+        value:
+          description: The identity value.
+          example: jane.doe@gmail.com
+          maxLength: 128
+          minLength: 1
+          type: string
+        verification:
+          description: The type of verification performed on the identity.
+          example: embed
+          type: string
+      type: object
     user:
       allOf:
       - $ref: '#/components/schemas/userTruncated'
@@ -9100,6 +9118,12 @@ components:
           allOf:
           - $ref: '#/components/schemas/metadata'
           nullable: false
+        identities:
+          description: The user's connected identities.
+          items:
+            $ref: '#/components/schemas/identity'
+          readOnly: true
+          type: array
     matchCriteriaMailgun_allOf:
       description: The set of criteria used to determine the user's identity on a
         third-party channel.

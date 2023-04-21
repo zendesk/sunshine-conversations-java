@@ -18,11 +18,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.zendesk.sunshine_conversations_client.model.Identity;
 import com.zendesk.sunshine_conversations_client.model.Profile;
 import com.zendesk.sunshine_conversations_client.model.UserAllOf;
 import com.zendesk.sunshine_conversations_client.model.UserTruncated;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
@@ -36,7 +39,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   User.JSON_PROPERTY_EXTERNAL_ID,
   User.JSON_PROPERTY_SIGNED_UP_AT,
   User.JSON_PROPERTY_PROFILE,
-  User.JSON_PROPERTY_METADATA
+  User.JSON_PROPERTY_METADATA,
+  User.JSON_PROPERTY_IDENTITIES
 })
 
 public class User {
@@ -54,6 +58,9 @@ public class User {
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private Object metadata = null;
+
+  public static final String JSON_PROPERTY_IDENTITIES = "identities";
+  private List<Identity> identities = null;
 
 
   public User id(String id) {
@@ -191,6 +198,22 @@ public class User {
   }
 
 
+   /**
+   * The user&#39;s connected identities.
+   * @return identities
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "The user's connected identities.")
+  @JsonProperty(JSON_PROPERTY_IDENTITIES)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public List<Identity> getIdentities() {
+    return identities;
+  }
+
+
+
+
   @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {
@@ -204,12 +227,13 @@ public class User {
         Objects.equals(this.externalId, user.externalId) &&
         Objects.equals(this.signedUpAt, user.signedUpAt) &&
         Objects.equals(this.profile, user.profile) &&
-        Objects.equals(this.metadata, user.metadata);
+        Objects.equals(this.metadata, user.metadata) &&
+        Objects.equals(this.identities, user.identities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalId, signedUpAt, profile, metadata);
+    return Objects.hash(id, externalId, signedUpAt, profile, metadata, identities);
   }
 
 
@@ -222,6 +246,7 @@ public class User {
     sb.append("    signedUpAt: ").append(toIndentedString(signedUpAt)).append("\n");
     sb.append("    profile: ").append(toIndentedString(profile)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    identities: ").append(toIndentedString(identities)).append("\n");
     sb.append("}");
     return sb.toString();
   }
