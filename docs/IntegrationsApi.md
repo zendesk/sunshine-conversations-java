@@ -167,6 +167,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
+| **400** | SDK integrations configured on Admin Center cannot be deleted |  -  |
 | **404** | Integration not found |  -  |
 
 

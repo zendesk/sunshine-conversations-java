@@ -200,6 +200,7 @@ tags:
   x-displayName: Switchboard Actions
 - description: |
     This set of endpoints is used to configure and manage various front-end messaging channels.
+    <aside class="notice">An SDK integration configured on Admin Center cannot be deleted.</aside>
   name: Integrations
   x-displayName: Integrations
 - description: This set of endpoints is used to provision and revoke API keys for
@@ -1957,6 +1958,8 @@ paths:
               schema:
                 type: object
           description: Ok
+        "400":
+          description: SDK integrations configured on Admin Center cannot be deleted
         "404":
           description: Integration not found
       security:
