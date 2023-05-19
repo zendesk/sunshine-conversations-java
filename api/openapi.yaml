@@ -18,26 +18,27 @@ info:
     \ in a <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy\"\
     >same-origin policy</a> browser error. For more information, refer \nto the <a\
     \ href=\"http://docs.smooch.io/guide/authorization/#handle-credentials-with-caution\"\
-    >Authorization guide</a>.</aside>\n\n## Regions\n\nSunshine Conversations is available\
-    \ in the following regions. Each Sunshine Conversations region has its own API\
-    \ host.\n\n| Region         | Host                       |\n| -------------- |\
-    \ -------------------------- |\n| United States  | https://api.smooch.io     \
-    \ |\n| European Union | https://api.eu-1.smooch.io |\n\nFor more information on\
-    \ regions, visit [the guide](/guide/regions/).\n\n<aside class=\"notice\">When\
-    \ configuring an API host, make sure to always use `https`. Some API clients can\
-    \ have unexpected behaviour when following redirects from `http` to `https`.</aside>\n\
-    \n## Errors\n\nSunshine Conversations uses standard HTTP status codes to communicate\
-    \ errors. In general, a `2xx` status code indicates success while `4xx` indicates\
-    \ an error, in which case, the response body includes a JSON object which includes\
-    \ an array of errors, with a text `code` and `title` containing more details.\
-    \ Multiple errors can only be included in a `400 Bad Request`. A `5xx` status\
-    \ code indicates that something went wrong on our end.\n\n```javascript\n{\n \
-    \  \"errors\":  [\n    {\n        \"code\": \"unauthorized\",\n        \"title\"\
-    : \"Authorization is required\"\n    }\n   ]\n}\n```\n\n## API Version\n\nThe\
-    \ latest version of the API is v2. Version v1.1 is still supported and you can\
-    \ continue using it but we encourage you to upgrade to the latest version. To\
-    \ learn more about API versioning at Sunshine Conversations, including instructions\
-    \ on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
+    >Authorization guide</a>.</aside>\n\n## Regions\n\nIf you are a licensed Zendesk\
+    \ customer, use the following API host:\n\n`https://<subdomain>.zendesk.com/sc`\n\
+    \nIf you are not a licensed Zendesk customer, the API host is available in the\
+    \ following regions in order to meet your organization’s residency requirements.\n\
+    \n| Region         | Host                       |\n| -------------- | --------------------------\
+    \ |\n| United States  | https://api.smooch.io      |\n| European Union | https://api.eu-1.smooch.io\
+    \ |\n\nFor more information, see [Regions](/guide/regions/).\n\n<aside class=\"\
+    notice\">When configuring an API host, make sure to always use `https`. Some API\
+    \ clients can have unexpected behaviour when following redirects from `http` to\
+    \ `https`.</aside>\n\n## Errors\n\nSunshine Conversations uses standard HTTP status\
+    \ codes to communicate errors. In general, a `2xx` status code indicates success\
+    \ while `4xx` indicates an error, in which case, the response body includes a\
+    \ JSON object which includes an array of errors, with a text `code` and `title`\
+    \ containing more details. Multiple errors can only be included in a `400 Bad\
+    \ Request`. A `5xx` status code indicates that something went wrong on our end.\n\
+    \n```javascript\n{\n   \"errors\":  [\n    {\n        \"code\": \"unauthorized\"\
+    ,\n        \"title\": \"Authorization is required\"\n    }\n   ]\n}\n```\n\n##\
+    \ API Version\n\nThe latest version of the API is v2. Version v1.1 is still supported\
+    \ and you can continue using it but we encourage you to upgrade to the latest\
+    \ version. To learn more about API versioning at Sunshine Conversations, including\
+    \ instructions on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
     \n## API Pagination and Records Limits\n\nAll paginated endpoints support cursor-based\
     \ pagination.\n\n### Cursor Pagination\n\nCursor-based pagination is a common\
     \ pagination strategy that avoids many of the pitfalls of offset–limit pagination.\
