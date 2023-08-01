@@ -90,7 +90,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/9.14.0/java");
+    setUserAgent("OpenAPI-Generator/9.14.1/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();

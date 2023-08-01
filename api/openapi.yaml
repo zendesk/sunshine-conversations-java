@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.12.0
+  version: 9.14.1
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -6477,6 +6477,8 @@ components:
         message:
           allOf:
           - $ref: '#/components/schemas/message'
+      required:
+      - type
       title: QuotedMessageMessage
       type: object
     quotedMessageExternalMessageId:
@@ -6489,9 +6491,16 @@ components:
         externalMessageId:
           description: The external message Id of the quoted message.
           type: string
+      required:
+      - type
       title: QuotedMessageExternalMessageId
       type: object
     quotedMessage:
+      discriminator:
+        mapping:
+          message: '#/components/schemas/quotedMessageMessage'
+          externalMessageId: '#/components/schemas/quotedMessageExternalMessageId'
+        propertyName: type
       oneOf:
       - $ref: '#/components/schemas/quotedMessageMessage'
       - $ref: '#/components/schemas/quotedMessageExternalMessageId'

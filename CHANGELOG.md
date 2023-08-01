@@ -1,5 +1,11 @@
 # Changelog
 
+## [9.14.1] - 2021-02-16
+
+### Fixed
+
+- Fixed: `quotedMessage` deserialization issue.
+
 ## [9.14.0] - 2023-04-10
 
 ### Added
