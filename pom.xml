@@ -237,7 +237,7 @@
         <swagger-annotations-version>1.5.22</swagger-annotations-version>
         <resteasy-version>5.0.3.Final</resteasy-version>
         <jackson-version>2.13.2</jackson-version>
-        <jackson-databind-version>2.13.2.2</jackson-databind-version>
+        <jackson-databind-version>2.13.4.2</jackson-databind-version>
         <jackson-databind-nullable-version>0.2.2</jackson-databind-nullable-version>
         <threetenbp-version>2.12.5</threetenbp-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
