@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 9.15.0
+  version: 10.0.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -8727,28 +8727,29 @@ components:
             To set up a Twitter integration, please follow the steps outlined in the [Twitter Setup Guide](https://docs.smooch.io/guide/twitter/#setup).
           type: string
         tier:
-          description: Your Twitter app’s tier, sandbox, premium or enterprise.
+          description: Your Twitter app's tier. Only "enterprise" is supported for
+            new integrations.
           enum:
-          - sandbox
-          - premium
           - enterprise
           type: string
         envName:
-          description: The Twitter dev environments label (required for sandbox and
-            premium tiers).
-          example: your_env_label
+          description: The Twitter dev environments label. Only required / used for
+            sandbox and premium tiers.
           minLength: 1
+          readOnly: true
           type: string
         consumerKey:
           description: The consumer key for your Twitter app.
           example: your_consumer_key
           minLength: 1
           type: string
+          writeOnly: true
         consumerSecret:
           description: The consumer key secret for your Twitter app.
           example: your_consumer_secret
           minLength: 1
           type: string
+          writeOnly: true
         accessTokenKey:
           description: The access token key obtained from your user via oauth.
           example: your_access_token_key
@@ -8760,8 +8761,9 @@ components:
           example: your_access_token_secret
           minLength: 1
           type: string
+          writeOnly: true
       required:
-      - acceessTokenKey
+      - accessTokenKey
       - accessTokenSecret
       - consumerKey
       - consumerSecret
