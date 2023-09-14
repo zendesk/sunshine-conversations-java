@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 10.0.0
+  version: 10.0.1
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -6131,6 +6131,15 @@ components:
           description: The URL for media, such as an image, attached to the message.
           format: uri
           type: string
+        mediaType:
+          description: The type of media.
+          maxLength: 128
+          readOnly: true
+          type: string
+        mediaSize:
+          description: The size of the media in bytes.
+          readOnly: true
+          type: number
         altText:
           description: An optional description of the image for accessibility purposes.
             The field will be saved by default with the file name as the value.
