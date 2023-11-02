@@ -8,7 +8,7 @@ A formResponse type message is a response to a form type message. formResponse t
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The type of message. | 
-**fields** | [**List&lt;Field&gt;**](Field.md) | Array of field objects that contain the submitted fields. | 
+**fields** | [**List&lt;FormResponseMessageField&gt;**](FormResponseMessageField.md) | Array of field objects that contain the submitted fields. | 
 **textFallback** | **String** | A string containing the &#x60;label: value&#x60; of all fields, each separated by a newline character. |  [optional] [readonly]
 
 

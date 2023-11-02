@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>10.0.1</version>
+    <version>11.0.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:10.0.1"
+compile "com.zendesk:sunshine-conversations-client:11.0.0"
 ```
 
 ## Getting Started
@@ -324,7 +324,11 @@ Class | Method | HTTP request | Description
  - [Field](docs/Field.md)
  - [FileMessage](docs/FileMessage.md)
  - [FormMessage](docs/FormMessage.md)
+ - [FormMessageField](docs/FormMessageField.md)
+ - [FormMessageFieldAllOf](docs/FormMessageFieldAllOf.md)
  - [FormResponseMessage](docs/FormResponseMessage.md)
+ - [FormResponseMessageField](docs/FormResponseMessageField.md)
+ - [FormResponseMessageFieldAllOf](docs/FormResponseMessageFieldAllOf.md)
  - [Identity](docs/Identity.md)
  - [ImageMessage](docs/ImageMessage.md)
  - [InlineObject](docs/InlineObject.md)

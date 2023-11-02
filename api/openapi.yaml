@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 10.0.1
+  version: 11.0.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5664,7 +5664,6 @@ components:
         uri:
           description: The action URI. This is the link that will be used in the clients
             when clicking the button.
-          format: uri
           type: string
         text:
           description: The button text.
@@ -5975,27 +5974,7 @@ components:
       - mediaUrl
       - type
       type: object
-    formOptions:
-      description: Array of objects representing options for a field of type select.
-      items:
-        properties:
-          label:
-            description: The label of the option. What the option is displayed as
-              on Web Messenger.
-            maxLength: 128
-            minLength: 1
-            type: string
-          name:
-            description: The name of the field. Must be unique per field.
-            maxLength: 128
-            minLength: 1
-            type: string
-        type: object
-      maxItems: 100
-      type: array
     field:
-      description: |
-        Properties that can be expected to receive inside a form or formResponse message field.
       properties:
         type:
           description: The field type.
@@ -6015,28 +5994,9 @@ components:
           maxLength: 128
           minLength: 1
           type: string
-        placeholder:
-          description: Placeholder text for the field. Form message only.
-          maxLength: 128
-          minLength: 1
-          type: string
-        minSize:
-          default: 1
-          description: The minimum allowed length for the response for a field of
-            type text. Form message only.
-          maximum: 128
-          minimum: 1
-          type: integer
-        maxSize:
-          default: 128
-          description: The maximum allowed length for the response for a field of
-            type text. Form message only.
-          maximum: 128
-          minimum: 1
-          type: integer
         text:
           description: Specifies the response for a text field.
-          maxLength: 128
+          maxLength: 256
           minLength: 1
           type: string
         email:
@@ -6050,29 +6010,32 @@ components:
           items:
             type: object
           type: array
-        options:
-          description: Array of objects representing options for a field of type select.
-          items:
-            properties:
-              label:
-                description: The label of the option. What the option is displayed
-                  as on Web Messenger.
-                maxLength: 128
-                minLength: 1
-                type: string
-              name:
-                description: The name of the field. Must be unique per field.
-                maxLength: 128
-                minLength: 1
-                type: string
-            type: object
-          maxItems: 100
-          type: array
       required:
       - label
       - name
       - type
-      type: object
+    formOptions:
+      description: Array of objects representing options for a field of type select.
+      items:
+        properties:
+          label:
+            description: The label of the option. What the option is displayed as
+              on Web Messenger.
+            maxLength: 128
+            minLength: 1
+            type: string
+          name:
+            description: The name of the field. Must be unique per field.
+            maxLength: 128
+            minLength: 1
+            type: string
+        type: object
+      maxItems: 100
+      type: array
+    formMessageField:
+      allOf:
+      - $ref: '#/components/schemas/field'
+      - $ref: '#/components/schemas/formMessageField_allOf'
     formMessage:
       description: A form type message without text or actions. Only supported in
         the Web SDK.
@@ -6081,6 +6044,10 @@ components:
           default: form
           description: The type of message.
           type: string
+        submitted:
+          description: Flag which states whether the form is submitted.
+          readOnly: true
+          type: boolean
         blockChatInput:
           description: true if the message should block the chat input on Web Messenger.
           type: boolean
@@ -6088,7 +6055,7 @@ components:
           description: An array of objects representing fields associated with the
             message. Only present in form and formResponse messages.
           items:
-            $ref: '#/components/schemas/field'
+            $ref: '#/components/schemas/formMessageField'
           maxItems: 20
           minItems: 1
           type: array
@@ -6096,6 +6063,10 @@ components:
       - fields
       - type
       type: object
+    formResponseMessageField:
+      allOf:
+      - $ref: '#/components/schemas/field'
+      - $ref: '#/components/schemas/formResponseMessageField_allOf'
     formResponseMessage:
       description: A formResponse type message is a response to a form type message.
         formResponse type messages are only supported as responses to form messages
@@ -6108,7 +6079,7 @@ components:
         fields:
           description: Array of field objects that contain the submitted fields.
           items:
-            $ref: '#/components/schemas/field'
+            $ref: '#/components/schemas/formResponseMessageField'
           maxItems: 20
           minItems: 1
           type: array
@@ -8281,6 +8252,55 @@ components:
           - horizontal
           - square
           type: string
+    formMessageField_allOf:
+      description: |
+        Properties that can be expected to receive inside a form message field.
+      properties:
+        placeholder:
+          description: Placeholder text for the field. Form message only.
+          maxLength: 128
+          minLength: 1
+          type: string
+        minSize:
+          default: 1
+          description: The minimum allowed length for the response for a field of
+            type text. Form message only.
+          maximum: 256
+          minimum: 1
+          type: integer
+        maxSize:
+          default: 128
+          description: The maximum allowed length for the response for a field of
+            type text. Form message only.
+          maximum: 256
+          minimum: 1
+          type: integer
+        options:
+          description: Array of objects representing options for a field of type select.
+          items:
+            properties:
+              label:
+                description: The label of the option. What the option is displayed
+                  as on Web Messenger.
+                maxLength: 128
+                minLength: 1
+                type: string
+              name:
+                description: The name of the field. Must be unique per field.
+                maxLength: 128
+                minLength: 1
+                type: string
+            type: object
+          maxItems: 100
+          type: array
+    formResponseMessageField_allOf:
+      description: |
+        Properties that can be expected to receive inside a form response message field.
+      properties:
+        quotedMessageId:
+          description: The messageId for the form that this response belongs to.
+          type: string
+          writeOnly: true
     locationMessage_coordinates:
       description: The coordinates of the location.
       properties:
