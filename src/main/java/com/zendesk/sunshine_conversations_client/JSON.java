@@ -7,7 +7,7 @@ import com.fasterxml.jackson.datatype.jsr310.*;
 
 import java.text.DateFormat;
 
-import javax.ws.rs.ext.ContextResolver;
+import jakarta.ws.rs.ext.ContextResolver;
 
 
 public class JSON implements ContextResolver<ObjectMapper> {

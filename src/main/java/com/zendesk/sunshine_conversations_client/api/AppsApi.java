@@ -5,7 +5,7 @@ import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.Pair;
 
-import javax.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.GenericType;
 
 import com.zendesk.sunshine_conversations_client.model.AppCreateBody;
 import com.zendesk.sunshine_conversations_client.model.AppListFilter;

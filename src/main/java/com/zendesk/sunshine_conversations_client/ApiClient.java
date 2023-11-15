@@ -26,27 +26,28 @@ import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.ws.rs.client.Client;
-import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.Invocation;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.Form;
-import javax.ws.rs.core.GenericType;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
-import javax.activation.MimetypesFileTypeMap;
+import jakarta.ws.rs.client.Client;
+import jakarta.ws.rs.client.ClientBuilder;
+import jakarta.ws.rs.client.Entity;
+import jakarta.ws.rs.client.Invocation;
+import jakarta.ws.rs.client.WebTarget;
+import jakarta.ws.rs.core.Form;
+import jakarta.ws.rs.core.GenericType;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.Status;
+import jakarta.activation.MimetypesFileTypeMap;
 
-import com.zendesk.sunshine_conversations_client.model.AppListFilter;
-import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
-import com.zendesk.sunshine_conversations_client.model.IntegrationListFilter;
-import com.zendesk.sunshine_conversations_client.model.Page;
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.internal.ClientConfiguration;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataOutput;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
+
+import com.zendesk.sunshine_conversations_client.model.AppListFilter;
+import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
+import com.zendesk.sunshine_conversations_client.model.IntegrationListFilter;
+import com.zendesk.sunshine_conversations_client.model.Page;
 
 import com.zendesk.sunshine_conversations_client.auth.Authentication;
 import com.zendesk.sunshine_conversations_client.auth.HttpBasicAuth;
@@ -90,7 +91,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/11.0.0/java");
+    setUserAgent("OpenAPI-Generator/12.0.0/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();

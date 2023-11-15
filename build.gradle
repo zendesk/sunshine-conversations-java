@@ -6,7 +6,12 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '11.0.0'
+version = '12.0.0'
+
+def calculateSnapshotVersion() {
+    def sha = "git rev-parse --short HEAD".execute(null, project.rootDir).text.trim()
+    return "${project.version}-${sha}-SNAPSHOT"
+}
 
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
@@ -14,6 +19,7 @@ ext["signing.secretKeyRingFile"] = ''
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
 ext["sonatypeStagingProfileId"] = ''
+ext["snapshotVersion"] = calculateSnapshotVersion()
 
 File secretPropsFile = project.rootProject.file('local.properties')
 if (secretPropsFile.exists()) {
@@ -53,7 +59,7 @@ buildscript {
 task copyDeps(type: Copy) {
   from configurations.runtime
   into 'build/lib'
-} 
+}
 
 if(hasProperty('target') && target == 'android') {
 
@@ -84,7 +90,8 @@ if(hasProperty('target') && target == 'android') {
         }
 
         dependencies {
-            provided 'javax.annotation:jsr250-api:1.0'
+            provided 'jakarta.annotation-api:2.1.1'
+            provided 'jakarta.ws.rs-api:3.1.0'
         }
     }
 
@@ -130,12 +137,12 @@ if(hasProperty('target') && target == 'android') {
 
 ext {
     swagger_annotations_version = "1.5.22"
-    jackson_version = "2.13.2"
-    jackson_databind_version = "2.13.2.2"
+    jackson_version = "2.14.3"
+    jackson_databind_version = "2.14.3"
     jackson_databind_nullable_version = "0.2.2"
-    threetenbp_version = "2.12.5"
-    resteasy_version = "5.0.3.Final"
-    junit_version = "4.13"
+    threetenbp_version = "2.15.2"
+    resteasy_version = "6.2.4.Final"
+    junit_version = "5.9.2"
 }
 
 dependencies {
@@ -173,8 +180,15 @@ publishing {
                         appendNode('name', 'Sunshine Conversations Engine').parent().
                         appendNode('email', 'sunco-eng-conversation-engine@zendesk.com').parent().
                         appendNode('organization', 'Sunshine Conversations Zendesk').parent().
-                        appendNode('organizationUrl', 'smooch.io')  
+                        appendNode('organizationUrl', 'smooch.io')
               }
+        }
+
+        zdArtifactory(MavenPublication) {
+          from components.java
+          groupId = 'com.zendesk'
+          artifactId = 'sunshine-conversations-client'
+          version = snapshotVersion
         }
     }
     repositories {
@@ -187,6 +201,15 @@ publishing {
                 password ossrhPassword
             }
         }
+
+        maven {
+          name = "zendeskArtifactory"
+          url = "https://zdrepo.jfrog.io/zdrepo/libs-snapshots-local"
+          credentials {
+              username System.env.ARTIFACTORY_USERNAME
+              password System.env.ARTIFACTORY_API_KEY
+          }
+        }
     }
 }
 
@@ -196,4 +219,13 @@ signing {
 
 tasks.withType(Sign) {
     onlyIf { project.getProperties().get("disableSigning") != "true" }
+}
+
+task publishSnapshotToZendeskArtifactory {
+    dependsOn tasks.named('publishZdArtifactoryPublicationToZendeskArtifactoryRepository')
+    description = 'Publish to the Zendesk artifactory'
+
+    doLast {
+        println("Published snapshot version: " + snapshotVersion)
+    }
 }

@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 11.0.0
+  version: 12.0.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -167,7 +167,7 @@ tags:
     \ or businesses, service accounts can be used to generate and distribute credentials\
     \ that only have access to a single business's data.\n\n### App settings\nApps\
     \ have a number of optional settings that can be used to customize specific behaviors.\
-    \ See \nthe `settings` object described below for more information.\n"
+    \ See\nthe `settings` object described below for more information.\n"
   name: Apps
   x-displayName: Apps
 - description: This set of endpoints is used to provision and revoke API keys for
@@ -226,66 +226,56 @@ tags:
   x-displayName: Clients
 - description: All notable changes to the API will be referenced in the [v2 API changelog](https://docs.smooch.io/guide/v2-api-changelog/).
   name: Changelog
-- description: "Endpoints for managing webhooks associated to a Sunshine Conversations\
-    \ Connect integration or a custom integration. Webhooks are a fantastic way to\
-    \ extend the Sunshine Conversations platform beyond the built-in feature set.\
-    \ You can use webhooks to build your own Sunshine Conversations chat clients,\
-    \ to integrate more deeply with your favorite CRM, or to build a bot.\nA webhook\
-    \ can only operate within the scope of a single Sunshine Conversations app.\n\
-    <aside class=\"notice\">An app is limited to 10 webhooks. A webhook can subscribe\
-    \ to multiple trigger events. We recommend using a single webhook entry that includes\
-    \ all the required events.</aside>\n\n## Webhook Triggers\nWhen a webhook trigger\
-    \ is triggered, a POST request will be made to the URL configured in your webhook\
-    \ object along with a JSON payload specific for the event type.\n\n| Trigger \
-    \                | Description                       |\n| ----------------------\
-    \  | -------------------------- |\n| client:add     | When initiating a channel\
-    \ link or when an SDK client is created.    |\n| client:remove     | When a client\
-    \ is removed. This can happen when:<br/>1. directly using the API<br/>2. removing\
-    \ the client using the SDK<br/>3. transferring a client due to a channel link<br/>4.\
-    \ failing or cancelling a channel link   |\n| client:update     | When a client\
-    \ is updated. This can happen when:<br/>1. a channel finds a user that matches\
-    \ the information provided<br/>2. a client is activated<br/>3. a user unsubscribes\
-    \ from a conversation or blocks the app    |\n| conversation:create     | When\
-    \ a new conversation is created.    |\n| conversation:join     | When a new participant\
-    \ joins a `sdkGroup` conversation.    |\n| conversation:leave     | When a participant\
-    \ leaves a `sdkGroup` conversation.     |\n| conversation:remove  | When a conversation\
-    \ is deleted. |\n| conversation:message  | When a new message was sent in the\
-    \ conversation. |\n| conversation:message:delivery:channel  | When a message is\
-    \ successfully delivered to a channel. |\n| conversation:message:delivery:failure\
-    \  | When a new message fails to be delivered in the conversation. |\n| conversation:message:delivery:user\
-    \  | When a new message is successfully delivered to a user. |\n| conversation:postback\
-    \  | When a user clicks on a postback action button. |\n| conversation:read  |\
-    \ When a user has read the conversation. |\n| conversation:referral | When a user\
-    \ is referred to a conversation. See the <a href=\"https://docs.smooch.io/guide/conversation-referrals/\"\
-    >conversation referrals</a> guide for more details. |\n| conversation:typing \
-    \ | When a user starts or stops typing. |\n| switchboard:acceptControl | When\
-    \ a switchboard integration accepts control of a conversation. | \n| switchboard:acceptControl:failure\
-    \   | When control of a conversation fails to be accepted by a switchboard integration.\
-    \ |\n| switchboard:offerControl  | When a switchboard integration has been offered\
-    \ control of the conversation. |\n| switchboard:offerControl:failure | When control\
-    \ of a conversation can't be offered to another switchboard integration. |\n|\
-    \ switchboard:passControl | When a switchboard integration gives control of the\
-    \ conversation to another switchboard integration. |\n| switchboard:passControl:failure\
-    \ | When changing a switchboard integration to active fails. |\n| user:merge \
-    \        | When two or more users are merged into one. |\n| user:update      \
-    \   | When a user is updated. (Currently, when a user's identification is updated.)|\n\
-    \n## Securing Sunshine Conversations Webhooks\nWhen a webhook is created, a shared\
-    \ secret will be generated for it. The secret can be used to determine the veracity\
-    \ of a request to your webhook route. It is included as an `X-API-Key` header\
-    \ with each webhook request sent to the target URL.\nThat secret is available\
-    \ in the response to the POST request used to generate the webhook, or through\
-    \ a GET request to the webhook route.\n\n## Retry policy\n\nA webhook call will\
-    \ be attempted up to 5 times over a 15 minute window. The attempts will happen\
-    \ at an exponentially increasing interval if the target responds with anything\
-    \ but a success (2XX) or a [non-recoverable error](#non-recoverable-errors). If\
-    \ no response is received within 20 seconds, the call will be considered a failure\
-    \ and will also be reattempted.\n\n### Non-recoverable Errors\nThe following status\
-    \ codes are deemed to be non-recoverable and Sunshine Conversations will not reattempt\
-    \ a call when receiving a response with them:\n\n- 400: The target exists, but\
-    \ can’t process the payload.\n- 401: The target is behind authentication or doesn’\
-    t recognize the webhook secret.\n- 403: Sunshine Conversations should not be calling\
-    \ the target.\n- 404: The target doesn’t exist.\n- 406: The target exists, and\
-    \ rejected the webhook intentionally.\n"
+- description: |
+    Endpoints for managing webhooks associated to a Sunshine Conversations Connect integration or a custom integration. Webhooks are a fantastic way to extend the Sunshine Conversations platform beyond the built-in feature set. You can use webhooks to build your own Sunshine Conversations chat clients, to integrate more deeply with your favorite CRM, or to build a bot.
+    A webhook can only operate within the scope of a single Sunshine Conversations app.
+    <aside class="notice">An app is limited to 10 webhooks. A webhook can subscribe to multiple trigger events. We recommend using a single webhook entry that includes all the required events.</aside>
+
+    ## Webhook Triggers
+    When a webhook trigger is triggered, a POST request will be made to the URL configured in your webhook object along with a JSON payload specific for the event type.
+
+    | Trigger                 | Description                       |
+    | ----------------------  | -------------------------- |
+    | client:add     | When initiating a channel link or when an SDK client is created.    |
+    | client:remove     | When a client is removed. This can happen when:<br/>1. directly using the API<br/>2. removing the client using the SDK<br/>3. transferring a client due to a channel link<br/>4. failing or cancelling a channel link   |
+    | client:update     | When a client is updated. This can happen when:<br/>1. a channel finds a user that matches the information provided<br/>2. a client is activated<br/>3. a user unsubscribes from a conversation or blocks the app    |
+    | conversation:create     | When a new conversation is created.    |
+    | conversation:join     | When a new participant joins a `sdkGroup` conversation.    |
+    | conversation:leave     | When a participant leaves a `sdkGroup` conversation.     |
+    | conversation:remove  | When a conversation is deleted. |
+    | conversation:message  | When a new message was sent in the conversation. |
+    | conversation:message:delivery:channel  | When a message is successfully delivered to a channel. |
+    | conversation:message:delivery:failure  | When a new message fails to be delivered in the conversation. |
+    | conversation:message:delivery:user  | When a new message is successfully delivered to a user. |
+    | conversation:postback  | When a user clicks on a postback action button. |
+    | conversation:read  | When a user has read the conversation. |
+    | conversation:referral | When a user is referred to a conversation. See the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation referrals</a> guide for more details. |
+    | conversation:typing  | When a user starts or stops typing. |
+    | switchboard:acceptControl | When a switchboard integration accepts control of a conversation. |
+    | switchboard:acceptControl:failure   | When control of a conversation fails to be accepted by a switchboard integration. |
+    | switchboard:offerControl  | When a switchboard integration has been offered control of the conversation. |
+    | switchboard:offerControl:failure | When control of a conversation can't be offered to another switchboard integration. |
+    | switchboard:passControl | When a switchboard integration gives control of the conversation to another switchboard integration. |
+    | switchboard:passControl:failure | When changing a switchboard integration to active fails. |
+    | user:merge         | When two or more users are merged into one. |
+    | user:update         | When a user is updated. (Currently, when a user's identification is updated.)|
+
+    ## Securing Sunshine Conversations Webhooks
+    When a webhook is created, a shared secret will be generated for it. The secret can be used to determine the veracity of a request to your webhook route. It is included as an `X-API-Key` header with each webhook request sent to the target URL.
+    That secret is available in the response to the POST request used to generate the webhook, or through a GET request to the webhook route.
+
+    ## Retry policy
+
+    A webhook call will be attempted up to 5 times over a 15 minute window. The attempts will happen at an exponentially increasing interval if the target responds with anything but a success (2XX) or a [non-recoverable error](#non-recoverable-errors). If no response is received within 20 seconds, the call will be considered a failure and will also be reattempted.
+
+    ### Non-recoverable Errors
+    The following status codes are deemed to be non-recoverable and Sunshine Conversations will not reattempt a call when receiving a response with them:
+
+    - 400: The target exists, but can’t process the payload.
+    - 401: The target is behind authentication or doesn’t recognize the webhook secret.
+    - 403: Sunshine Conversations should not be calling the target.
+    - 404: The target doesn’t exist.
+    - 406: The target exists, and rejected the webhook intentionally.
   name: Webhooks
 - description: |
     Sunshine Conversations has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Sunshine Conversations using our [partner application](https://docs.smooch.io/guide/becoming-an-integration-partner/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Sunshine Conversations Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.

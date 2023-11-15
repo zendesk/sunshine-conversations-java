@@ -5,8 +5,8 @@
     <artifactId>sunshine-conversations-client</artifactId>
     <packaging>jar</packaging>
     <name>sunshine-conversations-client</name>
-    <version>11.0.0</version>
-    <description>com.zendesk-sunshine-conversations-client-11.0.0</description>
+    <version>12.0.0</version>
+    <description>com.zendesk-sunshine-conversations-client-12.0.0</description>
     <url>https://zendesk.com</url>
     <scm>
         <connection>https://github.com/zendesk/sunshine-conversations-java</connection>
@@ -235,12 +235,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <swagger-annotations-version>1.5.22</swagger-annotations-version>
-        <resteasy-version>5.0.3.Final</resteasy-version>
-        <jackson-version>2.13.2</jackson-version>
-        <jackson-databind-version>2.13.2.2</jackson-databind-version>
+        <resteasy-version>6.2.4.Final</resteasy-version>
+        <jackson-version>2.14.3</jackson-version>
+        <jackson-databind-version>2.14.3</jackson-databind-version>
         <jackson-databind-nullable-version>0.2.2</jackson-databind-nullable-version>
-        <threetenbp-version>2.12.5</threetenbp-version>
+        <threetenbp-version>2.15.2</threetenbp-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>4.13</junit-version>
+        <junit-version>5.9.2</junit-version>
     </properties>
 </project>

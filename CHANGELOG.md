@@ -1,5 +1,16 @@
 # Changelog
 
+## [12.0.0] - 2023-11-03
+
+It's recommended to use JDK 8 or higher, to upgrade to this major version.
+This version upgrades resteasy client major version to 6.x.x to adhere to jakarta namespace change.
+Please consider upgrading other project dependencies, to be compatible with this resteasy client version.
+
+### Changed
+
+- Changed: javax namespace to jakarta.
+- Changed: Upgraded resteasy dependency to use jakarta namespace.
+
 ## [11.0.0] - 2023-11-01
 
 ### Updated
