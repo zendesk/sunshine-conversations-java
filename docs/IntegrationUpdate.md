@@ -16,6 +16,7 @@
 * TelegramUpdate
 * TwilioUpdate
 * TwitterUpdate
+* UnityUpdate
 * ViberUpdate
 * WebUpdate
 * WhatsAppUpdate

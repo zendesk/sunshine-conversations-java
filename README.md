@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>12.0.0</version>
+    <version>12.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:12.0.0"
+compile "com.zendesk:sunshine-conversations-client:12.1.0"
 ```
 
 ## Getting Started
@@ -459,6 +459,10 @@ Class | Method | HTTP request | Description
  - [Twitter](docs/Twitter.md)
  - [TwitterAllOf](docs/TwitterAllOf.md)
  - [TwitterUpdate](docs/TwitterUpdate.md)
+ - [Unity](docs/Unity.md)
+ - [UnityAllOf](docs/UnityAllOf.md)
+ - [UnityUpdate](docs/UnityUpdate.md)
+ - [UnityUpdateAllOf](docs/UnityUpdateAllOf.md)
  - [User](docs/User.md)
  - [UserAllOf](docs/UserAllOf.md)
  - [UserCreateBody](docs/UserCreateBody.md)

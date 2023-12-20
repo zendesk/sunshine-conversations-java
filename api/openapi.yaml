@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.0.0
+  version: 12.1.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5438,7 +5438,7 @@ components:
     clientType:
       description: The type of integration that the client represents. Can be any
         of the supported integration types, or sdk for integrations of type ios, android,
-        and web.
+        unity and web.
       enum:
       - apple
       - gbm
@@ -6732,6 +6732,7 @@ components:
           telegram: '#/components/schemas/telegram'
           twilio: '#/components/schemas/twilio'
           twitter: '#/components/schemas/twitter'
+          unity: '#/components/schemas/unity'
           viber: '#/components/schemas/viber'
           web: '#/components/schemas/web'
           whatsapp: '#/components/schemas/whatsapp'
@@ -6885,6 +6886,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/twitter_allOf'
+    unity:
+      allOf:
+      - $ref: '#/components/schemas/integration'
+      - $ref: '#/components/schemas/unity_allOf'
     viber:
       allOf:
       - $ref: '#/components/schemas/integration'
@@ -7024,6 +7029,10 @@ components:
     twitterUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
+    unityUpdate:
+      allOf:
+      - $ref: '#/components/schemas/integrationUpdateBase'
+      - $ref: '#/components/schemas/unityUpdate_allOf'
     viberUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -7049,6 +7058,7 @@ components:
       - $ref: '#/components/schemas/telegramUpdate'
       - $ref: '#/components/schemas/twilioUpdate'
       - $ref: '#/components/schemas/twitterUpdate'
+      - $ref: '#/components/schemas/unityUpdate'
       - $ref: '#/components/schemas/viberUpdate'
       - $ref: '#/components/schemas/webUpdate'
       - $ref: '#/components/schemas/whatsAppUpdate'
@@ -8787,6 +8797,17 @@ components:
       - consumerKey
       - consumerSecret
       - tier
+    unity_allOf:
+      properties:
+        type:
+          default: unity
+          description: |
+            To configure a Unity integration, create an integration with type 'unity' by calling the Create Integration endpoint.
+          type: string
+        canUserCreateMoreConversations:
+          description: Allows users to create more than one conversation on the Unity
+            integration.
+          type: boolean
     viber_allOf:
       properties:
         type:
@@ -9035,6 +9056,12 @@ components:
           minLength: 1
           nullable: true
           type: string
+    unityUpdate_allOf:
+      properties:
+        canUserCreateMoreConversations:
+          description: Allows users to create more than one conversation on the Unity
+            integration.
+          type: boolean
     webUpdate_allOf:
       description: |
         To configure a Web Messenger integration, acquire the required information and call the Create Integration endpoint.
