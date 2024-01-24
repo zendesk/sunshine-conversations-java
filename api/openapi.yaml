@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.1.0
+  version: 12.2.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -8387,6 +8387,11 @@ components:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
+        attachmentsEnabled:
+          description: |
+            Allows users to send attachments. By default, the setting is set to true. This setting can only be configured in Zendesk Admin Center.
+          readOnly: true
+          type: boolean
     apple_allOf:
       properties:
         type:
@@ -8522,6 +8527,11 @@ components:
         canUserCreateMoreConversations:
           description: Allows users to create more than one conversation on the iOS
             integration.
+          type: boolean
+        attachmentsEnabled:
+          description: |
+            Allows users to send attachments. By default, the setting is set to true. This setting can only be configured in Zendesk Admin Center.
+          readOnly: true
           type: boolean
     line_allOf:
       properties:
@@ -8808,6 +8818,11 @@ components:
           description: Allows users to create more than one conversation on the Unity
             integration.
           type: boolean
+        attachmentsEnabled:
+          description: |
+            Allows users to send attachments. By default, the setting is set to true. This setting can only be configured in Zendesk Admin Center.
+          readOnly: true
+          type: boolean
     viber_allOf:
       properties:
         type:
@@ -8943,6 +8958,11 @@ components:
           description: |
             Allows users to create more than one conversation on the web messenger
             integration.
+          type: boolean
+        attachmentsEnabled:
+          description: |
+            Allows users to send attachments. By default, the setting is set to true. This setting can only be configured in Zendesk Admin Center.
+          readOnly: true
           type: boolean
     whatsapp_allOf:
       properties:
