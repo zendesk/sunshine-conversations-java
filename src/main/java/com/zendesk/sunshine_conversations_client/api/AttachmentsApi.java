@@ -187,7 +187,7 @@ public class AttachmentsApi {
    * Upload an attachment to Sunshine Conversations to use in future messages. Files are uploaded using the multipart/form-data content type. Use the returned mediaUrl to send a file, image or carousel message. &lt;aside class&#x3D;\&quot;notice\&quot;&gt;Note that Sunshine Conversations limits the size and type of file you can upload to the platform. See the &lt;a href&#x3D;\&quot;https://docs.smooch.io/guide/validating-files\&quot;&gt;file validation&lt;/a&gt; guide for more details.&lt;/aside&gt; 
    * @param source  (required)
    * @param appId Identifies the app. (required)
-   * @param access The access level for the attachment. Currently the available access levels are public and private. (required)
+   * @param access The access level for the attachment. Currently the available access levels are public and private. If you are a licensed Zendesk customer, you must use public. Private is not supported. (required)
    * @param _for Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. (optional)
    * @param conversationId Links the attachment getting uploaded to the conversation ID. (optional)
    * @return a {@code AttachmentResponse}
@@ -409,7 +409,7 @@ public class AttachmentsApi {
    * 
    * @param source  (required)
    * @param appId Identifies the app. (required)
-   * @param access The access level for the attachment. Currently the available access levels are public and private. (required)
+   * @param access The access level for the attachment. Currently the available access levels are public and private. If you are a licensed Zendesk customer, you must use public. Private is not supported. (required)
    * @param _for Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. (optional)
    * @param conversationId Links the attachment getting uploaded to the conversation ID. (optional)
    * @return a {@code AttachmentResponse}

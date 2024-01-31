@@ -274,7 +274,7 @@ public class Example {
         AttachmentsApi apiInstance = new AttachmentsApi(defaultClient);
         File source = new File("/path/to/file"); // File | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String access = "public"; // String | The access level for the attachment. Currently the available access levels are public and private.
+        String access = "public"; // String | The access level for the attachment. Currently the available access levels are public and private. If you are a licensed Zendesk customer, you must use public. Private is not supported.
         String _for = "message"; // String | Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details.
         String conversationId = "c616a583e4c240a871818541"; // String | Links the attachment getting uploaded to the conversation ID.
         // Add required body parameters
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | **File**|  |
  **appId** | **String**| Identifies the app. |
- **access** | **String**| The access level for the attachment. Currently the available access levels are public and private. | [default to &quot;public&quot;]
+ **access** | **String**| The access level for the attachment. Currently the available access levels are public and private. If you are a licensed Zendesk customer, you must use public. Private is not supported. | [default to &quot;public&quot;]
  **_for** | **String**| Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. | [optional]
  **conversationId** | **String**| Links the attachment getting uploaded to the conversation ID. | [optional]
 

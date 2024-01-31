@@ -678,7 +678,8 @@ paths:
           type: string
         style: simple
       - description: The access level for the attachment. Currently the available
-          access levels are public and private.
+          access levels are public and private. If you are a licensed Zendesk customer,
+          you must use public. Private is not supported.
         explode: true
         in: query
         name: access
@@ -4602,7 +4603,8 @@ components:
       style: simple
     accessQuery:
       description: The access level for the attachment. Currently the available access
-        levels are public and private.
+        levels are public and private. If you are a licensed Zendesk customer, you
+        must use public. Private is not supported.
       explode: true
       in: query
       name: access
