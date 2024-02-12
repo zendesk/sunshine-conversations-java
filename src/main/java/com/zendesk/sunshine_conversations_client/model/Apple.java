@@ -94,11 +94,11 @@ public class Apple extends Integration {
   }
 
    /**
-   * To configure an Apple Business Chat integration, acquire the required information and call the Create Integration endpoint. 
+   * To configure an Apple Messages for Business integration, acquire the required information and call the Create Integration endpoint. 
    * @return type
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "To configure an Apple Business Chat integration, acquire the required information and call the Create Integration endpoint. ")
+  @ApiModelProperty(value = "To configure an Apple Messages for Business integration, acquire the required information and call the Create Integration endpoint. ")
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -119,10 +119,10 @@ public class Apple extends Integration {
   }
 
    /**
-   * Apple Business Chat ID.
+   * Apple Messages for Business ID.
    * @return businessId
   **/
-  @ApiModelProperty(example = "2740f141-89c1-515f-07eb-1128dd73491", required = true, value = "Apple Business Chat ID.")
+  @ApiModelProperty(example = "2740f141-89c1-515f-07eb-1128dd73491", required = true, value = "Apple Messages for Business ID.")
   @JsonProperty(JSON_PROPERTY_BUSINESS_ID)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
