@@ -491,8 +491,10 @@ paths:
           description: App not found
       security:
       - basicAuth:
+        - app
         - account
       - bearerAuth:
+        - app
         - account
       summary: Update App
       tags:
