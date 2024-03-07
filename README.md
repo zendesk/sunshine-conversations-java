@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>12.3.0</version>
+    <version>12.3.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:12.3.0"
+compile "com.zendesk:sunshine-conversations-client:12.3.1"
 ```
 
 ## Getting Started
@@ -246,10 +246,7 @@ Class | Method | HTTP request | Description
  - [AttachmentSchema](docs/AttachmentSchema.md)
  - [AttachmentUploadBody](docs/AttachmentUploadBody.md)
  - [Author](docs/Author.md)
- - [AuthorMessages](docs/AuthorMessages.md)
  - [AuthorWebhook](docs/AuthorWebhook.md)
- - [Business](docs/Business.md)
- - [BusinessAllOf](docs/BusinessAllOf.md)
  - [Buy](docs/Buy.md)
  - [Campaign](docs/Campaign.md)
  - [CarouselMessage](docs/CarouselMessage.md)
@@ -467,8 +464,6 @@ Class | Method | HTTP request | Description
  - [UnityUpdate](docs/UnityUpdate.md)
  - [UnityUpdateAllOf](docs/UnityUpdateAllOf.md)
  - [User](docs/User.md)
- - [User2](docs/User2.md)
- - [User2AllOf](docs/User2AllOf.md)
  - [UserAllOf](docs/UserAllOf.md)
  - [UserCreateBody](docs/UserCreateBody.md)
  - [UserMergeEvent](docs/UserMergeEvent.md)
