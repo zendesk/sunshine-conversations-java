@@ -8403,11 +8403,38 @@ components:
       properties:
         type:
           default: android
-          description: |
-            To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/). Copy the `serverKey` and `senderId` from the Cloud Messaging tab in the settings of your project and call the create integrations endpoint with this data.
-            If you would like to continue using your legacy GCM `serverKey` you can also obtain it from the [Google Developer Console](https://console.developers.google.com/).
+          description: "<aside class=\"notice\">Firebase Cloud Messaging has deprecated\
+            \ its legacy APIs for HTTP and XMPP. Legacy credentials <code>serverKey</code>\
+            \ and <code>senderId</code> will stop working as of June 2024 and must\
+            \ be replaced with OAuth 2.0 access token based credentials.</aside>\n\
+            \nTo configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/).\
+            \ \nGenerate a private key from the Service accounts tab in the settings.\
+            \ \nCopy the `project_id`, `client_email` and `private_key` from the generated\
+            \ JSON file and call the create integrations endpoint with this data.\n"
           type: string
+        projectId:
+          description: Your project ID from your generated private key file.
+          example: <project-id>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        clientEmail:
+          description: Your client email from your generated private key file.
+          example: <client-email>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        privateKey:
+          description: Your private key from your generated private key file.
+          example: <private-key>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
         serverKey:
+          deprecated: true
           description: Your server key from the fcm console.
           example: <server-key>
           minLength: 1
@@ -8415,6 +8442,7 @@ components:
           type: string
           writeOnly: true
         senderId:
+          deprecated: true
           description: Your sender id from the fcm console.
           example: <sender-id>
           minLength: 1
@@ -9045,7 +9073,29 @@ components:
       - deploymentId
     androidUpdate_allOf:
       properties:
+        projectId:
+          description: Your project ID from your generated private key file.
+          example: <project-id>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        clientEmail:
+          description: Your client email from your generated private key file.
+          example: <client-email>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
+        privateKey:
+          description: Your private key from your generated private key file.
+          example: <private-key>
+          minLength: 1
+          nullable: true
+          type: string
+          writeOnly: true
         serverKey:
+          deprecated: true
           description: Your server key from the fcm console.
           example: <server-key>
           minLength: 1
@@ -9053,6 +9103,7 @@ components:
           type: string
           writeOnly: true
         senderId:
+          deprecated: true
           description: Your sender id from the fcm console.
           example: <sender-id>
           minLength: 1

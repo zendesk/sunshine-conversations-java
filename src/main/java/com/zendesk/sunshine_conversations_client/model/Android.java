@@ -51,6 +51,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   Android.JSON_PROPERTY_TYPE,
+  Android.JSON_PROPERTY_PROJECT_ID,
+  Android.JSON_PROPERTY_CLIENT_EMAIL,
+  Android.JSON_PROPERTY_PRIVATE_KEY,
   Android.JSON_PROPERTY_SERVER_KEY,
   Android.JSON_PROPERTY_SENDER_ID,
   Android.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS,
@@ -81,6 +84,15 @@ public class Android extends Integration {
   public static final String JSON_PROPERTY_TYPE = "type";
   protected String type = "android";
 
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  private JsonNullable<String> projectId = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_CLIENT_EMAIL = "clientEmail";
+  private JsonNullable<String> clientEmail = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_PRIVATE_KEY = "privateKey";
+  private JsonNullable<String> privateKey = JsonNullable.<String>undefined();
+
   public static final String JSON_PROPERTY_SERVER_KEY = "serverKey";
   private JsonNullable<String> serverKey = JsonNullable.<String>undefined();
 
@@ -101,11 +113,11 @@ public class Android extends Integration {
   }
 
    /**
-   * To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/). Copy the &#x60;serverKey&#x60; and &#x60;senderId&#x60; from the Cloud Messaging tab in the settings of your project and call the create integrations endpoint with this data. If you would like to continue using your legacy GCM &#x60;serverKey&#x60; you can also obtain it from the [Google Developer Console](https://console.developers.google.com/). 
+   * &lt;aside class&#x3D;\&quot;notice\&quot;&gt;Firebase Cloud Messaging has deprecated its legacy APIs for HTTP and XMPP. Legacy credentials &lt;code&gt;serverKey&lt;/code&gt; and &lt;code&gt;senderId&lt;/code&gt; will stop working as of June 2024 and must be replaced with OAuth 2.0 access token based credentials.&lt;/aside&gt;  To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/).  Generate a private key from the Service accounts tab in the settings.  Copy the &#x60;project_id&#x60;, &#x60;client_email&#x60; and &#x60;private_key&#x60; from the generated JSON file and call the create integrations endpoint with this data. 
    * @return type
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/). Copy the `serverKey` and `senderId` from the Cloud Messaging tab in the settings of your project and call the create integrations endpoint with this data. If you would like to continue using your legacy GCM `serverKey` you can also obtain it from the [Google Developer Console](https://console.developers.google.com/). ")
+  @ApiModelProperty(value = "<aside class=\"notice\">Firebase Cloud Messaging has deprecated its legacy APIs for HTTP and XMPP. Legacy credentials <code>serverKey</code> and <code>senderId</code> will stop working as of June 2024 and must be replaced with OAuth 2.0 access token based credentials.</aside>  To configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/).  Generate a private key from the Service accounts tab in the settings.  Copy the `project_id`, `client_email` and `private_key` from the generated JSON file and call the create integrations endpoint with this data. ")
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -116,6 +128,111 @@ public class Android extends Integration {
 
   public void setType(String type) {
     this.type = type;
+  }
+
+
+  public Android projectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+    
+    return this;
+  }
+
+   /**
+   * Your project ID from your generated private key file.
+   * @return projectId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<project-id>", value = "Your project ID from your generated private key file.")
+  @JsonIgnore
+
+  public String getProjectId() {
+        return projectId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getProjectId_JsonNullable() {
+    return projectId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  public void setProjectId_JsonNullable(JsonNullable<String> projectId) {
+    this.projectId = projectId;
+  }
+
+  public void setProjectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+  }
+
+
+  public Android clientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+    
+    return this;
+  }
+
+   /**
+   * Your client email from your generated private key file.
+   * @return clientEmail
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<client-email>", value = "Your client email from your generated private key file.")
+  @JsonIgnore
+
+  public String getClientEmail() {
+        return clientEmail.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getClientEmail_JsonNullable() {
+    return clientEmail;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  public void setClientEmail_JsonNullable(JsonNullable<String> clientEmail) {
+    this.clientEmail = clientEmail;
+  }
+
+  public void setClientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+  }
+
+
+  public Android privateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
+    
+    return this;
+  }
+
+   /**
+   * Your private key from your generated private key file.
+   * @return privateKey
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<private-key>", value = "Your private key from your generated private key file.")
+  @JsonIgnore
+
+  public String getPrivateKey() {
+        return privateKey.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getPrivateKey_JsonNullable() {
+    return privateKey;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  public void setPrivateKey_JsonNullable(JsonNullable<String> privateKey) {
+    this.privateKey = privateKey;
+  }
+
+  public void setPrivateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
   }
 
 
@@ -240,6 +357,9 @@ public class Android extends Integration {
     }
     Android android = (Android) o;
     return Objects.equals(this.type, android.type) &&
+        Objects.equals(this.projectId, android.projectId) &&
+        Objects.equals(this.clientEmail, android.clientEmail) &&
+        Objects.equals(this.privateKey, android.privateKey) &&
         Objects.equals(this.serverKey, android.serverKey) &&
         Objects.equals(this.senderId, android.senderId) &&
         Objects.equals(this.canUserCreateMoreConversations, android.canUserCreateMoreConversations) &&
@@ -249,7 +369,7 @@ public class Android extends Integration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, serverKey, senderId, canUserCreateMoreConversations, attachmentsEnabled, super.hashCode());
+    return Objects.hash(type, projectId, clientEmail, privateKey, serverKey, senderId, canUserCreateMoreConversations, attachmentsEnabled, super.hashCode());
   }
 
 
@@ -259,6 +379,9 @@ public class Android extends Integration {
     sb.append("class Android {\n");
     sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    clientEmail: ").append(toIndentedString(clientEmail)).append("\n");
+    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
     sb.append("    serverKey: ").append(toIndentedString(serverKey)).append("\n");
     sb.append("    senderId: ").append(toIndentedString(senderId)).append("\n");
     sb.append("    canUserCreateMoreConversations: ").append(toIndentedString(canUserCreateMoreConversations)).append("\n");

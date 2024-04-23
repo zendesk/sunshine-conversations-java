@@ -29,12 +29,24 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  * AndroidUpdateAllOf
  */
 @JsonPropertyOrder({
+  AndroidUpdateAllOf.JSON_PROPERTY_PROJECT_ID,
+  AndroidUpdateAllOf.JSON_PROPERTY_CLIENT_EMAIL,
+  AndroidUpdateAllOf.JSON_PROPERTY_PRIVATE_KEY,
   AndroidUpdateAllOf.JSON_PROPERTY_SERVER_KEY,
   AndroidUpdateAllOf.JSON_PROPERTY_SENDER_ID,
   AndroidUpdateAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
 
 public class AndroidUpdateAllOf {
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  private JsonNullable<String> projectId = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_CLIENT_EMAIL = "clientEmail";
+  private JsonNullable<String> clientEmail = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_PRIVATE_KEY = "privateKey";
+  private JsonNullable<String> privateKey = JsonNullable.<String>undefined();
+
   public static final String JSON_PROPERTY_SERVER_KEY = "serverKey";
   private JsonNullable<String> serverKey = JsonNullable.<String>undefined();
 
@@ -43,6 +55,111 @@ public class AndroidUpdateAllOf {
 
   public static final String JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS = "canUserCreateMoreConversations";
   private Boolean canUserCreateMoreConversations;
+
+
+  public AndroidUpdateAllOf projectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+    
+    return this;
+  }
+
+   /**
+   * Your project ID from your generated private key file.
+   * @return projectId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<project-id>", value = "Your project ID from your generated private key file.")
+  @JsonIgnore
+
+  public String getProjectId() {
+        return projectId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getProjectId_JsonNullable() {
+    return projectId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  public void setProjectId_JsonNullable(JsonNullable<String> projectId) {
+    this.projectId = projectId;
+  }
+
+  public void setProjectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+  }
+
+
+  public AndroidUpdateAllOf clientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+    
+    return this;
+  }
+
+   /**
+   * Your client email from your generated private key file.
+   * @return clientEmail
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<client-email>", value = "Your client email from your generated private key file.")
+  @JsonIgnore
+
+  public String getClientEmail() {
+        return clientEmail.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getClientEmail_JsonNullable() {
+    return clientEmail;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  public void setClientEmail_JsonNullable(JsonNullable<String> clientEmail) {
+    this.clientEmail = clientEmail;
+  }
+
+  public void setClientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+  }
+
+
+  public AndroidUpdateAllOf privateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
+    
+    return this;
+  }
+
+   /**
+   * Your private key from your generated private key file.
+   * @return privateKey
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<private-key>", value = "Your private key from your generated private key file.")
+  @JsonIgnore
+
+  public String getPrivateKey() {
+        return privateKey.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getPrivateKey_JsonNullable() {
+    return privateKey;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  public void setPrivateKey_JsonNullable(JsonNullable<String> privateKey) {
+    this.privateKey = privateKey;
+  }
+
+  public void setPrivateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
+  }
 
 
   public AndroidUpdateAllOf serverKey(String serverKey) {
@@ -149,14 +266,17 @@ public class AndroidUpdateAllOf {
       return false;
     }
     AndroidUpdateAllOf androidUpdateAllOf = (AndroidUpdateAllOf) o;
-    return Objects.equals(this.serverKey, androidUpdateAllOf.serverKey) &&
+    return Objects.equals(this.projectId, androidUpdateAllOf.projectId) &&
+        Objects.equals(this.clientEmail, androidUpdateAllOf.clientEmail) &&
+        Objects.equals(this.privateKey, androidUpdateAllOf.privateKey) &&
+        Objects.equals(this.serverKey, androidUpdateAllOf.serverKey) &&
         Objects.equals(this.senderId, androidUpdateAllOf.senderId) &&
         Objects.equals(this.canUserCreateMoreConversations, androidUpdateAllOf.canUserCreateMoreConversations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(serverKey, senderId, canUserCreateMoreConversations);
+    return Objects.hash(projectId, clientEmail, privateKey, serverKey, senderId, canUserCreateMoreConversations);
   }
 
 
@@ -164,6 +284,9 @@ public class AndroidUpdateAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class AndroidUpdateAllOf {\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    clientEmail: ").append(toIndentedString(clientEmail)).append("\n");
+    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
     sb.append("    serverKey: ").append(toIndentedString(serverKey)).append("\n");
     sb.append("    senderId: ").append(toIndentedString(senderId)).append("\n");
     sb.append("    canUserCreateMoreConversations: ").append(toIndentedString(canUserCreateMoreConversations)).append("\n");

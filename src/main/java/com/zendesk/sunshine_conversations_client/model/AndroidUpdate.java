@@ -35,6 +35,9 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonPropertyOrder({
   AndroidUpdate.JSON_PROPERTY_DISPLAY_NAME,
+  AndroidUpdate.JSON_PROPERTY_PROJECT_ID,
+  AndroidUpdate.JSON_PROPERTY_CLIENT_EMAIL,
+  AndroidUpdate.JSON_PROPERTY_PRIVATE_KEY,
   AndroidUpdate.JSON_PROPERTY_SERVER_KEY,
   AndroidUpdate.JSON_PROPERTY_SENDER_ID,
   AndroidUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
@@ -43,6 +46,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 public class AndroidUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_PROJECT_ID = "projectId";
+  private JsonNullable<String> projectId = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_CLIENT_EMAIL = "clientEmail";
+  private JsonNullable<String> clientEmail = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_PRIVATE_KEY = "privateKey";
+  private JsonNullable<String> privateKey = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_SERVER_KEY = "serverKey";
   private JsonNullable<String> serverKey = JsonNullable.<String>undefined();
@@ -86,6 +98,111 @@ public class AndroidUpdate implements IntegrationUpdate {
 
   public void setDisplayName(String displayName) {
     this.displayName = JsonNullable.<String>of(displayName);
+  }
+
+
+  public AndroidUpdate projectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+    
+    return this;
+  }
+
+   /**
+   * Your project ID from your generated private key file.
+   * @return projectId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<project-id>", value = "Your project ID from your generated private key file.")
+  @JsonIgnore
+
+  public String getProjectId() {
+        return projectId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getProjectId_JsonNullable() {
+    return projectId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PROJECT_ID)
+  public void setProjectId_JsonNullable(JsonNullable<String> projectId) {
+    this.projectId = projectId;
+  }
+
+  public void setProjectId(String projectId) {
+    this.projectId = JsonNullable.<String>of(projectId);
+  }
+
+
+  public AndroidUpdate clientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+    
+    return this;
+  }
+
+   /**
+   * Your client email from your generated private key file.
+   * @return clientEmail
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<client-email>", value = "Your client email from your generated private key file.")
+  @JsonIgnore
+
+  public String getClientEmail() {
+        return clientEmail.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getClientEmail_JsonNullable() {
+    return clientEmail;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_CLIENT_EMAIL)
+  public void setClientEmail_JsonNullable(JsonNullable<String> clientEmail) {
+    this.clientEmail = clientEmail;
+  }
+
+  public void setClientEmail(String clientEmail) {
+    this.clientEmail = JsonNullable.<String>of(clientEmail);
+  }
+
+
+  public AndroidUpdate privateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
+    
+    return this;
+  }
+
+   /**
+   * Your private key from your generated private key file.
+   * @return privateKey
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "<private-key>", value = "Your private key from your generated private key file.")
+  @JsonIgnore
+
+  public String getPrivateKey() {
+        return privateKey.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getPrivateKey_JsonNullable() {
+    return privateKey;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_PRIVATE_KEY)
+  public void setPrivateKey_JsonNullable(JsonNullable<String> privateKey) {
+    this.privateKey = privateKey;
+  }
+
+  public void setPrivateKey(String privateKey) {
+    this.privateKey = JsonNullable.<String>of(privateKey);
   }
 
 
@@ -194,6 +311,9 @@ public class AndroidUpdate implements IntegrationUpdate {
     }
     AndroidUpdate androidUpdate = (AndroidUpdate) o;
     return Objects.equals(this.displayName, androidUpdate.displayName) &&
+        Objects.equals(this.projectId, androidUpdate.projectId) &&
+        Objects.equals(this.clientEmail, androidUpdate.clientEmail) &&
+        Objects.equals(this.privateKey, androidUpdate.privateKey) &&
         Objects.equals(this.serverKey, androidUpdate.serverKey) &&
         Objects.equals(this.senderId, androidUpdate.senderId) &&
         Objects.equals(this.canUserCreateMoreConversations, androidUpdate.canUserCreateMoreConversations);
@@ -201,7 +321,7 @@ public class AndroidUpdate implements IntegrationUpdate {
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, serverKey, senderId, canUserCreateMoreConversations);
+    return Objects.hash(displayName, projectId, clientEmail, privateKey, serverKey, senderId, canUserCreateMoreConversations);
   }
 
 
@@ -210,6 +330,9 @@ public class AndroidUpdate implements IntegrationUpdate {
     StringBuilder sb = new StringBuilder();
     sb.append("class AndroidUpdate {\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    projectId: ").append(toIndentedString(projectId)).append("\n");
+    sb.append("    clientEmail: ").append(toIndentedString(clientEmail)).append("\n");
+    sb.append("    privateKey: ").append(toIndentedString(privateKey)).append("\n");
     sb.append("    serverKey: ").append(toIndentedString(serverKey)).append("\n");
     sb.append("    senderId: ").append(toIndentedString(senderId)).append("\n");
     sb.append("    canUserCreateMoreConversations: ").append(toIndentedString(canUserCreateMoreConversations)).append("\n");
