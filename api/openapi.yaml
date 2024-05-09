@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.3.1
+  version: 12.5.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -3377,6 +3377,114 @@ paths:
       tags:
       - Clients
       x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}/devices:
+    get:
+      description: |
+        Get all the devices for a particular user.
+        The Devices are sorted based on last seen time.
+
+        ```shell
+        /v2/apps/:appId/users/:userId/devices
+        ```
+      operationId: listDevices
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/clientListResponse'
+          description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: List Devices
+      tags:
+      - Devices
+      x-accepts: application/json
+  /v2/apps/{appId}/users/{userIdOrExternalId}/devices/{deviceId}:
+    get:
+      description: |
+        Fetches a specific Device.
+
+        ```shell
+        /v2/apps/:appId/users/:userId
+        ```
+      operationId: getDevice
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: The user's id or externalId.
+        explode: false
+        in: path
+        name: userIdOrExternalId
+        required: true
+        schema:
+          example: 42589ad070d43be9b00ff7e5
+          type: string
+        style: simple
+      - description: The device's id.
+        explode: false
+        in: path
+        name: deviceId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/deviceResponse'
+          description: Ok
+        "404":
+          description: Device not found
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Get Device
+      tags:
+      - Devices
+      x-accepts: application/json
   /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation:
     delete:
       description: Delete a user’s personal information. Calling this API will clear
@@ -4751,6 +4859,16 @@ components:
       explode: false
       in: path
       name: clientId
+      required: true
+      schema:
+        example: 5d8cff3cd55b040010928b5b
+        type: string
+      style: simple
+    deviceId:
+      description: The device's id.
+      explode: false
+      in: path
+      name: deviceId
       required: true
       schema:
         example: 5d8cff3cd55b040010928b5b
@@ -7706,6 +7824,16 @@ components:
       - matchCriteria
       - target
       type: object
+    deviceResponse:
+      example:
+        device: ""
+      properties:
+        device:
+          allOf:
+          - $ref: '#/components/schemas/device'
+          description: The device.
+      title: deviceResponse
+      type: object
     appSubSchema:
       description: The app that triggered the events.
       properties:
@@ -10025,6 +10153,7 @@ x-tagGroups:
   tags:
   - Users
   - Clients
+  - Devices
 - name: Sunshine Conversations Connect
   tags:
   - Sunshine Conversations Connect
