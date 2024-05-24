@@ -291,9 +291,9 @@ tags:
     </p>
 
     # Sample Application
-    An open source sample application implementing Sunshine Conversations Connect has been created to help demonstrate how to get it working. Give [Shoplifter](https://shoplifter.herokuapp.com/) a try.
+    An open source sample application implementing Sunshine Conversations Connect has been created to help demonstrate how to get it working. Give [Shoplifter](https://sunco-shoplifter.zendesk.com/) a try.
 
-    The source code is available [here](https://github.com/smooch/shoplifter).
+    The source code is available [here](https://github.com/zendesk/sunshine-conversations-shoplifter).
   name: Sunshine Conversations Connect
   x-displayName: Sunshine Conversations Connect
 - description: "The scope of an issued access token is integration scope. This allows\
