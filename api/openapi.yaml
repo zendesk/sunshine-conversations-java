@@ -10125,42 +10125,6 @@ components:
     basicAuth:
       scheme: basic
       type: http
-x-tagGroups:
-- name: Account Provisioning
-  tags:
-  - Apps
-  - App Keys
-- name: Attachments
-  tags:
-  - Attachments
-- name: Conversations
-  tags:
-  - Conversations
-  - Participants
-  - Messages
-  - Activities
-  - Switchboard Actions
-- name: Integrations
-  tags:
-  - Integrations
-  - Webhooks
-  - CustomIntegrationApiKeys
-- name: Switchboards
-  tags:
-  - Switchboards
-  - Switchboard Integrations
-- name: Users
-  tags:
-  - Users
-  - Clients
-  - Devices
-- name: Sunshine Conversations Connect
-  tags:
-  - Sunshine Conversations Connect
-  - OAuth Endpoints
-- name: Changelog
-  tags:
-  - Changelog
 x-webhooks:
   Webhook Event:
     post:
@@ -10261,4 +10225,40 @@ x-webhooks:
       responses:
         "200":
           description: Ok
+x-tagGroups:
+- name: Account Provisioning
+  tags:
+  - Apps
+  - App Keys
+- name: Attachments
+  tags:
+  - Attachments
+- name: Conversations
+  tags:
+  - Conversations
+  - Participants
+  - Messages
+  - Activities
+  - Switchboard Actions
+- name: Integrations
+  tags:
+  - Integrations
+  - Webhooks
+  - CustomIntegrationApiKeys
+- name: Switchboards
+  tags:
+  - Switchboards
+  - Switchboard Integrations
+- name: Users
+  tags:
+  - Users
+  - Clients
+  - Devices
+- name: Sunshine Conversations Connect
+  tags:
+  - Sunshine Conversations Connect
+  - OAuth Endpoints
+- name: Changelog
+  tags:
+  - Changelog
 
