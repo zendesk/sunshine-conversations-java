@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.5.0
+  version: 12.5.1
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -790,8 +790,7 @@ paths:
   /v2/apps/{appId}/attachments/token:
     post:
       description: |
-        Generates a media JWT for a list of attachment paths. This media token is a prerequisite for setting the cookie needed to visualize a private attachment.
-        <aside class="notice">Note you have the ability to allow files using different rules, see <a href="https://docs.smooch.io/guide/private-attachments">Private Attachments</a> for more details.</aside>
+        Generates a media JWT for a list of attachment paths.
       operationId: generateMediaJsonWebToken
       parameters:
       - description: Identifies the app.
@@ -830,9 +829,10 @@ paths:
       x-accepts: application/json
   /v2/apps/{appId}/attachments/cookie:
     get:
-      description: |
-        With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT.
-        The expiration date of this cookie will match the expiration date of the media JWT. This cookie will be needed to visualize a private attachment.
+      description: "With the media JWT retrieved, pass it in the header of the below\
+        \ request as it’s authorization in order to set a cookie in the user’s browser\
+        \ corresponding to the path within the media JWT.\nThe expiration date of\
+        \ this cookie will match the expiration date of the media JWT. \n"
       operationId: setCookie
       parameters:
       - description: Identifies the app.
@@ -5021,13 +5021,11 @@ components:
           description: |
             A string specifying whether attachments should be stored in a publicly or privately accessible cloud storage.
             attachmentsAccess is set to public by default but can be modified to private.
-            See <a href="https://docs.smooch.io/guide/private-attachments/">Private Attachments</a> for more information.
           example: public
           type: string
         attachmentsTokenExpirationSeconds:
           description: |
             Number of seconds representing the expiration time of the generated media tokens for private attachments. The JWT will be valid for 2 hours by default.
-            See See <a href="https://docs.smooch.io/guide/private-attachments/">Private Attachments</a> for more information.
           example: 64028
           type: integer
         appLocalizationEnabled:
@@ -6160,7 +6158,7 @@ components:
             minLength: 1
             type: string
         type: object
-      maxItems: 100
+      maxItems: 200
       type: array
     formMessageField:
       allOf:
@@ -8456,7 +8454,7 @@ components:
                 minLength: 1
                 type: string
             type: object
-          maxItems: 100
+          maxItems: 200
           type: array
     formResponseMessageField_allOf:
       description: |

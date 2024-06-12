@@ -90,7 +90,7 @@ public class AttachmentsApi {
       }
   /**
    * Generate Media Token
-   * Generates a media JWT for a list of attachment paths. This media token is a prerequisite for setting the cookie needed to visualize a private attachment. &lt;aside class&#x3D;\&quot;notice\&quot;&gt;Note you have the ability to allow files using different rules, see &lt;a href&#x3D;\&quot;https://docs.smooch.io/guide/private-attachments\&quot;&gt;Private Attachments&lt;/a&gt; for more details.&lt;/aside&gt; 
+   * Generates a media JWT for a list of attachment paths. 
    * @param attachmentMediaTokenBody  (required)
    * @param appId Identifies the app. (required)
    * @return a {@code AttachmentMediaTokenResponse}
@@ -140,7 +140,7 @@ public class AttachmentsApi {
       }
   /**
    * Set Cookie
-   * With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT. The expiration date of this cookie will match the expiration date of the media JWT. This cookie will be needed to visualize a private attachment. 
+   * With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT. The expiration date of this cookie will match the expiration date of the media JWT.  
    * @param appId Identifies the app. (required)
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
@@ -302,7 +302,7 @@ public class AttachmentsApi {
       }
   /**
    * Generate Media Token
-   * Generates a media JWT for a list of attachment paths. This media token is a prerequisite for setting the cookie needed to visualize a private attachment. &lt;aside class&#x3D;\&quot;notice\&quot;&gt;Note you have the ability to allow files using different rules, see &lt;a href&#x3D;\&quot;https://docs.smooch.io/guide/private-attachments\&quot;&gt;Private Attachments&lt;/a&gt; for more details.&lt;/aside&gt; 
+   * Generates a media JWT for a list of attachment paths. 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param attachmentMediaTokenBody  (required)
@@ -356,7 +356,7 @@ public class AttachmentsApi {
       }
   /**
    * Set Cookie
-   * With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT. The expiration date of this cookie will match the expiration date of the media JWT. This cookie will be needed to visualize a private attachment. 
+   * With the media JWT retrieved, pass it in the header of the below request as it’s authorization in order to set a cookie in the user’s browser corresponding to the path within the media JWT. The expiration date of this cookie will match the expiration date of the media JWT.  
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
