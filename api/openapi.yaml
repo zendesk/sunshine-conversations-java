@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.5.1
+  version: 12.6.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -4024,6 +4024,7 @@ components:
           displayName: Android
           serverId: <sender-id>
           canUserCreateMoreConversations: true
+          defaultResponderId: 5e4af71a81966cfff3ef6551
         meta:
           hasMore: true
           afterCursor: 5e4af71a81966cfff3ef6550
@@ -4040,6 +4041,7 @@ components:
           displayName: Android
           serverId: <sender-id>
           canUserCreateMoreConversations: true
+          defaultResponderId: 5e4af71a81966cfff3ef6551
     userDeletePersonalInformationResponse:
       value:
         user:
@@ -6914,14 +6916,34 @@ components:
       required:
       - type
       type: object
+    defaultResponderId:
+      properties:
+        defaultResponderId:
+          description: |
+            The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user.
+            For more information, refer to <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+          nullable: true
+          type: string
+      title: Default Responder ID
+      type: object
+    defaultResponder:
+      properties:
+        defaultResponder:
+          $ref: '#/components/schemas/defaultResponder_defaultResponder'
+      title: Default Responder
+      type: object
     android:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/android_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     apple:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/apple_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     target:
       description: URL to be called when the webhook is triggered.
       example: https://example.com/callback
@@ -7007,46 +7029,68 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/instagram_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     ios:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/ios_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     line:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/line_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     mailgun:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/mailgun_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     messagebird:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/messagebird_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     messenger:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/messenger_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     telegram:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/telegram_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     twilio:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/twilio_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     twitter:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/twitter_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     unity:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/unity_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     viber:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/viber_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     prechatCapture:
       properties:
         avatarUrl:
@@ -7085,10 +7129,14 @@ components:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/web_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     whatsapp:
       allOf:
       - $ref: '#/components/schemas/integration'
       - $ref: '#/components/schemas/whatsapp_allOf'
+      - $ref: '#/components/schemas/defaultResponderId'
+      - $ref: '#/components/schemas/defaultResponder'
     status:
       description: The status of the integration.
       enum:
@@ -7140,6 +7188,12 @@ components:
           minLength: 1
           nullable: true
           type: string
+        defaultResponderId:
+          description: |
+            The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user.
+            For more information, refer to <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+          nullable: true
+          type: string
       type: object
     androidUpdate:
       allOf:
@@ -7150,7 +7204,7 @@ components:
       - $ref: '#/components/schemas/integrationUpdateBase'
     customUpdate:
       allOf:
-      - $ref: '#/components/schemas/integrationUpdateBase'
+      - $ref: '#/components/schemas/customUpdate_allOf'
     instagramUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -8525,6 +8579,42 @@ components:
           allOf:
           - $ref: '#/components/schemas/author'
           description: The author of the activity.
+    defaultResponder_defaultResponder:
+      description: |
+        The default responder object.
+        <aside class="notice">This property will only be returned in response for <code>get integration</code> and <code>list integration</code> and must not be used in the request body.</aside>
+        <aside class="notice">Response will contain only one of the following: <code>defaultResponder</code> or <code>defaultResponderId</code> but never both.</aside>
+      properties:
+        switchboardId:
+          description: The unique ID of the switchboard.
+          example: 5e4af71a81966cfff3ef6551
+          type: string
+        appId:
+          description: Identifies the app.
+          example: 5e4af71a81966cfff3ef6552
+          type: string
+        integrationId:
+          description: The unique ID of the integration.
+          example: 5e4af71a81966cfff3ef6550
+          type: string
+        integrationType:
+          description: The type of the integration.
+          type: string
+        name:
+          description: The name of the switchboard.
+          type: string
+        deliverStandbyEvents:
+          description: Indicates whether the switchboard should deliver standby events.
+          type: boolean
+        nextSwitchboardIntegrationId:
+          description: The unique ID of the next switchboard integration.
+          type: string
+        messageHistoryCount:
+          description: The number of messages to keep in the message history.
+          type: number
+        inherited:
+          description: Indicates whether the switchboard is inherited.
+          type: boolean
     android_allOf:
       properties:
         type:
@@ -9239,6 +9329,16 @@ components:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
+    customUpdate_allOf:
+      properties:
+        displayName:
+          description: A human-friendly name used to identify the integration. `displayName`
+            can be unset by changing it to `null`.
+          example: My awesome integration
+          maxLength: 100
+          minLength: 1
+          nullable: true
+          type: string
     instagramUpdate_allOf:
       properties:
         pageAccessToken:

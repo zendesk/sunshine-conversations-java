@@ -1,5 +1,11 @@
 # Changelog
 
+## [12.6.0] - 2024-06-12
+
+### Added
+
+- Added new `defaultResponderId` and `defaultResponder` property to the Integrations API endpoints.
+
 ## [12.5.1] - 2024-06-11
 
 ### Changed

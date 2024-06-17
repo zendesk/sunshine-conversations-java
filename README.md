@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>12.5.1</version>
+    <version>12.6.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:12.5.1"
+compile "com.zendesk:sunshine-conversations-client:12.6.0"
 ```
 
 ## Getting Started
@@ -318,6 +318,10 @@ Class | Method | HTTP request | Description
  - [Custom](docs/Custom.md)
  - [CustomAllOf](docs/CustomAllOf.md)
  - [CustomUpdate](docs/CustomUpdate.md)
+ - [CustomUpdateAllOf](docs/CustomUpdateAllOf.md)
+ - [DefaultResponder](docs/DefaultResponder.md)
+ - [DefaultResponderDefaultResponder](docs/DefaultResponderDefaultResponder.md)
+ - [DefaultResponderId](docs/DefaultResponderId.md)
  - [Destination](docs/Destination.md)
  - [Device](docs/Device.md)
  - [DeviceResponse](docs/DeviceResponse.md)
