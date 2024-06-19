@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '12.6.0'
+version = '12.6.1'
 
 def calculateSnapshotVersion() {
     def sha = "git rev-parse --short HEAD".execute(null, project.rootDir).text.trim()
