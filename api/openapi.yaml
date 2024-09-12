@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 12.7.0
+  version: 12.8.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -8390,6 +8390,12 @@ components:
             conversation, or the creation time if no messages have been received yet.
           example: 2020-06-26T14:33:47.120Z
           nullable: true
+          type: string
+        createdAt:
+          description: |
+            A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ
+            representing the creation time of the conversation.
+          example: 2020-06-20T11:26:07.001Z
           type: string
     ParticipantWithUserId:
       properties:

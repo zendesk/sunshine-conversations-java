@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>12.7.0</version>
+    <version>12.8.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:12.7.0"
+compile "com.zendesk:sunshine-conversations-client:12.8.0"
 ```
 
 ## Getting Started

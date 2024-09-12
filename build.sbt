@@ -2,7 +2,7 @@ lazy val root = (project in file(".")).
   settings(
     organization := "com.zendesk",
     name := "sunshine-conversations-client",
-    version := "12.7.0",
+    version := "12.8.0",
     scalaVersion := "2.11.4",
     scalacOptions ++= Seq("-feature"),
     javacOptions in compile ++= Seq("-Xlint:deprecation"),
