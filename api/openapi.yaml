@@ -3411,7 +3411,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/clientListResponse'
+                $ref: '#/components/schemas/deviceListResponse'
           description: Ok
       security:
       - basicAuth:
@@ -6437,6 +6437,17 @@ components:
           type: object
       type: object
     device:
+      example:
+        pushNotificationToken: pushNotificationToken
+        appVersion: appVersion
+        clientId: clientId
+        lastSeen: lastSeen
+        guid: guid
+        integrationId: integrationId
+        id: de13bee15b51033b34162411
+        type: android
+        status: active
+        info: '{}'
       properties:
         id:
           description: The unique ID of the device.
@@ -7881,6 +7892,36 @@ components:
       - confirmation
       - matchCriteria
       - target
+      type: object
+    deviceListResponse:
+      example:
+        devices:
+        - pushNotificationToken: pushNotificationToken
+          appVersion: appVersion
+          clientId: clientId
+          lastSeen: lastSeen
+          guid: guid
+          integrationId: integrationId
+          id: de13bee15b51033b34162411
+          type: android
+          status: active
+          info: '{}'
+        - pushNotificationToken: pushNotificationToken
+          appVersion: appVersion
+          clientId: clientId
+          lastSeen: lastSeen
+          guid: guid
+          integrationId: integrationId
+          id: de13bee15b51033b34162411
+          type: android
+          status: active
+          info: '{}'
+      properties:
+        devices:
+          description: List of returned devices.
+          items:
+            $ref: '#/components/schemas/device'
+          type: array
       type: object
     deviceResponse:
       example:

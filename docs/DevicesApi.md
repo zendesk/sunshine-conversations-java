@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## listDevices
 
-> ClientListResponse listDevices(appId, userIdOrExternalId)
+> DeviceListResponse listDevices(appId, userIdOrExternalId)
 
 List Devices
 
@@ -128,7 +128,7 @@ public class Example {
         // Add required body parameters
 
         try {
-            ClientListResponse result = apiInstance.listDevices(appId, userIdOrExternalId);
+            DeviceListResponse result = apiInstance.listDevices(appId, userIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DevicesApi#listDevices");
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ClientListResponse**](ClientListResponse.md)
+[**DeviceListResponse**](DeviceListResponse.md)
 
 ### Authorization
 

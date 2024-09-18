@@ -7,7 +7,7 @@ import com.zendesk.sunshine_conversations_client.Pair;
 
 import jakarta.ws.rs.core.GenericType;
 
-import com.zendesk.sunshine_conversations_client.model.ClientListResponse;
+import com.zendesk.sunshine_conversations_client.model.DeviceListResponse;
 import com.zendesk.sunshine_conversations_client.model.DeviceResponse;
 
 import java.util.ArrayList;
@@ -98,10 +98,10 @@ public class DevicesApi {
    * Get all the devices for a particular user. The Devices are sorted based on last seen time.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/users/:userId/devices &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
    * @param userIdOrExternalId The user&#39;s id or externalId. (required)
-   * @return a {@code ClientListResponse}
+   * @return a {@code DeviceListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientListResponse listDevices(String appId, String userIdOrExternalId) throws ApiException {
+  public DeviceListResponse listDevices(String appId, String userIdOrExternalId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -141,7 +141,7 @@ public class DevicesApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
 
-    GenericType<ClientListResponse> localVarReturnType = new GenericType<ClientListResponse>() {};
+    GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 
@@ -214,10 +214,10 @@ public class DevicesApi {
    * 
    * @param appId Identifies the app. (required)
    * @param userIdOrExternalId The user&#39;s id or externalId. (required)
-   * @return a {@code ClientListResponse}
+   * @return a {@code DeviceListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientListResponse listDevices(String bearerToken, String appId, String userIdOrExternalId) throws ApiException {
+  public DeviceListResponse listDevices(String bearerToken, String appId, String userIdOrExternalId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -259,7 +259,7 @@ public class DevicesApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
 
-    GenericType<ClientListResponse> localVarReturnType = new GenericType<ClientListResponse>() {};
+    GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }
