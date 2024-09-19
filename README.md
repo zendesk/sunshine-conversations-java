@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>13.0.0</version>
+    <version>13.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:13.0.0"
+compile "com.zendesk:sunshine-conversations-client:13.1.0"
 ```
 
 ## Getting Started
@@ -155,8 +155,6 @@ Class | Method | HTTP request | Description
 *AppsApi* | [**listApps**](docs/AppsApi.md#listApps) | **GET** /v2/apps | List Apps
 *AppsApi* | [**updateApp**](docs/AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
 *AttachmentsApi* | [**deleteAttachment**](docs/AttachmentsApi.md#deleteAttachment) | **POST** /v2/apps/{appId}/attachments/remove | Delete Attachment
-*AttachmentsApi* | [**generateMediaJsonWebToken**](docs/AttachmentsApi.md#generateMediaJsonWebToken) | **POST** /v2/apps/{appId}/attachments/token | Generate Media Token
-*AttachmentsApi* | [**setCookie**](docs/AttachmentsApi.md#setCookie) | **GET** /v2/apps/{appId}/attachments/cookie | Set Cookie
 *AttachmentsApi* | [**uploadAttachment**](docs/AttachmentsApi.md#uploadAttachment) | **POST** /v2/apps/{appId}/attachments | Upload Attachment
 *ClientsApi* | [**createClient**](docs/ClientsApi.md#createClient) | **POST** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | Create Client
 *ClientsApi* | [**listClients**](docs/ClientsApi.md#listClients) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId}/clients | List Clients
@@ -242,8 +240,6 @@ Class | Method | HTTP request | Description
  - [AppleAllOf](docs/AppleAllOf.md)
  - [AppleUpdate](docs/AppleUpdate.md)
  - [AttachmentDeleteBody](docs/AttachmentDeleteBody.md)
- - [AttachmentMediaTokenBody](docs/AttachmentMediaTokenBody.md)
- - [AttachmentMediaTokenResponse](docs/AttachmentMediaTokenResponse.md)
  - [AttachmentResponse](docs/AttachmentResponse.md)
  - [AttachmentSchema](docs/AttachmentSchema.md)
  - [AttachmentUploadBody](docs/AttachmentUploadBody.md)
