@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 13.1.0
+  version: 13.2.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -6596,6 +6596,28 @@ components:
       - $ref: '#/components/schemas/integrationId'
       - $ref: '#/components/schemas/integrationType'
       x-one-of-name: Destination
+    appleMessageOverridePayload:
+      description: The exact payload to send to the channel.
+      properties:
+        payload:
+          type: object
+        withCapabilities:
+          description: "List of capabilities needed for the override message to be\
+            \ received by the end user. \n\n`LIST` : for list picker;\n`TIME` : for\
+            \ time picker;\n`FORM` : for form;\n`QUICK` : for quick reply;\n`AUTH2`\
+            \ : for authentication\n"
+          example:
+          - LIST
+          items:
+            enum:
+            - LIST
+            - TIME
+            - FORM
+            - QUICK
+            - AUTH2
+            type: string
+          type: array
+      type: object
     messageOverridePayload:
       description: The exact payload to send to the channel.
       properties:
@@ -6609,7 +6631,7 @@ components:
       - $ref: '#/components/schemas/MessageOverrideMessenger'
       - $ref: '#/components/schemas/MessageOverrideWhatsapp'
       description: A raw payload containing a message that is sent directly to a channel.
-        Messages for [Apple Messages for Business](https://docs.smooch.io/guide/apple-business-chat/#passthrough-api),
+        Messages for [Apple Messages for Business](https://docs.smooch.io/guide/apple-messages-for-business/#passthrough-api),
         [Line](https://docs.smooch.io/guide/line/#passthrough-api), [Messenger](https://docs.smooch.io/guide/facebook-messenger/#passthrough-api),
         [Whatsapp](https://docs.smooch.io/guide/whatsapp/#passthrough-api) channels
         are supported.
@@ -7099,6 +7121,7 @@ components:
     appleUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
+      - $ref: '#/components/schemas/appleUpdate_allOf'
     customUpdate:
       allOf:
       - $ref: '#/components/schemas/customUpdate_allOf'
@@ -8493,7 +8516,7 @@ components:
     MessageOverrideApple:
       properties:
         apple:
-          $ref: '#/components/schemas/messageOverridePayload'
+          $ref: '#/components/schemas/appleMessageOverridePayload'
     MessageOverrideLine:
       properties:
         line:
@@ -8626,6 +8649,12 @@ components:
         mspId:
           description: Your Messaging Service Provider ID.
           example: e7e495d5-bf78-531d-baf6-7f419f7fb592
+          type: string
+        authenticationMessageSecret:
+          description: A secret used to create the state value when sending Apple
+            authentication 2.0 messages
+          example: eH3Ea4329FzUGEsWkjQr1dbD1JDpn5Ygo/kbW0/f8gOQ4eHTr31bjDUcCfv3s9QaAwRgpd4sckdlSXwMOAGHBQ==
+          minLength: 88
           type: string
       required:
       - apiSecret
@@ -9262,6 +9291,14 @@ components:
           description: Allows users to create more than one conversation on the android
             integration.
           type: boolean
+    appleUpdate_allOf:
+      properties:
+        authenticationMessageSecret:
+          description: A secret used to create the state value when sending Apple
+            authentication 2.0 messages
+          example: eH3Ea4329FzUGEsWkjQr1dbD1JDpn5Ygo/kbW0/f8gOQ4eHTr31bjDUcCfv3s9QaAwRgpd4sckdlSXwMOAGHBQ==
+          minLength: 88
+          type: string
     customUpdate_allOf:
       properties:
         displayName:

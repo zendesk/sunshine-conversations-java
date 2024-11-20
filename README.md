@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>13.1.0</version>
+    <version>13.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:13.1.0"
+compile "com.zendesk:sunshine-conversations-client:13.2.0"
 ```
 
 ## Getting Started
@@ -238,7 +238,9 @@ Class | Method | HTTP request | Description
  - [AppUpdateBody](docs/AppUpdateBody.md)
  - [Apple](docs/Apple.md)
  - [AppleAllOf](docs/AppleAllOf.md)
+ - [AppleMessageOverridePayload](docs/AppleMessageOverridePayload.md)
  - [AppleUpdate](docs/AppleUpdate.md)
+ - [AppleUpdateAllOf](docs/AppleUpdateAllOf.md)
  - [AttachmentDeleteBody](docs/AttachmentDeleteBody.md)
  - [AttachmentResponse](docs/AttachmentResponse.md)
  - [AttachmentSchema](docs/AttachmentSchema.md)
