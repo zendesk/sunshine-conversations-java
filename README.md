@@ -95,6 +95,8 @@ import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
 import com.zendesk.sunshine_conversations_client.api.ActivitiesApi;
+import com.zendesk.sunshine_conversations_client.api.AppApi;
+import com.zendesk.sunshine_conversations_client.model.AppCreate;
 
 import java.io.File;
 import java.util.*;
