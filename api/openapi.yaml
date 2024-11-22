@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 13.2.0
+  version: 14.0.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5786,7 +5786,6 @@ components:
         uri:
           description: The webview URI. This is the URI that will open in the webview
             when clicking the button.
-          format: uri
           type: string
         text:
           description: The button text.
@@ -7123,8 +7122,16 @@ components:
       - $ref: '#/components/schemas/integrationUpdateBase'
       - $ref: '#/components/schemas/appleUpdate_allOf'
     customUpdate:
-      allOf:
-      - $ref: '#/components/schemas/customUpdate_allOf'
+      properties:
+        displayName:
+          description: A human-friendly name used to identify the integration. `displayName`
+            can be unset by changing it to `null`.
+          example: My awesome integration
+          maxLength: 100
+          minLength: 1
+          nullable: true
+          type: string
+      type: object
     instagramUpdate:
       allOf:
       - $ref: '#/components/schemas/integrationUpdateBase'
@@ -9298,16 +9305,6 @@ components:
             authentication 2.0 messages
           example: eH3Ea4329FzUGEsWkjQr1dbD1JDpn5Ygo/kbW0/f8gOQ4eHTr31bjDUcCfv3s9QaAwRgpd4sckdlSXwMOAGHBQ==
           minLength: 88
-          type: string
-    customUpdate_allOf:
-      properties:
-        displayName:
-          description: A human-friendly name used to identify the integration. `displayName`
-            can be unset by changing it to `null`.
-          example: My awesome integration
-          maxLength: 100
-          minLength: 1
-          nullable: true
           type: string
     instagramUpdate_allOf:
       properties:
