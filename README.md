@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>14.0.0</version>
+    <version>14.1.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:14.0.0"
+compile "com.zendesk:sunshine-conversations-client:14.1.0"
 ```
 
 ## Getting Started
@@ -161,6 +161,7 @@ Class | Method | HTTP request | Description
 *ClientsApi* | [**removeClient**](docs/ClientsApi.md#removeClient) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/clients/{clientId} | Remove Client
 *ConversationsApi* | [**createConversation**](docs/ConversationsApi.md#createConversation) | **POST** /v2/apps/{appId}/conversations | Create Conversation
 *ConversationsApi* | [**deleteConversation**](docs/ConversationsApi.md#deleteConversation) | **DELETE** /v2/apps/{appId}/conversations/{conversationId} | Delete Conversation
+*ConversationsApi* | [**downloadMessageRef**](docs/ConversationsApi.md#downloadMessageRef) | **POST** /v2/apps/{appId}/conversations/{conversationId}/download | Download Message Ref
 *ConversationsApi* | [**getConversation**](docs/ConversationsApi.md#getConversation) | **GET** /v2/apps/{appId}/conversations/{conversationId} | Get Conversation
 *ConversationsApi* | [**listConversations**](docs/ConversationsApi.md#listConversations) | **GET** /v2/apps/{appId}/conversations | List Conversations
 *ConversationsApi* | [**updateConversation**](docs/ConversationsApi.md#updateConversation) | **PATCH** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
@@ -323,6 +324,10 @@ Class | Method | HTTP request | Description
  - [Device](docs/Device.md)
  - [DeviceListResponse](docs/DeviceListResponse.md)
  - [DeviceResponse](docs/DeviceResponse.md)
+ - [DownloadMessageRefBody](docs/DownloadMessageRefBody.md)
+ - [DownloadMessageRefBodyAllOf](docs/DownloadMessageRefBodyAllOf.md)
+ - [DownloadMessageRefBodyAllOfApple](docs/DownloadMessageRefBodyAllOfApple.md)
+ - [DownloadMessageRefBodyAllOfAppleInteractiveDataRef](docs/DownloadMessageRefBodyAllOfAppleInteractiveDataRef.md)
  - [EventSubSchema](docs/EventSubSchema.md)
  - [ExtraChannelOptions](docs/ExtraChannelOptions.md)
  - [ExtraChannelOptionsMessenger](docs/ExtraChannelOptionsMessenger.md)

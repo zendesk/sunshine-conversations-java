@@ -12,6 +12,8 @@ import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
 import com.zendesk.sunshine_conversations_client.model.ConversationListResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationUpdateBody;
+import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBody;
+import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;
@@ -139,6 +141,63 @@ public class ConversationsApi {
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Download Message Ref
+   * When a third party channel provides a reference of a data, this API can be used to download the reference and fetch the full data. Currently, only apple channel is supported.
+   * @param downloadMessageRefBody  (required)
+   * @param appId Identifies the app. (required)
+   * @param conversationId Identifies the conversation. (required)
+   * @return a {@code Object}
+   * @throws ApiException if fails to make API call
+   */
+  public Object downloadMessageRef(DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+    Object localVarPostBody = downloadMessageRefBody;
+    
+    // verify the required parameter 'downloadMessageRefBody' is set
+    if (downloadMessageRefBody == null) {
+      throw new ApiException(400, "Missing the required parameter 'downloadMessageRefBody' when calling downloadMessageRef");
+    }
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling downloadMessageRef");
+    }
+    
+    // verify the required parameter 'conversationId' is set
+    if (conversationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversationId' when calling downloadMessageRef");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/conversations/{conversationId}/download".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "conversationId" + "\\}", apiClient.escapeString(conversationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Get Conversation
@@ -410,6 +469,67 @@ public class ConversationsApi {
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Download Message Ref
+   * When a third party channel provides a reference of a data, this API can be used to download the reference and fetch the full data. Currently, only apple channel is supported.
+   * @param bearerToken a token to be used for this request (required)
+   * 
+   * @param downloadMessageRefBody  (required)
+   * @param appId Identifies the app. (required)
+   * @param conversationId Identifies the conversation. (required)
+   * @return a {@code Object}
+   * @throws ApiException if fails to make API call
+   */
+  public Object downloadMessageRef(String bearerToken, DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+    Object localVarPostBody = downloadMessageRefBody;
+    
+    // verify the required parameter 'downloadMessageRefBody' is set
+    if (downloadMessageRefBody == null) {
+      throw new ApiException(400, "Missing the required parameter 'downloadMessageRefBody' when calling downloadMessageRef");
+    }
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling downloadMessageRef");
+    }
+    
+    // verify the required parameter 'conversationId' is set
+    if (conversationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversationId' when calling downloadMessageRef");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/conversations/{conversationId}/download".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "conversationId" + "\\}", apiClient.escapeString(conversationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    localVarHeaderParams.put("Authorization", "Bearer " + bearerToken);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Get Conversation

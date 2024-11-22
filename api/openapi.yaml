@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 14.0.0
+  version: 14.1.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -1737,6 +1737,69 @@ paths:
       summary: Release Control
       tags:
       - Switchboard Actions
+      x-accepts: application/json
+  /v2/apps/{appId}/conversations/{conversationId}/download:
+    post:
+      description: When a third party channel provides a reference of a data, this
+        API can be used to download the reference and fetch the full data. Currently,
+        only apple channel is supported.
+      operationId: downloadMessageRef
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: Identifies the conversation.
+        explode: false
+        in: path
+        name: conversationId
+        required: true
+        schema:
+          example: 029c31f25a21b47effd7be90
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              request:
+                value:
+                  userId: 6e416caac6a5e9544e3fb6d7
+                  apple:
+                    interactiveDateRef:
+                      url: https://p61-content.icloud.com/M58C0A1A2EB62B6E899B4F28996E8DA229E1914295299C39944B2F2CA7482AE50.C01USN00
+                      bid: com.apple.messages.MSMessageExtensionBalloonPlugin:0000000000:com.apple.icloud.apps.messages.business.extension
+                      key: 00c0d1827fdc858fe7b42421de1fb289c2ee0a9463d787ce4f118506f970bd6e38
+                      signature: 81a619c81da5a01c6139219a5d20e17430c631e1eb
+                      owner: M58C0A2A1EB62B4E859B4F28996E8DA229E1914295299C39944B2F2CA7482AE50.C01USN00
+            schema:
+              $ref: '#/components/schemas/downloadMessageRefBody'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+          description: Ok
+      security:
+      - basicAuth:
+        - integration
+        - app
+        - account
+      - bearerAuth:
+        - integration
+        - app
+        - account
+      summary: Download Message Ref
+      tags:
+      - Conversations
+      x-contentType: application/json
       x-accepts: application/json
   /v2/apps/{appId}/integrations:
     get:
@@ -6789,6 +6852,11 @@ components:
       required:
       - switchboardIntegration
       type: object
+    downloadMessageRefBody:
+      allOf:
+      - $ref: '#/components/schemas/downloadMessageRefBody_allOf'
+      required:
+      - userId
     integration:
       description: The integration.
       discriminator:
@@ -8542,6 +8610,40 @@ components:
           allOf:
           - $ref: '#/components/schemas/author'
           description: The author of the activity.
+    downloadMessageRefBody_allOf_apple_interactiveDataRef:
+      description: interactiveDataRef can be found in the passthrough webhook.
+      properties:
+        url:
+          type: string
+        bid:
+          type: string
+        key:
+          type: string
+        signature:
+          type: string
+        owner:
+          type: string
+      required:
+      - bid
+      - key
+      - owner
+      - signature
+      - url
+    downloadMessageRefBody_allOf_apple:
+      description: The message ref returned by Apple.
+      properties:
+        interactiveDataRef:
+          $ref: '#/components/schemas/downloadMessageRefBody_allOf_apple_interactiveDataRef'
+      required:
+      - interactiveDataRef
+    downloadMessageRefBody_allOf:
+      properties:
+        userId:
+          description: The id of the user.
+          example: 5963c0d619a30a2e00de36b8
+          type: string
+        apple:
+          $ref: '#/components/schemas/downloadMessageRefBody_allOf_apple'
     defaultResponder_defaultResponder:
       description: |
         The default responder object.
