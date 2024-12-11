@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>14.1.0</version>
+    <version>14.2.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:14.1.0"
+compile "com.zendesk:sunshine-conversations-client:14.2.0"
 ```
 
 ## Getting Started
@@ -482,6 +482,9 @@ Class | Method | HTTP request | Description
  - [UserMergeEventAllOfPayloadMergedClients](docs/UserMergeEventAllOfPayloadMergedClients.md)
  - [UserMergeEventAllOfPayloadMergedConversations](docs/UserMergeEventAllOfPayloadMergedConversations.md)
  - [UserMergeEventAllOfPayloadMergedUsers](docs/UserMergeEventAllOfPayloadMergedUsers.md)
+ - [UserRemoveEvent](docs/UserRemoveEvent.md)
+ - [UserRemoveEventAllOf](docs/UserRemoveEventAllOf.md)
+ - [UserRemoveEventAllOfPayload](docs/UserRemoveEventAllOfPayload.md)
  - [UserResponse](docs/UserResponse.md)
  - [UserTruncated](docs/UserTruncated.md)
  - [UserUpdateBody](docs/UserUpdateBody.md)
