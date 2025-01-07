@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 14.2.0
+  version: 14.3.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5704,6 +5704,53 @@ components:
       required:
       - type
       type: object
+    ticketClosed:
+      properties:
+        type:
+          default: ticketClosed
+          description: The type of system activity that generated the message. The
+            value of this field determines the dynamic content that is rendered to
+            the end-user / agent when viewing this message. Each `type` value will
+            have a set of pre-defined, localized strings that describe the activity.
+          type: string
+        data:
+          default: {}
+          description: No additional data is supplied with the "ticketClosed" activity
+            type at this time.
+          readOnly: true
+          type: object
+      readOnly: true
+      required:
+      - type
+      type: object
+    transferToEmail:
+      properties:
+        type:
+          default: transferToEmail
+          description: The type of system activity that generated the message. The
+            value of this field determines the dynamic content that is rendered to
+            the end-user / agent when viewing this message. Each `type` value will
+            have a set of pre-defined, localized strings that describe the activity.
+          type: string
+        data:
+          default: {}
+          description: No additional data is supplied with the "transferToEmail" activity
+            type at this time.
+          type: object
+      readOnly: true
+      required:
+      - type
+      type: object
+    activityMessage:
+      discriminator:
+        mapping:
+          ticketClosed: '#/components/schemas/ticketClosed'
+          transferToEmail: '#/components/schemas/transferToEmail'
+        propertyName: type
+      oneOf:
+      - $ref: '#/components/schemas/ticketClosed'
+      - $ref: '#/components/schemas/transferToEmail'
+      x-one-of-name: ActivityMessage
     buy:
       properties:
         type:
@@ -6507,6 +6554,7 @@ components:
       example:
         metadata: ""
         deleted: true
+        activity: ""
         author:
           avatarUrl: ""
           displayName: Steve
@@ -6539,6 +6587,14 @@ components:
           type: string
         author:
           $ref: '#/components/schemas/author'
+        activity:
+          allOf:
+          - $ref: '#/components/schemas/activityMessage'
+          description: Details of the system activity that generated this message.
+            This field is used when actions taken by the system generate a persisted
+            message to notify the user or agent of an event that occurred. For example,
+            when a user's Ticket gets closed. This property applies only to informational
+            text messages generated via system events.
         content:
           allOf:
           - $ref: '#/components/schemas/content'
@@ -6608,6 +6664,7 @@ components:
         messages:
         - metadata: ""
           deleted: true
+          activity: ""
           author:
             avatarUrl: ""
             displayName: Steve
@@ -6630,6 +6687,7 @@ components:
           quotedMessage: ""
         - metadata: ""
           deleted: true
+          activity: ""
           author:
             avatarUrl: ""
             displayName: Steve
@@ -6753,6 +6811,7 @@ components:
         messages:
         - metadata: ""
           deleted: true
+          activity: ""
           author:
             avatarUrl: ""
             displayName: Steve
@@ -6775,6 +6834,7 @@ components:
           quotedMessage: ""
         - metadata: ""
           deleted: true
+          activity: ""
           author:
             avatarUrl: ""
             displayName: Steve

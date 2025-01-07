@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>14.2.0</version>
+    <version>14.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:14.2.0"
+compile "com.zendesk:sunshine-conversations-client:14.3.0"
 ```
 
 ## Getting Started
@@ -217,6 +217,7 @@ Class | Method | HTTP request | Description
  - [ActionSubset](docs/ActionSubset.md)
  - [Activity](docs/Activity.md)
  - [ActivityAllOf](docs/ActivityAllOf.md)
+ - [ActivityMessage](docs/ActivityMessage.md)
  - [ActivityPost](docs/ActivityPost.md)
  - [ActivityPostAllOf](docs/ActivityPostAllOf.md)
  - [ActivityTypes](docs/ActivityTypes.md)
@@ -463,6 +464,8 @@ Class | Method | HTTP request | Description
  - [TelegramUpdate](docs/TelegramUpdate.md)
  - [TemplateMessage](docs/TemplateMessage.md)
  - [TextMessage](docs/TextMessage.md)
+ - [TicketClosed](docs/TicketClosed.md)
+ - [TransferToEmail](docs/TransferToEmail.md)
  - [Twilio](docs/Twilio.md)
  - [TwilioAllOf](docs/TwilioAllOf.md)
  - [TwilioUpdate](docs/TwilioUpdate.md)
