@@ -24,6 +24,9 @@ import com.zendesk.sunshine_conversations_client.model.TicketClosed;
 import com.zendesk.sunshine_conversations_client.model.TransferToEmail;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 

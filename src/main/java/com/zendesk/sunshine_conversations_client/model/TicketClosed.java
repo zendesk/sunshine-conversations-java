@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import com.zendesk.sunshine_conversations_client.model.ActivityMessage;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -38,7 +41,7 @@ public class TicketClosed implements ActivityMessage {
   private String type = "ticketClosed";
 
   public static final String JSON_PROPERTY_DATA = "data";
-  private Object data = {};
+  private Map<String, Object> data = null;
 
 
   public TicketClosed type(String type) {
@@ -65,6 +68,20 @@ public class TicketClosed implements ActivityMessage {
   }
 
 
+  public TicketClosed data(Map<String, Object> data) {
+    
+    this.data = data;
+    return this;
+  }
+
+  public TicketClosed putDataItem(String key, Object dataItem) {
+    if (this.data == null) {
+      this.data = new HashMap<>();
+    }
+    this.data.put(key, dataItem);
+    return this;
+  }
+
    /**
    * No additional data is supplied with the \&quot;ticketClosed\&quot; activity type at this time.
    * @return data
@@ -74,11 +91,14 @@ public class TicketClosed implements ActivityMessage {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getData() {
+  public Map<String, Object> getData() {
     return data;
   }
 
 
+  public void setData(Map<String, Object> data) {
+    this.data = data;
+  }
 
 
   @Override

@@ -20,6 +20,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import com.zendesk.sunshine_conversations_client.model.ActivityMessage;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -38,7 +41,7 @@ public class TransferToEmail implements ActivityMessage {
   private String type = "transferToEmail";
 
   public static final String JSON_PROPERTY_DATA = "data";
-  private Object data = {};
+  private Map<String, Object> data = null;
 
 
   public TransferToEmail type(String type) {
@@ -65,9 +68,17 @@ public class TransferToEmail implements ActivityMessage {
   }
 
 
-  public TransferToEmail data(Object data) {
+  public TransferToEmail data(Map<String, Object> data) {
     
     this.data = data;
+    return this;
+  }
+
+  public TransferToEmail putDataItem(String key, Object dataItem) {
+    if (this.data == null) {
+      this.data = new HashMap<>();
+    }
+    this.data.put(key, dataItem);
     return this;
   }
 
@@ -80,12 +91,12 @@ public class TransferToEmail implements ActivityMessage {
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getData() {
+  public Map<String, Object> getData() {
     return data;
   }
 
 
-  public void setData(Object data) {
+  public void setData(Map<String, Object> data) {
     this.data = data;
   }
 

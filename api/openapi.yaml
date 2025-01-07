@@ -5714,10 +5714,9 @@ components:
             have a set of pre-defined, localized strings that describe the activity.
           type: string
         data:
-          default: {}
+          additionalProperties: true
           description: No additional data is supplied with the "ticketClosed" activity
             type at this time.
-          readOnly: true
           type: object
       readOnly: true
       required:
@@ -5733,7 +5732,7 @@ components:
             have a set of pre-defined, localized strings that describe the activity.
           type: string
         data:
-          default: {}
+          additionalProperties: true
           description: No additional data is supplied with the "transferToEmail" activity
             type at this time.
           type: object
