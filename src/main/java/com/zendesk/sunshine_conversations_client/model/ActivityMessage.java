@@ -32,6 +32,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "type", visible = true)
 @JsonSubTypes({
+  @JsonSubTypes.Type(value = TicketClosed.class, name = "ticket:closed"),
+  @JsonSubTypes.Type(value = TransferToEmail.class, name = "ticket:transfer:email"),
   @JsonSubTypes.Type(value = TicketClosed.class, name = "ticketClosed"),
   @JsonSubTypes.Type(value = TransferToEmail.class, name = "transferToEmail"),
 })

@@ -5707,7 +5707,7 @@ components:
     ticketClosed:
       properties:
         type:
-          default: ticketClosed
+          default: ticket:closed
           description: The type of system activity that generated the message. The
             value of this field determines the dynamic content that is rendered to
             the end-user / agent when viewing this message. Each `type` value will
@@ -5715,7 +5715,7 @@ components:
           type: string
         data:
           additionalProperties: true
-          description: No additional data is supplied with the "ticketClosed" activity
+          description: No additional data is supplied with the "ticket:closed" activity
             type at this time.
           type: object
       readOnly: true
@@ -5725,7 +5725,7 @@ components:
     transferToEmail:
       properties:
         type:
-          default: transferToEmail
+          default: ticket:transfer:email
           description: The type of system activity that generated the message. The
             value of this field determines the dynamic content that is rendered to
             the end-user / agent when viewing this message. Each `type` value will
@@ -5733,8 +5733,8 @@ components:
           type: string
         data:
           additionalProperties: true
-          description: No additional data is supplied with the "transferToEmail" activity
-            type at this time.
+          description: No additional data is supplied with the "ticket:transfer:email"
+            activity type at this time.
           type: object
       readOnly: true
       required:
@@ -5743,8 +5743,8 @@ components:
     activityMessage:
       discriminator:
         mapping:
-          ticketClosed: '#/components/schemas/ticketClosed'
-          transferToEmail: '#/components/schemas/transferToEmail'
+          ticket:closed: '#/components/schemas/ticketClosed'
+          ticket:transfer:email: '#/components/schemas/transferToEmail'
         propertyName: type
       oneOf:
       - $ref: '#/components/schemas/ticketClosed'

@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class TransferToEmail implements ActivityMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
-  private String type = "transferToEmail";
+  private String type = "ticket:transfer:email";
 
   public static final String JSON_PROPERTY_DATA = "data";
   private Map<String, Object> data = null;
@@ -83,11 +83,11 @@ public class TransferToEmail implements ActivityMessage {
   }
 
    /**
-   * No additional data is supplied with the \&quot;transferToEmail\&quot; activity type at this time.
+   * No additional data is supplied with the \&quot;ticket:transfer:email\&quot; activity type at this time.
    * @return data
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "No additional data is supplied with the \"transferToEmail\" activity type at this time.")
+  @ApiModelProperty(value = "No additional data is supplied with the \"ticket:transfer:email\" activity type at this time.")
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 

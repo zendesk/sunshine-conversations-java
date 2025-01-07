@@ -38,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class TicketClosed implements ActivityMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
-  private String type = "ticketClosed";
+  private String type = "ticket:closed";
 
   public static final String JSON_PROPERTY_DATA = "data";
   private Map<String, Object> data = null;
@@ -83,11 +83,11 @@ public class TicketClosed implements ActivityMessage {
   }
 
    /**
-   * No additional data is supplied with the \&quot;ticketClosed\&quot; activity type at this time.
+   * No additional data is supplied with the \&quot;ticket:closed\&quot; activity type at this time.
    * @return data
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "No additional data is supplied with the \"ticketClosed\" activity type at this time.")
+  @ApiModelProperty(value = "No additional data is supplied with the \"ticket:closed\" activity type at this time.")
   @JsonProperty(JSON_PROPERTY_DATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
