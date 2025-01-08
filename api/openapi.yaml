@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 14.3.0
+  version: 14.3.3
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
