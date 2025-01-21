@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 14.3.3
+  version: 14.3.4
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -5268,7 +5268,10 @@ components:
     attachmentSchema:
       properties:
         mediaUrl:
-          description: Uploaded attachment’s url
+          description: "Uploaded attachment’s url. \n<aside class=\"notice\">Note\
+            \ that for private attachments an authorization header is required to\
+            \ access the mediaUrl. See <a href=\"https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/\"\
+            >Configuring private attachments for messaging</a> guide for more details.</aside>\n"
           example: https://smooch.io/rocks.smooch.media-dev/apps/5ec41c54fe13cc5ac404bedc/conversations/c616a583e4c240a871818541/TmYMVQUBNsQRItX4fKf4aC-T/Screen%20Shot%202020-09-02%20at%204.04.41%20PM.png
           type: string
         mediaType:
@@ -6085,7 +6088,9 @@ components:
           description: The type of message.
           type: string
         mediaUrl:
-          description: The URL for media, such as an image, attached to the message.
+          description: |
+            The URL for media, such as an image, attached to the message.
+            <aside class="notice">Note that for private attachments an authorization header is required to access the mediaUrl. See <a href="https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/">Configuring private attachments for messaging</a> guide for more details.</aside>
           format: uri
           type: string
         mediaSize:
@@ -6236,7 +6241,9 @@ components:
           description: The type of message.
           type: string
         mediaUrl:
-          description: The URL for media, such as an image, attached to the message.
+          description: |
+            The URL for media, such as an image, attached to the message.
+            <aside class="notice">Note that for private attachments an authorization header is required to access the mediaUrl. See <a href="https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/">Configuring private attachments for messaging</a> guide for more details.</aside>
           format: uri
           type: string
         mediaType:
