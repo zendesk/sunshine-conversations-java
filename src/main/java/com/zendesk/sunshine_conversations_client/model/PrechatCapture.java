@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Field;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * PrechatCapture
@@ -130,14 +131,6 @@ public class PrechatCapture {
     return this;
   }
 
-  public PrechatCapture addFieldsItem(Field fieldsItem) {
-    if (this.fields == null) {
-      this.fields = new ArrayList<>();
-    }
-    this.fields.add(fieldsItem);
-    return this;
-  }
-
    /**
    * Array of Fields. Overrides the default Prechat Capture fields to define a custom form.
    * @return fields
@@ -166,15 +159,12 @@ public class PrechatCapture {
       return false;
     }
     PrechatCapture prechatCapture = (PrechatCapture) o;
-    return Objects.equals(this.avatarUrl, prechatCapture.avatarUrl) &&
-        Objects.equals(this.enabled, prechatCapture.enabled) &&
-        Objects.equals(this.enableEmailLinking, prechatCapture.enableEmailLinking) &&
-        Objects.equals(this.fields, prechatCapture.fields);
+    return Objects.equals(this.avatarUrl, prechatCapture.avatarUrl)Objects.equals(this.enabled, prechatCapture.enabled)Objects.equals(this.enableEmailLinking, prechatCapture.enableEmailLinking)Objects.equals(this.fields, prechatCapture.fields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(avatarUrl, enabled, enableEmailLinking, fields);
+    return Objects.hash(avatarUrlenabledenableEmailLinkingfields);
   }
 
 

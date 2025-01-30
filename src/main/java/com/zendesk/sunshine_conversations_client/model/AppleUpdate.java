@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.AppleUpdateAllOf;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AppleUpdate
@@ -39,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppleUpdate.JSON_PROPERTY_AUTHENTICATION_MESSAGE_SECRET
 })
 
-public class AppleUpdate implements IntegrationUpdate {
+public class AppleUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -154,14 +150,12 @@ public class AppleUpdate implements IntegrationUpdate {
       return false;
     }
     AppleUpdate appleUpdate = (AppleUpdate) o;
-    return Objects.equals(this.displayName, appleUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, appleUpdate.defaultResponderId) &&
-        Objects.equals(this.authenticationMessageSecret, appleUpdate.authenticationMessageSecret);
+    return Objects.equals(this.displayName, appleUpdate.displayName)Objects.equals(this.defaultResponderId, appleUpdate.defaultResponderId)Objects.equals(this.authenticationMessageSecret, appleUpdate.authenticationMessageSecret);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, authenticationMessageSecret);
+    return Objects.hash(displayNamedefaultResponderIdauthenticationMessageSecret);
   }
 
 

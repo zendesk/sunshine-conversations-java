@@ -17,14 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Message;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.QuotedMessage;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * QuotedMessageMessage
@@ -34,12 +31,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QuotedMessageMessage.JSON_PROPERTY_MESSAGE
 })
 
-public class QuotedMessageMessage implements QuotedMessage {
+public class QuotedMessageMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "message";
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  private Message message = null;
+  private Message message;
 
 
   public QuotedMessageMessage type(String type) {
@@ -100,13 +97,12 @@ public class QuotedMessageMessage implements QuotedMessage {
       return false;
     }
     QuotedMessageMessage quotedMessageMessage = (QuotedMessageMessage) o;
-    return Objects.equals(this.type, quotedMessageMessage.type) &&
-        Objects.equals(this.message, quotedMessageMessage.message);
+    return Objects.equals(this.type, quotedMessageMessage.type)Objects.equals(this.message, quotedMessageMessage.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, message);
+    return Objects.hash(typemessage);
   }
 
 

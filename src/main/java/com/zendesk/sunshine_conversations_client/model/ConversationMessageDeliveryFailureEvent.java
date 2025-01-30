@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryFailureEventAllOf;
-import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryFailureEventAllOfPayload;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationMessageDeliveryFailureEvent
@@ -46,7 +44,7 @@ public class ConversationMessageDeliveryFailureEvent {
   private String createdAt;
 
   public static final String JSON_PROPERTY_PAYLOAD = "payload";
-  private ConversationMessageDeliveryPayload payload = null;
+  private ConversationMessageDeliveryFailureEventAllOfPayload payload;
 
 
   public ConversationMessageDeliveryFailureEvent id(String id) {
@@ -124,7 +122,7 @@ public class ConversationMessageDeliveryFailureEvent {
   }
 
 
-  public ConversationMessageDeliveryFailureEvent payload(ConversationMessageDeliveryPayload payload) {
+  public ConversationMessageDeliveryFailureEvent payload(ConversationMessageDeliveryFailureEventAllOfPayload payload) {
     
     this.payload = payload;
     return this;
@@ -139,12 +137,12 @@ public class ConversationMessageDeliveryFailureEvent {
   @JsonProperty(JSON_PROPERTY_PAYLOAD)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public ConversationMessageDeliveryPayload getPayload() {
+  public ConversationMessageDeliveryFailureEventAllOfPayload getPayload() {
     return payload;
   }
 
 
-  public void setPayload(ConversationMessageDeliveryPayload payload) {
+  public void setPayload(ConversationMessageDeliveryFailureEventAllOfPayload payload) {
     this.payload = payload;
   }
 
@@ -158,15 +156,12 @@ public class ConversationMessageDeliveryFailureEvent {
       return false;
     }
     ConversationMessageDeliveryFailureEvent conversationMessageDeliveryFailureEvent = (ConversationMessageDeliveryFailureEvent) o;
-    return Objects.equals(this.id, conversationMessageDeliveryFailureEvent.id) &&
-        Objects.equals(this.type, conversationMessageDeliveryFailureEvent.type) &&
-        Objects.equals(this.createdAt, conversationMessageDeliveryFailureEvent.createdAt) &&
-        Objects.equals(this.payload, conversationMessageDeliveryFailureEvent.payload);
+    return Objects.equals(this.id, conversationMessageDeliveryFailureEvent.id)Objects.equals(this.type, conversationMessageDeliveryFailureEvent.type)Objects.equals(this.createdAt, conversationMessageDeliveryFailureEvent.createdAt)Objects.equals(this.payload, conversationMessageDeliveryFailureEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

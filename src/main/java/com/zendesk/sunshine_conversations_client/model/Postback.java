@@ -17,17 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.zendesk.sunshine_conversations_client.model.ActionSubset;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Postback
@@ -39,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Postback.JSON_PROPERTY_METADATA
 })
 
-public class Postback implements Action, ActionSubset {
+public class Postback {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "postback";
 
@@ -169,15 +166,12 @@ public class Postback implements Action, ActionSubset {
       return false;
     }
     Postback postback = (Postback) o;
-    return Objects.equals(this.type, postback.type) &&
-        Objects.equals(this.text, postback.text) &&
-        Objects.equals(this.payload, postback.payload) &&
-        Objects.equals(this.metadata, postback.metadata);
+    return Objects.equals(this.type, postback.type)Objects.equals(this.text, postback.text)Objects.equals(this.payload, postback.payload)Objects.equals(this.metadata, postback.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, payload, metadata);
+    return Objects.hash(typetextpayloadmetadata);
   }
 
 

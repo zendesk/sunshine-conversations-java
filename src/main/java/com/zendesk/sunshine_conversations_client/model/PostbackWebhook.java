@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * PostbackWebhook
@@ -110,13 +111,12 @@ public class PostbackWebhook {
       return false;
     }
     PostbackWebhook postbackWebhook = (PostbackWebhook) o;
-    return Objects.equals(this.payload, postbackWebhook.payload) &&
-        Objects.equals(this.metadata, postbackWebhook.metadata);
+    return Objects.equals(this.payload, postbackWebhook.payload)Objects.equals(this.metadata, postbackWebhook.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(payload, metadata);
+    return Objects.hash(payloadmetadata);
   }
 
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createCustomIntegrationKey
 
-> IntegrationApiKeyResponse createCustomIntegrationKey(integrationApiKey, appId, integrationId)
+> IntegrationApiKeyResponse createCustomIntegrationKey(integrationApiKeyappIdintegrationId)
 
 Create Integration Key
 
@@ -45,12 +45,12 @@ public class Example {
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
         IntegrationApiKey integrationApiKey = new IntegrationApiKey(); // IntegrationApiKey | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            IntegrationApiKeyResponse result = apiInstance.createCustomIntegrationKey(integrationApiKey, appId, integrationId);
+            IntegrationApiKeyResponse result = apiInstance.createCustomIntegrationKey(integrationApiKeyappIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomIntegrationApiKeysApi#createCustomIntegrationKey");
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## deleteCustomIntegrationKey
 
-> Object deleteCustomIntegrationKey(appId, integrationId, keyId)
+> Object deleteCustomIntegrationKey(appIdintegrationIdkeyId)
 
 Delete Integration Key
 
@@ -124,13 +124,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
-        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
+        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteCustomIntegrationKey(appId, integrationId, keyId);
+            Object result = apiInstance.deleteCustomIntegrationKey(appIdintegrationIdkeyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomIntegrationApiKeysApi#deleteCustomIntegrationKey");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## getCustomIntegrationKey
 
-> IntegrationApiKeyResponse getCustomIntegrationKey(appId, integrationId, keyId)
+> IntegrationApiKeyResponse getCustomIntegrationKey(appIdintegrationIdkeyId)
 
 Get Integration Key
 
@@ -204,13 +204,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
-        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
+        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
         // Add required body parameters
 
         try {
-            IntegrationApiKeyResponse result = apiInstance.getCustomIntegrationKey(appId, integrationId, keyId);
+            IntegrationApiKeyResponse result = apiInstance.getCustomIntegrationKey(appIdintegrationIdkeyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomIntegrationApiKeysApi#getCustomIntegrationKey");
@@ -253,7 +253,7 @@ Name | Type | Description  | Notes
 
 ## listCustomIntegrationKeys
 
-> IntegrationApiKeyListResponse listCustomIntegrationKeys(appId, integrationId)
+> IntegrationApiKeyListResponse listCustomIntegrationKeys(appIdintegrationId)
 
 List Integration Keys
 
@@ -284,12 +284,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         CustomIntegrationApiKeysApi apiInstance = new CustomIntegrationApiKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            IntegrationApiKeyListResponse result = apiInstance.listCustomIntegrationKeys(appId, integrationId);
+            IntegrationApiKeyListResponse result = apiInstance.listCustomIntegrationKeys(appIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CustomIntegrationApiKeysApi#listCustomIntegrationKeys");

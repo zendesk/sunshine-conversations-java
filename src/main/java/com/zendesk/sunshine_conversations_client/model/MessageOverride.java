@@ -17,6 +17,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.AppleMessageOverridePayload;
 import com.zendesk.sunshine_conversations_client.model.MessageOverrideApple;
@@ -24,9 +25,8 @@ import com.zendesk.sunshine_conversations_client.model.MessageOverrideLine;
 import com.zendesk.sunshine_conversations_client.model.MessageOverrideMessenger;
 import com.zendesk.sunshine_conversations_client.model.MessageOverridePayload;
 import com.zendesk.sunshine_conversations_client.model.MessageOverrideWhatsapp;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A raw payload containing a message that is sent directly to a channel. Messages for [Apple Messages for Business](https://docs.smooch.io/guide/apple-messages-for-business/#passthrough-api), [Line](https://docs.smooch.io/guide/line/#passthrough-api), [Messenger](https://docs.smooch.io/guide/facebook-messenger/#passthrough-api), [Whatsapp](https://docs.smooch.io/guide/whatsapp/#passthrough-api) channels are supported.
@@ -162,15 +162,12 @@ public class MessageOverride {
       return false;
     }
     MessageOverride messageOverride = (MessageOverride) o;
-    return Objects.equals(this.apple, messageOverride.apple) &&
-        Objects.equals(this.line, messageOverride.line) &&
-        Objects.equals(this.messenger, messageOverride.messenger) &&
-        Objects.equals(this.whatsapp, messageOverride.whatsapp);
+    return Objects.equals(this.apple, messageOverride.apple)Objects.equals(this.line, messageOverride.line)Objects.equals(this.messenger, messageOverride.messenger)Objects.equals(this.whatsapp, messageOverride.whatsapp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apple, line, messenger, whatsapp);
+    return Objects.hash(applelinemessengerwhatsapp);
   }
 
 

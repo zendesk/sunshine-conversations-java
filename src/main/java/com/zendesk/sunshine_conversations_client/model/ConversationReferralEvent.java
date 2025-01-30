@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationReferralEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.ConversationReferralEventAllOfPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationReferralEvent
@@ -158,15 +156,12 @@ public class ConversationReferralEvent {
       return false;
     }
     ConversationReferralEvent conversationReferralEvent = (ConversationReferralEvent) o;
-    return Objects.equals(this.id, conversationReferralEvent.id) &&
-        Objects.equals(this.type, conversationReferralEvent.type) &&
-        Objects.equals(this.createdAt, conversationReferralEvent.createdAt) &&
-        Objects.equals(this.payload, conversationReferralEvent.payload);
+    return Objects.equals(this.id, conversationReferralEvent.id)Objects.equals(this.type, conversationReferralEvent.type)Objects.equals(this.createdAt, conversationReferralEvent.createdAt)Objects.equals(this.payload, conversationReferralEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationPostbackEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.ConversationPostbackEventAllOfPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationPostbackEvent
@@ -158,15 +156,12 @@ public class ConversationPostbackEvent {
       return false;
     }
     ConversationPostbackEvent conversationPostbackEvent = (ConversationPostbackEvent) o;
-    return Objects.equals(this.id, conversationPostbackEvent.id) &&
-        Objects.equals(this.type, conversationPostbackEvent.type) &&
-        Objects.equals(this.createdAt, conversationPostbackEvent.createdAt) &&
-        Objects.equals(this.payload, conversationPostbackEvent.payload);
+    return Objects.equals(this.id, conversationPostbackEvent.id)Objects.equals(this.type, conversationPostbackEvent.type)Objects.equals(this.createdAt, conversationPostbackEvent.createdAt)Objects.equals(this.payload, conversationPostbackEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

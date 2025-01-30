@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AppKeyCreateBody
@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class AppKeyCreateBody {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName = null;
+  private String displayName;
 
 
   public AppKeyCreateBody displayName(String displayName) {
@@ -44,7 +44,7 @@ public class AppKeyCreateBody {
    * The name of the API key.
    * @return displayName
   **/
-  @ApiModelProperty(example = "Key 1", required = true, value = "The name of the API key.")
+  @ApiModelProperty(required = true, value = "The name of the API key.")
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 

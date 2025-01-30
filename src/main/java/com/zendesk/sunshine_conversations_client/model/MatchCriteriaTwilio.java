@@ -17,15 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaBase;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaTwilioAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteria;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * MatchCriteriaTwilio
@@ -37,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaTwilio.JSON_PROPERTY_PHONE_NUMBER
 })
 
-public class MatchCriteriaTwilio implements MatchCriteria {
+public class MatchCriteriaTwilio {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "twilio";
 
@@ -157,15 +152,12 @@ public class MatchCriteriaTwilio implements MatchCriteria {
       return false;
     }
     MatchCriteriaTwilio matchCriteriaTwilio = (MatchCriteriaTwilio) o;
-    return Objects.equals(this.type, matchCriteriaTwilio.type) &&
-        Objects.equals(this.integrationId, matchCriteriaTwilio.integrationId) &&
-        Objects.equals(this.primary, matchCriteriaTwilio.primary) &&
-        Objects.equals(this.phoneNumber, matchCriteriaTwilio.phoneNumber);
+    return Objects.equals(this.type, matchCriteriaTwilio.type)Objects.equals(this.integrationId, matchCriteriaTwilio.integrationId)Objects.equals(this.primary, matchCriteriaTwilio.primary)Objects.equals(this.phoneNumber, matchCriteriaTwilio.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, primary, phoneNumber);
+    return Objects.hash(typeintegrationIdprimaryphoneNumber);
   }
 
 

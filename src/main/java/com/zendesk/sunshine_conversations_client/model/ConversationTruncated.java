@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationType;
 import com.zendesk.sunshine_conversations_client.model.SwitchboardIntegrationWebhook;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationTruncated
@@ -49,10 +50,10 @@ public class ConversationTruncated {
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
   public static final String JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION = "activeSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(null);
+  private JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
 
   public static final String JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION = "pendingSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(null);
+  private JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
 
 
   public ConversationTruncated id(String id) {
@@ -219,16 +220,12 @@ public class ConversationTruncated {
       return false;
     }
     ConversationTruncated conversationTruncated = (ConversationTruncated) o;
-    return Objects.equals(this.id, conversationTruncated.id) &&
-        Objects.equals(this.type, conversationTruncated.type) &&
-        Objects.equals(this.metadata, conversationTruncated.metadata) &&
-        Objects.equals(this.activeSwitchboardIntegration, conversationTruncated.activeSwitchboardIntegration) &&
-        Objects.equals(this.pendingSwitchboardIntegration, conversationTruncated.pendingSwitchboardIntegration);
+    return Objects.equals(this.id, conversationTruncated.id)Objects.equals(this.type, conversationTruncated.type)Objects.equals(this.metadata, conversationTruncated.metadata)Objects.equals(this.activeSwitchboardIntegration, conversationTruncated.activeSwitchboardIntegration)Objects.equals(this.pendingSwitchboardIntegration, conversationTruncated.pendingSwitchboardIntegration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, metadata, activeSwitchboardIntegration, pendingSwitchboardIntegration);
+    return Objects.hash(idtypemetadataactiveSwitchboardIntegrationpendingSwitchboardIntegration);
   }
 
 

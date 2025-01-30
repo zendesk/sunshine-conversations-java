@@ -17,15 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaBase;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaMessagebirdAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteria;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * MatchCriteriaMessagebird
@@ -37,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaMessagebird.JSON_PROPERTY_PHONE_NUMBER
 })
 
-public class MatchCriteriaMessagebird implements MatchCriteria {
+public class MatchCriteriaMessagebird {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "messagebird";
 
@@ -157,15 +152,12 @@ public class MatchCriteriaMessagebird implements MatchCriteria {
       return false;
     }
     MatchCriteriaMessagebird matchCriteriaMessagebird = (MatchCriteriaMessagebird) o;
-    return Objects.equals(this.type, matchCriteriaMessagebird.type) &&
-        Objects.equals(this.integrationId, matchCriteriaMessagebird.integrationId) &&
-        Objects.equals(this.primary, matchCriteriaMessagebird.primary) &&
-        Objects.equals(this.phoneNumber, matchCriteriaMessagebird.phoneNumber);
+    return Objects.equals(this.type, matchCriteriaMessagebird.type)Objects.equals(this.integrationId, matchCriteriaMessagebird.integrationId)Objects.equals(this.primary, matchCriteriaMessagebird.primary)Objects.equals(this.phoneNumber, matchCriteriaMessagebird.phoneNumber);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, primary, phoneNumber);
+    return Objects.hash(typeintegrationIdprimaryphoneNumber);
   }
 
 

@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class CustomIntegrationApiKeysApi {
   private ApiClient apiClient;
 
@@ -45,7 +45,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyResponse createCustomIntegrationKey(IntegrationApiKey integrationApiKey, String appId, String integrationId) throws ApiException {
+  public IntegrationApiKeyResponse createCustomIntegrationKey(IntegrationApiKey integrationApiKeyString appIdString integrationId) throws ApiException {
     Object localVarPostBody = integrationApiKey;
     
     // verify the required parameter 'integrationApiKey' is set
@@ -88,7 +88,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyResponse> localVarReturnType = new GenericType<IntegrationApiKeyResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -102,7 +102,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteCustomIntegrationKey(String appId, String integrationId, String keyId) throws ApiException {
+  public Object deleteCustomIntegrationKey(String appIdString integrationIdString keyId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -146,7 +146,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -160,7 +160,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyResponse getCustomIntegrationKey(String appId, String integrationId, String keyId) throws ApiException {
+  public IntegrationApiKeyResponse getCustomIntegrationKey(String appIdString integrationIdString keyId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -204,7 +204,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyResponse> localVarReturnType = new GenericType<IntegrationApiKeyResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -217,7 +217,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyListResponse listCustomIntegrationKeys(String appId, String integrationId) throws ApiException {
+  public IntegrationApiKeyListResponse listCustomIntegrationKeys(String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -255,7 +255,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyListResponse> localVarReturnType = new GenericType<IntegrationApiKeyListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -272,7 +272,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyResponse createCustomIntegrationKey(String bearerToken, IntegrationApiKey integrationApiKey, String appId, String integrationId) throws ApiException {
+  public IntegrationApiKeyResponse createCustomIntegrationKey(String bearerToken, IntegrationApiKey integrationApiKeyString appIdString integrationId) throws ApiException {
     Object localVarPostBody = integrationApiKey;
     
     // verify the required parameter 'integrationApiKey' is set
@@ -317,7 +317,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyResponse> localVarReturnType = new GenericType<IntegrationApiKeyResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -333,7 +333,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteCustomIntegrationKey(String bearerToken, String appId, String integrationId, String keyId) throws ApiException {
+  public Object deleteCustomIntegrationKey(String bearerToken, String appIdString integrationIdString keyId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -379,7 +379,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -395,7 +395,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyResponse getCustomIntegrationKey(String bearerToken, String appId, String integrationId, String keyId) throws ApiException {
+  public IntegrationApiKeyResponse getCustomIntegrationKey(String bearerToken, String appIdString integrationIdString keyId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -441,7 +441,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyResponse> localVarReturnType = new GenericType<IntegrationApiKeyResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -456,7 +456,7 @@ public class CustomIntegrationApiKeysApi {
    * @return a {@code IntegrationApiKeyListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationApiKeyListResponse listCustomIntegrationKeys(String bearerToken, String appId, String integrationId) throws ApiException {
+  public IntegrationApiKeyListResponse listCustomIntegrationKeys(String bearerToken, String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -496,7 +496,7 @@ public class CustomIntegrationApiKeysApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationApiKeyListResponse> localVarReturnType = new GenericType<IntegrationApiKeyListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

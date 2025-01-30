@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardIntegrationUpdateBody
@@ -42,16 +43,16 @@ public class SwitchboardIntegrationUpdateBody {
   private String name;
 
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
-  private String integrationId = null;
+  private String integrationId;
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
-  private String integrationType = null;
+  private String integrationType;
 
   public static final String JSON_PROPERTY_DELIVER_STANDBY_EVENTS = "deliverStandbyEvents";
   private Boolean deliverStandbyEvents;
 
   public static final String JSON_PROPERTY_NEXT_SWITCHBOARD_INTEGRATION_ID = "nextSwitchboardIntegrationId";
-  private JsonNullable<String> nextSwitchboardIntegrationId = JsonNullable.<String>of(null);
+  private JsonNullable<String> nextSwitchboardIntegrationId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_MESSAGE_HISTORY_COUNT = "messageHistoryCount";
   private JsonNullable<Integer> messageHistoryCount = JsonNullable.<Integer>undefined();
@@ -93,7 +94,7 @@ public class SwitchboardIntegrationUpdateBody {
    * @return integrationId
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The id of the integration to link to the switchboard integration. Must be used when linking a custom integration. Can't provide both `integrationId` and `integrationType`.")
+  @ApiModelProperty(example = "5ef21b86e933b7355c11c605", value = "The id of the integration to link to the switchboard integration. Must be used when linking a custom integration. Can't provide both `integrationId` and `integrationType`.")
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -118,7 +119,7 @@ public class SwitchboardIntegrationUpdateBody {
    * @return integrationType
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The type of the integration to link to the switchboard integration. Must be used when linking an OAuth integration. Can't provide both `integrationId` and `integrationType`.")
+  @ApiModelProperty(example = "zd:agentWorkspace", value = "The type of the integration to link to the switchboard integration. Must be used when linking an OAuth integration. Can't provide both `integrationId` and `integrationType`.")
   @JsonProperty(JSON_PROPERTY_INTEGRATION_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -164,11 +165,11 @@ public class SwitchboardIntegrationUpdateBody {
   }
 
    /**
-   * Get nextSwitchboardIntegrationId
+   * The switchboard integration id to which control of a conversation is passed / offered by default.
    * @return nextSwitchboardIntegrationId
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "5ef21b86e933b7355c11c606", value = "The switchboard integration id to which control of a conversation is passed / offered by default.")
   @JsonIgnore
 
   public String getNextSwitchboardIntegrationId() {
@@ -238,17 +239,12 @@ public class SwitchboardIntegrationUpdateBody {
       return false;
     }
     SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = (SwitchboardIntegrationUpdateBody) o;
-    return Objects.equals(this.name, switchboardIntegrationUpdateBody.name) &&
-        Objects.equals(this.integrationId, switchboardIntegrationUpdateBody.integrationId) &&
-        Objects.equals(this.integrationType, switchboardIntegrationUpdateBody.integrationType) &&
-        Objects.equals(this.deliverStandbyEvents, switchboardIntegrationUpdateBody.deliverStandbyEvents) &&
-        Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegrationUpdateBody.nextSwitchboardIntegrationId) &&
-        Objects.equals(this.messageHistoryCount, switchboardIntegrationUpdateBody.messageHistoryCount);
+    return Objects.equals(this.name, switchboardIntegrationUpdateBody.name)Objects.equals(this.integrationId, switchboardIntegrationUpdateBody.integrationId)Objects.equals(this.integrationType, switchboardIntegrationUpdateBody.integrationType)Objects.equals(this.deliverStandbyEvents, switchboardIntegrationUpdateBody.deliverStandbyEvents)Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegrationUpdateBody.nextSwitchboardIntegrationId)Objects.equals(this.messageHistoryCount, switchboardIntegrationUpdateBody.messageHistoryCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, integrationId, integrationType, deliverStandbyEvents, nextSwitchboardIntegrationId, messageHistoryCount);
+    return Objects.hash(nameintegrationIdintegrationTypedeliverStandbyEventsnextSwitchboardIntegrationIdmessageHistoryCount);
   }
 
 

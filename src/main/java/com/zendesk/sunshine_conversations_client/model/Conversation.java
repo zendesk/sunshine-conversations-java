@@ -17,18 +17,17 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationAllOf;
-import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.ConversationType;
 import com.zendesk.sunshine_conversations_client.model.SwitchboardIntegrationWebhook;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Conversation
@@ -59,16 +58,16 @@ public class Conversation {
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
   public static final String JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION = "activeSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(null);
+  private JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
 
   public static final String JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION = "pendingSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(null);
+  private JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
 
   public static final String JSON_PROPERTY_IS_DEFAULT = "isDefault";
   private Boolean isDefault;
 
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName = null;
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private JsonNullable<String> description = JsonNullable.<String>undefined();
@@ -147,7 +146,7 @@ public class Conversation {
    * @return metadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
+  @ApiModelProperty(example = "{lang=en-ca}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
   @JsonIgnore
 
   public Object getMetadata() {
@@ -267,8 +266,8 @@ public class Conversation {
 
 
   public Conversation displayName(String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
     
-    this.displayName = displayName;
     return this;
   }
 
@@ -277,17 +276,27 @@ public class Conversation {
    * @return displayName
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "My conversation", value = "A friendly name for the conversation, may be displayed to the business or the user. ")
+  @ApiModelProperty(value = "A friendly name for the conversation, may be displayed to the business or the user. ")
+  @JsonIgnore
+
+  public String getDisplayName() {
+        return displayName.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDisplayName() {
+  public JsonNullable<String> getDisplayName_JsonNullable() {
     return displayName;
   }
-
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
+    this.displayName = displayName;
+  }
 
   public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = JsonNullable.<String>of(displayName);
   }
 
 
@@ -465,23 +474,12 @@ public class Conversation {
       return false;
     }
     Conversation conversation = (Conversation) o;
-    return Objects.equals(this.id, conversation.id) &&
-        Objects.equals(this.type, conversation.type) &&
-        Objects.equals(this.metadata, conversation.metadata) &&
-        Objects.equals(this.activeSwitchboardIntegration, conversation.activeSwitchboardIntegration) &&
-        Objects.equals(this.pendingSwitchboardIntegration, conversation.pendingSwitchboardIntegration) &&
-        Objects.equals(this.isDefault, conversation.isDefault) &&
-        Objects.equals(this.displayName, conversation.displayName) &&
-        Objects.equals(this.description, conversation.description) &&
-        Objects.equals(this.iconUrl, conversation.iconUrl) &&
-        Objects.equals(this.businessLastRead, conversation.businessLastRead) &&
-        Objects.equals(this.lastUpdatedAt, conversation.lastUpdatedAt) &&
-        Objects.equals(this.createdAt, conversation.createdAt);
+    return Objects.equals(this.id, conversation.id)Objects.equals(this.type, conversation.type)Objects.equals(this.metadata, conversation.metadata)Objects.equals(this.activeSwitchboardIntegration, conversation.activeSwitchboardIntegration)Objects.equals(this.pendingSwitchboardIntegration, conversation.pendingSwitchboardIntegration)Objects.equals(this.isDefault, conversation.isDefault)Objects.equals(this.displayName, conversation.displayName)Objects.equals(this.description, conversation.description)Objects.equals(this.iconUrl, conversation.iconUrl)Objects.equals(this.businessLastRead, conversation.businessLastRead)Objects.equals(this.lastUpdatedAt, conversation.lastUpdatedAt)Objects.equals(this.createdAt, conversation.createdAt);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, metadata, activeSwitchboardIntegration, pendingSwitchboardIntegration, isDefault, displayName, description, iconUrl, businessLastRead, lastUpdatedAt, createdAt);
+    return Objects.hash(idtypemetadataactiveSwitchboardIntegrationpendingSwitchboardIntegrationisDefaultdisplayNamedescriptioniconUrlbusinessLastReadlastUpdatedAtcreatedAt);
   }
 
 

@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Information about the location.
@@ -98,13 +98,12 @@ public class LocationMessageLocation {
       return false;
     }
     LocationMessageLocation locationMessageLocation = (LocationMessageLocation) o;
-    return Objects.equals(this.address, locationMessageLocation.address) &&
-        Objects.equals(this.name, locationMessageLocation.name);
+    return Objects.equals(this.address, locationMessageLocation.address)Objects.equals(this.name, locationMessageLocation.name);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(address, name);
+    return Objects.hash(addressname);
   }
 
 

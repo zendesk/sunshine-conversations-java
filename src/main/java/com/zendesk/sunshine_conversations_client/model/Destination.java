@@ -17,20 +17,118 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.IntegrationId;
 import com.zendesk.sunshine_conversations_client.model.IntegrationType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "", visible = true)
-@JsonSubTypes({
+/**
+ * The destination of the message, in the case of [channel targeting](https://docs.smooch.io/guide/sending-messages/#targeting-a-specific-channel) or sending [silent messages](https://docs.smooch.io/guide/sending-messages/#silent-messages). Only applicable if the author role is &#x60;business&#x60; and the conversation is of type &#x60;personal&#x60;. 
+ */
+@ApiModel(description = "The destination of the message, in the case of [channel targeting](https://docs.smooch.io/guide/sending-messages/#targeting-a-specific-channel) or sending [silent messages](https://docs.smooch.io/guide/sending-messages/#silent-messages). Only applicable if the author role is `business` and the conversation is of type `personal`. ")
+@JsonPropertyOrder({
+  Destination.JSON_PROPERTY_INTEGRATION_ID,
+  Destination.JSON_PROPERTY_INTEGRATION_TYPE
 })
 
-public interface Destination  {
+public class Destination {
+  public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
+  private String integrationId;
+
+  public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
+  private String integrationType;
+
+
+  public Destination integrationId(String integrationId) {
+    
+    this.integrationId = integrationId;
+    return this;
+  }
+
+   /**
+   * The id of the integration to deliver the message to. Will return an error if the integration does not exist or if the user does not have a client for the integration attached to the conversation. 
+   * @return integrationId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "582dedf230e788746891281a", value = "The id of the integration to deliver the message to. Will return an error if the integration does not exist or if the user does not have a client for the integration attached to the conversation. ")
+  @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getIntegrationId() {
+    return integrationId;
+  }
+
+
+  public void setIntegrationId(String integrationId) {
+    this.integrationId = integrationId;
+  }
+
+
+  public Destination integrationType(String integrationType) {
+    
+    this.integrationType = integrationType;
+    return this;
+  }
+
+   /**
+   * The type of the integration to deliver the message to. Can be set to &#x60;none&#x60; if sending a [silent message](https://docs.smooch.io/guide/sending-messages/#silent-messages). Will return an error if the user does not have a client of that type attached to the conversation. 
+   * @return integrationType
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "whatsapp", value = "The type of the integration to deliver the message to. Can be set to `none` if sending a [silent message](https://docs.smooch.io/guide/sending-messages/#silent-messages). Will return an error if the user does not have a client of that type attached to the conversation. ")
+  @JsonProperty(JSON_PROPERTY_INTEGRATION_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getIntegrationType() {
+    return integrationType;
+  }
+
+
+  public void setIntegrationType(String integrationType) {
+    this.integrationType = integrationType;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    Destination destination = (Destination) o;
+    return Objects.equals(this.integrationId, destination.integrationId)Objects.equals(this.integrationType, destination.integrationType);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(integrationIdintegrationType);
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class Destination {\n");
+    sb.append("    integrationId: ").append(toIndentedString(integrationId)).append("\n");
+    sb.append("    integrationType: ").append(toIndentedString(integrationType)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

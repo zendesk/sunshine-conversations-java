@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.SwitchboardIntegration;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardIntegrationResponse
@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class SwitchboardIntegrationResponse {
   public static final String JSON_PROPERTY_SWITCHBOARD_INTEGRATION = "switchboardIntegration";
-  private SwitchboardIntegration switchboardIntegration = null;
+  private SwitchboardIntegration switchboardIntegration;
 
 
   public SwitchboardIntegrationResponse switchboardIntegration(SwitchboardIntegration switchboardIntegration) {

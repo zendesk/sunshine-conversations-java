@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The author of the activity.
@@ -38,9 +38,9 @@ public class AuthorWebhook {
    * The &#x60;type&#x60; of the author.
    */
   public enum TypeEnum {
-    BUSINESS("business"),
+    BUSINESS(String.valueOf("business")),
     
-    USER("user");
+    USER(String.valueOf("user"));
 
     private String value;
 
@@ -76,7 +76,7 @@ public class AuthorWebhook {
   private String userId;
 
   public static final String JSON_PROPERTY_USER = "user";
-  private User user = null;
+  private User user;
 
 
   public AuthorWebhook type(TypeEnum type) {
@@ -162,14 +162,12 @@ public class AuthorWebhook {
       return false;
     }
     AuthorWebhook authorWebhook = (AuthorWebhook) o;
-    return Objects.equals(this.type, authorWebhook.type) &&
-        Objects.equals(this.userId, authorWebhook.userId) &&
-        Objects.equals(this.user, authorWebhook.user);
+    return Objects.equals(this.type, authorWebhook.type)Objects.equals(this.userId, authorWebhook.userId)Objects.equals(this.user, authorWebhook.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, userId, user);
+    return Objects.hash(typeuserIduser);
   }
 
 

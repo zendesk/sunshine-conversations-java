@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class SwitchboardIntegrationsApi {
   private ApiClient apiClient;
 
@@ -46,7 +46,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationResponse createSwitchboardIntegration(SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody, String appId, String switchboardId) throws ApiException {
+  public SwitchboardIntegrationResponse createSwitchboardIntegration(SwitchboardIntegrationCreateBody switchboardIntegrationCreateBodyString appIdString switchboardId) throws ApiException {
     Object localVarPostBody = switchboardIntegrationCreateBody;
     
     // verify the required parameter 'switchboardIntegrationCreateBody' is set
@@ -89,7 +89,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationResponse> localVarReturnType = new GenericType<SwitchboardIntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -103,7 +103,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteSwitchboardIntegration(String appId, String switchboardId, String switchboardIntegrationId) throws ApiException {
+  public Object deleteSwitchboardIntegration(String appIdString switchboardIdString switchboardIntegrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -147,7 +147,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -160,7 +160,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationListResponse listSwitchboardIntegrations(String appId, String switchboardId) throws ApiException {
+  public SwitchboardIntegrationListResponse listSwitchboardIntegrations(String appIdString switchboardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -198,7 +198,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationListResponse> localVarReturnType = new GenericType<SwitchboardIntegrationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -213,7 +213,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationResponse updateSwitchboardIntegration(SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody, String appId, String switchboardId, String switchboardIntegrationId) throws ApiException {
+  public SwitchboardIntegrationResponse updateSwitchboardIntegration(SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBodyString appIdString switchboardIdString switchboardIntegrationId) throws ApiException {
     Object localVarPostBody = switchboardIntegrationUpdateBody;
     
     // verify the required parameter 'switchboardIntegrationUpdateBody' is set
@@ -262,7 +262,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationResponse> localVarReturnType = new GenericType<SwitchboardIntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -279,7 +279,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationResponse createSwitchboardIntegration(String bearerToken, SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody, String appId, String switchboardId) throws ApiException {
+  public SwitchboardIntegrationResponse createSwitchboardIntegration(String bearerToken, SwitchboardIntegrationCreateBody switchboardIntegrationCreateBodyString appIdString switchboardId) throws ApiException {
     Object localVarPostBody = switchboardIntegrationCreateBody;
     
     // verify the required parameter 'switchboardIntegrationCreateBody' is set
@@ -324,7 +324,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationResponse> localVarReturnType = new GenericType<SwitchboardIntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -340,7 +340,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteSwitchboardIntegration(String bearerToken, String appId, String switchboardId, String switchboardIntegrationId) throws ApiException {
+  public Object deleteSwitchboardIntegration(String bearerToken, String appIdString switchboardIdString switchboardIntegrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -386,7 +386,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -401,7 +401,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationListResponse listSwitchboardIntegrations(String bearerToken, String appId, String switchboardId) throws ApiException {
+  public SwitchboardIntegrationListResponse listSwitchboardIntegrations(String bearerToken, String appIdString switchboardId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -441,7 +441,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationListResponse> localVarReturnType = new GenericType<SwitchboardIntegrationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -458,7 +458,7 @@ public class SwitchboardIntegrationsApi {
    * @return a {@code SwitchboardIntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public SwitchboardIntegrationResponse updateSwitchboardIntegration(String bearerToken, SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody, String appId, String switchboardId, String switchboardIntegrationId) throws ApiException {
+  public SwitchboardIntegrationResponse updateSwitchboardIntegration(String bearerToken, SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBodyString appIdString switchboardIdString switchboardIntegrationId) throws ApiException {
     Object localVarPostBody = switchboardIntegrationUpdateBody;
     
     // verify the required parameter 'switchboardIntegrationUpdateBody' is set
@@ -509,7 +509,7 @@ public class SwitchboardIntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<SwitchboardIntegrationResponse> localVarReturnType = new GenericType<SwitchboardIntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

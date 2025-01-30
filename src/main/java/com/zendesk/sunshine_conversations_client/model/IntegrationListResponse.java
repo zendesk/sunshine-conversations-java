@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Integration;
 import com.zendesk.sunshine_conversations_client.model.Links;
 import com.zendesk.sunshine_conversations_client.model.Meta;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * IntegrationListResponse
@@ -50,14 +51,6 @@ public class IntegrationListResponse {
   public IntegrationListResponse integrations(List<Integration> integrations) {
     
     this.integrations = integrations;
-    return this;
-  }
-
-  public IntegrationListResponse addIntegrationsItem(Integration integrationsItem) {
-    if (this.integrations == null) {
-      this.integrations = new ArrayList<>();
-    }
-    this.integrations.add(integrationsItem);
     return this;
   }
 
@@ -139,14 +132,12 @@ public class IntegrationListResponse {
       return false;
     }
     IntegrationListResponse integrationListResponse = (IntegrationListResponse) o;
-    return Objects.equals(this.integrations, integrationListResponse.integrations) &&
-        Objects.equals(this.meta, integrationListResponse.meta) &&
-        Objects.equals(this.links, integrationListResponse.links);
+    return Objects.equals(this.integrations, integrationListResponse.integrations)Objects.equals(this.meta, integrationListResponse.meta)Objects.equals(this.links, integrationListResponse.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(integrations, meta, links);
+    return Objects.hash(integrationsmetalinks);
   }
 
 

@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Conversation;
 import com.zendesk.sunshine_conversations_client.model.Links;
 import com.zendesk.sunshine_conversations_client.model.Meta;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationListResponse
@@ -50,14 +51,6 @@ public class ConversationListResponse {
   public ConversationListResponse conversations(List<Conversation> conversations) {
     
     this.conversations = conversations;
-    return this;
-  }
-
-  public ConversationListResponse addConversationsItem(Conversation conversationsItem) {
-    if (this.conversations == null) {
-      this.conversations = new ArrayList<>();
-    }
-    this.conversations.add(conversationsItem);
     return this;
   }
 
@@ -139,14 +132,12 @@ public class ConversationListResponse {
       return false;
     }
     ConversationListResponse conversationListResponse = (ConversationListResponse) o;
-    return Objects.equals(this.conversations, conversationListResponse.conversations) &&
-        Objects.equals(this.meta, conversationListResponse.meta) &&
-        Objects.equals(this.links, conversationListResponse.links);
+    return Objects.equals(this.conversations, conversationListResponse.conversations)Objects.equals(this.meta, conversationListResponse.meta)Objects.equals(this.links, conversationListResponse.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversations, meta, links);
+    return Objects.hash(conversationsmetalinks);
   }
 
 

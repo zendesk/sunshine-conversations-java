@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.App;
 import com.zendesk.sunshine_conversations_client.model.Links;
 import com.zendesk.sunshine_conversations_client.model.Meta;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AppListResponse
@@ -50,14 +51,6 @@ public class AppListResponse {
   public AppListResponse apps(List<App> apps) {
     
     this.apps = apps;
-    return this;
-  }
-
-  public AppListResponse addAppsItem(App appsItem) {
-    if (this.apps == null) {
-      this.apps = new ArrayList<>();
-    }
-    this.apps.add(appsItem);
     return this;
   }
 
@@ -139,14 +132,12 @@ public class AppListResponse {
       return false;
     }
     AppListResponse appListResponse = (AppListResponse) o;
-    return Objects.equals(this.apps, appListResponse.apps) &&
-        Objects.equals(this.meta, appListResponse.meta) &&
-        Objects.equals(this.links, appListResponse.links);
+    return Objects.equals(this.apps, appListResponse.apps)Objects.equals(this.meta, appListResponse.meta)Objects.equals(this.links, appListResponse.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(apps, meta, links);
+    return Objects.hash(appsmetalinks);
   }
 
 

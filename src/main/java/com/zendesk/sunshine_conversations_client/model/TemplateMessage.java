@@ -17,17 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * TemplateMessage
@@ -37,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TemplateMessage.JSON_PROPERTY_TEMPLATE
 })
 
-public class TemplateMessage implements Content {
+public class TemplateMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "template";
 
@@ -102,13 +95,12 @@ public class TemplateMessage implements Content {
       return false;
     }
     TemplateMessage templateMessage = (TemplateMessage) o;
-    return Objects.equals(this.type, templateMessage.type) &&
-        Objects.equals(this.template, templateMessage.template);
+    return Objects.equals(this.type, templateMessage.type)Objects.equals(this.template, templateMessage.template);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, template);
+    return Objects.hash(typetemplate);
   }
 
 

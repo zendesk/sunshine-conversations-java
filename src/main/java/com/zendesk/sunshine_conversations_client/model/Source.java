@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Client;
 import com.zendesk.sunshine_conversations_client.model.Device;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The source of the message.
@@ -54,10 +55,10 @@ public class Source {
   private JsonNullable<String> originalMessageTimestamp = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_CLIENT = "client";
-  private JsonNullable<Client> client = JsonNullable.<Client>of(null);
+  private JsonNullable<Client> client = JsonNullable.<Client>undefined();
 
   public static final String JSON_PROPERTY_DEVICE = "device";
-  private JsonNullable<Device> device = JsonNullable.<Device>of(null);
+  private JsonNullable<Device> device = JsonNullable.<Device>undefined();
 
 
   public Source type(String type) {
@@ -268,17 +269,12 @@ public class Source {
       return false;
     }
     Source source = (Source) o;
-    return Objects.equals(this.type, source.type) &&
-        Objects.equals(this.integrationId, source.integrationId) &&
-        Objects.equals(this.originalMessageId, source.originalMessageId) &&
-        Objects.equals(this.originalMessageTimestamp, source.originalMessageTimestamp) &&
-        Objects.equals(this.client, source.client) &&
-        Objects.equals(this.device, source.device);
+    return Objects.equals(this.type, source.type)Objects.equals(this.integrationId, source.integrationId)Objects.equals(this.originalMessageId, source.originalMessageId)Objects.equals(this.originalMessageTimestamp, source.originalMessageTimestamp)Objects.equals(this.client, source.client)Objects.equals(this.device, source.device);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, originalMessageId, originalMessageTimestamp, client, device);
+    return Objects.hash(typeintegrationIdoriginalMessageIdoriginalMessageTimestampclientdevice);
   }
 
 

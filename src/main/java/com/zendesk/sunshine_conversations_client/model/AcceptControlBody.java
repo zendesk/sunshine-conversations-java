@@ -17,10 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.openapitools.jackson.nullable.JsonNullable;
+import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AcceptControlBody
@@ -31,12 +35,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class AcceptControlBody {
   public static final String JSON_PROPERTY_METADATA = "metadata";
-  private Object metadata = null;
+  private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
 
   public AcceptControlBody metadata(Object metadata) {
+    this.metadata = JsonNullable.<Object>of(metadata);
     
-    this.metadata = metadata;
     return this;
   }
 
@@ -45,17 +49,27 @@ public class AcceptControlBody {
    * @return metadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the `switchboard:acceptControl` and `switchboard:acceptControl:failure` webhooks.")
+  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the `switchboard:acceptControl` and `switchboard:acceptControl:failure` webhooks.")
+  @JsonIgnore
+
+  public Object getMetadata() {
+        return metadata.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Object getMetadata() {
+  public JsonNullable<Object> getMetadata_JsonNullable() {
     return metadata;
   }
-
+  
+  @JsonProperty(JSON_PROPERTY_METADATA)
+  public void setMetadata_JsonNullable(JsonNullable<Object> metadata) {
+    this.metadata = metadata;
+  }
 
   public void setMetadata(Object metadata) {
-    this.metadata = metadata;
+    this.metadata = JsonNullable.<Object>of(metadata);
   }
 
 

@@ -17,14 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Field;
-import com.zendesk.sunshine_conversations_client.model.FormResponseMessageFieldAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * FormResponseMessageField
@@ -44,11 +43,11 @@ public class FormResponseMessageField {
    * The field type.
    */
   public enum TypeEnum {
-    EMAIL("email"),
+    EMAIL(String.valueOf("email")),
     
-    SELECT("select"),
+    SELECT(String.valueOf("select")),
     
-    TEXT("text");
+    TEXT(String.valueOf("text"));
 
     private String value;
 
@@ -227,14 +226,6 @@ public class FormResponseMessageField {
     return this;
   }
 
-  public FormResponseMessageField addSelectItem(Object selectItem) {
-    if (this.select == null) {
-      this.select = new ArrayList<>();
-    }
-    this.select.add(selectItem);
-    return this;
-  }
-
    /**
    * Array of objects representing the response for a field of type select. Form and formResponse messages only.
    * @return select
@@ -288,18 +279,12 @@ public class FormResponseMessageField {
       return false;
     }
     FormResponseMessageField formResponseMessageField = (FormResponseMessageField) o;
-    return Objects.equals(this.type, formResponseMessageField.type) &&
-        Objects.equals(this.name, formResponseMessageField.name) &&
-        Objects.equals(this.label, formResponseMessageField.label) &&
-        Objects.equals(this.text, formResponseMessageField.text) &&
-        Objects.equals(this.email, formResponseMessageField.email) &&
-        Objects.equals(this.select, formResponseMessageField.select) &&
-        Objects.equals(this.quotedMessageId, formResponseMessageField.quotedMessageId);
+    return Objects.equals(this.type, formResponseMessageField.type)Objects.equals(this.name, formResponseMessageField.name)Objects.equals(this.label, formResponseMessageField.label)Objects.equals(this.text, formResponseMessageField.text)Objects.equals(this.email, formResponseMessageField.email)Objects.equals(this.select, formResponseMessageField.select)Objects.equals(this.quotedMessageId, formResponseMessageField.quotedMessageId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, label, text, email, select, quotedMessageId);
+    return Objects.hash(typenamelabeltextemailselectquotedMessageId);
   }
 
 

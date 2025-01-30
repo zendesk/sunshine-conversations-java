@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.AppSettings;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * App
@@ -41,7 +42,7 @@ public class App {
   private String id;
 
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName = null;
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_SETTINGS = "settings";
   private AppSettings settings;
@@ -76,8 +77,8 @@ public class App {
 
 
   public App displayName(String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
     
-    this.displayName = displayName;
     return this;
   }
 
@@ -86,17 +87,27 @@ public class App {
    * @return displayName
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "My App", value = "The friendly name of the app.")
+  @ApiModelProperty(value = "The friendly name of the app.")
+  @JsonIgnore
+
+  public String getDisplayName() {
+        return displayName.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDisplayName() {
+  public JsonNullable<String> getDisplayName_JsonNullable() {
     return displayName;
   }
-
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
+    this.displayName = displayName;
+  }
 
   public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = JsonNullable.<String>of(displayName);
   }
 
 
@@ -169,15 +180,12 @@ public class App {
       return false;
     }
     App app = (App) o;
-    return Objects.equals(this.id, app.id) &&
-        Objects.equals(this.displayName, app.displayName) &&
-        Objects.equals(this.settings, app.settings) &&
-        Objects.equals(this.metadata, app.metadata);
+    return Objects.equals(this.id, app.id)Objects.equals(this.displayName, app.displayName)Objects.equals(this.settings, app.settings)Objects.equals(this.metadata, app.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, displayName, settings, metadata);
+    return Objects.hash(iddisplayNamesettingsmetadata);
   }
 
 

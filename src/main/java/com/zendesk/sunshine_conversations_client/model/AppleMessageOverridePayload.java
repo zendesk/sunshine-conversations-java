@@ -17,12 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The exact payload to send to the channel.
@@ -41,15 +42,15 @@ public class AppleMessageOverridePayload {
    * Gets or Sets withCapabilities
    */
   public enum WithCapabilitiesEnum {
-    LIST("LIST"),
+    LIST(String.valueOf("LIST")),
     
-    TIME("TIME"),
+    TIME(String.valueOf("TIME")),
     
-    FORM("FORM"),
+    FORM(String.valueOf("FORM")),
     
-    QUICK("QUICK"),
+    QUICK(String.valueOf("QUICK")),
     
-    AUTH2("AUTH2");
+    AUTH2(String.valueOf("AUTH2"));
 
     private String value;
 
@@ -113,14 +114,6 @@ public class AppleMessageOverridePayload {
     return this;
   }
 
-  public AppleMessageOverridePayload addWithCapabilitiesItem(WithCapabilitiesEnum withCapabilitiesItem) {
-    if (this.withCapabilities == null) {
-      this.withCapabilities = new ArrayList<>();
-    }
-    this.withCapabilities.add(withCapabilitiesItem);
-    return this;
-  }
-
    /**
    * List of capabilities needed for the override message to be received by the end user.   &#x60;LIST&#x60; : for list picker; &#x60;TIME&#x60; : for time picker; &#x60;FORM&#x60; : for form; &#x60;QUICK&#x60; : for quick reply; &#x60;AUTH2&#x60; : for authentication 
    * @return withCapabilities
@@ -149,13 +142,12 @@ public class AppleMessageOverridePayload {
       return false;
     }
     AppleMessageOverridePayload appleMessageOverridePayload = (AppleMessageOverridePayload) o;
-    return Objects.equals(this.payload, appleMessageOverridePayload.payload) &&
-        Objects.equals(this.withCapabilities, appleMessageOverridePayload.withCapabilities);
+    return Objects.equals(this.payload, appleMessageOverridePayload.payload)Objects.equals(this.withCapabilities, appleMessageOverridePayload.withCapabilities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(payload, withCapabilities);
+    return Objects.hash(payloadwithCapabilities);
   }
 
 

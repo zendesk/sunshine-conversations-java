@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.AppSettings;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AppCreateBody
@@ -37,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class AppCreateBody {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName = null;
+  private String displayName;
 
   public static final String JSON_PROPERTY_SETTINGS = "settings";
   private AppSettings settings;
@@ -56,7 +57,7 @@ public class AppCreateBody {
    * The friendly name of the app.
    * @return displayName
   **/
-  @ApiModelProperty(example = "My App", required = true, value = "The friendly name of the app.")
+  @ApiModelProperty(required = true, value = "The friendly name of the app.")
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
@@ -139,14 +140,12 @@ public class AppCreateBody {
       return false;
     }
     AppCreateBody appCreateBody = (AppCreateBody) o;
-    return Objects.equals(this.displayName, appCreateBody.displayName) &&
-        Objects.equals(this.settings, appCreateBody.settings) &&
-        Objects.equals(this.metadata, appCreateBody.metadata);
+    return Objects.equals(this.displayName, appCreateBody.displayName)Objects.equals(this.settings, appCreateBody.settings)Objects.equals(this.metadata, appCreateBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, settings, metadata);
+    return Objects.hash(displayNamesettingsmetadata);
   }
 
 

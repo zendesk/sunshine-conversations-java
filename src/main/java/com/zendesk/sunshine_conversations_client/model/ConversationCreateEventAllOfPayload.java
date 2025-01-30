@@ -17,17 +17,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.Referral;
 import com.zendesk.sunshine_conversations_client.model.SourceWithCampaignWebhook;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -43,25 +44,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationCreateEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   /**
    * The reason why the conversation was created, if applicable. * &#x60;linkRequest&#x60; - The conversation was created in order to generate a link request to transfer the user to a different channel. * &#x60;message&#x60; - The conversation was created because a message was sent. * &#x60;none&#x60; - The conversation was not created for a specific purpose. Used primarily when a conversation is created via the Create Conversation API. * &#x60;notification&#x60; - The conversation was created by a call to the Notification API. * &#x60;prechatCapture&#x60; - The conversation was created because the user completed a prechat capture form in the Web Messenger. * &#x60;startConversation&#x60; - The conversation was created because of a call to the startConversation API on one of the SDK integrations, or a start conversation event was triggered from a messaging channel. * &#x60;proactiveMessaging&#x60; - The conversation was created because the user interacted with a campaign. 
    */
   public enum CreationReasonEnum {
-    LINKREQUEST("linkRequest"),
+    LINK_REQUEST(String.valueOf("linkRequest")),
     
-    MESSAGE("message"),
+    MESSAGE(String.valueOf("message")),
     
-    NONE("none"),
+    NONE(String.valueOf("none")),
     
-    NOTIFICATION("notification"),
+    NOTIFICATION(String.valueOf("notification")),
     
-    PRECHATCAPTURE("prechatCapture"),
+    PRECHAT_CAPTURE(String.valueOf("prechatCapture")),
     
-    STARTCONVERSATION("startConversation"),
+    START_CONVERSATION(String.valueOf("startConversation")),
     
-    PROACTIVEMESSAGING("proactiveMessaging");
+    PROACTIVE_MESSAGING(String.valueOf("proactiveMessaging"));
 
     private String value;
 
@@ -94,13 +95,13 @@ public class ConversationCreateEventAllOfPayload {
   private CreationReasonEnum creationReason;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWithCampaignWebhook source = null;
+  private SourceWithCampaignWebhook source;
 
   public static final String JSON_PROPERTY_USER = "user";
-  private JsonNullable<User> user = JsonNullable.<User>of(null);
+  private JsonNullable<User> user = JsonNullable.<User>undefined();
 
   public static final String JSON_PROPERTY_REFERRAL = "referral";
-  private JsonNullable<Referral> referral = JsonNullable.<Referral>of(null);
+  private JsonNullable<Referral> referral = JsonNullable.<Referral>undefined();
 
 
   public ConversationCreateEventAllOfPayload conversation(ConversationTruncated conversation) {
@@ -257,16 +258,12 @@ public class ConversationCreateEventAllOfPayload {
       return false;
     }
     ConversationCreateEventAllOfPayload conversationCreateEventAllOfPayload = (ConversationCreateEventAllOfPayload) o;
-    return Objects.equals(this.conversation, conversationCreateEventAllOfPayload.conversation) &&
-        Objects.equals(this.creationReason, conversationCreateEventAllOfPayload.creationReason) &&
-        Objects.equals(this.source, conversationCreateEventAllOfPayload.source) &&
-        Objects.equals(this.user, conversationCreateEventAllOfPayload.user) &&
-        Objects.equals(this.referral, conversationCreateEventAllOfPayload.referral);
+    return Objects.equals(this.conversation, conversationCreateEventAllOfPayload.conversation)Objects.equals(this.creationReason, conversationCreateEventAllOfPayload.creationReason)Objects.equals(this.source, conversationCreateEventAllOfPayload.source)Objects.equals(this.user, conversationCreateEventAllOfPayload.user)Objects.equals(this.referral, conversationCreateEventAllOfPayload.referral);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, creationReason, source, user, referral);
+    return Objects.hash(conversationcreationReasonsourceuserreferral);
   }
 
 

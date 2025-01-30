@@ -17,18 +17,17 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Campaign;
 import com.zendesk.sunshine_conversations_client.model.Client;
 import com.zendesk.sunshine_conversations_client.model.Device;
-import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
-import com.zendesk.sunshine_conversations_client.model.SourceWithCampaignWebhookAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SourceWithCampaignWebhook
@@ -57,10 +56,10 @@ public class SourceWithCampaignWebhook {
   private JsonNullable<String> originalMessageTimestamp = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_CLIENT = "client";
-  private JsonNullable<Client> client = JsonNullable.<Client>of(null);
+  private JsonNullable<Client> client = JsonNullable.<Client>undefined();
 
   public static final String JSON_PROPERTY_DEVICE = "device";
-  private JsonNullable<Device> device = JsonNullable.<Device>of(null);
+  private JsonNullable<Device> device = JsonNullable.<Device>undefined();
 
   public static final String JSON_PROPERTY_CAMPAIGN = "campaign";
   private JsonNullable<Campaign> campaign = JsonNullable.<Campaign>undefined();
@@ -300,18 +299,12 @@ public class SourceWithCampaignWebhook {
       return false;
     }
     SourceWithCampaignWebhook sourceWithCampaignWebhook = (SourceWithCampaignWebhook) o;
-    return Objects.equals(this.type, sourceWithCampaignWebhook.type) &&
-        Objects.equals(this.integrationId, sourceWithCampaignWebhook.integrationId) &&
-        Objects.equals(this.originalMessageId, sourceWithCampaignWebhook.originalMessageId) &&
-        Objects.equals(this.originalMessageTimestamp, sourceWithCampaignWebhook.originalMessageTimestamp) &&
-        Objects.equals(this.client, sourceWithCampaignWebhook.client) &&
-        Objects.equals(this.device, sourceWithCampaignWebhook.device) &&
-        Objects.equals(this.campaign, sourceWithCampaignWebhook.campaign);
+    return Objects.equals(this.type, sourceWithCampaignWebhook.type)Objects.equals(this.integrationId, sourceWithCampaignWebhook.integrationId)Objects.equals(this.originalMessageId, sourceWithCampaignWebhook.originalMessageId)Objects.equals(this.originalMessageTimestamp, sourceWithCampaignWebhook.originalMessageTimestamp)Objects.equals(this.client, sourceWithCampaignWebhook.client)Objects.equals(this.device, sourceWithCampaignWebhook.device)Objects.equals(this.campaign, sourceWithCampaignWebhook.campaign);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, originalMessageId, originalMessageTimestamp, client, device, campaign);
+    return Objects.hash(typeintegrationIdoriginalMessageIdoriginalMessageTimestampclientdevicecampaign);
   }
 
 

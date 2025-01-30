@@ -7,7 +7,7 @@
 
 * `PERSONAL` (value: `"personal"`)
 
-* `SDKGROUP` (value: `"sdkGroup"`)
+* `SDK_GROUP` (value: `"sdkGroup"`)
 
 
 

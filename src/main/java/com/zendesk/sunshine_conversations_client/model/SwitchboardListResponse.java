@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Switchboard;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardListResponse
@@ -40,14 +41,6 @@ public class SwitchboardListResponse {
   public SwitchboardListResponse switchboards(List<Switchboard> switchboards) {
     
     this.switchboards = switchboards;
-    return this;
-  }
-
-  public SwitchboardListResponse addSwitchboardsItem(Switchboard switchboardsItem) {
-    if (this.switchboards == null) {
-      this.switchboards = new ArrayList<>();
-    }
-    this.switchboards.add(switchboardsItem);
     return this;
   }
 

@@ -17,17 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.net.URI;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * FileMessage
@@ -42,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FileMessage.JSON_PROPERTY_ATTACHMENT_ID
 })
 
-public class FileMessage implements Content {
+public class FileMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "file";
 
@@ -229,18 +224,12 @@ public class FileMessage implements Content {
       return false;
     }
     FileMessage fileMessage = (FileMessage) o;
-    return Objects.equals(this.type, fileMessage.type) &&
-        Objects.equals(this.mediaUrl, fileMessage.mediaUrl) &&
-        Objects.equals(this.mediaSize, fileMessage.mediaSize) &&
-        Objects.equals(this.mediaType, fileMessage.mediaType) &&
-        Objects.equals(this.altText, fileMessage.altText) &&
-        Objects.equals(this.text, fileMessage.text) &&
-        Objects.equals(this.attachmentId, fileMessage.attachmentId);
+    return Objects.equals(this.type, fileMessage.type)Objects.equals(this.mediaUrl, fileMessage.mediaUrl)Objects.equals(this.mediaSize, fileMessage.mediaSize)Objects.equals(this.mediaType, fileMessage.mediaType)Objects.equals(this.altText, fileMessage.altText)Objects.equals(this.text, fileMessage.text)Objects.equals(this.attachmentId, fileMessage.attachmentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, mediaUrl, mediaSize, mediaType, altText, text, attachmentId);
+    return Objects.hash(typemediaUrlmediaSizemediaTypealtTexttextattachmentId);
   }
 
 

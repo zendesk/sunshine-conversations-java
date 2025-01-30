@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ClientsApi {
   private ApiClient apiClient;
 
@@ -46,7 +46,7 @@ public class ClientsApi {
    * @return a {@code ClientResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientResponse createClient(ClientCreate clientCreate, String appId, String userIdOrExternalId) throws ApiException {
+  public ClientResponse createClient(ClientCreate clientCreateString appIdString userIdOrExternalId) throws ApiException {
     Object localVarPostBody = clientCreate;
     
     // verify the required parameter 'clientCreate' is set
@@ -89,7 +89,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ClientResponse> localVarReturnType = new GenericType<ClientResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -103,7 +103,7 @@ public class ClientsApi {
    * @return a {@code ClientListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientListResponse listClients(String appId, String userIdOrExternalId, Page page) throws ApiException {
+  public ClientListResponse listClients(String appIdString userIdOrExternalIdPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -142,7 +142,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ClientListResponse> localVarReturnType = new GenericType<ClientListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -156,7 +156,7 @@ public class ClientsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object removeClient(String appId, String userIdOrExternalId, String clientId) throws ApiException {
+  public Object removeClient(String appIdString userIdOrExternalIdString clientId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -200,7 +200,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -217,7 +217,7 @@ public class ClientsApi {
    * @return a {@code ClientResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientResponse createClient(String bearerToken, ClientCreate clientCreate, String appId, String userIdOrExternalId) throws ApiException {
+  public ClientResponse createClient(String bearerToken, ClientCreate clientCreateString appIdString userIdOrExternalId) throws ApiException {
     Object localVarPostBody = clientCreate;
     
     // verify the required parameter 'clientCreate' is set
@@ -262,7 +262,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ClientResponse> localVarReturnType = new GenericType<ClientResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -278,7 +278,7 @@ public class ClientsApi {
    * @return a {@code ClientListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ClientListResponse listClients(String bearerToken, String appId, String userIdOrExternalId, Page page) throws ApiException {
+  public ClientListResponse listClients(String bearerToken, String appIdString userIdOrExternalIdPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -319,7 +319,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ClientListResponse> localVarReturnType = new GenericType<ClientListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -335,7 +335,7 @@ public class ClientsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object removeClient(String bearerToken, String appId, String userIdOrExternalId, String clientId) throws ApiException {
+  public Object removeClient(String bearerToken, String appIdString userIdOrExternalIdString clientId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -381,7 +381,7 @@ public class ClientsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

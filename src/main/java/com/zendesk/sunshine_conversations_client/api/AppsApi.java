@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class AppsApi {
   private ApiClient apiClient;
 
@@ -77,7 +77,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -121,7 +121,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -165,7 +165,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -178,7 +178,7 @@ public class AppsApi {
    * @return a {@code AppListResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppListResponse listApps(Page page, AppListFilter filter) throws ApiException {
+  public AppListResponse listApps(Page pageAppListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -206,7 +206,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppListResponse> localVarReturnType = new GenericType<AppListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -219,7 +219,7 @@ public class AppsApi {
    * @return a {@code AppResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppResponse updateApp(AppUpdateBody appUpdateBody, String appId) throws ApiException {
+  public AppResponse updateApp(AppUpdateBody appUpdateBodyString appId) throws ApiException {
     Object localVarPostBody = appUpdateBody;
     
     // verify the required parameter 'appUpdateBody' is set
@@ -256,7 +256,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -304,7 +304,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -352,7 +352,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -400,7 +400,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -415,7 +415,7 @@ public class AppsApi {
    * @return a {@code AppListResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppListResponse listApps(String bearerToken, Page page, AppListFilter filter) throws ApiException {
+  public AppListResponse listApps(String bearerToken, Page pageAppListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -445,7 +445,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppListResponse> localVarReturnType = new GenericType<AppListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -460,7 +460,7 @@ public class AppsApi {
    * @return a {@code AppResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppResponse updateApp(String bearerToken, AppUpdateBody appUpdateBody, String appId) throws ApiException {
+  public AppResponse updateApp(String bearerToken, AppUpdateBody appUpdateBodyString appId) throws ApiException {
     Object localVarPostBody = appUpdateBody;
     
     // verify the required parameter 'appUpdateBody' is set
@@ -499,7 +499,7 @@ public class AppsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AppResponse> localVarReturnType = new GenericType<AppResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

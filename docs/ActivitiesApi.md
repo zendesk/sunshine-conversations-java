@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## postActivity
 
-> Object postActivity(activityPost, appId, conversationId)
+> Object postActivity(activityPostappIdconversationId)
 
 Post Activity
 
@@ -41,13 +41,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ActivitiesApi apiInstance = new ActivitiesApi(defaultClient);
-        ActivityPost activityPost = {"author":{"type":"user","userId":"5963c0d619a30a2e00de36b8"},"type":"conversation:read"}; // ActivityPost | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        ActivityPost activityPost = new ActivityPost(); // ActivityPost | 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.postActivity(activityPost, appId, conversationId);
+            Object result = apiInstance.postActivity(activityPostappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ActivitiesApi#postActivity");

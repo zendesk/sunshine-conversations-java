@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class IntegrationsApi {
   private ApiClient apiClient;
 
@@ -47,7 +47,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse createIntegration(Integration integration, String appId) throws ApiException {
+  public IntegrationResponse createIntegration(Integration integrationString appId) throws ApiException {
     Object localVarPostBody = integration;
     
     // verify the required parameter 'integration' is set
@@ -84,7 +84,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -97,7 +97,7 @@ public class IntegrationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteIntegration(String appId, String integrationId) throws ApiException {
+  public Object deleteIntegration(String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -135,7 +135,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -148,7 +148,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse getIntegration(String appId, String integrationId) throws ApiException {
+  public IntegrationResponse getIntegration(String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -186,7 +186,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -200,7 +200,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationListResponse listIntegrations(String appId, Page page, IntegrationListFilter filter) throws ApiException {
+  public IntegrationListResponse listIntegrations(String appIdPage pageIntegrationListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -234,7 +234,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationListResponse> localVarReturnType = new GenericType<IntegrationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -248,7 +248,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse updateIntegration(IntegrationUpdate integrationUpdate, String appId, String integrationId) throws ApiException {
+  public IntegrationResponse updateIntegration(IntegrationUpdate integrationUpdateString appIdString integrationId) throws ApiException {
     Object localVarPostBody = integrationUpdate;
     
     // verify the required parameter 'integrationUpdate' is set
@@ -291,7 +291,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -307,7 +307,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse createIntegration(String bearerToken, Integration integration, String appId) throws ApiException {
+  public IntegrationResponse createIntegration(String bearerToken, Integration integrationString appId) throws ApiException {
     Object localVarPostBody = integration;
     
     // verify the required parameter 'integration' is set
@@ -346,7 +346,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -361,7 +361,7 @@ public class IntegrationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteIntegration(String bearerToken, String appId, String integrationId) throws ApiException {
+  public Object deleteIntegration(String bearerToken, String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -401,7 +401,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -416,7 +416,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse getIntegration(String bearerToken, String appId, String integrationId) throws ApiException {
+  public IntegrationResponse getIntegration(String bearerToken, String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -456,7 +456,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -472,7 +472,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationListResponse listIntegrations(String bearerToken, String appId, Page page, IntegrationListFilter filter) throws ApiException {
+  public IntegrationListResponse listIntegrations(String bearerToken, String appIdPage pageIntegrationListFilter filter) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -508,7 +508,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationListResponse> localVarReturnType = new GenericType<IntegrationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -524,7 +524,7 @@ public class IntegrationsApi {
    * @return a {@code IntegrationResponse}
    * @throws ApiException if fails to make API call
    */
-  public IntegrationResponse updateIntegration(String bearerToken, IntegrationUpdate integrationUpdate, String appId, String integrationId) throws ApiException {
+  public IntegrationResponse updateIntegration(String bearerToken, IntegrationUpdate integrationUpdateString appIdString integrationId) throws ApiException {
     Object localVarPostBody = integrationUpdate;
     
     // verify the required parameter 'integrationUpdate' is set
@@ -569,7 +569,7 @@ public class IntegrationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<IntegrationResponse> localVarReturnType = new GenericType<IntegrationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

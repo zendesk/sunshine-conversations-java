@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ClientAddEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.ClientAddEventAllOfPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ClientAddEvent
@@ -158,15 +156,12 @@ public class ClientAddEvent {
       return false;
     }
     ClientAddEvent clientAddEvent = (ClientAddEvent) o;
-    return Objects.equals(this.id, clientAddEvent.id) &&
-        Objects.equals(this.type, clientAddEvent.type) &&
-        Objects.equals(this.createdAt, clientAddEvent.createdAt) &&
-        Objects.equals(this.payload, clientAddEvent.payload);
+    return Objects.equals(this.id, clientAddEvent.id)Objects.equals(this.type, clientAddEvent.type)Objects.equals(this.createdAt, clientAddEvent.createdAt)Objects.equals(this.payload, clientAddEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

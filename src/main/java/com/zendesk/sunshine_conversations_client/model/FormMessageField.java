@@ -17,14 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Field;
-import com.zendesk.sunshine_conversations_client.model.FormMessageFieldAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.zendesk.sunshine_conversations_client.model.FormOptionsInner;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * FormMessageField
@@ -47,11 +47,11 @@ public class FormMessageField {
    * The field type.
    */
   public enum TypeEnum {
-    EMAIL("email"),
+    EMAIL(String.valueOf("email")),
     
-    SELECT("select"),
+    SELECT(String.valueOf("select")),
     
-    TEXT("text");
+    TEXT(String.valueOf("text"));
 
     private String value;
 
@@ -108,7 +108,7 @@ public class FormMessageField {
   private Integer maxSize = 128;
 
   public static final String JSON_PROPERTY_OPTIONS = "options";
-  private List<Object> options = null;
+  private List<FormOptionsInner> options = null;
 
 
   public FormMessageField type(TypeEnum type) {
@@ -239,14 +239,6 @@ public class FormMessageField {
     return this;
   }
 
-  public FormMessageField addSelectItem(Object selectItem) {
-    if (this.select == null) {
-      this.select = new ArrayList<>();
-    }
-    this.select.add(selectItem);
-    return this;
-  }
-
    /**
    * Array of objects representing the response for a field of type select. Form and formResponse messages only.
    * @return select
@@ -345,17 +337,9 @@ public class FormMessageField {
   }
 
 
-  public FormMessageField options(List<Object> options) {
+  public FormMessageField options(List<FormOptionsInner> options) {
     
     this.options = options;
-    return this;
-  }
-
-  public FormMessageField addOptionsItem(Object optionsItem) {
-    if (this.options == null) {
-      this.options = new ArrayList<>();
-    }
-    this.options.add(optionsItem);
     return this;
   }
 
@@ -368,12 +352,12 @@ public class FormMessageField {
   @JsonProperty(JSON_PROPERTY_OPTIONS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Object> getOptions() {
+  public List<FormOptionsInner> getOptions() {
     return options;
   }
 
 
-  public void setOptions(List<Object> options) {
+  public void setOptions(List<FormOptionsInner> options) {
     this.options = options;
   }
 
@@ -387,21 +371,12 @@ public class FormMessageField {
       return false;
     }
     FormMessageField formMessageField = (FormMessageField) o;
-    return Objects.equals(this.type, formMessageField.type) &&
-        Objects.equals(this.name, formMessageField.name) &&
-        Objects.equals(this.label, formMessageField.label) &&
-        Objects.equals(this.text, formMessageField.text) &&
-        Objects.equals(this.email, formMessageField.email) &&
-        Objects.equals(this.select, formMessageField.select) &&
-        Objects.equals(this.placeholder, formMessageField.placeholder) &&
-        Objects.equals(this.minSize, formMessageField.minSize) &&
-        Objects.equals(this.maxSize, formMessageField.maxSize) &&
-        Objects.equals(this.options, formMessageField.options);
+    return Objects.equals(this.type, formMessageField.type)Objects.equals(this.name, formMessageField.name)Objects.equals(this.label, formMessageField.label)Objects.equals(this.text, formMessageField.text)Objects.equals(this.email, formMessageField.email)Objects.equals(this.select, formMessageField.select)Objects.equals(this.placeholder, formMessageField.placeholder)Objects.equals(this.minSize, formMessageField.minSize)Objects.equals(this.maxSize, formMessageField.maxSize)Objects.equals(this.options, formMessageField.options);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, label, text, email, select, placeholder, minSize, maxSize, options);
+    return Objects.hash(typenamelabeltextemailselectplaceholderminSizemaxSizeoptions);
   }
 
 

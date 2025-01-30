@@ -17,19 +17,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
 import com.zendesk.sunshine_conversations_client.model.PrechatCapture;
-import com.zendesk.sunshine_conversations_client.model.WebUpdateAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * WebUpdate
@@ -54,7 +53,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
 
-public class WebUpdate implements IntegrationUpdate {
+public class WebUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -101,7 +100,7 @@ public class WebUpdate implements IntegrationUpdate {
   private JsonNullable<List<String>> originWhitelist = JsonNullable.<List<String>>undefined();
 
   public static final String JSON_PROPERTY_PRECHAT_CAPTURE = "prechatCapture";
-  private PrechatCapture prechatCapture = null;
+  private PrechatCapture prechatCapture;
 
   public static final String JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS = "canUserCreateMoreConversations";
   private Boolean canUserCreateMoreConversations;
@@ -393,18 +392,6 @@ public class WebUpdate implements IntegrationUpdate {
     return this;
   }
 
-  public WebUpdate addIntegrationOrderItem(String integrationOrderItem) {
-    if (this.integrationOrder == null || !this.integrationOrder.isPresent()) {
-      this.integrationOrder = JsonNullable.<List<String>>of(new ArrayList<>());
-    }
-    try {
-      this.integrationOrder.get().add(integrationOrderItem);
-    } catch (java.util.NoSuchElementException e) {
-      // this can never happen, as we make sure above that the value is present
-    }
-    return this;
-  }
-
    /**
    * Array of integration IDs, order will be reflected in the Web Messenger. When set, only integrations from this list will be displayed in the Web Messenger. If unset, all integrations will be displayed.
    * @return integrationOrder
@@ -515,18 +502,6 @@ public class WebUpdate implements IntegrationUpdate {
     return this;
   }
 
-  public WebUpdate addOriginWhitelistItem(String originWhitelistItem) {
-    if (this.originWhitelist == null || !this.originWhitelist.isPresent()) {
-      this.originWhitelist = JsonNullable.<List<String>>of(new ArrayList<>());
-    }
-    try {
-      this.originWhitelist.get().add(originWhitelistItem);
-    } catch (java.util.NoSuchElementException e) {
-      // this can never happen, as we make sure above that the value is present
-    }
-    return this;
-  }
-
    /**
    * A list of origins to whitelist. When set, only the origins from this list will be able to initialize the Web Messenger. If unset, all origins are whitelisted. The elements in the list should follow the serialized-origin format from RFC 6454: scheme \&quot;://\&quot; host [ \&quot;:\&quot; port ], where scheme is http or https. 
    * @return originWhitelist
@@ -615,28 +590,12 @@ public class WebUpdate implements IntegrationUpdate {
       return false;
     }
     WebUpdate webUpdate = (WebUpdate) o;
-    return Objects.equals(this.displayName, webUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, webUpdate.defaultResponderId) &&
-        Objects.equals(this.brandColor, webUpdate.brandColor) &&
-        Objects.equals(this.fixedIntroPane, webUpdate.fixedIntroPane) &&
-        Objects.equals(this.conversationColor, webUpdate.conversationColor) &&
-        Objects.equals(this.actionColor, webUpdate.actionColor) &&
-        Objects.equals(this.displayStyle, webUpdate.displayStyle) &&
-        Objects.equals(this.buttonIconUrl, webUpdate.buttonIconUrl) &&
-        Objects.equals(this.buttonWidth, webUpdate.buttonWidth) &&
-        Objects.equals(this.buttonHeight, webUpdate.buttonHeight) &&
-        Objects.equals(this.integrationOrder, webUpdate.integrationOrder) &&
-        Objects.equals(this.businessName, webUpdate.businessName) &&
-        Objects.equals(this.businessIconUrl, webUpdate.businessIconUrl) &&
-        Objects.equals(this.backgroundImageUrl, webUpdate.backgroundImageUrl) &&
-        Objects.equals(this.originWhitelist, webUpdate.originWhitelist) &&
-        Objects.equals(this.prechatCapture, webUpdate.prechatCapture) &&
-        Objects.equals(this.canUserCreateMoreConversations, webUpdate.canUserCreateMoreConversations);
+    return Objects.equals(this.displayName, webUpdate.displayName)Objects.equals(this.defaultResponderId, webUpdate.defaultResponderId)Objects.equals(this.brandColor, webUpdate.brandColor)Objects.equals(this.fixedIntroPane, webUpdate.fixedIntroPane)Objects.equals(this.conversationColor, webUpdate.conversationColor)Objects.equals(this.actionColor, webUpdate.actionColor)Objects.equals(this.displayStyle, webUpdate.displayStyle)Objects.equals(this.buttonIconUrl, webUpdate.buttonIconUrl)Objects.equals(this.buttonWidth, webUpdate.buttonWidth)Objects.equals(this.buttonHeight, webUpdate.buttonHeight)Objects.equals(this.integrationOrder, webUpdate.integrationOrder)Objects.equals(this.businessName, webUpdate.businessName)Objects.equals(this.businessIconUrl, webUpdate.businessIconUrl)Objects.equals(this.backgroundImageUrl, webUpdate.backgroundImageUrl)Objects.equals(this.originWhitelist, webUpdate.originWhitelist)Objects.equals(this.prechatCapture, webUpdate.prechatCapture)Objects.equals(this.canUserCreateMoreConversations, webUpdate.canUserCreateMoreConversations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, brandColor, fixedIntroPane, conversationColor, actionColor, displayStyle, buttonIconUrl, buttonWidth, buttonHeight, integrationOrder, businessName, businessIconUrl, backgroundImageUrl, originWhitelist, prechatCapture, canUserCreateMoreConversations);
+    return Objects.hash(displayNamedefaultResponderIdbrandColorfixedIntroPaneconversationColoractionColordisplayStylebuttonIconUrlbuttonWidthbuttonHeightintegrationOrderbusinessNamebusinessIconUrlbackgroundImageUrloriginWhitelistprechatCapturecanUserCreateMoreConversations);
   }
 
 

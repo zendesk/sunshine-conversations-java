@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class MessagesApi {
   private ApiClient apiClient;
 
@@ -45,7 +45,7 @@ public class MessagesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteAllMessages(String appId, String conversationId) throws ApiException {
+  public Object deleteAllMessages(String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -83,7 +83,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -97,7 +97,7 @@ public class MessagesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteMessage(String appId, String conversationId, String messageId) throws ApiException {
+  public Object deleteMessage(String appIdString conversationIdString messageId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -141,7 +141,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -155,7 +155,7 @@ public class MessagesApi {
    * @return a {@code MessageListResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessageListResponse listMessages(String appId, String conversationId, Page page) throws ApiException {
+  public MessageListResponse listMessages(String appIdString conversationIdPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -194,7 +194,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<MessageListResponse> localVarReturnType = new GenericType<MessageListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -208,7 +208,7 @@ public class MessagesApi {
    * @return a {@code MessagePostResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessagePostResponse postMessage(MessagePost messagePost, String appId, String conversationId) throws ApiException {
+  public MessagePostResponse postMessage(MessagePost messagePostString appIdString conversationId) throws ApiException {
     Object localVarPostBody = messagePost;
     
     // verify the required parameter 'messagePost' is set
@@ -251,7 +251,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<MessagePostResponse> localVarReturnType = new GenericType<MessagePostResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -267,7 +267,7 @@ public class MessagesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteAllMessages(String bearerToken, String appId, String conversationId) throws ApiException {
+  public Object deleteAllMessages(String bearerToken, String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -307,7 +307,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -323,7 +323,7 @@ public class MessagesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteMessage(String bearerToken, String appId, String conversationId, String messageId) throws ApiException {
+  public Object deleteMessage(String bearerToken, String appIdString conversationIdString messageId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -369,7 +369,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -385,7 +385,7 @@ public class MessagesApi {
    * @return a {@code MessageListResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessageListResponse listMessages(String bearerToken, String appId, String conversationId, Page page) throws ApiException {
+  public MessageListResponse listMessages(String bearerToken, String appIdString conversationIdPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -426,7 +426,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<MessageListResponse> localVarReturnType = new GenericType<MessageListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -442,7 +442,7 @@ public class MessagesApi {
    * @return a {@code MessagePostResponse}
    * @throws ApiException if fails to make API call
    */
-  public MessagePostResponse postMessage(String bearerToken, MessagePost messagePost, String appId, String conversationId) throws ApiException {
+  public MessagePostResponse postMessage(String bearerToken, MessagePost messagePostString appIdString conversationId) throws ApiException {
     Object localVarPostBody = messagePost;
     
     // verify the required parameter 'messagePost' is set
@@ -487,7 +487,7 @@ public class MessagesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<MessagePostResponse> localVarReturnType = new GenericType<MessagePostResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class DevicesApi {
   private ApiClient apiClient;
 
@@ -44,7 +44,7 @@ public class DevicesApi {
    * @return a {@code DeviceResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceResponse getDevice(String appId, String userIdOrExternalId, String deviceId) throws ApiException {
+  public DeviceResponse getDevice(String appIdString userIdOrExternalIdString deviceId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -88,7 +88,7 @@ public class DevicesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<DeviceResponse> localVarReturnType = new GenericType<DeviceResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -101,7 +101,7 @@ public class DevicesApi {
    * @return a {@code DeviceListResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceListResponse listDevices(String appId, String userIdOrExternalId) throws ApiException {
+  public DeviceListResponse listDevices(String appIdString userIdOrExternalId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -139,7 +139,7 @@ public class DevicesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -156,7 +156,7 @@ public class DevicesApi {
    * @return a {@code DeviceResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceResponse getDevice(String bearerToken, String appId, String userIdOrExternalId, String deviceId) throws ApiException {
+  public DeviceResponse getDevice(String bearerToken, String appIdString userIdOrExternalIdString deviceId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -202,7 +202,7 @@ public class DevicesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<DeviceResponse> localVarReturnType = new GenericType<DeviceResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -217,7 +217,7 @@ public class DevicesApi {
    * @return a {@code DeviceListResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceListResponse listDevices(String bearerToken, String appId, String userIdOrExternalId) throws ApiException {
+  public DeviceListResponse listDevices(String bearerToken, String appIdString userIdOrExternalId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -257,7 +257,7 @@ public class DevicesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

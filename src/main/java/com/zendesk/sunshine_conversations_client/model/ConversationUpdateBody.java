@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationUpdateBody
@@ -38,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationUpdateBody {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private String displayName = null;
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   private JsonNullable<String> description = JsonNullable.<String>undefined();
@@ -51,8 +52,8 @@ public class ConversationUpdateBody {
 
 
   public ConversationUpdateBody displayName(String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
     
-    this.displayName = displayName;
     return this;
   }
 
@@ -61,17 +62,27 @@ public class ConversationUpdateBody {
    * @return displayName
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "My conversation", value = "A friendly name for the conversation, may be displayed to the business or the user. ")
+  @ApiModelProperty(value = "A friendly name for the conversation, may be displayed to the business or the user. ")
+  @JsonIgnore
+
+  public String getDisplayName() {
+        return displayName.orElse(null);
+  }
+
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public String getDisplayName() {
+  public JsonNullable<String> getDisplayName_JsonNullable() {
     return displayName;
   }
-
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
+    this.displayName = displayName;
+  }
 
   public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = JsonNullable.<String>of(displayName);
   }
 
 
@@ -189,15 +200,12 @@ public class ConversationUpdateBody {
       return false;
     }
     ConversationUpdateBody conversationUpdateBody = (ConversationUpdateBody) o;
-    return Objects.equals(this.displayName, conversationUpdateBody.displayName) &&
-        Objects.equals(this.description, conversationUpdateBody.description) &&
-        Objects.equals(this.iconUrl, conversationUpdateBody.iconUrl) &&
-        Objects.equals(this.metadata, conversationUpdateBody.metadata);
+    return Objects.equals(this.displayName, conversationUpdateBody.displayName)Objects.equals(this.description, conversationUpdateBody.description)Objects.equals(this.iconUrl, conversationUpdateBody.iconUrl)Objects.equals(this.metadata, conversationUpdateBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, iconUrl, metadata);
+    return Objects.hash(displayNamedescriptioniconUrlmetadata);
   }
 
 

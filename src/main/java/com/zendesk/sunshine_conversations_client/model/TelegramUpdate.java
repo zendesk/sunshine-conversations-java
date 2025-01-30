@@ -17,25 +17,100 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * TelegramUpdate
  */
 @JsonPropertyOrder({
+  TelegramUpdate.JSON_PROPERTY_DISPLAY_NAME,
+  TelegramUpdate.JSON_PROPERTY_DEFAULT_RESPONDER_ID
 })
 
-public class TelegramUpdate extends IntegrationUpdateBase implements IntegrationUpdate {
+public class TelegramUpdate {
+  public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
+  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
+
+  public static final String JSON_PROPERTY_DEFAULT_RESPONDER_ID = "defaultResponderId";
+  private JsonNullable<String> defaultResponderId = JsonNullable.<String>undefined();
+
+
+  public TelegramUpdate displayName(String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
+    
+    return this;
+  }
+
+   /**
+   * A human-friendly name used to identify the integration. &#x60;displayName&#x60; can be unset by changing it to &#x60;null&#x60;.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "My awesome integration", value = "A human-friendly name used to identify the integration. `displayName` can be unset by changing it to `null`.")
+  @JsonIgnore
+
+  public String getDisplayName() {
+        return displayName.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getDisplayName_JsonNullable() {
+    return displayName;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
+  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
+    this.displayName = displayName;
+  }
+
+  public void setDisplayName(String displayName) {
+    this.displayName = JsonNullable.<String>of(displayName);
+  }
+
+
+  public TelegramUpdate defaultResponderId(String defaultResponderId) {
+    this.defaultResponderId = JsonNullable.<String>of(defaultResponderId);
+    
+    return this;
+  }
+
+   /**
+   * The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user. For more information, refer to &lt;a href&#x3D;\&quot;https://docs.smooch.io/guide/switchboard/#per-channel-default-responder\&quot;&gt;Per-channel default responder&lt;/a&gt; guide. 
+   * @return defaultResponderId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(value = "The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user. For more information, refer to <a href=\"https://docs.smooch.io/guide/switchboard/#per-channel-default-responder\">Per-channel default responder</a> guide. ")
+  @JsonIgnore
+
+  public String getDefaultResponderId() {
+        return defaultResponderId.orElse(null);
+  }
+
+  @JsonProperty(JSON_PROPERTY_DEFAULT_RESPONDER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public JsonNullable<String> getDefaultResponderId_JsonNullable() {
+    return defaultResponderId;
+  }
+  
+  @JsonProperty(JSON_PROPERTY_DEFAULT_RESPONDER_ID)
+  public void setDefaultResponderId_JsonNullable(JsonNullable<String> defaultResponderId) {
+    this.defaultResponderId = defaultResponderId;
+  }
+
+  public void setDefaultResponderId(String defaultResponderId) {
+    this.defaultResponderId = JsonNullable.<String>of(defaultResponderId);
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -45,12 +120,13 @@ public class TelegramUpdate extends IntegrationUpdateBase implements Integration
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    TelegramUpdate telegramUpdate = (TelegramUpdate) o;
+    return Objects.equals(this.displayName, telegramUpdate.displayName)Objects.equals(this.defaultResponderId, telegramUpdate.defaultResponderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(displayNamedefaultResponderId);
   }
 
 
@@ -58,7 +134,8 @@ public class TelegramUpdate extends IntegrationUpdateBase implements Integration
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TelegramUpdate {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    defaultResponderId: ").append(toIndentedString(defaultResponderId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

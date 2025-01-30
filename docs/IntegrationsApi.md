@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## createIntegration
 
-> IntegrationResponse createIntegration(integration, appId)
+> IntegrationResponse createIntegration(integrationappId)
 
 Create Integration
 
@@ -46,11 +46,11 @@ public class Example {
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
         Integration integration = new Integration(); // Integration | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            IntegrationResponse result = apiInstance.createIntegration(integration, appId);
+            IntegrationResponse result = apiInstance.createIntegration(integrationappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#createIntegration");
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## deleteIntegration
 
-> Object deleteIntegration(appId, integrationId)
+> Object deleteIntegration(appIdintegrationId)
 
 Delete Integration
 
@@ -124,12 +124,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteIntegration(appId, integrationId);
+            Object result = apiInstance.deleteIntegration(appIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#deleteIntegration");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## getIntegration
 
-> IntegrationResponse getIntegration(appId, integrationId)
+> IntegrationResponse getIntegration(appIdintegrationId)
 
 Get Integration
 
@@ -204,12 +204,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            IntegrationResponse result = apiInstance.getIntegration(appId, integrationId);
+            IntegrationResponse result = apiInstance.getIntegration(appIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#getIntegration");
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## listIntegrations
 
-> IntegrationListResponse listIntegrations(appId, page, filter)
+> IntegrationListResponse listIntegrations(appIdpagefilter)
 
 List Integrations
 
@@ -283,13 +283,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         IntegrationListFilter filter = new IntegrationListFilter(); // IntegrationListFilter | Contains parameters for filtering the results.
         // Add required body parameters
 
         try {
-            IntegrationListResponse result = apiInstance.listIntegrations(appId, page, filter);
+            IntegrationListResponse result = apiInstance.listIntegrations(appIdpagefilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#listIntegrations");
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ## updateIntegration
 
-> IntegrationResponse updateIntegration(integrationUpdate, appId, integrationId)
+> IntegrationResponse updateIntegration(integrationUpdateappIdintegrationId)
 
 Update Integration
 
@@ -365,12 +365,12 @@ public class Example {
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
         IntegrationUpdate integrationUpdate = new IntegrationUpdate(); // IntegrationUpdate | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            IntegrationResponse result = apiInstance.updateIntegration(integrationUpdate, appId, integrationId);
+            IntegrationResponse result = apiInstance.updateIntegration(integrationUpdateappIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#updateIntegration");

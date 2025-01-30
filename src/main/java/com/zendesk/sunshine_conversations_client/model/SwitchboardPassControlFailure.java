@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import com.zendesk.sunshine_conversations_client.model.SwitchboardAcceptControlFailureAllOf;
 import com.zendesk.sunshine_conversations_client.model.SwitchboardAcceptControlFailureAllOfPayload;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardPassControlFailure
@@ -158,15 +156,12 @@ public class SwitchboardPassControlFailure {
       return false;
     }
     SwitchboardPassControlFailure switchboardPassControlFailure = (SwitchboardPassControlFailure) o;
-    return Objects.equals(this.id, switchboardPassControlFailure.id) &&
-        Objects.equals(this.type, switchboardPassControlFailure.type) &&
-        Objects.equals(this.createdAt, switchboardPassControlFailure.createdAt) &&
-        Objects.equals(this.payload, switchboardPassControlFailure.payload);
+    return Objects.equals(this.id, switchboardPassControlFailure.id)Objects.equals(this.type, switchboardPassControlFailure.type)Objects.equals(this.createdAt, switchboardPassControlFailure.createdAt)Objects.equals(this.payload, switchboardPassControlFailure.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

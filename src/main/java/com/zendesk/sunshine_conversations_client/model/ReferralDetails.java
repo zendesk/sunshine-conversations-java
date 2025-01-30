@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Nested object containing additional information.
@@ -140,14 +141,12 @@ public class ReferralDetails {
       return false;
     }
     ReferralDetails referralDetails = (ReferralDetails) o;
-    return Objects.equals(this.source, referralDetails.source) &&
-        Objects.equals(this.type, referralDetails.type) &&
-        Objects.equals(this.adId, referralDetails.adId);
+    return Objects.equals(this.source, referralDetails.source)Objects.equals(this.type, referralDetails.type)Objects.equals(this.adId, referralDetails.adId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(source, type, adId);
+    return Objects.hash(sourcetypeadId);
   }
 
 

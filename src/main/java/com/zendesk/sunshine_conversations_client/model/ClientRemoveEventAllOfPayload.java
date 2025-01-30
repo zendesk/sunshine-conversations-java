@@ -17,17 +17,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Client;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
 import com.zendesk.sunshine_conversations_client.model.UserTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -44,27 +45,27 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ClientRemoveEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private JsonNullable<ConversationTruncated> conversation = JsonNullable.<ConversationTruncated>of(null);
+  private JsonNullable<ConversationTruncated> conversation = JsonNullable.<ConversationTruncated>undefined();
 
   public static final String JSON_PROPERTY_USER = "user";
-  private UserTruncated user = null;
+  private UserTruncated user;
 
   public static final String JSON_PROPERTY_CLIENT = "client";
-  private Client client = null;
+  private Client client;
 
   /**
    * The reason for which the client was removed. * &#x60;api&#x60; - The client was removed using the API. * &#x60;linkCancelled&#x60; - The user cancelled a channel link. * &#x60;linkFailed&#x60; - The client was removed after a channel link attempt failed. * &#x60;sdk&#x60; - The client was removed using the SDK. * &#x60;theft&#x60; - The client was transferred to another user due to a channel link. 
    */
   public enum ReasonEnum {
-    API("api"),
+    API(String.valueOf("api")),
     
-    LINKCANCELLED("linkCancelled"),
+    LINK_CANCELLED(String.valueOf("linkCancelled")),
     
-    LINKFAILED("linkFailed"),
+    LINK_FAILED(String.valueOf("linkFailed")),
     
-    SDK("sdk"),
+    SDK(String.valueOf("sdk")),
     
-    THEFT("theft");
+    THEFT(String.valueOf("theft"));
 
     private String value;
 
@@ -100,7 +101,7 @@ public class ClientRemoveEventAllOfPayload {
   private JsonNullable<Object> error = JsonNullable.<Object>undefined();
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWebhook source = null;
+  private SourceWebhook source;
 
 
   public ClientRemoveEventAllOfPayload conversation(ConversationTruncated conversation) {
@@ -282,17 +283,12 @@ public class ClientRemoveEventAllOfPayload {
       return false;
     }
     ClientRemoveEventAllOfPayload clientRemoveEventAllOfPayload = (ClientRemoveEventAllOfPayload) o;
-    return Objects.equals(this.conversation, clientRemoveEventAllOfPayload.conversation) &&
-        Objects.equals(this.user, clientRemoveEventAllOfPayload.user) &&
-        Objects.equals(this.client, clientRemoveEventAllOfPayload.client) &&
-        Objects.equals(this.reason, clientRemoveEventAllOfPayload.reason) &&
-        Objects.equals(this.error, clientRemoveEventAllOfPayload.error) &&
-        Objects.equals(this.source, clientRemoveEventAllOfPayload.source);
+    return Objects.equals(this.conversation, clientRemoveEventAllOfPayload.conversation)Objects.equals(this.user, clientRemoveEventAllOfPayload.user)Objects.equals(this.client, clientRemoveEventAllOfPayload.client)Objects.equals(this.reason, clientRemoveEventAllOfPayload.reason)Objects.equals(this.error, clientRemoveEventAllOfPayload.error)Objects.equals(this.source, clientRemoveEventAllOfPayload.source);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, user, client, reason, error, source);
+    return Objects.hash(conversationuserclientreasonerrorsource);
   }
 
 

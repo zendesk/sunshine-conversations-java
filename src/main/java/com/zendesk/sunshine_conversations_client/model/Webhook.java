@@ -17,12 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Webhook
@@ -119,11 +120,6 @@ public class Webhook {
   public Webhook triggers(List<String> triggers) {
     
     this.triggers = triggers;
-    return this;
-  }
-
-  public Webhook addTriggersItem(String triggersItem) {
-    this.triggers.add(triggersItem);
     return this;
   }
 
@@ -229,18 +225,12 @@ public class Webhook {
       return false;
     }
     Webhook webhook = (Webhook) o;
-    return Objects.equals(this.id, webhook.id) &&
-        Objects.equals(this.version, webhook.version) &&
-        Objects.equals(this.target, webhook.target) &&
-        Objects.equals(this.triggers, webhook.triggers) &&
-        Objects.equals(this.secret, webhook.secret) &&
-        Objects.equals(this.includeFullUser, webhook.includeFullUser) &&
-        Objects.equals(this.includeFullSource, webhook.includeFullSource);
+    return Objects.equals(this.id, webhook.id)Objects.equals(this.version, webhook.version)Objects.equals(this.target, webhook.target)Objects.equals(this.triggers, webhook.triggers)Objects.equals(this.secret, webhook.secret)Objects.equals(this.includeFullUser, webhook.includeFullUser)Objects.equals(this.includeFullSource, webhook.includeFullSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, version, target, triggers, secret, includeFullUser, includeFullSource);
+    return Objects.hash(idversiontargettriggerssecretincludeFullUserincludeFullSource);
   }
 
 

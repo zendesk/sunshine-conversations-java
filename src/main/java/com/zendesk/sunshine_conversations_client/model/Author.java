@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The author of the message.
@@ -43,9 +44,9 @@ public class Author {
    * The author type. Either \&quot;user\&quot; (representing the end user)  or \&quot;business\&quot; (sent on behalf of the business). 
    */
   public enum TypeEnum {
-    BUSINESS("business"),
+    BUSINESS(String.valueOf("business")),
     
-    USER("user");
+    USER(String.valueOf("user"));
 
     private String value;
 
@@ -81,7 +82,7 @@ public class Author {
    * Gets or Sets subtypes
    */
   public enum SubtypesEnum {
-    AI("AI");
+    AI(String.valueOf("AI"));
 
     private String value;
 
@@ -123,7 +124,7 @@ public class Author {
   private String displayName;
 
   public static final String JSON_PROPERTY_AVATAR_URL = "avatarUrl";
-  private URI avatarUrl = null;
+  private URI avatarUrl;
 
 
   public Author type(TypeEnum type) {
@@ -153,14 +154,6 @@ public class Author {
   public Author subtypes(List<SubtypesEnum> subtypes) {
     
     this.subtypes = subtypes;
-    return this;
-  }
-
-  public Author addSubtypesItem(SubtypesEnum subtypesItem) {
-    if (this.subtypes == null) {
-      this.subtypes = new ArrayList<>();
-    }
-    this.subtypes.add(subtypesItem);
     return this;
   }
 
@@ -269,7 +262,7 @@ public class Author {
    * @return avatarUrl
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "A custom message icon URL. The image must be JPG, PNG, or GIF format.")
+  @ApiModelProperty(example = "https://www.gravatar.com/image.jpg", value = "A custom message icon URL. The image must be JPG, PNG, or GIF format.")
   @JsonProperty(JSON_PROPERTY_AVATAR_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -292,17 +285,12 @@ public class Author {
       return false;
     }
     Author author = (Author) o;
-    return Objects.equals(this.type, author.type) &&
-        Objects.equals(this.subtypes, author.subtypes) &&
-        Objects.equals(this.userId, author.userId) &&
-        Objects.equals(this.userExternalId, author.userExternalId) &&
-        Objects.equals(this.displayName, author.displayName) &&
-        Objects.equals(this.avatarUrl, author.avatarUrl);
+    return Objects.equals(this.type, author.type)Objects.equals(this.subtypes, author.subtypes)Objects.equals(this.userId, author.userId)Objects.equals(this.userExternalId, author.userExternalId)Objects.equals(this.displayName, author.displayName)Objects.equals(this.avatarUrl, author.avatarUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, subtypes, userId, userExternalId, displayName, avatarUrl);
+    return Objects.hash(typesubtypesuserIduserExternalIddisplayNameavatarUrl);
   }
 
 

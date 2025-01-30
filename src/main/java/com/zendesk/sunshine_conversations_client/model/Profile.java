@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Object hosting user profile information.
@@ -239,16 +240,12 @@ public class Profile {
       return false;
     }
     Profile profile = (Profile) o;
-    return Objects.equals(this.givenName, profile.givenName) &&
-        Objects.equals(this.surname, profile.surname) &&
-        Objects.equals(this.email, profile.email) &&
-        Objects.equals(this.avatarUrl, profile.avatarUrl) &&
-        Objects.equals(this.locale, profile.locale);
+    return Objects.equals(this.givenName, profile.givenName)Objects.equals(this.surname, profile.surname)Objects.equals(this.email, profile.email)Objects.equals(this.avatarUrl, profile.avatarUrl)Objects.equals(this.locale, profile.locale);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(givenName, surname, email, avatarUrl, locale);
+    return Objects.hash(givenNamesurnameemailavatarUrllocale);
   }
 
 

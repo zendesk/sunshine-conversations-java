@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Customizable app settings.
@@ -244,18 +244,12 @@ public class AppSettings {
       return false;
     }
     AppSettings appSettings = (AppSettings) o;
-    return Objects.equals(this.conversationRetentionSeconds, appSettings.conversationRetentionSeconds) &&
-        Objects.equals(this.maskCreditCardNumbers, appSettings.maskCreditCardNumbers) &&
-        Objects.equals(this.useAnimalNames, appSettings.useAnimalNames) &&
-        Objects.equals(this.echoPostback, appSettings.echoPostback) &&
-        Objects.equals(this.ignoreAutoConversationStart, appSettings.ignoreAutoConversationStart) &&
-        Objects.equals(this.multiConvoEnabled, appSettings.multiConvoEnabled) &&
-        Objects.equals(this.appLocalizationEnabled, appSettings.appLocalizationEnabled);
+    return Objects.equals(this.conversationRetentionSeconds, appSettings.conversationRetentionSeconds)Objects.equals(this.maskCreditCardNumbers, appSettings.maskCreditCardNumbers)Objects.equals(this.useAnimalNames, appSettings.useAnimalNames)Objects.equals(this.echoPostback, appSettings.echoPostback)Objects.equals(this.ignoreAutoConversationStart, appSettings.ignoreAutoConversationStart)Objects.equals(this.multiConvoEnabled, appSettings.multiConvoEnabled)Objects.equals(this.appLocalizationEnabled, appSettings.appLocalizationEnabled);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversationRetentionSeconds, maskCreditCardNumbers, useAnimalNames, echoPostback, ignoreAutoConversationStart, multiConvoEnabled, appLocalizationEnabled);
+    return Objects.hash(conversationRetentionSecondsmaskCreditCardNumbersuseAnimalNamesechoPostbackignoreAutoConversationStartmultiConvoEnabledappLocalizationEnabled);
   }
 
 

@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Settings to adjust the carousel layout.
@@ -35,9 +35,9 @@ public class CarouselMessageDisplaySettings {
    * Specifies how to display all carousel images. Valid values are horizontal (default) and square. Only supported in Facebook Messenger, Web Messenger, Android SDK and iOS SDK carousels.
    */
   public enum ImageAspectRatioEnum {
-    HORIZONTAL("horizontal"),
+    HORIZONTAL(String.valueOf("horizontal")),
     
-    SQUARE("square");
+    SQUARE(String.valueOf("square"));
 
     private String value;
 

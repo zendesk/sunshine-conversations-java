@@ -17,15 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaBase;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteriaMailgunAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.MatchCriteria;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * MatchCriteriaMailgun
@@ -38,7 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaMailgun.JSON_PROPERTY_SUBJECT
 })
 
-public class MatchCriteriaMailgun implements MatchCriteria {
+public class MatchCriteriaMailgun {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "mailgun";
 
@@ -186,16 +181,12 @@ public class MatchCriteriaMailgun implements MatchCriteria {
       return false;
     }
     MatchCriteriaMailgun matchCriteriaMailgun = (MatchCriteriaMailgun) o;
-    return Objects.equals(this.type, matchCriteriaMailgun.type) &&
-        Objects.equals(this.integrationId, matchCriteriaMailgun.integrationId) &&
-        Objects.equals(this.primary, matchCriteriaMailgun.primary) &&
-        Objects.equals(this.address, matchCriteriaMailgun.address) &&
-        Objects.equals(this.subject, matchCriteriaMailgun.subject);
+    return Objects.equals(this.type, matchCriteriaMailgun.type)Objects.equals(this.integrationId, matchCriteriaMailgun.integrationId)Objects.equals(this.primary, matchCriteriaMailgun.primary)Objects.equals(this.address, matchCriteriaMailgun.address)Objects.equals(this.subject, matchCriteriaMailgun.subject);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, primary, address, subject);
+    return Objects.hash(typeintegrationIdprimaryaddresssubject);
   }
 
 

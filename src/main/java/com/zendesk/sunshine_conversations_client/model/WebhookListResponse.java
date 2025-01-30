@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Webhook;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * WebhookListResponse
@@ -40,14 +41,6 @@ public class WebhookListResponse {
   public WebhookListResponse webhooks(List<Webhook> webhooks) {
     
     this.webhooks = webhooks;
-    return this;
-  }
-
-  public WebhookListResponse addWebhooksItem(Webhook webhooksItem) {
-    if (this.webhooks == null) {
-      this.webhooks = new ArrayList<>();
-    }
-    this.webhooks.add(webhooksItem);
     return this;
   }
 

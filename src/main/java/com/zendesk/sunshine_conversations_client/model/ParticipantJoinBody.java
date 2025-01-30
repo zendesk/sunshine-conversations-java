@@ -17,19 +17,105 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ParticipantSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ParticipantJoinBody
  */
 @JsonPropertyOrder({
+  ParticipantJoinBody.JSON_PROPERTY_USER_ID,
+  ParticipantJoinBody.JSON_PROPERTY_SUBSCRIBE_S_D_K_CLIENT,
+  ParticipantJoinBody.JSON_PROPERTY_USER_EXTERNAL_ID
 })
 
-public class ParticipantJoinBody extends ParticipantSubSchema {
+public class ParticipantJoinBody {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  private String userId;
+
+  public static final String JSON_PROPERTY_SUBSCRIBE_S_D_K_CLIENT = "subscribeSDKClient";
+  private Boolean subscribeSDKClient;
+
+  public static final String JSON_PROPERTY_USER_EXTERNAL_ID = "userExternalId";
+  private String userExternalId;
+
+
+  public ParticipantJoinBody userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * The id of the user that will be participating in the conversation. It will return &#x60;404&#x60; if the user can’t be found. One of &#x60;userId&#x60; or &#x60;userExternalId&#x60; is required, but not both.
+   * @return userId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "42589ad070d43be9b00ff7e5", value = "The id of the user that will be participating in the conversation. It will return `404` if the user can’t be found. One of `userId` or `userExternalId` is required, but not both.")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
+  public ParticipantJoinBody subscribeSDKClient(Boolean subscribeSDKClient) {
+    
+    this.subscribeSDKClient = subscribeSDKClient;
+    return this;
+  }
+
+   /**
+   * When passed as true, the SDK client of the concerned participant will be subscribed to the conversation. The user will start receiving push notifications for this conversation right away, without having to view the conversation on the SDK beforehand. An SDK client will be created for users that don’t already have one. This field is required if the conversation is of type &#x60;sdkGroup&#x60;.
+   * @return subscribeSDKClient
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "false", value = "When passed as true, the SDK client of the concerned participant will be subscribed to the conversation. The user will start receiving push notifications for this conversation right away, without having to view the conversation on the SDK beforehand. An SDK client will be created for users that don’t already have one. This field is required if the conversation is of type `sdkGroup`.")
+  @JsonProperty(JSON_PROPERTY_SUBSCRIBE_S_D_K_CLIENT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public Boolean getSubscribeSDKClient() {
+    return subscribeSDKClient;
+  }
+
+
+  public void setSubscribeSDKClient(Boolean subscribeSDKClient) {
+    this.subscribeSDKClient = subscribeSDKClient;
+  }
+
+
+  public ParticipantJoinBody userExternalId(String userExternalId) {
+    
+    this.userExternalId = userExternalId;
+    return this;
+  }
+
+   /**
+   * The &#x60;externalId&#x60; of the user that will be participating in the conversation. It will return &#x60;404&#x60; if the user can’t be found. One of &#x60;userId&#x60; or &#x60;userExternalId&#x60; is required, but not both.
+   * @return userExternalId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "your-own-user-id", value = "The `externalId` of the user that will be participating in the conversation. It will return `404` if the user can’t be found. One of `userId` or `userExternalId` is required, but not both.")
+  @JsonProperty(JSON_PROPERTY_USER_EXTERNAL_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserExternalId() {
+    return userExternalId;
+  }
+
+
+  public void setUserExternalId(String userExternalId) {
+    this.userExternalId = userExternalId;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -39,12 +125,13 @@ public class ParticipantJoinBody extends ParticipantSubSchema {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    ParticipantJoinBody participantJoinBody = (ParticipantJoinBody) o;
+    return Objects.equals(this.userId, participantJoinBody.userId)Objects.equals(this.subscribeSDKClient, participantJoinBody.subscribeSDKClient)Objects.equals(this.userExternalId, participantJoinBody.userExternalId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(userIdsubscribeSDKClientuserExternalId);
   }
 
 
@@ -52,7 +139,9 @@ public class ParticipantJoinBody extends ParticipantSubSchema {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ParticipantJoinBody {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    subscribeSDKClient: ").append(toIndentedString(subscribeSDKClient)).append("\n");
+    sb.append("    userExternalId: ").append(toIndentedString(userExternalId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

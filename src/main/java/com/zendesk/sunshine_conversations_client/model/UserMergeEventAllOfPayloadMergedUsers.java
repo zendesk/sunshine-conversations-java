@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Contains information about the users that were merged together.
@@ -34,10 +34,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class UserMergeEventAllOfPayloadMergedUsers {
   public static final String JSON_PROPERTY_SURVIVING = "surviving";
-  private User surviving = null;
+  private User surviving;
 
   public static final String JSON_PROPERTY_DISCARDED = "discarded";
-  private User discarded = null;
+  private User discarded;
 
 
   public UserMergeEventAllOfPayloadMergedUsers surviving(User surviving) {
@@ -99,13 +99,12 @@ public class UserMergeEventAllOfPayloadMergedUsers {
       return false;
     }
     UserMergeEventAllOfPayloadMergedUsers userMergeEventAllOfPayloadMergedUsers = (UserMergeEventAllOfPayloadMergedUsers) o;
-    return Objects.equals(this.surviving, userMergeEventAllOfPayloadMergedUsers.surviving) &&
-        Objects.equals(this.discarded, userMergeEventAllOfPayloadMergedUsers.discarded);
+    return Objects.equals(this.surviving, userMergeEventAllOfPayloadMergedUsers.surviving)Objects.equals(this.discarded, userMergeEventAllOfPayloadMergedUsers.discarded);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(surviving, discarded);
+    return Objects.hash(survivingdiscarded);
   }
 
 

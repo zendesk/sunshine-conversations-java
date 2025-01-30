@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -41,7 +42,7 @@ public class SwitchboardAcceptControlFailureAllOfPayload {
   private Object error;
 
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
@@ -141,14 +142,12 @@ public class SwitchboardAcceptControlFailureAllOfPayload {
       return false;
     }
     SwitchboardAcceptControlFailureAllOfPayload switchboardAcceptControlFailureAllOfPayload = (SwitchboardAcceptControlFailureAllOfPayload) o;
-    return Objects.equals(this.error, switchboardAcceptControlFailureAllOfPayload.error) &&
-        Objects.equals(this.conversation, switchboardAcceptControlFailureAllOfPayload.conversation) &&
-        Objects.equals(this.metadata, switchboardAcceptControlFailureAllOfPayload.metadata);
+    return Objects.equals(this.error, switchboardAcceptControlFailureAllOfPayload.error)Objects.equals(this.conversation, switchboardAcceptControlFailureAllOfPayload.conversation)Objects.equals(this.metadata, switchboardAcceptControlFailureAllOfPayload.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(error, conversation, metadata);
+    return Objects.hash(errorconversationmetadata);
   }
 
 

@@ -17,13 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Client;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.UserTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -38,25 +38,25 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ClientUpdateEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_USER = "user";
-  private UserTruncated user = null;
+  private UserTruncated user;
 
   public static final String JSON_PROPERTY_CLIENT = "client";
-  private Client client = null;
+  private Client client;
 
   /**
    * The reason for which the client was updated. * &#x60;confirmed&#x60; - The client is now active and ready to use. * &#x60;blocked&#x60; - The user has unsubscribed from the conversation. * &#x60;unblocked&#x60; - A previously unsubscribed user resubscribed to the conversation. * &#x60;matched&#x60; - The channel found a user that matches the information provided. 
    */
   public enum ReasonEnum {
-    CONFIRMED("confirmed"),
+    CONFIRMED(String.valueOf("confirmed")),
     
-    BLOCKED("blocked"),
+    BLOCKED(String.valueOf("blocked")),
     
-    UNBLOCKED("unblocked"),
+    UNBLOCKED(String.valueOf("unblocked")),
     
-    MATCHED("matched");
+    MATCHED(String.valueOf("matched"));
 
     private String value;
 
@@ -198,15 +198,12 @@ public class ClientUpdateEventAllOfPayload {
       return false;
     }
     ClientUpdateEventAllOfPayload clientUpdateEventAllOfPayload = (ClientUpdateEventAllOfPayload) o;
-    return Objects.equals(this.conversation, clientUpdateEventAllOfPayload.conversation) &&
-        Objects.equals(this.user, clientUpdateEventAllOfPayload.user) &&
-        Objects.equals(this.client, clientUpdateEventAllOfPayload.client) &&
-        Objects.equals(this.reason, clientUpdateEventAllOfPayload.reason);
+    return Objects.equals(this.conversation, clientUpdateEventAllOfPayload.conversation)Objects.equals(this.user, clientUpdateEventAllOfPayload.user)Objects.equals(this.client, clientUpdateEventAllOfPayload.client)Objects.equals(this.reason, clientUpdateEventAllOfPayload.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, user, client, reason);
+    return Objects.hash(conversationuserclientreason);
   }
 
 

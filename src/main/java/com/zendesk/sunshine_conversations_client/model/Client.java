@@ -17,15 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ClientType;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Client
@@ -55,13 +56,13 @@ public class Client {
    * The client status. Indicates if the client is able to receive messages or not. Can be pending, inactive, active, or blocked.
    */
   public enum StatusEnum {
-    ACTIVE("active"),
+    ACTIVE(String.valueOf("active")),
     
-    BLOCKED("blocked"),
+    BLOCKED(String.valueOf("blocked")),
     
-    INACTIVE("inactive"),
+    INACTIVE(String.valueOf("inactive")),
     
-    PENDING("pending");
+    PENDING(String.valueOf("pending"));
 
     private String value;
 
@@ -482,22 +483,12 @@ public class Client {
       return false;
     }
     Client client = (Client) o;
-    return Objects.equals(this.id, client.id) &&
-        Objects.equals(this.type, client.type) &&
-        Objects.equals(this.status, client.status) &&
-        Objects.equals(this.integrationId, client.integrationId) &&
-        Objects.equals(this.externalId, client.externalId) &&
-        Objects.equals(this.lastSeen, client.lastSeen) &&
-        Objects.equals(this.linkedAt, client.linkedAt) &&
-        Objects.equals(this.displayName, client.displayName) &&
-        Objects.equals(this.avatarUrl, client.avatarUrl) &&
-        Objects.equals(this.info, client.info) &&
-        Objects.equals(this.raw, client.raw);
+    return Objects.equals(this.id, client.id)Objects.equals(this.type, client.type)Objects.equals(this.status, client.status)Objects.equals(this.integrationId, client.integrationId)Objects.equals(this.externalId, client.externalId)Objects.equals(this.lastSeen, client.lastSeen)Objects.equals(this.linkedAt, client.linkedAt)Objects.equals(this.displayName, client.displayName)Objects.equals(this.avatarUrl, client.avatarUrl)Objects.equals(this.info, client.info)Objects.equals(this.raw, client.raw);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, status, integrationId, externalId, lastSeen, linkedAt, displayName, avatarUrl, info, raw);
+    return Objects.hash(idtypestatusintegrationIdexternalIdlastSeenlinkedAtdisplayNameavatarUrlinforaw);
   }
 
 

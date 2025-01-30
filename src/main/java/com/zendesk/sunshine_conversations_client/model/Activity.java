@@ -17,14 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ActivityAllOf;
-import com.zendesk.sunshine_conversations_client.model.ActivityTypes;
 import com.zendesk.sunshine_conversations_client.model.AuthorWebhook;
 import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Activity
@@ -40,11 +38,11 @@ public class Activity {
    * If the author type is &#x60;user&#x60;, only &#x60;conversation:read&#x60; is supported.
    */
   public enum TypeEnum {
-    CONVERSATION_READ("conversation:read"),
+    CONVERSATION_READ(String.valueOf("conversation:read")),
     
-    TYPING_START("typing:start"),
+    TYPING_START(String.valueOf("typing:start")),
     
-    TYPING_STOP("typing:stop");
+    TYPING_STOP(String.valueOf("typing:stop"));
 
     private String value;
 
@@ -77,7 +75,7 @@ public class Activity {
   private TypeEnum type;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWebhook source = null;
+  private SourceWebhook source;
 
   public static final String JSON_PROPERTY_AUTHOR = "author";
   private AuthorWebhook author;
@@ -167,14 +165,12 @@ public class Activity {
       return false;
     }
     Activity activity = (Activity) o;
-    return Objects.equals(this.type, activity.type) &&
-        Objects.equals(this.source, activity.source) &&
-        Objects.equals(this.author, activity.author);
+    return Objects.equals(this.type, activity.type)Objects.equals(this.source, activity.source)Objects.equals(this.author, activity.author);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, source, author);
+    return Objects.hash(typesourceauthor);
   }
 
 

@@ -123,7 +123,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
@@ -200,7 +200,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ## listApps
 
-> AppListResponse listApps(page, filter)
+> AppListResponse listApps(pagefilter)
 
 List Apps
 
@@ -282,7 +282,7 @@ public class Example {
         // Add required body parameters
 
         try {
-            AppListResponse result = apiInstance.listApps(page, filter);
+            AppListResponse result = apiInstance.listApps(pagefilter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#listApps");
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## updateApp
 
-> AppResponse updateApp(appUpdateBody, appId)
+> AppResponse updateApp(appUpdateBodyappId)
 
 Update App
 
@@ -358,11 +358,11 @@ public class Example {
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         AppUpdateBody appUpdateBody = new AppUpdateBody(); // AppUpdateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            AppResponse result = apiInstance.updateApp(appUpdateBody, appId);
+            AppResponse result = apiInstance.updateApp(appUpdateBodyappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#updateApp");

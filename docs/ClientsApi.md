@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## createClient
 
-> ClientResponse createClient(clientCreate, appId, userIdOrExternalId)
+> ClientResponse createClient(clientCreateappIduserIdOrExternalId)
 
 Create Client
 
@@ -43,13 +43,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ClientsApi apiInstance = new ClientsApi(defaultClient);
-        ClientCreate clientCreate = {"matchCriteria":{"type":"mailgun","integrationId":"582dedf230e788746891281a","primary":true,"address":"steveb@channel5.com","subject":"New message from {appName}"},"confirmation":{"type":"immediate","message":{"author":{"type":"business","displayName":"Steve","avatarUrl":"https://www.gravatar.com/image.jpg"},"content":{"type":"text","text":"Hello!"},"metadata":{"lang":"en-ca"}}},"target":{"conversationId":"029c31f25a21b47effd7be90"}}; // ClientCreate | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        ClientCreate clientCreate = new ClientCreate(); // ClientCreate | 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            ClientResponse result = apiInstance.createClient(clientCreate, appId, userIdOrExternalId);
+            ClientResponse result = apiInstance.createClient(clientCreateappIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ClientsApi#createClient");
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## listClients
 
-> ClientListResponse listClients(appId, userIdOrExternalId, page)
+> ClientListResponse listClients(appIduserIdOrExternalIdpage)
 
 List Clients
 
@@ -123,13 +123,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ClientsApi apiInstance = new ClientsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
-            ClientListResponse result = apiInstance.listClients(appId, userIdOrExternalId, page);
+            ClientListResponse result = apiInstance.listClients(appIduserIdOrExternalIdpage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ClientsApi#listClients");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## removeClient
 
-> Object removeClient(appId, userIdOrExternalId, clientId)
+> Object removeClient(appIduserIdOrExternalIdclientId)
 
 Remove Client
 
@@ -204,13 +204,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ClientsApi apiInstance = new ClientsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
-        String clientId = "5d8cff3cd55b040010928b5b"; // String | The client's id.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
+        String clientId = ""5d8cff3cd55b040010928b5b""; // String | The client's id.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.removeClient(appId, userIdOrExternalId, clientId);
+            Object result = apiInstance.removeClient(appIduserIdOrExternalIdclientId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ClientsApi#removeClient");

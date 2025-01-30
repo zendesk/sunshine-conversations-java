@@ -17,12 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ParticipantWithUserExternalId;
 import com.zendesk.sunshine_conversations_client.model.ParticipantWithUserId;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ParticipantSubSchema
@@ -128,14 +128,12 @@ public class ParticipantSubSchema {
       return false;
     }
     ParticipantSubSchema participantSubSchema = (ParticipantSubSchema) o;
-    return Objects.equals(this.userId, participantSubSchema.userId) &&
-        Objects.equals(this.subscribeSDKClient, participantSubSchema.subscribeSDKClient) &&
-        Objects.equals(this.userExternalId, participantSubSchema.userExternalId);
+    return Objects.equals(this.userId, participantSubSchema.userId)Objects.equals(this.subscribeSDKClient, participantSubSchema.subscribeSDKClient)Objects.equals(this.userExternalId, participantSubSchema.userExternalId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, subscribeSDKClient, userExternalId);
+    return Objects.hash(userIdsubscribeSDKClientuserExternalId);
   }
 
 

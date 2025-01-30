@@ -17,12 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.UserTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -35,10 +35,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationLeaveEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_USER = "user";
-  private UserTruncated user = null;
+  private UserTruncated user;
 
 
   public ConversationLeaveEventAllOfPayload conversation(ConversationTruncated conversation) {
@@ -100,13 +100,12 @@ public class ConversationLeaveEventAllOfPayload {
       return false;
     }
     ConversationLeaveEventAllOfPayload conversationLeaveEventAllOfPayload = (ConversationLeaveEventAllOfPayload) o;
-    return Objects.equals(this.conversation, conversationLeaveEventAllOfPayload.conversation) &&
-        Objects.equals(this.user, conversationLeaveEventAllOfPayload.user);
+    return Objects.equals(this.conversation, conversationLeaveEventAllOfPayload.conversation)Objects.equals(this.user, conversationLeaveEventAllOfPayload.user);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, user);
+    return Objects.hash(conversationuser);
   }
 
 

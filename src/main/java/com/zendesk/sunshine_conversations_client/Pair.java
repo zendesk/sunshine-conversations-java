@@ -12,7 +12,7 @@
 
 package com.zendesk.sunshine_conversations_client;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class Pair {
     private String name = "";
     private String value = "";
@@ -48,10 +48,6 @@ public class Pair {
 
     private boolean isValidString(String arg) {
         if (arg == null) {
-            return false;
-        }
-
-        if (arg.trim().isEmpty()) {
             return false;
         }
 

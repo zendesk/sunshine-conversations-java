@@ -17,16 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Reply
@@ -39,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Reply.JSON_PROPERTY_ICON_URL
 })
 
-public class Reply implements Action {
+public class Reply {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
@@ -197,16 +195,12 @@ public class Reply implements Action {
       return false;
     }
     Reply reply = (Reply) o;
-    return Objects.equals(this.type, reply.type) &&
-        Objects.equals(this.text, reply.text) &&
-        Objects.equals(this.payload, reply.payload) &&
-        Objects.equals(this.metadata, reply.metadata) &&
-        Objects.equals(this.iconUrl, reply.iconUrl);
+    return Objects.equals(this.type, reply.type)Objects.equals(this.text, reply.text)Objects.equals(this.payload, reply.payload)Objects.equals(this.metadata, reply.metadata)Objects.equals(this.iconUrl, reply.iconUrl);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, payload, metadata, iconUrl);
+    return Objects.hash(typetextpayloadmetadataiconUrl);
   }
 
 

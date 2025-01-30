@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardIntegrationCreateBody
@@ -42,16 +43,16 @@ public class SwitchboardIntegrationCreateBody {
   private String name;
 
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
-  private String integrationId = null;
+  private String integrationId;
 
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";
-  private String integrationType = null;
+  private String integrationType;
 
   public static final String JSON_PROPERTY_DELIVER_STANDBY_EVENTS = "deliverStandbyEvents";
-  private Boolean deliverStandbyEvents = null;
+  private Boolean deliverStandbyEvents = true;
 
   public static final String JSON_PROPERTY_NEXT_SWITCHBOARD_INTEGRATION_ID = "nextSwitchboardIntegrationId";
-  private JsonNullable<String> nextSwitchboardIntegrationId = JsonNullable.<String>of(null);
+  private JsonNullable<String> nextSwitchboardIntegrationId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_MESSAGE_HISTORY_COUNT = "messageHistoryCount";
   private JsonNullable<Integer> messageHistoryCount = JsonNullable.<Integer>undefined();
@@ -92,7 +93,7 @@ public class SwitchboardIntegrationCreateBody {
    * @return integrationId
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The id of the integration to link to the switchboard integration. Must be used when linking a custom integration. One of `integrationId` or `integrationType` must be provided.")
+  @ApiModelProperty(example = "5ef21b86e933b7355c11c605", value = "The id of the integration to link to the switchboard integration. Must be used when linking a custom integration. One of `integrationId` or `integrationType` must be provided.")
   @JsonProperty(JSON_PROPERTY_INTEGRATION_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -117,7 +118,7 @@ public class SwitchboardIntegrationCreateBody {
    * @return integrationType
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The type of the integration to link to the switchboard integration. Must be used when linking an OAuth integration. One of `integrationId` or `integrationType` must be provided.")
+  @ApiModelProperty(example = "zd:agentWorkspace", value = "The type of the integration to link to the switchboard integration. Must be used when linking an OAuth integration. One of `integrationId` or `integrationType` must be provided.")
   @JsonProperty(JSON_PROPERTY_INTEGRATION_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -138,11 +139,11 @@ public class SwitchboardIntegrationCreateBody {
   }
 
    /**
-   * Get deliverStandbyEvents
+   * Setting to determine if webhooks should be sent when the switchboard integration is not in control of a conversation (standby status)
    * @return deliverStandbyEvents
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Setting to determine if webhooks should be sent when the switchboard integration is not in control of a conversation (standby status)")
   @JsonProperty(JSON_PROPERTY_DELIVER_STANDBY_EVENTS)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -163,11 +164,11 @@ public class SwitchboardIntegrationCreateBody {
   }
 
    /**
-   * Get nextSwitchboardIntegrationId
+   * The switchboard integration id to which control of a conversation is passed / offered by default.
    * @return nextSwitchboardIntegrationId
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "5ef21b86e933b7355c11c606", value = "The switchboard integration id to which control of a conversation is passed / offered by default.")
   @JsonIgnore
 
   public String getNextSwitchboardIntegrationId() {
@@ -237,17 +238,12 @@ public class SwitchboardIntegrationCreateBody {
       return false;
     }
     SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody = (SwitchboardIntegrationCreateBody) o;
-    return Objects.equals(this.name, switchboardIntegrationCreateBody.name) &&
-        Objects.equals(this.integrationId, switchboardIntegrationCreateBody.integrationId) &&
-        Objects.equals(this.integrationType, switchboardIntegrationCreateBody.integrationType) &&
-        Objects.equals(this.deliverStandbyEvents, switchboardIntegrationCreateBody.deliverStandbyEvents) &&
-        Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegrationCreateBody.nextSwitchboardIntegrationId) &&
-        Objects.equals(this.messageHistoryCount, switchboardIntegrationCreateBody.messageHistoryCount);
+    return Objects.equals(this.name, switchboardIntegrationCreateBody.name)Objects.equals(this.integrationId, switchboardIntegrationCreateBody.integrationId)Objects.equals(this.integrationType, switchboardIntegrationCreateBody.integrationType)Objects.equals(this.deliverStandbyEvents, switchboardIntegrationCreateBody.deliverStandbyEvents)Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegrationCreateBody.nextSwitchboardIntegrationId)Objects.equals(this.messageHistoryCount, switchboardIntegrationCreateBody.messageHistoryCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, integrationId, integrationType, deliverStandbyEvents, nextSwitchboardIntegrationId, messageHistoryCount);
+    return Objects.hash(nameintegrationIdintegrationTypedeliverStandbyEventsnextSwitchboardIntegrationIdmessageHistoryCount);
   }
 
 

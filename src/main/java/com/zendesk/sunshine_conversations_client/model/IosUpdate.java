@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import com.zendesk.sunshine_conversations_client.model.IosUpdateAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * IosUpdate
@@ -43,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   IosUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
 
-public class IosUpdate implements IntegrationUpdate {
+public class IosUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -280,18 +276,12 @@ public class IosUpdate implements IntegrationUpdate {
       return false;
     }
     IosUpdate iosUpdate = (IosUpdate) o;
-    return Objects.equals(this.displayName, iosUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, iosUpdate.defaultResponderId) &&
-        Objects.equals(this.certificate, iosUpdate.certificate) &&
-        Objects.equals(this.password, iosUpdate.password) &&
-        Objects.equals(this.production, iosUpdate.production) &&
-        Objects.equals(this.autoUpdateBadge, iosUpdate.autoUpdateBadge) &&
-        Objects.equals(this.canUserCreateMoreConversations, iosUpdate.canUserCreateMoreConversations);
+    return Objects.equals(this.displayName, iosUpdate.displayName)Objects.equals(this.defaultResponderId, iosUpdate.defaultResponderId)Objects.equals(this.certificate, iosUpdate.certificate)Objects.equals(this.password, iosUpdate.password)Objects.equals(this.production, iosUpdate.production)Objects.equals(this.autoUpdateBadge, iosUpdate.autoUpdateBadge)Objects.equals(this.canUserCreateMoreConversations, iosUpdate.canUserCreateMoreConversations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, certificate, password, production, autoUpdateBadge, canUserCreateMoreConversations);
+    return Objects.hash(displayNamedefaultResponderIdcertificatepasswordproductionautoUpdateBadgecanUserCreateMoreConversations);
   }
 
 

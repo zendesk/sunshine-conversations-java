@@ -17,17 +17,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Author;
 import com.zendesk.sunshine_conversations_client.model.Content;
 import com.zendesk.sunshine_conversations_client.model.Destination;
 import com.zendesk.sunshine_conversations_client.model.MessageOverride;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * MessagePost
@@ -43,19 +44,19 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class MessagePost {
   public static final String JSON_PROPERTY_AUTHOR = "author";
-  private Author author = null;
+  private Author author;
 
   public static final String JSON_PROPERTY_CONTENT = "content";
-  private Content content = null;
+  private Content content;
 
   public static final String JSON_PROPERTY_DESTINATION = "destination";
-  private Destination destination = null;
+  private Destination destination;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
   public static final String JSON_PROPERTY_OVERRIDE = "override";
-  private MessageOverride override = null;
+  private MessageOverride override;
 
   public static final String JSON_PROPERTY_SCHEMA = "schema";
   private String schema;
@@ -228,17 +229,12 @@ public class MessagePost {
       return false;
     }
     MessagePost messagePost = (MessagePost) o;
-    return Objects.equals(this.author, messagePost.author) &&
-        Objects.equals(this.content, messagePost.content) &&
-        Objects.equals(this.destination, messagePost.destination) &&
-        Objects.equals(this.metadata, messagePost.metadata) &&
-        Objects.equals(this.override, messagePost.override) &&
-        Objects.equals(this.schema, messagePost.schema);
+    return Objects.equals(this.author, messagePost.author)Objects.equals(this.content, messagePost.content)Objects.equals(this.destination, messagePost.destination)Objects.equals(this.metadata, messagePost.metadata)Objects.equals(this.override, messagePost.override)Objects.equals(this.schema, messagePost.schema);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(author, content, destination, metadata, override, schema);
+    return Objects.hash(authorcontentdestinationmetadataoverrideschema);
   }
 
 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## authorize
 
-> authorize(clientId, responseType, state, redirectUri)
+> authorize(clientIdresponseTypestateredirectUri)
 
 Authorize
 
@@ -33,14 +33,14 @@ public class Example {
         defaultClient.setBasePath("https://api.smooch.io");
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
-        String clientId = "5e4af71a81966cfff3ef6550"; // String | Your integration’s unique identifier
-        String responseType = "code"; // String | For now the only acceptable value is code.
-        String state = "Pending"; // String | You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect.
-        String redirectUri = "https://example.org"; // String | You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used.
+        String clientId = ""5e4af71a81966cfff3ef6550""; // String | Your integration’s unique identifier
+        String responseType = ""code""; // String | For now the only acceptable value is code.
+        String state = ""Pending""; // String | You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect.
+        String redirectUri = ""https://example.org""; // String | You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used.
         // Add required body parameters
 
         try {
-            apiInstance.authorize(clientId, responseType, state, redirectUri);
+            apiInstance.authorize(clientIdresponseTypestateredirectUri);
         } catch (ApiException e) {
             System.err.println("Exception when calling OAuthEndpointsApi#authorize");
             System.err.println("Status code: " + e.getCode());
@@ -84,7 +84,7 @@ No authorization required
 
 ## getToken
 
-> Object getToken(inlineObject)
+> GetToken200Response getToken(getTokenRequest)
 
 Get Token
 
@@ -105,11 +105,11 @@ public class Example {
         defaultClient.setBasePath("https://api.smooch.io");
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
-        InlineObject inlineObject = new InlineObject(); // InlineObject | 
+        GetTokenRequest getTokenRequest = new GetTokenRequest(); // GetTokenRequest | 
         // Add required body parameters
 
         try {
-            Object result = apiInstance.getToken(inlineObject);
+            GetToken200Response result = apiInstance.getToken(getTokenRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling OAuthEndpointsApi#getToken");
@@ -127,11 +127,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inlineObject** | [**InlineObject**](InlineObject.md)|  |
+ **getTokenRequest** | [**GetTokenRequest**](GetTokenRequest.md)|  |
 
 ### Return type
 
-**Object**
+[**GetToken200Response**](GetToken200Response.md)
 
 ### Authorization
 

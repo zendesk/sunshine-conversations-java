@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Device
@@ -49,11 +50,11 @@ public class Device {
    * The type of integration that the device represents.
    */
   public enum TypeEnum {
-    ANDROID("android"),
+    ANDROID(String.valueOf("android")),
     
-    IOS("ios"),
+    IOS(String.valueOf("ios")),
     
-    WEB("web");
+    WEB(String.valueOf("web"));
 
     private String value;
 
@@ -95,9 +96,9 @@ public class Device {
    * The device status. Indicates if the device will receive push notifications or not.
    */
   public enum StatusEnum {
-    ACTIVE("active"),
+    ACTIVE(String.valueOf("active")),
     
-    INACTIVE("inactive");
+    INACTIVE(String.valueOf("inactive"));
 
     private String value;
 
@@ -434,21 +435,12 @@ public class Device {
       return false;
     }
     Device device = (Device) o;
-    return Objects.equals(this.id, device.id) &&
-        Objects.equals(this.type, device.type) &&
-        Objects.equals(this.guid, device.guid) &&
-        Objects.equals(this.clientId, device.clientId) &&
-        Objects.equals(this.status, device.status) &&
-        Objects.equals(this.integrationId, device.integrationId) &&
-        Objects.equals(this.lastSeen, device.lastSeen) &&
-        Objects.equals(this.pushNotificationToken, device.pushNotificationToken) &&
-        Objects.equals(this.info, device.info) &&
-        Objects.equals(this.appVersion, device.appVersion);
+    return Objects.equals(this.id, device.id)Objects.equals(this.type, device.type)Objects.equals(this.guid, device.guid)Objects.equals(this.clientId, device.clientId)Objects.equals(this.status, device.status)Objects.equals(this.integrationId, device.integrationId)Objects.equals(this.lastSeen, device.lastSeen)Objects.equals(this.pushNotificationToken, device.pushNotificationToken)Objects.equals(this.info, device.info)Objects.equals(this.appVersion, device.appVersion);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, guid, clientId, status, integrationId, lastSeen, pushNotificationToken, info, appVersion);
+    return Objects.hash(idtypeguidclientIdstatusintegrationIdlastSeenpushNotificationTokeninfoappVersion);
   }
 
 

@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ActivitiesApi {
   private ApiClient apiClient;
 
@@ -43,7 +43,7 @@ public class ActivitiesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object postActivity(ActivityPost activityPost, String appId, String conversationId) throws ApiException {
+  public Object postActivity(ActivityPost activityPostString appIdString conversationId) throws ApiException {
     Object localVarPostBody = activityPost;
     
     // verify the required parameter 'activityPost' is set
@@ -86,7 +86,7 @@ public class ActivitiesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -103,7 +103,7 @@ public class ActivitiesApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object postActivity(String bearerToken, ActivityPost activityPost, String appId, String conversationId) throws ApiException {
+  public Object postActivity(String bearerToken, ActivityPost activityPostString appIdString conversationId) throws ApiException {
     Object localVarPostBody = activityPost;
     
     // verify the required parameter 'activityPost' is set
@@ -148,7 +148,7 @@ public class ActivitiesApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

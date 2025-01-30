@@ -17,20 +17,22 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayloadDestination;
-import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayloadExternalMessages;
+import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayloadExternalMessagesInner;
 import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayloadMessage;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -47,10 +49,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationMessageDeliveryPayload {
   public static final String JSON_PROPERTY_USER = "user";
-  private User user = null;
+  private User user;
 
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   private ConversationMessageDeliveryPayloadMessage message;
@@ -59,7 +61,7 @@ public class ConversationMessageDeliveryPayload {
   private ConversationMessageDeliveryPayloadDestination destination;
 
   public static final String JSON_PROPERTY_EXTERNAL_MESSAGES = "externalMessages";
-  private JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessages>> externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>undefined();
+  private JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessagesInner>> externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessagesInner>>undefined();
 
   public static final String JSON_PROPERTY_IS_FINAL_EVENT = "isFinalEvent";
   private Boolean isFinalEvent;
@@ -165,21 +167,9 @@ public class ConversationMessageDeliveryPayload {
   }
 
 
-  public ConversationMessageDeliveryPayload externalMessages(List<ConversationMessageDeliveryPayloadExternalMessages> externalMessages) {
-    this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>of(externalMessages);
+  public ConversationMessageDeliveryPayload externalMessages(List<ConversationMessageDeliveryPayloadExternalMessagesInner> externalMessages) {
+    this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessagesInner>>of(externalMessages);
     
-    return this;
-  }
-
-  public ConversationMessageDeliveryPayload addExternalMessagesItem(ConversationMessageDeliveryPayloadExternalMessages externalMessagesItem) {
-    if (this.externalMessages == null || !this.externalMessages.isPresent()) {
-      this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>of(new ArrayList<>());
-    }
-    try {
-      this.externalMessages.get().add(externalMessagesItem);
-    } catch (java.util.NoSuchElementException e) {
-      // this can never happen, as we make sure above that the value is present
-    }
     return this;
   }
 
@@ -191,24 +181,24 @@ public class ConversationMessageDeliveryPayload {
   @ApiModelProperty(value = "An array of objects representing the third-party messages associated with the event. The order of the external messages is not guaranteed to be the same across the different triggers. Note that some channels don’t expose message IDs, in which case this field will be unset.")
   @JsonIgnore
 
-  public List<ConversationMessageDeliveryPayloadExternalMessages> getExternalMessages() {
+  public List<ConversationMessageDeliveryPayloadExternalMessagesInner> getExternalMessages() {
         return externalMessages.orElse(null);
   }
 
   @JsonProperty(JSON_PROPERTY_EXTERNAL_MESSAGES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessages>> getExternalMessages_JsonNullable() {
+  public JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessagesInner>> getExternalMessages_JsonNullable() {
     return externalMessages;
   }
   
   @JsonProperty(JSON_PROPERTY_EXTERNAL_MESSAGES)
-  public void setExternalMessages_JsonNullable(JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessages>> externalMessages) {
+  public void setExternalMessages_JsonNullable(JsonNullable<List<ConversationMessageDeliveryPayloadExternalMessagesInner>> externalMessages) {
     this.externalMessages = externalMessages;
   }
 
-  public void setExternalMessages(List<ConversationMessageDeliveryPayloadExternalMessages> externalMessages) {
-    this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessages>>of(externalMessages);
+  public void setExternalMessages(List<ConversationMessageDeliveryPayloadExternalMessagesInner> externalMessages) {
+    this.externalMessages = JsonNullable.<List<ConversationMessageDeliveryPayloadExternalMessagesInner>>of(externalMessages);
   }
 
 
@@ -246,17 +236,12 @@ public class ConversationMessageDeliveryPayload {
       return false;
     }
     ConversationMessageDeliveryPayload conversationMessageDeliveryPayload = (ConversationMessageDeliveryPayload) o;
-    return Objects.equals(this.user, conversationMessageDeliveryPayload.user) &&
-        Objects.equals(this.conversation, conversationMessageDeliveryPayload.conversation) &&
-        Objects.equals(this.message, conversationMessageDeliveryPayload.message) &&
-        Objects.equals(this.destination, conversationMessageDeliveryPayload.destination) &&
-        Objects.equals(this.externalMessages, conversationMessageDeliveryPayload.externalMessages) &&
-        Objects.equals(this.isFinalEvent, conversationMessageDeliveryPayload.isFinalEvent);
+    return Objects.equals(this.user, conversationMessageDeliveryPayload.user)Objects.equals(this.conversation, conversationMessageDeliveryPayload.conversation)Objects.equals(this.message, conversationMessageDeliveryPayload.message)Objects.equals(this.destination, conversationMessageDeliveryPayload.destination)Objects.equals(this.externalMessages, conversationMessageDeliveryPayload.externalMessages)Objects.equals(this.isFinalEvent, conversationMessageDeliveryPayload.isFinalEvent);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(user, conversation, message, destination, externalMessages, isFinalEvent);
+    return Objects.hash(userconversationmessagedestinationexternalMessagesisFinalEvent);
   }
 
 

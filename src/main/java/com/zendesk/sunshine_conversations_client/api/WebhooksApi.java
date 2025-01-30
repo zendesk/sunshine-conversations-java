@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class WebhooksApi {
   private ApiClient apiClient;
 
@@ -46,7 +46,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse createWebhook(WebhookCreateBody webhookCreateBody, String appId, String integrationId) throws ApiException {
+  public WebhookResponse createWebhook(WebhookCreateBody webhookCreateBodyString appIdString integrationId) throws ApiException {
     Object localVarPostBody = webhookCreateBody;
     
     // verify the required parameter 'webhookCreateBody' is set
@@ -89,7 +89,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -103,7 +103,7 @@ public class WebhooksApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteWebhook(String appId, String integrationId, String webhookId) throws ApiException {
+  public Object deleteWebhook(String appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -147,7 +147,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -161,7 +161,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse getWebhook(String appId, String integrationId, String webhookId) throws ApiException {
+  public WebhookResponse getWebhook(String appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -205,7 +205,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -218,7 +218,7 @@ public class WebhooksApi {
    * @return a {@code WebhookListResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookListResponse listWebhooks(String appId, String integrationId) throws ApiException {
+  public WebhookListResponse listWebhooks(String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -256,7 +256,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookListResponse> localVarReturnType = new GenericType<WebhookListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -271,7 +271,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse updateWebhook(WebhookBody webhookBody, String appId, String integrationId, String webhookId) throws ApiException {
+  public WebhookResponse updateWebhook(WebhookBody webhookBodyString appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = webhookBody;
     
     // verify the required parameter 'webhookBody' is set
@@ -320,7 +320,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -337,7 +337,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse createWebhook(String bearerToken, WebhookCreateBody webhookCreateBody, String appId, String integrationId) throws ApiException {
+  public WebhookResponse createWebhook(String bearerToken, WebhookCreateBody webhookCreateBodyString appIdString integrationId) throws ApiException {
     Object localVarPostBody = webhookCreateBody;
     
     // verify the required parameter 'webhookCreateBody' is set
@@ -382,7 +382,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -398,7 +398,7 @@ public class WebhooksApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteWebhook(String bearerToken, String appId, String integrationId, String webhookId) throws ApiException {
+  public Object deleteWebhook(String bearerToken, String appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -444,7 +444,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -460,7 +460,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse getWebhook(String bearerToken, String appId, String integrationId, String webhookId) throws ApiException {
+  public WebhookResponse getWebhook(String bearerToken, String appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -506,7 +506,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -521,7 +521,7 @@ public class WebhooksApi {
    * @return a {@code WebhookListResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookListResponse listWebhooks(String bearerToken, String appId, String integrationId) throws ApiException {
+  public WebhookListResponse listWebhooks(String bearerToken, String appIdString integrationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -561,7 +561,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookListResponse> localVarReturnType = new GenericType<WebhookListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -578,7 +578,7 @@ public class WebhooksApi {
    * @return a {@code WebhookResponse}
    * @throws ApiException if fails to make API call
    */
-  public WebhookResponse updateWebhook(String bearerToken, WebhookBody webhookBody, String appId, String integrationId, String webhookId) throws ApiException {
+  public WebhookResponse updateWebhook(String bearerToken, WebhookBody webhookBodyString appIdString integrationIdString webhookId) throws ApiException {
     Object localVarPostBody = webhookBody;
     
     // verify the required parameter 'webhookBody' is set
@@ -629,7 +629,7 @@ public class WebhooksApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<WebhookResponse> localVarReturnType = new GenericType<WebhookResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

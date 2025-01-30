@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class SwitchboardActionsApi {
   private ApiClient apiClient;
 
@@ -45,7 +45,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object acceptControl(AcceptControlBody acceptControlBody, String appId, String conversationId) throws ApiException {
+  public Object acceptControl(AcceptControlBody acceptControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = acceptControlBody;
     
     // verify the required parameter 'acceptControlBody' is set
@@ -88,7 +88,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -102,7 +102,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object offerControl(OfferControlBody offerControlBody, String appId, String conversationId) throws ApiException {
+  public Object offerControl(OfferControlBody offerControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = offerControlBody;
     
     // verify the required parameter 'offerControlBody' is set
@@ -145,7 +145,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -159,7 +159,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object passControl(PassControlBody passControlBody, String appId, String conversationId) throws ApiException {
+  public Object passControl(PassControlBody passControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = passControlBody;
     
     // verify the required parameter 'passControlBody' is set
@@ -202,7 +202,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -215,7 +215,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object releaseControl(String appId, String conversationId) throws ApiException {
+  public Object releaseControl(String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -253,7 +253,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -270,7 +270,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object acceptControl(String bearerToken, AcceptControlBody acceptControlBody, String appId, String conversationId) throws ApiException {
+  public Object acceptControl(String bearerToken, AcceptControlBody acceptControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = acceptControlBody;
     
     // verify the required parameter 'acceptControlBody' is set
@@ -315,7 +315,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -331,7 +331,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object offerControl(String bearerToken, OfferControlBody offerControlBody, String appId, String conversationId) throws ApiException {
+  public Object offerControl(String bearerToken, OfferControlBody offerControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = offerControlBody;
     
     // verify the required parameter 'offerControlBody' is set
@@ -376,7 +376,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -392,7 +392,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object passControl(String bearerToken, PassControlBody passControlBody, String appId, String conversationId) throws ApiException {
+  public Object passControl(String bearerToken, PassControlBody passControlBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = passControlBody;
     
     // verify the required parameter 'passControlBody' is set
@@ -437,7 +437,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -452,7 +452,7 @@ public class SwitchboardActionsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object releaseControl(String bearerToken, String appId, String conversationId) throws ApiException {
+  public Object releaseControl(String bearerToken, String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -492,7 +492,7 @@ public class SwitchboardActionsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

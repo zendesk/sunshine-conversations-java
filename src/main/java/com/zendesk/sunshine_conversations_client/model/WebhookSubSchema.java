@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The webhook that generated the payload.
@@ -98,13 +98,12 @@ public class WebhookSubSchema {
       return false;
     }
     WebhookSubSchema webhookSubSchema = (WebhookSubSchema) o;
-    return Objects.equals(this.id, webhookSubSchema.id) &&
-        Objects.equals(this.version, webhookSubSchema.version);
+    return Objects.equals(this.id, webhookSubSchema.id)Objects.equals(this.version, webhookSubSchema.version);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, version);
+    return Objects.hash(idversion);
   }
 
 

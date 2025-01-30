@@ -17,16 +17,17 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedClients;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedConversations;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayloadMergedUsers;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -51,17 +52,17 @@ public class UserMergeEventAllOfPayload {
   private JsonNullable<UserMergeEventAllOfPayloadMergedClients> mergedClients = JsonNullable.<UserMergeEventAllOfPayloadMergedClients>undefined();
 
   public static final String JSON_PROPERTY_DISCARDED_METADATA = "discardedMetadata";
-  private JsonNullable<Object> discardedMetadata = JsonNullable.<Object>of(null);
+  private JsonNullable<Object> discardedMetadata = JsonNullable.<Object>undefined();
 
   /**
    * The reason for which the users merged. * &#x60;api&#x60; - The users were merged using the API. * &#x60;channelLinking&#x60; - The users were merged as a result of initiating a channel link. * &#x60;sdkLogin&#x60; - The users were merged as a result of logging into an SDK device. 
    */
   public enum ReasonEnum {
-    API("api"),
+    API(String.valueOf("api")),
     
-    CHANNELLINKING("channelLinking"),
+    CHANNEL_LINKING(String.valueOf("channelLinking")),
     
-    SDKLOGIN("sdkLogin");
+    SDK_LOGIN(String.valueOf("sdkLogin"));
 
     private String value;
 
@@ -200,7 +201,7 @@ public class UserMergeEventAllOfPayload {
    * @return discardedMetadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "A flat object with the set of metadata properties that were discarded when merging the two users. This should contain values only if the combined metadata fields exceed the 4KB limit.")
+  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "A flat object with the set of metadata properties that were discarded when merging the two users. This should contain values only if the combined metadata fields exceed the 4KB limit.")
   @JsonIgnore
 
   public Object getDiscardedMetadata() {
@@ -258,16 +259,12 @@ public class UserMergeEventAllOfPayload {
       return false;
     }
     UserMergeEventAllOfPayload userMergeEventAllOfPayload = (UserMergeEventAllOfPayload) o;
-    return Objects.equals(this.mergedUsers, userMergeEventAllOfPayload.mergedUsers) &&
-        Objects.equals(this.mergedConversations, userMergeEventAllOfPayload.mergedConversations) &&
-        Objects.equals(this.mergedClients, userMergeEventAllOfPayload.mergedClients) &&
-        Objects.equals(this.discardedMetadata, userMergeEventAllOfPayload.discardedMetadata) &&
-        Objects.equals(this.reason, userMergeEventAllOfPayload.reason);
+    return Objects.equals(this.mergedUsers, userMergeEventAllOfPayload.mergedUsers)Objects.equals(this.mergedConversations, userMergeEventAllOfPayload.mergedConversations)Objects.equals(this.mergedClients, userMergeEventAllOfPayload.mergedClients)Objects.equals(this.discardedMetadata, userMergeEventAllOfPayload.discardedMetadata)Objects.equals(this.reason, userMergeEventAllOfPayload.reason);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mergedUsers, mergedConversations, mergedClients, discardedMetadata, reason);
+    return Objects.hash(mergedUsersmergedConversationsmergedClientsdiscardedMetadatareason);
   }
 
 

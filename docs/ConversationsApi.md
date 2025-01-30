@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## createConversation
 
-> ConversationResponse createConversation(conversationCreateBody, appId)
+> ConversationResponse createConversation(conversationCreateBodyappId)
 
 Create Conversation
 
@@ -47,11 +47,11 @@ public class Example {
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
         ConversationCreateBody conversationCreateBody = new ConversationCreateBody(); // ConversationCreateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            ConversationResponse result = apiInstance.createConversation(conversationCreateBody, appId);
+            ConversationResponse result = apiInstance.createConversation(conversationCreateBodyappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#createConversation");
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## deleteConversation
 
-> Object deleteConversation(appId, conversationId)
+> Object deleteConversation(appIdconversationId)
 
 Delete Conversation
 
@@ -125,12 +125,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteConversation(appId, conversationId);
+            Object result = apiInstance.deleteConversation(appIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#deleteConversation");
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## downloadMessageRef
 
-> Object downloadMessageRef(downloadMessageRefBody, appId, conversationId)
+> Object downloadMessageRef(downloadMessageRefBodyappIdconversationId)
 
 Download Message Ref
 
@@ -205,13 +205,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        DownloadMessageRefBody downloadMessageRefBody = {"userId":"6e416caac6a5e9544e3fb6d7","apple":{"interactiveDateRef":{"url":"https://p61-content.icloud.com/M58C0A1A2EB62B6E899B4F28996E8DA229E1914295299C39944B2F2CA7482AE50.C01USN00","bid":"com.apple.messages.MSMessageExtensionBalloonPlugin:0000000000:com.apple.icloud.apps.messages.business.extension","key":"00c0d1827fdc858fe7b42421de1fb289c2ee0a9463d787ce4f118506f970bd6e38","signature":"81a619c81da5a01c6139219a5d20e17430c631e1eb","owner":"M58C0A2A1EB62B4E859B4F28996E8DA229E1914295299C39944B2F2CA7482AE50.C01USN00"}}}; // DownloadMessageRefBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        DownloadMessageRefBody downloadMessageRefBody = new DownloadMessageRefBody(); // DownloadMessageRefBody | 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.downloadMessageRef(downloadMessageRefBody, appId, conversationId);
+            Object result = apiInstance.downloadMessageRef(downloadMessageRefBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#downloadMessageRef");
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## getConversation
 
-> ConversationResponse getConversation(appId, conversationId)
+> ConversationResponse getConversation(appIdconversationId)
 
 Get Conversation
 
@@ -285,12 +285,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            ConversationResponse result = apiInstance.getConversation(appId, conversationId);
+            ConversationResponse result = apiInstance.getConversation(appIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#getConversation");
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ## listConversations
 
-> ConversationListResponse listConversations(appId, filter, page)
+> ConversationListResponse listConversations(appIdfilterpage)
 
 List Conversations
 
@@ -364,13 +364,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         ConversationListFilter filter = new ConversationListFilter(); // ConversationListFilter | Contains parameters for filtering the results.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
-            ConversationListResponse result = apiInstance.listConversations(appId, filter, page);
+            ConversationListResponse result = apiInstance.listConversations(appIdfilterpage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#listConversations");
@@ -415,7 +415,7 @@ Name | Type | Description  | Notes
 
 ## updateConversation
 
-> ConversationResponse updateConversation(conversationUpdateBody, appId, conversationId)
+> ConversationResponse updateConversation(conversationUpdateBodyappIdconversationId)
 
 Update Conversation
 
@@ -447,12 +447,12 @@ public class Example {
 
         ConversationsApi apiInstance = new ConversationsApi(defaultClient);
         ConversationUpdateBody conversationUpdateBody = new ConversationUpdateBody(); // ConversationUpdateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            ConversationResponse result = apiInstance.updateConversation(conversationUpdateBody, appId, conversationId);
+            ConversationResponse result = apiInstance.updateConversation(conversationUpdateBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#updateConversation");

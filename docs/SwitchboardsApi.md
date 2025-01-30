@@ -44,7 +44,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## deleteSwitchboard
 
-> Object deleteSwitchboard(appId, switchboardId)
+> Object deleteSwitchboard(appIdswitchboardId)
 
 Delete Switchboard
 
@@ -122,12 +122,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteSwitchboard(appId, switchboardId);
+            Object result = apiInstance.deleteSwitchboard(appIdswitchboardId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardsApi#deleteSwitchboard");
@@ -201,7 +201,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 
 ## updateSwitchboard
 
-> SwitchboardResponse updateSwitchboard(switchboardUpdateBody, appId, switchboardId)
+> SwitchboardResponse updateSwitchboard(switchboardUpdateBodyappIdswitchboardId)
 
 Update Switchboard
 
@@ -279,12 +279,12 @@ public class Example {
 
         SwitchboardsApi apiInstance = new SwitchboardsApi(defaultClient);
         SwitchboardUpdateBody switchboardUpdateBody = new SwitchboardUpdateBody(); // SwitchboardUpdateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
         // Add required body parameters
 
         try {
-            SwitchboardResponse result = apiInstance.updateSwitchboard(switchboardUpdateBody, appId, switchboardId);
+            SwitchboardResponse result = apiInstance.updateSwitchboard(switchboardUpdateBodyappIdswitchboardId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardsApi#updateSwitchboard");

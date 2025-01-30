@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Action;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * TextMessage
@@ -40,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TextMessage.JSON_PROPERTY_PAYLOAD
 })
 
-public class TextMessage implements Content {
+public class TextMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "text";
 
@@ -109,14 +105,6 @@ public class TextMessage implements Content {
     return this;
   }
 
-  public TextMessage addActionsItem(Action actionsItem) {
-    if (this.actions == null) {
-      this.actions = new ArrayList<>();
-    }
-    this.actions.add(actionsItem);
-    return this;
-  }
-
    /**
    * Array of message actions.
    * @return actions
@@ -170,15 +158,12 @@ public class TextMessage implements Content {
       return false;
     }
     TextMessage textMessage = (TextMessage) o;
-    return Objects.equals(this.type, textMessage.type) &&
-        Objects.equals(this.text, textMessage.text) &&
-        Objects.equals(this.actions, textMessage.actions) &&
-        Objects.equals(this.payload, textMessage.payload);
+    return Objects.equals(this.type, textMessage.type)Objects.equals(this.text, textMessage.text)Objects.equals(this.actions, textMessage.actions)Objects.equals(this.payload, textMessage.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, actions, payload);
+    return Objects.hash(typetextactionspayload);
   }
 
 

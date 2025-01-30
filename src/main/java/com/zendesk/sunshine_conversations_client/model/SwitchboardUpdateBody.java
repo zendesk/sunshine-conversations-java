@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardUpdateBody
@@ -97,13 +97,12 @@ public class SwitchboardUpdateBody {
       return false;
     }
     SwitchboardUpdateBody switchboardUpdateBody = (SwitchboardUpdateBody) o;
-    return Objects.equals(this.enabled, switchboardUpdateBody.enabled) &&
-        Objects.equals(this.defaultSwitchboardIntegrationId, switchboardUpdateBody.defaultSwitchboardIntegrationId);
+    return Objects.equals(this.enabled, switchboardUpdateBody.enabled)Objects.equals(this.defaultSwitchboardIntegrationId, switchboardUpdateBody.defaultSwitchboardIntegrationId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(enabled, defaultSwitchboardIntegrationId);
+    return Objects.hash(enableddefaultSwitchboardIntegrationId);
   }
 
 

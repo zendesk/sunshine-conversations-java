@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Profile;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * UserUpdateBody
@@ -38,13 +39,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class UserUpdateBody {
   public static final String JSON_PROPERTY_SIGNED_UP_AT = "signedUpAt";
-  private String signedUpAt = null;
+  private String signedUpAt;
 
   public static final String JSON_PROPERTY_TO_BE_RETAINED = "toBeRetained";
-  private Boolean toBeRetained = null;
+  private Boolean toBeRetained;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
-  private Profile profile = null;
+  private Profile profile;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
@@ -57,11 +58,11 @@ public class UserUpdateBody {
   }
 
    /**
-   * Get signedUpAt
+   * The date at which the user signed up. Must be ISO 8601 time format &#x60;YYYY-MM-DDThh:mm:ss.sssZ&#x60;.
    * @return signedUpAt
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "2020-05-21T15:53:30.197Z", value = "The date at which the user signed up. Must be ISO 8601 time format `YYYY-MM-DDThh:mm:ss.sssZ`.")
   @JsonProperty(JSON_PROPERTY_SIGNED_UP_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -82,11 +83,11 @@ public class UserUpdateBody {
   }
 
    /**
-   * Get toBeRetained
+   * Flag indicating whether a user should be retained after they have passed their inactive expiry. See [creating deletion schedules for bot-only conversations](https://support.zendesk.com/hc/en-us/articles/8499219792154) for more information.
    * @return toBeRetained
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Flag indicating whether a user should be retained after they have passed their inactive expiry. See [creating deletion schedules for bot-only conversations](https://support.zendesk.com/hc/en-us/articles/8499219792154) for more information.")
   @JsonProperty(JSON_PROPERTY_TO_BE_RETAINED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -169,15 +170,12 @@ public class UserUpdateBody {
       return false;
     }
     UserUpdateBody userUpdateBody = (UserUpdateBody) o;
-    return Objects.equals(this.signedUpAt, userUpdateBody.signedUpAt) &&
-        Objects.equals(this.toBeRetained, userUpdateBody.toBeRetained) &&
-        Objects.equals(this.profile, userUpdateBody.profile) &&
-        Objects.equals(this.metadata, userUpdateBody.metadata);
+    return Objects.equals(this.signedUpAt, userUpdateBody.signedUpAt)Objects.equals(this.toBeRetained, userUpdateBody.toBeRetained)Objects.equals(this.profile, userUpdateBody.profile)Objects.equals(this.metadata, userUpdateBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(signedUpAt, toBeRetained, profile, metadata);
+    return Objects.hash(signedUpAttoBeRetainedprofilemetadata);
   }
 
 

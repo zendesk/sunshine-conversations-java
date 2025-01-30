@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Previous and next page links, if they exist.
@@ -98,13 +98,12 @@ public class Links {
       return false;
     }
     Links links = (Links) o;
-    return Objects.equals(this.prev, links.prev) &&
-        Objects.equals(this.next, links.next);
+    return Objects.equals(this.prev, links.prev)Objects.equals(this.next, links.next);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(prev, next);
+    return Objects.hash(prevnext);
   }
 
 

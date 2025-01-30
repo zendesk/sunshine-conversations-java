@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Response metadata.
@@ -127,14 +127,12 @@ public class Meta {
       return false;
     }
     Meta meta = (Meta) o;
-    return Objects.equals(this.hasMore, meta.hasMore) &&
-        Objects.equals(this.afterCursor, meta.afterCursor) &&
-        Objects.equals(this.beforeCursor, meta.beforeCursor);
+    return Objects.equals(this.hasMore, meta.hasMore)Objects.equals(this.afterCursor, meta.afterCursor)Objects.equals(this.beforeCursor, meta.beforeCursor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(hasMore, afterCursor, beforeCursor);
+    return Objects.hash(hasMoreafterCursorbeforeCursor);
   }
 
 

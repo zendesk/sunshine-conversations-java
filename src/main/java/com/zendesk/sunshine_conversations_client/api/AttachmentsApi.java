@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class AttachmentsApi {
   private ApiClient apiClient;
 
@@ -44,7 +44,7 @@ public class AttachmentsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteAttachment(AttachmentDeleteBody attachmentDeleteBody, String appId) throws ApiException {
+  public Object deleteAttachment(AttachmentDeleteBody attachmentDeleteBodyString appId) throws ApiException {
     Object localVarPostBody = attachmentDeleteBody;
     
     // verify the required parameter 'attachmentDeleteBody' is set
@@ -81,7 +81,7 @@ public class AttachmentsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -97,7 +97,7 @@ public class AttachmentsApi {
    * @return a {@code AttachmentResponse}
    * @throws ApiException if fails to make API call
    */
-  public AttachmentResponse uploadAttachment(File source, String appId, String access, String _for, String conversationId) throws ApiException {
+  public AttachmentResponse uploadAttachment(File sourceString appIdString accessString _forString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'source' is set
@@ -144,7 +144,7 @@ public class AttachmentsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AttachmentResponse> localVarReturnType = new GenericType<AttachmentResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -160,7 +160,7 @@ public class AttachmentsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteAttachment(String bearerToken, AttachmentDeleteBody attachmentDeleteBody, String appId) throws ApiException {
+  public Object deleteAttachment(String bearerToken, AttachmentDeleteBody attachmentDeleteBodyString appId) throws ApiException {
     Object localVarPostBody = attachmentDeleteBody;
     
     // verify the required parameter 'attachmentDeleteBody' is set
@@ -199,7 +199,7 @@ public class AttachmentsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -217,7 +217,7 @@ public class AttachmentsApi {
    * @return a {@code AttachmentResponse}
    * @throws ApiException if fails to make API call
    */
-  public AttachmentResponse uploadAttachment(String bearerToken, File source, String appId, String access, String _for, String conversationId) throws ApiException {
+  public AttachmentResponse uploadAttachment(String bearerToken, File sourceString appIdString accessString _forString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'source' is set
@@ -266,7 +266,7 @@ public class AttachmentsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<AttachmentResponse> localVarReturnType = new GenericType<AttachmentResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

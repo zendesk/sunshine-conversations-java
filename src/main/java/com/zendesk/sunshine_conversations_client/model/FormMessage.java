@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.FormMessageField;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A form type message without text or actions. Only supported in the Web SDK.
@@ -41,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormMessage.JSON_PROPERTY_FIELDS
 })
 
-public class FormMessage implements Content {
+public class FormMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "form";
 
@@ -126,11 +122,6 @@ public class FormMessage implements Content {
     return this;
   }
 
-  public FormMessage addFieldsItem(FormMessageField fieldsItem) {
-    this.fields.add(fieldsItem);
-    return this;
-  }
-
    /**
    * An array of objects representing fields associated with the message. Only present in form and formResponse messages.
    * @return fields
@@ -158,15 +149,12 @@ public class FormMessage implements Content {
       return false;
     }
     FormMessage formMessage = (FormMessage) o;
-    return Objects.equals(this.type, formMessage.type) &&
-        Objects.equals(this.submitted, formMessage.submitted) &&
-        Objects.equals(this.blockChatInput, formMessage.blockChatInput) &&
-        Objects.equals(this.fields, formMessage.fields);
+    return Objects.equals(this.type, formMessage.type)Objects.equals(this.submitted, formMessage.submitted)Objects.equals(this.blockChatInput, formMessage.blockChatInput)Objects.equals(this.fields, formMessage.fields);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, submitted, blockChatInput, fields);
+    return Objects.hash(typesubmittedblockChatInputfields);
   }
 
 

@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.AppKey;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AppKeyListResponse
@@ -40,14 +41,6 @@ public class AppKeyListResponse {
   public AppKeyListResponse keys(List<AppKey> keys) {
     
     this.keys = keys;
-    return this;
-  }
-
-  public AppKeyListResponse addKeysItem(AppKey keysItem) {
-    if (this.keys == null) {
-      this.keys = new ArrayList<>();
-    }
-    this.keys.add(keysItem);
     return this;
   }
 

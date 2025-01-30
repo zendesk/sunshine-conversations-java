@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A connected user identity, such as an email.
@@ -127,14 +127,12 @@ public class Identity {
       return false;
     }
     Identity identity = (Identity) o;
-    return Objects.equals(this.type, identity.type) &&
-        Objects.equals(this.value, identity.value) &&
-        Objects.equals(this.verification, identity.verification);
+    return Objects.equals(this.type, identity.type)Objects.equals(this.value, identity.value)Objects.equals(this.verification, identity.verification);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, value, verification);
+    return Objects.hash(typevalueverification);
   }
 
 

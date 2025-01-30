@@ -17,12 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Field
@@ -41,11 +42,11 @@ public class Field {
    * The field type.
    */
   public enum TypeEnum {
-    EMAIL("email"),
+    EMAIL(String.valueOf("email")),
     
-    SELECT("select"),
+    SELECT(String.valueOf("select")),
     
-    TEXT("text");
+    TEXT(String.valueOf("text"));
 
     private String value;
 
@@ -221,14 +222,6 @@ public class Field {
     return this;
   }
 
-  public Field addSelectItem(Object selectItem) {
-    if (this.select == null) {
-      this.select = new ArrayList<>();
-    }
-    this.select.add(selectItem);
-    return this;
-  }
-
    /**
    * Array of objects representing the response for a field of type select. Form and formResponse messages only.
    * @return select
@@ -257,17 +250,12 @@ public class Field {
       return false;
     }
     Field field = (Field) o;
-    return Objects.equals(this.type, field.type) &&
-        Objects.equals(this.name, field.name) &&
-        Objects.equals(this.label, field.label) &&
-        Objects.equals(this.text, field.text) &&
-        Objects.equals(this.email, field.email) &&
-        Objects.equals(this.select, field.select);
+    return Objects.equals(this.type, field.type)Objects.equals(this.name, field.name)Objects.equals(this.label, field.label)Objects.equals(this.text, field.text)Objects.equals(this.email, field.email)Objects.equals(this.select, field.select);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, name, label, text, email, select);
+    return Objects.hash(typenamelabeltextemailselect);
   }
 
 

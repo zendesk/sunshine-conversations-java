@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -37,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class SwitchboardPassControlAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
   private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
@@ -112,13 +113,12 @@ public class SwitchboardPassControlAllOfPayload {
       return false;
     }
     SwitchboardPassControlAllOfPayload switchboardPassControlAllOfPayload = (SwitchboardPassControlAllOfPayload) o;
-    return Objects.equals(this.conversation, switchboardPassControlAllOfPayload.conversation) &&
-        Objects.equals(this.metadata, switchboardPassControlAllOfPayload.metadata);
+    return Objects.equals(this.conversation, switchboardPassControlAllOfPayload.conversation)Objects.equals(this.metadata, switchboardPassControlAllOfPayload.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, metadata);
+    return Objects.hash(conversationmetadata);
   }
 
 

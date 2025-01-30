@@ -17,21 +17,148 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ParticipantLeaveBodyParticipantId;
 import com.zendesk.sunshine_conversations_client.model.ParticipantLeaveBodyUserExternalId;
 import com.zendesk.sunshine_conversations_client.model.ParticipantLeaveBodyUserId;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
-
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.EXISTING_PROPERTY, property = "", visible = true)
-@JsonSubTypes({
+/**
+ * ParticipantLeaveBody
+ */
+@JsonPropertyOrder({
+  ParticipantLeaveBody.JSON_PROPERTY_USER_ID,
+  ParticipantLeaveBody.JSON_PROPERTY_USER_EXTERNAL_ID,
+  ParticipantLeaveBody.JSON_PROPERTY_PARTICIPANT_ID
 })
 
-public interface ParticipantLeaveBody  {
+public class ParticipantLeaveBody {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  private String userId;
+
+  public static final String JSON_PROPERTY_USER_EXTERNAL_ID = "userExternalId";
+  private String userExternalId;
+
+  public static final String JSON_PROPERTY_PARTICIPANT_ID = "participantId";
+  private String participantId;
+
+
+  public ParticipantLeaveBody userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * The id of the user that will be removed from the conversation. It will return 404 if the user can’t be found. 
+   * @return userId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "42589ad070d43be9b00ff7e5", value = "The id of the user that will be removed from the conversation. It will return 404 if the user can’t be found. ")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
+  public ParticipantLeaveBody userExternalId(String userExternalId) {
+    
+    this.userExternalId = userExternalId;
+    return this;
+  }
+
+   /**
+   * The externalId of the user that will be removed from the conversation. It will return 404 if the user can’t be found. 
+   * @return userExternalId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "your-own-user-id", value = "The externalId of the user that will be removed from the conversation. It will return 404 if the user can’t be found. ")
+  @JsonProperty(JSON_PROPERTY_USER_EXTERNAL_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getUserExternalId() {
+    return userExternalId;
+  }
+
+
+  public void setUserExternalId(String userExternalId) {
+    this.userExternalId = userExternalId;
+  }
+
+
+  public ParticipantLeaveBody participantId(String participantId) {
+    
+    this.participantId = participantId;
+    return this;
+  }
+
+   /**
+   * The participantId of the user that will be removed from the conversation. It will return 404 if the user can’t be found. 
+   * @return participantId
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(example = "42589ad070d43be9b00ff7e5", value = "The participantId of the user that will be removed from the conversation. It will return 404 if the user can’t be found. ")
+  @JsonProperty(JSON_PROPERTY_PARTICIPANT_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public String getParticipantId() {
+    return participantId;
+  }
+
+
+  public void setParticipantId(String participantId) {
+    this.participantId = participantId;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ParticipantLeaveBody participantLeaveBody = (ParticipantLeaveBody) o;
+    return Objects.equals(this.userId, participantLeaveBody.userId)Objects.equals(this.userExternalId, participantLeaveBody.userExternalId)Objects.equals(this.participantId, participantLeaveBody.participantId);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(userIduserExternalIdparticipantId);
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ParticipantLeaveBody {\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    userExternalId: ").append(toIndentedString(userExternalId)).append("\n");
+    sb.append("    participantId: ").append(toIndentedString(participantId)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
 

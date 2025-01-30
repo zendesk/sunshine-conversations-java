@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationListFilter
@@ -97,13 +97,12 @@ public class ConversationListFilter {
       return false;
     }
     ConversationListFilter conversationListFilter = (ConversationListFilter) o;
-    return Objects.equals(this.userId, conversationListFilter.userId) &&
-        Objects.equals(this.userExternalId, conversationListFilter.userExternalId);
+    return Objects.equals(this.userId, conversationListFilter.userId)Objects.equals(this.userExternalId, conversationListFilter.userExternalId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, userExternalId);
+    return Objects.hash(userIduserExternalId);
   }
 
 

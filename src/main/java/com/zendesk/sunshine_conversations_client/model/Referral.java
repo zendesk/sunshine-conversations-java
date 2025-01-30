@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ReferralDetails;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Data representing a referral object when a user is referred to a conversation. See the &lt;a href&#x3D;\&quot;https://docs.smooch.io/guide/conversation-referrals/\&quot;&gt;conversation referrals&lt;/a&gt; guide for more details. 
@@ -112,13 +113,12 @@ public class Referral {
       return false;
     }
     Referral referral = (Referral) o;
-    return Objects.equals(this.code, referral.code) &&
-        Objects.equals(this.details, referral.details);
+    return Objects.equals(this.code, referral.code)Objects.equals(this.details, referral.details);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, details);
+    return Objects.hash(codedetails);
   }
 
 

@@ -17,16 +17,18 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ClientAssociation;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Participant
@@ -141,14 +143,6 @@ public class Participant {
     return this;
   }
 
-  public Participant addClientAssociationsItem(ClientAssociation clientAssociationsItem) {
-    if (this.clientAssociations == null) {
-      this.clientAssociations = new ArrayList<>();
-    }
-    this.clientAssociations.add(clientAssociationsItem);
-    return this;
-  }
-
    /**
    * Represents the clients that are active in the conversation for a particular user. A participant can have multiple clientAssociations in the case of channel transfer, business initiated conversations, or identified users. The order of the array indicates how recently a client has interacted with the conversation, with the most recent client first. The first item in the array is considered to be the user&#39;s primary client for that conversation, and will be selected first for message delivery. 
    * @return clientAssociations
@@ -247,17 +241,12 @@ public class Participant {
       return false;
     }
     Participant participant = (Participant) o;
-    return Objects.equals(this.id, participant.id) &&
-        Objects.equals(this.userId, participant.userId) &&
-        Objects.equals(this.unreadCount, participant.unreadCount) &&
-        Objects.equals(this.clientAssociations, participant.clientAssociations) &&
-        Objects.equals(this.userExternalId, participant.userExternalId) &&
-        Objects.equals(this.lastRead, participant.lastRead);
+    return Objects.equals(this.id, participant.id)Objects.equals(this.userId, participant.userId)Objects.equals(this.unreadCount, participant.unreadCount)Objects.equals(this.clientAssociations, participant.clientAssociations)Objects.equals(this.userExternalId, participant.userExternalId)Objects.equals(this.lastRead, participant.lastRead);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userId, unreadCount, clientAssociations, userExternalId, lastRead);
+    return Objects.hash(iduserIdunreadCountclientAssociationsuserExternalIdlastRead);
   }
 
 

@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * IntegrationUpdateBase
@@ -120,13 +121,12 @@ public class IntegrationUpdateBase {
       return false;
     }
     IntegrationUpdateBase integrationUpdateBase = (IntegrationUpdateBase) o;
-    return Objects.equals(this.displayName, integrationUpdateBase.displayName) &&
-        Objects.equals(this.defaultResponderId, integrationUpdateBase.defaultResponderId);
+    return Objects.equals(this.displayName, integrationUpdateBase.displayName)Objects.equals(this.defaultResponderId, integrationUpdateBase.defaultResponderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId);
+    return Objects.hash(displayNamedefaultResponderId);
   }
 
 

@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createSwitchboardIntegration
 
-> SwitchboardIntegrationResponse createSwitchboardIntegration(switchboardIntegrationCreateBody, appId, switchboardId)
+> SwitchboardIntegrationResponse createSwitchboardIntegration(switchboardIntegrationCreateBodyappIdswitchboardId)
 
 Create Switchboard Integration
 
@@ -44,13 +44,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody = {"name":"bot","integrationType":"zd:agentWorkspace","deliverStandbyEvents":true,"nextSwitchboardIntegrationId":"5ef21b86e933b7355c11c606","messageHistoryCount":5}; // SwitchboardIntegrationCreateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody = new SwitchboardIntegrationCreateBody(); // SwitchboardIntegrationCreateBody | 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
         // Add required body parameters
 
         try {
-            SwitchboardIntegrationResponse result = apiInstance.createSwitchboardIntegration(switchboardIntegrationCreateBody, appId, switchboardId);
+            SwitchboardIntegrationResponse result = apiInstance.createSwitchboardIntegration(switchboardIntegrationCreateBodyappIdswitchboardId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#createSwitchboardIntegration");
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## deleteSwitchboardIntegration
 
-> Object deleteSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId)
+> Object deleteSwitchboardIntegration(appIdswitchboardIdswitchboardIntegrationId)
 
 Delete Switchboard Integration
 
@@ -126,13 +126,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
-        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
+        String switchboardIntegrationId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard integration.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId);
+            Object result = apiInstance.deleteSwitchboardIntegration(appIdswitchboardIdswitchboardIntegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#deleteSwitchboardIntegration");
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## listSwitchboardIntegrations
 
-> SwitchboardIntegrationListResponse listSwitchboardIntegrations(appId, switchboardId)
+> SwitchboardIntegrationListResponse listSwitchboardIntegrations(appIdswitchboardId)
 
 List Switchboard Integrations
 
@@ -207,12 +207,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
         // Add required body parameters
 
         try {
-            SwitchboardIntegrationListResponse result = apiInstance.listSwitchboardIntegrations(appId, switchboardId);
+            SwitchboardIntegrationListResponse result = apiInstance.listSwitchboardIntegrations(appIdswitchboardId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#listSwitchboardIntegrations");
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ## updateSwitchboardIntegration
 
-> SwitchboardIntegrationResponse updateSwitchboardIntegration(switchboardIntegrationUpdateBody, appId, switchboardId, switchboardIntegrationId)
+> SwitchboardIntegrationResponse updateSwitchboardIntegration(switchboardIntegrationUpdateBodyappIdswitchboardIdswitchboardIntegrationId)
 
 Update Switchboard Integration
 
@@ -286,14 +286,14 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = {"name":"bot","integrationType":"zd:agentWorkspace","deliverStandbyEvents":true,"nextSwitchboardIntegrationId":"5ef21b86e933b7355c11c606","messageHistoryCount":5}; // SwitchboardIntegrationUpdateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
-        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
+        SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = new SwitchboardIntegrationUpdateBody(); // SwitchboardIntegrationUpdateBody | 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
+        String switchboardIntegrationId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard integration.
         // Add required body parameters
 
         try {
-            SwitchboardIntegrationResponse result = apiInstance.updateSwitchboardIntegration(switchboardIntegrationUpdateBody, appId, switchboardId, switchboardIntegrationId);
+            SwitchboardIntegrationResponse result = apiInstance.updateSwitchboardIntegration(switchboardIntegrationUpdateBodyappIdswitchboardIdswitchboardIntegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#updateSwitchboardIntegration");

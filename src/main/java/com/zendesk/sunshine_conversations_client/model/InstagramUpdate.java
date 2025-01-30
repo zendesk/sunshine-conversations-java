@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.InstagramUpdateAllOf;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * InstagramUpdate
@@ -39,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InstagramUpdate.JSON_PROPERTY_PAGE_ACCESS_TOKEN
 })
 
-public class InstagramUpdate implements IntegrationUpdate {
+public class InstagramUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -154,14 +150,12 @@ public class InstagramUpdate implements IntegrationUpdate {
       return false;
     }
     InstagramUpdate instagramUpdate = (InstagramUpdate) o;
-    return Objects.equals(this.displayName, instagramUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, instagramUpdate.defaultResponderId) &&
-        Objects.equals(this.pageAccessToken, instagramUpdate.pageAccessToken);
+    return Objects.equals(this.displayName, instagramUpdate.displayName)Objects.equals(this.defaultResponderId, instagramUpdate.defaultResponderId)Objects.equals(this.pageAccessToken, instagramUpdate.pageAccessToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, pageAccessToken);
+    return Objects.hash(displayNamedefaultResponderIdpageAccessToken);
   }
 
 

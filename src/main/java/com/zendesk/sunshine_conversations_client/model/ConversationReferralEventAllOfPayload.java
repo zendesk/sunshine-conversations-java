@@ -17,14 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.Referral;
 import com.zendesk.sunshine_conversations_client.model.SourceWithCampaignWebhook;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -39,16 +39,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationReferralEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_USER = "user";
-  private User user = null;
+  private User user;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWithCampaignWebhook source = null;
+  private SourceWithCampaignWebhook source;
 
   public static final String JSON_PROPERTY_REFERRAL = "referral";
-  private Referral referral = null;
+  private Referral referral;
 
 
   public ConversationReferralEventAllOfPayload conversation(ConversationTruncated conversation) {
@@ -160,15 +160,12 @@ public class ConversationReferralEventAllOfPayload {
       return false;
     }
     ConversationReferralEventAllOfPayload conversationReferralEventAllOfPayload = (ConversationReferralEventAllOfPayload) o;
-    return Objects.equals(this.conversation, conversationReferralEventAllOfPayload.conversation) &&
-        Objects.equals(this.user, conversationReferralEventAllOfPayload.user) &&
-        Objects.equals(this.source, conversationReferralEventAllOfPayload.source) &&
-        Objects.equals(this.referral, conversationReferralEventAllOfPayload.referral);
+    return Objects.equals(this.conversation, conversationReferralEventAllOfPayload.conversation)Objects.equals(this.user, conversationReferralEventAllOfPayload.user)Objects.equals(this.source, conversationReferralEventAllOfPayload.source)Objects.equals(this.referral, conversationReferralEventAllOfPayload.referral);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, user, source, referral);
+    return Objects.hash(conversationusersourcereferral);
   }
 
 

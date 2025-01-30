@@ -17,12 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Activity;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import com.zendesk.sunshine_conversations_client.model.ConversationTypingEventAllOfPayloadActivity;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -35,10 +35,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationTypingEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_ACTIVITY = "activity";
-  private Activity activity = null;
+  private ConversationTypingEventAllOfPayloadActivity activity;
 
 
   public ConversationTypingEventAllOfPayload conversation(ConversationTruncated conversation) {
@@ -66,27 +66,27 @@ public class ConversationTypingEventAllOfPayload {
   }
 
 
-  public ConversationTypingEventAllOfPayload activity(Activity activity) {
+  public ConversationTypingEventAllOfPayload activity(ConversationTypingEventAllOfPayloadActivity activity) {
     
     this.activity = activity;
     return this;
   }
 
    /**
-   * The activity that was sent.
+   * Get activity
    * @return activity
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The activity that was sent.")
+  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_ACTIVITY)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Activity getActivity() {
+  public ConversationTypingEventAllOfPayloadActivity getActivity() {
     return activity;
   }
 
 
-  public void setActivity(Activity activity) {
+  public void setActivity(ConversationTypingEventAllOfPayloadActivity activity) {
     this.activity = activity;
   }
 
@@ -100,13 +100,12 @@ public class ConversationTypingEventAllOfPayload {
       return false;
     }
     ConversationTypingEventAllOfPayload conversationTypingEventAllOfPayload = (ConversationTypingEventAllOfPayload) o;
-    return Objects.equals(this.conversation, conversationTypingEventAllOfPayload.conversation) &&
-        Objects.equals(this.activity, conversationTypingEventAllOfPayload.activity);
+    return Objects.equals(this.conversation, conversationTypingEventAllOfPayload.conversation)Objects.equals(this.activity, conversationTypingEventAllOfPayload.activity);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, activity);
+    return Objects.hash(conversationactivity);
   }
 
 

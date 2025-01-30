@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import com.zendesk.sunshine_conversations_client.model.MailgunUpdateAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * MailgunUpdate
@@ -40,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MailgunUpdate.JSON_PROPERTY_FROM_ADDRESS
 })
 
-public class MailgunUpdate implements IntegrationUpdate {
+public class MailgunUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -193,15 +189,12 @@ public class MailgunUpdate implements IntegrationUpdate {
       return false;
     }
     MailgunUpdate mailgunUpdate = (MailgunUpdate) o;
-    return Objects.equals(this.displayName, mailgunUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, mailgunUpdate.defaultResponderId) &&
-        Objects.equals(this.hideUnsubscribeLink, mailgunUpdate.hideUnsubscribeLink) &&
-        Objects.equals(this.fromAddress, mailgunUpdate.fromAddress);
+    return Objects.equals(this.displayName, mailgunUpdate.displayName)Objects.equals(this.defaultResponderId, mailgunUpdate.defaultResponderId)Objects.equals(this.hideUnsubscribeLink, mailgunUpdate.hideUnsubscribeLink)Objects.equals(this.fromAddress, mailgunUpdate.fromAddress);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, hideUnsubscribeLink, fromAddress);
+    return Objects.hash(displayNamedefaultResponderIdhideUnsubscribeLinkfromAddress);
   }
 
 

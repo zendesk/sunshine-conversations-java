@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The set of criteria used to determine the user&#39;s identity on a third-party channel.
@@ -125,14 +125,12 @@ public class MatchCriteriaBase {
       return false;
     }
     MatchCriteriaBase matchCriteriaBase = (MatchCriteriaBase) o;
-    return Objects.equals(this.type, matchCriteriaBase.type) &&
-        Objects.equals(this.integrationId, matchCriteriaBase.integrationId) &&
-        Objects.equals(this.primary, matchCriteriaBase.primary);
+    return Objects.equals(this.type, matchCriteriaBase.type)Objects.equals(this.integrationId, matchCriteriaBase.integrationId)Objects.equals(this.primary, matchCriteriaBase.primary);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, integrationId, primary);
+    return Objects.hash(typeintegrationIdprimary);
   }
 
 

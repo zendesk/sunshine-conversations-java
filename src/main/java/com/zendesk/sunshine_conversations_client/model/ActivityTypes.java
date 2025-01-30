@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ActivityTypes
@@ -34,11 +34,11 @@ public class ActivityTypes {
    * If the author type is &#x60;user&#x60;, only &#x60;conversation:read&#x60; is supported.
    */
   public enum TypeEnum {
-    CONVERSATION_READ("conversation:read"),
+    CONVERSATION_READ(String.valueOf("conversation:read")),
     
-    TYPING_START("typing:start"),
+    TYPING_START(String.valueOf("typing:start")),
     
-    TYPING_STOP("typing:stop");
+    TYPING_STOP(String.valueOf("typing:stop"));
 
     private String value;
 

@@ -17,18 +17,16 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Action;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ImageMessage
@@ -44,7 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ImageMessage.JSON_PROPERTY_ATTACHMENT_ID
 })
 
-public class ImageMessage implements Content {
+public class ImageMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "image";
 
@@ -206,14 +204,6 @@ public class ImageMessage implements Content {
     return this;
   }
 
-  public ImageMessage addActionsItem(Action actionsItem) {
-    if (this.actions == null) {
-      this.actions = new ArrayList<>();
-    }
-    this.actions.add(actionsItem);
-    return this;
-  }
-
    /**
    * Array of message actions.
    * @return actions
@@ -267,19 +257,12 @@ public class ImageMessage implements Content {
       return false;
     }
     ImageMessage imageMessage = (ImageMessage) o;
-    return Objects.equals(this.type, imageMessage.type) &&
-        Objects.equals(this.mediaUrl, imageMessage.mediaUrl) &&
-        Objects.equals(this.mediaType, imageMessage.mediaType) &&
-        Objects.equals(this.mediaSize, imageMessage.mediaSize) &&
-        Objects.equals(this.altText, imageMessage.altText) &&
-        Objects.equals(this.text, imageMessage.text) &&
-        Objects.equals(this.actions, imageMessage.actions) &&
-        Objects.equals(this.attachmentId, imageMessage.attachmentId);
+    return Objects.equals(this.type, imageMessage.type)Objects.equals(this.mediaUrl, imageMessage.mediaUrl)Objects.equals(this.mediaType, imageMessage.mediaType)Objects.equals(this.mediaSize, imageMessage.mediaSize)Objects.equals(this.altText, imageMessage.altText)Objects.equals(this.text, imageMessage.text)Objects.equals(this.actions, imageMessage.actions)Objects.equals(this.attachmentId, imageMessage.attachmentId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, mediaUrl, mediaType, mediaSize, altText, text, actions, attachmentId);
+    return Objects.hash(typemediaUrlmediaTypemediaSizealtTexttextactionsattachmentId);
   }
 
 

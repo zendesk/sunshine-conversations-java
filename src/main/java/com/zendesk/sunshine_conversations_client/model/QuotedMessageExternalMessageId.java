@@ -17,13 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.QuotedMessage;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * QuotedMessageExternalMessageId
@@ -33,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QuotedMessageExternalMessageId.JSON_PROPERTY_EXTERNAL_MESSAGE_ID
 })
 
-public class QuotedMessageExternalMessageId implements QuotedMessage {
+public class QuotedMessageExternalMessageId {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "externalMessageId";
 
@@ -99,13 +96,12 @@ public class QuotedMessageExternalMessageId implements QuotedMessage {
       return false;
     }
     QuotedMessageExternalMessageId quotedMessageExternalMessageId = (QuotedMessageExternalMessageId) o;
-    return Objects.equals(this.type, quotedMessageExternalMessageId.type) &&
-        Objects.equals(this.externalMessageId, quotedMessageExternalMessageId.externalMessageId);
+    return Objects.equals(this.type, quotedMessageExternalMessageId.type)Objects.equals(this.externalMessageId, quotedMessageExternalMessageId.externalMessageId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, externalMessageId);
+    return Objects.hash(typeexternalMessageId);
   }
 
 

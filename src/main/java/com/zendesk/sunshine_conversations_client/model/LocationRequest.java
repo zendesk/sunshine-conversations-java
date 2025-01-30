@@ -17,16 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A location request action will prompt the user to share their location.
@@ -38,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationRequest.JSON_PROPERTY_METADATA
 })
 
-public class LocationRequest implements Action {
+public class LocationRequest {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "locationRequest";
 
@@ -141,14 +139,12 @@ public class LocationRequest implements Action {
       return false;
     }
     LocationRequest locationRequest = (LocationRequest) o;
-    return Objects.equals(this.type, locationRequest.type) &&
-        Objects.equals(this.text, locationRequest.text) &&
-        Objects.equals(this.metadata, locationRequest.metadata);
+    return Objects.equals(this.type, locationRequest.type)Objects.equals(this.text, locationRequest.text)Objects.equals(this.metadata, locationRequest.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, metadata);
+    return Objects.hash(typetextmetadata);
   }
 
 

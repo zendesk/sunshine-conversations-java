@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryChannelEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.ConversationMessageDeliveryPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationMessageDeliveryUserEvent
@@ -158,15 +156,12 @@ public class ConversationMessageDeliveryUserEvent {
       return false;
     }
     ConversationMessageDeliveryUserEvent conversationMessageDeliveryUserEvent = (ConversationMessageDeliveryUserEvent) o;
-    return Objects.equals(this.id, conversationMessageDeliveryUserEvent.id) &&
-        Objects.equals(this.type, conversationMessageDeliveryUserEvent.type) &&
-        Objects.equals(this.createdAt, conversationMessageDeliveryUserEvent.createdAt) &&
-        Objects.equals(this.payload, conversationMessageDeliveryUserEvent.payload);
+    return Objects.equals(this.id, conversationMessageDeliveryUserEvent.id)Objects.equals(this.type, conversationMessageDeliveryUserEvent.type)Objects.equals(this.createdAt, conversationMessageDeliveryUserEvent.createdAt)Objects.equals(this.payload, conversationMessageDeliveryUserEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

@@ -13,7 +13,6 @@ import com.zendesk.sunshine_conversations_client.model.ConversationListResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationUpdateBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBody;
-import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;
@@ -21,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.11.0")
 public class ConversationsApi {
   private ApiClient apiClient;
 
@@ -49,7 +48,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse createConversation(ConversationCreateBody conversationCreateBody, String appId) throws ApiException {
+  public ConversationResponse createConversation(ConversationCreateBody conversationCreateBodyString appId) throws ApiException {
     Object localVarPostBody = conversationCreateBody;
     
     // verify the required parameter 'conversationCreateBody' is set
@@ -86,7 +85,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -99,7 +98,7 @@ public class ConversationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteConversation(String appId, String conversationId) throws ApiException {
+  public Object deleteConversation(String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -137,7 +136,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -151,7 +150,7 @@ public class ConversationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object downloadMessageRef(DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+  public Object downloadMessageRef(DownloadMessageRefBody downloadMessageRefBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = downloadMessageRefBody;
     
     // verify the required parameter 'downloadMessageRefBody' is set
@@ -194,7 +193,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -207,7 +206,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse getConversation(String appId, String conversationId) throws ApiException {
+  public ConversationResponse getConversation(String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -245,7 +244,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -259,7 +258,7 @@ public class ConversationsApi {
    * @return a {@code ConversationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationListResponse listConversations(String appId, ConversationListFilter filter, Page page) throws ApiException {
+  public ConversationListResponse listConversations(String appIdConversationListFilter filterPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -298,7 +297,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationListResponse> localVarReturnType = new GenericType<ConversationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -312,7 +311,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse updateConversation(ConversationUpdateBody conversationUpdateBody, String appId, String conversationId) throws ApiException {
+  public ConversationResponse updateConversation(ConversationUpdateBody conversationUpdateBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = conversationUpdateBody;
     
     // verify the required parameter 'conversationUpdateBody' is set
@@ -355,7 +354,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -371,7 +370,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse createConversation(String bearerToken, ConversationCreateBody conversationCreateBody, String appId) throws ApiException {
+  public ConversationResponse createConversation(String bearerToken, ConversationCreateBody conversationCreateBodyString appId) throws ApiException {
     Object localVarPostBody = conversationCreateBody;
     
     // verify the required parameter 'conversationCreateBody' is set
@@ -410,7 +409,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -425,7 +424,7 @@ public class ConversationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object deleteConversation(String bearerToken, String appId, String conversationId) throws ApiException {
+  public Object deleteConversation(String bearerToken, String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -465,7 +464,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -481,7 +480,7 @@ public class ConversationsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object downloadMessageRef(String bearerToken, DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+  public Object downloadMessageRef(String bearerToken, DownloadMessageRefBody downloadMessageRefBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = downloadMessageRefBody;
     
     // verify the required parameter 'downloadMessageRefBody' is set
@@ -526,7 +525,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<Object> localVarReturnType = new GenericType<Object>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -541,7 +540,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse getConversation(String bearerToken, String appId, String conversationId) throws ApiException {
+  public ConversationResponse getConversation(String bearerToken, String appIdString conversationId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -581,7 +580,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -597,7 +596,7 @@ public class ConversationsApi {
    * @return a {@code ConversationListResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationListResponse listConversations(String bearerToken, String appId, ConversationListFilter filter, Page page) throws ApiException {
+  public ConversationListResponse listConversations(String bearerToken, String appIdConversationListFilter filterPage page) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -638,7 +637,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationListResponse> localVarReturnType = new GenericType<ConversationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
@@ -654,7 +653,7 @@ public class ConversationsApi {
    * @return a {@code ConversationResponse}
    * @throws ApiException if fails to make API call
    */
-  public ConversationResponse updateConversation(String bearerToken, ConversationUpdateBody conversationUpdateBody, String appId, String conversationId) throws ApiException {
+  public ConversationResponse updateConversation(String bearerToken, ConversationUpdateBody conversationUpdateBodyString appIdString conversationId) throws ApiException {
     Object localVarPostBody = conversationUpdateBody;
     
     // verify the required parameter 'conversationUpdateBody' is set
@@ -699,7 +698,7 @@ public class ConversationsApi {
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+    String[] localVarAuthNames = new String[] { "basicAuth""bearerAuth" };
 
     GenericType<ConversationResponse> localVarReturnType = new GenericType<ConversationResponse>() {};
     return apiClient.invokeAPI(localVarPath, "PATCH", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import com.zendesk.sunshine_conversations_client.model.SwitchboardPassControlAllOf;
 import com.zendesk.sunshine_conversations_client.model.SwitchboardPassControlAllOfPayload;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardPassControl
@@ -158,15 +156,12 @@ public class SwitchboardPassControl {
       return false;
     }
     SwitchboardPassControl switchboardPassControl = (SwitchboardPassControl) o;
-    return Objects.equals(this.id, switchboardPassControl.id) &&
-        Objects.equals(this.type, switchboardPassControl.type) &&
-        Objects.equals(this.createdAt, switchboardPassControl.createdAt) &&
-        Objects.equals(this.payload, switchboardPassControl.payload);
+    return Objects.equals(this.id, switchboardPassControl.id)Objects.equals(this.type, switchboardPassControl.type)Objects.equals(this.createdAt, switchboardPassControl.createdAt)Objects.equals(this.payload, switchboardPassControl.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

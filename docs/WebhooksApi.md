@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## createWebhook
 
-> WebhookResponse createWebhook(webhookCreateBody, appId, integrationId)
+> WebhookResponse createWebhook(webhookCreateBodyappIdintegrationId)
 
 Create Webhook
 
@@ -46,12 +46,12 @@ public class Example {
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
         WebhookCreateBody webhookCreateBody = new WebhookCreateBody(); // WebhookCreateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            WebhookResponse result = apiInstance.createWebhook(webhookCreateBody, appId, integrationId);
+            WebhookResponse result = apiInstance.createWebhook(webhookCreateBodyappIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#createWebhook");
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## deleteWebhook
 
-> Object deleteWebhook(appId, integrationId, webhookId)
+> Object deleteWebhook(appIdintegrationIdwebhookId)
 
 Delete Webhook
 
@@ -128,13 +128,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
-        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
+        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteWebhook(appId, integrationId, webhookId);
+            Object result = apiInstance.deleteWebhook(appIdintegrationIdwebhookId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#deleteWebhook");
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## getWebhook
 
-> WebhookResponse getWebhook(appId, integrationId, webhookId)
+> WebhookResponse getWebhook(appIdintegrationIdwebhookId)
 
 Get Webhook
 
@@ -209,13 +209,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
-        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
+        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
         // Add required body parameters
 
         try {
-            WebhookResponse result = apiInstance.getWebhook(appId, integrationId, webhookId);
+            WebhookResponse result = apiInstance.getWebhook(appIdintegrationIdwebhookId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#getWebhook");
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## listWebhooks
 
-> WebhookListResponse listWebhooks(appId, integrationId)
+> WebhookListResponse listWebhooks(appIdintegrationId)
 
 List Webhooks
 
@@ -290,12 +290,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
         // Add required body parameters
 
         try {
-            WebhookListResponse result = apiInstance.listWebhooks(appId, integrationId);
+            WebhookListResponse result = apiInstance.listWebhooks(appIdintegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#listWebhooks");
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ## updateWebhook
 
-> WebhookResponse updateWebhook(webhookBody, appId, integrationId, webhookId)
+> WebhookResponse updateWebhook(webhookBodyappIdintegrationIdwebhookId)
 
 Update Webhook
 
@@ -371,13 +371,13 @@ public class Example {
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
         WebhookBody webhookBody = new WebhookBody(); // WebhookBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
-        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
+        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
         // Add required body parameters
 
         try {
-            WebhookResponse result = apiInstance.updateWebhook(webhookBody, appId, integrationId, webhookId);
+            WebhookResponse result = apiInstance.updateWebhook(webhookBodyappIdintegrationIdwebhookId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#updateWebhook");

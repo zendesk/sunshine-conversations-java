@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * SwitchboardIntegration
@@ -252,18 +253,12 @@ public class SwitchboardIntegration {
       return false;
     }
     SwitchboardIntegration switchboardIntegration = (SwitchboardIntegration) o;
-    return Objects.equals(this.id, switchboardIntegration.id) &&
-        Objects.equals(this.name, switchboardIntegration.name) &&
-        Objects.equals(this.integrationId, switchboardIntegration.integrationId) &&
-        Objects.equals(this.integrationType, switchboardIntegration.integrationType) &&
-        Objects.equals(this.deliverStandbyEvents, switchboardIntegration.deliverStandbyEvents) &&
-        Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegration.nextSwitchboardIntegrationId) &&
-        Objects.equals(this.messageHistoryCount, switchboardIntegration.messageHistoryCount);
+    return Objects.equals(this.id, switchboardIntegration.id)Objects.equals(this.name, switchboardIntegration.name)Objects.equals(this.integrationId, switchboardIntegration.integrationId)Objects.equals(this.integrationType, switchboardIntegration.integrationType)Objects.equals(this.deliverStandbyEvents, switchboardIntegration.deliverStandbyEvents)Objects.equals(this.nextSwitchboardIntegrationId, switchboardIntegration.nextSwitchboardIntegrationId)Objects.equals(this.messageHistoryCount, switchboardIntegration.messageHistoryCount);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, integrationId, integrationType, deliverStandbyEvents, nextSwitchboardIntegrationId, messageHistoryCount);
+    return Objects.hash(idnameintegrationIdintegrationTypedeliverStandbyEventsnextSwitchboardIntegrationIdmessageHistoryCount);
   }
 
 

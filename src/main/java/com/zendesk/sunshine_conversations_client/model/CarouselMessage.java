@@ -17,19 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.CarouselMessageDisplaySettings;
 import com.zendesk.sunshine_conversations_client.model.Item;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Carousel messages are a horizontally scrollable set of items that may each contain text, an image, and message actions. Not all messaging channels fully support carousel messages; currently only Facebook Messenger, LINE, Telegram, Viber, the Web Messenger, the Android SDK and the iOS SDK cover the full functionality. For all other platforms a carousel message is rendered as raw text. The raw text fallback does not include any images or postback message actions.
@@ -42,7 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CarouselMessage.JSON_PROPERTY_DISPLAY_SETTINGS
 })
 
-public class CarouselMessage implements Content {
+public class CarouselMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "carousel";
 
@@ -102,11 +98,6 @@ public class CarouselMessage implements Content {
     return this;
   }
 
-  public CarouselMessage addItemsItem(Item itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
    /**
    * An array of objects representing the items associated with the message. Only present in carousel and list type messages.
    * @return items
@@ -159,15 +150,12 @@ public class CarouselMessage implements Content {
       return false;
     }
     CarouselMessage carouselMessage = (CarouselMessage) o;
-    return Objects.equals(this.type, carouselMessage.type) &&
-        Objects.equals(this.text, carouselMessage.text) &&
-        Objects.equals(this.items, carouselMessage.items) &&
-        Objects.equals(this.displaySettings, carouselMessage.displaySettings);
+    return Objects.equals(this.type, carouselMessage.type)Objects.equals(this.text, carouselMessage.text)Objects.equals(this.items, carouselMessage.items)Objects.equals(this.displaySettings, carouselMessage.displaySettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, items, displaySettings);
+    return Objects.hash(typetextitemsdisplaySettings);
   }
 
 

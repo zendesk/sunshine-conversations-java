@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Messenger channel options.
@@ -39,7 +39,7 @@ public class ExtraChannelOptionsMessenger {
    * For webview type actions, a string value indicating if the share button should be hidden. [More Info](https://developers.facebook.com/docs/messenger-platform/reference/buttons/url).
    */
   public enum WebviewShareButtonEnum {
-    HIDE("hide");
+    HIDE(String.valueOf("hide"));
 
     private String value;
 
@@ -131,13 +131,12 @@ public class ExtraChannelOptionsMessenger {
       return false;
     }
     ExtraChannelOptionsMessenger extraChannelOptionsMessenger = (ExtraChannelOptionsMessenger) o;
-    return Objects.equals(this.messengerExtensions, extraChannelOptionsMessenger.messengerExtensions) &&
-        Objects.equals(this.webviewShareButton, extraChannelOptionsMessenger.webviewShareButton);
+    return Objects.equals(this.messengerExtensions, extraChannelOptionsMessenger.messengerExtensions)Objects.equals(this.webviewShareButton, extraChannelOptionsMessenger.webviewShareButton);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(messengerExtensions, webviewShareButton);
+    return Objects.hash(messengerExtensionswebviewShareButton);
   }
 
 

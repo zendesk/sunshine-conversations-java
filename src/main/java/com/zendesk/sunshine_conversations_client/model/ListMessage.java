@@ -17,19 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ActionSubset;
 import com.zendesk.sunshine_conversations_client.model.Item;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * List messages are a vertically scrollable set of items that may each contain text, an image, and message actions. Not all messaging channels fully support list messages. * Facebook Messenger and WeChat have native support. * For LINE and our Android, iOS and Web SDK, Sunshine Conversations converts list messages to carousel. * On WhatsApp, Telegram and Twitter, Sunshine Conversations converts list messages to multiple rich messages. * On all other platforms, Sunshine Conversations converts list messages to raw text. 
@@ -41,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ListMessage.JSON_PROPERTY_ACTIONS
 })
 
-public class ListMessage implements Content {
+public class ListMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "list";
 
@@ -82,11 +78,6 @@ public class ListMessage implements Content {
     return this;
   }
 
-  public ListMessage addItemsItem(Item itemsItem) {
-    this.items.add(itemsItem);
-    return this;
-  }
-
    /**
    * An array of objects representing the items associated with the message. Only present in carousel and list type messages.
    * @return items
@@ -108,14 +99,6 @@ public class ListMessage implements Content {
   public ListMessage actions(List<ActionSubset> actions) {
     
     this.actions = actions;
-    return this;
-  }
-
-  public ListMessage addActionsItem(ActionSubset actionsItem) {
-    if (this.actions == null) {
-      this.actions = new ArrayList<>();
-    }
-    this.actions.add(actionsItem);
     return this;
   }
 
@@ -147,14 +130,12 @@ public class ListMessage implements Content {
       return false;
     }
     ListMessage listMessage = (ListMessage) o;
-    return Objects.equals(this.type, listMessage.type) &&
-        Objects.equals(this.items, listMessage.items) &&
-        Objects.equals(this.actions, listMessage.actions);
+    return Objects.equals(this.type, listMessage.type)Objects.equals(this.items, listMessage.items)Objects.equals(this.actions, listMessage.actions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, items, actions);
+    return Objects.hash(typeitemsactions);
   }
 
 

@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.UserMergeEventAllOfPayload;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * UserMergeEvent
@@ -158,15 +156,12 @@ public class UserMergeEvent {
       return false;
     }
     UserMergeEvent userMergeEvent = (UserMergeEvent) o;
-    return Objects.equals(this.id, userMergeEvent.id) &&
-        Objects.equals(this.type, userMergeEvent.type) &&
-        Objects.equals(this.createdAt, userMergeEvent.createdAt) &&
-        Objects.equals(this.payload, userMergeEvent.payload);
+    return Objects.equals(this.id, userMergeEvent.id)Objects.equals(this.type, userMergeEvent.type)Objects.equals(this.createdAt, userMergeEvent.createdAt)Objects.equals(this.payload, userMergeEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

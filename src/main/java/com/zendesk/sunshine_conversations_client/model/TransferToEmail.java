@@ -17,16 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import com.zendesk.sunshine_conversations_client.model.ActivityMessage;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * TransferToEmail
@@ -36,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TransferToEmail.JSON_PROPERTY_DATA
 })
 
-public class TransferToEmail implements ActivityMessage {
+public class TransferToEmail {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "ticket:transfer:email";
 
@@ -74,14 +70,6 @@ public class TransferToEmail implements ActivityMessage {
     return this;
   }
 
-  public TransferToEmail putDataItem(String key, Object dataItem) {
-    if (this.data == null) {
-      this.data = new HashMap<>();
-    }
-    this.data.put(key, dataItem);
-    return this;
-  }
-
    /**
    * No additional data is supplied with the \&quot;ticket:transfer:email\&quot; activity type at this time.
    * @return data
@@ -89,7 +77,7 @@ public class TransferToEmail implements ActivityMessage {
   @jakarta.annotation.Nullable
   @ApiModelProperty(value = "No additional data is supplied with the \"ticket:transfer:email\" activity type at this time.")
   @JsonProperty(JSON_PROPERTY_DATA)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
   public Map<String, Object> getData() {
     return data;
@@ -110,13 +98,12 @@ public class TransferToEmail implements ActivityMessage {
       return false;
     }
     TransferToEmail transferToEmail = (TransferToEmail) o;
-    return Objects.equals(this.type, transferToEmail.type) &&
-        Objects.equals(this.data, transferToEmail.data);
+    return Objects.equals(this.type, transferToEmail.type)Objects.equals(this.data, transferToEmail.data);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, data);
+    return Objects.hash(typedata);
   }
 
 

@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Profile;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * UserCreateBody
@@ -197,16 +198,12 @@ public class UserCreateBody {
       return false;
     }
     UserCreateBody userCreateBody = (UserCreateBody) o;
-    return Objects.equals(this.externalId, userCreateBody.externalId) &&
-        Objects.equals(this.signedUpAt, userCreateBody.signedUpAt) &&
-        Objects.equals(this.toBeRetained, userCreateBody.toBeRetained) &&
-        Objects.equals(this.profile, userCreateBody.profile) &&
-        Objects.equals(this.metadata, userCreateBody.metadata);
+    return Objects.equals(this.externalId, userCreateBody.externalId)Objects.equals(this.signedUpAt, userCreateBody.signedUpAt)Objects.equals(this.toBeRetained, userCreateBody.toBeRetained)Objects.equals(this.profile, userCreateBody.profile)Objects.equals(this.metadata, userCreateBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(externalId, signedUpAt, toBeRetained, profile, metadata);
+    return Objects.hash(externalIdsignedUpAttoBeRetainedprofilemetadata);
   }
 
 

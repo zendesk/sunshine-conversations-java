@@ -17,18 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ExtraChannelOptions;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.zendesk.sunshine_conversations_client.model.ActionSubset;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * When a webview actions is clicked/tapped, the provided URI will be loaded in a webview. Channels that do not support webviews will open the fallback URI instead.
@@ -46,7 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Webview.JSON_PROPERTY_OPEN_ON_RECEIVE
 })
 
-public class Webview implements Action, ActionSubset {
+public class Webview {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type;
 
@@ -69,11 +66,11 @@ public class Webview implements Action, ActionSubset {
    * The size to display a webview. Used for actions of type webview.
    */
   public enum SizeEnum {
-    COMPACT("compact"),
+    COMPACT(String.valueOf("compact")),
     
-    TALL("tall"),
+    TALL(String.valueOf("tall")),
     
-    FULL("full");
+    FULL(String.valueOf("full"));
 
     private String value;
 
@@ -352,20 +349,12 @@ public class Webview implements Action, ActionSubset {
       return false;
     }
     Webview webview = (Webview) o;
-    return Objects.equals(this.type, webview.type) &&
-        Objects.equals(this.uri, webview.uri) &&
-        Objects.equals(this.text, webview.text) &&
-        Objects.equals(this._default, webview._default) &&
-        Objects.equals(this.metadata, webview.metadata) &&
-        Objects.equals(this.extraChannelOptions, webview.extraChannelOptions) &&
-        Objects.equals(this.size, webview.size) &&
-        Objects.equals(this.fallback, webview.fallback) &&
-        Objects.equals(this.openOnReceive, webview.openOnReceive);
+    return Objects.equals(this.type, webview.type)Objects.equals(this.uri, webview.uri)Objects.equals(this.text, webview.text)Objects.equals(this._default, webview._default)Objects.equals(this.metadata, webview.metadata)Objects.equals(this.extraChannelOptions, webview.extraChannelOptions)Objects.equals(this.size, webview.size)Objects.equals(this.fallback, webview.fallback)Objects.equals(this.openOnReceive, webview.openOnReceive);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, uri, text, _default, metadata, extraChannelOptions, size, fallback, openOnReceive);
+    return Objects.hash(typeuritext_defaultmetadataextraChannelOptionssizefallbackopenOnReceive);
   }
 
 

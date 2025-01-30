@@ -17,14 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ConversationTruncated;
 import com.zendesk.sunshine_conversations_client.model.MessageWebhook;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -38,10 +39,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ConversationMessageEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";
-  private ConversationTruncated conversation = null;
+  private ConversationTruncated conversation;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  private MessageWebhook message = null;
+  private MessageWebhook message;
 
   public static final String JSON_PROPERTY_RECENT_NOTIFICATIONS = "recentNotifications";
   private List<MessageWebhook> recentNotifications = null;
@@ -103,14 +104,6 @@ public class ConversationMessageEventAllOfPayload {
     return this;
   }
 
-  public ConversationMessageEventAllOfPayload addRecentNotificationsItem(MessageWebhook recentNotificationsItem) {
-    if (this.recentNotifications == null) {
-      this.recentNotifications = new ArrayList<>();
-    }
-    this.recentNotifications.add(recentNotificationsItem);
-    return this;
-  }
-
    /**
    * Messages sent with the Notification API since the last user message.
    * @return recentNotifications
@@ -139,14 +132,12 @@ public class ConversationMessageEventAllOfPayload {
       return false;
     }
     ConversationMessageEventAllOfPayload conversationMessageEventAllOfPayload = (ConversationMessageEventAllOfPayload) o;
-    return Objects.equals(this.conversation, conversationMessageEventAllOfPayload.conversation) &&
-        Objects.equals(this.message, conversationMessageEventAllOfPayload.message) &&
-        Objects.equals(this.recentNotifications, conversationMessageEventAllOfPayload.recentNotifications);
+    return Objects.equals(this.conversation, conversationMessageEventAllOfPayload.conversation)Objects.equals(this.message, conversationMessageEventAllOfPayload.message)Objects.equals(this.recentNotifications, conversationMessageEventAllOfPayload.recentNotifications);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(conversation, message, recentNotifications);
+    return Objects.hash(conversationmessagerecentNotifications);
   }
 
 

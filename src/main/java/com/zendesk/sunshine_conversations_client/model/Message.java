@@ -17,18 +17,19 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ActivityMessage;
 import com.zendesk.sunshine_conversations_client.model.Author;
 import com.zendesk.sunshine_conversations_client.model.Content;
 import com.zendesk.sunshine_conversations_client.model.QuotedMessage;
 import com.zendesk.sunshine_conversations_client.model.Source;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Message
@@ -56,19 +57,19 @@ public class Message {
   private Author author;
 
   public static final String JSON_PROPERTY_ACTIVITY = "activity";
-  private ActivityMessage activity = null;
+  private ActivityMessage activity;
 
   public static final String JSON_PROPERTY_CONTENT = "content";
-  private Content content = null;
+  private Content content;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
   private Source source;
 
   public static final String JSON_PROPERTY_QUOTED_MESSAGE = "quotedMessage";
-  private JsonNullable<QuotedMessage> quotedMessage = JsonNullable.<QuotedMessage>of(null);
+  private JsonNullable<QuotedMessage> quotedMessage = JsonNullable.<QuotedMessage>undefined();
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
-  private JsonNullable<Object> metadata = JsonNullable.<Object>of(null);
+  private JsonNullable<Object> metadata = JsonNullable.<Object>undefined();
 
   public static final String JSON_PROPERTY_DELETED = "deleted";
   private JsonNullable<Boolean> deleted = JsonNullable.<Boolean>undefined();
@@ -266,11 +267,11 @@ public class Message {
   }
 
    /**
-   * Get metadata
+   * Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. 
    * @return metadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
   @JsonIgnore
 
   public Object getMetadata() {
@@ -338,20 +339,12 @@ public class Message {
       return false;
     }
     Message message = (Message) o;
-    return Objects.equals(this.id, message.id) &&
-        Objects.equals(this.received, message.received) &&
-        Objects.equals(this.author, message.author) &&
-        Objects.equals(this.activity, message.activity) &&
-        Objects.equals(this.content, message.content) &&
-        Objects.equals(this.source, message.source) &&
-        Objects.equals(this.quotedMessage, message.quotedMessage) &&
-        Objects.equals(this.metadata, message.metadata) &&
-        Objects.equals(this.deleted, message.deleted);
+    return Objects.equals(this.id, message.id)Objects.equals(this.received, message.received)Objects.equals(this.author, message.author)Objects.equals(this.activity, message.activity)Objects.equals(this.content, message.content)Objects.equals(this.source, message.source)Objects.equals(this.quotedMessage, message.quotedMessage)Objects.equals(this.metadata, message.metadata)Objects.equals(this.deleted, message.deleted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, received, author, activity, content, source, quotedMessage, metadata, deleted);
+    return Objects.hash(idreceivedauthoractivitycontentsourcequotedMessagemetadatadeleted);
   }
 
 

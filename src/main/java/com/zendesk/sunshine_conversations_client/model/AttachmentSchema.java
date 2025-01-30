@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AttachmentSchema
@@ -97,13 +97,12 @@ public class AttachmentSchema {
       return false;
     }
     AttachmentSchema attachmentSchema = (AttachmentSchema) o;
-    return Objects.equals(this.mediaUrl, attachmentSchema.mediaUrl) &&
-        Objects.equals(this.mediaType, attachmentSchema.mediaType);
+    return Objects.equals(this.mediaUrl, attachmentSchema.mediaUrl)Objects.equals(this.mediaType, attachmentSchema.mediaType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(mediaUrl, mediaType);
+    return Objects.hash(mediaUrlmediaType);
   }
 
 

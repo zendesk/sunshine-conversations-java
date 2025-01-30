@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.AndroidUpdateAllOf;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * AndroidUpdate
@@ -44,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AndroidUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
 
-public class AndroidUpdate implements IntegrationUpdate {
+public class AndroidUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -349,19 +345,12 @@ public class AndroidUpdate implements IntegrationUpdate {
       return false;
     }
     AndroidUpdate androidUpdate = (AndroidUpdate) o;
-    return Objects.equals(this.displayName, androidUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, androidUpdate.defaultResponderId) &&
-        Objects.equals(this.projectId, androidUpdate.projectId) &&
-        Objects.equals(this.clientEmail, androidUpdate.clientEmail) &&
-        Objects.equals(this.privateKey, androidUpdate.privateKey) &&
-        Objects.equals(this.serverKey, androidUpdate.serverKey) &&
-        Objects.equals(this.senderId, androidUpdate.senderId) &&
-        Objects.equals(this.canUserCreateMoreConversations, androidUpdate.canUserCreateMoreConversations);
+    return Objects.equals(this.displayName, androidUpdate.displayName)Objects.equals(this.defaultResponderId, androidUpdate.defaultResponderId)Objects.equals(this.projectId, androidUpdate.projectId)Objects.equals(this.clientEmail, androidUpdate.clientEmail)Objects.equals(this.privateKey, androidUpdate.privateKey)Objects.equals(this.serverKey, androidUpdate.serverKey)Objects.equals(this.senderId, androidUpdate.senderId)Objects.equals(this.canUserCreateMoreConversations, androidUpdate.canUserCreateMoreConversations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, projectId, clientEmail, privateKey, serverKey, senderId, canUserCreateMoreConversations);
+    return Objects.hash(displayNamedefaultResponderIdprojectIdclientEmailprivateKeyserverKeysenderIdcanUserCreateMoreConversations);
   }
 
 

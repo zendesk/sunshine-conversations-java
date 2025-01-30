@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The coordinates of the location.
@@ -97,13 +97,12 @@ public class LocationMessageCoordinates {
       return false;
     }
     LocationMessageCoordinates locationMessageCoordinates = (LocationMessageCoordinates) o;
-    return Objects.equals(this.lat, locationMessageCoordinates.lat) &&
-        Objects.equals(this._long, locationMessageCoordinates._long);
+    return Objects.equals(this.lat, locationMessageCoordinates.lat)Objects.equals(this._long, locationMessageCoordinates._long);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lat, _long);
+    return Objects.hash(lat_long);
   }
 
 

@@ -17,13 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ApiKey;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * IntegrationApiKeyListResponse
@@ -40,14 +41,6 @@ public class IntegrationApiKeyListResponse {
   public IntegrationApiKeyListResponse keys(List<ApiKey> keys) {
     
     this.keys = keys;
-    return this;
-  }
-
-  public IntegrationApiKeyListResponse addKeysItem(ApiKey keysItem) {
-    if (this.keys == null) {
-      this.keys = new ArrayList<>();
-    }
-    this.keys.add(keysItem);
     return this;
   }
 

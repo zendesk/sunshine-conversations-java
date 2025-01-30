@@ -17,20 +17,76 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOfApple;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * DownloadMessageRefBody
  */
 @JsonPropertyOrder({
+  DownloadMessageRefBody.JSON_PROPERTY_USER_ID,
+  DownloadMessageRefBody.JSON_PROPERTY_APPLE
 })
 
-public class DownloadMessageRefBody extends DownloadMessageRefBodyAllOf {
+public class DownloadMessageRefBody {
+  public static final String JSON_PROPERTY_USER_ID = "userId";
+  private String userId;
+
+  public static final String JSON_PROPERTY_APPLE = "apple";
+  private DownloadMessageRefBodyAllOfApple apple;
+
+
+  public DownloadMessageRefBody userId(String userId) {
+    
+    this.userId = userId;
+    return this;
+  }
+
+   /**
+   * The id of the user.
+   * @return userId
+  **/
+  @ApiModelProperty(example = "5963c0d619a30a2e00de36b8", required = true, value = "The id of the user.")
+  @JsonProperty(JSON_PROPERTY_USER_ID)
+  @JsonInclude(value = JsonInclude.Include.ALWAYS)
+
+  public String getUserId() {
+    return userId;
+  }
+
+
+  public void setUserId(String userId) {
+    this.userId = userId;
+  }
+
+
+  public DownloadMessageRefBody apple(DownloadMessageRefBodyAllOfApple apple) {
+    
+    this.apple = apple;
+    return this;
+  }
+
+   /**
+   * Get apple
+   * @return apple
+  **/
+  @jakarta.annotation.Nullable
+  @ApiModelProperty(value = "")
+  @JsonProperty(JSON_PROPERTY_APPLE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+
+  public DownloadMessageRefBodyAllOfApple getApple() {
+    return apple;
+  }
+
+
+  public void setApple(DownloadMessageRefBodyAllOfApple apple) {
+    this.apple = apple;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -40,12 +96,13 @@ public class DownloadMessageRefBody extends DownloadMessageRefBodyAllOf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return super.equals(o);
+    DownloadMessageRefBody downloadMessageRefBody = (DownloadMessageRefBody) o;
+    return Objects.equals(this.userId, downloadMessageRefBody.userId)Objects.equals(this.apple, downloadMessageRefBody.apple);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(userIdapple);
   }
 
 
@@ -53,7 +110,8 @@ public class DownloadMessageRefBody extends DownloadMessageRefBodyAllOf {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DownloadMessageRefBody {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    userId: ").append(toIndentedString(userId)).append("\n");
+    sb.append("    apple: ").append(toIndentedString(apple)).append("\n");
     sb.append("}");
     return sb.toString();
   }

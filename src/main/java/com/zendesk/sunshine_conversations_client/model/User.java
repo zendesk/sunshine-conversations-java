@@ -17,19 +17,19 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Identity;
 import com.zendesk.sunshine_conversations_client.model.Profile;
-import com.zendesk.sunshine_conversations_client.model.UserAllOf;
-import com.zendesk.sunshine_conversations_client.model.UserTruncated;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * User
@@ -52,16 +52,16 @@ public class User {
   private JsonNullable<String> externalId = JsonNullable.<String>undefined();
 
   public static final String JSON_PROPERTY_SIGNED_UP_AT = "signedUpAt";
-  private String signedUpAt = null;
+  private String signedUpAt;
 
   public static final String JSON_PROPERTY_TO_BE_RETAINED = "toBeRetained";
-  private Boolean toBeRetained = null;
+  private Boolean toBeRetained;
 
   public static final String JSON_PROPERTY_PROFILE = "profile";
-  private Profile profile = null;
+  private Profile profile;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
-  private Object metadata = null;
+  private Object metadata;
 
   public static final String JSON_PROPERTY_IDENTITIES = "identities";
   private List<Identity> identities = null;
@@ -134,11 +134,11 @@ public class User {
   }
 
    /**
-   * Get signedUpAt
+   * The date at which the user signed up. Must be ISO 8601 time format &#x60;YYYY-MM-DDThh:mm:ss.sssZ&#x60;.
    * @return signedUpAt
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "2020-05-21T15:53:30.197Z", value = "The date at which the user signed up. Must be ISO 8601 time format `YYYY-MM-DDThh:mm:ss.sssZ`.")
   @JsonProperty(JSON_PROPERTY_SIGNED_UP_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -159,11 +159,11 @@ public class User {
   }
 
    /**
-   * Get toBeRetained
+   * Flag indicating whether a user should be retained after they have passed their inactive expiry. See [creating deletion schedules for bot-only conversations](https://support.zendesk.com/hc/en-us/articles/8499219792154) for more information.
    * @return toBeRetained
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "Flag indicating whether a user should be retained after they have passed their inactive expiry. See [creating deletion schedules for bot-only conversations](https://support.zendesk.com/hc/en-us/articles/8499219792154) for more information.")
   @JsonProperty(JSON_PROPERTY_TO_BE_RETAINED)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -209,11 +209,11 @@ public class User {
   }
 
    /**
-   * Get metadata
+   * Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. 
    * @return metadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "{\"lang\":\"en-ca\"}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -252,18 +252,12 @@ public class User {
       return false;
     }
     User user = (User) o;
-    return Objects.equals(this.id, user.id) &&
-        Objects.equals(this.externalId, user.externalId) &&
-        Objects.equals(this.signedUpAt, user.signedUpAt) &&
-        Objects.equals(this.toBeRetained, user.toBeRetained) &&
-        Objects.equals(this.profile, user.profile) &&
-        Objects.equals(this.metadata, user.metadata) &&
-        Objects.equals(this.identities, user.identities);
+    return Objects.equals(this.id, user.id)Objects.equals(this.externalId, user.externalId)Objects.equals(this.signedUpAt, user.signedUpAt)Objects.equals(this.toBeRetained, user.toBeRetained)Objects.equals(this.profile, user.profile)Objects.equals(this.metadata, user.metadata)Objects.equals(this.identities, user.identities);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, externalId, signedUpAt, toBeRetained, profile, metadata, identities);
+    return Objects.hash(idexternalIdsignedUpAttoBeRetainedprofilemetadataidentities);
   }
 
 

@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The default responder object. &lt;aside class&#x3D;\&quot;notice\&quot;&gt;This property will only be returned in response for &lt;code&gt;get integration&lt;/code&gt; and &lt;code&gt;list integration&lt;/code&gt; and must not be used in the request body.&lt;/aside&gt; &lt;aside class&#x3D;\&quot;notice\&quot;&gt;Response will contain only one of the following: &lt;code&gt;defaultResponder&lt;/code&gt; or &lt;code&gt;defaultResponderId&lt;/code&gt; but never both.&lt;/aside&gt; 
@@ -302,20 +302,12 @@ public class DefaultResponderDefaultResponder {
       return false;
     }
     DefaultResponderDefaultResponder defaultResponderDefaultResponder = (DefaultResponderDefaultResponder) o;
-    return Objects.equals(this.switchboardId, defaultResponderDefaultResponder.switchboardId) &&
-        Objects.equals(this.appId, defaultResponderDefaultResponder.appId) &&
-        Objects.equals(this.integrationId, defaultResponderDefaultResponder.integrationId) &&
-        Objects.equals(this.integrationType, defaultResponderDefaultResponder.integrationType) &&
-        Objects.equals(this.name, defaultResponderDefaultResponder.name) &&
-        Objects.equals(this.deliverStandbyEvents, defaultResponderDefaultResponder.deliverStandbyEvents) &&
-        Objects.equals(this.nextSwitchboardIntegrationId, defaultResponderDefaultResponder.nextSwitchboardIntegrationId) &&
-        Objects.equals(this.messageHistoryCount, defaultResponderDefaultResponder.messageHistoryCount) &&
-        Objects.equals(this.inherited, defaultResponderDefaultResponder.inherited);
+    return Objects.equals(this.switchboardId, defaultResponderDefaultResponder.switchboardId)Objects.equals(this.appId, defaultResponderDefaultResponder.appId)Objects.equals(this.integrationId, defaultResponderDefaultResponder.integrationId)Objects.equals(this.integrationType, defaultResponderDefaultResponder.integrationType)Objects.equals(this.name, defaultResponderDefaultResponder.name)Objects.equals(this.deliverStandbyEvents, defaultResponderDefaultResponder.deliverStandbyEvents)Objects.equals(this.nextSwitchboardIntegrationId, defaultResponderDefaultResponder.nextSwitchboardIntegrationId)Objects.equals(this.messageHistoryCount, defaultResponderDefaultResponder.messageHistoryCount)Objects.equals(this.inherited, defaultResponderDefaultResponder.inherited);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(switchboardId, appId, integrationId, integrationType, name, deliverStandbyEvents, nextSwitchboardIntegrationId, messageHistoryCount, inherited);
+    return Objects.hash(switchboardIdappIdintegrationIdintegrationTypenamedeliverStandbyEventsnextSwitchboardIntegrationIdmessageHistoryCountinherited);
   }
 
 

@@ -17,10 +17,10 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ParticipantWithUserId
@@ -97,13 +97,12 @@ public class ParticipantWithUserId {
       return false;
     }
     ParticipantWithUserId participantWithUserId = (ParticipantWithUserId) o;
-    return Objects.equals(this.userId, participantWithUserId.userId) &&
-        Objects.equals(this.subscribeSDKClient, participantWithUserId.subscribeSDKClient);
+    return Objects.equals(this.userId, participantWithUserId.userId)Objects.equals(this.subscribeSDKClient, participantWithUserId.subscribeSDKClient);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(userId, subscribeSDKClient);
+    return Objects.hash(userIdsubscribeSDKClient);
   }
 
 

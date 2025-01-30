@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import com.zendesk.sunshine_conversations_client.model.WhatsAppUpdateAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * WhatsAppUpdate
@@ -41,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WhatsAppUpdate.JSON_PROPERTY_ACCOUNT_MANAGEMENT_ACCESS_TOKEN
 })
 
-public class WhatsAppUpdate implements IntegrationUpdate {
+public class WhatsAppUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -242,16 +238,12 @@ public class WhatsAppUpdate implements IntegrationUpdate {
       return false;
     }
     WhatsAppUpdate whatsAppUpdate = (WhatsAppUpdate) o;
-    return Objects.equals(this.displayName, whatsAppUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, whatsAppUpdate.defaultResponderId) &&
-        Objects.equals(this.hsmFallbackLanguage, whatsAppUpdate.hsmFallbackLanguage) &&
-        Objects.equals(this.accountId, whatsAppUpdate.accountId) &&
-        Objects.equals(this.accountManagementAccessToken, whatsAppUpdate.accountManagementAccessToken);
+    return Objects.equals(this.displayName, whatsAppUpdate.displayName)Objects.equals(this.defaultResponderId, whatsAppUpdate.defaultResponderId)Objects.equals(this.hsmFallbackLanguage, whatsAppUpdate.hsmFallbackLanguage)Objects.equals(this.accountId, whatsAppUpdate.accountId)Objects.equals(this.accountManagementAccessToken, whatsAppUpdate.accountManagementAccessToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, hsmFallbackLanguage, accountId, accountManagementAccessToken);
+    return Objects.hash(displayNamedefaultResponderIdhsmFallbackLanguageaccountIdaccountManagementAccessToken);
   }
 
 

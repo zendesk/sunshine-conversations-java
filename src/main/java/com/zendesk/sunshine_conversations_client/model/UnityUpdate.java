@@ -17,18 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdateBase;
-import com.zendesk.sunshine_conversations_client.model.UnityUpdateAllOf;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.IntegrationUpdate;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * UnityUpdate
@@ -39,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnityUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
 
-public class UnityUpdate implements IntegrationUpdate {
+public class UnityUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   private JsonNullable<String> displayName = JsonNullable.<String>undefined();
 
@@ -154,14 +150,12 @@ public class UnityUpdate implements IntegrationUpdate {
       return false;
     }
     UnityUpdate unityUpdate = (UnityUpdate) o;
-    return Objects.equals(this.displayName, unityUpdate.displayName) &&
-        Objects.equals(this.defaultResponderId, unityUpdate.defaultResponderId) &&
-        Objects.equals(this.canUserCreateMoreConversations, unityUpdate.canUserCreateMoreConversations);
+    return Objects.equals(this.displayName, unityUpdate.displayName)Objects.equals(this.defaultResponderId, unityUpdate.defaultResponderId)Objects.equals(this.canUserCreateMoreConversations, unityUpdate.canUserCreateMoreConversations);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, defaultResponderId, canUserCreateMoreConversations);
+    return Objects.hash(displayNamedefaultResponderIdcanUserCreateMoreConversations);
   }
 
 

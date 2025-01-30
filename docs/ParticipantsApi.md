@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## joinConversation
 
-> ParticipantResponse joinConversation(participantJoinBody, appId, conversationId)
+> ParticipantResponse joinConversation(participantJoinBodyappIdconversationId)
 
 Join Conversation
 
@@ -44,12 +44,12 @@ public class Example {
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
         ParticipantJoinBody participantJoinBody = new ParticipantJoinBody(); // ParticipantJoinBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            ParticipantResponse result = apiInstance.joinConversation(participantJoinBody, appId, conversationId);
+            ParticipantResponse result = apiInstance.joinConversation(participantJoinBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ParticipantsApi#joinConversation");
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## leaveConversation
 
-> Object leaveConversation(participantLeaveBody, appId, conversationId)
+> Object leaveConversation(participantLeaveBodyappIdconversationId)
 
 Leave Conversation
 
@@ -126,12 +126,12 @@ public class Example {
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
         ParticipantLeaveBody participantLeaveBody = new ParticipantLeaveBody(); // ParticipantLeaveBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.leaveConversation(participantLeaveBody, appId, conversationId);
+            Object result = apiInstance.leaveConversation(participantLeaveBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ParticipantsApi#leaveConversation");
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 ## listParticipants
 
-> ParticipantListResponse listParticipants(appId, conversationId, page)
+> ParticipantListResponse listParticipants(appIdconversationIdpage)
 
 List Participants
 
@@ -206,13 +206,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
-            ParticipantListResponse result = apiInstance.listParticipants(appId, conversationId, page);
+            ParticipantListResponse result = apiInstance.listParticipants(appIdconversationIdpage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ParticipantsApi#listParticipants");

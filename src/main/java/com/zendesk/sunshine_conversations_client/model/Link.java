@@ -17,18 +17,15 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ExtraChannelOptions;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.zendesk.sunshine_conversations_client.model.ActionSubset;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A link action will open the provided URI when tapped.
@@ -43,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Link.JSON_PROPERTY_EXTRA_CHANNEL_OPTIONS
 })
 
-public class Link implements Action, ActionSubset {
+public class Link {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "link";
 
@@ -229,17 +226,12 @@ public class Link implements Action, ActionSubset {
       return false;
     }
     Link link = (Link) o;
-    return Objects.equals(this.type, link.type) &&
-        Objects.equals(this.uri, link.uri) &&
-        Objects.equals(this.text, link.text) &&
-        Objects.equals(this._default, link._default) &&
-        Objects.equals(this.metadata, link.metadata) &&
-        Objects.equals(this.extraChannelOptions, link.extraChannelOptions);
+    return Objects.equals(this.type, link.type)Objects.equals(this.uri, link.uri)Objects.equals(this.text, link.text)Objects.equals(this._default, link._default)Objects.equals(this.metadata, link.metadata)Objects.equals(this.extraChannelOptions, link.extraChannelOptions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, uri, text, _default, metadata, extraChannelOptions);
+    return Objects.hash(typeuritext_defaultmetadataextraChannelOptions);
   }
 
 

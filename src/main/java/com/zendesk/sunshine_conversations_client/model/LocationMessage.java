@@ -17,19 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.LocationMessageCoordinates;
 import com.zendesk.sunshine_conversations_client.model.LocationMessageLocation;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import com.zendesk.sunshine_conversations_client.model.Content;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import java.math.BigDecimal;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * A location type message includes the coordinates (latitude and longitude) of a location and an optional location object which can include the name and address of the location. Typically sent in response to a Location Request.
@@ -42,7 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationMessage.JSON_PROPERTY_LOCATION
 })
 
-public class LocationMessage implements Content {
+public class LocationMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "location";
 
@@ -154,15 +147,12 @@ public class LocationMessage implements Content {
       return false;
     }
     LocationMessage locationMessage = (LocationMessage) o;
-    return Objects.equals(this.type, locationMessage.type) &&
-        Objects.equals(this.text, locationMessage.text) &&
-        Objects.equals(this.coordinates, locationMessage.coordinates) &&
-        Objects.equals(this.location, locationMessage.location);
+    return Objects.equals(this.type, locationMessage.type)Objects.equals(this.text, locationMessage.text)Objects.equals(this.coordinates, locationMessage.coordinates)Objects.equals(this.location, locationMessage.location);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, coordinates, location);
+    return Objects.hash(typetextcoordinateslocation);
   }
 
 

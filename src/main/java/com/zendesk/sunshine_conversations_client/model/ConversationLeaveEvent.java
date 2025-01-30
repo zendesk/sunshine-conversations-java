@@ -17,13 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.ConversationLeaveEventAllOf;
 import com.zendesk.sunshine_conversations_client.model.ConversationLeaveEventAllOfPayload;
-import com.zendesk.sunshine_conversations_client.model.EventSubSchema;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ConversationLeaveEvent
@@ -158,15 +156,12 @@ public class ConversationLeaveEvent {
       return false;
     }
     ConversationLeaveEvent conversationLeaveEvent = (ConversationLeaveEvent) o;
-    return Objects.equals(this.id, conversationLeaveEvent.id) &&
-        Objects.equals(this.type, conversationLeaveEvent.type) &&
-        Objects.equals(this.createdAt, conversationLeaveEvent.createdAt) &&
-        Objects.equals(this.payload, conversationLeaveEvent.payload);
+    return Objects.equals(this.id, conversationLeaveEvent.id)Objects.equals(this.type, conversationLeaveEvent.type)Objects.equals(this.createdAt, conversationLeaveEvent.createdAt)Objects.equals(this.payload, conversationLeaveEvent.payload);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, type, createdAt, payload);
+    return Objects.hash(idtypecreatedAtpayload);
   }
 
 

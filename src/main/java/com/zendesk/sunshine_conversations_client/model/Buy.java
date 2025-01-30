@@ -17,17 +17,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
-import com.zendesk.sunshine_conversations_client.model.Action;
-import com.zendesk.sunshine_conversations_client.model.ActionSubset;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Buy
@@ -40,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Buy.JSON_PROPERTY_METADATA
 })
 
-public class Buy implements Action, ActionSubset {
+public class Buy {
   public static final String JSON_PROPERTY_TYPE = "type";
   private String type = "buy";
 
@@ -198,16 +195,12 @@ public class Buy implements Action, ActionSubset {
       return false;
     }
     Buy buy = (Buy) o;
-    return Objects.equals(this.type, buy.type) &&
-        Objects.equals(this.text, buy.text) &&
-        Objects.equals(this.amount, buy.amount) &&
-        Objects.equals(this.currency, buy.currency) &&
-        Objects.equals(this.metadata, buy.metadata);
+    return Objects.equals(this.type, buy.type)Objects.equals(this.text, buy.text)Objects.equals(this.amount, buy.amount)Objects.equals(this.currency, buy.currency)Objects.equals(this.metadata, buy.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, text, amount, currency, metadata);
+    return Objects.hash(typetextamountcurrencymetadata);
   }
 
 

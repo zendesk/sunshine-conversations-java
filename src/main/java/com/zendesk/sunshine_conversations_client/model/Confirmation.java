@@ -17,11 +17,11 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.MessagePost;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The confirmation options of the link request.
@@ -37,11 +37,11 @@ public class Confirmation {
    * The type of confirmation.
    */
   public enum TypeEnum {
-    IMMEDIATE("immediate"),
+    IMMEDIATE(String.valueOf("immediate")),
     
-    USERACTIVITY("userActivity"),
+    USER_ACTIVITY(String.valueOf("userActivity")),
     
-    PROMPT("prompt");
+    PROMPT(String.valueOf("prompt"));
 
     private String value;
 
@@ -74,7 +74,7 @@ public class Confirmation {
   private TypeEnum type;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
-  private MessagePost message = null;
+  private MessagePost message;
 
 
   public Confirmation type(TypeEnum type) {
@@ -135,13 +135,12 @@ public class Confirmation {
       return false;
     }
     Confirmation confirmation = (Confirmation) o;
-    return Objects.equals(this.type, confirmation.type) &&
-        Objects.equals(this.message, confirmation.message);
+    return Objects.equals(this.type, confirmation.type)Objects.equals(this.message, confirmation.message);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(type, message);
+    return Objects.hash(typemessage);
   }
 
 

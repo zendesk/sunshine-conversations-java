@@ -17,12 +17,12 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.SourceWebhook;
 import com.zendesk.sunshine_conversations_client.model.User;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * The payload of the event. The contents of this object depend on the type of event.
@@ -36,15 +36,15 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class UserUpdateEventAllOfPayload {
   public static final String JSON_PROPERTY_USER = "user";
-  private User user = null;
+  private User user;
 
   /**
    * The reason why the user was updated, if applicable. * &#x60;authentication&#x60; - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user. * &#x60;localeDetection&#x60; - A user was updated as a result of automated locale detection on messages sent. 
    */
   public enum ReasonEnum {
-    AUTHENTICATION("authentication"),
+    AUTHENTICATION(String.valueOf("authentication")),
     
-    LOCALEDETECTION("localeDetection");
+    LOCALE_DETECTION(String.valueOf("localeDetection"));
 
     private String value;
 
@@ -77,7 +77,7 @@ public class UserUpdateEventAllOfPayload {
   private ReasonEnum reason;
 
   public static final String JSON_PROPERTY_SOURCE = "source";
-  private SourceWebhook source = null;
+  private SourceWebhook source;
 
 
   public UserUpdateEventAllOfPayload user(User user) {
@@ -164,14 +164,12 @@ public class UserUpdateEventAllOfPayload {
       return false;
     }
     UserUpdateEventAllOfPayload userUpdateEventAllOfPayload = (UserUpdateEventAllOfPayload) o;
-    return Objects.equals(this.user, userUpdateEventAllOfPayload.user) &&
-        Objects.equals(this.reason, userUpdateEventAllOfPayload.reason) &&
-        Objects.equals(this.source, userUpdateEventAllOfPayload.source);
+    return Objects.equals(this.user, userUpdateEventAllOfPayload.user)Objects.equals(this.reason, userUpdateEventAllOfPayload.reason)Objects.equals(this.source, userUpdateEventAllOfPayload.source);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(user, reason, source);
+    return Objects.hash(userreasonsource);
   }
 
 

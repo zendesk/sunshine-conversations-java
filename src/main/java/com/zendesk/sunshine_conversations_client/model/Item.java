@@ -17,17 +17,19 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.ActionSubset;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.openapitools.jackson.nullable.JsonNullable;
 import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * Item
@@ -63,9 +65,9 @@ public class Item {
    * The size of the image.
    */
   public enum SizeEnum {
-    COMPACT("compact"),
+    COMPACT(String.valueOf("compact")),
     
-    LARGE("large");
+    LARGE(String.valueOf("large"));
 
     private String value;
 
@@ -259,11 +261,6 @@ public class Item {
     return this;
   }
 
-  public Item addActionsItem(ActionSubset actionsItem) {
-    this.actions.add(actionsItem);
-    return this;
-  }
-
    /**
    * An array of objects representing the actions associated with the item.
    * @return actions
@@ -326,19 +323,12 @@ public class Item {
       return false;
     }
     Item item = (Item) o;
-    return Objects.equals(this.title, item.title) &&
-        Objects.equals(this.description, item.description) &&
-        Objects.equals(this.mediaUrl, item.mediaUrl) &&
-        Objects.equals(this.mediaType, item.mediaType) &&
-        Objects.equals(this.altText, item.altText) &&
-        Objects.equals(this.size, item.size) &&
-        Objects.equals(this.actions, item.actions) &&
-        Objects.equals(this.metadata, item.metadata);
+    return Objects.equals(this.title, item.title)Objects.equals(this.description, item.description)Objects.equals(this.mediaUrl, item.mediaUrl)Objects.equals(this.mediaType, item.mediaType)Objects.equals(this.altText, item.altText)Objects.equals(this.size, item.size)Objects.equals(this.actions, item.actions)Objects.equals(this.metadata, item.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, description, mediaUrl, mediaType, altText, size, actions, metadata);
+    return Objects.hash(titledescriptionmediaUrlmediaTypealtTextsizeactionsmetadata);
   }
 
 

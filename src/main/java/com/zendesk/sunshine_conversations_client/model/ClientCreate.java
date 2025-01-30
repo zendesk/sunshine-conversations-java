@@ -17,13 +17,13 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.zendesk.sunshine_conversations_client.model.Confirmation;
 import com.zendesk.sunshine_conversations_client.model.MatchCriteria;
 import com.zendesk.sunshine_conversations_client.model.Target;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import com.fasterxml.jackson.annotation.JsonTypeName;
 
 /**
  * ClientCreate
@@ -36,7 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 public class ClientCreate {
   public static final String JSON_PROPERTY_MATCH_CRITERIA = "matchCriteria";
-  private MatchCriteria matchCriteria = null;
+  private MatchCriteria matchCriteria;
 
   public static final String JSON_PROPERTY_CONFIRMATION = "confirmation";
   private Confirmation confirmation;
@@ -126,14 +126,12 @@ public class ClientCreate {
       return false;
     }
     ClientCreate clientCreate = (ClientCreate) o;
-    return Objects.equals(this.matchCriteria, clientCreate.matchCriteria) &&
-        Objects.equals(this.confirmation, clientCreate.confirmation) &&
-        Objects.equals(this.target, clientCreate.target);
+    return Objects.equals(this.matchCriteria, clientCreate.matchCriteria)Objects.equals(this.confirmation, clientCreate.confirmation)Objects.equals(this.target, clientCreate.target);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(matchCriteria, confirmation, target);
+    return Objects.hash(matchCriteriaconfirmationtarget);
   }
 
 
