@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Identity.JSON_PROPERTY_VALUE,
   Identity.JSON_PROPERTY_VERIFICATION
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Identity {
   public static final String JSON_PROPERTY_TYPE = "type";

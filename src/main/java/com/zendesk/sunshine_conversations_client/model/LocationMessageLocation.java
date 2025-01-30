@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationMessageLocation.JSON_PROPERTY_ADDRESS,
   LocationMessageLocation.JSON_PROPERTY_NAME
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class LocationMessageLocation {
   public static final String JSON_PROPERTY_ADDRESS = "address";

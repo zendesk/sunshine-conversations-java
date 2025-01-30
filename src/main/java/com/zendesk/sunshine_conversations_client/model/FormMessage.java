@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormMessage.JSON_PROPERTY_BLOCK_CHAT_INPUT,
   FormMessage.JSON_PROPERTY_FIELDS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

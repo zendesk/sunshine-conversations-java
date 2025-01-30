@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   IntegrationUpdateBase.JSON_PROPERTY_DISPLAY_NAME,
   IntegrationUpdateBase.JSON_PROPERTY_DEFAULT_RESPONDER_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationUpdateBase {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

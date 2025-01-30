@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebhookSubSchema.JSON_PROPERTY_ID,
   WebhookSubSchema.JSON_PROPERTY_VERSION
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebhookSubSchema {
   public static final String JSON_PROPERTY_ID = "id";

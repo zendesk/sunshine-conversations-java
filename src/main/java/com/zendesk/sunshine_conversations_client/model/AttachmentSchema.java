@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AttachmentSchema.JSON_PROPERTY_MEDIA_URL,
   AttachmentSchema.JSON_PROPERTY_MEDIA_TYPE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AttachmentSchema {
   public static final String JSON_PROPERTY_MEDIA_URL = "mediaUrl";

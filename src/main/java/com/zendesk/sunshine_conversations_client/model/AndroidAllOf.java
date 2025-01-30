@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AndroidAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS,
   AndroidAllOf.JSON_PROPERTY_ATTACHMENTS_ENABLED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AndroidAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

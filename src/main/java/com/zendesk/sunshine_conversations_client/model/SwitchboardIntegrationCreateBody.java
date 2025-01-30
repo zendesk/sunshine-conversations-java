@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardIntegrationCreateBody.JSON_PROPERTY_NEXT_SWITCHBOARD_INTEGRATION_ID,
   SwitchboardIntegrationCreateBody.JSON_PROPERTY_MESSAGE_HISTORY_COUNT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardIntegrationCreateBody {
   public static final String JSON_PROPERTY_NAME = "name";

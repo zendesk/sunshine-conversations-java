@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppListResponse.JSON_PROPERTY_META,
   AppListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppListResponse {
   public static final String JSON_PROPERTY_APPS = "apps";

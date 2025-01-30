@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Referral.JSON_PROPERTY_CODE,
   Referral.JSON_PROPERTY_DETAILS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Referral {
   public static final String JSON_PROPERTY_CODE = "code";

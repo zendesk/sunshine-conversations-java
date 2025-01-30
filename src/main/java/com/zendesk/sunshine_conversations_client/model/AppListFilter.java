@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AppListFilter.JSON_PROPERTY_SERVICE_ACCOUNT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppListFilter {
   public static final String JSON_PROPERTY_SERVICE_ACCOUNT_ID = "serviceAccountId";

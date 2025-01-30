@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaWhatsapp.JSON_PROPERTY_PRIMARY,
   MatchCriteriaWhatsapp.JSON_PROPERTY_PHONE_NUMBER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MatchCriteriaWhatsapp implements MatchCriteria {
   public static final String JSON_PROPERTY_TYPE = "type";

@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ClientCreate.JSON_PROPERTY_CONFIRMATION,
   ClientCreate.JSON_PROPERTY_TARGET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ClientCreate {
   public static final String JSON_PROPERTY_MATCH_CRITERIA = "matchCriteria";

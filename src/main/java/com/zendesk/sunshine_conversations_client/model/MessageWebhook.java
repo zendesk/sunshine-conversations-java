@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MessageWebhook.JSON_PROPERTY_METADATA,
   MessageWebhook.JSON_PROPERTY_DELETED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageWebhook {
   public static final String JSON_PROPERTY_ID = "id";

@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Link.JSON_PROPERTY_METADATA,
   Link.JSON_PROPERTY_EXTRA_CHANNEL_OPTIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Link implements Action, ActionSubset {
   public static final String JSON_PROPERTY_TYPE = "type";

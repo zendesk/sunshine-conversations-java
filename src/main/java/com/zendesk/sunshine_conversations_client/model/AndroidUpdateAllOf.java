@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AndroidUpdateAllOf.JSON_PROPERTY_SENDER_ID,
   AndroidUpdateAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AndroidUpdateAllOf {
   public static final String JSON_PROPERTY_PROJECT_ID = "projectId";

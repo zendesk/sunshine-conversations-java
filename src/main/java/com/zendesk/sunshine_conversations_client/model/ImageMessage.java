@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ImageMessage.JSON_PROPERTY_ACTIONS,
   ImageMessage.JSON_PROPERTY_ATTACHMENT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ImageMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

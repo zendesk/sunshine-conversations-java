@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TemplateMessage.JSON_PROPERTY_TYPE,
   TemplateMessage.JSON_PROPERTY_TEMPLATE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TemplateMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

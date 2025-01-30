@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserMergeEventAllOfPayloadMergedConversations.JSON_PROPERTY_SURVIVING,
   UserMergeEventAllOfPayloadMergedConversations.JSON_PROPERTY_DISCARDED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserMergeEventAllOfPayloadMergedConversations {
   public static final String JSON_PROPERTY_SURVIVING = "surviving";

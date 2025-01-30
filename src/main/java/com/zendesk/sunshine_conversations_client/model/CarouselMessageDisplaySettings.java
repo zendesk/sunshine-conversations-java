@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   CarouselMessageDisplaySettings.JSON_PROPERTY_IMAGE_ASPECT_RATIO
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class CarouselMessageDisplaySettings {
   /**

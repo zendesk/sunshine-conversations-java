@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   WebhookListResponse.JSON_PROPERTY_WEBHOOKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebhookListResponse {
   public static final String JSON_PROPERTY_WEBHOOKS = "webhooks";

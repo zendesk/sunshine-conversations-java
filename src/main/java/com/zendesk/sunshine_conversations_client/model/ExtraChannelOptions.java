@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ExtraChannelOptions.JSON_PROPERTY_MESSENGER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ExtraChannelOptions {
   public static final String JSON_PROPERTY_MESSENGER = "messenger";

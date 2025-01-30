@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ClientAssociation.JSON_PROPERTY_TYPE,
   ClientAssociation.JSON_PROPERTY_CLIENT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ClientAssociation {
   public static final String JSON_PROPERTY_TYPE = "type";

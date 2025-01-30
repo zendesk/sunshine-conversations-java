@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppKey.JSON_PROPERTY_DISPLAY_NAME,
   AppKey.JSON_PROPERTY_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppKey {
   public static final String JSON_PROPERTY_ID = "id";

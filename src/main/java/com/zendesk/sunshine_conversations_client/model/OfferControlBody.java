@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   OfferControlBody.JSON_PROPERTY_SWITCHBOARD_INTEGRATION,
   OfferControlBody.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class OfferControlBody {
   public static final String JSON_PROPERTY_SWITCHBOARD_INTEGRATION = "switchboardIntegration";

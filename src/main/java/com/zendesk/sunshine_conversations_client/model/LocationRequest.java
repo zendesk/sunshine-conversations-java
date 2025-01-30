@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationRequest.JSON_PROPERTY_TEXT,
   LocationRequest.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class LocationRequest implements Action {
   public static final String JSON_PROPERTY_TYPE = "type";

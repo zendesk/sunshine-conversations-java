@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MessengerAllOf.JSON_PROPERTY_PAGE_ID,
   MessengerAllOf.JSON_PROPERTY_PAGE_NAME
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessengerAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

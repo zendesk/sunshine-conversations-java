@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserAllOf.JSON_PROPERTY_METADATA,
   UserAllOf.JSON_PROPERTY_IDENTITIES
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserAllOf {
   public static final String JSON_PROPERTY_SIGNED_UP_AT = "signedUpAt";

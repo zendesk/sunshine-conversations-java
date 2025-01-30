@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Page.JSON_PROPERTY_BEFORE,
   Page.JSON_PROPERTY_SIZE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Page {
   public static final String JSON_PROPERTY_AFTER = "after";

@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ClientAddEventAllOfPayload.JSON_PROPERTY_REASON,
   ClientAddEventAllOfPayload.JSON_PROPERTY_SOURCE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ClientAddEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";

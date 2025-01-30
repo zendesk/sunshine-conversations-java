@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   UserRemoveEventAllOfPayload.JSON_PROPERTY_USER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserRemoveEventAllOfPayload {
   public static final String JSON_PROPERTY_USER = "user";

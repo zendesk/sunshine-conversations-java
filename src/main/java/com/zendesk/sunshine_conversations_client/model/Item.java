@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Item.JSON_PROPERTY_ACTIONS,
   Item.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Item {
   public static final String JSON_PROPERTY_TITLE = "title";

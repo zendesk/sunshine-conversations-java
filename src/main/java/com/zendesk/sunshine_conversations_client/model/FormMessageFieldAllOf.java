@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormMessageFieldAllOf.JSON_PROPERTY_MAX_SIZE,
   FormMessageFieldAllOf.JSON_PROPERTY_OPTIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormMessageFieldAllOf {
   public static final String JSON_PROPERTY_PLACEHOLDER = "placeholder";

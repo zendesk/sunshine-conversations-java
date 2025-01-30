@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardOfferControlAllOfPayload.JSON_PROPERTY_CONVERSATION,
   SwitchboardOfferControlAllOfPayload.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardOfferControlAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";

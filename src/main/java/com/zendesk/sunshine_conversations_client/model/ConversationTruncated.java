@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationTruncated.JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION,
   ConversationTruncated.JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationTruncated {
   public static final String JSON_PROPERTY_ID = "id";

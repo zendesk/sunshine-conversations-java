@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   MessageOverrideWhatsapp.JSON_PROPERTY_WHATSAPP
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageOverrideWhatsapp {
   public static final String JSON_PROPERTY_WHATSAPP = "whatsapp";

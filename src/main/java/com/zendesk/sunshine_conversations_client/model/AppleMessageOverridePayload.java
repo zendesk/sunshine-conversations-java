@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppleMessageOverridePayload.JSON_PROPERTY_PAYLOAD,
   AppleMessageOverridePayload.JSON_PROPERTY_WITH_CAPABILITIES
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppleMessageOverridePayload {
   public static final String JSON_PROPERTY_PAYLOAD = "payload";

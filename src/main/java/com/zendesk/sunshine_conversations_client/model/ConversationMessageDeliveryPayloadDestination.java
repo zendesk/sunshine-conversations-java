@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationMessageDeliveryPayloadDestination.JSON_PROPERTY_TYPE,
   ConversationMessageDeliveryPayloadDestination.JSON_PROPERTY_INTEGRATION_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationMessageDeliveryPayloadDestination {
   public static final String JSON_PROPERTY_TYPE = "type";

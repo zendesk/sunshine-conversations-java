@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardOfferControlFailure.JSON_PROPERTY_CREATED_AT,
   SwitchboardOfferControlFailure.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardOfferControlFailure {
   public static final String JSON_PROPERTY_ID = "id";

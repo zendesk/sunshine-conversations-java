@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationReferralEvent.JSON_PROPERTY_CREATED_AT,
   ConversationReferralEvent.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationReferralEvent {
   public static final String JSON_PROPERTY_ID = "id";

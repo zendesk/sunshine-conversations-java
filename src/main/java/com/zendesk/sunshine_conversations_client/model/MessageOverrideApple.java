@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   MessageOverrideApple.JSON_PROPERTY_APPLE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageOverrideApple {
   public static final String JSON_PROPERTY_APPLE = "apple";

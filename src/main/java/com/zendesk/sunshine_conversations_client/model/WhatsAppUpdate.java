@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WhatsAppUpdate.JSON_PROPERTY_ACCOUNT_ID,
   WhatsAppUpdate.JSON_PROPERTY_ACCOUNT_MANAGEMENT_ACCESS_TOKEN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WhatsAppUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

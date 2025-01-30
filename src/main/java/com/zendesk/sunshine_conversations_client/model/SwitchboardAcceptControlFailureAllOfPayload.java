@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardAcceptControlFailureAllOfPayload.JSON_PROPERTY_CONVERSATION,
   SwitchboardAcceptControlFailureAllOfPayload.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardAcceptControlFailureAllOfPayload {
   public static final String JSON_PROPERTY_ERROR = "error";

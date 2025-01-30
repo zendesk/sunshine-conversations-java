@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationListFilter.JSON_PROPERTY_USER_ID,
   ConversationListFilter.JSON_PROPERTY_USER_EXTERNAL_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationListFilter {
   public static final String JSON_PROPERTY_USER_ID = "userId";

@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormResponseMessage.JSON_PROPERTY_FIELDS,
   FormResponseMessage.JSON_PROPERTY_TEXT_FALLBACK
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormResponseMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

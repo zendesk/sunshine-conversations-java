@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Postback.JSON_PROPERTY_PAYLOAD,
   Postback.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Postback implements Action, ActionSubset {
   public static final String JSON_PROPERTY_TYPE = "type";

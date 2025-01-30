@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationPostbackEventAllOfPayload.JSON_PROPERTY_USER,
   ConversationPostbackEventAllOfPayload.JSON_PROPERTY_SOURCE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationPostbackEventAllOfPayload {
   public static final String JSON_PROPERTY_POSTBACK = "postback";

@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   Target.JSON_PROPERTY_CONVERSATION_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Target {
   public static final String JSON_PROPERTY_CONVERSATION_ID = "conversationId";

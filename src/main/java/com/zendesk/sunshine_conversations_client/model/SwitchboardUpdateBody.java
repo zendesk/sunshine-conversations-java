@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardUpdateBody.JSON_PROPERTY_ENABLED,
   SwitchboardUpdateBody.JSON_PROPERTY_DEFAULT_SWITCHBOARD_INTEGRATION_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardUpdateBody {
   public static final String JSON_PROPERTY_ENABLED = "enabled";

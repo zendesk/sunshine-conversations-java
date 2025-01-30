@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Client.JSON_PROPERTY_INFO,
   Client.JSON_PROPERTY_RAW
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Client {
   public static final String JSON_PROPERTY_ID = "id";

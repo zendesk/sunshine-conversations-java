@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Author.JSON_PROPERTY_DISPLAY_NAME,
   Author.JSON_PROPERTY_AVATAR_URL
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Author {
   /**

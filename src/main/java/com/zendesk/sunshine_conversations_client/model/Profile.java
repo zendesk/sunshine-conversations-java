@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Profile.JSON_PROPERTY_AVATAR_URL,
   Profile.JSON_PROPERTY_LOCALE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Profile {
   public static final String JSON_PROPERTY_GIVEN_NAME = "givenName";

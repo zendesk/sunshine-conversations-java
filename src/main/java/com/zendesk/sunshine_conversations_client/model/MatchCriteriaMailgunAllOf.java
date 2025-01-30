@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaMailgunAllOf.JSON_PROPERTY_ADDRESS,
   MatchCriteriaMailgunAllOf.JSON_PROPERTY_SUBJECT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MatchCriteriaMailgunAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

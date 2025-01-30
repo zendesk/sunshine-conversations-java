@@ -47,6 +47,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Conversation.JSON_PROPERTY_LAST_UPDATED_AT,
   Conversation.JSON_PROPERTY_CREATED_AT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Conversation {
   public static final String JSON_PROPERTY_ID = "id";

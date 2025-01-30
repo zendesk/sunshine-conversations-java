@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AppleUpdateAllOf.JSON_PROPERTY_AUTHENTICATION_MESSAGE_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppleUpdateAllOf {
   public static final String JSON_PROPERTY_AUTHENTICATION_MESSAGE_SECRET = "authenticationMessageSecret";

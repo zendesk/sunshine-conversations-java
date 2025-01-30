@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AndroidUpdate.JSON_PROPERTY_SENDER_ID,
   AndroidUpdate.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AndroidUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TwitterAllOf.JSON_PROPERTY_ACCESS_TOKEN_KEY,
   TwitterAllOf.JSON_PROPERTY_ACCESS_TOKEN_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TwitterAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

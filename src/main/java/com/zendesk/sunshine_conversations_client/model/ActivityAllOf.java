@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ActivityAllOf.JSON_PROPERTY_SOURCE,
   ActivityAllOf.JSON_PROPERTY_AUTHOR
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ActivityAllOf {
   public static final String JSON_PROPERTY_SOURCE = "source";

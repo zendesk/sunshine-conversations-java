@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Meta.JSON_PROPERTY_AFTER_CURSOR,
   Meta.JSON_PROPERTY_BEFORE_CURSOR
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Meta {
   public static final String JSON_PROPERTY_HAS_MORE = "hasMore";

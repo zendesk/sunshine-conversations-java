@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   IntegrationListResponse.JSON_PROPERTY_META,
   IntegrationListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationListResponse {
   public static final String JSON_PROPERTY_INTEGRATIONS = "integrations";

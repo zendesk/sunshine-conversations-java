@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebhookBody.JSON_PROPERTY_INCLUDE_FULL_USER,
   WebhookBody.JSON_PROPERTY_INCLUDE_FULL_SOURCE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebhookBody {
   public static final String JSON_PROPERTY_TARGET = "target";

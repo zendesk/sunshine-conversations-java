@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Field.JSON_PROPERTY_EMAIL,
   Field.JSON_PROPERTY_SELECT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Field {
   /**

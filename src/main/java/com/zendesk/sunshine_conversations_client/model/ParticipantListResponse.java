@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ParticipantListResponse.JSON_PROPERTY_META,
   ParticipantListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ParticipantListResponse {
   public static final String JSON_PROPERTY_PARTICIPANTS = "participants";

@@ -40,6 +40,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ListMessage.JSON_PROPERTY_ITEMS,
   ListMessage.JSON_PROPERTY_ACTIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ListMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

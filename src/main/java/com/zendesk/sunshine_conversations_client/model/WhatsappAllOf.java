@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WhatsappAllOf.JSON_PROPERTY_ACCOUNT_MANAGEMENT_ACCESS_TOKEN,
   WhatsappAllOf.JSON_PROPERTY_PHONE_NUMBER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WhatsappAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

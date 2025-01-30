@@ -42,6 +42,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SourceWithCampaignWebhook.JSON_PROPERTY_DEVICE,
   SourceWithCampaignWebhook.JSON_PROPERTY_CAMPAIGN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SourceWithCampaignWebhook {
   public static final String JSON_PROPERTY_TYPE = "type";

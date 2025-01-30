@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationJoinEventAllOfPayload.JSON_PROPERTY_CONVERSATION,
   ConversationJoinEventAllOfPayload.JSON_PROPERTY_USER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationJoinEventAllOfPayload {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";

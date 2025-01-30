@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaBase.JSON_PROPERTY_INTEGRATION_ID,
   MatchCriteriaBase.JSON_PROPERTY_PRIMARY
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MatchCriteriaBase {
   public static final String JSON_PROPERTY_TYPE = "type";

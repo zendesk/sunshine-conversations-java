@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ParticipantWithUserId.JSON_PROPERTY_USER_ID,
   ParticipantWithUserId.JSON_PROPERTY_SUBSCRIBE_S_D_K_CLIENT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ParticipantWithUserId {
   public static final String JSON_PROPERTY_USER_ID = "userId";

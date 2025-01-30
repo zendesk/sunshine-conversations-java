@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Buy.JSON_PROPERTY_CURRENCY,
   Buy.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Buy implements Action, ActionSubset {
   public static final String JSON_PROPERTY_TYPE = "type";

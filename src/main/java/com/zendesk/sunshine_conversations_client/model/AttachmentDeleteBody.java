@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AttachmentDeleteBody.JSON_PROPERTY_MEDIA_URL
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AttachmentDeleteBody {
   public static final String JSON_PROPERTY_MEDIA_URL = "mediaUrl";

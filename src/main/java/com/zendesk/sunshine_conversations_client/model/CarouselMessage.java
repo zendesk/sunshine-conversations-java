@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CarouselMessage.JSON_PROPERTY_ITEMS,
   CarouselMessage.JSON_PROPERTY_DISPLAY_SETTINGS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class CarouselMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

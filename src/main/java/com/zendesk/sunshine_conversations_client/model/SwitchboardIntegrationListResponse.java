@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   SwitchboardIntegrationListResponse.JSON_PROPERTY_SWITCHBOARD_INTEGRATIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardIntegrationListResponse {
   public static final String JSON_PROPERTY_SWITCHBOARD_INTEGRATIONS = "switchboardIntegrations";

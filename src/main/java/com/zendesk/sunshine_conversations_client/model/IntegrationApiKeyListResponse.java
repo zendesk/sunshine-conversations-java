@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   IntegrationApiKeyListResponse.JSON_PROPERTY_KEYS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationApiKeyListResponse {
   public static final String JSON_PROPERTY_KEYS = "keys";

@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormMessageField.JSON_PROPERTY_MAX_SIZE,
   FormMessageField.JSON_PROPERTY_OPTIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormMessageField {
   /**

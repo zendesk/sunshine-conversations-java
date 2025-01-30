@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TwilioAllOf.JSON_PROPERTY_PHONE_NUMBER_SID,
   TwilioAllOf.JSON_PROPERTY_MESSAGING_SERVICE_SID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TwilioAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

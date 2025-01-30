@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DefaultResponder.JSON_PROPERTY_DEFAULT_RESPONDER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class DefaultResponder {
   public static final String JSON_PROPERTY_DEFAULT_RESPONDER = "defaultResponder";

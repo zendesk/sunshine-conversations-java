@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ExtraChannelOptionsMessenger.JSON_PROPERTY_MESSENGER_EXTENSIONS,
   ExtraChannelOptionsMessenger.JSON_PROPERTY_WEBVIEW_SHARE_BUTTON
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ExtraChannelOptionsMessenger {
   public static final String JSON_PROPERTY_MESSENGER_EXTENSIONS = "messenger_extensions";

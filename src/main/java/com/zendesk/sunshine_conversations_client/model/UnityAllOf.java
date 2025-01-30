@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UnityAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS,
   UnityAllOf.JSON_PROPERTY_ATTACHMENTS_ENABLED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UnityAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

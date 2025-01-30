@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationMessageCoordinates.JSON_PROPERTY_LAT,
   LocationMessageCoordinates.JSON_PROPERTY_LONG
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class LocationMessageCoordinates {
   public static final String JSON_PROPERTY_LAT = "lat";

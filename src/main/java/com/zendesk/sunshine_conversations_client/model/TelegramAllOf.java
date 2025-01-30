@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TelegramAllOf.JSON_PROPERTY_USERNAME,
   TelegramAllOf.JSON_PROPERTY_BOT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TelegramAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

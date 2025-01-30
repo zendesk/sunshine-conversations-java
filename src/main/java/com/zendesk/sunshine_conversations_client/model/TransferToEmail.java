@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TransferToEmail.JSON_PROPERTY_TYPE,
   TransferToEmail.JSON_PROPERTY_DATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TransferToEmail implements ActivityMessage {
   public static final String JSON_PROPERTY_TYPE = "type";

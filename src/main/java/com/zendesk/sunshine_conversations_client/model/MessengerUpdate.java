@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MessengerUpdate.JSON_PROPERTY_DEFAULT_RESPONDER_ID,
   MessengerUpdate.JSON_PROPERTY_PAGE_ACCESS_TOKEN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessengerUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

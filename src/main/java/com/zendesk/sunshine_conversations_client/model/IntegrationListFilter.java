@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   IntegrationListFilter.JSON_PROPERTY_TYPES
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationListFilter {
   public static final String JSON_PROPERTY_TYPES = "types";

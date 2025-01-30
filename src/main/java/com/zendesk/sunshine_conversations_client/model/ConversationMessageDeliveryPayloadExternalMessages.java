@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ConversationMessageDeliveryPayloadExternalMessages.JSON_PROPERTY_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationMessageDeliveryPayloadExternalMessages {
   public static final String JSON_PROPERTY_ID = "id";

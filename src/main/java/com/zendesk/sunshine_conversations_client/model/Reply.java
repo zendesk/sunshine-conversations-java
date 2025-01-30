@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Reply.JSON_PROPERTY_METADATA,
   Reply.JSON_PROPERTY_ICON_URL
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Reply implements Action {
   public static final String JSON_PROPERTY_TYPE = "type";

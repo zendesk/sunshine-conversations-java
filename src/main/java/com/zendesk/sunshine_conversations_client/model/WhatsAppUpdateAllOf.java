@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WhatsAppUpdateAllOf.JSON_PROPERTY_ACCOUNT_ID,
   WhatsAppUpdateAllOf.JSON_PROPERTY_ACCOUNT_MANAGEMENT_ACCESS_TOKEN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WhatsAppUpdateAllOf {
   public static final String JSON_PROPERTY_HSM_FALLBACK_LANGUAGE = "hsmFallbackLanguage";

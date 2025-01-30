@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MessageListResponse.JSON_PROPERTY_META,
   MessageListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageListResponse {
   public static final String JSON_PROPERTY_MESSAGES = "messages";

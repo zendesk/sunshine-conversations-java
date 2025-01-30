@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ParticipantResponse.JSON_PROPERTY_PARTICIPANT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ParticipantResponse {
   public static final String JSON_PROPERTY_PARTICIPANT = "participant";

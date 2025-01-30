@@ -44,6 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Message.JSON_PROPERTY_METADATA,
   Message.JSON_PROPERTY_DELETED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Message {
   public static final String JSON_PROPERTY_ID = "id";

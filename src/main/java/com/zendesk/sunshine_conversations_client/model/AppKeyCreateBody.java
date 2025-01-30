@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   AppKeyCreateBody.JSON_PROPERTY_DISPLAY_NAME
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppKeyCreateBody {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

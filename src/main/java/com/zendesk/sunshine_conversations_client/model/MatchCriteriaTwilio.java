@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaTwilio.JSON_PROPERTY_PRIMARY,
   MatchCriteriaTwilio.JSON_PROPERTY_PHONE_NUMBER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MatchCriteriaTwilio implements MatchCriteria {
   public static final String JSON_PROPERTY_TYPE = "type";

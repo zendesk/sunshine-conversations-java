@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   TextMessage.JSON_PROPERTY_ACTIONS,
   TextMessage.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class TextMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

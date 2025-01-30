@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ReferralDetails.JSON_PROPERTY_TYPE,
   ReferralDetails.JSON_PROPERTY_AD_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ReferralDetails {
   public static final String JSON_PROPERTY_SOURCE = "source";

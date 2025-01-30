@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserUpdateEventAllOfPayload.JSON_PROPERTY_REASON,
   UserUpdateEventAllOfPayload.JSON_PROPERTY_SOURCE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserUpdateEventAllOfPayload {
   public static final String JSON_PROPERTY_USER = "user";

@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Source.JSON_PROPERTY_CLIENT,
   Source.JSON_PROPERTY_DEVICE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Source {
   public static final String JSON_PROPERTY_TYPE = "type";

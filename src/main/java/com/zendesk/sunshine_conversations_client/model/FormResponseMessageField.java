@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FormResponseMessageField.JSON_PROPERTY_SELECT,
   FormResponseMessageField.JSON_PROPERTY_QUOTED_MESSAGE_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormResponseMessageField {
   /**

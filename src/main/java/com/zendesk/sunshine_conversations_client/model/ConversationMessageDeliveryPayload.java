@@ -44,6 +44,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationMessageDeliveryPayload.JSON_PROPERTY_EXTERNAL_MESSAGES,
   ConversationMessageDeliveryPayload.JSON_PROPERTY_IS_FINAL_EVENT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationMessageDeliveryPayload {
   public static final String JSON_PROPERTY_USER = "user";

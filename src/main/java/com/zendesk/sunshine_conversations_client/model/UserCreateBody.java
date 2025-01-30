@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserCreateBody.JSON_PROPERTY_PROFILE,
   UserCreateBody.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserCreateBody {
   public static final String JSON_PROPERTY_EXTERNAL_ID = "externalId";

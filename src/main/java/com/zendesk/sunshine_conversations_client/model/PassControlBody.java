@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   PassControlBody.JSON_PROPERTY_SWITCHBOARD_INTEGRATION,
   PassControlBody.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class PassControlBody {
   public static final String JSON_PROPERTY_SWITCHBOARD_INTEGRATION = "switchboardIntegration";

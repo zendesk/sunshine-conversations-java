@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Confirmation.JSON_PROPERTY_TYPE,
   Confirmation.JSON_PROPERTY_MESSAGE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Confirmation {
   /**

@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DeviceListResponse.JSON_PROPERTY_DEVICES
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class DeviceListResponse {
   public static final String JSON_PROPERTY_DEVICES = "devices";

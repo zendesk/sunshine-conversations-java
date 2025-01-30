@@ -51,6 +51,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS,
   WebAllOf.JSON_PROPERTY_ATTACHMENTS_ENABLED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

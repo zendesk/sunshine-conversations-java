@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   FileMessage.JSON_PROPERTY_TEXT,
   FileMessage.JSON_PROPERTY_ATTACHMENT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FileMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

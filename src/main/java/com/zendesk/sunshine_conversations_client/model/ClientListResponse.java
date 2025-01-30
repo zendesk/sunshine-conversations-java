@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ClientListResponse.JSON_PROPERTY_META,
   ClientListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ClientListResponse {
   public static final String JSON_PROPERTY_CLIENTS = "clients";

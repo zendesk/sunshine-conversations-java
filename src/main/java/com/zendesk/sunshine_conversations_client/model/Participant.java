@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Participant.JSON_PROPERTY_USER_EXTERNAL_ID,
   Participant.JSON_PROPERTY_LAST_READ
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Participant {
   public static final String JSON_PROPERTY_ID = "id";

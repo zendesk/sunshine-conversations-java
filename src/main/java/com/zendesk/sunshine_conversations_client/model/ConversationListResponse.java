@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationListResponse.JSON_PROPERTY_META,
   ConversationListResponse.JSON_PROPERTY_LINKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationListResponse {
   public static final String JSON_PROPERTY_CONVERSATIONS = "conversations";

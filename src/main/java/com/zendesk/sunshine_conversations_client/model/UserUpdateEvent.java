@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserUpdateEvent.JSON_PROPERTY_CREATED_AT,
   UserUpdateEvent.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserUpdateEvent {
   public static final String JSON_PROPERTY_ID = "id";

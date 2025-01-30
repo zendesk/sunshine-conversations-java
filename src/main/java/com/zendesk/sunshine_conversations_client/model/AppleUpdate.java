@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppleUpdate.JSON_PROPERTY_DEFAULT_RESPONDER_ID,
   AppleUpdate.JSON_PROPERTY_AUTHENTICATION_MESSAGE_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppleUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

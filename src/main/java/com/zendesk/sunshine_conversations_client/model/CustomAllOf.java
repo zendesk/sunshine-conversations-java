@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   CustomAllOf.JSON_PROPERTY_TYPE,
   CustomAllOf.JSON_PROPERTY_WEBHOOKS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class CustomAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

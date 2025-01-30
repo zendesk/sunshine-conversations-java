@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   FormResponseMessageFieldAllOf.JSON_PROPERTY_QUOTED_MESSAGE_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class FormResponseMessageFieldAllOf {
   public static final String JSON_PROPERTY_QUOTED_MESSAGE_ID = "quotedMessageId";

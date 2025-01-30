@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   MessageOverrideMessenger.JSON_PROPERTY_MESSENGER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageOverrideMessenger {
   public static final String JSON_PROPERTY_MESSENGER = "messenger";

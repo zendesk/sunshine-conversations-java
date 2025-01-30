@@ -43,6 +43,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   User.JSON_PROPERTY_METADATA,
   User.JSON_PROPERTY_IDENTITIES
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class User {
   public static final String JSON_PROPERTY_ID = "id";

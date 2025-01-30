@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   WebhookResponse.JSON_PROPERTY_WEBHOOK
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebhookResponse {
   public static final String JSON_PROPERTY_WEBHOOK = "webhook";

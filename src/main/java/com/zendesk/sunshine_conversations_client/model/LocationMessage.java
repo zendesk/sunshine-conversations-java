@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LocationMessage.JSON_PROPERTY_COORDINATES,
   LocationMessage.JSON_PROPERTY_LOCATION
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class LocationMessage implements Content {
   public static final String JSON_PROPERTY_TYPE = "type";

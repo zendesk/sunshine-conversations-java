@@ -41,6 +41,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationCreateBody.JSON_PROPERTY_ICON_URL,
   ConversationCreateBody.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationCreateBody {
   public static final String JSON_PROPERTY_TYPE = "type";

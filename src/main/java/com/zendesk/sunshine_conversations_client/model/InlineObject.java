@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InlineObject.JSON_PROPERTY_CLIENT_ID,
   InlineObject.JSON_PROPERTY_CLIENT_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class InlineObject {
   public static final String JSON_PROPERTY_CODE = "code";

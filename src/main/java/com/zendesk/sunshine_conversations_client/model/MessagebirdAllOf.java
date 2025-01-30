@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MessagebirdAllOf.JSON_PROPERTY_ORIGINATOR,
   MessagebirdAllOf.JSON_PROPERTY_WEBHOOK_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessagebirdAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

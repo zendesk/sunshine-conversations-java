@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppUpdateBody.JSON_PROPERTY_SETTINGS,
   AppUpdateBody.JSON_PROPERTY_METADATA
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppUpdateBody {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

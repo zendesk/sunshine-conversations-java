@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardIntegrationWebhook.JSON_PROPERTY_INTEGRATION_ID,
   SwitchboardIntegrationWebhook.JSON_PROPERTY_INTEGRATION_TYPE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardIntegrationWebhook {
   public static final String JSON_PROPERTY_ID = "id";

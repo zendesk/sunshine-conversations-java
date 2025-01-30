@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ConversationResponse.JSON_PROPERTY_CONVERSATION
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationResponse {
   public static final String JSON_PROPERTY_CONVERSATION = "conversation";

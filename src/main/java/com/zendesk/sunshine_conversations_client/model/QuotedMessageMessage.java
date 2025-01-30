@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   QuotedMessageMessage.JSON_PROPERTY_TYPE,
   QuotedMessageMessage.JSON_PROPERTY_MESSAGE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class QuotedMessageMessage implements QuotedMessage {
   public static final String JSON_PROPERTY_TYPE = "type";

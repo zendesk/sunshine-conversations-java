@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Links.JSON_PROPERTY_PREV,
   Links.JSON_PROPERTY_NEXT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Links {
   public static final String JSON_PROPERTY_PREV = "prev";

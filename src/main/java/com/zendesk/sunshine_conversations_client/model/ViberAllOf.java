@@ -31,6 +31,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ViberAllOf.JSON_PROPERTY_URI,
   ViberAllOf.JSON_PROPERTY_ACCOUNT_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ViberAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

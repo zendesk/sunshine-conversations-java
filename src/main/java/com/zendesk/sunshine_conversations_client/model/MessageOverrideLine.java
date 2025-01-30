@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   MessageOverrideLine.JSON_PROPERTY_LINE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MessageOverrideLine {
   public static final String JSON_PROPERTY_LINE = "line";

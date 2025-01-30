@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   SourceWithCampaignWebhookAllOf.JSON_PROPERTY_CAMPAIGN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SourceWithCampaignWebhookAllOf {
   public static final String JSON_PROPERTY_CAMPAIGN = "campaign";

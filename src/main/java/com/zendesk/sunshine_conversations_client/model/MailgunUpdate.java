@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MailgunUpdate.JSON_PROPERTY_HIDE_UNSUBSCRIBE_LINK,
   MailgunUpdate.JSON_PROPERTY_FROM_ADDRESS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MailgunUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

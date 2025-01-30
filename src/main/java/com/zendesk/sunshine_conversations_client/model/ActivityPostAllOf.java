@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ActivityPostAllOf.JSON_PROPERTY_AUTHOR
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ActivityPostAllOf {
   public static final String JSON_PROPERTY_AUTHOR = "author";

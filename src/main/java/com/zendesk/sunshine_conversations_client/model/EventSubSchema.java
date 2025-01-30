@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   EventSubSchema.JSON_PROPERTY_TYPE,
   EventSubSchema.JSON_PROPERTY_CREATED_AT
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class EventSubSchema {
   public static final String JSON_PROPERTY_ID = "id";

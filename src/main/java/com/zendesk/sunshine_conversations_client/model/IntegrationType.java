@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   IntegrationType.JSON_PROPERTY_INTEGRATION_TYPE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationType implements Destination {
   public static final String JSON_PROPERTY_INTEGRATION_TYPE = "integrationType";

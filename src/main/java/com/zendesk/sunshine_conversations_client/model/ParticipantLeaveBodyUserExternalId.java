@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   ParticipantLeaveBodyUserExternalId.JSON_PROPERTY_USER_EXTERNAL_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ParticipantLeaveBodyUserExternalId implements ParticipantLeaveBody {
   public static final String JSON_PROPERTY_USER_EXTERNAL_ID = "userExternalId";

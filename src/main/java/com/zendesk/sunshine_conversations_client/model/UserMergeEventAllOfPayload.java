@@ -39,6 +39,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserMergeEventAllOfPayload.JSON_PROPERTY_DISCARDED_METADATA,
   UserMergeEventAllOfPayload.JSON_PROPERTY_REASON
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserMergeEventAllOfPayload {
   public static final String JSON_PROPERTY_MERGED_USERS = "mergedUsers";

@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   UserTruncated.JSON_PROPERTY_ID,
   UserTruncated.JSON_PROPERTY_EXTERNAL_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class UserTruncated {
   public static final String JSON_PROPERTY_ID = "id";

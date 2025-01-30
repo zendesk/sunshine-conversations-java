@@ -49,6 +49,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   WebUpdateAllOf.JSON_PROPERTY_PRECHAT_CAPTURE,
   WebUpdateAllOf.JSON_PROPERTY_CAN_USER_CREATE_MORE_CONVERSATIONS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class WebUpdateAllOf {
   public static final String JSON_PROPERTY_BRAND_COLOR = "brandColor";

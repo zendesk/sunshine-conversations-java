@@ -30,6 +30,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   DownloadMessageRefBodyAllOfApple.JSON_PROPERTY_INTERACTIVE_DATA_REF
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class DownloadMessageRefBodyAllOfApple {
   public static final String JSON_PROPERTY_INTERACTIVE_DATA_REF = "interactiveDataRef";

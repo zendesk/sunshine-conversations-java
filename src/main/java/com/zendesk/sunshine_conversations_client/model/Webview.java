@@ -45,6 +45,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   Webview.JSON_PROPERTY_FALLBACK,
   Webview.JSON_PROPERTY_OPEN_ON_RECEIVE
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class Webview implements Action, ActionSubset {
   public static final String JSON_PROPERTY_TYPE = "type";

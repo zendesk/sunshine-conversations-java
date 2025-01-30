@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   InstagramUpdateAllOf.JSON_PROPERTY_PAGE_ACCESS_TOKEN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class InstagramUpdateAllOf {
   public static final String JSON_PROPERTY_PAGE_ACCESS_TOKEN = "pageAccessToken";

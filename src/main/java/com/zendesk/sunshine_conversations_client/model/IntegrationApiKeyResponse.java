@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 @JsonPropertyOrder({
   IntegrationApiKeyResponse.JSON_PROPERTY_KEY
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class IntegrationApiKeyResponse {
   public static final String JSON_PROPERTY_KEY = "key";

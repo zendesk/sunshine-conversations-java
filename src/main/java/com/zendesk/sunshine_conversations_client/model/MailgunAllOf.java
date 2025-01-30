@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MailgunAllOf.JSON_PROPERTY_HIDE_UNSUBSCRIBE_LINK,
   MailgunAllOf.JSON_PROPERTY_FROM_ADDRESS
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MailgunAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

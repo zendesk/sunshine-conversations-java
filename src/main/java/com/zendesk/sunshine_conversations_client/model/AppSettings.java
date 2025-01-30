@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppSettings.JSON_PROPERTY_MULTI_CONVO_ENABLED,
   AppSettings.JSON_PROPERTY_APP_LOCALIZATION_ENABLED
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppSettings {
   public static final String JSON_PROPERTY_CONVERSATION_RETENTION_SECONDS = "conversationRetentionSeconds";

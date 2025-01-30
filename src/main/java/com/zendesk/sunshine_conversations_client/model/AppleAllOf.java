@@ -32,6 +32,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   AppleAllOf.JSON_PROPERTY_MSP_ID,
   AppleAllOf.JSON_PROPERTY_AUTHENTICATION_MESSAGE_SECRET
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class AppleAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

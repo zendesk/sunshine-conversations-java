@@ -38,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InstagramUpdate.JSON_PROPERTY_DEFAULT_RESPONDER_ID,
   InstagramUpdate.JSON_PROPERTY_PAGE_ACCESS_TOKEN
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class InstagramUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";

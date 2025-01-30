@@ -37,6 +37,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   InstagramAllOf.JSON_PROPERTY_USERNAME,
   InstagramAllOf.JSON_PROPERTY_USER_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class InstagramAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

@@ -33,6 +33,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   DownloadMessageRefBodyAllOfAppleInteractiveDataRef.JSON_PROPERTY_SIGNATURE,
   DownloadMessageRefBodyAllOfAppleInteractiveDataRef.JSON_PROPERTY_OWNER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class DownloadMessageRefBodyAllOfAppleInteractiveDataRef {
   public static final String JSON_PROPERTY_URL = "url";

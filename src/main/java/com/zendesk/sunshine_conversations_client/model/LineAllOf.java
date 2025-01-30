@@ -35,6 +35,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   LineAllOf.JSON_PROPERTY_QR_CODE_URL,
   LineAllOf.JSON_PROPERTY_LINE_ID
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class LineAllOf {
   public static final String JSON_PROPERTY_TYPE = "type";

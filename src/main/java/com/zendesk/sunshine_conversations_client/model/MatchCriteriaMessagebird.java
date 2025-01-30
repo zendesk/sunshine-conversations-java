@@ -36,6 +36,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   MatchCriteriaMessagebird.JSON_PROPERTY_PRIMARY,
   MatchCriteriaMessagebird.JSON_PROPERTY_PHONE_NUMBER
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class MatchCriteriaMessagebird implements MatchCriteria {
   public static final String JSON_PROPERTY_TYPE = "type";

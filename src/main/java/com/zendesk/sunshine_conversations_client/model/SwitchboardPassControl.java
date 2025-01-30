@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   SwitchboardPassControl.JSON_PROPERTY_CREATED_AT,
   SwitchboardPassControl.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class SwitchboardPassControl {
   public static final String JSON_PROPERTY_ID = "id";

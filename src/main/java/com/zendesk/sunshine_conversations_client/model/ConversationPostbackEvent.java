@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
   ConversationPostbackEvent.JSON_PROPERTY_CREATED_AT,
   ConversationPostbackEvent.JSON_PROPERTY_PAYLOAD
 })
+@com.fasterxml.jackson.annotation.JsonIgnoreProperties(ignoreUnknown &#x3D; true)
 
 public class ConversationPostbackEvent {
   public static final String JSON_PROPERTY_ID = "id";
