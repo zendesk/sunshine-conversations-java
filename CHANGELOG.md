@@ -1,10 +1,16 @@
 # Changelog
 
+## [14.3.5] - 2025-2-1
+
+### Added
+
+- Update author.subtype enum to include 'activity'.
+
 ## [14.3.4] - 2025-1-14
 
 ### Added 
 
-- Add a side note in the api documentation about providing authentication header when accessing mediaUrl with private attachments
+- Add a side note in the api documentation about providing authentication header when accessing mediaUrl with private attachments.
 
 ## [14.3.1 - 14.3.3] - 2025-1-7
 

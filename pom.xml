@@ -5,8 +5,8 @@
     <artifactId>sunshine-conversations-client</artifactId>
     <packaging>jar</packaging>
     <name>sunshine-conversations-client</name>
-    <version>14.3.4</version>
-    <description>com.zendesk-sunshine-conversations-client-14.3.4</description>
+    <version>14.3.5</version>
+    <description>com.zendesk-sunshine-conversations-client-14.3.5</description>
     <url>https://zendesk.com</url>
     <scm>
         <connection>https://github.com/zendesk/sunshine-conversations-java</connection>
