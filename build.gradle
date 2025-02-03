@@ -6,7 +6,7 @@ apply plugin: 'eclipse'
 apply plugin: 'signing'
 
 group = 'com.zendesk'
-version = '14.3.5'
+version = '14.4.0-SNAPSHOT'
 
 def calculateSnapshotVersion() {
     def sha = "git rev-parse --short HEAD".execute(null, project.rootDir).text.trim()
@@ -74,8 +74,8 @@ if(hasProperty('target') && target == 'android') {
             targetSdkVersion 23
         }
         compileOptions {
-            sourceCompatibility JavaVersion.VERSION_1_8
-            targetCompatibility JavaVersion.VERSION_1_8
+            sourceCompatibility JavaVersion.VERSION_17
+            targetCompatibility JavaVersion.VERSION_17
         }
 
         // Rename the aar correctly
@@ -141,7 +141,7 @@ ext {
     jackson_databind_version = "2.14.3"
     jackson_databind_nullable_version = "0.2.2"
     threetenbp_version = "2.15.2"
-    resteasy_version = "6.2.4.Final"
+    resteasy_version = "6.2.11.Final"
     junit_version = "5.9.2"
 }
 
