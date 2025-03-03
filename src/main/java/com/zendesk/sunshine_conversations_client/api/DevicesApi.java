@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.GenericType;
 
 import com.zendesk.sunshine_conversations_client.model.DeviceListResponse;
 import com.zendesk.sunshine_conversations_client.model.DeviceResponse;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +38,7 @@ public class DevicesApi {
 
   /**
    * Get Device
-   * Fetches a specific Device.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/users/:userId &#x60;&#x60;&#x60; 
+   * Fetches a specific Device. 
    * @param appId Identifies the app. (required)
    * @param userIdOrExternalId The user&#39;s id or externalId. (required)
    * @param deviceId The device&#39;s id. (required)
@@ -95,7 +96,7 @@ public class DevicesApi {
       }
   /**
    * List Devices
-   * Get all the devices for a particular user. The Devices are sorted based on last seen time.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/users/:userId/devices &#x60;&#x60;&#x60; 
+   * Get all the devices for a particular user. The Devices are sorted based on last seen time. 
    * @param appId Identifies the app. (required)
    * @param userIdOrExternalId The user&#39;s id or externalId. (required)
    * @return a {@code DeviceListResponse}
@@ -147,7 +148,7 @@ public class DevicesApi {
 
   /**
    * Get Device
-   * Fetches a specific Device.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/users/:userId &#x60;&#x60;&#x60; 
+   * Fetches a specific Device. 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
@@ -209,7 +210,7 @@ public class DevicesApi {
       }
   /**
    * List Devices
-   * Get all the devices for a particular user. The Devices are sorted based on last seen time.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/users/:userId/devices &#x60;&#x60;&#x60; 
+   * Get all the devices for a particular user. The Devices are sorted based on last seen time. 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)

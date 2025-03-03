@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Message not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## postMessage

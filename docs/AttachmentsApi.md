@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Attachment not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## uploadAttachment

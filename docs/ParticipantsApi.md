@@ -43,7 +43,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
-        ParticipantJoinBody participantJoinBody = new ParticipantJoinBody(); // ParticipantJoinBody | 
+        ParticipantJoinBody participantJoinBody = {"userId":"67a11490f0305f4a391e9f8a","subscribeSDKClient":true}; // ParticipantJoinBody | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         // Add required body parameters
@@ -88,8 +88,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Too many participants |  -  |
-| **404** | Conversation not found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 
 
 ## leaveConversation
@@ -125,7 +125,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         ParticipantsApi apiInstance = new ParticipantsApi(defaultClient);
-        ParticipantLeaveBody participantLeaveBody = new ParticipantLeaveBody(); // ParticipantLeaveBody | 
+        ParticipantLeaveBody participantLeaveBody = {"userId":"67a11490f0305f4a391e9f8a"}; // ParticipantLeaveBody | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         // Add required body parameters
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | User is not a member of the conversation |  -  |
+| **404** | Not found |  -  |
 
 
 ## listParticipants
@@ -251,6 +251,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | Invalid page query parameters |  -  |
+| **400** | Bad request |  -  |
 | **404** | Not found |  -  |
 

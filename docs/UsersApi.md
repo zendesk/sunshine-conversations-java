@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **409** | User already exists |  -  |
+| **409** | Conflict |  -  |
 
 
 ## deleteUser
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | User not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## deleteUserPersonalInformation
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | User not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## getUser
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | User not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## updateUser
@@ -406,5 +406,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | User not found |  -  |
+| **404** | Not found |  -  |
 

@@ -7,6 +7,7 @@ import com.zendesk.sunshine_conversations_client.Pair;
 
 import jakarta.ws.rs.core.GenericType;
 
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.UserCreateBody;
 import com.zendesk.sunshine_conversations_client.model.UserResponse;
 import com.zendesk.sunshine_conversations_client.model.UserUpdateBody;

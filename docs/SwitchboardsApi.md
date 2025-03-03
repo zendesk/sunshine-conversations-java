@@ -85,8 +85,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Only one switchboard can be created per app |  -  |
-| **404** | Not Found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 
 
 ## deleteSwitchboard
@@ -165,7 +165,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## listSwitchboards
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## updateSwitchboard
@@ -323,5 +323,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 

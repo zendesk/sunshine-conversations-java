@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Invalid integration type |  -  |
+| **400** | Bad request |  -  |
 
 
 ## deleteIntegration
@@ -167,8 +167,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | SDK integrations configured on Admin Center cannot be deleted |  -  |
-| **404** | Integration not found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 
 
 ## getIntegration
@@ -247,7 +247,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Integration not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## listIntegrations
@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | Invalid query parameters |  -  |
+| **400** | Bad request |  -  |
 
 
 ## updateIntegration
@@ -364,7 +364,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        IntegrationUpdate integrationUpdate = new IntegrationUpdate(); // IntegrationUpdate | 
+        IntegrationUpdate integrationUpdate = {"displayName":"My Test Integration"}; // IntegrationUpdate | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         // Add required body parameters
@@ -409,5 +409,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Integration not found |  -  |
+| **404** | Not found |  -  |
 

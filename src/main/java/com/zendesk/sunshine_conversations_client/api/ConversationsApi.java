@@ -14,6 +14,7 @@ import com.zendesk.sunshine_conversations_client.model.ConversationResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationUpdateBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;

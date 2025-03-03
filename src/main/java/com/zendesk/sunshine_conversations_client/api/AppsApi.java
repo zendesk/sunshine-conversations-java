@@ -12,6 +12,7 @@ import com.zendesk.sunshine_conversations_client.model.AppListFilter;
 import com.zendesk.sunshine_conversations_client.model.AppListResponse;
 import com.zendesk.sunshine_conversations_client.model.AppResponse;
 import com.zendesk.sunshine_conversations_client.model.AppUpdateBody;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;

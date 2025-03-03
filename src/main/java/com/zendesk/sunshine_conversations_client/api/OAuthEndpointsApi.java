@@ -74,7 +74,7 @@ public class OAuthEndpointsApi {
     
     
     final String[] localVarAccepts = {
-      
+      "text/plain"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -213,7 +213,7 @@ public class OAuthEndpointsApi {
     localVarHeaderParams.put("Authorization", "Bearer " + bearerToken);
 
     final String[] localVarAccepts = {
-      
+      "text/plain"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 

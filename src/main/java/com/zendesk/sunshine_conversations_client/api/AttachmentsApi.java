@@ -9,6 +9,7 @@ import jakarta.ws.rs.core.GenericType;
 
 import com.zendesk.sunshine_conversations_client.model.AttachmentDeleteBody;
 import com.zendesk.sunshine_conversations_client.model.AttachmentResponse;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import java.io.File;
 
 import java.util.ArrayList;

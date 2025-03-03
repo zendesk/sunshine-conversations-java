@@ -90,9 +90,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Bad Request |  -  |
+| **400** | Bad request |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## deleteWebhook
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## getWebhook
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## listWebhooks
@@ -334,7 +334,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## updateWebhook
@@ -417,6 +417,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | Bad Request |  -  |
-| **404** | Not Found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 

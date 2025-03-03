@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.GenericType;
 import com.zendesk.sunshine_conversations_client.model.ClientCreate;
 import com.zendesk.sunshine_conversations_client.model.ClientListResponse;
 import com.zendesk.sunshine_conversations_client.model.ClientResponse;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
 import java.util.ArrayList;

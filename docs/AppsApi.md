@@ -86,8 +86,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | should have required property &#39;displayName&#39; |  -  |
-| **402** | Your account has reached the maximum number of apps for your subscription plan |  -  |
+| **400** | Bad request |  -  |
+| **402** | Payment required |  -  |
 
 
 ## deleteApp
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | App not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## getApp
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | App not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## listApps
@@ -320,8 +320,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | Invalid page query parameters |  -  |
-| **403** | The serviceAccountId provided does not match supplied credentials |  -  |
+| **400** | Bad request |  -  |
+| **403** | Forbidden |  -  |
 
 
 ## updateApp
@@ -400,6 +400,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | App metadata is limited to 4096 bytes in size. |  -  |
-| **404** | App not found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 

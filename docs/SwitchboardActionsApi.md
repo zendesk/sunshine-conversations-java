@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## offerControl
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## passControl
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## releaseControl
@@ -332,5 +332,5 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
 | **403** | Forbidden |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 

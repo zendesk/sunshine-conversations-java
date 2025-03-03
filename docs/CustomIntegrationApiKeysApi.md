@@ -327,5 +327,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **400** | API keys are available only for custom integrations |  -  |
+| **400** | Bad request |  -  |
 

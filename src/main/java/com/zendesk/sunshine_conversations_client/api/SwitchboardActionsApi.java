@@ -8,6 +8,7 @@ import com.zendesk.sunshine_conversations_client.Pair;
 import jakarta.ws.rs.core.GenericType;
 
 import com.zendesk.sunshine_conversations_client.model.AcceptControlBody;
+import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.OfferControlBody;
 import com.zendesk.sunshine_conversations_client.model.PassControlBody;
 

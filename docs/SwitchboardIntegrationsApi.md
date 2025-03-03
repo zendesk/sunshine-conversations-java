@@ -89,8 +89,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | Created |  -  |
-| **400** | Switchboard has reached the max number of switchboard integrations (10) |  -  |
-| **404** | Switchboard not found |  -  |
+| **400** | Bad request |  -  |
+| **404** | Not found |  -  |
 
 
 ## deleteSwitchboardIntegration
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Not Found |  -  |
+| **404** | Not found |  -  |
 
 
 ## listSwitchboardIntegrations
@@ -250,7 +250,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Switchboard not found |  -  |
+| **404** | Not found |  -  |
 
 
 ## updateSwitchboardIntegration
@@ -286,7 +286,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = {"name":"bot","integrationType":"zd:agentWorkspace","deliverStandbyEvents":true,"nextSwitchboardIntegrationId":"5ef21b86e933b7355c11c606","messageHistoryCount":5}; // SwitchboardIntegrationUpdateBody | 
+        SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = {"deliverStandbyEvents":true,"nextSwitchboardIntegrationId":"5ef21b86e933b7355c11c606","messageHistoryCount":5}; // SwitchboardIntegrationUpdateBody | 
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
         String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
@@ -333,5 +333,5 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | Ok |  -  |
-| **404** | Enabled switchboard must have an associated default switchboardIntegration |  -  |
+| **404** | Not found |  -  |
 
