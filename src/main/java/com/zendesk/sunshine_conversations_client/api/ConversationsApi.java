@@ -149,10 +149,10 @@ public class ConversationsApi {
    * @param downloadMessageRefBody  (required)
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
-   * @return a {@code Object}
+   * @return a {@code Map<String, Object>}
    * @throws ApiException if fails to make API call
    */
-  public Object downloadMessageRef(DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+  public Map<String, Object> downloadMessageRef(DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
     Object localVarPostBody = downloadMessageRefBody;
     
     // verify the required parameter 'downloadMessageRefBody' is set
@@ -197,7 +197,7 @@ public class ConversationsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Map<String, Object>> localVarReturnType = new GenericType<Map<String, Object>>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
@@ -479,10 +479,10 @@ public class ConversationsApi {
    * @param downloadMessageRefBody  (required)
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
-   * @return a {@code Object}
+   * @return a {@code Map<String, Object>}
    * @throws ApiException if fails to make API call
    */
-  public Object downloadMessageRef(String bearerToken, DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
+  public Map<String, Object> downloadMessageRef(String bearerToken, DownloadMessageRefBody downloadMessageRefBody, String appId, String conversationId) throws ApiException {
     Object localVarPostBody = downloadMessageRefBody;
     
     // verify the required parameter 'downloadMessageRefBody' is set
@@ -529,7 +529,7 @@ public class ConversationsApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<Map<String, Object>> localVarReturnType = new GenericType<Map<String, Object>>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

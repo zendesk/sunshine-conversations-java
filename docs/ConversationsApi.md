@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 ## downloadMessageRef
 
-> Object downloadMessageRef(downloadMessageRefBody, appId, conversationId)
+> Map&lt;String, Object&gt; downloadMessageRef(downloadMessageRefBody, appId, conversationId)
 
 Download Message Ref
 
@@ -211,7 +211,7 @@ public class Example {
         // Add required body parameters
 
         try {
-            Object result = apiInstance.downloadMessageRef(downloadMessageRefBody, appId, conversationId);
+            Map<String, Object> result = apiInstance.downloadMessageRef(downloadMessageRefBody, appId, conversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ConversationsApi#downloadMessageRef");
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+**Map&lt;String, Object&gt;**
 
 ### Authorization
 

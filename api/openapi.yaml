@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 14.4.0
+  version: 15.0.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -237,6 +237,7 @@ tags:
   name: Changelog
   x-zoas-docs:
     ignoreCanonicalSchema: true
+    ignoreEmptyOperations: true
 - description: |
     Endpoints for managing webhooks associated to a Sunshine Conversations Connect integration or a custom integration. Webhooks are a fantastic way to extend the Sunshine Conversations platform beyond the built-in feature set. You can use webhooks to build your own Sunshine Conversations chat clients, to integrate more deeply with your favorite CRM, or to build a bot.
     A webhook can only operate within the scope of a single Sunshine Conversations app.
@@ -310,6 +311,7 @@ tags:
   x-displayName: Sunshine Conversations Connect
   x-zoas-docs:
     ignoreCanonicalSchema: true
+    ignoreEmptyOperations: true
 - description: "The scope of an issued access token is integration scope. This allows\
     \ API calls to be made to a specific Sunshine Conversations app on behalf of an\
     \ integration, identified by the integration’s clientId. The access token grants\
@@ -2239,6 +2241,7 @@ paths:
                 default:
                   $ref: '#/components/examples/emptyResponse'
               schema:
+                additionalProperties: true
                 type: object
           description: Ok
       security:
@@ -4678,8 +4681,6 @@ components:
             name: email_address
             label: Your email?
             placeholder: email@example.com
-        destination:
-          integrationType: web
     image:
       value:
         author:
@@ -4755,8 +4756,6 @@ components:
                 text: My User Name
               - type: text
                 text: My Agent Name
-        destination:
-          integrationType: whatsapp
     text-2:
       value:
         messages:
@@ -4953,7 +4952,6 @@ components:
           type: android
           status: active
           displayName: Android SDK
-          attachmentsEnabled: true
         meta:
           hasMore: false
     createIntegration:
@@ -4963,7 +4961,6 @@ components:
           type: android
           status: active
           displayName: Android SDK
-          attachmentsEnabled: true
     getIntegration:
       value:
         integration:
@@ -4971,7 +4968,6 @@ components:
           type: android
           status: active
           displayName: Android SDK
-          attachmentsEnabled: true
     updateIntegration:
       value:
         integration:
@@ -4979,7 +4975,6 @@ components:
           type: android
           status: active
           displayName: Android SDK
-          attachmentsEnabled: true
     listIntegrationKeys:
       value:
         keys:
@@ -6225,6 +6220,7 @@ components:
           type: boolean
       type: object
     metadata:
+      additionalProperties: true
       description: "Flat object containing custom properties. Strings, numbers and\
         \ booleans \nare the only supported format that can be passed to metadata.\n\
         The metadata is limited to 4KB in size.\n"
@@ -6260,6 +6256,7 @@ components:
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -6385,6 +6382,7 @@ components:
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -6417,6 +6415,7 @@ components:
         settings:
           $ref: '#/components/schemas/appSettings'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -6572,6 +6571,7 @@ components:
         type:
           $ref: '#/components/schemas/conversationType'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -6677,6 +6677,7 @@ components:
           nullable: true
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -6724,6 +6725,7 @@ components:
           nullable: true
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7011,6 +7013,7 @@ components:
           example: CAD
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7048,6 +7051,7 @@ components:
             action for a message item in Facebook Messenger.
           type: boolean
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7073,6 +7077,7 @@ components:
           description: The button text.
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7097,6 +7102,7 @@ components:
           description: The payload of a postback or reply button.
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7125,6 +7131,7 @@ components:
             when posting the reply. You can also use metadata for more complex needs.
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7160,6 +7167,7 @@ components:
             action for a message item in Facebook Messenger.
           type: boolean
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7293,6 +7301,7 @@ components:
           minItems: 1
           type: array
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -7749,7 +7758,8 @@ components:
         id: de13bee15b51033b34162411
         type: android
         status: active
-        info: '{}'
+        info:
+          key: '{}'
       properties:
         id:
           description: The unique ID of the device.
@@ -7788,6 +7798,7 @@ components:
           nullable: true
           type: string
         info:
+          additionalProperties: true
           description: A flat curated object with properties that vary for each SDK
             platform. All keys are optional and not guaranteed to be available.
           nullable: true
@@ -8083,6 +8094,7 @@ components:
         destination:
           $ref: '#/components/schemas/destination'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -8286,6 +8298,7 @@ components:
             For more information, refer to <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
           nullable: true
           type: string
+          writeOnly: true
       title: Default Responder ID
       type: object
     defaultResponder:
@@ -8834,6 +8847,7 @@ components:
       description: The switchboard integration id to which control of a conversation
         is passed / offered by default.
       example: 5ef21b86e933b7355c11c606
+      nullable: true
       type: string
     messageHistoryCount:
       description: Number of messages to include in the message history context.
@@ -8882,6 +8896,7 @@ components:
           description: The switchboard integration id to which control of a conversation
             is passed / offered by default.
           example: 5ef21b86e933b7355c11c606
+          nullable: true
           type: string
         messageHistoryCount:
           description: Number of messages to include in the message history context.
@@ -8946,9 +8961,11 @@ components:
           allOf:
           - $ref: '#/components/schemas/deliverStandbyEvents'
         nextSwitchboardIntegrationId:
-          allOf:
-          - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
+          description: The switchboard integration id to which control of a conversation
+            is passed / offered by default.
+          example: 5ef21b86e933b7355c11c606
           nullable: true
+          type: string
         messageHistoryCount:
           description: Number of messages to include in the message history context.
           example: 5
@@ -8994,9 +9011,11 @@ components:
             integration is not in control of a conversation (standby status)
           type: boolean
         nextSwitchboardIntegrationId:
-          allOf:
-          - $ref: '#/components/schemas/nextSwitchboardIntegrationId'
+          description: The switchboard integration id to which control of a conversation
+            is passed / offered by default.
+          example: 5ef21b86e933b7355c11c606
           nullable: true
+          type: string
         messageHistoryCount:
           description: Number of messages to include in the message history context.
           example: 5
@@ -9080,6 +9099,7 @@ components:
         profile:
           $ref: '#/components/schemas/profile'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -9148,6 +9168,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/profile'
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -9278,7 +9299,8 @@ components:
           id: de13bee15b51033b34162411
           type: android
           status: active
-          info: '{}'
+          info:
+            key: '{}'
         - pushNotificationToken: pushNotificationToken
           appVersion: appVersion
           clientId: clientId
@@ -9288,7 +9310,8 @@ components:
           id: de13bee15b51033b34162411
           type: android
           status: active
-          info: '{}'
+          info:
+            key: '{}'
       properties:
         devices:
           description: List of returned devices.
@@ -9557,6 +9580,7 @@ components:
           description: The payload associated with the postback.
           type: string
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -10046,17 +10070,12 @@ components:
           $ref: '#/components/schemas/downloadMessageRefBody_allOf_apple'
     defaultResponder_defaultResponder:
       description: |
-        The default responder object.
-        <aside class="notice">This property will only be returned in response for <code>get integration</code> and <code>list integration</code> and must not be used in the request body.</aside>
-        <aside class="notice">Response will contain only one of the following: <code>defaultResponder</code> or <code>defaultResponderId</code> but never both.</aside>
+        The default responder for the integration. This is the responder that will be used to send messages to the user.
+        For more information, refer to the <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+      nullable: true
       properties:
-        switchboardId:
-          description: The unique ID of the switchboard.
-          example: 5e4af71a81966cfff3ef6551
-          type: string
-        appId:
-          description: Identifies the app.
-          example: 5e4af71a81966cfff3ef6552
+        name:
+          description: The name of the switchboard integration.
           type: string
         integrationId:
           description: The unique ID of the integration.
@@ -10065,20 +10084,20 @@ components:
         integrationType:
           description: The type of the integration.
           type: string
-        name:
-          description: The name of the switchboard.
-          type: string
         deliverStandbyEvents:
           description: Indicates whether the switchboard should deliver standby events.
           type: boolean
         nextSwitchboardIntegrationId:
           description: The unique ID of the next switchboard integration.
+          nullable: true
           type: string
         messageHistoryCount:
           description: The number of messages to keep in the message history.
           type: number
         inherited:
-          description: Indicates whether the switchboard is inherited.
+          description: Indicates whether the default responder is inherited from the
+            switchboard's global config or not. Returns `false` if a per-channel responder
+            override has been set for this integration, and `true` otherwise.
           type: boolean
     android_allOf:
       properties:
@@ -10206,6 +10225,7 @@ components:
           description: The Facebook Page Access Token of the Facebook page that is
             linked to your Instagram account.
           example: your_page_access_token
+          nullable: true
           type: string
           writeOnly: true
         appId:
@@ -10215,6 +10235,7 @@ components:
         appSecret:
           description: Your Facebook App secret.
           example: your_facebook_app_secret
+          nullable: true
           type: string
           writeOnly: true
         businessName:
@@ -10354,6 +10375,7 @@ components:
           description: The public API key of your Mailgun account.
           example: key-f265hj32f0sd897lqd2j5keb96784043
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         domain:
@@ -10411,6 +10433,7 @@ components:
           description: The public API key of your MessageBird account.
           example: 9V2iJmd93kFJ390L9495JCl11
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         signingKey:
@@ -10418,6 +10441,7 @@ components:
             the webhooks' origin.
           example: Uu6N09Lkdji3820DJIO89I39sl9dJ
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         originator:
@@ -10448,6 +10472,7 @@ components:
         pageAccessToken:
           description: A Facebook Page Access Token.
           example: your_access_token
+          nullable: true
           type: string
         appId:
           description: A Facebook App ID.
@@ -10456,6 +10481,7 @@ components:
         appSecret:
           description: A Facebook App Secret.
           example: your_facebook_app_secret
+          nullable: true
           type: string
           writeOnly: true
         pageId:
@@ -10481,6 +10507,7 @@ components:
           description: Telegram Bot Token.
           example: 192033615:AAEuee2FS2JYKWfDlTulfygjaIGJi4s
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         username:
@@ -10508,6 +10535,7 @@ components:
           description: Twilio Auth Token.
           example: 160c024303f53049e1e060fd67ca6aefc
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         phoneNumberSid:
@@ -10553,6 +10581,7 @@ components:
           description: The consumer key secret for your Twitter app.
           example: your_consumer_secret
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         accessTokenKey:
@@ -10565,6 +10594,7 @@ components:
           description: The access token secret obtained from your user via oauth.
           example: your_access_token_secret
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
       required:
@@ -10607,6 +10637,7 @@ components:
           description: Viber Public Account token.
           example: 445da6az1s345z78-dazcczb2542zv51a-e0vc5fva17480im9
           minLength: 1
+          nullable: true
           type: string
           writeOnly: true
         uri:
@@ -10744,12 +10775,6 @@ components:
           description: |
             To configure a WhatsApp integration, use your WhatsApp API Client connection information. Sunshine Conversations can provide WhatsApp API Client hosting for approved brands. See our [WhatsApp guide](https://docs.smooch.io/guide/whatsapp/#whatsapp-api-client) for more details on WhatsApp API Client hosting.
           type: string
-        deploymentId:
-          description: The Id of the deployment. The integrationId and the appId will
-            be added to the deployment. Additionally, the deployment’s status will
-            be set to integrated.
-          example: 55c8d9758590aa1900b9b9aa
-          type: string
         hsmFallbackLanguage:
           default: en_US
           description: Specify a fallback language to use when sending WhatsApp message
@@ -10777,8 +10802,6 @@ components:
           nullable: true
           readOnly: true
           type: string
-      required:
-      - deploymentId
     androidUpdate_allOf:
       properties:
         projectId:
@@ -11557,6 +11580,7 @@ components:
             Will include an `activeSwitchboardIntegration` representing the integration
             that has just accepted control.
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -11580,6 +11604,7 @@ components:
           - $ref: '#/components/schemas/conversationTruncated'
           description: The conversation from which the switchboard event was fired.
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -11604,6 +11629,7 @@ components:
             a `pendingSwitchboardIntegration`, representing the integration being
             offered control.
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -11627,6 +11653,7 @@ components:
             representing the switchboard integration that is now in control of the
             conversation.
         metadata:
+          additionalProperties: true
           description: "Flat object containing custom properties. Strings, numbers\
             \ and booleans \nare the only supported format that can be passed to metadata.\n\
             The metadata is limited to 4KB in size.\n"
@@ -11859,6 +11886,9 @@ x-webhooks:
       responses:
         "200":
           description: Ok
+x-zendesk-owner:
+  name: SunCo Engine
+  channel: '#sunco-engine'
 x-zoas-lint-defaults:
   disable:
   - core/snake-case-parameter-names-not-in-header
