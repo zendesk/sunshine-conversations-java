@@ -241,6 +241,57 @@ public class UsersApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Synchronize User
+   * Synchronize a messaging user with its core Zendesk user counterpart. Messaging users are separate objects linked to a core Zendesk user record by &#x60;zendeskId&#x60;. It is possible for changes to be made to the core Zendesk user record in a way that causes the messaging user to fall out of sync. The core Zendesk user might change their primary email, for example. This endpoint can be used to update the messaging user with the &#x60;profile.givenName&#x60;, &#x60;profile.surname&#x60;, &#x60;externalId&#x60;, and primary email identity of its core Zendesk user counterpart. Note that only the primary email identity of the core Zendesk user will be synchronized, and it will be set on the &#x60;identities&#x60; array, not in the &#x60;profile&#x60;. Note also that in some circumstances, a single call to this API might produce changes on more than one messaging user. If the &#x60;externalId&#x60; or email being synchronized already exists on a different messaging user within the account, the conflict will be resolved by merging those messaging users together, if possible. If a conflicting messaging user is already linked to a core Zendesk user by &#x60;zendeskId&#x60; it cannot be merged. In this case, the conflicting &#x60;externalId&#x60; or email will instead be removed and reassigned to the messaging user that is being synchronized
+   * @param appId Identifies the app. (required)
+   * @param zendeskId The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.  (required)
+   * @return a {@code UserResponse}
+   * @throws ApiException if fails to make API call
+   */
+  public UserResponse syncUser(String appId, String zendeskId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling syncUser");
+    }
+    
+    // verify the required parameter 'zendeskId' is set
+    if (zendeskId == null) {
+      throw new ApiException(400, "Missing the required parameter 'zendeskId' when calling syncUser");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/users/{zendeskId}/sync".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "zendeskId" + "\\}", apiClient.escapeString(zendeskId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<UserResponse> localVarReturnType = new GenericType<UserResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Update User
    * Updates a user.
    * @param userUpdateBody  (required)
@@ -516,6 +567,61 @@ public class UsersApi {
 
     GenericType<UserResponse> localVarReturnType = new GenericType<UserResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Synchronize User
+   * Synchronize a messaging user with its core Zendesk user counterpart. Messaging users are separate objects linked to a core Zendesk user record by &#x60;zendeskId&#x60;. It is possible for changes to be made to the core Zendesk user record in a way that causes the messaging user to fall out of sync. The core Zendesk user might change their primary email, for example. This endpoint can be used to update the messaging user with the &#x60;profile.givenName&#x60;, &#x60;profile.surname&#x60;, &#x60;externalId&#x60;, and primary email identity of its core Zendesk user counterpart. Note that only the primary email identity of the core Zendesk user will be synchronized, and it will be set on the &#x60;identities&#x60; array, not in the &#x60;profile&#x60;. Note also that in some circumstances, a single call to this API might produce changes on more than one messaging user. If the &#x60;externalId&#x60; or email being synchronized already exists on a different messaging user within the account, the conflict will be resolved by merging those messaging users together, if possible. If a conflicting messaging user is already linked to a core Zendesk user by &#x60;zendeskId&#x60; it cannot be merged. In this case, the conflicting &#x60;externalId&#x60; or email will instead be removed and reassigned to the messaging user that is being synchronized
+   * @param bearerToken a token to be used for this request (required)
+   * 
+   * @param appId Identifies the app. (required)
+   * @param zendeskId The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.  (required)
+   * @return a {@code UserResponse}
+   * @throws ApiException if fails to make API call
+   */
+  public UserResponse syncUser(String bearerToken, String appId, String zendeskId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling syncUser");
+    }
+    
+    // verify the required parameter 'zendeskId' is set
+    if (zendeskId == null) {
+      throw new ApiException(400, "Missing the required parameter 'zendeskId' when calling syncUser");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/users/{zendeskId}/sync".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "zendeskId" + "\\}", apiClient.escapeString(zendeskId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    localVarHeaderParams.put("Authorization", "Bearer " + bearerToken);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<UserResponse> localVarReturnType = new GenericType<UserResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Update User

@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.2.0
+  version: 15.3.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -4331,6 +4331,69 @@ paths:
       tags:
       - Users
       x-accepts: application/json
+  /v2/apps/{appId}/users/{zendeskId}/sync:
+    post:
+      description: Synchronize a messaging user with its core Zendesk user counterpart.
+        Messaging users are separate objects linked to a core Zendesk user record
+        by `zendeskId`. It is possible for changes to be made to the core Zendesk
+        user record in a way that causes the messaging user to fall out of sync. The
+        core Zendesk user might change their primary email, for example. This endpoint
+        can be used to update the messaging user with the `profile.givenName`, `profile.surname`,
+        `externalId`, and primary email identity of its core Zendesk user counterpart.
+        Note that only the primary email identity of the core Zendesk user will be
+        synchronized, and it will be set on the `identities` array, not in the `profile`.
+        Note also that in some circumstances, a single call to this API might produce
+        changes on more than one messaging user. If the `externalId` or email being
+        synchronized already exists on a different messaging user within the account,
+        the conflict will be resolved by merging those messaging users together, if
+        possible. If a conflicting messaging user is already linked to a core Zendesk
+        user by `zendeskId` it cannot be merged. In this case, the conflicting `externalId`
+        or email will instead be removed and reassigned to the messaging user that
+        is being synchronized
+      operationId: SyncUser
+      parameters:
+      - description: Identifies the app.
+        explode: false
+        in: path
+        name: appId
+        required: true
+        schema:
+          example: 5d8cff3cd55b040010928b5b
+          type: string
+        style: simple
+      - description: |
+          The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.
+        explode: false
+        in: path
+        name: zendeskId
+        required: true
+        schema:
+          example: "35436"
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                default:
+                  $ref: '#/components/examples/syncUser'
+              schema:
+                $ref: '#/components/schemas/userResponse'
+          description: Ok
+      security:
+      - basicAuth:
+        - app
+        - account
+        - integration
+      - bearerAuth:
+        - app
+        - account
+        - integration
+      summary: Synchronize User
+      tags:
+      - Users
+      x-accepts: application/json
   /oauth/authorize:
     get:
       description: This endpoint begins the OAuth flow. It relies on a browser session
@@ -5097,6 +5160,7 @@ components:
         user:
           id: 67a11490f0305f4a391e9f8a
           externalId: your-own-id
+          zendeskId: "35436"
           signedUpAt: 2025-02-03T19:10:08.152Z
           hasPaymentInfo: false
           identities: []
@@ -5227,6 +5291,19 @@ components:
           hasPaymentInfo: false
           identities: []
           profile: {}
+          metadata: {}
+    syncUser:
+      value:
+        user:
+          id: 67a11490f0305f4a391e9f8a
+          externalId: your-own-id
+          zendeskId: "35436"
+          signedUpAt: 2025-02-03T19:10:08.152Z
+          hasPaymentInfo: false
+          identities: []
+          profile:
+            locale: en
+            localeOrigin: zendeskAccount
           metadata: {}
     getToken:
       value:
@@ -6070,6 +6147,17 @@ components:
       required: true
       schema:
         example: 5d8cff3cd55b040010928b5b
+        type: string
+      style: simple
+    zendeskId:
+      description: |
+        The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.
+      explode: false
+      in: path
+      name: zendeskId
+      required: true
+      schema:
+        example: "35436"
         type: string
       style: simple
     clientIdQuery:

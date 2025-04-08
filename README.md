@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>15.2.0</version>
+    <version>15.3.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:15.2.0"
+compile "com.zendesk:sunshine-conversations-client:15.3.0"
 ```
 
 ## Getting Started
@@ -202,6 +202,7 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**deleteUser**](docs/UsersApi.md#deleteUser) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId} | Delete User
 *UsersApi* | [**deleteUserPersonalInformation**](docs/UsersApi.md#deleteUserPersonalInformation) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation | Delete User Personal Information
 *UsersApi* | [**getUser**](docs/UsersApi.md#getUser) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId} | Get User
+*UsersApi* | [**syncUser**](docs/UsersApi.md#syncUser) | **POST** /v2/apps/{appId}/users/{zendeskId}/sync | Synchronize User
 *UsersApi* | [**updateUser**](docs/UsersApi.md#updateUser) | **PATCH** /v2/apps/{appId}/users/{userIdOrExternalId} | Update User
 *WebhooksApi* | [**createWebhook**](docs/WebhooksApi.md#createWebhook) | **POST** /v2/apps/{appId}/integrations/{integrationId}/webhooks | Create Webhook
 *WebhooksApi* | [**deleteWebhook**](docs/WebhooksApi.md#deleteWebhook) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Delete Webhook
