@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.3.1
+  version: 15.3.2
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -7318,6 +7318,12 @@ components:
           example: <h1>Hello!</h1>
           maxLength: 4096
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         markdownText:
           description: |-
             Markdown text content of the message. Can be provided in place of `text`. Cannot be used with `htmlText`.
@@ -7419,6 +7425,12 @@ components:
             supported by the channel.
           readOnly: true
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         items:
           description: An array of objects representing the items associated with
             the message. Only present in carousel and list type messages.
@@ -7461,6 +7473,12 @@ components:
         text:
           description: The text content of the message.
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         htmlText:
           description: |-
             HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
@@ -7561,7 +7579,10 @@ components:
           readOnly: true
           type: boolean
         blockChatInput:
-          description: true if the message should block the chat input on Web Messenger.
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation..
           type: boolean
         fields:
           description: An array of objects representing fields associated with the
@@ -7633,6 +7654,12 @@ components:
         text:
           description: The text content of the message.
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         htmlText:
           description: |-
             HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
@@ -7675,6 +7702,12 @@ components:
           default: list
           description: The type of message.
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         items:
           description: An array of objects representing the items associated with
             the message. Only present in carousel and list type messages.
@@ -7711,6 +7744,12 @@ components:
             supported by the channel.
           readOnly: true
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         coordinates:
           $ref: '#/components/schemas/locationMessage_coordinates'
         location:
@@ -7725,6 +7764,12 @@ components:
           default: template
           description: The type of message.
           type: string
+        blockChatInput:
+          description: When set to true, the chat input will be disabled on supported
+            client implementations when the message is the most recent one in the
+            history. Can be used for guided flows or to temporarily disable the user's
+            ability to send messages in the conversation.
+          type: boolean
         template:
           description: The whatsapp template message to send. For more information,
             consult the [guide](https://docs.smooch.io/guide/whatsapp#sending-message-templates).
