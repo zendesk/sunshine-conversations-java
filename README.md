@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>15.3.2</version>
+    <version>15.4.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:15.3.2"
+compile "com.zendesk:sunshine-conversations-client:15.4.0"
 ```
 
 ## Getting Started
@@ -461,6 +461,7 @@ Class | Method | HTTP request | Description
  - [SwitchboardPassControlFailure](docs/SwitchboardPassControlFailure.md)
  - [SwitchboardResponse](docs/SwitchboardResponse.md)
  - [SwitchboardUpdateBody](docs/SwitchboardUpdateBody.md)
+ - [SyncUserBody](docs/SyncUserBody.md)
  - [Target](docs/Target.md)
  - [Telegram](docs/Telegram.md)
  - [TelegramAllOf](docs/TelegramAllOf.md)

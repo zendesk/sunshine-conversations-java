@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.3.2
+  version: 15.4.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -4333,23 +4333,9 @@ paths:
       x-accepts: application/json
   /v2/apps/{appId}/users/{zendeskId}/sync:
     post:
-      description: Synchronize a messaging user with its core Zendesk user counterpart.
-        Messaging users are separate objects linked to a core Zendesk user record
-        by `zendeskId`. It is possible for changes to be made to the core Zendesk
-        user record in a way that causes the messaging user to fall out of sync. The
-        core Zendesk user might change their primary email, for example. This endpoint
-        can be used to update the messaging user with the `profile.givenName`, `profile.surname`,
-        `externalId`, and primary email identity of its core Zendesk user counterpart.
-        Note that only the primary email identity of the core Zendesk user will be
-        synchronized, and it will be set on the `identities` array, not in the `profile`.
-        Note also that in some circumstances, a single call to this API might produce
-        changes on more than one messaging user. If the `externalId` or email being
-        synchronized already exists on a different messaging user within the account,
-        the conflict will be resolved by merging those messaging users together, if
-        possible. If a conflicting messaging user is already linked to a core Zendesk
-        user by `zendeskId` it cannot be merged. In this case, the conflicting `externalId`
-        or email will instead be removed and reassigned to the messaging user that
-        is being synchronized
+      description: |-
+        Synchronize a messaging user with its core Zendesk user counterpart. Messaging users are separate objects linked to a core Zendesk user record by `zendeskId`. It is possible for changes to be made to the core Zendesk user record in a way that causes the messaging user to fall out of sync. The core Zendesk user might have their primary email changed, for example. This endpoint can be used to update the messaging user with the `profile.givenName`, `profile.surname`, `externalId`, and primary email identity of its core Zendesk user counterpart.<br/><br/>It is also possible for two Zendesk users to be merged. In such a case, this API can be used to apply that merger on the messaging side. The surviving Zendesk user id can be specified via the `survivingZendeskId` parameter of the request body, and the outgoing `zendeskId` is specified in the request path.
+        <aside class="notice">Only the primary email identity of the core Zendesk user will be synchronized, and it will be set on the identities array, not in the profile.</aside> <br/> <aside class="notice">In some circumstances, a single call to this API might produce changes on more than one messaging user. If the externalId or email being synchronized already exists on a different messaging user within the account, the conflict will be resolved by merging those messaging users together, if possible. If a conflicting messaging user is already linked to a core Zendesk user by zendeskId it cannot be merged. In this case, the conflicting externalId or email will instead be removed and reassigned to the messaging user that is being synchronized.</aside>
       operationId: SyncUser
       parameters:
       - description: Identifies the app.
@@ -4371,6 +4357,11 @@ paths:
           example: "35436"
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/syncUserBody'
       responses:
         "200":
           content:
@@ -4393,6 +4384,7 @@ paths:
       summary: Synchronize User
       tags:
       - Users
+      x-contentType: application/json
       x-accepts: application/json
   /oauth/authorize:
     get:
@@ -5326,6 +5318,7 @@ components:
               type: personal
             user:
               id: 6a2343df57be6fe0f98efc33
+              authenticated: false
             client:
               integrationId: 60bfc8fa67951336472cc57a
               type: twilio
@@ -5349,6 +5342,7 @@ components:
           payload:
             user:
               id: 6a2343df57be6fe0f98efc33
+              authenticated: false
             client:
               integrationId: 60bfc8fa67951336472cc57a
               type: twilio
@@ -5390,6 +5384,7 @@ components:
               type: personal
             user:
               id: 6a2343df57be6fe0f98efc33
+              authenticated: false
             client:
               integrationId: 60bfc8fa67951336472cc57a
               type: twilio
@@ -5436,6 +5431,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
             creationReason: prechatCapture
             source:
               type: web
@@ -5463,6 +5459,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
     conversationLeaveEvent:
       value:
         app:
@@ -5486,6 +5483,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
     conversationRemoveEvent:
       value:
         app:
@@ -5529,6 +5527,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
             destination:
               type: telegram
               integrationId: 5ec69c6e12dda33be985cb1a
@@ -5560,6 +5559,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: false
             destination:
               type: twilio
               integrationId: 5ecc061987d4d413774a8131
@@ -5592,6 +5592,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
             destination:
               type: twilio
               integrationId: 5ecc061987d4d413774a8131
@@ -5631,6 +5632,7 @@ components:
                 user:
                   id: 26508c10541a4b0ff472e5e2
                   externalId: "912382197"
+                  authenticated: true
               content:
                 type: text
                 text: hello
@@ -5664,6 +5666,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: "912382197"
+              authenticated: true
             source:
               type: telegram
               integrationId: 5ec69c6e12dda33be985cb1a
@@ -5694,6 +5697,7 @@ components:
                 userId: b5a0f8de1fd4198a96faa0af
                 user:
                   id: b5a0f8de1fd4198a96faa0af
+                  authenticated: false
               source:
                 type: web
                 integrationId: 5ecff63ffc3ab25f4561c8a0
@@ -5719,6 +5723,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: 912382197
+              authenticated: true
             source:
               type: web
               integrationId: 5ecff63ffc3ab25f4561c8a0
@@ -5750,6 +5755,7 @@ components:
                 userId: 7283cdd6f586679a5fc43cfb
                 user:
                   id: 7283cdd6f586679a5fc43cfb
+                  authenticated: false
               source:
                 type: web
                 integrationId: 5ecff63ffc3ab25f4561c8a0
@@ -5903,9 +5909,11 @@ components:
               surviving:
                 id: 26508c10541a4b0ff472e5e2
                 externalId: "912382197"
+                authenticated: true
               discarded:
                 id: 1a64f7f75028fef55f815007
                 externalId: "912382198"
+                authenticated: true
             reason: api
     userUpdateEvent:
       value:
@@ -5922,6 +5930,7 @@ components:
             user:
               id: 26508c10541a4b0ff472e5e2
               externalId: 9128asd219s7
+              authenticated: true
             reason: authentication
             source:
               type: web
@@ -5941,6 +5950,7 @@ components:
             user:
               id: 6748e3ae32378e732938e031
               externalId: abc123
+              authenticated: true
   parameters:
     pageQuery:
       description: Contains parameters for applying cursor pagination.
@@ -9250,6 +9260,11 @@ components:
           description: The unique ID of the user.
           example: 7494535bff5cef41a15be74d
           type: string
+        authenticated:
+          description: Whether or not the user has authenticated, either via JWT or
+            via the Help Center
+          readOnly: true
+          type: boolean
         externalId:
           description: |
             An optional ID that can also be used to retrieve the user.
@@ -9467,6 +9482,15 @@ components:
           - $ref: '#/components/schemas/device'
           description: The device.
       title: deviceResponse
+      type: object
+    syncUserBody:
+      properties:
+        survivingZendeskId:
+          description: "Only used for synchronizing messaging users when their Support\
+            \ user counterparts have been merged. The user.id of the surviving Support\
+            \ user is specified here. \n"
+          example: "35436"
+          type: string
       type: object
     appSubSchema:
       description: The app that triggered the events.
@@ -11208,11 +11232,6 @@ components:
             $ref: '#/components/schemas/identity'
           readOnly: true
           type: array
-        authenticated:
-          description: Whether or not the user has authenticated, either via JWT or
-            via the Help Center
-          readOnly: true
-          type: boolean
     matchCriteriaMailgun_allOf:
       description: The set of criteria used to determine the user's identity on a
         third-party channel.

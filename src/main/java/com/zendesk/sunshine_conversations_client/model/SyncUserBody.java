@@ -18,55 +18,44 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Error;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * ErrorResponse
+ * SyncUserBody
  */
 @JsonPropertyOrder({
-  ErrorResponse.JSON_PROPERTY_ERRORS
+  SyncUserBody.JSON_PROPERTY_SURVIVING_ZENDESK_ID
 })
 
-public class ErrorResponse {
-  public static final String JSON_PROPERTY_ERRORS = "errors";
-  private List<Error> errors = null;
+public class SyncUserBody {
+  public static final String JSON_PROPERTY_SURVIVING_ZENDESK_ID = "survivingZendeskId";
+  private String survivingZendeskId;
 
 
-  public ErrorResponse errors(List<Error> errors) {
+  public SyncUserBody survivingZendeskId(String survivingZendeskId) {
     
-    this.errors = errors;
-    return this;
-  }
-
-  public ErrorResponse addErrorsItem(Error errorsItem) {
-    if (this.errors == null) {
-      this.errors = new ArrayList<>();
-    }
-    this.errors.add(errorsItem);
+    this.survivingZendeskId = survivingZendeskId;
     return this;
   }
 
    /**
-   * List of errors that occurred.
-   * @return errors
+   * Only used for synchronizing messaging users when their Support user counterparts have been merged. The user.id of the surviving Support user is specified here.  
+   * @return survivingZendeskId
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "List of errors that occurred.")
-  @JsonProperty(JSON_PROPERTY_ERRORS)
+  @ApiModelProperty(example = "35436", value = "Only used for synchronizing messaging users when their Support user counterparts have been merged. The user.id of the surviving Support user is specified here.  ")
+  @JsonProperty(JSON_PROPERTY_SURVIVING_ZENDESK_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public List<Error> getErrors() {
-    return errors;
+  public String getSurvivingZendeskId() {
+    return survivingZendeskId;
   }
 
 
-  public void setErrors(List<Error> errors) {
-    this.errors = errors;
+  public void setSurvivingZendeskId(String survivingZendeskId) {
+    this.survivingZendeskId = survivingZendeskId;
   }
 
 
@@ -78,21 +67,21 @@ public class ErrorResponse {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ErrorResponse errorResponse = (ErrorResponse) o;
-    return Objects.equals(this.errors, errorResponse.errors);
+    SyncUserBody syncUserBody = (SyncUserBody) o;
+    return Objects.equals(this.survivingZendeskId, syncUserBody.survivingZendeskId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(errors);
+    return Objects.hash(survivingZendeskId);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ErrorResponse {\n");
-    sb.append("    errors: ").append(toIndentedString(errors)).append("\n");
+    sb.append("class SyncUserBody {\n");
+    sb.append("    survivingZendeskId: ").append(toIndentedString(survivingZendeskId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
