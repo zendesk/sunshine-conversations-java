@@ -24,20 +24,16 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * PassControlBody
+ * ReleaseControlBody
  */
 @JsonPropertyOrder({
-  PassControlBody.JSON_PROPERTY_SWITCHBOARD_INTEGRATION,
-  PassControlBody.JSON_PROPERTY_REASON,
-  PassControlBody.JSON_PROPERTY_METADATA
+  ReleaseControlBody.JSON_PROPERTY_REASON,
+  ReleaseControlBody.JSON_PROPERTY_METADATA
 })
 
-public class PassControlBody {
-  public static final String JSON_PROPERTY_SWITCHBOARD_INTEGRATION = "switchboardIntegration";
-  private String switchboardIntegration;
-
+public class ReleaseControlBody {
   /**
-   * Reason for the pass control action.
+   * Reason for the release control action.
    */
   public enum ReasonEnum {
     TICKETCLOSED("ticketClosed"),
@@ -78,42 +74,18 @@ public class PassControlBody {
   private Map metadata = null;
 
 
-  public PassControlBody switchboardIntegration(String switchboardIntegration) {
-    
-    this.switchboardIntegration = switchboardIntegration;
-    return this;
-  }
-
-   /**
-   * The id or the name of the switchboard integration that will become active. May also use the &#x60;next&#x60; keyword to transfer control to the next switchboard integration designated in the switchboard hierarchy configuration
-   * @return switchboardIntegration
-  **/
-  @ApiModelProperty(example = "next", required = true, value = "The id or the name of the switchboard integration that will become active. May also use the `next` keyword to transfer control to the next switchboard integration designated in the switchboard hierarchy configuration")
-  @JsonProperty(JSON_PROPERTY_SWITCHBOARD_INTEGRATION)
-  @JsonInclude(value = JsonInclude.Include.ALWAYS)
-
-  public String getSwitchboardIntegration() {
-    return switchboardIntegration;
-  }
-
-
-  public void setSwitchboardIntegration(String switchboardIntegration) {
-    this.switchboardIntegration = switchboardIntegration;
-  }
-
-
-  public PassControlBody reason(ReasonEnum reason) {
+  public ReleaseControlBody reason(ReasonEnum reason) {
     
     this.reason = reason;
     return this;
   }
 
    /**
-   * Reason for the pass control action.
+   * Reason for the release control action.
    * @return reason
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "Reason for the pass control action.")
+  @ApiModelProperty(value = "Reason for the release control action.")
   @JsonProperty(JSON_PROPERTY_REASON)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -127,18 +99,18 @@ public class PassControlBody {
   }
 
 
-  public PassControlBody metadata(Map metadata) {
+  public ReleaseControlBody metadata(Map metadata) {
     
     this.metadata = metadata;
     return this;
   }
 
    /**
-   * Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the &#x60;switchboard:passControl&#x60; webhook.
+   * Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the &#x60;switchboard:releaseControl&#x60; webhook.
    * @return metadata
   **/
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the `switchboard:passControl` webhook.")
+  @ApiModelProperty(value = "Flat object containing custom properties. Strings, numbers and booleans are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. The metadata object will be included in the `switchboard:releaseControl` webhook.")
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -160,23 +132,21 @@ public class PassControlBody {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PassControlBody passControlBody = (PassControlBody) o;
-    return Objects.equals(this.switchboardIntegration, passControlBody.switchboardIntegration) &&
-        Objects.equals(this.reason, passControlBody.reason) &&
-        Objects.equals(this.metadata, passControlBody.metadata);
+    ReleaseControlBody releaseControlBody = (ReleaseControlBody) o;
+    return Objects.equals(this.reason, releaseControlBody.reason) &&
+        Objects.equals(this.metadata, releaseControlBody.metadata);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(switchboardIntegration, reason, metadata);
+    return Objects.hash(reason, metadata);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PassControlBody {\n");
-    sb.append("    switchboardIntegration: ").append(toIndentedString(switchboardIntegration)).append("\n");
+    sb.append("class ReleaseControlBody {\n");
     sb.append("    reason: ").append(toIndentedString(reason)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("}");

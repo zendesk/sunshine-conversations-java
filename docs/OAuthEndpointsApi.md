@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**authorize**](OAuthEndpointsApi.md#authorize) | **GET** /oauth/authorize | Authorize
 [**getToken**](OAuthEndpointsApi.md#getToken) | **POST** /oauth/token | Get Token
+[**getTokenInfo**](OAuthEndpointsApi.md#getTokenInfo) | **GET** /v2/tokenInfo | Get Token Info
 [**revokeAccess**](OAuthEndpointsApi.md#revokeAccess) | **DELETE** /oauth/authorization | Revoke Access
 
 
@@ -139,6 +140,68 @@ No authorization required
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
+
+
+## getTokenInfo
+
+> AppResponse getTokenInfo()
+
+Get Token Info
+
+This endpoint can be used to retrieve the app linked to the OAuth token.
+
+### Example
+
+```java
+import com.zendesk.sunshine_conversations_client.ApiClient;
+import com.zendesk.sunshine_conversations_client.ApiException;
+import com.zendesk.sunshine_conversations_client.Configuration;
+import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.api.OAuthEndpointsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.smooch.io");
+
+        OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
+        // Add required body parameters
+
+        try {
+            AppResponse result = apiInstance.getTokenInfo();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling OAuthEndpointsApi#getTokenInfo");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**AppResponse**](AppResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 ### HTTP response details

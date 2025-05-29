@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ## releaseControl
 
-> Object releaseControl(appId, conversationId)
+> Object releaseControl(appId, conversationId, releaseControlBody)
 
 Release Control
 
@@ -290,10 +290,11 @@ public class Example {
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
         String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        ReleaseControlBody releaseControlBody = new ReleaseControlBody(); // ReleaseControlBody | 
         // Add required body parameters
 
         try {
-            Object result = apiInstance.releaseControl(appId, conversationId);
+            Object result = apiInstance.releaseControl(appId, conversationId, releaseControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#releaseControl");
@@ -313,6 +314,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **appId** | **String**| Identifies the app. |
  **conversationId** | **String**| Identifies the conversation. |
+ **releaseControlBody** | [**ReleaseControlBody**](ReleaseControlBody.md)|  | [optional]
 
 ### Return type
 
@@ -324,7 +326,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: Not defined
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 ### HTTP response details

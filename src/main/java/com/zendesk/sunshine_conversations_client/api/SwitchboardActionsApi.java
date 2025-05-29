@@ -11,6 +11,7 @@ import com.zendesk.sunshine_conversations_client.model.AcceptControlBody;
 import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.OfferControlBody;
 import com.zendesk.sunshine_conversations_client.model.PassControlBody;
+import com.zendesk.sunshine_conversations_client.model.ReleaseControlBody;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -213,11 +214,12 @@ public class SwitchboardActionsApi {
    * The releaseControl action releases the control of the conversation by nullifying its switchboard state. When using integration auth scope, a 403 is returned if the active switchboard integration is not the authenticated integration.
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
+   * @param releaseControlBody  (optional)
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object releaseControl(String appId, String conversationId) throws ApiException {
-    Object localVarPostBody = null;
+  public Object releaseControl(String appId, String conversationId, ReleaseControlBody releaseControlBody) throws ApiException {
+    Object localVarPostBody = releaseControlBody;
     
     // verify the required parameter 'appId' is set
     if (appId == null) {
@@ -250,7 +252,7 @@ public class SwitchboardActionsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 
@@ -450,11 +452,12 @@ public class SwitchboardActionsApi {
    * 
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
+   * @param releaseControlBody  (optional)
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object releaseControl(String bearerToken, String appId, String conversationId) throws ApiException {
-    Object localVarPostBody = null;
+  public Object releaseControl(String bearerToken, String appId, String conversationId, ReleaseControlBody releaseControlBody) throws ApiException {
+    Object localVarPostBody = releaseControlBody;
     
     // verify the required parameter 'appId' is set
     if (appId == null) {
@@ -489,7 +492,7 @@ public class SwitchboardActionsApi {
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
     final String[] localVarContentTypes = {
-      
+      "application/json"
     };
     final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
 

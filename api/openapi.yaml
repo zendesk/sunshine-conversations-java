@@ -129,7 +129,7 @@ info:
     {\n   \"scope\": \"app\"\n}\n```\n"
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.4.0
+  version: 15.5.0
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -2144,6 +2144,12 @@ paths:
           example: 029c31f25a21b47effd7be90
           type: string
         style: simple
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/releaseControlBody'
+        required: false
       responses:
         "200":
           content:
@@ -2190,6 +2196,7 @@ paths:
       summary: Release Control
       tags:
       - Switchboard Actions
+      x-contentType: application/json
       x-accepts: application/json
   /v2/apps/{appId}/conversations/{conversationId}/download:
     post:
@@ -4385,6 +4392,23 @@ paths:
       tags:
       - Users
       x-contentType: application/json
+      x-accepts: application/json
+  /v2/tokenInfo:
+    get:
+      description: This endpoint can be used to retrieve the app linked to the OAuth
+        token.
+      operationId: GetTokenInfo
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/appResponse'
+          description: Ok
+      security: []
+      summary: Get Token Info
+      tags:
+      - OAuth Endpoints
       x-accepts: application/json
   /oauth/authorize:
     get:
@@ -8372,6 +8396,12 @@ components:
             configuration
           example: next
           type: string
+        reason:
+          description: Reason for the pass control action.
+          enum:
+          - ticketClosed
+          - transferToEmail
+          type: string
         metadata:
           allOf:
           - $ref: '#/components/schemas/metadata'
@@ -8381,6 +8411,22 @@ components:
             in the `switchboard:passControl` webhook.
       required:
       - switchboardIntegration
+      type: object
+    releaseControlBody:
+      properties:
+        reason:
+          description: Reason for the release control action.
+          enum:
+          - ticketClosed
+          - transferToEmail
+          type: string
+        metadata:
+          allOf:
+          - $ref: '#/components/schemas/metadata'
+          description: Flat object containing custom properties. Strings, numbers
+            and booleans are the only supported format that can be passed to metadata.
+            The metadata is limited to 4KB in size. The metadata object will be included
+            in the `switchboard:releaseControl` webhook.
       type: object
     downloadMessageRefBody:
       allOf:

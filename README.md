@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>15.4.0</version>
+    <version>15.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,7 +47,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:15.4.0"
+compile "com.zendesk:sunshine-conversations-client:15.5.0"
 ```
 
 ## Getting Started
@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
 *MessagesApi* | [**postMessage**](docs/MessagesApi.md#postMessage) | **POST** /v2/apps/{appId}/conversations/{conversationId}/messages | Post Message
 *OAuthEndpointsApi* | [**authorize**](docs/OAuthEndpointsApi.md#authorize) | **GET** /oauth/authorize | Authorize
 *OAuthEndpointsApi* | [**getToken**](docs/OAuthEndpointsApi.md#getToken) | **POST** /oauth/token | Get Token
+*OAuthEndpointsApi* | [**getTokenInfo**](docs/OAuthEndpointsApi.md#getTokenInfo) | **GET** /v2/tokenInfo | Get Token Info
 *OAuthEndpointsApi* | [**revokeAccess**](docs/OAuthEndpointsApi.md#revokeAccess) | **DELETE** /oauth/authorization | Revoke Access
 *ParticipantsApi* | [**joinConversation**](docs/ParticipantsApi.md#joinConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/join | Join Conversation
 *ParticipantsApi* | [**leaveConversation**](docs/ParticipantsApi.md#leaveConversation) | **POST** /v2/apps/{appId}/conversations/{conversationId}/leave | Leave Conversation
@@ -431,6 +432,7 @@ Class | Method | HTTP request | Description
  - [QuotedMessageMessage](docs/QuotedMessageMessage.md)
  - [Referral](docs/Referral.md)
  - [ReferralDetails](docs/ReferralDetails.md)
+ - [ReleaseControlBody](docs/ReleaseControlBody.md)
  - [Reply](docs/Reply.md)
  - [Source](docs/Source.md)
  - [SourceWebhook](docs/SourceWebhook.md)
