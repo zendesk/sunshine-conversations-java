@@ -37,7 +37,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.zendesk</groupId>
     <artifactId>sunshine-conversations-client</artifactId>
-    <version>15.5.0</version>
+    <version>15.5.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -47,20 +47,20 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.zendesk:sunshine-conversations-client:15.5.0"
+compile "com.zendesk:sunshine-conversations-client:15.5.1"
 ```
 
 ## Getting Started
 
-Familiarity with [Sunshine Conversations API authentication](https://docs.smooch.io/guide/authentication-overview) is recommended.
+Familiarity with [Sunshine Conversations API authentication](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/) is recommended.
 
 ### Basic Authentication (recommended)
 
-With [basic authentication](https://docs.smooch.io/guide/basic-authentication), you can use your API key ID and secret to authenticate API requests. See below for a code sample.
+With [basic authentication](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#basic-authentication), you can use your API key ID and secret to authenticate API requests. See below for a code sample.
 
 ### Authentication with JSON Web Tokens (JWTs)
 
-See the [JSON Web Tokens (JWTs)](https://docs.smooch.io/guide/jwt) guide for more information and guidelines on when to use this method. In general, you'll want to favor using basic authentication.
+See the [JSON Web Tokens (JWTs)](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#jwt-authentication) guide for more information and guidelines on when to use this method. In general, you'll want to favor using basic authentication.
 
 To generate a JWT, use your API key ID and secret.
 

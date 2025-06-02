@@ -1,135 +1,173 @@
 openapi: 3.0.2
 info:
-  description: "# Introduction\n\n<aside class=\"notice\">As a stepping stone to new\
-    \ and greater things, we’ve updated Sunshine Conversations API to v2. For users\
-    \ wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/v1\"\
-    >here</a>. \n</aside>\n\nWelcome to the Sunshine Conversations API. The API allows\
-    \ you to craft entirely unique messaging experiences for your app and website\
-    \ as well as talk to any backend or external service.\n\nThe Sunshine Conversations\
-    \ API is designed according to REST principles. The API accepts JSON in request\
-    \ bodies and requires that the content-type: application/json header be specified\
-    \ for\nall such requests. The API will always respond with an object. Depending\
-    \ on context, resources may be returned as single objects or as arrays of objects,\
-    \ nested within the response object.\n\nIn some cases, the API will also facilitate\
-    \ cross-origin resource sharing so that it can be called from a web application.\n\
-    \n<aside class=\"notice\">Note that for authenticated requests, cross-origin resource\
-    \ sharing is only available to appUser scoped credentials. Attempting to call\
-    \ the API from the browser using \napp or account scoped credentials will result\
-    \ in a <a href=\"https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy\"\
-    >same-origin policy</a> browser error. For more information, refer \nto the <a\
-    \ href=\"http://docs.smooch.io/guide/authorization/#handle-credentials-with-caution\"\
-    >Authorization guide</a>.</aside>\n\n## Regions\n\nIf you are a licensed Zendesk\
-    \ customer, use the following API host:\n\n`https://<subdomain>.zendesk.com/sc`\n\
-    \nIf you are not a licensed Zendesk customer, the API host is available in the\
-    \ following regions in order to meet your organization’s residency requirements.\n\
-    \n| Region         | Host                       |\n| -------------- | --------------------------\
-    \ |\n| United States  | https://api.smooch.io      |\n| European Union | https://api.eu-1.smooch.io\
-    \ |\n\nFor more information, see [Regions](/guide/regions/).\n\n<aside class=\"\
-    notice\">When configuring an API host, make sure to always use `https`. Some API\
-    \ clients can have unexpected behaviour when following redirects from `http` to\
-    \ `https`.</aside>\n\n## Errors\n\nSunshine Conversations uses standard HTTP status\
-    \ codes to communicate errors. In general, a `2xx` status code indicates success\
-    \ while `4xx` indicates an error, in which case, the response body includes a\
-    \ JSON object which includes an array of errors, with a text `code` and `title`\
-    \ containing more details. Multiple errors can only be included in a `400 Bad\
-    \ Request`. A `5xx` status code indicates that something went wrong on our end.\n\
-    \n```javascript\n{\n   \"errors\":  [\n    {\n        \"code\": \"unauthorized\"\
-    ,\n        \"title\": \"Authorization is required\"\n    }\n   ]\n}\n```\n\n##\
-    \ API Version\n\nThe latest version of the API is v2. Version v1.1 is still supported\
-    \ and you can continue using it but we encourage you to upgrade to the latest\
-    \ version. To learn more about API versioning at Sunshine Conversations, including\
-    \ instructions on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).\n\
-    \n## API Pagination and Records Limits\n\nAll paginated endpoints support cursor-based\
-    \ pagination.\n\n### Cursor Pagination\n\nCursor-based pagination is a common\
-    \ pagination strategy that avoids many of the pitfalls of offset–limit pagination.\
-    \ It works by returning a pointer to a specific item in the dataset. On subsequent\
-    \ requests, the server returns results after the given pointer.\n\nA `page[after]`\
-    \ or `page[before]` query string parameter may be provided, they are cursors pointing\
-    \ to a record id.\n\nThe `page[after]` cursor indicates that only records **subsequent**\
-    \ to it should be returned.\n\nThe `page[before]` cursor indicates that only records\
-    \ **preceding** it should be returned.\n\n**Only one** of `page[after]` or `page[before]`\
-    \ may be provided in a query, not both.\n\nIn most endpoints, an optional `page[size]`\
-    \ query parameter may be passed to control the number of records returned by the\
-    \ request.\n\n## API Libraries\n\nSunshine Conversations provides an official\
-    \ API library for [Java](https://github.com/zendesk/sunshine-conversations-java),\
-    \ with more languages to come. These helpful libraries wrap calls to the API and\
-    \ can make interfacing with Sunshine Conversations easier.\n\n## Postman Collection\n\
-    \n<a style=\"display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width:\
-    \ 123px;\" href=\"https://docs.smooch.io/sunco-openapi/postman_collection.json\"\
-    ></a>\n\nIn addition to API libraries, Sunshine Conversations also has a Postman\
-    \ collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/)\
-    \ for information on how to install and use the collection in your Postman client.\n\
-    \n## Rate Limits\n\nSunshine Conversations APIs are subject to rate limiting.\
-    \ If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many\
-    \ Requests` HTTP status code. We apply rate limits to prevent abuse, spam, denial-of-service\
-    \ attacks, and similar issues. Our goal is to keep the limits high enough so that\
-    \ any application using Sunshine Conversations as intended will not encounter\
-    \ them. However usage spikes do occur and encountering a rate limit may be unavoidable.\
-    \ In order to avoid production outages, when calling the Sunshine Conversations\
-    \ API you should implement `429` retry logic using exponential backoff and jitter.\n\
-    \nIf your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).\n\
-    \n## Conversation Size Limits\n\nConversations are limited to 30,000 messages.\
-    \ Once you reach this maximum, a `423 Locked` HTTP status code is returned when\
-    \ trying to post a new message. To allow more messages to be sent to the affected\
-    \ conversation, you must [delete all messages](https://docs.smooch.io/rest/#operation/deleteAllMessages)\
-    \ to make room.\n\nIf your use case involves conversations that could exceed this\
-    \ limit, please [contact us](https://smooch.io/contact). We will not extend your\
-    \ limit, but we want to understand your use case better.\n\n## Request Size Limits\n\
-    \nThe Sunshine Conversations API imposes the following size limits on HTTP requests:\n\
-    \n| Request Type | Limit |\n| ------------ | ----- |\n| JSON         | 100kb |\n\
-    | File upload  | 50mb  |\n\n## Authorization\n\nThis is an overview of how authorization\
-    \ works with the Sunshine Conversations API. Sunshine Conversations allows basic\
-    \ authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server\
-    \ calls. [See below](#authentication) for more details.\nThere are two different\
-    \ authorization scopes available - app and account.\n\n| Scope   | Authorized\
-    \ Methods                       |\n| ------- | ----------------------------------------\
-    \ |\n| app     | All methods besides Account Provisioning |\n| account | All methods\
-    \                              |\n\nThe app scope can be used to access any of\
-    \ the Sunshine Conversations APIs, besides account provisioning methods, on behalf\
-    \ of a single app, or any app user related to that app. The account scope can\
-    \ be used to access any of the Sunshine Conversations and Account Provisioning\
-    \ APIs on behalf of the account owner, any app belonging to the account, or any\
-    \ app user related to those apps.\n\n<aside class=\"notice\">An additional scope\
-    \ of `appUser` can also be used to authenticate users when using one of the Sunshine\
-    \ Conversations native SDK integrations. For information on how and when to use\
-    \ this scope, see the guide for <a href=\"https://docs.smooch.io/guide/authenticating-users/\"\
-    >authenticating users.</a></aside>\n\n## Authentication\n\nTo authenticate requests\
-    \ to the API, you will need an API key, composed of a key id and a secret.\nFor\
-    \ an overview of how authentication works in Sunshine Conversations and instructions\
-    \ on how to generate an API key, see the guide.\nAPI requests can be authenticated\
-    \ in two ways:\n\n- With Basic authentication you can make requests using an API\
-    \ key directly.\n- With JSON Web Tokens (JWTs) you sign tokens with an API key,\
-    \ which are then used to authenticate with the API. See [When to Use JWTs?](https://docs.smooch.io/guide/jwt/#when-to-use-jwts)\
-    \ to learn if JWTs are relevant for your usage.\n- Before using an API key in\
-    \ production, make sure to familiarize yourself with best practices on how to\
-    \ [securely handle credentials](https://docs.smooch.io/guide/authentication-secure-credential-handling/).\n\
-    \n### Basic Authentication\n\nAPI requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)\
-    \ using an API key. The key id is used as the username and the secret as the password.\
-    \ The scope of access is determined by the owner of the API key. See the [guide](https://docs.smooch.io/guide/basic-authentication/#scope-of-access)\
-    \ for more details.\n\n### JWTs\n\nJSON Web Tokens (JWTs) are an industry standard\
-    \ authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519),\
-    \ and a set of supported JWT libraries for a variety of languages and platforms\
-    \ can be found at http://jwt.io. To summarize, a JWT is composed of a header,\
-    \ a payload, and a signature. The payload contains information called claims which\
-    \ describe the subject to whom the token was issued.\nThe JWT itself is transmitted\
-    \ via the HTTP `authorization` header. The token should be prefixed with “Bearer”\
-    \ followed by a space. For example: `Bearer your-jwt`.\nTo generate a JWT, you\
-    \ need an API key, which is composed of a key ID and a secret. The key ID is included\
-    \ in a JWT’s header, as the `kid` property, while the secret is used to sign the\
-    \ JWT.\nFor more in-depth coverage, see the [guide](https://docs.smooch.io/guide/jwt).\n\
-    \n#### Header\n\nThe JWT header must contain the key id (kid) of the API key that\
-    \ is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs\
-    \ are not accepted.\n\n```javascript\n{\n    \"alg\": \"HS256\",\n    \"typ\"\
-    : \"JWT\",\n    \"kid\": \"act_5963ceb97cde542d000dbdb1\"\n}\n```\n\n#### Payload\n\
-    \nThe JWT payload must include a scope claim which specifies the caller’s scope\
-    \ of access.\n\n- account-scoped JWTs must be generated with an API key associated\
-    \ with a Sunshine Conversations account (act*) or service account (svc*).\n\n\
-    ```javascript\n{\n    \"scope\": \"account\"\n}\n```\n\n- app-scoped JWTs can\
-    \ be generated with an API key associated with an app (app\\_).\n\n```javascript\n\
-    {\n   \"scope\": \"app\"\n}\n```\n"
+  description: |
+    # Introduction
+
+    <aside class="notice">The documentation below applies to v2 of the API. For users wanting to access v1, please proceed <a href="https://docs.smooch.io/rest/v1">here</a> instead.
+    </aside>
+
+    Welcome to the Sunshine Conversations API. The API allows you to craft entirely unique messaging experiences for your app and website as well as talk to any backend or external service.
+
+    The Sunshine Conversations API is designed according to REST principles. The API accepts JSON in request bodies and requires that the `content-type: application/json` header be specified for
+    all such requests. The API will always respond with an object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.
+
+    ## Regions
+
+    If you are a licensed Zendesk customer, use the following API host:
+
+    ```
+    https://<subdomain>.zendesk.com/sc
+    ```
+
+    If you are not a licensed Zendesk customer, the API host is available in the following regions in order to meet your organization’s residency requirements.
+
+    | Region         | Host                       |
+    | -------------- | -------------------------- |
+    | United States  | https://api.smooch.io      |
+    | European Union | https://api.eu-1.smooch.io |
+
+    For more information, see [Regions](/guide/regions/).
+
+    <aside class="notice">When configuring an API host, make sure to always use <code>https</code>. Some API clients can have unexpected behaviour when following redirects from <code>http</code> to <code>https</code>.</aside>
+
+    ## Errors
+
+    Sunshine Conversations uses standard HTTP status codes to communicate errors. In general, a `2xx` status code indicates success while `4xx` indicates an error, in which case, the response body includes a JSON object which includes an array of errors, with a text `code` and `title` containing more details. Multiple errors can only be included in a `400 Bad Request`. A `5xx` status code indicates that something went wrong on our end.
+
+    ```javascript
+    {
+       "errors":  [
+        {
+            "code": "unauthorized",
+            "title": "Authorization is required"
+        }
+       ]
+    }
+    ```
+
+    ## API Version
+
+    The latest version of the API is v2. Version v1.1 is still supported and you can continue using it but we encourage you to upgrade to the latest version. To learn more about API versioning at Sunshine Conversations, including instructions on how to upgrade to the latest version, [visit our docs](https://docs.smooch.io/guide/versioning).
+
+    ## API Pagination and Records Limits
+
+    All paginated endpoints support cursor-based pagination.
+
+    ### Cursor Pagination
+
+    Cursor-based pagination is a common pagination strategy that avoids many of the pitfalls of offset–limit pagination. It works by returning a pointer to a specific item in the dataset. On subsequent requests, the server returns results after the given pointer.
+
+    A `page[after]` or `page[before]` query string parameter may be provided, they are cursors pointing to a record id.
+
+    The `page[after]` cursor indicates that only records **subsequent** to it should be returned.
+
+    The `page[before]` cursor indicates that only records **preceding** it should be returned.
+
+    **Only one** of `page[after]` or `page[before]` may be provided in a query, not both.
+
+    In most endpoints, an optional `page[size]` query parameter may be passed to control the number of records returned by the request.
+
+    ## API Libraries
+
+    Sunshine Conversations provides an official API library for [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages to come. These helpful libraries wrap calls to the API and can make interfacing with Sunshine Conversations easier.
+
+    ## Postman Collection
+
+    <a style="display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width: 123px;" href="https://docs.smooch.io/sunco-openapi/postman_collection.json"></a>
+
+    In addition to API libraries, Sunshine Conversations also has a Postman collection that can be used for development or testing purposes. See the [guide](https://docs.smooch.io/guide/postman-collection/) for information on how to install and use the collection in your Postman client.
+
+    ## Rate Limits
+
+    Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many Requests` HTTP status code. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using Sunshine Conversations as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, when calling the Sunshine Conversations API you should implement `429` retry logic using exponential backoff and jitter.
+
+    If your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).
+
+    ## Conversation Size Limits
+
+    Conversations are limited to 30,000 messages. Once you reach this maximum, a `423 Locked` HTTP status code is returned when trying to post a new message. To allow more messages to be sent to the affected conversation, you must [delete all messages](https://docs.smooch.io/rest/#operation/DeleteAllMessages) to make room.
+
+    If your use case involves conversations that could exceed this limit, please [contact us](https://smooch.io/contact). We will not extend your limit, but we want to understand your use case better.
+
+    ## Request Size Limits
+
+    The Sunshine Conversations API imposes the following size limits on HTTP requests:
+
+    | Request Type | Limit |
+    | ------------ | ----- |
+    | JSON         | 100kb |
+    | File upload  | 50mb  |
+
+    ## Authorization
+
+    This is an overview of how authorization works with the Sunshine Conversations API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server calls. [See below](/#section/Introduction/Authentication) for more details.
+
+    There are three authorization scopes available for the v2 API: `integration`, `app`, and `account`.
+
+    | Scope       | Availability                                | Authorized Methods                              |
+    | ----------- | ------------------------------------------- | ----------------------------------------------- |
+    | account     | Sunshine Conversations direct accounts only | All methods                                     |
+    | app         | All account types                           | All methods besides Account Provisioning        |
+    | integration | All account types                           | Users, Conversations, Attachments, and Webhooks |
+
+    <aside class="notice">An additional scope of <code>user</code> is used for <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/">authenticating users</a> on the Zendesk Messaging SDKs. This scope, however, cannot be used with the v2 API.</aside>
+
+    ## Authentication
+
+    To authenticate requests to the API, you will need an API key, composed of a key id and a secret.
+    For an overview of how authentication works in Sunshine Conversations and instructions on how to generate an API key, see [API authentication](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/).
+
+    API requests can be authenticated in two ways:
+
+    - With Basic authentication you can make requests using an API key directly.
+    - With JSON Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate with the API. See [When to Use JWTs](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#when-to-use-jwts) to learn if JWTs are relevant for your usage.
+    - Before using an API key in production, make sure to familiarize yourself with best practices on how to [securely handle credentials](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#secure-credential-handling).
+
+    ### Basic Authentication
+
+    API requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using an API key. The key id is used as the username and the secret as the password. The scope of access is determined by the owner of the API key. See the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#access-scopes) for more details.
+
+    ### JWTs
+
+    JSON Web Tokens (JWTs) are an industry standard authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519), and a set of supported JWT libraries for a variety of languages and platforms can be found at http://jwt.io. To summarize, a JWT is composed of a header, a payload, and a signature. The payload contains information called claims which describe the subject to whom the token was issued.
+    The JWT itself is transmitted via the HTTP `authorization` header. The token should be prefixed with “Bearer” followed by a space. For example: `Bearer your-jwt`.
+    To generate a JWT, you need an API key, which is composed of a key ID and a secret. The key ID is included in a JWT’s header, as the `kid` property, while the secret is used to sign the JWT.
+    For more in-depth coverage, see the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#jwt-authentication).
+
+    #### Header
+
+    The JWT header must contain the key id (kid) of the API key that is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs are not accepted.
+
+    ```javascript
+    {
+        "alg": "HS256",
+        "typ": "JWT",
+        "kid": "act_5963ceb97cde542d000dbdb1"
+    }
+    ```
+
+    #### Payload
+
+    The JWT payload must include a scope claim which specifies the caller’s scope of access.
+
+    - account-scoped JWTs must be generated with an API key associated with a Sunshine Conversations account (act*) or service account (svc*).
+
+    ```javascript
+    {
+        "scope": "account"
+    }
+    ```
+
+    - app-scoped JWTs can be generated with an API key associated with an app (app\_).
+
+    ```javascript
+    {
+       "scope": "app"
+    }
+    ```
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.5.0
+  version: 15.5.1
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
@@ -147,17 +185,17 @@ security:
   - app
   - account
 tags:
-- description: "If you’re looking to enable messaging inside your product for your\
-    \ customers, with as much control over the experience as you’d like, you can create\
+- description: "If you're looking to enable messaging inside your product for your\
+    \ customers, with as much control over the experience as you'd like, you can create\
     \ and control Sunshine Conversations apps programmatically using [Account Provisioning](https://docs.smooch.io/guide/intro-to-account-provisioning/).\n\
     ### Authentication\nAccount Provisioning endpoints require `account` scope. See\
-    \ the [authorization](#authorization) and [authentication](#authentication) sections\
-    \ for information.\nA user account API key (key id that starts with `act_`) can\
-    \ access all account provisioning routes. You can create an account key by going\
-    \ to your account page.\nA service account API key (key id that starts with `svc_`)\
-    \ may be used to manage apps, but not service accounts or service account keys.\n\
-    \n| Key Type       | Authorized Methods                                      \
-    \          |\n| -------------- | -----------------------------------------------------------------\
+    \ the [authorization](/#section/Introduction/Authorization) and [authentication](/#section/Introduction/Authentication)\
+    \ sections for information.\nA user account API key (key id that starts with `act_`)\
+    \ can access all account provisioning routes. You can create an account key by\
+    \ going to your account page.\nA service account API key (key id that starts with\
+    \ `svc_`) may be used to manage apps, but not service accounts or service account\
+    \ keys.\n\n| Key Type       | Authorized Methods                             \
+    \                   |\n| -------------- | -----------------------------------------------------------------\
     \ |\n| act            | All Core and Account Provisioning methods.           \
     \             |\n| svc   \t       | All Core methods, App Management methods,\
     \ and App Keys methods.   |\n\n### Service Accounts\nService Account schema and\
@@ -189,10 +227,10 @@ tags:
     set of endpoints is used to provision and manage conversations.
   name: Conversations
   x-displayName: Conversations
-- description: Endpoints used for managing conversation [participants](https://docs.smooch.io/guide/multi-party-conversations#participant).
+- description: Endpoints used for managing conversation [participants](https://developer.zendesk.com/documentation/conversations/getting-started/key-concepts/#participant).
   name: Participants
   x-displayName: Participants
-- description: Endpoints used for managing [messages](https://docs.smooch.io/guide/key-concepts/#message).
+- description: Endpoints used for managing [messages](https://developer.zendesk.com/documentation/conversations/getting-started/key-concepts/#message).
   name: Messages
   x-displayName: Messages
 - description: Notify Sunshine Conversations of different conversation activities.
@@ -227,10 +265,10 @@ tags:
 - description: This set of endpoints is used to manage users.
   name: Users
   x-displayName: Users
-- description: Endpoints used for provisioning [clients](https://docs.smooch.io/guide/key-concepts/#client).
+- description: Endpoints used for provisioning [clients](https://developer.zendesk.com/documentation/conversations/getting-started/key-concepts/#client).
   name: Clients
   x-displayName: Clients
-- description: Endpoints used for fetching a user's [devices](https://docs.smooch.io/guide/key-concepts/#device).
+- description: Endpoints used for fetching a user's [devices](https://developer.zendesk.com/documentation/conversations/getting-started/key-concepts/#device).
   name: Devices
   x-displayName: Devices
 - description: All notable changes to the API will be referenced in the [v2 API changelog](https://docs.smooch.io/guide/v2-api-changelog/).
@@ -261,7 +299,7 @@ tags:
     | conversation:message:delivery:user  | When a new message is successfully delivered to a user. |
     | conversation:postback  | When a user clicks on a postback action button. |
     | conversation:read  | When a user has read the conversation. |
-    | conversation:referral | When a user is referred to a conversation. See the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation referrals</a> guide for more details. |
+    | conversation:referral | When a user is referred to a conversation. See the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/conversation-referrals/">conversation referrals</a> guide for more details. |
     | conversation:typing  | When a user starts or stops typing. |
     | switchboard:acceptControl | When a switchboard integration accepts control of a conversation. |
     | switchboard:acceptControl:failure   | When control of a conversation fails to be accepted by a switchboard integration. |
@@ -290,42 +328,20 @@ tags:
     - 404: The target doesn’t exist.
     - 406: The target exists, and rejected the webhook intentionally.
   name: Webhooks
-- description: |
-    Sunshine Conversations has a rapidly growing partner ecosystem which helps you unlock messaging in your product or service and lets customers find you alongside complementary partners. If you're interested in becoming a partner, tell us what you're building with Sunshine Conversations using our [partner application](https://docs.smooch.io/guide/becoming-an-integration-partner/) and we'll provision you with everything you'll need to build your end of the OAuth flow using Sunshine Conversations Connect. In the meantime the OAuth endpoints detailed below can be tested by impersonating Shoplifter, a partnership we built for testing purposes.
-
-    # Add to Sunshine Conversations Button
-    ```html
-    <a href="https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code"><img alt="Add to Sunshine Conversations" height="40" width="278" src="https://cdn.smooch.io/images/add_to_sunshine_conversations.png" srcset="https://cdn.smooch.io/images/add_to_sunshine_conversations.png 1x, https://cdn.smooch.io/images/add_to_sunshine_conversations@2x.png 2x"/></a>
-    ```
-    This HTML template can be used to place an "Add to Sunshine Conversations" button on your website.
-
-    <p class="add-to-sunshine-conversations-button">
-        <a href="https://app.smooch.io/oauth/authorize?client_id=shoplifter&response_type=code"><img alt="Add to Sunshine Conversations" height="40" width="278" src="https://cdn.smooch.io/images/add_to_sunshine_conversations.png" srcset="https://cdn.smooch.io/images/add_to_sunshine_conversations.png 1x, https://cdn.smooch.io/images/add_to_sunshine_conversations@2x.png 2x"/></a>
-    </p>
-
-    # Sample Application
-    An open source sample application implementing Sunshine Conversations Connect has been created to help demonstrate how to get it working. Give [Shoplifter](https://sunco-shoplifter.zendesk.com/) a try.
-
-    The source code is available [here](https://github.com/zendesk/sunshine-conversations-shoplifter).
-  name: Sunshine Conversations Connect
-  x-displayName: Sunshine Conversations Connect
-  x-zoas-docs:
-    ignoreCanonicalSchema: true
-    ignoreEmptyOperations: true
-- description: "The scope of an issued access token is integration scope. This allows\
-    \ API calls to be made to a specific Sunshine Conversations app on behalf of an\
-    \ integration, identified by the integration’s clientId. The access token grants\
-    \ permission to get and create users and conversations associated with the app.\
-    \ The token also grants permission to create webhooks, however only webhooks created\
-    \ for the integration will be visible. An access token with integration scope\
-    \ cannot see or modify webhooks that were created by other integrations, for example.\n\
-    \n| API\t      | Access\t|\n| --------  | ------- |\n| [/v2/apps/:appId/users/\\\
-    *](#tag/Users)\t| Yes\t|\n| [/v2/apps/:appId/conversations/\\*](#tag/Conversations)\t\
-    | Yes\t|\n| [/v2/apps/:appId/integrations/me/webhooks/\\*](#tag/Webhooks)\t| Yes\t\
-    |\n| [/v2/apps/:appId/switchboards/\\*](#tag/Switchboards) | No |\n| [/v2/apps/\\\
-    *](#tag/Apps) | No |\n"
+- description: "Endpoints used to power the OAuth flow for Zendesk Technology Partner\
+    \ integrations. Learn how to [build a marketplace bot](https://developer.zendesk.com/documentation/conversations/how-to-guides/building-a-marketplace-bot/)\
+    \ in the Zendesk developer docs.\n\nIssued access tokens use `integration` scope.\
+    \ The access token grants permission to get and create users and conversations\
+    \ associated with the connected app. The token also grants permission to create\
+    \ webhooks, however only webhooks created for the calling integration will be\
+    \ visible. An access token with integration scope cannot see or modify webhooks\
+    \ that were created by other integrations.\n\n| API\t      | Access\t|\n| --------\
+    \  | ------- |\n| [/v2/apps/:appId/users/\\*](#tag/Users)\t| Yes\t|\n| [/v2/apps/:appId/conversations/\\\
+    *](#tag/Conversations)\t| Yes\t|\n| [/v2/apps/:appId/integrations/me/webhooks/\\\
+    *](#tag/Webhooks)\t| Yes\t|\n| [/v2/apps/:appId/switchboards/\\*](#tag/Switchboards)\
+    \ | No |\n| [/v2/apps/\\*](#tag/Apps) | No |\n"
   name: OAuth Endpoints
-  x-displayName: OAuth Endpoints
+  x-displayName: OAuth
   x-zoas-docs:
     ignoreCanonicalSchema: true
 paths:
@@ -2055,7 +2071,7 @@ paths:
         identified by its [OAuth token](https://docs.smooch.io/guide/oauth/#redirect-and-acquiring-an-oauth-token)
         or [Custom Integration API Key](https://docs.smooch.io/rest/#tag/CustomIntegrationApiKeys)
         credentials. Duplicate passControl actions using the `next` keyword and their
-        metadata are disregarded. For more information, see [Switchboard passControl](https://docs.smooch.io/guide/switchboard/#pass-control).
+        metadata are disregarded. For more information, see [Switchboard passControl](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#pass-control).
       operationId: PassControl
       parameters:
       - description: Identifies the app.
@@ -4395,8 +4411,16 @@ paths:
       x-accepts: application/json
   /v2/tokenInfo:
     get:
-      description: This endpoint can be used to retrieve the app linked to the OAuth
-        token.
+      description: |
+        This endpoint can be used to retrieve the app linked to the OAuth token. Typically used after receiving an access
+        token via OAuth, in order to retrieve the app's `id` and `subdomain` to be used in future calls. May also be used
+        to confirm that the credentials are still valid.
+
+        Use `oauth-bridge.zendesk.com/sc` as the base URL when invoking this endpoint.
+
+        ```
+        GET https://oauth-bridge.zendesk.com/sc/v2/tokenInfo
+        ```
       operationId: GetTokenInfo
       responses:
         "200":
@@ -4412,12 +4436,14 @@ paths:
       x-accepts: application/json
   /oauth/authorize:
     get:
-      description: This endpoint begins the OAuth flow. It relies on a browser session
-        for authentication. If the user is not logged in to Sunshine Conversations
-        they will be redirected to the login page. If the user has many apps, they
-        will first be prompted to select the one they wish to integrate with. They
-        will then be presented with an Allow/Deny dialog, describing details of the
-        access your integration is requesting.
+      description: "This endpoint begins the OAuth flow. It relies on a browser session\
+        \ for authentication.\nIf the user is not logged in to Zendesk they will be\
+        \ redirected to the login page. \nIf the user has many Zendesk accounts, they\
+        \ will first be prompted to select the one \nthey wish to integrate with.\
+        \ They will then be presented with an Allow/Deny dialog, \ndescribing details\
+        \ of the access your integration is requesting.\n\nUse `oauth-bridge.zendesk.com/sc`\
+        \ as the base URL when redirecting the user to this endpoint.\n\n```\nhttps://oauth-bridge.zendesk.com/sc/oauth/authorize?response_type=code&client_id={client_id}\n\
+        ```\n"
       operationId: Authorize
       parameters:
       - description: Your integration’s unique identifier
@@ -4475,8 +4501,10 @@ paths:
       x-accepts: text/plain
   /oauth/token:
     post:
-      description: This endpoint is used to exchange an authorization code for an
-        access token. It should only be used in server-to-server calls.
+      description: "This endpoint is used to exchange an authorization code for an\
+        \ access token. \nIt should only be used in server-to-server calls.\n\nUse\
+        \ `oauth-bridge.zendesk.com/sc` as the base URL when invoking this endpoint.\n\
+        \n```\nPOST https://oauth-bridge.zendesk.com/sc/oauth/token\n```\n"
       operationId: GetToken
       requestBody:
         $ref: '#/components/requestBodies/inline_object'
@@ -4485,7 +4513,7 @@ paths:
             schema:
               properties:
                 code:
-                  description: The authorization code received via /oauth/authorize
+                  description: The authorization code received via the OAuth flow
                   example: "658965"
                   type: string
                 grant_type:
@@ -4493,11 +4521,13 @@ paths:
                   example: authorization_code
                   type: string
                 client_id:
-                  description: Your integration’s unique identifier
+                  description: Your OAuth client ID, provisioned during the partner
+                    application process
                   example: 5e4af71a81966cfff3ef6550
                   type: string
                 client_secret:
-                  description: Your integration’s secret
+                  description: Your OAuth client secret, provisioned during the partner
+                    application process
                   example: 5XJ85yjUtRcaQu_pDINblPZb
                   type: string
               required:
@@ -4532,13 +4562,13 @@ paths:
       x-accepts: application/json
   /oauth/authorization:
     delete:
-      description: "This endpoint is used to revoke your integration’s access to the\
-        \ user’s Sunshine Conversations app. Revoking access means your integration\
-        \ will no longer be able to interact with the app, and any webhooks the integration\
-        \ had previously configured will be removed. \nCalling this endpoint is equivalent\
-        \ to the user removing your integration manually in the Sunshine Conversations\
-        \ web app. Your integration’s `removeUrl` (if configured) will also be called\
-        \ when an integration is removed in this way.\n"
+      description: "This endpoint is used to revoke your integration's access to the\
+        \ user's app. Revoking access means your integration will no longer be able\
+        \ to interact with the app, and any webhooks the integration had previously\
+        \ configured will be removed. \nCalling this endpoint is equivalent to the\
+        \ user removing your integration manually. Your integration's `removeUrl`\
+        \ (if configured) will also be called when an integration is removed in this\
+        \ way.\n"
       operationId: RevokeAccess
       responses:
         "200":
@@ -6313,7 +6343,7 @@ components:
           type: boolean
         useAnimalNames:
           description: "A boolean specifying whether animal names should be used for\
-            \ \nunnamed users. See the \n[user naming guide](https://docs.smooch.io/guide/receiving-messages/#message-author-name)\n\
+            \ \nunnamed users. See the \n[user naming guide](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/receiving-messages/#message-author-name)\n\
             for details.\n"
           type: boolean
         echoPostback:
@@ -7100,7 +7130,7 @@ components:
       description: |-
         HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
         If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-        See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+        See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
       example: <h1>Hello!</h1>
       maxLength: 4096
       type: string
@@ -7109,7 +7139,7 @@ components:
         Markdown text content of the message. Can be provided in place of `text`. Cannot be used with `htmlText`.
         Will be converted to `htmlText` upon reception. If converted `htmlText` exceeds 4096 characters, the message will be rejected.
         If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-        See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+        See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
       example: '# Hello!'
       maxLength: 4096
       type: string
@@ -7348,7 +7378,7 @@ components:
           description: |-
             HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: <h1>Hello!</h1>
           maxLength: 4096
           type: string
@@ -7363,7 +7393,7 @@ components:
             Markdown text content of the message. Can be provided in place of `text`. Cannot be used with `htmlText`.
             Will be converted to `htmlText` upon reception. If converted `htmlText` exceeds 4096 characters, the message will be rejected.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: '# Hello!'
           maxLength: 4096
           type: string
@@ -7374,7 +7404,7 @@ components:
             $ref: '#/components/schemas/action'
           type: array
         payload:
-          description: The payload of a [reply button](https://docs.smooch.io/guide/structured-messages/#reply-buttons)
+          description: The payload of a [reply button](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#reply-buttons)
             response message.
           type: string
       required:
@@ -7517,7 +7547,7 @@ components:
           description: |-
             HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: <h1>Hello!</h1>
           maxLength: 4096
           type: string
@@ -7526,7 +7556,7 @@ components:
             Markdown text content of the message. Can be provided in place of `text`. Cannot be used with `htmlText`.
             Will be converted to `htmlText` upon reception. If converted `htmlText` exceeds 4096 characters, the message will be rejected.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: '# Hello!'
           maxLength: 4096
           type: string
@@ -7698,7 +7728,7 @@ components:
           description: |-
             HTML text content of the message. Can be provided in place of `text`. Cannot be used with `markdownText`.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: <h1>Hello!</h1>
           maxLength: 4096
           type: string
@@ -7707,7 +7737,7 @@ components:
             Markdown text content of the message. Can be provided in place of `text`. Cannot be used with `htmlText`.
             Will be converted to `htmlText` upon reception. If converted `htmlText` exceeds 4096 characters, the message will be rejected.
             If no `text` is provided, will be converted to `text` upon reception to be displayed on channels that do not support rich text.
-            See [rich text](https://docs.smooch.io/guide/structured-messages/rich-text) documentation for more information.
+            See [rich text](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#rich-text) documentation for more information.
           example: '# Hello!'
           maxLength: 4096
           type: string
@@ -8202,7 +8232,7 @@ components:
       type: object
     destination:
       description: |
-        The destination of the message, in the case of [channel targeting](https://docs.smooch.io/guide/sending-messages/#targeting-a-specific-channel) or sending [silent messages](https://docs.smooch.io/guide/sending-messages/#silent-messages). Only
+        The destination of the message, in the case of [channel targeting](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/sending-messages/#targeting-a-specific-channel) or sending [silent messages](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/sending-messages/#silent-messages). Only
         applicable if the author role is `business` and the conversation is of type
         `personal`.
       oneOf:
@@ -8484,7 +8514,7 @@ components:
         defaultResponderId:
           description: |
             The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user.
-            For more information, refer to <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+            For more information, refer to the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#default-integration-assignment">Switchboard guide</a>.
           nullable: true
           type: string
           writeOnly: true
@@ -8756,7 +8786,7 @@ components:
         defaultResponderId:
           description: |
             The default responder ID for the integration. This is the ID of the responder that will be used to send messages to the user.
-            For more information, refer to <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+            For more information, refer to the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#default-integration-assignment">Switchboard guide</a>.
           nullable: true
           type: string
       type: object
@@ -9269,7 +9299,7 @@ components:
       properties:
         externalId:
           description: |
-            A unique identifier for the user. The `externalId` can be used to link a user to the same conversation [across multiple devices](https://docs.smooch.io/guide/authenticating-users/).
+            A unique identifier for the user. The `externalId` can be used to link a user to the same conversation [across multiple devices](https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/).
           example: your-own-id
           maxLength: 1024
           minLength: 1
@@ -9644,7 +9674,7 @@ components:
       - $ref: '#/components/schemas/sourceWithCampaignWebhook_allOf'
     referral:
       description: |
-        Data representing a referral object when a user is referred to a conversation. See the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation referrals</a> guide for more details.
+        Data representing a referral object when a user is referred to a conversation. See the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/conversation-referrals/">conversation referrals</a> guide for more details.
       properties:
         code:
           description: The referral’s identifier.
@@ -9974,7 +10004,7 @@ components:
     inline_object:
       properties:
         code:
-          description: The authorization code received via /oauth/authorize
+          description: The authorization code received via the OAuth flow
           example: "658965"
           type: string
         grant_type:
@@ -9982,11 +10012,13 @@ components:
           example: authorization_code
           type: string
         client_id:
-          description: Your integration’s unique identifier
+          description: Your OAuth client ID, provisioned during the partner application
+            process
           example: 5e4af71a81966cfff3ef6550
           type: string
         client_secret:
-          description: Your integration’s secret
+          description: Your OAuth client secret, provisioned during the partner application
+            process
           example: 5XJ85yjUtRcaQu_pDINblPZb
           type: string
       required:
@@ -10216,7 +10248,7 @@ components:
       properties:
         integrationType:
           description: |
-            The type of the integration to deliver the message to. Can be set to `none` if sending a [silent message](https://docs.smooch.io/guide/sending-messages/#silent-messages). Will return an error
+            The type of the integration to deliver the message to. Can be set to `none` if sending a [silent message](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/sending-messages/#silent-messages). Will return an error
             if the user does not have a client of that type attached to the
             conversation.
           example: whatsapp
@@ -10280,7 +10312,7 @@ components:
     defaultResponder_defaultResponder:
       description: |
         The default responder for the integration. This is the responder that will be used to send messages to the user.
-        For more information, refer to the <a href="https://docs.smooch.io/guide/switchboard/#per-channel-default-responder">Per-channel default responder</a> guide.
+        For more information, refer to the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#default-integration-assignment">Switchboard guide</a>.
       nullable: true
       properties:
         name:
@@ -11740,7 +11772,7 @@ components:
           allOf:
           - $ref: '#/components/schemas/conversationTruncated'
           description: The conversation a user lands in after being referred. See
-            the <a href="https://docs.smooch.io/guide/conversation-referrals/">conversation
+            the <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/conversation-referrals/">conversation
             referrals</a> guide for more details.
         user:
           allOf:
@@ -11958,7 +11990,7 @@ components:
         reason:
           description: |
             The reason why the user was updated, if applicable.
-            * `authentication` - An anonymous user became an [identified](https://docs.smooch.io/guide/intro-to-users/) user.
+            * `authentication` - An unauthenticated user became an [authenticated](https://developer.zendesk.com/documentation/conversations/messaging-platform/users/intro-to-users/) user.
             * `localeDetection` - A user was updated as a result of automated locale detection on messages sent.
           enum:
           - authentication
@@ -12132,9 +12164,8 @@ x-tagGroups:
   - Users
   - Clients
   - Devices
-- name: Sunshine Conversations Connect
+- name: OAuth
   tags:
-  - Sunshine Conversations Connect
   - OAuth Endpoints
 - name: Changelog
   tags:
