@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**downloadMessageRef**](ConversationsApi.md#downloadMessageRef) | **POST** /v2/apps/{appId}/conversations/{conversationId}/download | Download Message Ref
 [**getConversation**](ConversationsApi.md#getConversation) | **GET** /v2/apps/{appId}/conversations/{conversationId} | Get Conversation
 [**listConversations**](ConversationsApi.md#listConversations) | **GET** /v2/apps/{appId}/conversations | List Conversations
+[**postConversionEvents**](ConversationsApi.md#postConversionEvents) | **POST** /v2/apps/{appId}/conversations/{conversationId}/conversionEvents | Post Conversion Events
 [**updateConversation**](ConversationsApi.md#updateConversation) | **PATCH** /v2/apps/{appId}/conversations/{conversationId} | Update Conversation
 
 
@@ -411,6 +412,86 @@ Name | Type | Description  | Notes
 | **200** | Ok |  -  |
 | **400** | Bad request |  -  |
 | **404** | Not found |  -  |
+
+
+## postConversionEvents
+
+> Map&lt;String, Object&gt; postConversionEvents(conversionEventsBody, appId, conversationId)
+
+Post Conversion Events
+
+This API can be used to track your end user&#39;s interactions with third party channels.
+
+### Example
+
+```java
+import com.zendesk.sunshine_conversations_client.ApiClient;
+import com.zendesk.sunshine_conversations_client.ApiException;
+import com.zendesk.sunshine_conversations_client.Configuration;
+import com.zendesk.sunshine_conversations_client.auth.*;
+import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.api.ConversationsApi;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.smooch.io");
+        
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("API_KEY_ID");
+        basicAuth.setPassword("API_KEY_SECRET");
+
+        // Uncomment this section to use JWTs instead
+        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+
+        ConversationsApi apiInstance = new ConversationsApi(defaultClient);
+        ConversionEventsBody conversionEventsBody = {"instagram":{"payload":{"data":[{"action_source":"business_messaging","event_name":"TestEvent","event_time":1752161233,"messaging_channel":"instagram"}]}}}; // ConversionEventsBody | 
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        // Add required body parameters
+
+        try {
+            Map<String, Object> result = apiInstance.postConversionEvents(conversionEventsBody, appId, conversationId);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ConversationsApi#postConversionEvents");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **conversionEventsBody** | [**ConversionEventsBody**](ConversionEventsBody.md)|  |
+ **appId** | **String**| Identifies the app. |
+ **conversationId** | **String**| Identifies the conversation. |
+
+### Return type
+
+**Map&lt;String, Object&gt;**
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth), [bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Ok |  -  |
 
 
 ## updateConversation

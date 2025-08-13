@@ -12,6 +12,7 @@ import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
 import com.zendesk.sunshine_conversations_client.model.ConversationListResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationUpdateBody;
+import com.zendesk.sunshine_conversations_client.model.ConversionEventsBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
 import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
@@ -303,6 +304,63 @@ public class ConversationsApi {
 
     GenericType<ConversationListResponse> localVarReturnType = new GenericType<ConversationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post Conversion Events
+   * This API can be used to track your end user&#39;s interactions with third party channels.
+   * @param conversionEventsBody  (required)
+   * @param appId Identifies the app. (required)
+   * @param conversationId Identifies the conversation. (required)
+   * @return a {@code Map<String, Object>}
+   * @throws ApiException if fails to make API call
+   */
+  public Map<String, Object> postConversionEvents(ConversionEventsBody conversionEventsBody, String appId, String conversationId) throws ApiException {
+    Object localVarPostBody = conversionEventsBody;
+    
+    // verify the required parameter 'conversionEventsBody' is set
+    if (conversionEventsBody == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversionEventsBody' when calling postConversionEvents");
+    }
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling postConversionEvents");
+    }
+    
+    // verify the required parameter 'conversationId' is set
+    if (conversationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversationId' when calling postConversionEvents");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/conversations/{conversationId}/conversionEvents".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "conversationId" + "\\}", apiClient.escapeString(conversationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<Map<String, Object>> localVarReturnType = new GenericType<Map<String, Object>>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Update Conversation
@@ -643,6 +701,67 @@ public class ConversationsApi {
 
     GenericType<ConversationListResponse> localVarReturnType = new GenericType<ConversationListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Post Conversion Events
+   * This API can be used to track your end user&#39;s interactions with third party channels.
+   * @param bearerToken a token to be used for this request (required)
+   * 
+   * @param conversionEventsBody  (required)
+   * @param appId Identifies the app. (required)
+   * @param conversationId Identifies the conversation. (required)
+   * @return a {@code Map<String, Object>}
+   * @throws ApiException if fails to make API call
+   */
+  public Map<String, Object> postConversionEvents(String bearerToken, ConversionEventsBody conversionEventsBody, String appId, String conversationId) throws ApiException {
+    Object localVarPostBody = conversionEventsBody;
+    
+    // verify the required parameter 'conversionEventsBody' is set
+    if (conversionEventsBody == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversionEventsBody' when calling postConversionEvents");
+    }
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling postConversionEvents");
+    }
+    
+    // verify the required parameter 'conversationId' is set
+    if (conversationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'conversationId' when calling postConversionEvents");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/conversations/{conversationId}/conversionEvents".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "conversationId" + "\\}", apiClient.escapeString(conversationId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    localVarHeaderParams.put("Authorization", "Bearer " + bearerToken);
+
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<Map<String, Object>> localVarReturnType = new GenericType<Map<String, Object>>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
    * Update Conversation
