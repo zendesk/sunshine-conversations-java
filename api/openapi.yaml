@@ -3,7 +3,7 @@ info:
   description: |
     # Introduction
 
-    <aside class="notice">The documentation below applies to v2 of the API. For users wanting to access v1, please proceed <a href="https://docs.smooch.io/rest/v1">here</a> instead.
+    <aside class="notice"><strong>Note:</strong> The documentation below applies to v2 of the API. For users wanting to access v1, please proceed <a href="https://docs.smooch.io/rest/v1">here</a> instead.
     </aside>
 
     Welcome to the Sunshine Conversations API. The API allows you to craft entirely unique messaging experiences for your app and website as well as talk to any backend or external service.
@@ -13,22 +13,15 @@ info:
 
     ## Regions
 
-    If you are a licensed Zendesk customer, use the following API host:
+    Licensed Zendesk customers should use the following API host for all API requests, unless otherwise specified:
 
     ```
-    https://<subdomain>.zendesk.com/sc
+    https://{subdomain}.zendesk.com/sc
     ```
 
-    If you are not a licensed Zendesk customer, the API host is available in the following regions in order to meet your organization’s residency requirements.
+    For legacy Sunshine Conversations customers, see [regions](https://docs.smooch.io/guide/regions/) for the list of supported base URLs.
 
-    | Region         | Host                       |
-    | -------------- | -------------------------- |
-    | United States  | https://api.smooch.io      |
-    | European Union | https://api.eu-1.smooch.io |
-
-    For more information, see [Regions](/guide/regions/).
-
-    <aside class="notice">When configuring an API host, make sure to always use <code>https</code>. Some API clients can have unexpected behaviour when following redirects from <code>http</code> to <code>https</code>.</aside>
+    <aside class="notice"><strong>Note:</strong> When configuring an API host, make sure to always use <code>https</code>. Some API clients can have unexpected behaviour when following redirects from <code>http</code> to <code>https</code>.</aside>
 
     ## Errors
 
@@ -79,15 +72,11 @@ info:
 
     ## Rate Limits
 
-    Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded Sunshine Conversations may return a `429 Too Many Requests` HTTP status code. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using Sunshine Conversations as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, when calling the Sunshine Conversations API you should implement `429` retry logic using exponential backoff and jitter.
-
-    If your use case involves making API calls in bulk, please [contact us](https://smooch.io/contact).
+    Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded a `429 Too Many Requests` HTTP status code may be returned. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using the platform as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, you should implement `429` retry logic using exponential backoff and jitter.
 
     ## Conversation Size Limits
 
-    Conversations are limited to 30,000 messages. Once you reach this maximum, a `423 Locked` HTTP status code is returned when trying to post a new message. To allow more messages to be sent to the affected conversation, you must [delete all messages](https://docs.smooch.io/rest/#operation/DeleteAllMessages) to make room.
-
-    If your use case involves conversations that could exceed this limit, please [contact us](https://smooch.io/contact). We will not extend your limit, but we want to understand your use case better.
+    Conversations are limited to 30,000 messages. Once you reach this maximum, a `423 Locked` HTTP status code is returned when trying to post a new message. To allow more messages to be sent to the affected conversation, you must [delete all messages](https://developer.zendesk.com/api-reference/conversations/#operation/DeleteAllMessages) to make room.
 
     ## Request Size Limits
 
@@ -110,7 +99,7 @@ info:
     | app         | All account types                           | All methods besides Account Provisioning        |
     | integration | All account types                           | Users, Conversations, Attachments, and Webhooks |
 
-    <aside class="notice">An additional scope of <code>user</code> is used for <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/">authenticating users</a> on the Zendesk Messaging SDKs. This scope, however, cannot be used with the v2 API.</aside>
+    <aside class="notice"><strong>Note:</strong> An additional scope of <code>user</code> is used for <a href="https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/">authenticating users</a> on the Zendesk Messaging SDKs. This scope, however, cannot be used with the v2 API.</aside>
 
     ## Authentication
 
@@ -167,16 +156,18 @@ info:
     ```
   termsOfService: https://www.zendesk.com/company/customers-partners/master-subscription-agreement/
   title: Sunshine Conversations API
-  version: 15.6.0
+  version: 16.0.1
   x-logo:
     url: sunco_logo.svg
     altText: Sunshine Conversations
     href: https://developer.zendesk.com/documentation/conversations/
 servers:
-- description: United States server
+- description: United States server (for legacy Sunshine Conversations only)
   url: https://api.smooch.io
-- description: European Union server
+- description: European Union server (for legacy Sunshine Conversations only)
   url: https://api.eu-1.smooch.io
+- description: Your Zendesk subdomain
+  url: https://{subdomain}.zendesk.com/sc
 security:
 - bearerAuth:
   - app
@@ -245,7 +236,7 @@ tags:
     ignoreCanonicalSchema: true
 - description: |
     This set of endpoints is used to configure and manage various front-end messaging channels.
-    <aside class="notice">An SDK integration configured on Admin Center cannot be deleted.</aside>
+    <aside class="notice"><strong>Note:</strong> An SDK integration configured on Admin Center cannot be deleted with the API.</aside>
   name: Integrations
   x-displayName: Integrations
 - description: This set of endpoints is used to provision and revoke API keys for
@@ -258,8 +249,8 @@ tags:
 - description: Switchboard operations
   name: Switchboards
   x-displayName: Switchboards
-- description: Switchboard Integrations operations <aside class="notice">A switchboard
-    is limited to 10 switchboard integrations.</aside>
+- description: Switchboard Integrations operations <aside class="notice"><strong>Note:</strong>
+    A switchboard is limited to 10 switchboard integrations.</aside>
   name: Switchboard Integrations
   x-displayName: Switchboard Integrations
 - description: This set of endpoints is used to manage users.
@@ -274,7 +265,7 @@ tags:
 - description: |
     Endpoints for managing webhooks associated to a Sunshine Conversations Connect integration or a custom integration. Webhooks are a fantastic way to extend the Sunshine Conversations platform beyond the built-in feature set. You can use webhooks to build your own Sunshine Conversations chat clients, to integrate more deeply with your favorite CRM, or to build a bot.
     A webhook can only operate within the scope of a single Sunshine Conversations app.
-    <aside class="notice">An app is limited to 10 webhooks. A webhook can subscribe to multiple trigger events. We recommend using a single webhook entry that includes all the required events.</aside>
+    <aside class="notice"><strong>Note:</strong> An app is limited to 10 webhooks. A webhook can subscribe to multiple trigger events. We recommend using a single webhook entry that includes all the required events.</aside>
 
     ## Webhook Triggers
     When a webhook trigger is triggered, a POST request will be made to the URL configured in your webhook object along with a JSON payload specific for the event type.
@@ -344,7 +335,7 @@ paths:
   /v2/apps:
     get:
       description: "Lists all apps that a user is part of. This API is paginated through\
-        \ [cursor pagination](#section/Introduction/API-pagination-and-records-limits).\
+        \ [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits).\
         \ \n```shell\n/v2/apps?page[after]=5e1606762556d93e9c176f69&page[size]=10\n\
         ```\n"
       operationId: ListApps
@@ -825,7 +816,7 @@ paths:
     post:
       description: |
         Upload an attachment to Sunshine Conversations to use in future messages. Files are uploaded using the multipart/form-data content type. Use the returned mediaUrl to send a file, image or carousel message.
-        <aside class="notice">Note that Sunshine Conversations limits the size and type of file you can upload to the platform. See the <a href="https://support.zendesk.com/hc/en-us/articles/8435939957914#topic_v1r_rwr_mdc">file validation</a> guide for more details.</aside>
+        <aside class="notice"><strong>Note:</strong> Sunshine Conversations limits the size and type of file you can upload to the platform. See the <a href="https://support.zendesk.com/hc/en-us/articles/8435939957914#topic_v1r_rwr_mdc">file validation</a> guide for more details.</aside>
       operationId: UploadAttachment
       parameters:
       - description: Identifies the app.
@@ -916,7 +907,7 @@ paths:
       description: |
         Remove an attachment uploaded to Sunshine Conversations through the Upload attachment API.
         See [Attachments for Messages](#section/Attachments-for-Messages) to have attachments automatically deleted when deleting messages, conversations or users.
-        <aside class="notice">Note that deleted attachments can remain available on our CDN’s cache up to 15 minutes after the delete call.</aside>
+        <aside class="notice"><strong>Note:</strong> Deleted attachments can remain available on our CDN's cache up to 15 minutes after the delete call.</aside>
       operationId: DeleteAttachment
       parameters:
       - description: Identifies the app.
@@ -973,7 +964,7 @@ paths:
   /v2/apps/{appId}/conversations:
     get:
       description: |
-        Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+        Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits).
         ```shell
         /v2/apps/:appId/conversations?filter[userId]=42589ad070d43be9b00ff7e5
         ```
@@ -1121,7 +1112,7 @@ paths:
     delete:
       description: Delete an entire conversation record, along with its messages and
         attachments. Note that the default conversation cannot be deleted, but the
-        messages contained [can be](#deleteAllMessages).
+        messages contained [can be](#operation/DeleteAllMessages).
       operationId: DeleteConversation
       parameters:
       - description: Identifies the app.
@@ -1398,7 +1389,7 @@ paths:
   /v2/apps/{appId}/conversations/{conversationId}/participants:
     get:
       description: |
-        Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+        Lists all the participants of a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits).
 
         ```shell
         /v2/apps/:appId/conversations/:conversationId/participants?page[before]=26508c10541a4b0ff472e5e2
@@ -1609,7 +1600,7 @@ paths:
     get:
       description: |
         List all messages for a particular conversation. This API is paginated through
-        [cursor pagination](#section/Introduction/API-pagination-and-records-limits), in the _backwards_ direction, with the
+        [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits), in the _backwards_ direction, with the
         most recent (i.e. last) page of messages being returned by default. The `hasMore` flag indicates whether more messages
         exist in the direction you are currently paginating through. To page backwards in the history, use the `beforeCursor` or follow the `prev`
         link. The page size limit is fixed at 100 messages per page.
@@ -1764,7 +1755,7 @@ paths:
                 $ref: '#/components/schemas/errorResponse'
           description: |
             Message limit reached
-            <aside class="notice">To learn more about the conversation message limit, consult the section in the introduction linked <a href="#section/Introduction/Conversation-Size-Limits">here</a>.</aside>
+            <aside class="notice"><strong>Note:</strong> To learn more about the conversation message limit, consult the section in the introduction linked <a href="#section/Introduction/Conversation-Size-Limits">here</a>.</aside>
       security:
       - basicAuth:
         - integration
@@ -2065,7 +2056,7 @@ paths:
         is specified explicitly by its `id` or `name`, or the `next` keyword is used
         for the `switchboardIntegration` field, and the invoking integration can be
         identified by its [OAuth token](https://developer.zendesk.com/documentation/conversations/how-to-guides/building-a-marketplace-bot/)
-        or [Custom Integration API Key](https://docs.smooch.io/rest/#tag/CustomIntegrationApiKeys)
+        or [Custom Integration API Key](https://developer.zendesk.com/api-reference/conversations/#tag/CustomIntegrationApiKeys)
         credentials. Duplicate passControl actions using the `next` keyword and their
         metadata are disregarded. For more information, see [Switchboard passControl](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/switchboard/#pass-control).
       operationId: PassControl
@@ -2345,7 +2336,7 @@ paths:
   /v2/apps/{appId}/integrations:
     get:
       description: |
-        List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+        List available integrations. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits).
         ```shell
         /v2/apps/:appId/integrations?page[after]=5e1606762556d93e9c176f69&page[size]=10&filter[types]=custom,web
         ```
@@ -3840,7 +3831,7 @@ paths:
     delete:
       description: Delete a user, its clients and its conversation history. The user
         is considered completely deleted once the `user:delete` webhook is fired.
-        To only delete a user’s personal information, see [Delete User Personal Information](#operation/deleteUserPersonalInformation).
+        To only delete a user’s personal information, see [Delete User Personal Information](#operation/DeleteUserPersonalInformation).
       operationId: DeleteUser
       parameters:
       - description: Identifies the app.
@@ -4021,7 +4012,7 @@ paths:
     get:
       description: |
         Get all the clients for a particular user, including both linked clients and pending clients.
-        This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits).
+        This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits).
 
         ```shell
         /v2/apps/:appId/users/:userId/clients?page[after]=5ebee0975ac5304b664a12fa
@@ -4092,9 +4083,8 @@ paths:
     post:
       description: Create a client and link it to a channel specified by the `matchCriteria.type`.
         Note that the client is initially created with a `pending` status. The status
-        of the linking request can be tracked by listening to the `link:match`, `link:success`
-        and `link:failure` webhooks (only available in v1). For more information,
-        see [link-events](https://docs.smooch.io/rest/v1/#link-events).
+        of the linking request can be tracked by listening to the `client:add`, `client:update`
+        and `client:removed` webhooks. For more information, see [channel transfer](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/channel-transfer/).
       operationId: CreateClient
       parameters:
       - description: Identifies the app.
@@ -4359,7 +4349,7 @@ paths:
         for the specified user. For every client owned by the user, it will also clear
         `displayName`, `avatarUrl` and any channel specific information stored in
         the info and raw fields. Calling this API doesn’t delete the user’s conversation
-        history. To fully delete the user, see [Delete User](#operation/deleteUser).
+        history. To fully delete the user, see [Delete User](#operation/DeleteUser).
       operationId: DeleteUserPersonalInformation
       parameters:
       - description: Identifies the app.
@@ -4419,7 +4409,7 @@ paths:
     post:
       description: |-
         Synchronize a messaging user with its core Zendesk user counterpart. Messaging users are separate objects linked to a core Zendesk user record by `zendeskId`. It is possible for changes to be made to the core Zendesk user record in a way that causes the messaging user to fall out of sync. The core Zendesk user might have their primary email changed, for example. This endpoint can be used to update the messaging user with the `profile.givenName`, `profile.surname`, `externalId`, and primary email identity of its core Zendesk user counterpart.<br/><br/>It is also possible for two Zendesk users to be merged. In such a case, this API can be used to apply that merger on the messaging side. The surviving Zendesk user id can be specified via the `survivingZendeskId` parameter of the request body, and the outgoing `zendeskId` is specified in the request path.
-        <aside class="notice">Only the primary email identity of the core Zendesk user will be synchronized, and it will be set on the identities array, not in the profile.</aside> <br/> <aside class="notice">In some circumstances, a single call to this API might produce changes on more than one messaging user. If the externalId or email being synchronized already exists on a different messaging user within the account, the conflict will be resolved by merging those messaging users together, if possible. If a conflicting messaging user is already linked to a core Zendesk user by zendeskId it cannot be merged. In this case, the conflicting externalId or email will instead be removed and reassigned to the messaging user that is being synchronized.</aside>
+        <aside class="notice"><strong>Note:</strong> Only the primary email identity of the core Zendesk user will be synchronized, and it will be set on the identities array, not in the profile.</aside> <br/> <aside class="notice"><strong>Note:</strong> In some circumstances, a single call to this API might produce changes on more than one messaging user. If the externalId or email being synchronized already exists on a different messaging user within the account, the conflict will be resolved by merging those messaging users together, if possible. If a conflicting messaging user is already linked to a core Zendesk user by zendeskId it cannot be merged. In this case, the conflicting externalId or email will instead be removed and reassigned to the messaging user that is being synchronized.</aside>
       operationId: SyncUser
       parameters:
       - description: Identifies the app.
@@ -6435,11 +6425,11 @@ components:
           type: boolean
         ignoreAutoConversationStart:
           description: "A boolean specifying whether a non message event coming from\
-            \ a channel will \ntrigger a \n[start conversation](https://docs.smooch.io/rest/#section/Webhook-Triggers)\n\
+            \ a channel will \ntrigger a \n[start conversation](https://developer.zendesk.com/api-reference/conversations/#section/Webhook-Triggers)\n\
             event and count as a monthly active user (MAU).\n<aside class=\"notice\"\
-            >Calling <code>startConversation()</code> (or equivalent) from the Android,\
-            \ \niOS or Web SDK will count as a MAU, regardless of the value of this\
-            \ setting.</aside>\n"
+            ><strong>Note:</strong> Calling <code>startConversation()</code> (or equivalent)\
+            \ from the Android, \niOS or Web SDK will count as a MAU, regardless of\
+            \ the value of this setting.</aside>\n"
           type: boolean
         multiConvoEnabled:
           description: |
@@ -6526,18 +6516,18 @@ components:
     links:
       description: Previous and next page links, if they exist.
       example:
-        next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-        prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+        next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+        prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
       properties:
         prev:
           description: A link to the previous page. Not specified if there are no
             previous pages.
-          example: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          example: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
           type: string
         next:
           description: A link to the next page. Not specified if there are no subsequent
             pages.
-          example: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          example: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
           type: string
       type: object
     appListResponse:
@@ -6547,8 +6537,8 @@ components:
           afterCursor: 55c8d9758590aa1900b9b9f6
           hasMore: true
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
         apps:
         - settings:
             conversationRetentionSeconds: 0
@@ -6716,9 +6706,9 @@ components:
     attachmentSchema:
       properties:
         mediaUrl:
-          description: "Uploaded attachment’s url. \n<aside class=\"notice\">Note\
-            \ that for private attachments an authorization header is required to\
-            \ access the mediaUrl. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/)\
+          description: "Uploaded attachment’s url. \n<aside class=\"notice\"><strong>Note:</strong>\
+            \ An authorization header is required to access the mediaUrl when private\
+            \ attachments are enabled. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/)\
             \ guide for more details.</aside>\n"
           example: https://smooch.io/rocks.smooch.media-dev/apps/5ec41c54fe13cc5ac404bedc/conversations/c616a583e4c240a871818541/TmYMVQUBNsQRItX4fKf4aC-T/Screen%20Shot%202020-09-02%20at%204.04.41%20PM.png
           type: string
@@ -6854,8 +6844,8 @@ components:
           afterCursor: 55c8d9758590aa1900b9b9f6
           hasMore: true
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
         conversations:
         - null
         - null
@@ -7064,8 +7054,8 @@ components:
           afterCursor: 55c8d9758590aa1900b9b9f6
           hasMore: true
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
         participants:
         - unreadCount: 0
           userExternalId: your-own-id
@@ -7599,7 +7589,7 @@ components:
         mediaUrl:
           description: |
             The URL for media, such as an image, attached to the message.
-            <aside class="notice">Note that for private attachments an authorization header is required to access the mediaUrl. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/) guide for more details.</aside>
+            <aside class="notice"><strong>Note:</strong> An authorization header is required to access the mediaUrl when private attachments are enabled. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/) guide for more details.</aside>
           format: uri
           type: string
         mediaSize:
@@ -7779,7 +7769,7 @@ components:
         mediaUrl:
           description: |
             The URL for media, such as an image, attached to the message.
-            <aside class="notice">Note that for private attachments an authorization header is required to access the mediaUrl. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/) guide for more details.</aside>
+            <aside class="notice"><strong>Note:</strong> An authorization header is required to access the mediaUrl when private attachments are enabled. See [configuring private attachments for messaging](https://developer.zendesk.com/documentation/zendesk-web-widget-sdks/messaging_private_attachments/) guide for more details.</aside>
           format: uri
           type: string
         mediaType:
@@ -8297,8 +8287,8 @@ components:
           content: ""
           quotedMessage: ""
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
       properties:
         messages:
           description: List of returned messages.
@@ -8637,7 +8627,7 @@ components:
       type: string
     triggers:
       description: An array of triggers the integration is subscribed to. This property
-        is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
+        is case sensitive. [More details](https://developer.zendesk.com/api-reference/conversations/#section/Webhook-Triggers).
       example:
       - conversation:read
       - conversation:message
@@ -8683,7 +8673,7 @@ components:
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
-            property is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
+            property is case sensitive. [More details](https://developer.zendesk.com/api-reference/conversations/#section/Webhook-Triggers).
           example:
           - conversation:read
           - conversation:message
@@ -8840,8 +8830,8 @@ components:
           afterCursor: 55c8d9758590aa1900b9b9f6
           hasMore: true
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
         integrations:
         - displayName: Channel name
           id: 5e4af71a81966cfff3ef6550
@@ -9037,7 +9027,7 @@ components:
           type: string
         triggers:
           description: An array of triggers the integration is subscribed to. This
-            property is case sensitive. [More details](https://docs.smooch.io/rest/#section/Webhook-Triggers).
+            property is case sensitive. [More details](https://developer.zendesk.com/api-reference/conversations/#section/Webhook-Triggers).
           example:
           - conversation:read
           - conversation:message
@@ -9531,8 +9521,8 @@ components:
           afterCursor: 55c8d9758590aa1900b9b9f6
           hasMore: true
         links:
-          next: https://api.smooch.io/v2/apps?page[after]=5ea868f862cdd24abf010b38
-          prev: https://api.smooch.io/v2/apps?page[before]=fcafad804c39a39648004af9
+          next: https://{subdomain}.zendesk.com/sc/v2/apps?page[after]=5ea868f862cdd24abf010b38
+          prev: https://{subdomain}.zendesk.com/sc/v2/apps?page[before]=fcafad804c39a39648004af9
       properties:
         clients:
           description: List of returned clients.
@@ -9695,7 +9685,7 @@ components:
           type: string
         type:
           description: The type of the event. Will match one of the subscribed triggers
-            for your [webhook](#operation/createWebhook).
+            for your [webhook](#operation/CreateWebhook).
           type: string
         createdAt:
           description: A timestamp signifying when the event was generated. Formatted
@@ -10467,13 +10457,14 @@ components:
       properties:
         type:
           default: android
-          description: "<aside class=\"notice\">Firebase Cloud Messaging has deprecated\
-            \ its legacy APIs for HTTP and XMPP. Legacy credentials <code>serverKey</code>\
-            \ and <code>senderId</code> will stop working as of June 2024 and must\
-            \ be replaced with OAuth 2.0 access token based credentials.</aside>\n\
-            \nTo configure an android integration, first visit the [Firebase Console](https://console.firebase.google.com/).\
-            \ \nGenerate a private key from the Service accounts tab in the settings.\
-            \ \nCopy the `project_id`, `client_email` and `private_key` from the generated\
+          description: "<aside class=\"notice\"><strong>Note:</strong> Firebase Cloud\
+            \ Messaging has deprecated its legacy APIs for HTTP and XMPP. Legacy credentials\
+            \ <code>serverKey</code> and <code>senderId</code> will stop working as\
+            \ of June 2024 and must be replaced with OAuth 2.0 access token based\
+            \ credentials.</aside>\n\nTo configure an android integration, first visit\
+            \ the [Firebase Console](https://console.firebase.google.com/). \nGenerate\
+            \ a private key from the Service accounts tab in the settings. \nCopy\
+            \ the `project_id`, `client_email` and `private_key` from the generated\
             \ JSON file and call the create integrations endpoint with this data.\n"
           type: string
         projectId:

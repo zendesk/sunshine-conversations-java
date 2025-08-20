@@ -95,7 +95,7 @@ public class ConversationsApi {
       }
   /**
    * Delete Conversation
-   * Delete an entire conversation record, along with its messages and attachments. Note that the default conversation cannot be deleted, but the messages contained [can be](#deleteAllMessages).
+   * Delete an entire conversation record, along with its messages and attachments. Note that the default conversation cannot be deleted, but the messages contained [can be](#operation/DeleteAllMessages).
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
    * @return a {@code Object}
@@ -254,7 +254,7 @@ public class ConversationsApi {
       }
   /**
    * List Conversations
-   * Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
+   * Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
    * @param filter Contains parameters for filtering the results. (required)
    * @param page Contains parameters for applying cursor pagination. (optional)
@@ -476,7 +476,7 @@ public class ConversationsApi {
       }
   /**
    * Delete Conversation
-   * Delete an entire conversation record, along with its messages and attachments. Note that the default conversation cannot be deleted, but the messages contained [can be](#deleteAllMessages).
+   * Delete an entire conversation record, along with its messages and attachments. Note that the default conversation cannot be deleted, but the messages contained [can be](#operation/DeleteAllMessages).
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
@@ -647,7 +647,7 @@ public class ConversationsApi {
       }
   /**
    * List Conversations
-   * Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
+   * Lists all conversations that a user is part of. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits). &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations?filter[userId]&#x3D;42589ad070d43be9b00ff7e5 &#x60;&#x60;&#x60; 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)

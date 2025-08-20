@@ -149,7 +149,7 @@ public class MessagesApi {
       }
   /**
    * List Messages
-   * List all messages for a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits), in the _backwards_ direction, with the most recent (i.e. last) page of messages being returned by default. The &#x60;hasMore&#x60; flag indicates whether more messages exist in the direction you are currently paginating through. To page backwards in the history, use the &#x60;beforeCursor&#x60; or follow the &#x60;prev&#x60; link. The page size limit is fixed at 100 messages per page.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/messages?page[before]&#x3D;5f32b88acf6bf25073b2be56 &#x60;&#x60;&#x60; 
+   * List all messages for a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits), in the _backwards_ direction, with the most recent (i.e. last) page of messages being returned by default. The &#x60;hasMore&#x60; flag indicates whether more messages exist in the direction you are currently paginating through. To page backwards in the history, use the &#x60;beforeCursor&#x60; or follow the &#x60;prev&#x60; link. The page size limit is fixed at 100 messages per page.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/messages?page[before]&#x3D;5f32b88acf6bf25073b2be56 &#x60;&#x60;&#x60; 
    * @param appId Identifies the app. (required)
    * @param conversationId Identifies the conversation. (required)
    * @param page Contains parameters for applying cursor pagination. (optional)
@@ -377,7 +377,7 @@ public class MessagesApi {
       }
   /**
    * List Messages
-   * List all messages for a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-pagination-and-records-limits), in the _backwards_ direction, with the most recent (i.e. last) page of messages being returned by default. The &#x60;hasMore&#x60; flag indicates whether more messages exist in the direction you are currently paginating through. To page backwards in the history, use the &#x60;beforeCursor&#x60; or follow the &#x60;prev&#x60; link. The page size limit is fixed at 100 messages per page.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/messages?page[before]&#x3D;5f32b88acf6bf25073b2be56 &#x60;&#x60;&#x60; 
+   * List all messages for a particular conversation. This API is paginated through [cursor pagination](#section/Introduction/API-Pagination-and-Records-Limits), in the _backwards_ direction, with the most recent (i.e. last) page of messages being returned by default. The &#x60;hasMore&#x60; flag indicates whether more messages exist in the direction you are currently paginating through. To page backwards in the history, use the &#x60;beforeCursor&#x60; or follow the &#x60;prev&#x60; link. The page size limit is fixed at 100 messages per page.  &#x60;&#x60;&#x60;shell /v2/apps/:appId/conversations/:conversationId/messages?page[before]&#x3D;5f32b88acf6bf25073b2be56 &#x60;&#x60;&#x60; 
    * @param bearerToken a token to be used for this request (required)
    * 
    * @param appId Identifies the app. (required)
