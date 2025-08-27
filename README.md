@@ -1,3 +1,9 @@
+# Deprecation notice
+
+As of version 17.0.0, the sunshine-conversations-java OpenAPI Java package will no longer be automatically 
+generated. The [Sunshine Conversations OpenAPI specification](https://github.com/zendesk/sunshine-conversations-api-spec)
+is available in a public repository and will continue to be updated.
+
 # sunshine-conversations-java
 
 The Java package for the Sunshine Conversations API
