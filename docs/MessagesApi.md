@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## deleteAllMessages
 
-> Object deleteAllMessages(appId, conversationId)
+> Object deleteAllMessages(appIdconversationId)
 
 Delete All Messages
 
@@ -44,12 +44,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteAllMessages(appId, conversationId);
+            Object result = apiInstance.deleteAllMessages(appIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#deleteAllMessages");
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## deleteMessage
 
-> Object deleteMessage(appId, conversationId, messageId)
+> Object deleteMessage(appIdconversationIdmessageId)
 
 Delete Message
 
@@ -123,13 +123,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
-        String messageId = "029c31f25a21b47effd7be90"; // String | The id of the message.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
+        String messageId = ""029c31f25a21b47effd7be90""; // String | The id of the message.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteMessage(appId, conversationId, messageId);
+            Object result = apiInstance.deleteMessage(appIdconversationIdmessageId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#deleteMessage");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## listMessages
 
-> MessageListResponse listMessages(appId, conversationId, page)
+> MessageListResponse listMessages(appIdconversationIdpage)
 
 List Messages
 
@@ -204,13 +204,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         // Add required body parameters
 
         try {
-            MessageListResponse result = apiInstance.listMessages(appId, conversationId, page);
+            MessageListResponse result = apiInstance.listMessages(appIdconversationIdpage);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#listMessages");
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## postMessage
 
-> MessagePostResponse postMessage(messagePost, appId, conversationId)
+> MessagePostResponse postMessage(messagePostappIdconversationId)
 
 Post Message
 
@@ -286,12 +286,12 @@ public class Example {
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
         MessagePost messagePost = new MessagePost(); // MessagePost | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            MessagePostResponse result = apiInstance.postMessage(messagePost, appId, conversationId);
+            MessagePostResponse result = apiInstance.postMessage(messagePostappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#postMessage");

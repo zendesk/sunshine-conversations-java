@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## deleteAttachment
 
-> Object deleteAttachment(attachmentDeleteBody, appId)
+> Object deleteAttachment(attachmentDeleteBodyappId)
 
 Delete Attachment
 
@@ -43,11 +43,11 @@ public class Example {
 
         AttachmentsApi apiInstance = new AttachmentsApi(defaultClient);
         AttachmentDeleteBody attachmentDeleteBody = new AttachmentDeleteBody(); // AttachmentDeleteBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteAttachment(attachmentDeleteBody, appId);
+            Object result = apiInstance.deleteAttachment(attachmentDeleteBodyappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AttachmentsApi#deleteAttachment");
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## uploadAttachment
 
-> AttachmentResponse uploadAttachment(source, appId, access, _for, conversationId)
+> AttachmentResponse uploadAttachment(sourceappIdaccess_forconversationId)
 
 Upload Attachment
 
@@ -122,14 +122,14 @@ public class Example {
 
         AttachmentsApi apiInstance = new AttachmentsApi(defaultClient);
         File source = new File("/path/to/file"); // File | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String access = "public"; // String | The access level for the attachment. Currently the only available access level is public. Private is not supported.
-        String _for = "message"; // String | Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details.
-        String conversationId = "c616a583e4c240a871818541"; // String | Links the attachment getting uploaded to the conversation ID.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String access = ""public""; // String | The access level for the attachment. Currently the only available access level is public. Private is not supported.
+        String _for = ""message""; // String | Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details.
+        String conversationId = ""c616a583e4c240a871818541""; // String | Links the attachment getting uploaded to the conversation ID.
         // Add required body parameters
 
         try {
-            AttachmentResponse result = apiInstance.uploadAttachment(source, appId, access, _for, conversationId);
+            AttachmentResponse result = apiInstance.uploadAttachment(sourceappIdaccess_forconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AttachmentsApi#uploadAttachment");
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **source** | **File**|  |
  **appId** | **String**| Identifies the app. |
- **access** | **String**| The access level for the attachment. Currently the only available access level is public. Private is not supported. | [default to &quot;public&quot;]
+ **access** | **String**| The access level for the attachment. Currently the only available access level is public. Private is not supported. | [default to public]
  **_for** | **String**| Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. | [optional]
  **conversationId** | **String**| Links the attachment getting uploaded to the conversation ID. | [optional]
 

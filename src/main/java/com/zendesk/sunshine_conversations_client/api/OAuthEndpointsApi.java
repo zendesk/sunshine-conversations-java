@@ -8,14 +8,15 @@ import com.zendesk.sunshine_conversations_client.Pair;
 import jakarta.ws.rs.core.GenericType;
 
 import com.zendesk.sunshine_conversations_client.model.AppResponse;
-import com.zendesk.sunshine_conversations_client.model.InlineObject;
+import com.zendesk.sunshine_conversations_client.model.GetToken200Response;
+import com.zendesk.sunshine_conversations_client.model.GetTokenRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class OAuthEndpointsApi {
   private ApiClient apiClient;
 
@@ -92,16 +93,16 @@ public class OAuthEndpointsApi {
   /**
    * Get Token
    * This endpoint is used to exchange an authorization code for an access token.  It should only be used in server-to-server calls.  Use &#x60;oauth-bridge.zendesk.com/sc&#x60; as the base URL when invoking this endpoint.  &#x60;&#x60;&#x60; POST https://oauth-bridge.zendesk.com/sc/oauth/token &#x60;&#x60;&#x60; 
-   * @param inlineObject  (required)
-   * @return a {@code Object}
+   * @param getTokenRequest  (required)
+   * @return a {@code GetToken200Response}
    * @throws ApiException if fails to make API call
    */
-  public Object getToken(InlineObject inlineObject) throws ApiException {
-    Object localVarPostBody = inlineObject;
+  public GetToken200Response getToken(GetTokenRequest getTokenRequest) throws ApiException {
+    Object localVarPostBody = getTokenRequest;
     
-    // verify the required parameter 'inlineObject' is set
-    if (inlineObject == null) {
-      throw new ApiException(400, "Missing the required parameter 'inlineObject' when calling getToken");
+    // verify the required parameter 'getTokenRequest' is set
+    if (getTokenRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'getTokenRequest' when calling getToken");
     }
     
     // create path and map variables
@@ -129,7 +130,7 @@ public class OAuthEndpointsApi {
 
     String[] localVarAuthNames = new String[] {  };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<GetToken200Response> localVarReturnType = new GenericType<GetToken200Response>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
@@ -270,16 +271,16 @@ public class OAuthEndpointsApi {
    * This endpoint is used to exchange an authorization code for an access token.  It should only be used in server-to-server calls.  Use &#x60;oauth-bridge.zendesk.com/sc&#x60; as the base URL when invoking this endpoint.  &#x60;&#x60;&#x60; POST https://oauth-bridge.zendesk.com/sc/oauth/token &#x60;&#x60;&#x60; 
    * @param bearerToken a token to be used for this request (required)
    * 
-   * @param inlineObject  (required)
-   * @return a {@code Object}
+   * @param getTokenRequest  (required)
+   * @return a {@code GetToken200Response}
    * @throws ApiException if fails to make API call
    */
-  public Object getToken(String bearerToken, InlineObject inlineObject) throws ApiException {
-    Object localVarPostBody = inlineObject;
+  public GetToken200Response getToken(String bearerToken, GetTokenRequest getTokenRequest) throws ApiException {
+    Object localVarPostBody = getTokenRequest;
     
-    // verify the required parameter 'inlineObject' is set
-    if (inlineObject == null) {
-      throw new ApiException(400, "Missing the required parameter 'inlineObject' when calling getToken");
+    // verify the required parameter 'getTokenRequest' is set
+    if (getTokenRequest == null) {
+      throw new ApiException(400, "Missing the required parameter 'getTokenRequest' when calling getToken");
     }
     
     // create path and map variables
@@ -309,7 +310,7 @@ public class OAuthEndpointsApi {
 
     String[] localVarAuthNames = new String[] {  };
 
-    GenericType<Object> localVarReturnType = new GenericType<Object>() {};
+    GenericType<GetToken200Response> localVarReturnType = new GenericType<GetToken200Response>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
@@ -320,7 +321,7 @@ public class OAuthEndpointsApi {
    * @return a {@code AppResponse}
    * @throws ApiException if fails to make API call
    */
-  public AppResponse getTokenInfo(String bearerToken ) throws ApiException {
+  public AppResponse getTokenInfo(String bearerToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables
@@ -361,7 +362,7 @@ public class OAuthEndpointsApi {
    * @return a {@code Object}
    * @throws ApiException if fails to make API call
    */
-  public Object revokeAccess(String bearerToken ) throws ApiException {
+  public Object revokeAccess(String bearerToken) throws ApiException {
     Object localVarPostBody = null;
     
     // create path and map variables

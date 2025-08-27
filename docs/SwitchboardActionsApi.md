@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## acceptControl
 
-> Object acceptControl(acceptControlBody, appId, conversationId)
+> Object acceptControl(acceptControlBodyappIdconversationId)
 
 Accept Control
 
@@ -45,12 +45,12 @@ public class Example {
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
         AcceptControlBody acceptControlBody = new AcceptControlBody(); // AcceptControlBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.acceptControl(acceptControlBody, appId, conversationId);
+            Object result = apiInstance.acceptControl(acceptControlBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#acceptControl");
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## offerControl
 
-> Object offerControl(offerControlBody, appId, conversationId)
+> Object offerControl(offerControlBodyappIdconversationId)
 
 Offer Control
 
@@ -127,12 +127,12 @@ public class Example {
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
         OfferControlBody offerControlBody = new OfferControlBody(); // OfferControlBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.offerControl(offerControlBody, appId, conversationId);
+            Object result = apiInstance.offerControl(offerControlBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#offerControl");
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## passControl
 
-> Object passControl(passControlBody, appId, conversationId)
+> Object passControl(passControlBodyappIdconversationId)
 
 Pass Control
 
@@ -208,12 +208,12 @@ public class Example {
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
         PassControlBody passControlBody = new PassControlBody(); // PassControlBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.passControl(passControlBody, appId, conversationId);
+            Object result = apiInstance.passControl(passControlBodyappIdconversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#passControl");
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ## releaseControl
 
-> Object releaseControl(appId, conversationId, releaseControlBody)
+> Object releaseControl(appIdconversationIdreleaseControlBody)
 
 Release Control
 
@@ -288,13 +288,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
         ReleaseControlBody releaseControlBody = new ReleaseControlBody(); // ReleaseControlBody | 
         // Add required body parameters
 
         try {
-            Object result = apiInstance.releaseControl(appId, conversationId, releaseControlBody);
+            Object result = apiInstance.releaseControl(appIdconversationIdreleaseControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#releaseControl");

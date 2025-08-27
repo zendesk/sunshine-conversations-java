@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 ## getDevice
 
-> DeviceResponse getDevice(appId, userIdOrExternalId, deviceId)
+> DeviceResponse getDevice(appIduserIdOrExternalIddeviceId)
 
 Get Device
 
@@ -42,13 +42,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         DevicesApi apiInstance = new DevicesApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
-        String deviceId = "5d8cff3cd55b040010928b5b"; // String | The device's id.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
+        String deviceId = ""5d8cff3cd55b040010928b5b""; // String | The device's id.
         // Add required body parameters
 
         try {
-            DeviceResponse result = apiInstance.getDevice(appId, userIdOrExternalId, deviceId);
+            DeviceResponse result = apiInstance.getDevice(appIduserIdOrExternalIddeviceId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DevicesApi#getDevice");
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## listDevices
 
-> DeviceListResponse listDevices(appId, userIdOrExternalId)
+> DeviceListResponse listDevices(appIduserIdOrExternalId)
 
 List Devices
 
@@ -123,12 +123,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         DevicesApi apiInstance = new DevicesApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            DeviceListResponse result = apiInstance.listDevices(appId, userIdOrExternalId);
+            DeviceListResponse result = apiInstance.listDevices(appIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DevicesApi#listDevices");

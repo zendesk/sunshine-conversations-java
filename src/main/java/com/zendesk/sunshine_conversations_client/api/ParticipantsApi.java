@@ -13,14 +13,13 @@ import com.zendesk.sunshine_conversations_client.model.ParticipantJoinBody;
 import com.zendesk.sunshine_conversations_client.model.ParticipantLeaveBody;
 import com.zendesk.sunshine_conversations_client.model.ParticipantListResponse;
 import com.zendesk.sunshine_conversations_client.model.ParticipantResponse;
-import com.zendesk.sunshine_conversations_client.model.ParticipantSubSchema;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ParticipantsApi {
   private ApiClient apiClient;
 

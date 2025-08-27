@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## createAppKey
 
-> AppKeyResponse createAppKey(appKeyCreateBody, appId)
+> AppKeyResponse createAppKey(appKeyCreateBodyappId)
 
 Create App Key
 
@@ -45,11 +45,11 @@ public class Example {
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
         AppKeyCreateBody appKeyCreateBody = new AppKeyCreateBody(); // AppKeyCreateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            AppKeyResponse result = apiInstance.createAppKey(appKeyCreateBody, appId);
+            AppKeyResponse result = apiInstance.createAppKey(appKeyCreateBodyappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#createAppKey");
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## deleteAppKey
 
-> Object deleteAppKey(appId, keyId)
+> Object deleteAppKey(appIdkeyId)
 
 Delete App Key
 
@@ -122,12 +122,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteAppKey(appId, keyId);
+            Object result = apiInstance.deleteAppKey(appIdkeyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#deleteAppKey");
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## getAppKey
 
-> AppKeyResponse getAppKey(appId, keyId)
+> AppKeyResponse getAppKey(appIdkeyId)
 
 Get App Key
 
@@ -201,12 +201,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
         // Add required body parameters
 
         try {
-            AppKeyResponse result = apiInstance.getAppKey(appId, keyId);
+            AppKeyResponse result = apiInstance.getAppKey(appIdkeyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#getAppKey");
@@ -280,7 +280,7 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {

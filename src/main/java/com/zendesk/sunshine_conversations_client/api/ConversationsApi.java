@@ -14,7 +14,6 @@ import com.zendesk.sunshine_conversations_client.model.ConversationResponse;
 import com.zendesk.sunshine_conversations_client.model.ConversationUpdateBody;
 import com.zendesk.sunshine_conversations_client.model.ConversionEventsBody;
 import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBody;
-import com.zendesk.sunshine_conversations_client.model.DownloadMessageRefBodyAllOf;
 import com.zendesk.sunshine_conversations_client.model.ErrorResponse;
 import com.zendesk.sunshine_conversations_client.model.Page;
 
@@ -23,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ConversationsApi {
   private ApiClient apiClient;
 

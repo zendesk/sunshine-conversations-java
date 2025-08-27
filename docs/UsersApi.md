@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 ## createUser
 
-> UserResponse createUser(userCreateBody, appId)
+> UserResponse createUser(userCreateBodyappId)
 
 Create User
 
@@ -47,11 +47,11 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         UserCreateBody userCreateBody = new UserCreateBody(); // UserCreateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
         // Add required body parameters
 
         try {
-            UserResponse result = apiInstance.createUser(userCreateBody, appId);
+            UserResponse result = apiInstance.createUser(userCreateBodyappId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#createUser");
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## deleteUser
 
-> Object deleteUser(appId, userIdOrExternalId)
+> Object deleteUser(appIduserIdOrExternalId)
 
 Delete User
 
@@ -125,12 +125,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            Object result = apiInstance.deleteUser(appId, userIdOrExternalId);
+            Object result = apiInstance.deleteUser(appIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#deleteUser");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## deleteUserPersonalInformation
 
-> UserResponse deleteUserPersonalInformation(appId, userIdOrExternalId)
+> UserResponse deleteUserPersonalInformation(appIduserIdOrExternalId)
 
 Delete User Personal Information
 
@@ -204,12 +204,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            UserResponse result = apiInstance.deleteUserPersonalInformation(appId, userIdOrExternalId);
+            UserResponse result = apiInstance.deleteUserPersonalInformation(appIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#deleteUserPersonalInformation");
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## getUser
 
-> UserResponse getUser(appId, userIdOrExternalId)
+> UserResponse getUser(appIduserIdOrExternalId)
 
 Get User
 
@@ -283,12 +283,12 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            UserResponse result = apiInstance.getUser(appId, userIdOrExternalId);
+            UserResponse result = apiInstance.getUser(appIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUser");
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ## syncUser
 
-> UserResponse syncUser(appId, zendeskId, syncUserBody)
+> UserResponse syncUser(appIdzendeskIdsyncUserBody)
 
 Synchronize User
 
@@ -362,13 +362,13 @@ public class Example {
         // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String zendeskId = "35436"; // String | The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API. 
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String zendeskId = ""35436""; // String | The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API. 
         SyncUserBody syncUserBody = new SyncUserBody(); // SyncUserBody | 
         // Add required body parameters
 
         try {
-            UserResponse result = apiInstance.syncUser(appId, zendeskId, syncUserBody);
+            UserResponse result = apiInstance.syncUser(appIdzendeskIdsyncUserBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#syncUser");
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ## updateUser
 
-> UserResponse updateUser(userUpdateBody, appId, userIdOrExternalId)
+> UserResponse updateUser(userUpdateBodyappIduserIdOrExternalId)
 
 Update User
 
@@ -443,12 +443,12 @@ public class Example {
 
         UsersApi apiInstance = new UsersApi(defaultClient);
         UserUpdateBody userUpdateBody = new UserUpdateBody(); // UserUpdateBody | 
-        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
-        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
+        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
         // Add required body parameters
 
         try {
-            UserResponse result = apiInstance.updateUser(userUpdateBody, appId, userIdOrExternalId);
+            UserResponse result = apiInstance.updateUser(userUpdateBodyappIduserIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#updateUser");

@@ -54,7 +54,7 @@ import com.zendesk.sunshine_conversations_client.auth.HttpBasicAuth;
 import com.zendesk.sunshine_conversations_client.auth.HttpBearerAuth;
 import com.zendesk.sunshine_conversations_client.auth.ApiKeyAuth;
 
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
 public class ApiClient {
   private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
   private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -91,12 +91,12 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/16.0.1/java");
+    setUserAgent("OpenAPI-Generator/17.0.0/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
-    authentications.put("basicAuth", new HttpBasicAuth());
     authentications.put("bearerAuth", new HttpBearerAuth("bearer"));
+    authentications.put("basicAuth", new HttpBasicAuth());
     // Prevent the authentications from being modified.
     authentications = Collections.unmodifiableMap(authentications);
   }

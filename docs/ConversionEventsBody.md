@@ -1,11 +1,15 @@
 
 
-# Interface ConversionEventsBody
+# ConversionEventsBody
 
-## Implementing Classes
 
-* InstagramConversionEventsBody
-* MessengerConversionEventsBody
-* WhatsAppConversionEventsBody
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**messenger** | [**MetaConversionEvent**](MetaConversionEvent.md) |  |  [optional] |
+|**instagram** | [**MetaConversionEvent**](MetaConversionEvent.md) |  |  [optional] |
+|**whatsapp** | [**MetaConversionEvent**](MetaConversionEvent.md) |  |  [optional] |
+
 
 
