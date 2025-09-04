@@ -7193,6 +7193,8 @@ components:
             \ to the end-user / agent when viewing this message. Each `type` value\
             \ will have a set of pre-defined, localized strings that describe the\
             \ activity."
+          enum:
+          - ticket:closed
           type: string
         data:
           additionalProperties: true
@@ -7212,6 +7214,8 @@ components:
             \ to the end-user / agent when viewing this message. Each `type` value\
             \ will have a set of pre-defined, localized strings that describe the\
             \ activity."
+          enum:
+          - ticket:transfer:email
           type: string
         data:
           additionalProperties: true
