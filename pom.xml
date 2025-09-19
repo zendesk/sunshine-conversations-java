@@ -241,6 +241,6 @@
         <jackson-databind-nullable-version>0.2.2</jackson-databind-nullable-version>
         <threetenbp-version>2.15.2</threetenbp-version>
         <maven-plugin-version>1.0.0</maven-plugin-version>
-        <junit-version>5.9.2</junit-version>
+        <junit-version>4.13.2</junit-version>
     </properties>
 </project>
