@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createSwitchboardIntegration**](SwitchboardIntegrationsApi.md#createSwitchboardIntegration) | **POST** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | Create Switchboard Integration
-[**deleteSwitchboardIntegration**](SwitchboardIntegrationsApi.md#deleteSwitchboardIntegration) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Delete Switchboard Integration
-[**listSwitchboardIntegrations**](SwitchboardIntegrationsApi.md#listSwitchboardIntegrations) | **GET** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | List Switchboard Integrations
-[**updateSwitchboardIntegration**](SwitchboardIntegrationsApi.md#updateSwitchboardIntegration) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Update Switchboard Integration
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createSwitchboardIntegration**](SwitchboardIntegrationsApi.md#createSwitchboardIntegration) | **POST** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | Create Switchboard Integration |
+| [**deleteSwitchboardIntegration**](SwitchboardIntegrationsApi.md#deleteSwitchboardIntegration) | **DELETE** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Delete Switchboard Integration |
+| [**listSwitchboardIntegrations**](SwitchboardIntegrationsApi.md#listSwitchboardIntegrations) | **GET** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations | List Switchboard Integrations |
+| [**updateSwitchboardIntegration**](SwitchboardIntegrationsApi.md#updateSwitchboardIntegration) | **PATCH** /v2/apps/{appId}/switchboards/{switchboardId}/switchboardIntegrations/{switchboardIntegrationId} | Update Switchboard Integration |
 
 
 
 ## createSwitchboardIntegration
 
-> SwitchboardIntegrationResponse createSwitchboardIntegration(switchboardIntegrationCreateBodyappIdswitchboardId)
+> SwitchboardIntegrationResponse createSwitchboardIntegration(appId, switchboardId, switchboardIntegrationCreateBody)
 
 Create Switchboard Integration
 
@@ -22,11 +22,12 @@ Create a switchboard integration.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -36,21 +37,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
         SwitchboardIntegrationCreateBody switchboardIntegrationCreateBody = new SwitchboardIntegrationCreateBody(); // SwitchboardIntegrationCreateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
-        // Add required body parameters
-
         try {
-            SwitchboardIntegrationResponse result = apiInstance.createSwitchboardIntegration(switchboardIntegrationCreateBodyappIdswitchboardId);
+            SwitchboardIntegrationResponse result = apiInstance.createSwitchboardIntegration(appId, switchboardId, switchboardIntegrationCreateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#createSwitchboardIntegration");
@@ -66,11 +65,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **switchboardIntegrationCreateBody** | [**SwitchboardIntegrationCreateBody**](SwitchboardIntegrationCreateBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **switchboardId** | **String**| Identifies the switchboard. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **switchboardId** | **String**| Identifies the switchboard. | |
+| **switchboardIntegrationCreateBody** | [**SwitchboardIntegrationCreateBody**](SwitchboardIntegrationCreateBody.md)|  | |
 
 ### Return type
 
@@ -85,6 +84,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## deleteSwitchboardIntegration
 
-> Object deleteSwitchboardIntegration(appIdswitchboardIdswitchboardIntegrationId)
+> Object deleteSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId)
 
 Delete Switchboard Integration
 
@@ -104,11 +104,12 @@ Deletes the switchboard integration. If the deleted switchboard integration had 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -118,21 +119,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
-        String switchboardIntegrationId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard integration.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
         try {
-            Object result = apiInstance.deleteSwitchboardIntegration(appIdswitchboardIdswitchboardIntegrationId);
+            Object result = apiInstance.deleteSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#deleteSwitchboardIntegration");
@@ -148,11 +147,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **switchboardId** | **String**| Identifies the switchboard. |
- **switchboardIntegrationId** | **String**| Identifies the switchboard integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **switchboardId** | **String**| Identifies the switchboard. | |
+| **switchboardIntegrationId** | **String**| Identifies the switchboard integration. | |
 
 ### Return type
 
@@ -167,6 +166,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## listSwitchboardIntegrations
 
-> SwitchboardIntegrationListResponse listSwitchboardIntegrations(appIdswitchboardId)
+> SwitchboardIntegrationListResponse listSwitchboardIntegrations(appId, switchboardId)
 
 List Switchboard Integrations
 
@@ -185,11 +185,12 @@ Lists all switchboard integrations linked to the switchboard.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -199,20 +200,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
         try {
-            SwitchboardIntegrationListResponse result = apiInstance.listSwitchboardIntegrations(appIdswitchboardId);
+            SwitchboardIntegrationListResponse result = apiInstance.listSwitchboardIntegrations(appId, switchboardId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#listSwitchboardIntegrations");
@@ -228,10 +227,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **switchboardId** | **String**| Identifies the switchboard. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **switchboardId** | **String**| Identifies the switchboard. | |
 
 ### Return type
 
@@ -246,6 +245,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ## updateSwitchboardIntegration
 
-> SwitchboardIntegrationResponse updateSwitchboardIntegration(switchboardIntegrationUpdateBodyappIdswitchboardIdswitchboardIntegrationId)
+> SwitchboardIntegrationResponse updateSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId, switchboardIntegrationUpdateBody)
 
 Update Switchboard Integration
 
@@ -264,11 +264,12 @@ Updates a switchboard integration record.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardIntegrationsApi;
 
 public class Example {
@@ -278,22 +279,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardIntegrationsApi apiInstance = new SwitchboardIntegrationsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String switchboardId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard.
+        String switchboardIntegrationId = "5d8cff3cd55b040010928b5b"; // String | Identifies the switchboard integration.
         SwitchboardIntegrationUpdateBody switchboardIntegrationUpdateBody = new SwitchboardIntegrationUpdateBody(); // SwitchboardIntegrationUpdateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String switchboardId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard.
-        String switchboardIntegrationId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the switchboard integration.
-        // Add required body parameters
-
         try {
-            SwitchboardIntegrationResponse result = apiInstance.updateSwitchboardIntegration(switchboardIntegrationUpdateBodyappIdswitchboardIdswitchboardIntegrationId);
+            SwitchboardIntegrationResponse result = apiInstance.updateSwitchboardIntegration(appId, switchboardId, switchboardIntegrationId, switchboardIntegrationUpdateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardIntegrationsApi#updateSwitchboardIntegration");
@@ -309,12 +308,12 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **switchboardIntegrationUpdateBody** | [**SwitchboardIntegrationUpdateBody**](SwitchboardIntegrationUpdateBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **switchboardId** | **String**| Identifies the switchboard. |
- **switchboardIntegrationId** | **String**| Identifies the switchboard integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **switchboardId** | **String**| Identifies the switchboard. | |
+| **switchboardIntegrationId** | **String**| Identifies the switchboard integration. | |
+| **switchboardIntegrationUpdateBody** | [**SwitchboardIntegrationUpdateBody**](SwitchboardIntegrationUpdateBody.md)|  | |
 
 ### Return type
 
@@ -328,6 +327,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

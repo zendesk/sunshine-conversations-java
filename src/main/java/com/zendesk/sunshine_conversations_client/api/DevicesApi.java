@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class DevicesApi {
   private ApiClient apiClient;
 
@@ -45,7 +45,7 @@ public class DevicesApi {
    * @return a {@code DeviceResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceResponse getDevice(String appId, String userIdOrExternalId, String deviceId) throws ApiException {
+  public DeviceResponse getDevice(@jakarta.annotation.Nonnull String appId, @jakarta.annotation.Nonnull String userIdOrExternalId, @jakarta.annotation.Nonnull String deviceId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -93,58 +93,7 @@ public class DevicesApi {
 
     GenericType<DeviceResponse> localVarReturnType = new GenericType<DeviceResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * List Devices
-   * Get all the devices for a particular user. The Devices are sorted based on last seen time. 
-   * @param appId Identifies the app. (required)
-   * @param userIdOrExternalId The user&#39;s id or externalId. (required)
-   * @return a {@code DeviceListResponse}
-   * @throws ApiException if fails to make API call
-   */
-  public DeviceListResponse listDevices(String appId, String userIdOrExternalId) throws ApiException {
-    Object localVarPostBody = null;
-    
-    // verify the required parameter 'appId' is set
-    if (appId == null) {
-      throw new ApiException(400, "Missing the required parameter 'appId' when calling listDevices");
-    }
-    
-    // verify the required parameter 'userIdOrExternalId' is set
-    if (userIdOrExternalId == null) {
-      throw new ApiException(400, "Missing the required parameter 'userIdOrExternalId' when calling listDevices");
-    }
-    
-    // create path and map variables
-    String localVarPath = "/v2/apps/{appId}/users/{userIdOrExternalId}/devices".replaceAll("\\{format\\}","json")
-      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
-      .replaceAll("\\{" + "userIdOrExternalId" + "\\}", apiClient.escapeString(userIdOrExternalId.toString()));
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, String> localVarCookieParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    
-    final String[] localVarAccepts = {
-      "application/json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
-
-    GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+          }
 
   /**
    * Get Device
@@ -157,7 +106,7 @@ public class DevicesApi {
    * @return a {@code DeviceResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceResponse getDevice(String bearerToken, String appId, String userIdOrExternalId, String deviceId) throws ApiException {
+  public DeviceResponse getDevice(String bearerToken, @jakarta.annotation.Nonnull String appId, @jakarta.annotation.Nonnull String userIdOrExternalId, @jakarta.annotation.Nonnull String deviceId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -207,7 +156,59 @@ public class DevicesApi {
 
     GenericType<DeviceResponse> localVarReturnType = new GenericType<DeviceResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+          }
+  /**
+   * List Devices
+   * Get all the devices for a particular user. The Devices are sorted based on last seen time. 
+   * @param appId Identifies the app. (required)
+   * @param userIdOrExternalId The user&#39;s id or externalId. (required)
+   * @return a {@code DeviceListResponse}
+   * @throws ApiException if fails to make API call
+   */
+  public DeviceListResponse listDevices(@jakarta.annotation.Nonnull String appId, @jakarta.annotation.Nonnull String userIdOrExternalId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'appId' is set
+    if (appId == null) {
+      throw new ApiException(400, "Missing the required parameter 'appId' when calling listDevices");
+    }
+    
+    // verify the required parameter 'userIdOrExternalId' is set
+    if (userIdOrExternalId == null) {
+      throw new ApiException(400, "Missing the required parameter 'userIdOrExternalId' when calling listDevices");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/v2/apps/{appId}/users/{userIdOrExternalId}/devices".replaceAll("\\{format\\}","json")
+      .replaceAll("\\{" + "appId" + "\\}", apiClient.escapeString(appId.toString()))
+      .replaceAll("\\{" + "userIdOrExternalId" + "\\}", apiClient.escapeString(userIdOrExternalId.toString()));
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, String> localVarCookieParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    
+    final String[] localVarAccepts = {
+      "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth", "bearerAuth" };
+
+    GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+          }
+
   /**
    * List Devices
    * Get all the devices for a particular user. The Devices are sorted based on last seen time. 
@@ -218,7 +219,7 @@ public class DevicesApi {
    * @return a {@code DeviceListResponse}
    * @throws ApiException if fails to make API call
    */
-  public DeviceListResponse listDevices(String bearerToken, String appId, String userIdOrExternalId) throws ApiException {
+  public DeviceListResponse listDevices(String bearerToken, @jakarta.annotation.Nonnull String appId, @jakarta.annotation.Nonnull String userIdOrExternalId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'appId' is set
@@ -262,5 +263,5 @@ public class DevicesApi {
 
     GenericType<DeviceListResponse> localVarReturnType = new GenericType<DeviceListResponse>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
+          }
 }

@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**authorize**](OAuthEndpointsApi.md#authorize) | **GET** /oauth/authorize | Authorize
-[**getToken**](OAuthEndpointsApi.md#getToken) | **POST** /oauth/token | Get Token
-[**getTokenInfo**](OAuthEndpointsApi.md#getTokenInfo) | **GET** /v2/tokenInfo | Get Token Info
-[**revokeAccess**](OAuthEndpointsApi.md#revokeAccess) | **DELETE** /oauth/authorization | Revoke Access
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**authorize**](OAuthEndpointsApi.md#authorize) | **GET** /oauth/authorize | Authorize |
+| [**getToken**](OAuthEndpointsApi.md#getToken) | **POST** /oauth/token | Get Token |
+| [**getTokenInfo**](OAuthEndpointsApi.md#getTokenInfo) | **GET** /v2/tokenInfo | Get Token Info |
+| [**revokeAccess**](OAuthEndpointsApi.md#revokeAccess) | **DELETE** /oauth/authorization | Revoke Access |
 
 
 
 ## authorize
 
-> authorize(clientIdresponseTypestateredirectUri)
+> authorize(clientId, responseType, state, redirectUri)
 
 Authorize
 
@@ -22,10 +22,11 @@ This endpoint begins the OAuth flow. It relies on a browser session for authenti
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.OAuthEndpointsApi;
 
 public class Example {
@@ -34,14 +35,12 @@ public class Example {
         defaultClient.setBasePath("https://api.smooch.io");
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
-        String clientId = ""5e4af71a81966cfff3ef6550""; // String | Your integration’s unique identifier
-        String responseType = ""code""; // String | For now the only acceptable value is code.
-        String state = ""Pending""; // String | You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect.
-        String redirectUri = ""https://example.org""; // String | You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used.
-        // Add required body parameters
-
+        String clientId = "5e4af71a81966cfff3ef6550"; // String | Your integration’s unique identifier
+        String responseType = "code"; // String | For now the only acceptable value is code.
+        String state = "Pending"; // String | You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect.
+        String redirectUri = "https://example.org"; // String | You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used.
         try {
-            apiInstance.authorize(clientIdresponseTypestateredirectUri);
+            apiInstance.authorize(clientId, responseType, state, redirectUri);
         } catch (ApiException e) {
             System.err.println("Exception when calling OAuthEndpointsApi#authorize");
             System.err.println("Status code: " + e.getCode());
@@ -56,12 +55,12 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **clientId** | **String**| Your integration’s unique identifier |
- **responseType** | **String**| For now the only acceptable value is code. |
- **state** | **String**| You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect. | [optional]
- **redirectUri** | **String**| You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **clientId** | **String**| Your integration’s unique identifier | |
+| **responseType** | **String**| For now the only acceptable value is code. | |
+| **state** | **String**| You may pass in any arbitrary string value here which will be returned to you along with the code via browser redirect. | [optional] |
+| **redirectUri** | **String**| You may pass in a redirect_uri to determine which URI the response is redirected to. This URI must be contained in the list configured by your integration. If this option is not passed, the first URI present in the list will be used. | [optional] |
 
 ### Return type
 
@@ -75,6 +74,7 @@ No authorization required
 
 - **Content-Type**: Not defined
 - **Accept**: text/plain
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -93,10 +93,11 @@ This endpoint is used to exchange an authorization code for an access token.  It
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.OAuthEndpointsApi;
 
 public class Example {
@@ -106,8 +107,6 @@ public class Example {
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
         GetTokenRequest getTokenRequest = new GetTokenRequest(); // GetTokenRequest | 
-        // Add required body parameters
-
         try {
             GetToken200Response result = apiInstance.getToken(getTokenRequest);
             System.out.println(result);
@@ -125,9 +124,9 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **getTokenRequest** | [**GetTokenRequest**](GetTokenRequest.md)|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **getTokenRequest** | [**GetTokenRequest**](GetTokenRequest.md)|  | |
 
 ### Return type
 
@@ -141,6 +140,7 @@ No authorization required
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -159,10 +159,11 @@ This endpoint can be used to retrieve the app linked to the OAuth token. Typical
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.OAuthEndpointsApi;
 
 public class Example {
@@ -171,8 +172,6 @@ public class Example {
         defaultClient.setBasePath("https://api.smooch.io");
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
-        // Add required body parameters
-
         try {
             AppResponse result = apiInstance.getTokenInfo();
             System.out.println(result);
@@ -204,6 +203,7 @@ No authorization required
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -221,11 +221,12 @@ This endpoint is used to revoke your integration&#39;s access to the user&#39;s 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.OAuthEndpointsApi;
 
 public class Example {
@@ -235,16 +236,14 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         OAuthEndpointsApi apiInstance = new OAuthEndpointsApi(defaultClient);
-        // Add required body parameters
-
         try {
             Object result = apiInstance.revokeAccess();
             System.out.println(result);
@@ -275,6 +274,7 @@ This endpoint does not need any parameter.
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

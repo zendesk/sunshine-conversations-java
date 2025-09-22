@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createIntegration**](IntegrationsApi.md#createIntegration) | **POST** /v2/apps/{appId}/integrations | Create Integration
-[**deleteIntegration**](IntegrationsApi.md#deleteIntegration) | **DELETE** /v2/apps/{appId}/integrations/{integrationId} | Delete Integration
-[**getIntegration**](IntegrationsApi.md#getIntegration) | **GET** /v2/apps/{appId}/integrations/{integrationId} | Get Integration
-[**listIntegrations**](IntegrationsApi.md#listIntegrations) | **GET** /v2/apps/{appId}/integrations | List Integrations
-[**updateIntegration**](IntegrationsApi.md#updateIntegration) | **PATCH** /v2/apps/{appId}/integrations/{integrationId} | Update Integration
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createIntegration**](IntegrationsApi.md#createIntegration) | **POST** /v2/apps/{appId}/integrations | Create Integration |
+| [**deleteIntegration**](IntegrationsApi.md#deleteIntegration) | **DELETE** /v2/apps/{appId}/integrations/{integrationId} | Delete Integration |
+| [**getIntegration**](IntegrationsApi.md#getIntegration) | **GET** /v2/apps/{appId}/integrations/{integrationId} | Get Integration |
+| [**listIntegrations**](IntegrationsApi.md#listIntegrations) | **GET** /v2/apps/{appId}/integrations | List Integrations |
+| [**updateIntegration**](IntegrationsApi.md#updateIntegration) | **PATCH** /v2/apps/{appId}/integrations/{integrationId} | Update Integration |
 
 
 
 ## createIntegration
 
-> IntegrationResponse createIntegration(integrationappId)
+> IntegrationResponse createIntegration(appId, integration)
 
 Create Integration
 
@@ -23,11 +23,12 @@ The Create Integration endpoint allows you to provision apps with front-end mess
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.IntegrationsApi;
 
 public class Example {
@@ -37,20 +38,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         Integration integration = new Integration(); // Integration | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
         try {
-            IntegrationResponse result = apiInstance.createIntegration(integrationappId);
+            IntegrationResponse result = apiInstance.createIntegration(appId, integration);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#createIntegration");
@@ -66,10 +65,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration** | [**Integration**](Integration.md)|  |
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integration** | [**Integration**](Integration.md)|  | |
 
 ### Return type
 
@@ -84,6 +83,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -93,7 +93,7 @@ Name | Type | Description  | Notes
 
 ## deleteIntegration
 
-> Object deleteIntegration(appIdintegrationId)
+> Object deleteIntegration(appId, integrationId)
 
 Delete Integration
 
@@ -102,11 +102,12 @@ Delete the specified integration.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.IntegrationsApi;
 
 public class Example {
@@ -116,20 +117,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         try {
-            Object result = apiInstance.deleteIntegration(appIdintegrationId);
+            Object result = apiInstance.deleteIntegration(appId, integrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#deleteIntegration");
@@ -145,10 +144,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
 
 ### Return type
 
@@ -163,6 +162,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## getIntegration
 
-> IntegrationResponse getIntegration(appIdintegrationId)
+> IntegrationResponse getIntegration(appId, integrationId)
 
 Get Integration
 
@@ -182,11 +182,12 @@ Get integration.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.IntegrationsApi;
 
 public class Example {
@@ -196,20 +197,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         try {
-            IntegrationResponse result = apiInstance.getIntegration(appIdintegrationId);
+            IntegrationResponse result = apiInstance.getIntegration(appId, integrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#getIntegration");
@@ -225,10 +224,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
 
 ### Return type
 
@@ -243,6 +242,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## listIntegrations
 
-> IntegrationListResponse listIntegrations(appIdpagefilter)
+> IntegrationListResponse listIntegrations(appId, page, filter)
 
 List Integrations
 
@@ -261,11 +261,12 @@ List available integrations. This API is paginated through [cursor pagination](#
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.IntegrationsApi;
 
 public class Example {
@@ -275,21 +276,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         IntegrationListFilter filter = new IntegrationListFilter(); // IntegrationListFilter | Contains parameters for filtering the results.
-        // Add required body parameters
-
         try {
-            IntegrationListResponse result = apiInstance.listIntegrations(appIdpagefilter);
+            IntegrationListResponse result = apiInstance.listIntegrations(appId, page, filter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#listIntegrations");
@@ -305,11 +304,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
- **filter** | [**IntegrationListFilter**](.md)| Contains parameters for filtering the results. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional] |
+| **filter** | [**IntegrationListFilter**](.md)| Contains parameters for filtering the results. | [optional] |
 
 ### Return type
 
@@ -324,6 +323,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -333,7 +333,7 @@ Name | Type | Description  | Notes
 
 ## updateIntegration
 
-> IntegrationResponse updateIntegration(integrationUpdateappIdintegrationId)
+> IntegrationResponse updateIntegration(appId, integrationId, integrationUpdate)
 
 Update Integration
 
@@ -342,11 +342,12 @@ Allows you to update certain fields of existing integrations. If updating a spec
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.IntegrationsApi;
 
 public class Example {
@@ -356,21 +357,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         IntegrationsApi apiInstance = new IntegrationsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         IntegrationUpdate integrationUpdate = new IntegrationUpdate(); // IntegrationUpdate | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        // Add required body parameters
-
         try {
-            IntegrationResponse result = apiInstance.updateIntegration(integrationUpdateappIdintegrationId);
+            IntegrationResponse result = apiInstance.updateIntegration(appId, integrationId, integrationUpdate);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling IntegrationsApi#updateIntegration");
@@ -386,11 +385,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integrationUpdate** | [**IntegrationUpdate**](IntegrationUpdate.md)|  |
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
+| **integrationUpdate** | [**IntegrationUpdate**](IntegrationUpdate.md)|  | |
 
 ### Return type
 
@@ -404,6 +403,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

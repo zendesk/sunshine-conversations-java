@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**postActivity**](ActivitiesApi.md#postActivity) | **POST** /v2/apps/{appId}/conversations/{conversationId}/activity | Post Activity
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**postActivity**](ActivitiesApi.md#postActivity) | **POST** /v2/apps/{appId}/conversations/{conversationId}/activity | Post Activity |
 
 
 
 ## postActivity
 
-> Object postActivity(activityPostappIdconversationId)
+> Object postActivity(appId, conversationId, activityPost)
 
 Post Activity
 
@@ -19,11 +19,12 @@ Notify Sunshine Conversations of different conversation activities. Supported ac
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.ActivitiesApi;
 
 public class Example {
@@ -33,21 +34,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         ActivitiesApi apiInstance = new ActivitiesApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         ActivityPost activityPost = new ActivityPost(); // ActivityPost | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.postActivity(activityPostappIdconversationId);
+            Object result = apiInstance.postActivity(appId, conversationId, activityPost);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ActivitiesApi#postActivity");
@@ -63,11 +62,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **activityPost** | [**ActivityPost**](ActivityPost.md)|  |
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **activityPost** | [**ActivityPost**](ActivityPost.md)|  | |
 
 ### Return type
 
@@ -81,6 +80,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

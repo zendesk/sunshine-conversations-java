@@ -2,20 +2,20 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createUser**](UsersApi.md#createUser) | **POST** /v2/apps/{appId}/users | Create User
-[**deleteUser**](UsersApi.md#deleteUser) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId} | Delete User
-[**deleteUserPersonalInformation**](UsersApi.md#deleteUserPersonalInformation) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation | Delete User Personal Information
-[**getUser**](UsersApi.md#getUser) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId} | Get User
-[**syncUser**](UsersApi.md#syncUser) | **POST** /v2/apps/{appId}/users/{zendeskId}/sync | Synchronize User
-[**updateUser**](UsersApi.md#updateUser) | **PATCH** /v2/apps/{appId}/users/{userIdOrExternalId} | Update User
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createUser**](UsersApi.md#createUser) | **POST** /v2/apps/{appId}/users | Create User |
+| [**deleteUser**](UsersApi.md#deleteUser) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId} | Delete User |
+| [**deleteUserPersonalInformation**](UsersApi.md#deleteUserPersonalInformation) | **DELETE** /v2/apps/{appId}/users/{userIdOrExternalId}/personalinformation | Delete User Personal Information |
+| [**getUser**](UsersApi.md#getUser) | **GET** /v2/apps/{appId}/users/{userIdOrExternalId} | Get User |
+| [**syncUser**](UsersApi.md#syncUser) | **POST** /v2/apps/{appId}/users/{zendeskId}/sync | Synchronize User |
+| [**updateUser**](UsersApi.md#updateUser) | **PATCH** /v2/apps/{appId}/users/{userIdOrExternalId} | Update User |
 
 
 
 ## createUser
 
-> UserResponse createUser(userCreateBodyappId)
+> UserResponse createUser(appId, userCreateBody)
 
 Create User
 
@@ -24,11 +24,12 @@ Creates a new user.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -38,20 +39,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         UserCreateBody userCreateBody = new UserCreateBody(); // UserCreateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
         try {
-            UserResponse result = apiInstance.createUser(userCreateBodyappId);
+            UserResponse result = apiInstance.createUser(appId, userCreateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#createUser");
@@ -67,10 +66,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userCreateBody** | [**UserCreateBody**](UserCreateBody.md)|  |
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **userCreateBody** | [**UserCreateBody**](UserCreateBody.md)|  | |
 
 ### Return type
 
@@ -85,6 +84,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -94,7 +94,7 @@ Name | Type | Description  | Notes
 
 ## deleteUser
 
-> Object deleteUser(appIduserIdOrExternalId)
+> Object deleteUser(appId, userIdOrExternalId)
 
 Delete User
 
@@ -103,11 +103,12 @@ Delete a user, its clients and its conversation history. The user is considered 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -117,20 +118,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
         try {
-            Object result = apiInstance.deleteUser(appIduserIdOrExternalId);
+            Object result = apiInstance.deleteUser(appId, userIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#deleteUser");
@@ -146,10 +145,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **userIdOrExternalId** | **String**| The user&#39;s id or externalId. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **userIdOrExternalId** | **String**| The user&#39;s id or externalId. | |
 
 ### Return type
 
@@ -164,6 +163,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## deleteUserPersonalInformation
 
-> UserResponse deleteUserPersonalInformation(appIduserIdOrExternalId)
+> UserResponse deleteUserPersonalInformation(appId, userIdOrExternalId)
 
 Delete User Personal Information
 
@@ -182,11 +182,12 @@ Delete a user’s personal information. Calling this API will clear &#x60;givenN
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -196,20 +197,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
         try {
-            UserResponse result = apiInstance.deleteUserPersonalInformation(appIduserIdOrExternalId);
+            UserResponse result = apiInstance.deleteUserPersonalInformation(appId, userIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#deleteUserPersonalInformation");
@@ -225,10 +224,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **userIdOrExternalId** | **String**| The user&#39;s id or externalId. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **userIdOrExternalId** | **String**| The user&#39;s id or externalId. | |
 
 ### Return type
 
@@ -243,6 +242,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 
 ## getUser
 
-> UserResponse getUser(appIduserIdOrExternalId)
+> UserResponse getUser(appId, userIdOrExternalId)
 
 Get User
 
@@ -261,11 +261,12 @@ Fetches an individual user.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -275,20 +276,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
         try {
-            UserResponse result = apiInstance.getUser(appIduserIdOrExternalId);
+            UserResponse result = apiInstance.getUser(appId, userIdOrExternalId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#getUser");
@@ -304,10 +303,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **userIdOrExternalId** | **String**| The user&#39;s id or externalId. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **userIdOrExternalId** | **String**| The user&#39;s id or externalId. | |
 
 ### Return type
 
@@ -322,6 +321,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -331,7 +331,7 @@ Name | Type | Description  | Notes
 
 ## syncUser
 
-> UserResponse syncUser(appIdzendeskIdsyncUserBody)
+> UserResponse syncUser(appId, zendeskId, syncUserBody)
 
 Synchronize User
 
@@ -340,11 +340,12 @@ Synchronize a messaging user with its core Zendesk user counterpart. Messaging u
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -354,21 +355,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String zendeskId = ""35436""; // String | The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API. 
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String zendeskId = "35436"; // String | The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API. 
         SyncUserBody syncUserBody = new SyncUserBody(); // SyncUserBody | 
-        // Add required body parameters
-
         try {
-            UserResponse result = apiInstance.syncUser(appIdzendeskIdsyncUserBody);
+            UserResponse result = apiInstance.syncUser(appId, zendeskId, syncUserBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#syncUser");
@@ -384,11 +383,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **zendeskId** | **String**| The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.  |
- **syncUserBody** | [**SyncUserBody**](SyncUserBody.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **zendeskId** | **String**| The ID that links a messaging user to its core Zendesk user counterpart. This ID can be used to fetch the core user record via the Zendesk Support API.  | |
+| **syncUserBody** | [**SyncUserBody**](SyncUserBody.md)|  | [optional] |
 
 ### Return type
 
@@ -403,6 +402,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -411,7 +411,7 @@ Name | Type | Description  | Notes
 
 ## updateUser
 
-> UserResponse updateUser(userUpdateBodyappIduserIdOrExternalId)
+> UserResponse updateUser(appId, userIdOrExternalId, userUpdateBody)
 
 Update User
 
@@ -420,11 +420,12 @@ Updates a user.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.UsersApi;
 
 public class Example {
@@ -434,21 +435,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         UsersApi apiInstance = new UsersApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String userIdOrExternalId = "42589ad070d43be9b00ff7e5"; // String | The user's id or externalId.
         UserUpdateBody userUpdateBody = new UserUpdateBody(); // UserUpdateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String userIdOrExternalId = ""42589ad070d43be9b00ff7e5""; // String | The user's id or externalId.
-        // Add required body parameters
-
         try {
-            UserResponse result = apiInstance.updateUser(userUpdateBodyappIduserIdOrExternalId);
+            UserResponse result = apiInstance.updateUser(appId, userIdOrExternalId, userUpdateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling UsersApi#updateUser");
@@ -464,11 +463,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **userUpdateBody** | [**UserUpdateBody**](UserUpdateBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **userIdOrExternalId** | **String**| The user&#39;s id or externalId. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **userIdOrExternalId** | **String**| The user&#39;s id or externalId. | |
+| **userUpdateBody** | [**UserUpdateBody**](UserUpdateBody.md)|  | |
 
 ### Return type
 
@@ -482,6 +481,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

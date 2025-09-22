@@ -2,13 +2,13 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createApp**](AppsApi.md#createApp) | **POST** /v2/apps | Create App
-[**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /v2/apps/{appId} | Delete App
-[**getApp**](AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App
-[**listApps**](AppsApi.md#listApps) | **GET** /v2/apps | List Apps
-[**updateApp**](AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createApp**](AppsApi.md#createApp) | **POST** /v2/apps | Create App |
+| [**deleteApp**](AppsApi.md#deleteApp) | **DELETE** /v2/apps/{appId} | Delete App |
+| [**getApp**](AppsApi.md#getApp) | **GET** /v2/apps/{appId} | Get App |
+| [**listApps**](AppsApi.md#listApps) | **GET** /v2/apps | List Apps |
+| [**updateApp**](AppsApi.md#updateApp) | **PATCH** /v2/apps/{appId} | Update App |
 
 
 
@@ -23,11 +23,12 @@ Creates a new app. When using [service account](#service-accounts) credentials, 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppsApi;
 
 public class Example {
@@ -37,17 +38,15 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         AppCreateBody appCreateBody = new AppCreateBody(); // AppCreateBody | 
-        // Add required body parameters
-
         try {
             AppResponse result = apiInstance.createApp(appCreateBody);
             System.out.println(result);
@@ -65,9 +64,9 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appCreateBody** | [**AppCreateBody**](AppCreateBody.md)|  |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appCreateBody** | [**AppCreateBody**](AppCreateBody.md)|  | |
 
 ### Return type
 
@@ -81,6 +80,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -101,11 +101,12 @@ Removes the specified app, including all its enabled integrations.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppsApi;
 
 public class Example {
@@ -115,17 +116,15 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         try {
             Object result = apiInstance.deleteApp(appId);
             System.out.println(result);
@@ -143,9 +142,9 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
 
 ### Return type
 
@@ -159,6 +158,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -178,11 +178,12 @@ Fetches an individual app.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppsApi;
 
 public class Example {
@@ -192,17 +193,15 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         try {
             AppResponse result = apiInstance.getApp(appId);
             System.out.println(result);
@@ -220,9 +219,9 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
 
 ### Return type
 
@@ -237,6 +236,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -246,7 +246,7 @@ Name | Type | Description  | Notes
 
 ## listApps
 
-> AppListResponse listApps(pagefilter)
+> AppListResponse listApps(page, filter)
 
 List Apps
 
@@ -255,11 +255,12 @@ Lists all apps that a user is part of. This API is paginated through [cursor pag
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppsApi;
 
 public class Example {
@@ -269,20 +270,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
         AppListFilter filter = new AppListFilter(); // AppListFilter | Contains parameters for filtering the results.
-        // Add required body parameters
-
         try {
-            AppListResponse result = apiInstance.listApps(pagefilter);
+            AppListResponse result = apiInstance.listApps(page, filter);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#listApps");
@@ -298,10 +297,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
- **filter** | [**AppListFilter**](.md)| Contains parameters for filtering the results. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional] |
+| **filter** | [**AppListFilter**](.md)| Contains parameters for filtering the results. | [optional] |
 
 ### Return type
 
@@ -316,6 +315,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 
 ## updateApp
 
-> AppResponse updateApp(appUpdateBodyappId)
+> AppResponse updateApp(appId, appUpdateBody)
 
 Update App
 
@@ -335,11 +335,12 @@ Updates an app.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppsApi;
 
 public class Example {
@@ -349,20 +350,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppsApi apiInstance = new AppsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         AppUpdateBody appUpdateBody = new AppUpdateBody(); // AppUpdateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
         try {
-            AppResponse result = apiInstance.updateApp(appUpdateBodyappId);
+            AppResponse result = apiInstance.updateApp(appId, appUpdateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppsApi#updateApp");
@@ -378,10 +377,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appUpdateBody** | [**AppUpdateBody**](AppUpdateBody.md)|  |
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **appUpdateBody** | [**AppUpdateBody**](AppUpdateBody.md)|  | |
 
 ### Return type
 
@@ -395,6 +394,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

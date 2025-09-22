@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**acceptControl**](SwitchboardActionsApi.md#acceptControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/acceptControl | Accept Control
-[**offerControl**](SwitchboardActionsApi.md#offerControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/offerControl | Offer Control
-[**passControl**](SwitchboardActionsApi.md#passControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/passControl | Pass Control
-[**releaseControl**](SwitchboardActionsApi.md#releaseControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/releaseControl | Release Control
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**acceptControl**](SwitchboardActionsApi.md#acceptControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/acceptControl | Accept Control |
+| [**offerControl**](SwitchboardActionsApi.md#offerControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/offerControl | Offer Control |
+| [**passControl**](SwitchboardActionsApi.md#passControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/passControl | Pass Control |
+| [**releaseControl**](SwitchboardActionsApi.md#releaseControl) | **POST** /v2/apps/{appId}/conversations/{conversationId}/releaseControl | Release Control |
 
 
 
 ## acceptControl
 
-> Object acceptControl(acceptControlBodyappIdconversationId)
+> Object acceptControl(appId, conversationId, acceptControlBody)
 
 Accept Control
 
@@ -22,11 +22,12 @@ The acceptControl action transfers the control of the conversation to the pendin
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardActionsApi;
 
 public class Example {
@@ -36,21 +37,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         AcceptControlBody acceptControlBody = new AcceptControlBody(); // AcceptControlBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.acceptControl(acceptControlBodyappIdconversationId);
+            Object result = apiInstance.acceptControl(appId, conversationId, acceptControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#acceptControl");
@@ -66,11 +65,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **acceptControlBody** | [**AcceptControlBody**](AcceptControlBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **acceptControlBody** | [**AcceptControlBody**](AcceptControlBody.md)|  | |
 
 ### Return type
 
@@ -85,6 +84,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ## offerControl
 
-> Object offerControl(offerControlBodyappIdconversationId)
+> Object offerControl(appId, conversationId, offerControlBody)
 
 Offer Control
 
@@ -104,11 +104,12 @@ The offerControl action will invite a switchboard integration to accept control 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardActionsApi;
 
 public class Example {
@@ -118,21 +119,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         OfferControlBody offerControlBody = new OfferControlBody(); // OfferControlBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.offerControl(offerControlBodyappIdconversationId);
+            Object result = apiInstance.offerControl(appId, conversationId, offerControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#offerControl");
@@ -148,11 +147,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **offerControlBody** | [**OfferControlBody**](OfferControlBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **offerControlBody** | [**OfferControlBody**](OfferControlBody.md)|  | |
 
 ### Return type
 
@@ -167,6 +166,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -176,7 +176,7 @@ Name | Type | Description  | Notes
 
 ## passControl
 
-> Object passControl(passControlBodyappIdconversationId)
+> Object passControl(appId, conversationId, passControlBody)
 
 Pass Control
 
@@ -185,11 +185,12 @@ The passControl action marks the named switchboard integration as active and tra
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardActionsApi;
 
 public class Example {
@@ -199,21 +200,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         PassControlBody passControlBody = new PassControlBody(); // PassControlBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.passControl(passControlBodyappIdconversationId);
+            Object result = apiInstance.passControl(appId, conversationId, passControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#passControl");
@@ -229,11 +228,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **passControlBody** | [**PassControlBody**](PassControlBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **passControlBody** | [**PassControlBody**](PassControlBody.md)|  | |
 
 ### Return type
 
@@ -248,6 +247,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -257,7 +257,7 @@ Name | Type | Description  | Notes
 
 ## releaseControl
 
-> Object releaseControl(appIdconversationIdreleaseControlBody)
+> Object releaseControl(appId, conversationId, releaseControlBody)
 
 Release Control
 
@@ -266,11 +266,12 @@ The releaseControl action releases the control of the conversation by nullifying
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.SwitchboardActionsApi;
 
 public class Example {
@@ -280,21 +281,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         SwitchboardActionsApi apiInstance = new SwitchboardActionsApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         ReleaseControlBody releaseControlBody = new ReleaseControlBody(); // ReleaseControlBody | 
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.releaseControl(appIdconversationIdreleaseControlBody);
+            Object result = apiInstance.releaseControl(appId, conversationId, releaseControlBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SwitchboardActionsApi#releaseControl");
@@ -310,11 +309,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
- **releaseControlBody** | [**ReleaseControlBody**](ReleaseControlBody.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **releaseControlBody** | [**ReleaseControlBody**](ReleaseControlBody.md)|  | [optional] |
 
 ### Return type
 
@@ -328,6 +327,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

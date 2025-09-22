@@ -2,16 +2,16 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteAttachment**](AttachmentsApi.md#deleteAttachment) | **POST** /v2/apps/{appId}/attachments/remove | Delete Attachment
-[**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v2/apps/{appId}/attachments | Upload Attachment
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteAttachment**](AttachmentsApi.md#deleteAttachment) | **POST** /v2/apps/{appId}/attachments/remove | Delete Attachment |
+| [**uploadAttachment**](AttachmentsApi.md#uploadAttachment) | **POST** /v2/apps/{appId}/attachments | Upload Attachment |
 
 
 
 ## deleteAttachment
 
-> Object deleteAttachment(attachmentDeleteBodyappId)
+> Object deleteAttachment(appId, attachmentDeleteBody)
 
 Delete Attachment
 
@@ -20,11 +20,12 @@ Remove an attachment uploaded to Sunshine Conversations through the Upload attac
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AttachmentsApi;
 
 public class Example {
@@ -34,20 +35,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AttachmentsApi apiInstance = new AttachmentsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         AttachmentDeleteBody attachmentDeleteBody = new AttachmentDeleteBody(); // AttachmentDeleteBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
         try {
-            Object result = apiInstance.deleteAttachment(attachmentDeleteBodyappId);
+            Object result = apiInstance.deleteAttachment(appId, attachmentDeleteBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AttachmentsApi#deleteAttachment");
@@ -63,10 +62,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **attachmentDeleteBody** | [**AttachmentDeleteBody**](AttachmentDeleteBody.md)|  |
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **attachmentDeleteBody** | [**AttachmentDeleteBody**](AttachmentDeleteBody.md)|  | |
 
 ### Return type
 
@@ -81,6 +80,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 
 ## uploadAttachment
 
-> AttachmentResponse uploadAttachment(sourceappIdaccess_forconversationId)
+> AttachmentResponse uploadAttachment(appId, access, source, _for, conversationId)
 
 Upload Attachment
 
@@ -99,11 +99,12 @@ Upload an attachment to Sunshine Conversations to use in future messages. Files 
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AttachmentsApi;
 
 public class Example {
@@ -113,23 +114,21 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AttachmentsApi apiInstance = new AttachmentsApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String access = "public"; // String | The access level for the attachment. Currently the only available access level is public. Private is not supported.
         File source = new File("/path/to/file"); // File | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String access = ""public""; // String | The access level for the attachment. Currently the only available access level is public. Private is not supported.
-        String _for = ""message""; // String | Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details.
-        String conversationId = ""c616a583e4c240a871818541""; // String | Links the attachment getting uploaded to the conversation ID.
-        // Add required body parameters
-
+        String _for = "message"; // String | Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details.
+        String conversationId = "c616a583e4c240a871818541"; // String | Links the attachment getting uploaded to the conversation ID.
         try {
-            AttachmentResponse result = apiInstance.uploadAttachment(sourceappIdaccess_forconversationId);
+            AttachmentResponse result = apiInstance.uploadAttachment(appId, access, source, _for, conversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AttachmentsApi#uploadAttachment");
@@ -145,13 +144,13 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **source** | **File**|  |
- **appId** | **String**| Identifies the app. |
- **access** | **String**| The access level for the attachment. Currently the only available access level is public. Private is not supported. | [default to public]
- **_for** | **String**| Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. | [optional]
- **conversationId** | **String**| Links the attachment getting uploaded to the conversation ID. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **access** | **String**| The access level for the attachment. Currently the only available access level is public. Private is not supported. | [default to public] |
+| **source** | **File**|  | |
+| **_for** | **String**| Specifies the intended container for the attachment, to enable automatic attachment deletion (on deletion of associated message, conversation or user). For now, only message is supported. See [Attachments for Messages](#section/Attachments-for-Messages) for details. | [optional] |
+| **conversationId** | **String**| Links the attachment getting uploaded to the conversation ID. | [optional] |
 
 ### Return type
 
@@ -165,6 +164,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: multipart/form-data
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

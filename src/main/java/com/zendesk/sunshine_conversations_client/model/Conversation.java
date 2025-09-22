@@ -1,5 +1,6 @@
 /*
  * Sunshine Conversations API
+ * # Introduction  <aside class=\"notice\"><strong>Note:</strong> The documentation below applies to v2 of the API. For users wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/v1\">here</a> instead. </aside>  Welcome to the Sunshine Conversations API. The API allows you to craft entirely unique messaging experiences for your app and website as well as talk to any backend or external service.  The Sunshine Conversations API is designed according to REST principles. The API accepts JSON in request bodies and requires that the `content-type: application/json` header be specified for all such requests. The API will always respond with an object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.  ## Regions  Licensed Zendesk customers should use the following API host for all API requests, unless otherwise specified:  ``` https://{subdomain}.zendesk.com/sc ```  For legacy Sunshine Conversations customers, see [regions](https://docs.smooch.io/guide/regions/) for the list of supported base URLs.  <aside class=\"notice\"><strong>Note:</strong> When configuring an API host, make sure to always use <code>https</code>. Some API clients can have unexpected behaviour when following redirects from <code>http</code> to <code>https</code>.</aside>  ## Errors  Sunshine Conversations uses standard HTTP status codes to communicate errors. In general, a `2xx` status code indicates success while `4xx` indicates an error, in which case, the response body includes a JSON object which includes an array of errors, with a text `code` and `title` containing more details. Multiple errors can only be included in a `400 Bad Request`. A `5xx` status code indicates that something went wrong on our end.  ```javascript {    \"errors\":  [     {         \"code\": \"unauthorized\",         \"title\": \"Authorization is required\"     }    ] } ```  ## API Version  The latest version of the API is v2. Version v1.1 is still supported and you can continue using it but we encourage you to upgrade to the latest version. To learn more about API versioning at Sunshine Conversations, including instructions on how to upgrade to the latest version, [visit our docs](https://developer.zendesk.com/documentation/conversations/references/api-versioning/).  ## API Pagination and Records Limits  All paginated endpoints support cursor-based pagination.  ### Cursor Pagination  Cursor-based pagination is a common pagination strategy that avoids many of the pitfalls of offset–limit pagination. It works by returning a pointer to a specific item in the dataset. On subsequent requests, the server returns results after the given pointer.  A `page[after]` or `page[before]` query string parameter may be provided, they are cursors pointing to a record id.  The `page[after]` cursor indicates that only records **subsequent** to it should be returned.  The `page[before]` cursor indicates that only records **preceding** it should be returned.  **Only one** of `page[after]` or `page[before]` may be provided in a query, not both.  In most endpoints, an optional `page[size]` query parameter may be passed to control the number of records returned by the request.  ## API Libraries  Sunshine Conversations provides an official API library for [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages to come. These helpful libraries wrap calls to the API and can make interfacing with Sunshine Conversations easier.  ## Postman Collection  <a style=\"display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width: 123px;\" href=\"https://docs.smooch.io/sunco-openapi/postman_collection.json\"></a>  In addition to API libraries, Sunshine Conversations also has a Postman collection that can be used for development or testing purposes. See the [guide](https://developer.zendesk.com/documentation/conversations/references/openapi-specification/) for information on how to install and use the collection in your Postman client.  ## Rate Limits  Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded a `429 Too Many Requests` HTTP status code may be returned. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using the platform as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, you should implement `429` retry logic using exponential backoff and jitter.  ## Conversation Size Limits  Conversations are limited to 30,000 messages. Once you reach this maximum, a `423 Locked` HTTP status code is returned when trying to post a new message. To allow more messages to be sent to the affected conversation, you must [delete all messages](https://developer.zendesk.com/api-reference/conversations/#operation/DeleteAllMessages) to make room.  ## Request Size Limits  The Sunshine Conversations API imposes the following size limits on HTTP requests:  | Request Type | Limit | | ------------ | ----- | | JSON         | 100kb | | File upload  | 50mb  |  ## Authorization  This is an overview of how authorization works with the Sunshine Conversations API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server calls. [See below](#section/Introduction/Authentication) for more details.  There are three authorization scopes available for the v2 API: `integration`, `app`, and `account`.  | Scope       | Availability                                | Authorized Methods                              | | ----------- | ------------------------------------------- | ----------------------------------------------- | | account     | Sunshine Conversations direct accounts only | All methods                                     | | app         | All account types                           | All methods besides Account Provisioning        | | integration | All account types                           | Users, Conversations, Attachments, and Webhooks |  <aside class=\"notice\"><strong>Note:</strong> An additional scope of <code>user</code> is used for <a href=\"https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/\">authenticating users</a> on the Zendesk Messaging SDKs. This scope, however, cannot be used with the v2 API.</aside>  ## Authentication  To authenticate requests to the API, you will need an API key, composed of a key id and a secret. For an overview of how authentication works in Sunshine Conversations and instructions on how to generate an API key, see [API authentication](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/).  API requests can be authenticated in two ways:  - With Basic authentication you can make requests using an API key directly. - With JSON Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate with the API. See [When to Use JWTs](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#when-to-use-jwts) to learn if JWTs are relevant for your usage. - Before using an API key in production, make sure to familiarize yourself with best practices on how to [securely handle credentials](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#secure-credential-handling).  ### Basic Authentication  API requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using an API key. The key id is used as the username and the secret as the password. The scope of access is determined by the owner of the API key. See the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#access-scopes) for more details.  ### JWTs  JSON Web Tokens (JWTs) are an industry standard authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519), and a set of supported JWT libraries for a variety of languages and platforms can be found at http://jwt.io. To summarize, a JWT is composed of a header, a payload, and a signature. The payload contains information called claims which describe the subject to whom the token was issued. The JWT itself is transmitted via the HTTP `authorization` header. The token should be prefixed with “Bearer” followed by a space. For example: `Bearer your-jwt`. To generate a JWT, you need an API key, which is composed of a key ID and a secret. The key ID is included in a JWT’s header, as the `kid` property, while the secret is used to sign the JWT. For more in-depth coverage, see the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#jwt-authentication).  #### Header  The JWT header must contain the key id (kid) of the API key that is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs are not accepted.  ```javascript {     \"alg\": \"HS256\",     \"typ\": \"JWT\",     \"kid\": \"act_5963ceb97cde542d000dbdb1\" } ```  #### Payload  The JWT payload must include a scope claim which specifies the caller’s scope of access.  - account-scoped JWTs must be generated with an API key associated with a Sunshine Conversations account (act*) or service account (svc*).  ```javascript {     \"scope\": \"account\" } ```  - app-scoped JWTs can be generated with an API key associated with an app (app\\_).  ```javascript {    \"scope\": \"app\" } ``` 
  *
  * The version of the OpenAPI document: 17.0.0
  * 
@@ -24,24 +25,8 @@ import com.zendesk.sunshine_conversations_client.model.SwitchboardIntegrationWeb
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
-import org.openapitools.jackson.nullable.JsonNullable;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.openapitools.jackson.nullable.JsonNullable;
-import java.util.NoSuchElementException;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-
-import java.util.Objects;
-import java.util.Arrays;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * Conversation
@@ -60,57 +45,71 @@ import io.swagger.annotations.ApiModelProperty;
   Conversation.JSON_PROPERTY_LAST_UPDATED_AT,
   Conversation.JSON_PROPERTY_CREATED_AT
 })
-
+@JsonTypeName("conversation")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
 public class Conversation {
   public static final String JSON_PROPERTY_ID = "id";
+  @jakarta.annotation.Nullable
   private String id;
 
   public static final String JSON_PROPERTY_TYPE = "type";
+  @jakarta.annotation.Nullable
   private ConversationType type;
 
   public static final String JSON_PROPERTY_METADATA = "metadata";
-  private JsonNullable<Map<String, Object>> metadata = JsonNullable.<Map<String, Object>>undefined();
+  @jakarta.annotation.Nullable
+  private Map<String, Object> metadata;
 
   public static final String JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION = "activeSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
+  @jakarta.annotation.Nullable
+  private SwitchboardIntegrationWebhook activeSwitchboardIntegration;
 
   public static final String JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION = "pendingSwitchboardIntegration";
-  private JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>undefined();
+  @jakarta.annotation.Nullable
+  private SwitchboardIntegrationWebhook pendingSwitchboardIntegration;
 
   public static final String JSON_PROPERTY_IS_DEFAULT = "isDefault";
+  @jakarta.annotation.Nullable
   private Boolean isDefault;
 
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
-  private JsonNullable<String> displayName = JsonNullable.<String>undefined();
+  @jakarta.annotation.Nullable
+  private String displayName;
 
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
-  private JsonNullable<String> description = JsonNullable.<String>undefined();
+  @jakarta.annotation.Nullable
+  private String description;
 
   public static final String JSON_PROPERTY_ICON_URL = "iconUrl";
-  private JsonNullable<URI> iconUrl = JsonNullable.<URI>undefined();
+  @jakarta.annotation.Nullable
+  private URI iconUrl;
 
   public static final String JSON_PROPERTY_BUSINESS_LAST_READ = "businessLastRead";
-  private JsonNullable<String> businessLastRead = JsonNullable.<String>undefined();
+  @jakarta.annotation.Nullable
+  private String businessLastRead;
 
   public static final String JSON_PROPERTY_LAST_UPDATED_AT = "lastUpdatedAt";
-  private JsonNullable<String> lastUpdatedAt = JsonNullable.<String>undefined();
+  @jakarta.annotation.Nullable
+  private String lastUpdatedAt;
 
   public static final String JSON_PROPERTY_CREATED_AT = "createdAt";
+  @jakarta.annotation.Nullable
   private String createdAt;
 
+  public Conversation() {
+  }
 
-  public Conversation id(String id) {
+  public Conversation id(@jakarta.annotation.Nullable String id) {
     
     this.id = id;
     return this;
   }
 
-   /**
+  /**
    * The unique ID of the conversation.
    * @return id
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "c93bb9c14dde8ffb94564eae", value = "The unique ID of the conversation.")
   @JsonProperty(JSON_PROPERTY_ID)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -119,23 +118,23 @@ public class Conversation {
   }
 
 
-  public void setId(String id) {
+  @JsonProperty(JSON_PROPERTY_ID)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setId(@jakarta.annotation.Nullable String id) {
     this.id = id;
   }
 
-
-  public Conversation type(ConversationType type) {
+  public Conversation type(@jakarta.annotation.Nullable ConversationType type) {
     
     this.type = type;
     return this;
   }
 
-   /**
+  /**
    * Get type
    * @return type
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "")
   @JsonProperty(JSON_PROPERTY_TYPE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -144,128 +143,106 @@ public class Conversation {
   }
 
 
-  public void setType(ConversationType type) {
+  @JsonProperty(JSON_PROPERTY_TYPE)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setType(@jakarta.annotation.Nullable ConversationType type) {
     this.type = type;
   }
 
-
-  public Conversation metadata(Map<String, Object> metadata) {
-    this.metadata = JsonNullable.<Map<String, Object>>of(metadata);
+  public Conversation metadata(@jakarta.annotation.Nullable Map<String, Object> metadata) {
     
+    this.metadata = metadata;
     return this;
   }
 
-   /**
-   * Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. 
-   * @return metadata
-  **/
-  @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "{lang=en-ca}", value = "Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. ")
-  @JsonIgnore
-
-  public Map<String, Object> getMetadata() {
-        return metadata.orElse(null);
+  public Conversation putMetadataItem(String key, Object metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
   }
 
+  /**
+   * Flat object containing custom properties. Strings, numbers and booleans  are the only supported format that can be passed to metadata. The metadata is limited to 4KB in size. 
+   * @return metadata
+   */
+  @jakarta.annotation.Nullable
   @JsonProperty(JSON_PROPERTY_METADATA)
   @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<Map<String, Object>> getMetadata_JsonNullable() {
+  public Map<String, Object> getMetadata() {
     return metadata;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_METADATA)
-  public void setMetadata_JsonNullable(JsonNullable<Map<String, Object>> metadata) {
+  @JsonInclude(content = JsonInclude.Include.ALWAYS, value = JsonInclude.Include.USE_DEFAULTS)
+  public void setMetadata(@jakarta.annotation.Nullable Map<String, Object> metadata) {
     this.metadata = metadata;
   }
 
-  public void setMetadata(Map<String, Object> metadata) {
-    this.metadata = JsonNullable.<Map<String, Object>>of(metadata);
-  }
-
-
-  public Conversation activeSwitchboardIntegration(SwitchboardIntegrationWebhook activeSwitchboardIntegration) {
-    this.activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(activeSwitchboardIntegration);
+  public Conversation activeSwitchboardIntegration(@jakarta.annotation.Nullable SwitchboardIntegrationWebhook activeSwitchboardIntegration) {
     
+    this.activeSwitchboardIntegration = activeSwitchboardIntegration;
     return this;
   }
 
-   /**
+  /**
    * The current switchboard integration that is in control of the conversation. This field is omitted if no &#x60;activeSwitchboardIntegration&#x60; exists for the conversation.
    * @return activeSwitchboardIntegration
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The current switchboard integration that is in control of the conversation. This field is omitted if no `activeSwitchboardIntegration` exists for the conversation.")
-  @JsonIgnore
-
-  public SwitchboardIntegrationWebhook getActiveSwitchboardIntegration() {
-        return activeSwitchboardIntegration.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<SwitchboardIntegrationWebhook> getActiveSwitchboardIntegration_JsonNullable() {
+  public SwitchboardIntegrationWebhook getActiveSwitchboardIntegration() {
     return activeSwitchboardIntegration;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_ACTIVE_SWITCHBOARD_INTEGRATION)
-  public void setActiveSwitchboardIntegration_JsonNullable(JsonNullable<SwitchboardIntegrationWebhook> activeSwitchboardIntegration) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setActiveSwitchboardIntegration(@jakarta.annotation.Nullable SwitchboardIntegrationWebhook activeSwitchboardIntegration) {
     this.activeSwitchboardIntegration = activeSwitchboardIntegration;
   }
 
-  public void setActiveSwitchboardIntegration(SwitchboardIntegrationWebhook activeSwitchboardIntegration) {
-    this.activeSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(activeSwitchboardIntegration);
-  }
-
-
-  public Conversation pendingSwitchboardIntegration(SwitchboardIntegrationWebhook pendingSwitchboardIntegration) {
-    this.pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(pendingSwitchboardIntegration);
+  public Conversation pendingSwitchboardIntegration(@jakarta.annotation.Nullable SwitchboardIntegrationWebhook pendingSwitchboardIntegration) {
     
+    this.pendingSwitchboardIntegration = pendingSwitchboardIntegration;
     return this;
   }
 
-   /**
+  /**
    * The switchboard integration that is awaiting control. This field is omitted if no switchboard integration has been previously offered control.
    * @return pendingSwitchboardIntegration
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "The switchboard integration that is awaiting control. This field is omitted if no switchboard integration has been previously offered control.")
-  @JsonIgnore
-
-  public SwitchboardIntegrationWebhook getPendingSwitchboardIntegration() {
-        return pendingSwitchboardIntegration.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<SwitchboardIntegrationWebhook> getPendingSwitchboardIntegration_JsonNullable() {
+  public SwitchboardIntegrationWebhook getPendingSwitchboardIntegration() {
     return pendingSwitchboardIntegration;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_PENDING_SWITCHBOARD_INTEGRATION)
-  public void setPendingSwitchboardIntegration_JsonNullable(JsonNullable<SwitchboardIntegrationWebhook> pendingSwitchboardIntegration) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setPendingSwitchboardIntegration(@jakarta.annotation.Nullable SwitchboardIntegrationWebhook pendingSwitchboardIntegration) {
     this.pendingSwitchboardIntegration = pendingSwitchboardIntegration;
   }
 
-  public void setPendingSwitchboardIntegration(SwitchboardIntegrationWebhook pendingSwitchboardIntegration) {
-    this.pendingSwitchboardIntegration = JsonNullable.<SwitchboardIntegrationWebhook>of(pendingSwitchboardIntegration);
-  }
-
-
-  public Conversation isDefault(Boolean isDefault) {
+  public Conversation isDefault(@jakarta.annotation.Nullable Boolean isDefault) {
     
     this.isDefault = isDefault;
     return this;
   }
 
-   /**
+  /**
    * Whether the conversation is the default conversation for the user. Will be true for the first personal conversation created for the user, and false in all other cases. 
    * @return isDefault
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "false", value = "Whether the conversation is the default conversation for the user. Will be true for the first personal conversation created for the user, and false in all other cases. ")
   @JsonProperty(JSON_PROPERTY_IS_DEFAULT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -274,198 +251,148 @@ public class Conversation {
   }
 
 
-  public void setIsDefault(Boolean isDefault) {
+  @JsonProperty(JSON_PROPERTY_IS_DEFAULT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIsDefault(@jakarta.annotation.Nullable Boolean isDefault) {
     this.isDefault = isDefault;
   }
 
-
-  public Conversation displayName(String displayName) {
-    this.displayName = JsonNullable.<String>of(displayName);
+  public Conversation displayName(@jakarta.annotation.Nullable String displayName) {
     
+    this.displayName = displayName;
     return this;
   }
 
-   /**
+  /**
    * A friendly name for the conversation, may be displayed to the business or the user. 
    * @return displayName
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(value = "A friendly name for the conversation, may be displayed to the business or the user. ")
-  @JsonIgnore
-
-  public String getDisplayName() {
-        return displayName.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getDisplayName_JsonNullable() {
+  public String getDisplayName() {
     return displayName;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_DISPLAY_NAME)
-  public void setDisplayName_JsonNullable(JsonNullable<String> displayName) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDisplayName(@jakarta.annotation.Nullable String displayName) {
     this.displayName = displayName;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = JsonNullable.<String>of(displayName);
-  }
-
-
-  public Conversation description(String description) {
-    this.description = JsonNullable.<String>of(description);
+  public Conversation description(@jakarta.annotation.Nullable String description) {
     
+    this.description = description;
     return this;
   }
 
-   /**
+  /**
    * A short text describing the conversation.
    * @return description
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "Conversation between Rogers and Carl.", value = "A short text describing the conversation.")
-  @JsonIgnore
-
-  public String getDescription() {
-        return description.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getDescription_JsonNullable() {
+  public String getDescription() {
     return description;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)
-  public void setDescription_JsonNullable(JsonNullable<String> description) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setDescription(@jakarta.annotation.Nullable String description) {
     this.description = description;
   }
 
-  public void setDescription(String description) {
-    this.description = JsonNullable.<String>of(description);
-  }
-
-
-  public Conversation iconUrl(URI iconUrl) {
-    this.iconUrl = JsonNullable.<URI>of(iconUrl);
+  public Conversation iconUrl(@jakarta.annotation.Nullable URI iconUrl) {
     
+    this.iconUrl = iconUrl;
     return this;
   }
 
-   /**
+  /**
    * A custom conversation icon url. The image must be in either JPG, PNG, or GIF format
    * @return iconUrl
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "https://www.gravatar.com/image.jpg", value = "A custom conversation icon url. The image must be in either JPG, PNG, or GIF format")
-  @JsonIgnore
-
-  public URI getIconUrl() {
-        return iconUrl.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_ICON_URL)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<URI> getIconUrl_JsonNullable() {
+  public URI getIconUrl() {
     return iconUrl;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_ICON_URL)
-  public void setIconUrl_JsonNullable(JsonNullable<URI> iconUrl) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setIconUrl(@jakarta.annotation.Nullable URI iconUrl) {
     this.iconUrl = iconUrl;
   }
 
-  public void setIconUrl(URI iconUrl) {
-    this.iconUrl = JsonNullable.<URI>of(iconUrl);
-  }
-
-
-  public Conversation businessLastRead(String businessLastRead) {
-    this.businessLastRead = JsonNullable.<String>of(businessLastRead);
+  public Conversation businessLastRead(@jakarta.annotation.Nullable String businessLastRead) {
     
+    this.businessLastRead = businessLastRead;
     return this;
   }
 
-   /**
+  /**
    * A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the moment the conversation was last marked as read with role business. 
    * @return businessLastRead
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "2020-06-23T14:33:47.492Z", value = "A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the moment the conversation was last marked as read with role business. ")
-  @JsonIgnore
-
-  public String getBusinessLastRead() {
-        return businessLastRead.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_BUSINESS_LAST_READ)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getBusinessLastRead_JsonNullable() {
+  public String getBusinessLastRead() {
     return businessLastRead;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_BUSINESS_LAST_READ)
-  public void setBusinessLastRead_JsonNullable(JsonNullable<String> businessLastRead) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setBusinessLastRead(@jakarta.annotation.Nullable String businessLastRead) {
     this.businessLastRead = businessLastRead;
   }
 
-  public void setBusinessLastRead(String businessLastRead) {
-    this.businessLastRead = JsonNullable.<String>of(businessLastRead);
-  }
-
-
-  public Conversation lastUpdatedAt(String lastUpdatedAt) {
-    this.lastUpdatedAt = JsonNullable.<String>of(lastUpdatedAt);
+  public Conversation lastUpdatedAt(@jakarta.annotation.Nullable String lastUpdatedAt) {
     
+    this.lastUpdatedAt = lastUpdatedAt;
     return this;
   }
 
-   /**
+  /**
    * A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the moment the last message was received in the conversation, or the creation time if no messages have been received yet. 
    * @return lastUpdatedAt
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "2020-06-26T14:33:47.120Z", value = "A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the moment the last message was received in the conversation, or the creation time if no messages have been received yet. ")
-  @JsonIgnore
-
-  public String getLastUpdatedAt() {
-        return lastUpdatedAt.orElse(null);
-  }
-
   @JsonProperty(JSON_PROPERTY_LAST_UPDATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public JsonNullable<String> getLastUpdatedAt_JsonNullable() {
+  public String getLastUpdatedAt() {
     return lastUpdatedAt;
   }
-  
+
+
   @JsonProperty(JSON_PROPERTY_LAST_UPDATED_AT)
-  public void setLastUpdatedAt_JsonNullable(JsonNullable<String> lastUpdatedAt) {
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setLastUpdatedAt(@jakarta.annotation.Nullable String lastUpdatedAt) {
     this.lastUpdatedAt = lastUpdatedAt;
   }
 
-  public void setLastUpdatedAt(String lastUpdatedAt) {
-    this.lastUpdatedAt = JsonNullable.<String>of(lastUpdatedAt);
-  }
-
-
-  public Conversation createdAt(String createdAt) {
+  public Conversation createdAt(@jakarta.annotation.Nullable String createdAt) {
     
     this.createdAt = createdAt;
     return this;
   }
 
-   /**
+  /**
    * A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the creation time of the conversation. 
    * @return createdAt
-  **/
+   */
   @jakarta.annotation.Nullable
-  @ApiModelProperty(example = "2020-06-20T11:26:07.001Z", value = "A datetime string with the format YYYY-MM-DDThh:mm:ss.SSSZ representing the creation time of the conversation. ")
   @JsonProperty(JSON_PROPERTY_CREATED_AT)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
@@ -474,13 +401,14 @@ public class Conversation {
   }
 
 
-  public void setCreatedAt(String createdAt) {
+  @JsonProperty(JSON_PROPERTY_CREATED_AT)
+  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
+  public void setCreatedAt(@jakarta.annotation.Nullable String createdAt) {
     this.createdAt = createdAt;
   }
 
-
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -507,7 +435,6 @@ public class Conversation {
     return Objects.hash(id, type, metadata, activeSwitchboardIntegration, pendingSwitchboardIntegration, isDefault, displayName, description, iconUrl, businessLastRead, lastUpdatedAt, createdAt);
   }
 
-
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
@@ -532,7 +459,7 @@ public class Conversation {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

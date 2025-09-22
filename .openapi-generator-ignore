@@ -2,3 +2,15 @@
 git_push.sh
 .travis.yml
 mocha.opts
+build.gradle
+gradle.properties
+settings.gradle
+README.md
+
+# Maven and Scala build files (using Gradle only)
+pom.xml
+build.sbt
+.github/workflows/maven.yml
+
+# Protect the master OpenAPI specification
+api/openapi.yaml

@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAppKey**](AppKeysApi.md#createAppKey) | **POST** /v2/apps/{appId}/keys | Create App Key
-[**deleteAppKey**](AppKeysApi.md#deleteAppKey) | **DELETE** /v2/apps/{appId}/keys/{keyId} | Delete App Key
-[**getAppKey**](AppKeysApi.md#getAppKey) | **GET** /v2/apps/{appId}/keys/{keyId} | Get App Key
-[**listAppKeys**](AppKeysApi.md#listAppKeys) | **GET** /v2/apps/{appId}/keys | List App Keys
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createAppKey**](AppKeysApi.md#createAppKey) | **POST** /v2/apps/{appId}/keys | Create App Key |
+| [**deleteAppKey**](AppKeysApi.md#deleteAppKey) | **DELETE** /v2/apps/{appId}/keys/{keyId} | Delete App Key |
+| [**getAppKey**](AppKeysApi.md#getAppKey) | **GET** /v2/apps/{appId}/keys/{keyId} | Get App Key |
+| [**listAppKeys**](AppKeysApi.md#listAppKeys) | **GET** /v2/apps/{appId}/keys | List App Keys |
 
 
 
 ## createAppKey
 
-> AppKeyResponse createAppKey(appKeyCreateBodyappId)
+> AppKeyResponse createAppKey(appId, appKeyCreateBody)
 
 Create App Key
 
@@ -22,11 +22,12 @@ Creates an API key for the specified app. The response body will include a secre
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppKeysApi;
 
 public class Example {
@@ -36,20 +37,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         AppKeyCreateBody appKeyCreateBody = new AppKeyCreateBody(); // AppKeyCreateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
         try {
-            AppKeyResponse result = apiInstance.createAppKey(appKeyCreateBodyappId);
+            AppKeyResponse result = apiInstance.createAppKey(appId, appKeyCreateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#createAppKey");
@@ -65,10 +64,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appKeyCreateBody** | [**AppKeyCreateBody**](AppKeyCreateBody.md)|  |
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **appKeyCreateBody** | [**AppKeyCreateBody**](AppKeyCreateBody.md)|  | |
 
 ### Return type
 
@@ -83,6 +82,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 
 ## deleteAppKey
 
-> Object deleteAppKey(appIdkeyId)
+> Object deleteAppKey(appId, keyId)
 
 Delete App Key
 
@@ -100,11 +100,12 @@ Removes an API key.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppKeysApi;
 
 public class Example {
@@ -114,20 +115,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
         try {
-            Object result = apiInstance.deleteAppKey(appIdkeyId);
+            Object result = apiInstance.deleteAppKey(appId, keyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#deleteAppKey");
@@ -143,10 +142,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **keyId** | **String**| The id of the key. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **keyId** | **String**| The id of the key. | |
 
 ### Return type
 
@@ -161,6 +160,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -170,7 +170,7 @@ Name | Type | Description  | Notes
 
 ## getAppKey
 
-> AppKeyResponse getAppKey(appIdkeyId)
+> AppKeyResponse getAppKey(appId, keyId)
 
 Get App Key
 
@@ -179,11 +179,12 @@ Returns an API key.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppKeysApi;
 
 public class Example {
@@ -193,20 +194,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String keyId = ""int_5d8cff3cd55b040010928b5b""; // String | The id of the key.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String keyId = "int_5d8cff3cd55b040010928b5b"; // String | The id of the key.
         try {
-            AppKeyResponse result = apiInstance.getAppKey(appIdkeyId);
+            AppKeyResponse result = apiInstance.getAppKey(appId, keyId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AppKeysApi#getAppKey");
@@ -222,10 +221,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **keyId** | **String**| The id of the key. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **keyId** | **String**| The id of the key. | |
 
 ### Return type
 
@@ -239,6 +238,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
@@ -258,11 +258,12 @@ Lists all API keys for a given app.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.AppKeysApi;
 
 public class Example {
@@ -272,17 +273,15 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         AppKeysApi apiInstance = new AppKeysApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
         try {
             AppKeyListResponse result = apiInstance.listAppKeys(appId);
             System.out.println(result);
@@ -300,9 +299,9 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
 
 ### Return type
 
@@ -316,6 +315,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: Not defined
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

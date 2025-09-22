@@ -1,9 +1,4 @@
-.github/workflows/maven.yml
 .gitignore
-README.md
-api/openapi.yaml
-build.gradle
-build.sbt
 docs/AcceptControlBody.md
 docs/Action.md
 docs/ActionSubset.md
@@ -282,13 +277,10 @@ docs/Webview.md
 docs/WhatsAppConversionEventsBody.md
 docs/WhatsAppUpdate.md
 docs/Whatsapp.md
-gradle.properties
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew
 gradlew.bat
-pom.xml
-settings.gradle
 src/main/AndroidManifest.xml
 src/main/java/com/zendesk/sunshine_conversations_client/ApiClient.java
 src/main/java/com/zendesk/sunshine_conversations_client/ApiException.java
@@ -297,6 +289,8 @@ src/main/java/com/zendesk/sunshine_conversations_client/JSON.java
 src/main/java/com/zendesk/sunshine_conversations_client/JavaTimeFormatter.java
 src/main/java/com/zendesk/sunshine_conversations_client/Pair.java
 src/main/java/com/zendesk/sunshine_conversations_client/RFC3339DateFormat.java
+src/main/java/com/zendesk/sunshine_conversations_client/RFC3339InstantDeserializer.java
+src/main/java/com/zendesk/sunshine_conversations_client/RFC3339JavaTimeModule.java
 src/main/java/com/zendesk/sunshine_conversations_client/ServerConfiguration.java
 src/main/java/com/zendesk/sunshine_conversations_client/ServerVariable.java
 src/main/java/com/zendesk/sunshine_conversations_client/StringUtil.java

@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteAllMessages**](MessagesApi.md#deleteAllMessages) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages | Delete All Messages
-[**deleteMessage**](MessagesApi.md#deleteMessage) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages/{messageId} | Delete Message
-[**listMessages**](MessagesApi.md#listMessages) | **GET** /v2/apps/{appId}/conversations/{conversationId}/messages | List Messages
-[**postMessage**](MessagesApi.md#postMessage) | **POST** /v2/apps/{appId}/conversations/{conversationId}/messages | Post Message
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteAllMessages**](MessagesApi.md#deleteAllMessages) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages | Delete All Messages |
+| [**deleteMessage**](MessagesApi.md#deleteMessage) | **DELETE** /v2/apps/{appId}/conversations/{conversationId}/messages/{messageId} | Delete Message |
+| [**listMessages**](MessagesApi.md#listMessages) | **GET** /v2/apps/{appId}/conversations/{conversationId}/messages | List Messages |
+| [**postMessage**](MessagesApi.md#postMessage) | **POST** /v2/apps/{appId}/conversations/{conversationId}/messages | Post Message |
 
 
 
 ## deleteAllMessages
 
-> Object deleteAllMessages(appIdconversationId)
+> Object deleteAllMessages(appId, conversationId)
 
 Delete All Messages
 
@@ -22,11 +22,12 @@ Delete all messages of a particular conversation.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.MessagesApi;
 
 public class Example {
@@ -36,20 +37,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         try {
-            Object result = apiInstance.deleteAllMessages(appIdconversationId);
+            Object result = apiInstance.deleteAllMessages(appId, conversationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#deleteAllMessages");
@@ -65,10 +64,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
 
 ### Return type
 
@@ -83,6 +82,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 ## deleteMessage
 
-> Object deleteMessage(appIdconversationIdmessageId)
+> Object deleteMessage(appId, conversationId, messageId)
 
 Delete Message
 
@@ -101,11 +101,12 @@ Delete a single message of a particular conversation.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.MessagesApi;
 
 public class Example {
@@ -115,21 +116,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        String messageId = ""029c31f25a21b47effd7be90""; // String | The id of the message.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
+        String messageId = "029c31f25a21b47effd7be90"; // String | The id of the message.
         try {
-            Object result = apiInstance.deleteMessage(appIdconversationIdmessageId);
+            Object result = apiInstance.deleteMessage(appId, conversationId, messageId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#deleteMessage");
@@ -145,11 +144,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
- **messageId** | **String**| The id of the message. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **messageId** | **String**| The id of the message. | |
 
 ### Return type
 
@@ -164,6 +163,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ## listMessages
 
-> MessageListResponse listMessages(appIdconversationIdpage)
+> MessageListResponse listMessages(appId, conversationId, page)
 
 List Messages
 
@@ -182,11 +182,12 @@ List all messages for a particular conversation. This API is paginated through [
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.MessagesApi;
 
 public class Example {
@@ -196,21 +197,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         Page page = new Page(); // Page | Contains parameters for applying cursor pagination.
-        // Add required body parameters
-
         try {
-            MessageListResponse result = apiInstance.listMessages(appIdconversationIdpage);
+            MessageListResponse result = apiInstance.listMessages(appId, conversationId, page);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#listMessages");
@@ -226,11 +225,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
- **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **page** | [**Page**](.md)| Contains parameters for applying cursor pagination. | [optional] |
 
 ### Return type
 
@@ -245,6 +244,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -254,7 +254,7 @@ Name | Type | Description  | Notes
 
 ## postMessage
 
-> MessagePostResponse postMessage(messagePostappIdconversationId)
+> MessagePostResponse postMessage(appId, conversationId, messagePost)
 
 Post Message
 
@@ -263,11 +263,12 @@ Send a message in a particular conversation.
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.MessagesApi;
 
 public class Example {
@@ -277,21 +278,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         MessagesApi apiInstance = new MessagesApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String conversationId = "029c31f25a21b47effd7be90"; // String | Identifies the conversation.
         MessagePost messagePost = new MessagePost(); // MessagePost | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String conversationId = ""029c31f25a21b47effd7be90""; // String | Identifies the conversation.
-        // Add required body parameters
-
         try {
-            MessagePostResponse result = apiInstance.postMessage(messagePostappIdconversationId);
+            MessagePostResponse result = apiInstance.postMessage(appId, conversationId, messagePost);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling MessagesApi#postMessage");
@@ -307,11 +306,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **messagePost** | [**MessagePost**](MessagePost.md)|  |
- **appId** | **String**| Identifies the app. |
- **conversationId** | **String**| Identifies the conversation. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **conversationId** | **String**| Identifies the conversation. | |
+| **messagePost** | [**MessagePost**](MessagePost.md)|  | |
 
 ### Return type
 
@@ -325,6 +324,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |

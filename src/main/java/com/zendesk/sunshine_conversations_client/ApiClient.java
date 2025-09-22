@@ -1,3 +1,16 @@
+/*
+ * Sunshine Conversations API
+ * # Introduction  <aside class=\"notice\"><strong>Note:</strong> The documentation below applies to v2 of the API. For users wanting to access v1, please proceed <a href=\"https://docs.smooch.io/rest/v1\">here</a> instead. </aside>  Welcome to the Sunshine Conversations API. The API allows you to craft entirely unique messaging experiences for your app and website as well as talk to any backend or external service.  The Sunshine Conversations API is designed according to REST principles. The API accepts JSON in request bodies and requires that the `content-type: application/json` header be specified for all such requests. The API will always respond with an object. Depending on context, resources may be returned as single objects or as arrays of objects, nested within the response object.  ## Regions  Licensed Zendesk customers should use the following API host for all API requests, unless otherwise specified:  ``` https://{subdomain}.zendesk.com/sc ```  For legacy Sunshine Conversations customers, see [regions](https://docs.smooch.io/guide/regions/) for the list of supported base URLs.  <aside class=\"notice\"><strong>Note:</strong> When configuring an API host, make sure to always use <code>https</code>. Some API clients can have unexpected behaviour when following redirects from <code>http</code> to <code>https</code>.</aside>  ## Errors  Sunshine Conversations uses standard HTTP status codes to communicate errors. In general, a `2xx` status code indicates success while `4xx` indicates an error, in which case, the response body includes a JSON object which includes an array of errors, with a text `code` and `title` containing more details. Multiple errors can only be included in a `400 Bad Request`. A `5xx` status code indicates that something went wrong on our end.  ```javascript {    \"errors\":  [     {         \"code\": \"unauthorized\",         \"title\": \"Authorization is required\"     }    ] } ```  ## API Version  The latest version of the API is v2. Version v1.1 is still supported and you can continue using it but we encourage you to upgrade to the latest version. To learn more about API versioning at Sunshine Conversations, including instructions on how to upgrade to the latest version, [visit our docs](https://developer.zendesk.com/documentation/conversations/references/api-versioning/).  ## API Pagination and Records Limits  All paginated endpoints support cursor-based pagination.  ### Cursor Pagination  Cursor-based pagination is a common pagination strategy that avoids many of the pitfalls of offset–limit pagination. It works by returning a pointer to a specific item in the dataset. On subsequent requests, the server returns results after the given pointer.  A `page[after]` or `page[before]` query string parameter may be provided, they are cursors pointing to a record id.  The `page[after]` cursor indicates that only records **subsequent** to it should be returned.  The `page[before]` cursor indicates that only records **preceding** it should be returned.  **Only one** of `page[after]` or `page[before]` may be provided in a query, not both.  In most endpoints, an optional `page[size]` query parameter may be passed to control the number of records returned by the request.  ## API Libraries  Sunshine Conversations provides an official API library for [Java](https://github.com/zendesk/sunshine-conversations-java), with more languages to come. These helpful libraries wrap calls to the API and can make interfacing with Sunshine Conversations easier.  ## Postman Collection  <a style=\"display:inline-block;background:url(https://run.pstmn.io/button.svg);height:30px;width: 123px;\" href=\"https://docs.smooch.io/sunco-openapi/postman_collection.json\"></a>  In addition to API libraries, Sunshine Conversations also has a Postman collection that can be used for development or testing purposes. See the [guide](https://developer.zendesk.com/documentation/conversations/references/openapi-specification/) for information on how to install and use the collection in your Postman client.  ## Rate Limits  Sunshine Conversations APIs are subject to rate limiting. If the rate limit is exceeded a `429 Too Many Requests` HTTP status code may be returned. We apply rate limits to prevent abuse, spam, denial-of-service attacks, and similar issues. Our goal is to keep the limits high enough so that any application using the platform as intended will not encounter them. However usage spikes do occur and encountering a rate limit may be unavoidable. In order to avoid production outages, you should implement `429` retry logic using exponential backoff and jitter.  ## Conversation Size Limits  Conversations are limited to 30,000 messages. Once you reach this maximum, a `423 Locked` HTTP status code is returned when trying to post a new message. To allow more messages to be sent to the affected conversation, you must [delete all messages](https://developer.zendesk.com/api-reference/conversations/#operation/DeleteAllMessages) to make room.  ## Request Size Limits  The Sunshine Conversations API imposes the following size limits on HTTP requests:  | Request Type | Limit | | ------------ | ----- | | JSON         | 100kb | | File upload  | 50mb  |  ## Authorization  This is an overview of how authorization works with the Sunshine Conversations API. Sunshine Conversations allows basic authentication or JSON Web Tokens (JWTs) as authentication methods for server-to-server calls. [See below](#section/Introduction/Authentication) for more details.  There are three authorization scopes available for the v2 API: `integration`, `app`, and `account`.  | Scope       | Availability                                | Authorized Methods                              | | ----------- | ------------------------------------------- | ----------------------------------------------- | | account     | Sunshine Conversations direct accounts only | All methods                                     | | app         | All account types                           | All methods besides Account Provisioning        | | integration | All account types                           | Users, Conversations, Attachments, and Webhooks |  <aside class=\"notice\"><strong>Note:</strong> An additional scope of <code>user</code> is used for <a href=\"https://developer.zendesk.com/documentation/conversations/messaging-platform/users/authenticating-users/\">authenticating users</a> on the Zendesk Messaging SDKs. This scope, however, cannot be used with the v2 API.</aside>  ## Authentication  To authenticate requests to the API, you will need an API key, composed of a key id and a secret. For an overview of how authentication works in Sunshine Conversations and instructions on how to generate an API key, see [API authentication](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/).  API requests can be authenticated in two ways:  - With Basic authentication you can make requests using an API key directly. - With JSON Web Tokens (JWTs) you sign tokens with an API key, which are then used to authenticate with the API. See [When to Use JWTs](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#when-to-use-jwts) to learn if JWTs are relevant for your usage. - Before using an API key in production, make sure to familiarize yourself with best practices on how to [securely handle credentials](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#secure-credential-handling).  ### Basic Authentication  API requests can be authenticated with [basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) using an API key. The key id is used as the username and the secret as the password. The scope of access is determined by the owner of the API key. See the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#access-scopes) for more details.  ### JWTs  JSON Web Tokens (JWTs) are an industry standard authentication method. The full specification is described [here](https://tools.ietf.org/html/rfc7519), and a set of supported JWT libraries for a variety of languages and platforms can be found at http://jwt.io. To summarize, a JWT is composed of a header, a payload, and a signature. The payload contains information called claims which describe the subject to whom the token was issued. The JWT itself is transmitted via the HTTP `authorization` header. The token should be prefixed with “Bearer” followed by a space. For example: `Bearer your-jwt`. To generate a JWT, you need an API key, which is composed of a key ID and a secret. The key ID is included in a JWT’s header, as the `kid` property, while the secret is used to sign the JWT. For more in-depth coverage, see the [guide](https://developer.zendesk.com/documentation/conversations/getting-started/api-authentication/#jwt-authentication).  #### Header  The JWT header must contain the key id (kid) of the API key that is used to sign it. The algorithm (alg) used should be HS256. Unsigned JWTs are not accepted.  ```javascript {     \"alg\": \"HS256\",     \"typ\": \"JWT\",     \"kid\": \"act_5963ceb97cde542d000dbdb1\" } ```  #### Payload  The JWT payload must include a scope claim which specifies the caller’s scope of access.  - account-scoped JWTs must be generated with an API key associated with a Sunshine Conversations account (act*) or service account (svc*).  ```javascript {     \"scope\": \"account\" } ```  - app-scoped JWTs can be generated with an API key associated with an app (app\\_).  ```javascript {    \"scope\": \"app\" } ``` 
+ *
+ * The version of the OpenAPI document: 17.0.0
+ * 
+ *
+ * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
+ * https://openapi-generator.tech
+ * Do not edit the class manually.
+ */
+
+
 package com.zendesk.sunshine_conversations_client;
 
 import java.io.File;
@@ -6,11 +19,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,6 +36,7 @@ import java.util.Map.Entry;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.time.OffsetDateTime;
 
 import jakarta.ws.rs.client.Client;
 import jakarta.ws.rs.client.ClientBuilder;
@@ -32,54 +44,41 @@ import jakarta.ws.rs.client.Entity;
 import jakarta.ws.rs.client.Invocation;
 import jakarta.ws.rs.client.WebTarget;
 import jakarta.ws.rs.core.Form;
+import jakarta.ws.rs.core.GenericEntity;
 import jakarta.ws.rs.core.GenericType;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
-import jakarta.activation.MimetypesFileTypeMap;
 
 import org.jboss.logging.Logger;
-import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.internal.ClientConfiguration;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataOutput;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
-
-import com.zendesk.sunshine_conversations_client.model.AppListFilter;
-import com.zendesk.sunshine_conversations_client.model.ConversationListFilter;
-import com.zendesk.sunshine_conversations_client.model.IntegrationListFilter;
-import com.zendesk.sunshine_conversations_client.model.Page;
 
 import com.zendesk.sunshine_conversations_client.auth.Authentication;
 import com.zendesk.sunshine_conversations_client.auth.HttpBasicAuth;
 import com.zendesk.sunshine_conversations_client.auth.HttpBearerAuth;
 import com.zendesk.sunshine_conversations_client.auth.ApiKeyAuth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.12.0")
-public class ApiClient {
-  private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
-  private Map<String, String> defaultCookieMap = new HashMap<String, String>();
-  private String basePath = "https://api.smooch.io";
-  private boolean debugging = false;
-  private static int DEFAULT_CONNECTION_POOL_SIZE = 20;
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
+public class ApiClient extends JavaTimeFormatter {
+  protected Map<String, String> defaultHeaderMap = new HashMap<String, String>();
+  protected Map<String, String> defaultCookieMap = new HashMap<String, String>();
+  protected String basePath = "https://api.smooch.io";
+  protected boolean debugging = false;
 
-  private Client httpClient;
-  private JSON json;
-  private String tempFolderPath = null;
+  protected Client httpClient;
+  protected JSON json;
+  protected String tempFolderPath = null;
 
-  private Map<String, Authentication> authentications;
+  protected Map<String, Authentication> authentications;
 
-  private int statusCode;
-  private int connectionPoolSize;
-  private Map<String, List<String>> responseHeaders;
+  protected int statusCode;
+  protected Map<String, List<String>> responseHeaders;
 
-  private DateFormat dateFormat;
+  protected DateFormat dateFormat;
 
-  public ApiClient(){
-    this(DEFAULT_CONNECTION_POOL_SIZE);
-  }
-
-  public ApiClient(int connectionPoolSize) {
-    this.connectionPoolSize = connectionPoolSize;
+  public ApiClient() {
     json = new JSON();
     httpClient = buildHttpClient(debugging);
 
@@ -91,7 +90,7 @@ public class ApiClient {
     this.json.setDateFormat((DateFormat) dateFormat.clone());
 
     // Set default User-Agent.
-    setUserAgent("OpenAPI-Generator/17.0.0/java");
+    setUserAgent("OpenAPI-Generator/17.1.0/java");
 
     // Setup authentications (key: authentication name, value: authentication).
     authentications = new HashMap<String, Authentication>();
@@ -263,10 +262,10 @@ public class ApiClient {
   /**
    * The path of temporary folder used to store downloaded files from endpoints
    * with file response. The default value is <code>null</code>, i.e. using
-   * the system's default tempopary folder.
+   * the system's default temporary folder.
    *
    * @return the temporary folder path
-   * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/io/File.html#createTempFile(java.lang.String,%20java.lang.String,%20java.io.File)"></a>
+   * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html#createTempFile(java.lang.String,%20java.lang.String,%20java.nio.file.attribute.FileAttribute...)">createTempFile</a>
    */
   public String getTempFolderPath() {
     return tempFolderPath;
@@ -329,6 +328,8 @@ public class ApiClient {
       return "";
     } else if (param instanceof Date) {
       return formatDate((Date) param);
+    } else if (param instanceof OffsetDateTime) {
+      return formatOffsetDateTime((OffsetDateTime) param);
     } else if (param instanceof Collection) {
       StringBuilder b = new StringBuilder();
       for(Object o : (Collection)param) {
@@ -344,17 +345,6 @@ public class ApiClient {
   }
 
   /*
-    Serialization for deepObject style query parameters
-  */
-  public <T> List<Pair> serializeDeepObjectParameter(List<Pair> params, String objectName, String fieldName, T fieldValue){
-    if (fieldValue != null) {
-      params.add(new Pair(String.format("%s[%s]", objectName, fieldName), fieldValue.toString()));
-    }
-
-    return params;
-  }
-
-  /*
     Format to {@code Pair} objects.
   */
   public List<Pair> parameterToPairs(String collectionFormat, String name, Object value){
@@ -367,27 +357,7 @@ public class ApiClient {
     if (value instanceof Collection) {
       valueCollection = (Collection) value;
     } else {
-      if (value instanceof Page) {
-        serializeDeepObjectParameter(params, name, "size", ((Page) value).getSize());
-        serializeDeepObjectParameter(params, name, "before", ((Page) value).getBefore());
-        serializeDeepObjectParameter(params, name, "after", ((Page) value).getAfter());
-      } else if (value instanceof AppListFilter || value instanceof ConversationListFilter || value instanceof IntegrationListFilter) {
-        Field[] fields = value.getClass().getDeclaredFields();
-        for(Field field: fields) {
-          if (!java.lang.reflect.Modifier.isStatic(field.getModifiers())) {
-            String fieldName = field.getName();
-            try {
-              Method fieldGetter = value.getClass().getDeclaredMethod(String.format("get%s%s", fieldName.substring(0, 1).toUpperCase(), fieldName.substring(1)));
-              serializeDeepObjectParameter(params, "filter", fieldName, fieldGetter.invoke(value));
-            } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
-              e.printStackTrace();
-            }
-          }
-        }
-      } else {
-        params.add(new Pair(name, parameterToString(value)));
-      }
-
+      params.add(new Pair(name, parameterToString(value)));
       return params;
     }
 
@@ -513,13 +483,12 @@ public class ApiClient {
     Entity<?> entity = null;
     if (contentType.startsWith("multipart/form-data")) {
       MultipartFormDataOutput multipart = new MultipartFormDataOutput();
+      //MultiPart multiPart = new MultiPart();
       for (Entry<String, Object> param: formParams.entrySet()) {
         if (param.getValue() instanceof File) {
           File file = (File) param.getValue();
           try {
-            MimetypesFileTypeMap fileTypeMap = new MimetypesFileTypeMap();
-            MediaType mediaType = MediaType.valueOf(fileTypeMap.getContentType(file));
-            multipart.addFormData(param.getKey(), new FileInputStream(file), mediaType, file.getName());
+            multipart.addFormData(param.getKey(),new FileInputStream(file),MediaType.APPLICATION_OCTET_STREAM_TYPE, file.getName());
           } catch (FileNotFoundException e) {
             throw new ApiException("Could not serialize multipart/form-data "+e.getMessage());
           }
@@ -527,7 +496,8 @@ public class ApiClient {
           multipart.addFormData(param.getKey(),param.getValue().toString(),MediaType.APPLICATION_OCTET_STREAM_TYPE);
         }
       }
-      entity = Entity.entity(multipart, MediaType.MULTIPART_FORM_DATA_TYPE);
+      GenericEntity<MultipartFormDataOutput> genericEntity = new GenericEntity<MultipartFormDataOutput>(multipart) { };
+      entity = Entity.entity(genericEntity, MediaType.MULTIPART_FORM_DATA_TYPE);
     } else if (contentType.startsWith("application/x-www-form-urlencoded")) {
       Form form = new Form();
       for (Entry<String, Object> param: formParams.entrySet()) {
@@ -614,15 +584,15 @@ public class ApiClient {
         prefix = filename.substring(0, pos) + "-";
         suffix = filename.substring(pos);
       }
-      // File.createTempFile requires the prefix to be at least three characters long
+      // Files.createTempFile requires the prefix to be at least three characters long
       if (prefix.length() < 3)
         prefix = "download-";
     }
 
     if (tempFolderPath == null)
-      return File.createTempFile(prefix, suffix);
+      return Files.createTempFile(prefix, suffix).toFile();
     else
-      return File.createTempFile(prefix, suffix, new File(tempFolderPath));
+      return Files.createTempFile(Paths.get(tempFolderPath), prefix, suffix).toFile();
   }
 
   /**
@@ -644,10 +614,7 @@ public class ApiClient {
    * @throws ApiException if the invocation failed
    */
   public <T> T invokeAPI(String path, String method, List<Pair> queryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String accept, String contentType, String[] authNames, GenericType<T> returnType) throws ApiException {
-    // In case a per-request authorization is used, skip applying default authorization
-    if(!headerParams.containsKey("Authorization")){
-        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
-    }
+    updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
 
     // Not using `.target(this.basePath).path(path)` below,
     // to support (constant) query string in `path`, e.g. "/posts?draft=1"
@@ -663,18 +630,18 @@ public class ApiClient {
 
     Invocation.Builder invocationBuilder = target.request().accept(accept);
 
-    for (Entry<String, String> headerParamsEnrty : headerParams.entrySet()) {
-      String value = headerParamsEnrty.getValue();
+    for (Entry<String, String> headerParamsEntry : headerParams.entrySet()) {
+      String value = headerParamsEntry.getValue();
       if (value != null) {
-        invocationBuilder = invocationBuilder.header(headerParamsEnrty.getKey(), value);
+        invocationBuilder = invocationBuilder.header(headerParamsEntry.getKey(), value);
       }
     }
 
-    for (Entry<String, String> defaultHeaderEnrty: defaultHeaderMap.entrySet()) {
-      if (!headerParams.containsKey(defaultHeaderEnrty.getKey())) {
-        String value = defaultHeaderEnrty.getValue();
+    for (Entry<String, String> defaultHeaderEntry: defaultHeaderMap.entrySet()) {
+      if (!headerParams.containsKey(defaultHeaderEntry.getKey())) {
+        String value = defaultHeaderEntry.getValue();
         if (value != null) {
-          invocationBuilder = invocationBuilder.header(defaultHeaderEnrty.getKey(), value);
+          invocationBuilder = invocationBuilder.header(defaultHeaderEntry.getKey(), value);
         }
       }
     }
@@ -697,6 +664,38 @@ public class ApiClient {
 
     Entity<?> entity = serialize(body, formParams, contentType);
 
+    try (Response response = invoke(invocationBuilder, method, entity)) {
+      statusCode = response.getStatusInfo().getStatusCode();
+      responseHeaders = buildResponseHeaders(response);
+
+      if (response.getStatus() == Status.NO_CONTENT.getStatusCode()) {
+        return null;
+      } else if (response.getStatusInfo().getFamily().equals(Status.Family.SUCCESSFUL)) {
+        if (returnType == null)
+          return null;
+        else
+          return deserialize(response, returnType);
+      } else {
+        String message = "error";
+        String respBody = null;
+        if (response.hasEntity()) {
+          try {
+            respBody = String.valueOf(response.readEntity(String.class));
+            message = respBody;
+          } catch (RuntimeException e) {
+            // e.printStackTrace();
+          }
+        }
+        throw new ApiException(
+          response.getStatus(),
+          message,
+          buildResponseHeaders(response),
+          respBody);
+      }
+    }
+  }
+
+  protected Response invoke(Invocation.Builder invocationBuilder, String method, Entity<?> entity) throws ApiException {
     Response response = null;
 
     if ("GET".equals(method)) {
@@ -719,51 +718,21 @@ public class ApiClient {
       throw new ApiException(500, "unknown method type " + method);
     }
 
-    statusCode = response.getStatusInfo().getStatusCode();
-    responseHeaders = buildResponseHeaders(response);
-
-    if (response.getStatus() == Status.NO_CONTENT.getStatusCode()) {
-      return null;
-    } else if (response.getStatusInfo().getFamily().equals(Status.Family.SUCCESSFUL)) {
-      if (returnType == null)
-        return null;
-      else
-        return deserialize(response, returnType);
-    } else {
-      String message = "error";
-      String respBody = null;
-      if (response.hasEntity()) {
-        try {
-          respBody = String.valueOf(response.readEntity(String.class));
-          message = respBody;
-        } catch (RuntimeException e) {
-          // e.printStackTrace();
-        }
-      }
-      throw new ApiException(
-        response.getStatus(),
-        message,
-        buildResponseHeaders(response),
-        respBody);
-    }
+    return response;
   }
 
-   /**
+  /**
    * Build the Client used to make HTTP requests.
    */
-  private Client buildHttpClient(boolean debugging) {
+  protected Client buildHttpClient(boolean debugging) {
     final ClientConfiguration clientConfig = new ClientConfiguration(ResteasyProviderFactory.getInstance());
     clientConfig.register(json);
     if(debugging){
       clientConfig.register(Logger.class);
     }
-
-    ResteasyClientBuilder clientBuilder = (ResteasyClientBuilder) ResteasyClientBuilder.newBuilder();
-    clientBuilder.connectionPoolSize(connectionPoolSize);
-    clientBuilder.withConfig(clientConfig);
-    return clientBuilder.build();
+    return ClientBuilder.newClient(clientConfig);
   }
-  private Map<String, List<String>> buildResponseHeaders(Response response) {
+  protected Map<String, List<String>> buildResponseHeaders(Response response) {
     Map<String, List<String>> responseHeaders = new HashMap<String, List<String>>();
     for (Entry<String, List<Object>> entry: response.getHeaders().entrySet()) {
       List<Object> values = entry.getValue();
@@ -781,7 +750,7 @@ public class ApiClient {
    *
    * @param authNames The authentications to apply
    */
-  private void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
+  protected void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
     for (String authName : authNames) {
       Authentication auth = authentications.get(authName);
       if (auth == null) throw new RuntimeException("Authentication undefined: " + authName);

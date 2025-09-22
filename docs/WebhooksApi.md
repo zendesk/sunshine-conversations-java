@@ -2,19 +2,19 @@
 
 All URIs are relative to *https://api.smooch.io*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createWebhook**](WebhooksApi.md#createWebhook) | **POST** /v2/apps/{appId}/integrations/{integrationId}/webhooks | Create Webhook
-[**deleteWebhook**](WebhooksApi.md#deleteWebhook) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Delete Webhook
-[**getWebhook**](WebhooksApi.md#getWebhook) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Get Webhook
-[**listWebhooks**](WebhooksApi.md#listWebhooks) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks | List Webhooks
-[**updateWebhook**](WebhooksApi.md#updateWebhook) | **PATCH** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Update Webhook
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createWebhook**](WebhooksApi.md#createWebhook) | **POST** /v2/apps/{appId}/integrations/{integrationId}/webhooks | Create Webhook |
+| [**deleteWebhook**](WebhooksApi.md#deleteWebhook) | **DELETE** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Delete Webhook |
+| [**getWebhook**](WebhooksApi.md#getWebhook) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Get Webhook |
+| [**listWebhooks**](WebhooksApi.md#listWebhooks) | **GET** /v2/apps/{appId}/integrations/{integrationId}/webhooks | List Webhooks |
+| [**updateWebhook**](WebhooksApi.md#updateWebhook) | **PATCH** /v2/apps/{appId}/integrations/{integrationId}/webhooks/{webhookId} | Update Webhook |
 
 
 
 ## createWebhook
 
-> WebhookResponse createWebhook(webhookCreateBodyappIdintegrationId)
+> WebhookResponse createWebhook(appId, integrationId, webhookCreateBody)
 
 Create Webhook
 
@@ -23,11 +23,12 @@ Creates a new webhook associated with a Sunshine Conversations Connect integrati
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.WebhooksApi;
 
 public class Example {
@@ -37,21 +38,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         WebhookCreateBody webhookCreateBody = new WebhookCreateBody(); // WebhookCreateBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        // Add required body parameters
-
         try {
-            WebhookResponse result = apiInstance.createWebhook(webhookCreateBodyappIdintegrationId);
+            WebhookResponse result = apiInstance.createWebhook(appId, integrationId, webhookCreateBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#createWebhook");
@@ -67,11 +66,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhookCreateBody** | [**WebhookCreateBody**](WebhookCreateBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
+| **webhookCreateBody** | [**WebhookCreateBody**](WebhookCreateBody.md)|  | |
 
 ### Return type
 
@@ -86,6 +85,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: application/json
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 ## deleteWebhook
 
-> Object deleteWebhook(appIdintegrationIdwebhookId)
+> Object deleteWebhook(appId, integrationId, webhookId)
 
 Delete Webhook
 
@@ -106,11 +106,12 @@ Deletes the specified webhook associated with a Sunshine Conversations Connect i
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.WebhooksApi;
 
 public class Example {
@@ -120,21 +121,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
         try {
-            Object result = apiInstance.deleteWebhook(appIdintegrationIdwebhookId);
+            Object result = apiInstance.deleteWebhook(appId, integrationId, webhookId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#deleteWebhook");
@@ -150,11 +149,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
- **webhookId** | **String**| The id of the webhook. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
+| **webhookId** | **String**| The id of the webhook. | |
 
 ### Return type
 
@@ -169,6 +168,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 ## getWebhook
 
-> WebhookResponse getWebhook(appIdintegrationIdwebhookId)
+> WebhookResponse getWebhook(appId, integrationId, webhookId)
 
 Get Webhook
 
@@ -187,11 +187,12 @@ Gets the specified webhook associated with a Sunshine Conversations Connect inte
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.WebhooksApi;
 
 public class Example {
@@ -201,21 +202,19 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
         try {
-            WebhookResponse result = apiInstance.getWebhook(appIdintegrationIdwebhookId);
+            WebhookResponse result = apiInstance.getWebhook(appId, integrationId, webhookId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#getWebhook");
@@ -231,11 +230,11 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
- **webhookId** | **String**| The id of the webhook. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
+| **webhookId** | **String**| The id of the webhook. | |
 
 ### Return type
 
@@ -250,6 +249,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -259,7 +259,7 @@ Name | Type | Description  | Notes
 
 ## listWebhooks
 
-> WebhookListResponse listWebhooks(appIdintegrationId)
+> WebhookListResponse listWebhooks(appId, integrationId)
 
 List Webhooks
 
@@ -268,11 +268,12 @@ Lists all webhooks for a given Sunshine Conversations Connect integration or cus
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.WebhooksApi;
 
 public class Example {
@@ -282,20 +283,18 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        // Add required body parameters
-
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
         try {
-            WebhookListResponse result = apiInstance.listWebhooks(appIdintegrationId);
+            WebhookListResponse result = apiInstance.listWebhooks(appId, integrationId);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#listWebhooks");
@@ -311,10 +310,10 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
 
 ### Return type
 
@@ -329,6 +328,7 @@ Name | Type | Description  | Notes
 - **Content-Type**: Not defined
 - **Accept**: application/json
 
+
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 
 ## updateWebhook
 
-> WebhookResponse updateWebhook(webhookBodyappIdintegrationIdwebhookId)
+> WebhookResponse updateWebhook(appId, integrationId, webhookId, webhookBody)
 
 Update Webhook
 
@@ -348,11 +348,12 @@ Updates the specified webhook associated with a Sunshine Conversations Connect i
 ### Example
 
 ```java
+// Import classes:
 import com.zendesk.sunshine_conversations_client.ApiClient;
 import com.zendesk.sunshine_conversations_client.ApiException;
 import com.zendesk.sunshine_conversations_client.Configuration;
 import com.zendesk.sunshine_conversations_client.auth.*;
-import com.zendesk.sunshine_conversations_client.model.*;
+import com.zendesk.sunshine_conversations_client.models.*;
 import com.zendesk.sunshine_conversations_client.api.WebhooksApi;
 
 public class Example {
@@ -362,22 +363,20 @@ public class Example {
         
         // Configure HTTP basic authorization: basicAuth
         HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
-        basicAuth.setUsername("API_KEY_ID");
-        basicAuth.setPassword("API_KEY_SECRET");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
 
-        // Uncomment this section to use JWTs instead
-        // HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
-        // bearerAuth.setBearerToken("YOUR TOKEN OR JWT");
+        // Configure HTTP bearer authorization: bearerAuth
+        HttpBearerAuth bearerAuth = (HttpBearerAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setBearerToken("BEARER TOKEN");
 
         WebhooksApi apiInstance = new WebhooksApi(defaultClient);
+        String appId = "5d8cff3cd55b040010928b5b"; // String | Identifies the app.
+        String integrationId = "029c31f25a21b47effd7be90"; // String | The id of the integration.
+        String webhookId = "029c31f25a21b47effd7be90"; // String | The id of the webhook.
         WebhookBody webhookBody = new WebhookBody(); // WebhookBody | 
-        String appId = ""5d8cff3cd55b040010928b5b""; // String | Identifies the app.
-        String integrationId = ""029c31f25a21b47effd7be90""; // String | The id of the integration.
-        String webhookId = ""029c31f25a21b47effd7be90""; // String | The id of the webhook.
-        // Add required body parameters
-
         try {
-            WebhookResponse result = apiInstance.updateWebhook(webhookBodyappIdintegrationIdwebhookId);
+            WebhookResponse result = apiInstance.updateWebhook(appId, integrationId, webhookId, webhookBody);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling WebhooksApi#updateWebhook");
@@ -393,12 +392,12 @@ public class Example {
 ### Parameters
 
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhookBody** | [**WebhookBody**](WebhookBody.md)|  |
- **appId** | **String**| Identifies the app. |
- **integrationId** | **String**| The id of the integration. |
- **webhookId** | **String**| The id of the webhook. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **appId** | **String**| Identifies the app. | |
+| **integrationId** | **String**| The id of the integration. | |
+| **webhookId** | **String**| The id of the webhook. | |
+| **webhookBody** | [**WebhookBody**](WebhookBody.md)|  | |
 
 ### Return type
 
@@ -412,6 +411,7 @@ Name | Type | Description  | Notes
 
 - **Content-Type**: application/json
 - **Accept**: application/json
+
 
 ### HTTP response details
 | Status code | Description | Response headers |
