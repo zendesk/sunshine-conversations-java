@@ -51,7 +51,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 public class QuotedMessage {
   public static final String JSON_PROPERTY_TYPE = "type";
   // The discriminator does not have Nullability-annotation since it is added during serialization by the @JsonTypeName annotation
-  private String type = "externalMessageId";
+  protected String type;
 
   public static final String JSON_PROPERTY_MESSAGE = "message";
   @jakarta.annotation.Nullable

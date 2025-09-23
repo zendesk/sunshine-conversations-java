@@ -35,10 +35,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @JsonTypeName("locationRequest")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class LocationRequest {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @jakarta.annotation.Nonnull
-  private String type = "locationRequest";
+public class LocationRequest extends Action{
 
   public static final String JSON_PROPERTY_TEXT = "text";
   @jakarta.annotation.Nonnull
@@ -49,6 +46,7 @@ public class LocationRequest {
   private Map<String, Object> metadata;
 
   public LocationRequest() {
+    this.type = "locationRequest";
   }
 
   public LocationRequest type(@jakarta.annotation.Nonnull String type) {

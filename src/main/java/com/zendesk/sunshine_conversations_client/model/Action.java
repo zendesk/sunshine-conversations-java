@@ -13,27 +13,15 @@
 
 package com.zendesk.sunshine_conversations_client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import com.zendesk.sunshine_conversations_client.model.Buy;
-import com.zendesk.sunshine_conversations_client.model.ExtraChannelOptions;
-import com.zendesk.sunshine_conversations_client.model.Link;
-import com.zendesk.sunshine_conversations_client.model.LocationRequest;
-import com.zendesk.sunshine_conversations_client.model.Postback;
-import com.zendesk.sunshine_conversations_client.model.Reply;
-import com.zendesk.sunshine_conversations_client.model.Webview;
 import java.util.HashMap;
 import java.util.Map;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.Objects;
 
 /**
  * Action
@@ -68,10 +56,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   @JsonSubTypes.Type(value = Webview.class, name = "webview"),
 })
 
-public class Action {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  // The discriminator does not have Nullability-annotation since it is added during serialization by the @JsonTypeName annotation
-  private String type;
+public class Action extends ActionSubset {
 
   public static final String JSON_PROPERTY_TEXT = "text";
   @jakarta.annotation.Nonnull
@@ -108,47 +93,6 @@ public class Action {
   public static final String JSON_PROPERTY_ICON_URL = "iconUrl";
   @jakarta.annotation.Nullable
   private String iconUrl;
-
-  /**
-   * The size to display a webview. Used for actions of type webview.
-   */
-  public enum SizeEnum {
-    COMPACT(String.valueOf("compact")),
-    
-    TALL(String.valueOf("tall")),
-    
-    FULL(String.valueOf("full"));
-
-    private String value;
-
-    SizeEnum(String value) {
-      this.value = value;
-    }
-
-    @JsonValue
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    @JsonCreator
-    public static SizeEnum fromValue(String value) {
-      for (SizeEnum b : SizeEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-  }
-
-  public static final String JSON_PROPERTY_SIZE = "size";
-  @jakarta.annotation.Nullable
-  private SizeEnum size;
 
   public static final String JSON_PROPERTY_FALLBACK = "fallback";
   @jakarta.annotation.Nonnull
@@ -395,7 +339,6 @@ public class Action {
   }
 
   public Action iconUrl(@jakarta.annotation.Nullable String iconUrl) {
-    
     this.iconUrl = iconUrl;
     return this;
   }
@@ -420,32 +363,11 @@ public class Action {
   }
 
   public Action size(@jakarta.annotation.Nullable SizeEnum size) {
-    
     this.size = size;
     return this;
   }
 
-  /**
-   * The size to display a webview. Used for actions of type webview.
-   * @return size
-   */
-  @jakarta.annotation.Nullable
-  @JsonProperty(JSON_PROPERTY_SIZE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-
-  public SizeEnum getSize() {
-    return size;
-  }
-
-
-  @JsonProperty(JSON_PROPERTY_SIZE)
-  @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setSize(@jakarta.annotation.Nullable SizeEnum size) {
-    this.size = size;
-  }
-
   public Action fallback(@jakarta.annotation.Nonnull String fallback) {
-    
     this.fallback = fallback;
     return this;
   }

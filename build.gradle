@@ -162,6 +162,15 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter:$junit_version"
 }
 
+// Test configuration
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+        showStandardStreams = true
+    }
+}
+
 // OpenAPI Generator configuration
 openApiGenerate {
     generatorName = "java"
@@ -188,44 +197,8 @@ openApiGenerate {
     ]
 }
 
-// Task to fix discriminator values after generation
-task fixDiscriminators {
-    description = "Fix @JsonTypeName values to match discriminator mappings"
-
-    doLast {
-        // Fix Content subtype discriminator values
-        def discriminatorFixes = [
-            'TextMessage.java': ['@JsonTypeName("textMessage")', '@JsonTypeName("text")'],
-            'CarouselMessage.java': ['@JsonTypeName("carouselMessage")', '@JsonTypeName("carousel")'],
-            'FileMessage.java': ['@JsonTypeName("fileMessage")', '@JsonTypeName("file")'],
-            'FormMessage.java': ['@JsonTypeName("formMessage")', '@JsonTypeName("form")'],
-            'FormResponseMessage.java': ['@JsonTypeName("formResponseMessage")', '@JsonTypeName("formResponse")'],
-            'ImageMessage.java': ['@JsonTypeName("imageMessage")', '@JsonTypeName("image")'],
-            'ListMessage.java': ['@JsonTypeName("listMessage")', '@JsonTypeName("list")'],
-            'LocationMessage.java': ['@JsonTypeName("locationMessage")', '@JsonTypeName("location")'],
-            'TemplateMessage.java': ['@JsonTypeName("templateMessage")', '@JsonTypeName("template")']
-        ]
-
-        discriminatorFixes.each { fileName, fix ->
-            def file = file("src/main/java/com/zendesk/sunshine_conversations_client/model/${fileName}")
-            if (file.exists()) {
-                def content = file.text
-                def newContent = content.replace(fix[0], fix[1])
-                if (content != newContent) {
-                    file.text = newContent
-                    println "Fixed discriminator in ${fileName}"
-                }
-            }
-        }
-    }
-}
-
-// Make sure fixDiscriminators runs after openApiGenerate
-tasks.openApiGenerate.finalizedBy tasks.fixDiscriminators
-
-// Make compilation and jar depend on generation
-compileJava.dependsOn tasks.openApiGenerate
-sourcesJar.dependsOn tasks.openApiGenerate
+// OpenAPI generation is now decoupled from build - run manually when needed
+// Use: ./gradlew openApiGenerate
 
 // Use only src/main/java as the source directory
 sourceSets {
@@ -315,6 +288,7 @@ tasks.withType(Sign) {
 
 task publishSnapshotToZendeskArtifactory {
     dependsOn tasks.named('publishZdArtifactoryPublicationToZendeskArtifactoryRepository')
+    dependsOn tasks.named('signZdArtifactoryPublication')
     description = 'Publish snapshot to the Zendesk artifactory'
 
     doLast {
@@ -324,9 +298,20 @@ task publishSnapshotToZendeskArtifactory {
 
 task publishReleaseToZendeskArtifactory {
     dependsOn tasks.named('publishZdArtifactoryReleasePublicationToZendeskArtifactoryReleaseRepository')
+    dependsOn tasks.named('signZdArtifactoryReleasePublication')
     description = 'Publish release to the Zendesk artifactory'
 
     doLast {
         println("Published release version: " + project.version)
+    }
+}
+
+task publishReleaseToSonatype {
+    dependsOn tasks.named('publishMavenPublicationToSonatypeRepository')
+    dependsOn tasks.named('signMavenPublication')
+    description = 'Publish signed release to Sonatype (Maven Central)'
+
+    doLast {
+        println("Published signed release version: " + project.version + " to Sonatype")
     }
 }

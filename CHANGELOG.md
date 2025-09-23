@@ -1,5 +1,14 @@
 # Changelog
 
+## [17.1.0] - 2025-09-24
+- Revival of this repository with updated build and dependencies
+- Updated OpenAPI Generator to v7.15.0
+- Updated dependencies to latest versions
+- Migrated from Maven to Gradle build system
+- Updated README and documentation
+- Updated Java version to support JDK 17 and 21
+- Updated RESTEasy to 6.2.12.Final
+
 ## [17.0.0] - 2025-08-25
 
 - Final release.

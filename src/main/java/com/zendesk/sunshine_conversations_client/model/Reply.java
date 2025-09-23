@@ -13,17 +13,13 @@
 
 package com.zendesk.sunshine_conversations_client.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import com.fasterxml.jackson.annotation.JsonValue;
-import java.util.HashMap;
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * Reply
@@ -37,10 +33,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @JsonTypeName("reply")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class Reply {
-  public static final String JSON_PROPERTY_TYPE = "type";
-  @jakarta.annotation.Nonnull
-  private String type;
+public class Reply extends Action {
 
   public static final String JSON_PROPERTY_TEXT = "text";
   @jakarta.annotation.Nonnull
@@ -59,6 +52,7 @@ public class Reply {
   private String iconUrl;
 
   public Reply() {
+    this.type = "reply";
   }
 
   public Reply type(@jakarta.annotation.Nonnull String type) {
