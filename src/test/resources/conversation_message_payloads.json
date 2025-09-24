@@ -1,0 +1,1964 @@
+[
+  {
+    "app":{
+      "id":"6324a1536cc97b00f39c0a5a"
+    },
+    "zendeskAccountId":"14949990",
+    "webhook":{
+      "id":"64c75ee2c187ef6c8a5ebcb5",
+      "version":"v2"
+    },
+    "events":[
+      {
+        "id":"6549af238a239070e974066e",
+        "createdAt":"2023-11-07T03:29:39.597Z",
+        "type":"conversation:message",
+        "payload":{
+          "conversation":{
+            "id":"9d876523a1cf939a1fc83c0c",
+            "type":"personal",
+            "brandId":"6816206712477",
+            "activeSwitchboardIntegration":{
+              "id":"6324a1549b720900f3c12bb4",
+              "name":"zd-agentWorkspace",
+              "integrationId":"6324a153e063cda2d2ba48aa",
+              "integrationType":"zd:agentWorkspace"
+            },
+            "metadata": {
+              "userId":"18a85627ed63f352d31d3776",
+              "tags":"bot_reviewed,ticket_created,chatbot_deflection",
+              "12065106646685":"requester_supplier",
+              "12065164210845":" ",
+              "12074618227485":" ",
+              "12074701665437":" ",
+              "12074710983837":" ",
+              "12074756233117":" ",
+              "12074797361053":"supplier_other",
+              "12074857348509":" ",
+              "12074859853085":"supplier_other_out_of_scope",
+              "12101816568861":" ",
+              "13530572841757":"9d876523a1cf939a1fc83c0c",
+              "12072405179677":"ticket_language_spanish",
+              "12064997212701":" ",
+              "12101834782493":" ",
+              "email":"mrt@c.test",
+              "givenName":"Marta technicalissue",
+              "zen:ticket_field:12072405179677":"ticket_language_english",
+              "zen:ticket_field:12859595560605":"6P2A8B74LJO4VF1XEJODIAZGFXU3MX3X",
+              "specificIntent": null
+            }
+          },
+          "message":{
+            "id":"6549af2386481d5fa9d9fe24",
+            "received":"2023-11-07T03:29:39.597Z",
+            "author":{
+              "avatarUrl":"https://p29.zdusercontent.com/sc/attachments/account/14949990/YBXGiQXHhF8yiKNEk6JsD6IS/gyg-logo.jpg",
+              "displayName":"GetYourguide ENG",
+              "type":"business"
+            },
+            "content":{
+              "type":"text",
+              "text":"<redacted>",
+              "actions":[
+                {
+                  "text":"Contacto",
+                  "uri":"https://supplier.getyourguide.com/contact",
+                  "type":"link"
+                },
+                {
+                  "text":"Reply to customer",
+                  "payload":"My Reply Payload",
+                  "type":"reply"
+                }
+              ]
+            },
+            "source":{
+              "type":"ultimate"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts":1699327779693
+  },
+  {
+    "app":{
+      "id":"6324a1536cc97b00f39c0a5a"
+    },
+    "zendeskAccountId":"14949990",
+    "webhook":{
+      "id":"64c75ee2c187ef6c8a5ebcb5",
+      "version":"v2"
+    },
+    "events":[
+      {
+        "id":"6549af238a239070e974066e",
+        "createdAt":"2023-11-07T03:29:39.597Z",
+        "type":"conversation:message",
+        "payload":{
+          "conversation":{
+            "id":"9d876523a1cf939a1fc83c0c",
+            "type":"personal",
+            "brandId":"6816206712477",
+            "activeSwitchboardIntegration":{
+              "id":"6324a1549b720900f3c12bb4",
+              "name":"zd-agentWorkspace",
+              "integrationId":"6324a153e063cda2d2ba48aa",
+              "integrationType":"zd:agentWorkspace"
+            },
+            "metadata": {
+              "userId":"18a85627ed63f352d31d3776",
+              "tags":"bot_reviewed,ticket_created,chatbot_deflection",
+              "12065106646685":"requester_supplier",
+              "12065164210845":" ",
+              "12074618227485":" ",
+              "12074701665437":" ",
+              "12074710983837":" ",
+              "12074756233117":" ",
+              "12074797361053":"supplier_other",
+              "12074857348509":" ",
+              "12074859853085":"supplier_other_out_of_scope",
+              "12101816568861":" ",
+              "13530572841757":"9d876523a1cf939a1fc83c0c",
+              "12072405179677":"ticket_language_spanish",
+              "12064997212701":" ",
+              "12101834782493":" ",
+              "email":"mrt@c.test",
+              "givenName":"Marta technicalissue",
+              "zen:ticket_field:12072405179677":"ticket_language_english",
+              "zen:ticket_field:12859595560605":"6P2A8B74LJO4VF1XEJODIAZGFXU3MX3X",
+              "specificIntent": null
+            }
+          },
+          "message":{
+            "id":"6549af2386481d5fa9d9fe24",
+            "received":"2023-11-07T03:29:39.597Z",
+            "author":{
+              "avatarUrl":"https://p29.zdusercontent.com/sc/attachments/account/14949990/YBXGiQXHhF8yiKNEk6JsD6IS/gyg-logo.jpg",
+              "displayName":"GetYourguide ENG",
+              "type":"business"
+            },
+            "content":{
+              "type":"text",
+              "text":"<redacted>",
+              "actions":[
+                {
+                  "text":"Contacto",
+                  "uri":"https://supplier.getyourguide.com/contact",
+                  "type":"link"
+                },
+                {
+                  "text":"Reply to customer",
+                  "type":"reply"
+                }
+              ]
+            },
+            "source":{
+              "type":"ultimate"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts":1699327779693
+  },
+  {
+    "app": {
+      "id": "609a15828f780d00d572600c"
+    },
+    "zendeskAccountId": "291429",
+    "webhook": {
+      "id": "61b39ad8ea35d500ebc5fae3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d47ed1eca00f3609d85",
+        "createdAt": "2022-04-08T02:26:15.412Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "badd0e906659294e6e31042b",
+            "type": "personal",
+            "brandId": "2396556",
+            "activeSwitchboardIntegration": {
+              "id": "609a15847ad3fe00d39b2b07",
+              "name": "zd-agentWorkspace",
+              "integrationId": "609a15820403fa03cf9a2ebe",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d4784c0d100f3e18f9c",
+            "received": "2022-04-08T02:26:15.412Z",
+            "author": {
+              "avatarUrl": "https://oculusvr.zendesk.com/system/photos/1500816434442/logo.png",
+              "displayName": "Louise R",
+              "type": "business"
+            },
+            "content": {
+              "type": "text",
+              "text": "Before we proceed in the warranty of your device, I would like to ask if you have changed the battery of your right controller?"
+            },
+            "metadata": {
+              "__zendesk_msg.source_type": "whatsapp",
+              "__zendesk_msg.agent.id": "agent:419382111451",
+              "__zendesk_msg.id": ""
+            },
+            "source": {
+              "type": "zd:agentWorkspace"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1649384775524
+  },
+  {
+    "app": {
+      "id": "5f978e31e2edbd000c1a0224"
+    },
+    "zendeskAccountId": "9049502",
+    "webhook": {
+      "id": "5f978e31c3de6a000cf25681",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d5f26a08d00f3bcd78c",
+        "createdAt": "2022-04-08T02:26:39.708Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "a3a85529f1800d5cabeac2b5",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "5fa6187aad1666000cb0bedc",
+              "name": "Zendesk-App",
+              "integrationId": "5f978e31e2059d2c99c40ea5",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d5f99ff2200f354b46c",
+            "received": "2022-04-08T02:26:39.708Z",
+            "author": {
+              "avatarUrl": "https://logitech.zendesk.com/images/2016/default-avatar-80.png",
+              "displayName": "Chityal Harshavardhan",
+              "type": "business"
+            },
+            "content": {
+              "type": "text",
+              "text": "All Easy Switch light will blink continuously"
+            },
+            "metadata": {
+              "__zendesk_msg.source_type": "sunco_web",
+              "__zendesk_msg.agent.id": "agent:1918053398465",
+              "__zendesk_msg.id": ""
+            },
+            "source": {
+              "type": "zd:agentWorkspace"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1649384799817
+  },
+  {
+    "app": {
+      "id": "60a62df9f637ce00d31c4872"
+    },
+    "zendeskAccountId": "10953014",
+    "webhook": {
+      "id": "6231a87268a56f00f4821f5e",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d7bacd67800f3f8c316",
+        "createdAt": "2022-04-08T02:27:07.239Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "2525988f0321eb2ac654ef2a",
+            "type": "personal",
+            "brandId": "360004945738",
+            "activeSwitchboardIntegration": {
+              "id": "60a62dfb7923f500d38bb0c3",
+              "name": "zd-agentWorkspace",
+              "integrationId": "60a62df9eb43f64bb0aeefa1",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d7b60580600f3b8ffe8",
+            "received": "2022-04-08T02:27:07.239Z",
+            "author": {
+              "avatarUrl": "https://fraazo.zendesk.com/images/2016/default-avatar-80.png",
+              "displayName": "Ayman",
+              "type": "business"
+            },
+            "content": {
+              "type": "text",
+              "text": "Requesting you to please click on the link above the screen for customer not reachable queries, so that we can help you in a better way."
+            },
+            "metadata": {
+              "__zendesk_msg.source_type": "sunco_web",
+              "__zendesk_msg.agent.id": "agent:1904901162093",
+              "__zendesk_msg.id": ""
+            },
+            "source": {
+              "type": "zd:agentWorkspace"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1649384827346
+  },
+  {
+    "app": {
+      "id": "60ae8746127fb100d59e5878"
+    },
+    "zendeskAccountId": "9948",
+    "webhook": {
+      "id": "61ce031fe5defa00ebd08a40",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d705af43800f3ef18e0",
+        "createdAt": "2022-04-08T02:26:56.738Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "8dc46591f88d5fc530fb34e2",
+            "type": "personal",
+            "brandId": "1107126",
+            "activeSwitchboardIntegration": {
+              "id": "60ae8746c7be5b00d3a93bb1",
+              "name": "zd-agentWorkspace",
+              "integrationId": "60ae8746eb43f64bb06f525b",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d705fbd5f00f46e010e",
+            "received": "2022-04-08T02:26:56.738Z",
+            "author": {
+              "avatarUrl": "https://groupon.zendesk.com/images/2016/default-avatar-80.png",
+              "displayName": "Mohamed Tauseef Motoor",
+              "type": "business"
+            },
+            "content": {
+              "type": "text",
+              "text": "Since this ticket purchase is considered final sale, I'm unable to approve a refund in this situation. That said, Groupon remains in close contact with all of our partners, and if the event is rescheduled or cancelled, we'll let all impacted customers know."
+            },
+            "metadata": {
+              "__zendesk_msg.source_type": "sunco_web",
+              "__zendesk_msg.agent.id": "agent:404021471674",
+              "__zendesk_msg.id": ""
+            },
+            "source": {
+              "type": "zd:agentWorkspace"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1649384816876
+  },
+  {
+    "app": {
+      "id": "5e6fe95b2b481a000ff0694d"
+    },
+    "zendeskAccountId": "761341",
+    "webhook": {
+      "id": "616dd1eb1abac200df9ec18d",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d6f38df0c00f375b2cc",
+        "createdAt": "2022-04-08T02:26:55.242Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "884cd8a17ab9ef0d5379d873",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60c1aefc975d3400d598ca0c",
+              "name": "zd-agentWorkspace",
+              "integrationId": "60c1aefa3c8f7baaa558020c",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d6f99a1ff00f3107bcf",
+            "received": "2022-04-08T02:26:55.242Z",
+            "author": {
+              "userId": "5b81716f706dc807f93f42c9",
+              "displayName": "Diana Portugal",
+              "type": "user",
+              "user": {
+                "id": "5b81716f706dc807f93f42c9",
+                "profile": {
+                  "surname": "Portugal",
+                  "givenName": "Diana"
+                },
+                "signedUpAt": "2021-09-02T19:58:45.071Z",
+                "metadata": {}
+              }
+            },
+            "content": {
+              "type": "text",
+              "text": "Si se en donde sale"
+            },
+            "source": {
+              "integrationId": "5e94b357ff2287000fc1e9bc",
+              "originalMessageId": "ABGGUZh5USE_AhCErafNEPVPUd8FFAAbqaw5",
+              "originalMessageTimestamp": "2022-04-08T02:26:55.000Z",
+              "type": "whatsapp",
+              "client": {
+                "integrationId": "5e94b357ff2287000fc1e9bc",
+                "type": "whatsapp",
+                "externalId": "51987951213",
+                "id": "61312cf526561800cf2997e0",
+                "displayName": "+51 987 951 213",
+                "status": "blocked",
+                "raw": {
+                  "profile": {
+                    "name": "Diana Portugal"
+                  },
+                  "from": "51987951213"
+                },
+                "lastSeen": "2022-04-08T02:26:55.227Z",
+                "linkedAt": "2021-09-02T19:58:45.072Z"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1649384815396
+  },
+  {
+    "app": {
+      "id": "5fc9ef99cbf793000cce4ba8"
+    },
+    "zendeskAccountId": "713601",
+    "webhook": {
+      "id": "616838bea9a69a00dfe7043d",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "6279cc43ca165e00f6d69e0a",
+        "createdAt": "2022-05-10T02:21:55.003Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "a372c7e598a4fa647d962978",
+            "type": "personal",
+            "brandId": "210377",
+            "activeSwitchboardIntegration": {
+              "id": "5fc9ef9b420ed6000c11a321",
+              "name": "zd-agentWorkspace",
+              "integrationId": "5fc9ef999be14f3a595a0a49",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "6279cc43f7478900f69778d8",
+            "received": "2022-05-10T02:21:55.003Z",
+            "author": {
+              "userId": "9168cdaee455496cb3f93e1a",
+              "avatarUrl": "https://www.gravatar.com/avatar/24349a810061e618ff686f560e595c01.png?s=200&d=mm",
+              "displayName": "JAime",
+              "type": "user",
+              "user": {
+                "id": "9168cdaee455496cb3f93e1a",
+                "profile": {
+                  "givenName": "JAime",
+                  "email": "jaime@panatech.net.au",
+                  "locale": "en-US"
+                },
+                "signedUpAt": "2022-02-15T00:00:58.975Z",
+                "metadata": {
+                }
+              }
+            },
+            "content": {
+              "type": "formResponse",
+              "textFallback": "Tell us what you think:: Good Service",
+              "fields": [
+                {
+                  "name": "csat_comment",
+                  "label": "Tell us what you think:",
+                  "type": "text",
+                  "text": "Good Service"
+                }
+              ]
+            },
+            "source": {
+              "integrationId": "60ab6978d3d97b00d3cb267a",
+              "type": "web",
+              "device": {
+                "id": "620aed3a1b980800ed141d89",
+                "guid": "b2e51094c5564958a3ffedc02aa8bb08",
+                "clientId": "620aed3a1b980800ed141d86",
+                "integrationId": "60ab6978d3d97b00d3cb267a",
+                "type": "ios",
+                "status": "inactive",
+                "info": {
+                  "vendor": "zendesk",
+                  "sdkVersion": "0.1",
+                  "URL": "support.sendle.com",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:99.0) Gecko/20100101 Firefox/99.0",
+                  "referrer": "",
+                  "browserLanguage": "en-US",
+                  "currentUrl": "https://support.sendle.com/hc/en-au/requests/new?ticket_form_id=114093976272",
+                  "currentTitle": "Submit a request – Sendle Support AU"
+                },
+                "lastSeen": "2022-05-10T02:21:55.004Z"
+              }
+            },
+            "quotedMessage": {
+              "type": "message",
+              "message": {
+                "id": "6279cc347c174000f54c6ee1",
+                "received": "2022-05-10T02:21:40.996Z",
+                "author": {
+                  "avatarUrl": "https://accounts.zendesk.com/flow_director/assets/default_avatar.png",
+                  "displayName": "Answer Bot",
+                  "type": "business"
+                },
+                "content": {
+                  "type": "form",
+                  "fields": [
+                    {
+                      "name": "csat_comment",
+                      "label": "Tell us what you think:",
+                      "type": "text",
+                      "minSize": 1,
+                      "maxSize": 128,
+                      "text": "Good Service"
+                    }
+                  ],
+                  "submitted": true,
+                  "blockChatInput": false
+                },
+                "metadata": {
+                  "__zendesk_msg.id": "",
+                  "__zendesk_msg.agent.id": "",
+                  "__zendesk_msg.source_type": "sunco_web"
+                },
+                "source": {
+                  "type": "zd:agentWorkspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1652149315182
+  },
+  {
+    "app": {
+      "id": "5e67b196a4cd9500119f0a09"
+    },
+    "zendeskAccountId": "1993081",
+    "webhook": {
+      "id": "60c28a6b40251000d34c62fe",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "6279c5d0bf2cc700f6bf0303",
+        "createdAt": "2022-05-10T01:54:24.240Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "4bd99700389ca43b8f3f3ec5",
+            "type": "personal",
+            "brandId": "114094317753",
+            "activeSwitchboardIntegration": {
+              "id": "60b908b70f727100d371fc3c",
+              "name": "zd-agentWorkspace",
+              "integrationId": "5e67b6f83d2a1c0013d7414e",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "6279c5d07c4f1e00f6dc7265",
+            "received": "2022-05-10T01:54:24.240Z",
+            "author": {
+              "userId": "fd94a96c9662d81003c1a024",
+              "avatarUrl": "https://www.gravatar.com/avatar/e3fd78d54c56830493127096394a3422.png?s=200&d=mm",
+              "displayName": "zore",
+              "type": "user",
+              "user": {
+                "id": "fd94a96c9662d81003c1a024",
+                "profile": {
+                  "givenName": "zore",
+                  "email": "shawarmaclubfabrica@gamil.com",
+                  "locale": "es"
+                },
+                "signedUpAt": "2022-05-10T01:43:15.789Z",
+                "metadata": {
+                }
+              }
+            },
+            "content": {
+              "type": "formResponse",
+              "textFallback": "Díganos qué piensa:: excelente rapido y bueno",
+              "fields": [
+                {
+                  "name": "csat_comment",
+                  "label": "Díganos qué piensa:",
+                  "type": "text",
+                  "text": "excelente rapido y bueno"
+                }
+              ]
+            },
+            "source": {
+              "integrationId": "611eb089e3bce400d79e4e72",
+              "type": "web",
+              "device": {
+                "id": "6279c33359515700f67d13c7",
+                "guid": "ac2c81ee635046829292b52d8ad0ea65",
+                "clientId": "6279c33359515700f67d13c6",
+                "integrationId": "611eb089e3bce400d79e4e72",
+                "type": "android",
+                "status": "active",
+                "info": {
+                  "vendor": "zendesk",
+                  "sdkVersion": "0.1",
+                  "URL": "app-v2.fu.do",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.54 Safari/537.36 Edg/101.0.1210.39",
+                  "referrer": "https://app-v2.fu.do/login.html",
+                  "browserLanguage": "es",
+                  "currentUrl": "https://app-v2.fu.do/#!/admin/printers/1",
+                  "currentTitle": ""
+                },
+                "lastSeen": "2022-05-10T01:54:24.242Z"
+              }
+            },
+            "quotedMessage": {
+              "type": "message",
+              "message": {
+                "id": "6279c5c70e6a8300f59aaf93",
+                "received": "2022-05-10T01:54:15.097Z",
+                "author": {
+                  "avatarUrl": "https://accounts.zendesk.com/flow_director/assets/default_avatar.png",
+                  "displayName": "Answer Bot",
+                  "type": "business"
+                },
+                "content": {
+                  "type": "form",
+                  "fields": [
+                    {
+                      "name": "csat_comment",
+                      "label": "Díganos qué piensa:",
+                      "type": "text",
+                      "minSize": 1,
+                      "maxSize": 128,
+                      "text": "excelente rapido y bueno"
+                    },
+                    {
+                      "name": "selection",
+                      "type": "select",
+                      "label": "my selection",
+                      "select": [
+                        {
+                          "label": "Option 1",
+                          "name": "option_1"
+                        },
+                        {
+                          "label": "Option 2",
+                          "name": "option_2"
+                        }
+                      ],
+                      "options": [
+                        {
+                          "label": "Option 1",
+                          "name": "option_1"
+                        },
+                        {
+                          "label": "Option 2",
+                          "name": "option_2"
+                        },
+                        {
+                          "label": "Option 3",
+                          "name": "option_3"
+                        },
+                        {
+                          "label": "Option 4",
+                          "name": "option_4"
+                        }
+                      ]
+                    }
+                  ],
+                  "submitted": true,
+                  "blockChatInput": false
+                },
+                "metadata": {
+                  "__zendesk_msg.source_type": "sunco_web",
+                  "__zendesk_msg.id": "",
+                  "__zendesk_msg.agent.id": ""
+                },
+                "source": {
+                  "type": "zd:agentWorkspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1652147664385
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "627295b3ff759100f33df215",
+        "createdAt": "2022-05-04T15:03:15.285Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "f31a2032d97aa8c1e4d6b052",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "627295b37a4b3e00f3b4d569",
+            "received": "2022-05-04T15:03:15.285Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "list",
+              "text": "Some text",
+              "items": [
+                {
+                  "title": "Clip Plus 2",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback",
+                      "payload": "info clip plus 2"
+                    },
+                    {
+                      "text": "Comprar ",
+                      "uri": "https://compra.clip.mx/PLUS2",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$249, con el 44% de descuento. Ahorra $200.",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Plus_2_New_center.jpg",
+                  "altText": "Clip_Plus_2_New_center.jpg",
+                  "mediaType": "image/jpeg"
+                },
+                {
+                  "title": "Clip Pro",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback",
+                      "payload": "info clip pro"
+                    },
+                    {
+                      "text": "Comprar",
+                      "uri": "https://compra.clip.mx/PRO",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$999,con el 66% de descuento o 9 MSI de $111. Ahorras $2,000.",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Pro_new_center.jpg",
+                  "altText": "Clip_Pro_new_center.jpg",
+                  "mediaType": "image/jpeg"
+                },
+                {
+                  "title": "Clip Total",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback",
+                      "payload": "info clip total"
+                    },
+                    {
+                      "text": "Comprar",
+                      "uri": "https://compra.clip.mx/TOTAL",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$2,999 con el 33% de descuento o 24 MSI de $125. Ahorras $1,500",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Total_New_center.jpg",
+                  "altText": "Clip_Total_New_center.jpg",
+                  "mediaType": "image/jpeg"
+                }
+              ]
+            },
+            "source": {
+              "type": "api:conversations"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1651676595584
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "627295b3ff759100f33df215",
+        "createdAt": "2022-05-04T15:03:15.285Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "f31a2032d97aa8c1e4d6b052",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "627295b37a4b3e00f3b4d569",
+            "received": "2022-05-04T15:03:15.285Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "list",
+              "text": "Some text",
+              "items": [
+                {
+                  "title": "Clip Plus 2",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback"
+                    },
+                    {
+                      "text": "Comprar ",
+                      "uri": "https://compra.clip.mx/PLUS2",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$249, con el 44% de descuento. Ahorra $200.",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Plus_2_New_center.jpg",
+                  "altText": "Clip_Plus_2_New_center.jpg",
+                  "mediaType": "image/jpeg"
+                },
+                {
+                  "title": "Clip Pro",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback",
+                      "payload": ""
+                    },
+                    {
+                      "text": "Comprar",
+                      "uri": "https://compra.clip.mx/PRO",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$999,con el 66% de descuento o 9 MSI de $111. Ahorras $2,000.",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Pro_new_center.jpg",
+                  "altText": "Clip_Pro_new_center.jpg",
+                  "mediaType": "image/jpeg"
+                },
+                {
+                  "title": "Clip Total",
+                  "size": "compact",
+                  "actions": [
+                    {
+                      "text": "Conoce más ",
+                      "type": "postback",
+                      "payload": "info clip total"
+                    },
+                    {
+                      "text": "Comprar",
+                      "uri": "https://compra.clip.mx/TOTAL",
+                      "type": "link"
+                    }
+                  ],
+                  "description": "$2,999 con el 33% de descuento o 24 MSI de $125. Ahorras $1,500",
+                  "mediaUrl": "https://storage.googleapis.com/clip_media/carrusel_original/Clip_Total_New_center.jpg",
+                  "altText": "Clip_Total_New_center.jpg",
+                  "mediaType": "image/jpeg"
+                }
+              ]
+            },
+            "source": {
+              "type": "api:conversations"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1651676595584
+  },
+  {
+    "app": {
+      "id": "60d51fa6c905f400d3033968"
+    },
+    "zendeskAccountId": "11064161",
+    "webhook": {
+      "id": "618066f47c982700e51ff3a0",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "6279be2595af7e00f5027237",
+        "createdAt": "2022-05-10T01:21:41.429Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "0ab6edc93b90ad4a3570f957",
+            "type": "personal",
+            "brandId": "4524366190996",
+            "activeSwitchboardIntegration": {
+              "id": "60d51fa8ef211200d3a12697",
+              "name": "zd-agentWorkspace",
+              "integrationId": "60d51fa65fb3b13d6e865872",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "6279be25f2f0ac00f68d3236",
+            "received": "2022-05-10T01:21:41.429Z",
+            "author": {
+              "userId": "4a481e1ab01c3066069ebd5c",
+              "displayName": "Seriously Esther",
+              "type": "user",
+              "user": {
+                "id": "4a481e1ab01c3066069ebd5c",
+                "profile": {
+                  "surname": "Estelar",
+                  "givenName": "Serpiente"
+                },
+                "signedUpAt": "2022-04-23T13:20:38.340Z",
+                "metadata": {
+                }
+              }
+            },
+            "content": {
+              "type": "location",
+              "text": "Location shared: https://maps.google.com/maps?q=20.4474922,-100.2124336",
+              "coordinates": {
+                "lat": 20.4474922,
+                "long": -100.2124336
+              }
+            },
+            "source": {
+              "integrationId": "621d1e4590657f00edde3514",
+              "originalMessageId": "wamid.HBgNNTIxNTYzMTIxMjkzNBUCABIYIDc1NzYxN0NEQjZENEE1OTkyMzJFRDM1OTI4OTk2NTE5AA==",
+              "originalMessageTimestamp": "2022-05-10T01:21:40.000Z",
+              "type": "whatsapp",
+              "client": {
+                "integrationId": "621d1e4590657f00edde3514",
+                "type": "whatsapp",
+                "externalId": "12321441",
+                "id": "6263fd26733d7a00f40ff8b5",
+                "displayName": "+12321441",
+                "status": "inactive",
+                "raw": {
+                  "profile": {
+                    "name": "Serpiente Estelar"
+                  },
+                  "from": "12321441"
+                },
+                "lastSeen": "2022-05-10T01:21:41.415Z",
+                "linkedAt": "2022-04-23T13:20:38.336Z",
+                "info": {
+                  "displayNAme": "+12321441"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1652145701583
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "629ab6d952ee1a00f101d8f2",
+        "createdAt": "2022-06-04T01:35:21.226Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "535565e6f0cbd6a05521a951",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "629ab6d941c99400f25a3727",
+            "received": "2022-06-04T01:35:21.226Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "list",
+              "items": [
+                {
+                  "title": "Item 1",
+                  "mediaUrl": "http://item.one",
+                  "mediaType": "application/json",
+                  "size": "large",
+                  "actions": [
+                    {
+                      "type": "link",
+                      "uri": "http://item.one.link",
+                      "text": "my item 1 link"
+                    },
+                    {
+                      "type": "buy",
+                      "text": "buy me please",
+                      "amount": 1.00,
+                      "currency": "SGD"
+                    },
+                    {
+                      "type": "postback",
+                      "payload": "my postback payload",
+                      "text": "postback text"
+                    }
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "text": "Con una tarjeta 💳",
+                  "type": "buy",
+                  "amount": 69.0,
+                  "currency": "SGD"
+                },
+                {
+                  "text": "En Pagos a distancia 📎",
+                  "type": "postback",
+                  "payload": "Problema con pagos a distancia"
+                },
+                {
+                  "text": "View me please",
+                  "type": "webview",
+                  "uri": "https://viewme.pls",
+                  "extraChannelOptions": {
+                    "messenger": {
+                      "messenger_extensions": true,
+                      "webview_share_button": "hide"
+                    }
+                  },
+                  "size": "compact",
+                  "fallback": "https://viewme.fallback.com",
+                  "openOnReceive": true
+                },
+                {
+                  "text": "Invalid URI webview",
+                  "type": "webview",
+                  "uri": "https://viewme.pl s",
+                  "extraChannelOptions": {
+                    "messenger": {
+                      "messenger_extensions": true,
+                      "webview_share_button": "hide"
+                    }
+                  },
+                  "size": "compact",
+                  "fallback": "https://viewme.fall back.com",
+                  "openOnReceive": true
+                }
+              ]
+            },
+            "source": {
+              "type": "api:conversations"
+            },
+            "quotedMessage": {
+              "type": "externalMessageId",
+              "externalMessageId": "messageId12345"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1654306521372
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "629ab6d952ee1a00f101d8f2",
+        "createdAt": "2022-06-04T01:35:21.226Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "535565e6f0cbd6a05521a951",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "629ab6d941c99400f25a3727",
+            "received": "2022-06-04T01:35:21.226Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "location",
+              "text": "Where's my location",
+              "coordinates": {
+                "lat": 0.001,
+                "long": 110.0
+              },
+              "location": {
+                "address": "Singapore Central",
+                "name": "Marina One"
+              }
+            },
+            "source": {
+              "type": "api:conversations"
+            },
+            "quotedMessage": {
+              "type": "message",
+              "message": {
+                "id": "624f9d705fbd5f00f46e010e",
+                "received": "2022-04-08T02:26:56.738Z",
+                "author": {
+                  "avatarUrl": "https://groupon.zendesk.com/images/2016/default-avatar-80.png",
+                  "displayName": "Mohamed Tauseef Motoor",
+                  "type": "business"
+                },
+                "content": {
+                  "type": "text",
+                  "text": "Since this ticket purchase is considered final sale, I'm unable to approve a refund in this situation. That said, Groupon remains in close contact with all of our partners, and if the event is rescheduled or cancelled, we'll let all impacted customers know."
+                },
+                "metadata": {
+                  "__zendesk_msg.source_type": "sunco_web",
+                  "__zendesk_msg.agent.id": "agent:404021471674",
+                  "__zendesk_msg.id": ""
+                },
+                "source": {
+                  "type": "zd:agentWorkspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1654306521372
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "629ab6d952ee1a00f101d8f2",
+        "createdAt": "2022-06-04T01:35:21.226Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "535565e6f0cbd6a05521a951",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "629ab6d941c99400f25a3727",
+            "received": "2022-06-04T01:35:21.226Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "text",
+              "text": "Location request text",
+              "actions": [
+                {
+                  "type": "locationRequest",
+                  "text": "Come and find me!",
+                  "metadata": {
+                    "location": "Somewhere out there"
+                  }
+                },
+                {
+                  "type": "reply",
+                  "text": "Come and find me!",
+                  "payload": "Come and reply me!",
+                  "metadata": {
+                    "reply": "My reply in metadata"
+                  },
+                  "iconUrl": "https://myicon.url"
+                },
+                {
+                  "type": "buy",
+                  "text": "Come and find me!",
+                  "amount": 1.0,
+                  "currency": "SGD",
+                  "metadata": {
+                    "reply": "My reply in metadata"
+                  },
+                  "iconUrl": "https://myicon.url"
+                },
+                {
+                  "type": "postback",
+                  "text": "My postback button text",
+                  "payload": "postback payload!",
+                  "metadata": {
+                    "postback-info": "some additional metadata"
+                  }
+                },
+                {
+                  "type": "link",
+                  "text": "Hello World!",
+                  "uri": "http://link.to.actions",
+                  "metadata": {
+                    "link-meta": "some additional metadata"
+                  },
+                  "extraChannelOptions": {
+                    "messenger": {
+                      "messenger_extensions": true,
+                      "webview_share_button": "hide"
+                    }
+                  }
+                }
+              ]
+            },
+            "source": {
+              "type": "api:conversations"
+            },
+            "quotedMessage": {
+              "type": "message",
+              "message": {
+                "id": "624f9d705fbd5f00f46e010e",
+                "received": "2022-04-08T02:26:56.738Z",
+                "author": {
+                  "avatarUrl": "https://groupon.zendesk.com/images/2016/default-avatar-80.png",
+                  "displayName": "Mohamed Tauseef Motoor",
+                  "type": "business"
+                },
+                "content": {
+                  "type": "text",
+                  "text": "Since this ticket purchase is considered final sale, I'm unable to approve a refund in this situation. That said, Groupon remains in close contact with all of our partners, and if the event is rescheduled or cancelled, we'll let all impacted customers know."
+                },
+                "metadata": {
+                  "__zendesk_msg.source_type": "sunco_web",
+                  "__zendesk_msg.agent.id": "agent:404021471674",
+                  "__zendesk_msg.id": ""
+                },
+                "source": {
+                  "type": "zd:agentWorkspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1654306521372
+  },
+  {
+    "app": {
+      "id": "5f9ae6d9c5f83d000c0dd538"
+    },
+    "zendeskAccountId": "276680",
+    "webhook": {
+      "id": "6170174d74a6a000e68640a3",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "629ab6d952ee1a00f101d8f2",
+        "createdAt": "2022-06-04T01:35:21.226Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "535565e6f0cbd6a05521a951",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60f9c4b1723f5000d41904fe",
+              "name": "bot",
+              "integrationId": "60f9c4616bb10000d48c2e79",
+              "integrationType": "custom"
+            }
+          },
+          "message": {
+            "id": "629ab6d941c99400f25a3727",
+            "received": "2022-06-04T01:35:21.226Z",
+            "author": {
+              "avatarUrl": "https://www.gravatar.com/avatar/00000000000000000000000000000000.png?s=200&d=mm",
+              "type": "business"
+            },
+            "content": {
+              "type": "carousel",
+              "text": "my carousel text",
+              "items": [],
+              "displaySettings": {
+                "imageAspectRatio": "square"
+              }
+            },
+            "source": {
+              "type": "api:conversations"
+            },
+            "quotedMessage": {
+              "type": "message",
+              "message": {
+                "id": "624f9d705fbd5f00f46e010e",
+                "received": "2022-04-08T02:26:56.738Z",
+                "author": {
+                  "avatarUrl": "https://groupon.zendesk.com/images/2016/default-avatar-80.png",
+                  "displayName": "Mohamed Tauseef Motoor",
+                  "type": "business"
+                },
+                "content": {
+                  "type": "text",
+                  "text": "Since this ticket purchase is considered final sale, I'm unable to approve a refund in this situation. That said, Groupon remains in close contact with all of our partners, and if the event is rescheduled or cancelled, we'll let all impacted customers know."
+                },
+                "metadata": {
+                  "__zendesk_msg.source_type": "sunco_web",
+                  "__zendesk_msg.agent.id": "agent:404021471674",
+                  "__zendesk_msg.id": ""
+                },
+                "source": {
+                  "type": "zd:agentWorkspace"
+                }
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1654306521372
+  },
+  {
+    "app": {
+      "id": "61c969305a686f00ebee8b1a"
+    },
+    "zendeskAccountId": "9343063",
+    "webhook": {
+      "id": "61c96931a5f5cc00eb2063b1",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "62fa014c0b69b600f49b0f39",
+        "createdAt": "2022-08-15T08:18:20.234Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "2d373dd537a09e2ee2e7fddc",
+            "type": "personal",
+            "brandId": "360002750913",
+            "activeSwitchboardIntegration": {
+              "id": "61c96935a5f5cc00eb206603",
+              "name": "zd-agentWorkspace",
+              "integrationId": "61c9693167ca684d191b9acf",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "62fa014ce5644000f36f5fce",
+            "received": "2022-08-15T08:18:20.234Z",
+            "author": {
+              "userId": "350b409de1c60c11a2a2454d",
+              "avatarUrl": "",
+              "displayName": "𝚋𝚢 𝚏𝚎𝚛𝚗𝚊𝚗𝚍𝚘",
+              "type": "user",
+              "user": {
+                "id": "350b409de1c60c11a2a2454d",
+                "profile": {
+                  "surname": "𝚏𝚎𝚛𝚗𝚊𝚗𝚍𝚘",
+                  "givenName": "𝚋𝚢",
+                  "avatarUrl": "",
+                  "locale": "id"
+                },
+                "signedUpAt": "2022-08-15T08:07:25.845Z",
+                "metadata": {}
+              }
+            },
+            "content": {
+              "type": "image",
+              "mediaUrl": "",
+              "mediaType": "image",
+              "mediaSize": 92911,
+              "altText": "ig_messaging_cdn"
+            },
+            "source": {
+              "integrationId": "61c96e1726b17000eb567da6",
+              "originalMessageId": "aWdfZAG1faXRlbToxOklHTWVzc2FnZAUlEOjE3ODQxNDA4MzM5NTE0OTU5OjM0MDI4MjM2Njg0MTcxMDMwMDk0OTEyODE3OTc0MjAzNzg3Nzk0MDozMDYzMTc2ODUzMzQ3NjI0NTkzNzE4OTc1OTM3Njk0OTI0OAZDZD",
+              "originalMessageTimestamp": "2022-08-15T08:18:19.553Z",
+              "entryPoint": "direct_message",
+              "type": "twitter",
+              "client": {
+                "integrationId": "61c96e1726b17000eb567da6",
+                "type": "twitter",
+                "externalId": "3819646328159595",
+                "id": "62f9febd66b18400f396b851",
+                "displayName": "𝚋𝚢 𝚏𝚎𝚛𝚗𝚊𝚗𝚍𝚘",
+                "status": "active",
+                "raw": {
+                  "name": "𝚋𝚢 𝚏𝚎𝚛𝚗𝚊𝚗𝚍𝚘",
+                  "profile_pic": "",
+                  "id": "3819646328159595",
+                  "username": "fg"
+                },
+                "lastSeen": "2022-08-15T08:18:20.221Z",
+                "linkedAt": "2022-08-15T08:07:24.340Z",
+                "avatarUrl": ""
+              }
+            },
+            "metadata": {
+              "someFloat": 12.2,
+              "someDouble": 12.253523532523235,
+              "someBoolean": true
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1660551500497
+  },
+  {
+    "app": {
+      "id": "5f978e31e2edbd000c1a0224"
+    },
+    "zendeskAccountId": "9049502",
+    "webhook": {
+      "id": "5f978e31c3de6a000cf25681",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "62fa014b8ae02600f31589ac",
+        "createdAt": "2022-08-15T08:18:19.562Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "60e7f800cc74a905c8762633",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "5fa6187aad1666000cb0bedc",
+              "name": "Zendesk-App",
+              "integrationId": "5f978e31e2059d2c99c40ea5",
+              "integrationType": "zd:agentWorkspace"
+            },
+            "metadata": {
+              "brand": "logi",
+              "isLoggedIn": true,
+              "locale": "en-US",
+              "type": "support",
+              "url": "https://support.logi.com/hc/en-us/articles/360025141574",
+              "userId": 8176666023831,
+              "zdLocale": "en-us",
+              "cp_wireless_mice": "",
+              "dispositionGuideLevel": "",
+              "disposition_level3": "",
+              "productId": ""
+            }
+          },
+          "message": {
+            "id": "62fa014bb9776400f498484e",
+            "received": "2022-08-15T08:18:19.562Z",
+            "author": {
+              "userId": "014d1049ab68a99e4088118b",
+              "avatarUrl": "",
+              "displayName": "AT",
+              "type": "user",
+              "user": {
+                "id": "014d1049ab68a99e4088118b",
+                "externalId": "eb074418-e06f-4bab-87b5-f62bc8d1e6fa",
+                "profile": {
+                  "surname": "A",
+                  "givenName": "T",
+                  "email": "test@test.com",
+                  "locale": "en-US"
+                },
+                "signedUpAt": "2022-08-15T07:58:21.980Z",
+                "metadata": {}
+              }
+            },
+            "content": {
+              "type": "text",
+              "text": "ive tried every single one of them"
+            },
+            "source": {
+              "integrationId": "5faad60f67440a000cdf2347",
+              "type": "web",
+              "device": {
+                "id": "62f9fc9d3e1c8c00f3d3ceb5",
+                "guid": "55a46849e3e24bf787cf0674763f0d9f",
+                "clientId": "62f9fc9d3e1c8c00f3d3ceb3",
+                "integrationId": "5faad60f67440a000cdf2347",
+                "type": "web",
+                "status": "active",
+                "info": {
+                  "vendor": "messaging",
+                  "sdkVersion": "1.0.0",
+                  "URL": "support.logi.com",
+                  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.81 Safari/537.36 Edg/104.0.1293.54",
+                  "referrer": "https://support.logi.com/hc/en-us/",
+                  "browserLanguage": "en-US",
+                  "currentUrl": "https://support.logi.com/hc/en-us/requests/new?ticket_form_id=360000621393",
+                  "currentTitle": "Submit a request – Logitech Support + Download"
+                },
+                "lastSeen": "2022-08-15T08:18:19.564Z"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1660551499691
+  },
+  {
+    "app": {
+      "id": "5e6fe95b2b481a000ff0694d"
+    },
+    "zendeskAccountId": "761341",
+    "webhook": {
+      "id": "616dd1eb1abac200df9ec18d",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "624f9d6f38df0c00f375b2cc",
+        "createdAt": "2022-04-08T02:26:55.242Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "884cd8a17ab9ef0d5379d873",
+            "type": "personal",
+            "activeSwitchboardIntegration": {
+              "id": "60c1aefc975d3400d598ca0c",
+              "name": "zd-agentWorkspace",
+              "integrationId": "60c1aefa3c8f7baaa558020c",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "624f9d6f99a1ff00f3107bcf",
+            "received": "2022-04-08T02:26:55.242Z",
+            "author": {
+              "userId": "5b81716f706dc807f93f42c9",
+              "displayName": "Diana Portugal",
+              "type": "user",
+              "user": {
+                "id": "5b81716f706dc807f93f42c9",
+                "profile": {
+                  "surname": "Portugal",
+                  "givenName": "Diana"
+                },
+                "signedUpAt": "2021-09-02T19:58:45.071Z",
+                "metadata": {},
+                "identities":[
+                  {
+                    "type": "whatsapp",
+                    "value": "91234567",
+                    "verification": "embed"
+                  }
+                ]
+              }
+            },
+            "content": {
+              "type": "text",
+              "text": "Si se en donde sale"
+            },
+            "source": {
+              "integrationId": "5e94b357ff2287000fc1e9bc",
+              "originalMessageId": "ABGGUZh5USE_AhCErafNEPVPUd8FFAAbqaw5",
+              "originalMessageTimestamp": "2022-04-08T02:26:55.000Z",
+              "type": "whatsapp",
+              "client": {
+                "integrationId": "5e94b357ff2287000fc1e9bc",
+                "type": "whatsapp",
+                "externalId": "51987951213",
+                "id": "61312cf526561800cf2997e0",
+                "displayName": "+51 987 951 213",
+                "status": "active",
+                "raw": {
+                  "profile": {
+                    "name": "Diana Portugal"
+                  },
+                  "from": "51987951213"
+                },
+                "lastSeen": "2022-04-08T02:26:55.227Z",
+                "linkedAt": "2021-09-02T19:58:45.072Z"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "app": {
+      "id": "642194aade10810113c608"
+    },
+    "zendeskAccountId": "168141",
+    "webhook": {
+      "id": "642194ad1cc8ed011009e058",
+      "version": "v2"
+    },
+    "events": [
+      {
+        "id": "65564ed6b59a9667b5ec2a6b",
+        "createdAt": "2023-11-16T17:18:14.484Z",
+        "type": "conversation:message",
+        "payload": {
+          "conversation": {
+            "id": "7a93557fd2a3dcb07fe3fdfa",
+            "type": "personal",
+            "brandId": "13389451237399",
+            "activeSwitchboardIntegration": {
+              "id": "642194aee745df011471d21f",
+              "name": "zd-agentWorkspace",
+              "integrationId": "642194aace4104401e397700",
+              "integrationType": "zd:agentWorkspace"
+            }
+          },
+          "message": {
+            "id": "65564ed6cedd3cd0be435e62",
+            "received": "2023-11-16T17:18:14.484Z",
+            "author": {
+              "avatarUrl": "https://static.zdassets.com/web_widget/latest/default_avatar.png",
+              "displayName": "The Flash",
+              "type": "business"
+            },
+            "content": {
+              "type": "form",
+              "fields": [
+                {
+                  "name": "dataCapture.systemField.requester.name",
+                  "label": "Name",
+                  "type": "text",
+                  "minSize": 1,
+                  "maxSize": 128
+                },
+                {
+                  "name": "dataCapture.systemField.requester.email",
+                  "label": "Email",
+                  "type": "email"
+                },
+                {
+                  "name": "dataCapture.ticketField.13436269653399",
+                  "label": "Student's Full Name",
+                  "type": "text",
+                  "minSize": 1,
+                  "maxSize": 128
+                },
+                {
+                  "name": "dataCapture.ticketField.13436475499671",
+                  "label": "School Name",
+                  "type": "text",
+                  "minSize": 1,
+                  "maxSize": 128
+                },
+                {
+                  "name": "dataCapture.ticketField.14783686944791",
+                  "label": "City",
+                  "type": "text",
+                  "minSize": 1,
+                  "maxSize": 128
+                },
+                {
+                  "name": "dataCapture.ticketField.13457151596439",
+                  "label": "State",
+                  "options": [
+                    {
+                      "name": "13457215946519",
+                      "label": "AL"
+                    },
+                    {
+                      "name": "13457215946647",
+                      "label": "AK"
+                    },
+                    {
+                      "name": "13457215946775",
+                      "label": "AZ"
+                    },
+                    {
+                      "name": "13457215946903",
+                      "label": "AR"
+                    },
+                    {
+                      "name": "13457215947031",
+                      "label": "CA"
+                    },
+                    {
+                      "name": "13457215947159",
+                      "label": "CO"
+                    },
+                    {
+                      "name": "13457215947287",
+                      "label": "CT"
+                    },
+                    {
+                      "name": "13457215947415",
+                      "label": "DE"
+                    },
+                    {
+                      "name": "13457215947543",
+                      "label": "DC"
+                    },
+                    {
+                      "name": "13457215947671",
+                      "label": "FL"
+                    },
+                    {
+                      "name": "13457215947799",
+                      "label": "GA"
+                    },
+                    {
+                      "name": "13457215947927",
+                      "label": "HI"
+                    },
+                    {
+                      "name": "13457215948055",
+                      "label": "ID"
+                    },
+                    {
+                      "name": "13457215948183",
+                      "label": "IL"
+                    },
+                    {
+                      "name": "13457215948311",
+                      "label": "IN"
+                    },
+                    {
+                      "name": "13457215948439",
+                      "label": "IA"
+                    },
+                    {
+                      "name": "13457215948567",
+                      "label": "KS"
+                    },
+                    {
+                      "name": "13457215948695",
+                      "label": "KY"
+                    },
+                    {
+                      "name": "13457215948823",
+                      "label": "LA"
+                    },
+                    {
+                      "name": "13457215948951",
+                      "label": "ME"
+                    },
+                    {
+                      "name": "13457215949079",
+                      "label": "MT"
+                    },
+                    {
+                      "name": "13457215949207",
+                      "label": "NE"
+                    },
+                    {
+                      "name": "13457215949335",
+                      "label": "NV"
+                    },
+                    {
+                      "name": "13457215949463",
+                      "label": "NH"
+                    },
+                    {
+                      "name": "13457215949591",
+                      "label": "NJ"
+                    },
+                    {
+                      "name": "13457215949719",
+                      "label": "NM"
+                    },
+                    {
+                      "name": "13457215949847",
+                      "label": "NY"
+                    },
+                    {
+                      "name": "13457215949975",
+                      "label": "NC"
+                    },
+                    {
+                      "name": "13457215950103",
+                      "label": "ND"
+                    },
+                    {
+                      "name": "13457215950231",
+                      "label": "OH"
+                    },
+                    {
+                      "name": "13457215950359",
+                      "label": "OK"
+                    },
+                    {
+                      "name": "13457215950487",
+                      "label": "OR"
+                    },
+                    {
+                      "name": "13457215950615",
+                      "label": "MD"
+                    },
+                    {
+                      "name": "13457215950743",
+                      "label": "MA"
+                    },
+                    {
+                      "name": "13457215950871",
+                      "label": "MI"
+                    },
+                    {
+                      "name": "13457215950999",
+                      "label": "MN"
+                    },
+                    {
+                      "name": "13457215951127",
+                      "label": "MS"
+                    },
+                    {
+                      "name": "13457215951255",
+                      "label": "MO"
+                    },
+                    {
+                      "name": "13457215951383",
+                      "label": "PA"
+                    },
+                    {
+                      "name": "13457215951511",
+                      "label": "RI"
+                    },
+                    {
+                      "name": "13457215951639",
+                      "label": "SC"
+                    },
+                    {
+                      "name": "13457215951767",
+                      "label": "SD"
+                    },
+                    {
+                      "name": "13457215951895",
+                      "label": "TN"
+                    },
+                    {
+                      "name": "13457215952023",
+                      "label": "TX"
+                    },
+                    {
+                      "name": "13457215952151",
+                      "label": "UT"
+                    },
+                    {
+                      "name": "13457215952279",
+                      "label": "VT"
+                    },
+                    {
+                      "name": "13457215952407",
+                      "label": "VA"
+                    },
+                    {
+                      "name": "13457215952535",
+                      "label": "WA"
+                    },
+                    {
+                      "name": "13457215952663",
+                      "label": "WV"
+                    },
+                    {
+                      "name": "13457215952791",
+                      "label": "WI"
+                    },
+                    {
+                      "name": "13457215952919",
+                      "label": "WY"
+                    }
+                  ],
+                  "select": [],
+                  "selectSize": 1,
+                  "type": "select"
+                }
+              ],
+              "submitted": false,
+              "blockChatInput": false
+            },
+            "metadata": {
+              "formId": "DataCaptureForm",
+              "nodeId": "01H265QQQE0JF8Q1ZR3S83Z5GE_01H265R0BJ9GRED04PYGKP1APP",
+              "nextNodeId": "01H265QQQE0JF8Q1ZR3S83Z5GE_01H265T9H2WC8AS90KDW972T8J"
+            },
+            "source": {
+              "type": "zd:answerBot"
+            }
+          }
+        }
+      }
+    ],
+    "system_ts": 1700155094649
+  }
+]

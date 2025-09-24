@@ -52,7 +52,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @JsonTypeName("webUpdate")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class WebUpdate {
+public class WebUpdate implements IntegrationUpdate {
   public static final String JSON_PROPERTY_DISPLAY_NAME = "displayName";
   @jakarta.annotation.Nullable
   private String displayName;

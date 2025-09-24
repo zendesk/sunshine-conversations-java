@@ -14,4 +14,8 @@ A form type message without text or actions. Only supported in the Web SDK.
 |**fields** | [**List&lt;FormMessageField&gt;**](FormMessageField.md) | An array of objects representing fields associated with the message. Only present in form and formResponse messages. |  |
 
 
+## Implemented Interfaces
+
+* Content
+
 

@@ -20,4 +20,8 @@
 |**attachmentId** | **String** | An identifier used by Sunshine Conversations for internal purposes. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Content
+
 

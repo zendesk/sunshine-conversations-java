@@ -19,4 +19,8 @@
 | TICKET_TRANSFER_EMAIL | &quot;ticket:transfer:email&quot; |
 
 
+## Implemented Interfaces
+
+* ActivityMessage
+
 

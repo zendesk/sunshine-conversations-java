@@ -14,4 +14,8 @@
 |**iconUrl** | **String** | An icon to render next to the reply option. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Action
+
 

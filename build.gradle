@@ -59,11 +59,11 @@ java {
 }
 
 task copyDeps(type: Copy) {
-  from configurations.runtimeClasspath
-  into 'build/lib'
+    from configurations.runtimeClasspath
+    into 'build/lib'
 }
 
-if(hasProperty('target') && target == 'android') {
+if (hasProperty('target') && target == 'android') {
 
     apply plugin: 'com.android.library'
     apply plugin: 'com.github.dcendents.android-maven'
@@ -127,9 +127,9 @@ if(hasProperty('target') && target == 'android') {
     targetCompatibility = JavaVersion.VERSION_17
 
 
-    task execute(type:JavaExec) {
-       mainClass = System.getProperty('mainClass')
-       classpath = sourceSets.main.runtimeClasspath
+    task execute(type: JavaExec) {
+        mainClass = System.getProperty('mainClass')
+        classpath = sourceSets.main.runtimeClasspath
     }
 }
 
@@ -143,6 +143,8 @@ ext {
     resteasy_version = "6.2.12.Final"
     junit_version = "5.10.2"
     jakarta_annotation_version = "2.1.1"
+    mockserver_version = "5.15.0"
+    testcontainers_version = "1.19.3"
 }
 
 dependencies {
@@ -160,6 +162,13 @@ dependencies {
     implementation "com.github.joschi.jackson:jackson-datatype-threetenbp:$threetenbp_version"
     implementation "org.openapitools:jackson-databind-nullable:$jackson_databind_nullable_version"
     testImplementation "org.junit.jupiter:junit-jupiter:$junit_version"
+    testImplementation "org.junit.platform:junit-platform-suite:1.10.2"
+    testImplementation "org.junit.platform:junit-platform-suite-api:1.10.2"
+    testImplementation "org.mock-server:mockserver-junit-jupiter:$mockserver_version"
+    testImplementation "org.mock-server:mockserver-client-java:$mockserver_version"
+    testImplementation "org.testcontainers:junit-jupiter:$testcontainers_version"
+    testImplementation "org.testcontainers:mockserver:$testcontainers_version"
+    testImplementation "org.assertj:assertj-core:3.24.2"
 }
 
 // Test configuration
@@ -183,17 +192,18 @@ openApiGenerate {
     validateSpec = true
 
     configOptions = [
-        "library": "resteasy",                  // Use RESTEasy HTTP client
-        "dateLibrary": "java8",                 // Use Java 8 time API
-        "useJakartaEe": "true",                 // Use Jakarta EE APIs
-        "serializationLibrary": "jackson",      // Use Jackson for JSON
-        "openApiNullable": "false",             // Don't use OpenAPI nullable wrapper
-        "legacyDiscriminatorBehavior": "false", // Use new discriminator behavior for better interface compatibility
-        "enumUnknownDefaultCase": "false",      // Don't generate unknown enum case
-        "hideGenerationTimestamp": "true",      // Hide generation timestamp for cleaner diffs
-        "groupId": "com.zendesk",
-        "artifactId": "sunshine-conversations-client",
-        "artifactVersion": project.version.toString()
+            "library"                    : "resteasy",                  // Use RESTEasy HTTP client
+            "dateLibrary"                : "java8",                 // Use Java 8 time API
+            "useJakartaEe"               : "true",                 // Use Jakarta EE APIs
+            "serializationLibrary"       : "jackson",      // Use Jackson for JSON
+            "openApiNullable"            : "false",             // Don't use OpenAPI nullable wrapper
+            "legacyDiscriminatorBehavior": "false", // Use new discriminator behavior for better interface compatibility
+            "enumUnknownDefaultCase"     : "false",      // Don't generate unknown enum case
+            "hideGenerationTimestamp"    : "true",      // Hide generation timestamp for cleaner diffs
+            "useOneOfInterfaces"         : "true",          // Use interfaces for oneOf constructs
+            "groupId"                    : "com.zendesk",
+            "artifactId"                 : "sunshine-conversations-client",
+            "artifactVersion"            : project.version.toString()
     ]
 }
 
@@ -218,9 +228,9 @@ publishing {
                 asNode().appendNode('description', 'Sunshine Conversations Client')
                 asNode().appendNode('url', 'https://zendesk.com')
                 asNode().appendNode('scm').
-                    appendNode('connection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
-                    appendNode('developerConnection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
-                    appendNode('url', 'https://github.com/zendesk/sunshine-conversations-java')
+                        appendNode('connection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
+                        appendNode('developerConnection', 'https://github.com/zendesk/sunshine-conversations-java').parent().
+                        appendNode('url', 'https://github.com/zendesk/sunshine-conversations-java')
                 asNode().appendNode('licenses').appendNode('license').
                         appendNode('name', 'Apache-2.0').parent().
                         appendNode('url', 'http://www.apache.org/licenses/LICENSE-2.0.html').parent().
@@ -230,21 +240,21 @@ publishing {
                         appendNode('email', 'sunco-eng-conversation-engine@zendesk.com').parent().
                         appendNode('organization', 'Sunshine Conversations Zendesk').parent().
                         appendNode('organizationUrl', 'smooch.io')
-              }
+            }
         }
 
         zdArtifactory(MavenPublication) {
-          from components.java
-          groupId = 'com.zendesk'
-          artifactId = 'sunshine-conversations-client'
-          version = snapshotVersion
+            from components.java
+            groupId = 'com.zendesk'
+            artifactId = 'sunshine-conversations-client'
+            version = snapshotVersion
         }
 
         zdArtifactoryRelease(MavenPublication) {
-          from components.java
-          groupId = 'com.zendesk'
-          artifactId = 'sunshine-conversations-client'
-          version = project.version  // Release version without snapshot suffix
+            from components.java
+            groupId = 'com.zendesk'
+            artifactId = 'sunshine-conversations-client'
+            version = project.version  // Release version without snapshot suffix
         }
     }
     repositories {
@@ -259,21 +269,21 @@ publishing {
         }
 
         maven {
-          name = "zendeskArtifactory"
-          url = "https://zdrepo.jfrog.io/zdrepo/libs-snapshots-local"
-          credentials {
-              username System.env.ARTIFACTORY_USERNAME
-              password System.env.ARTIFACTORY_API_KEY
-          }
+            name = "zendeskArtifactory"
+            url = "https://zdrepo.jfrog.io/zdrepo/libs-snapshots-local"
+            credentials {
+                username System.env.ARTIFACTORY_USERNAME
+                password System.env.ARTIFACTORY_API_KEY
+            }
         }
 
         maven {
-          name = "zendeskArtifactoryRelease"
-          url = "https://zdrepo.jfrog.io/zdrepo/libs-releases-local"
-          credentials {
-              username System.env.ARTIFACTORY_USERNAME
-              password System.env.ARTIFACTORY_API_KEY
-          }
+            name = "zendeskArtifactoryRelease"
+            url = "https://zdrepo.jfrog.io/zdrepo/libs-releases-local"
+            credentials {
+                username System.env.ARTIFACTORY_USERNAME
+                password System.env.ARTIFACTORY_API_KEY
+            }
         }
     }
 }

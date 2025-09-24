@@ -12,4 +12,8 @@
 |**pageAccessToken** | **String** | A Facebook Page Access Token. |  [optional] |
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 

@@ -16,4 +16,9 @@ A link action will open the provided URI when tapped.
 |**extraChannelOptions** | [**ExtraChannelOptions**](ExtraChannelOptions.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Action
+* ActionSubset
+
 

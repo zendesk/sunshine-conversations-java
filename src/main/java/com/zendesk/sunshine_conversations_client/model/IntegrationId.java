@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @JsonTypeName("integrationId")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class IntegrationId {
+public class IntegrationId implements Destination {
   public static final String JSON_PROPERTY_INTEGRATION_ID = "integrationId";
   @jakarta.annotation.Nullable
   private String integrationId;

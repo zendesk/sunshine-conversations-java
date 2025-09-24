@@ -13,4 +13,8 @@
 |**canUserCreateMoreConversations** | **Boolean** | Allows users to create more than one conversation on the Unity integration. |  [optional] |
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 

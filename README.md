@@ -175,6 +175,7 @@ This SDK is entirely auto-generated from the OpenAPI specification using OpenAPI
 3. **Ensure inheritance**: Verify that all subtypes properly inherit from their parent class
 4. **Remove conflicts**: Remove duplicated methods in the parent class when they conflict with the subtypes
 5. **Clean and format**: Clean and reformat the code after applying fixes
+6. **Fix query parameters**: Check that the ApiClient.parameterToPairs() method handles `Page` and `Filter`
 
 ## Requirements
 

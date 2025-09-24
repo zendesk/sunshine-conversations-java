@@ -15,4 +15,8 @@ A location type message includes the coordinates (latitude and longitude) of a l
 |**location** | [**LocationMessageLocation**](LocationMessageLocation.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Content
+
 

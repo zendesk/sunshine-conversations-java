@@ -15,4 +15,8 @@ Carousel messages are a horizontally scrollable set of items that may each conta
 |**displaySettings** | [**CarouselMessageDisplaySettings**](CarouselMessageDisplaySettings.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* Content
+
 

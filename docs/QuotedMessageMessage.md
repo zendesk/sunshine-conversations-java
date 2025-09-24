@@ -11,4 +11,8 @@
 |**message** | [**Message**](Message.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* QuotedMessage
+
 

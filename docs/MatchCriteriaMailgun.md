@@ -14,4 +14,8 @@
 |**subject** | **String** | May be specified to set the subject for the outgoing email. |  [optional] |
 
 
+## Implemented Interfaces
+
+* MatchCriteria
+
 

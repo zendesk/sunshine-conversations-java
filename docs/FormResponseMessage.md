@@ -13,4 +13,8 @@ A formResponse type message is a response to a form type message. formResponse t
 |**textFallback** | **String** | A string containing the &#x60;label: value&#x60; of all fields, each separated by a newline character. |  [optional] [readonly] |
 
 
+## Implemented Interfaces
+
+* Content
+
 

@@ -19,4 +19,8 @@
 | TICKET_CLOSED | &quot;ticket:closed&quot; |
 
 
+## Implemented Interfaces
+
+* ActivityMessage
+
 

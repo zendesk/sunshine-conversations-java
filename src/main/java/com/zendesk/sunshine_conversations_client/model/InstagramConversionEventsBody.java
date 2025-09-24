@@ -31,7 +31,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   InstagramConversionEventsBody.JSON_PROPERTY_INSTAGRAM
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class InstagramConversionEventsBody {
+public class InstagramConversionEventsBody implements ConversionEventsBody {
   public static final String JSON_PROPERTY_INSTAGRAM = "instagram";
   @jakarta.annotation.Nullable
   private MetaConversionEvent instagram;

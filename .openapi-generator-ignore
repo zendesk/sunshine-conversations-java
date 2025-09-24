@@ -14,3 +14,6 @@ build.sbt
 
 # Protect the master OpenAPI specification
 api/openapi.yaml
+
+# Prevent generation of test cases
+*Test.java

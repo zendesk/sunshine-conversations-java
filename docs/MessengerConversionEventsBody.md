@@ -10,4 +10,8 @@
 |**messenger** | [**MetaConversionEvent**](MetaConversionEvent.md) |  |  [optional] |
 
 
+## Implemented Interfaces
+
+* ConversionEventsBody
+
 

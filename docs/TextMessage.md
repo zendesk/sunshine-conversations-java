@@ -16,4 +16,8 @@
 |**payload** | **String** | The payload of a [reply button](https://developer.zendesk.com/documentation/conversations/messaging-platform/programmable-conversations/structured-messages/#reply-buttons) response message. |  [optional] |
 
 
+## Implemented Interfaces
+
+* Content
+
 

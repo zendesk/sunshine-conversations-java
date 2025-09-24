@@ -11,4 +11,8 @@
 |**externalMessageId** | **String** | The external message Id of the quoted message. |  [optional] |
 
 
+## Implemented Interfaces
+
+* QuotedMessage
+
 

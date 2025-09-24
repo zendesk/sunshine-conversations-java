@@ -22,6 +22,9 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonValue;
 import java.util.HashMap;
 import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
@@ -35,7 +38,10 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 })
 @JsonTypeName("locationRequest")
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class LocationRequest extends Action{
+public class LocationRequest implements Action {
+  public static final String JSON_PROPERTY_TYPE = "type";
+  @jakarta.annotation.Nonnull
+  private String type = "locationRequest";
 
   public static final String JSON_PROPERTY_TEXT = "text";
   @jakarta.annotation.Nonnull
@@ -46,7 +52,6 @@ public class LocationRequest extends Action{
   private Map<String, Object> metadata;
 
   public LocationRequest() {
-    this.type = "locationRequest";
   }
 
   public LocationRequest type(@jakarta.annotation.Nonnull String type) {

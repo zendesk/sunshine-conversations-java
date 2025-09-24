@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ParticipantLeaveBodyUserExternalId.JSON_PROPERTY_USER_EXTERNAL_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class ParticipantLeaveBodyUserExternalId {
+public class ParticipantLeaveBodyUserExternalId implements ParticipantLeaveBody {
   public static final String JSON_PROPERTY_USER_EXTERNAL_ID = "userExternalId";
   @jakarta.annotation.Nullable
   private String userExternalId;

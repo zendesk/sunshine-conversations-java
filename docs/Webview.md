@@ -29,4 +29,9 @@ When a webview actions is clicked/tapped, the provided URI will be loaded in a w
 | FULL | &quot;full&quot; |
 
 
+## Implemented Interfaces
+
+* Action
+* ActionSubset
+
 

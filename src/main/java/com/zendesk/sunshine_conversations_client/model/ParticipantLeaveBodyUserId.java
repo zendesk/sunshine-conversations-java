@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
   ParticipantLeaveBodyUserId.JSON_PROPERTY_USER_ID
 })
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", comments = "Generator version: 7.15.0")
-public class ParticipantLeaveBodyUserId {
+public class ParticipantLeaveBodyUserId implements ParticipantLeaveBody {
   public static final String JSON_PROPERTY_USER_ID = "userId";
   @jakarta.annotation.Nullable
   private String userId;

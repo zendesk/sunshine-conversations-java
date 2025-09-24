@@ -12,4 +12,8 @@
 |**authenticationMessageSecret** | **String** | A secret used to create the state value when sending Apple authentication 2.0 messages |  [optional] |
 
 
+## Implemented Interfaces
+
+* IntegrationUpdate
+
 
